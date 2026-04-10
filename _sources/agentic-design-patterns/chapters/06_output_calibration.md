@@ -6,6 +6,23 @@
 > *Tradeoff:* Reducing false confidence makes the agent slower and more hesitant; users prefer decisiveness, but decisiveness without calibration causes harm.
 > *When to use:* Any agent that takes autonomous actions or produces outputs that downstream systems or humans will act on without independent verification.
 
+<div class="key-points">
+<div class="kp-title">Key Points</div>
+<ul>
+<li>Capybara v8 nearly doubled false claims (16.7% → 30%) — a capability upgrade caused a reliability regression</li>
+<li>Confident errors are worse than hesitant ones — they bypass the human's verification instinct</li>
+<li>Assertiveness counterweight: a prompt-level behavioral control that handicaps autonomy to improve accuracy</li>
+<li>Model selection is runtime routing, not a one-time choice — route by task risk profile</li>
+<li>Self-critique catches what the counterweight prevents — prevention + correction, not either/or</li>
+</ul>
+</div>
+
+<div class="stat-row">
+<div class="stat-card"><div class="stat-number">16.7% → 30%</div><div class="stat-label">False Claims Regression (v4 → v8)</div></div>
+<div class="stat-card"><div class="stat-number">~10%</div><div class="stat-label">Stop Sequence Failure Rate</div></div>
+<div class="stat-card"><div class="stat-number">90×</div><div class="stat-label">Capability Jump (Mythos vs Opus)</div></div>
+</div>
+
 ---
 
 ## The Capybara v8 Regression

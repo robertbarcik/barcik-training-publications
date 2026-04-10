@@ -6,6 +6,16 @@
 > *Tradeoff:* Production code is messy, opinionated, and shaped by pressures that may not match yours — you must extract the pattern, not copy the implementation.
 > *When to use:* Before designing any agent system, study at least one deployed agent at scale to calibrate your expectations about what the work actually involves.
 
+<div class="key-points">
+<div class="kp-title">Key Points</div>
+<ul>
+<li>Production agents are systems engineering projects — the model is one component among many</li>
+<li>~90% of a production agent codebase is "plumbing": context management, safety, error recovery, tool orchestration</li>
+<li>Papers optimize for task completion; production optimizes for six constraints simultaneously (tokens, cost, safety, trust, latency, errors)</li>
+<li>Agency comes from the orchestration layer, not from model intelligence alone</li>
+</ul>
+</div>
+
 ## The Five-Line Agent
 
 Every introductory tutorial on AI agents looks roughly the same.
@@ -30,6 +40,13 @@ These are not edge cases. They are the entire job.
 In late March 2026, an inadvertent source map inclusion in an npm package exposed the complete source code of Anthropic's Claude Code — their AI coding agent that had become, by that point, one of the most widely used developer tools in the world. The exposure was brief, but the code was archived and analyzed by the developer community within hours.
 
 The numbers tell a story that no research paper could.
+
+<div class="stat-row">
+<div class="stat-card"><div class="stat-number">513K</div><div class="stat-label">Lines of TypeScript</div></div>
+<div class="stat-card"><div class="stat-number">1,900</div><div class="stat-label">Files in codebase</div></div>
+<div class="stat-card"><div class="stat-number">74</div><div class="stat-label">Releases in 52 days</div></div>
+<div class="stat-card"><div class="stat-number">460</div><div class="stat-label">eslint-disable comments</div></div>
+</div>
 
 **513,000 lines of TypeScript** across nearly **1,900 files**. The `utils/` directory alone contained approximately **180,000 lines** — more code dedicated to utility functions, error handling, and infrastructure plumbing than most entire applications contain in total. The main orchestration file, `main.tsx`, ran to **4,700 lines** and contained **460 `eslint-disable` comments** — inline suppressions of code quality rules, each one a small scar from a moment when shipping the right behavior mattered more than satisfying a linter.
 

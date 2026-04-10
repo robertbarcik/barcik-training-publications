@@ -6,6 +6,17 @@
 > *Tradeoff:* The agent must spend tokens re-verifying information it "already knows," trading efficiency for safety against stale or incorrect memory.
 > *When to use:* Any agent that operates across multiple sessions, works in environments that change between sessions, or executes actions with real-world consequences based on recalled context.
 
+<div class="key-points">
+<div class="kp-title">Key Points</div>
+<ul>
+<li>Three-layer hierarchy: immutable system prompt, user-edited project memory, capped agent-managed session memory</li>
+<li>Session memory hard-capped at 200 lines (~150 chars/line) — it is an index of pointers, not a data store</li>
+<li>Skeptical Memory: the agent treats its own recalled information as unverified hints and re-checks before acting</li>
+<li>Behavioral rules (CLAUDE.md) re-injected every turn — no stale config, no cache invalidation bugs</li>
+<li>Plain-text files over vector DBs: transparency, version control, and determinism beat semantic search for working memory</li>
+</ul>
+</div>
+
 ## The Stateless Paradox
 
 Every large language model has the same fundamental limitation: it has no memory. Each API call is independent. The model receives a sequence of tokens, produces a response, and forgets everything. The next call starts from zero.
@@ -29,6 +40,17 @@ Claude Code's architecture addresses all three problems through a pattern we cal
 ## The Three-Layer Context Hierarchy
 
 Claude Code organizes persistent context into three distinct layers, each with different scope, lifetime, mutability, and trust characteristics. Understanding these layers — and why they are separate — is the foundation for designing any agent's memory system.
+
+<div class="visual-diagram">
+<div class="diagram-title">Three-Layer Context Hierarchy</div>
+<div class="diagram-stack">
+<div class="diagram-box layer-1">Layer 1: System Prompt<small>Global, immutable, absolute trust | ~10K tokens | Safety rules, tool definitions, behavioral constraints</small></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="diagram-box layer-2">Layer 2: Project Memory (CLAUDE.md)<small>Per-repo, user-edited, high trust | ~1.5K tokens | Build commands, conventions, deploy procedures</small></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="diagram-box layer-3">Layer 3: Session Memory (MEMORY.md)<small>Per-user, agent-managed, low trust | Capped 200 lines | Index of pointers to topic files</small></div>
+</div>
+</div>
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -115,6 +137,12 @@ This is a striking choice in an era when most AI systems reach for vector databa
 The session memory layer is the most interesting — and the most constrained. This is where the agent stores information it has learned across sessions: user preferences, project-specific knowledge it has discovered, decisions it has made, and context it thinks will be useful in the future.
 
 In Claude Code, session memory is stored in `MEMORY.md` files with a hard cap of **200 lines at approximately 150 characters per line**. That is roughly 30,000 characters — about 7,500 tokens. This is a small budget, and the constraint is enforced, not advisory.
+
+<div class="stat-row">
+<div class="stat-card"><div class="stat-number">200</div><div class="stat-label">Line cap (MEMORY.md)</div></div>
+<div class="stat-card"><div class="stat-number">~150</div><div class="stat-label">Chars per line</div></div>
+<div class="stat-card"><div class="stat-number">~7.5K</div><div class="stat-label">Tokens (re-injected every turn)</div></div>
+</div>
 
 But the critical design decision is not the size cap. It is what the memory contains.
 

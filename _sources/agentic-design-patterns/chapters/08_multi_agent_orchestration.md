@@ -6,6 +6,23 @@
 > *Tradeoff:* Multi-agent systems introduce coordination overhead, new failure modes (cascading errors, circular delegation, cost explosions), and debugging complexity that single-agent systems avoid entirely.
 > *When to use:* When tasks are naturally decomposable, when parallelism provides meaningful speedup, and when the coordination cost is justified by the complexity of the work.
 
+<div class="key-points">
+<div class="kp-title">Key Points</div>
+<ul>
+<li>Single agents hit a ceiling: <strong>context limits</strong>, <strong>sequential bottleneck</strong>, <strong>role confusion</strong></li>
+<li>Lead agent (orchestrator) decomposes tasks and spawns <strong>specialized workers</strong></li>
+<li>Shared prompt cache makes it affordable: <strong>90% discount</strong> on cached input tokens</li>
+<li>Risk classification is <strong>non-delegable</strong> — HIGH-risk actions need human approval regardless of which agent proposes them</li>
+<li><strong>MCP</strong> for agent-to-tool + <strong>A2A</strong> for agent-to-agent = cross-system orchestration</li>
+</ul>
+</div>
+
+<div class="stat-row">
+<div class="stat-card"><div class="stat-number">90%</div><div class="stat-label">Prompt cache discount on repeated context</div></div>
+<div class="stat-card"><div class="stat-number">67%</div><div class="stat-label">Cost reduction with 5-agent swarm</div></div>
+<div class="stat-card"><div class="stat-number">78%</div><div class="stat-label">Cost reduction with 10-agent swarm</div></div>
+</div>
+
 ## Why Single-Agent Architectures Hit a Ceiling
 
 A single AI agent operating on a complex task faces three hard constraints.
@@ -46,6 +63,23 @@ The Claude Code source revealed a multi-agent architecture built around what is 
            │   conversation history)     │
            └────────────────────────────┘
 ```
+
+<div class="visual-diagram">
+<div class="diagram-title">Swarm Topology</div>
+<div class="swarm-diagram">
+<div class="swarm-row"><div class="swarm-node user">User / Human</div></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="swarm-row"><div class="swarm-node orchestrator">Lead Agent / Orchestrator</div></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="swarm-row">
+<div class="swarm-node worker">Worker A<br>Research</div>
+<div class="swarm-node worker">Worker B<br>Code</div>
+<div class="swarm-node worker">Worker C<br>Review</div>
+</div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="swarm-row"><div class="swarm-node cache">Shared Prompt Cache<br><small>project context, rules, conversation history</small></div></div>
+</div>
+</div>
 
 The **lead agent** (orchestrator) receives the user's request and decides how to decompose it. It does not do the work itself --- it plans the work and assigns it. Think of it as a senior engineer who reads the ticket, breaks it into subtasks, and assigns each subtask to the right person.
 

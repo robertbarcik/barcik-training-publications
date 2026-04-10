@@ -6,6 +6,22 @@
 > *Tradeoff:* Tighter constraints reduce autonomy and slow down workflows that require frequent high-risk operations, creating friction for power users.
 > *When to use:* Every agent that acts on the real world. There are no exceptions.
 
+<div class="key-points">
+<div class="kp-title">Key Points</div>
+<ul>
+<li>Tools define what an agent <strong>can</strong> and <strong>cannot</strong> do — tool design is agent design</li>
+<li>Three-tier risk classification: LOW (auto-approve), MEDIUM (visible, proceeding), HIGH (blocked until authorized)</li>
+<li>Claude Code restricts web access to an 85-domain whitelist — predictability, relevance, and security</li>
+<li>Constraints <em>improve</em> agent performance: smaller action space means better planning and more recoverable errors</li>
+<li>MCP (Model Context Protocol) is standardizing tool risk annotations across the industry</li>
+</ul>
+</div>
+
+<div class="stat-row">
+<div class="stat-card"><div class="stat-number">~30</div><div class="stat-label">Tools in Claude Code</div></div>
+<div class="stat-card"><div class="stat-number">85</div><div class="stat-label">Whitelisted web domains</div></div>
+</div>
+
 ## Tools Are the Agent
 
 There is a persistent misconception in early agent design that the language model is the agent and tools are accessories --- optional add-ons that extend what the agent can do. This gets the relationship backwards.
@@ -64,6 +80,12 @@ Examples:
 HIGH-risk operations have one or more of these characteristics: they are irreversible (or difficult to reverse), they affect systems beyond the local workspace, they transmit data externally, or their consequences are difficult to predict from the invocation alone.
 
 > **Design Pattern: Risk classification is not about what the tool is --- it is about what the specific invocation does.** `git checkout main` (switching to an existing branch) is MEDIUM. `git checkout -- .` (discarding all local changes) is HIGH. Same tool, same command prefix, radically different risk profiles. Your classification system must evaluate the full invocation, not just the tool name.
+
+<div class="risk-cards">
+<div class="risk-card risk-low"><div class="risk-label">LOW Risk</div><div class="risk-desc">Read-only operations — file reads, searches, git status. Auto-approved silently. Cannot modify state or transmit data.</div></div>
+<div class="risk-card risk-medium"><div class="risk-label">MEDIUM Risk</div><div class="risk-desc">Local, reversible changes — file edits, installs, git commits. Shown to user but proceeds without blocking.</div></div>
+<div class="risk-card risk-high"><div class="risk-label">HIGH Risk</div><div class="risk-desc">Irreversible or external impact — arbitrary shell scripts, git push, network calls to non-whitelisted domains. Hard-blocked until user authorizes.</div></div>
+</div>
 
 ## The 85-Domain Web Whitelist
 

@@ -6,6 +6,17 @@
 > *Tradeoff:* A minimal architecture ships faster and is easier to reason about, but may lack resilience; a comprehensive architecture handles more edge cases but costs more to build, operate, and debug.
 > *When to use:* When you are moving from "I understand the patterns" to "I am building the system."
 
+<div class="key-points">
+<div class="kp-title">Key Points</div>
+<ul>
+<li>9 patterns compose into 3 reference architectures: solo, supervised, swarm</li>
+<li>Solo agent for personal tools / supervised for enterprise / swarm for complex systems</li>
+<li>Start simple — add complexity only from observed failures, not anticipated ones</li>
+<li>Patterns are foundational; protocols (MCP, A2A) implement them</li>
+<li>Answer 4 design questions before writing a line of code</li>
+</ul>
+</div>
+
 ## The Catalog
 
 Over the previous nine chapters, we extracted nine design patterns from the Claude Code architecture and the broader agentic AI landscape. Before we compose them, let us have them in one place.
@@ -111,6 +122,23 @@ The agent swarm distributes work across multiple specialized agents with shared 
 **Good for:** Large-scale codebase management (thousands of files, multiple repositories), continuous security auditing, complex multi-step autonomous workflows (deployment pipelines, incident response), research tasks that require synthesizing information across many sources simultaneously.
 
 **Build time:** Six months to a year for a production deployment. The coordination protocol is the hardest part --- defining how agents communicate, how conflicts are resolved, and how the coordinator maintains coherence across parallel workstreams. Most teams underestimate this by at least 2x.
+
+<div class="visual-diagram">
+<div class="diagram-title">Three Reference Architectures</div>
+<div class="diagram-flow">
+<div class="diagram-box layer-1">Solo Agent<small>1 user, 1 model, basic tools</small></div>
+<div class="diagram-arrow">&#8594;</div>
+<div class="diagram-box layer-2">Supervised Agent<small>Human-in-the-loop, audit logs, defense in depth</small></div>
+<div class="diagram-arrow">&#8594;</div>
+<div class="diagram-box layer-3">Agent Swarm<small>Multi-agent, shared context, continuous red-teaming</small></div>
+</div>
+</div>
+
+<div class="stat-row">
+<div class="stat-card"><div class="stat-number">$0.50–5</div><div class="stat-label">Solo: per session / 1 month build</div></div>
+<div class="stat-card"><div class="stat-number">$2–20</div><div class="stat-label">Supervised: per session / 2–4 months</div></div>
+<div class="stat-card"><div class="stat-number">$10–100+</div><div class="stat-label">Swarm: per session / 6–12 months</div></div>
+</div>
 
 ## Architecture Comparison
 

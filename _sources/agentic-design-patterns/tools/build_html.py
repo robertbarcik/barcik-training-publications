@@ -290,6 +290,236 @@ blockquote p:last-child {
     margin-bottom: 0;
 }
 
+/* Key points box — screen-sharing friendly summary */
+.key-points {
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.key-points .kp-title {
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+}
+
+.key-points ul {
+    margin: 0;
+    padding-left: 1.4rem;
+}
+
+.key-points li {
+    margin-bottom: 0.35rem;
+    color: var(--text);
+}
+
+/* Stat cards — big numbers for screen sharing */
+.stat-row {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 140px;
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    text-align: center;
+}
+
+.stat-card .stat-number {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+}
+
+.stat-card .stat-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-top: 0.3rem;
+    line-height: 1.3;
+}
+
+/* Visual diagrams — simple box-and-arrow layouts */
+.visual-diagram {
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.88rem;
+}
+
+.visual-diagram .diagram-title {
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.diagram-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.diagram-box {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    max-width: 420px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.diagram-box.layer-1 { background: var(--navy); color: white; }
+.diagram-box.layer-2 { background: var(--navy-light); color: white; }
+.diagram-box.layer-3 { background: var(--accent); color: white; }
+.diagram-box.layer-4 { background: #64748b; color: white; }
+.diagram-box.layer-5 { background: #94a3b8; color: white; }
+
+.diagram-box small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.75rem;
+    opacity: 0.85;
+    margin-top: 0.15rem;
+}
+
+.diagram-arrow {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1;
+}
+
+/* Horizontal flow diagram */
+.diagram-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.diagram-flow .diagram-box {
+    width: auto;
+    min-width: 100px;
+    padding: 0.6rem 1rem;
+}
+
+.diagram-flow .diagram-arrow {
+    font-size: 1.2rem;
+}
+
+/* Risk cards — color-coded */
+.risk-cards {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.risk-card {
+    flex: 1;
+    min-width: 180px;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.risk-card.risk-low {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+}
+
+.risk-card.risk-medium {
+    background: #fefce8;
+    border: 1px solid #fde047;
+}
+
+.risk-card.risk-high {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+}
+
+.risk-card .risk-label {
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+}
+
+.risk-low .risk-label { color: #166534; }
+.risk-medium .risk-label { color: #854d0e; }
+.risk-high .risk-label { color: #991b1b; }
+
+.risk-card .risk-desc {
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+/* Swarm topology diagram */
+.swarm-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.swarm-row {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.swarm-node {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+}
+
+.swarm-node.orchestrator { background: var(--navy); color: white; }
+.swarm-node.worker { background: var(--accent); color: white; }
+.swarm-node.cache { background: #e2e8f0; color: var(--text); border: 1px solid var(--border); }
+.swarm-node.user { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+
+/* Responsive adjustments for visual elements */
+@media (max-width: 600px) {
+    .stat-row, .risk-cards { flex-direction: column; }
+    .diagram-box { width: 95%; font-size: 0.8rem; }
+    .stat-card .stat-number { font-size: 1.4rem; }
+    .diagram-flow { flex-direction: column; }
+    .diagram-flow .diagram-arrow { transform: rotate(90deg); }
+}
+
 /* Horizontal rules (chapter dividers) */
 hr {
     border: none;

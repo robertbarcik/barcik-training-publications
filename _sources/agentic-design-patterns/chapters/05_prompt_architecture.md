@@ -6,6 +6,22 @@
 > *Tradeoff:* Richer instructions improve compliance but increase latency, cost, and the risk of instruction conflict at the margins.
 > *When to use:* Any agent system where the system prompt exceeds a few hundred tokens or where multiple stakeholders need to influence agent behavior.
 
+<div class="key-points">
+<div class="kp-title">Key Points</div>
+<ul>
+<li>The system prompt is software, not a query — treat it with version control, review, and testing</li>
+<li>Five-layer composition pipeline: system prompt → CLAUDE.md → tool descriptions → history → user message</li>
+<li>CLAUDE.md is re-injected every turn — every token is a recurring cost, not a one-time cost</li>
+<li>Prompt caching saves 90% on repeated static context, making rich prompts economically viable</li>
+<li>CLAUDE.md acts as a user-controlled system prompt — customizable behavior without code changes</li>
+</ul>
+</div>
+
+<div class="stat-row">
+<div class="stat-card"><div class="stat-number">90%</div><div class="stat-label">Prompt Cache Discount</div></div>
+<div class="stat-card"><div class="stat-number">9K</div><div class="stat-label">Tokens Static Overhead / Turn</div></div>
+</div>
+
 ---
 
 ## The System Prompt as Software
@@ -27,6 +43,21 @@ This is not pedantry. In an autonomous agent that executes code, creates files, 
 The Claude Code architecture does not assemble its context from a single source. Every API call constructs a composite prompt from multiple layers, each serving a distinct purpose and controlled by a different stakeholder.
 
 Here is the assembly pipeline, visualized as the sequence in which content enters the context window:
+
+<div class="visual-diagram">
+<div class="diagram-title">Prompt Composition Pipeline</div>
+<div class="diagram-stack">
+<div class="diagram-box layer-1">System Prompt<small>Anthropic-authored, immutable per release</small></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="diagram-box layer-2">CLAUDE.md<small>Project owner, user-editable per project</small></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="diagram-box layer-3">Tool Descriptions<small>Platform-generated, per session</small></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="diagram-box layer-4">Conversation History<small>Accumulated, append-only until compaction</small></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="diagram-box layer-5">User Message<small>Current turn, changes every request</small></div>
+</div>
+</div>
 
 ```
 ┌─────────────────────────────────────────────────────┐

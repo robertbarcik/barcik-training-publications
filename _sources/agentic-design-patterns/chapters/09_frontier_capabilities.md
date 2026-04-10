@@ -6,6 +6,24 @@
 > *Tradeoff:* Aggressive gating reduces risk but also constrains the utility that makes the agent valuable; too little gating leaves you exposed to capabilities you did not know existed.
 > *When to use:* Any time you deploy an agent backed by a model whose full capability envelope you have not characterized — which, in practice, means every deployment.
 
+<div class="key-points">
+<div class="kp-title">Key Points</div>
+<ul>
+<li>Mythos was too capable to release publicly — it hit Anthropic's Responsible Scaling Policy thresholds</li>
+<li>Found 27/16/17-year-old zero-days autonomously in OpenBSD, FFmpeg, and FreeBSD</li>
+<li>Exploit conversion jumped from 2 to 181 on the same target — a 90x increase</li>
+<li>Capability overhang: your agent can do more than you have tested for</li>
+<li>Project Glasswing: $100M defensive consortium with 12 major tech partners</li>
+</ul>
+</div>
+
+<div class="stat-row">
+<div class="stat-card"><div class="stat-number">2 → 181</div><div class="stat-label">Exploits: Opus vs Mythos</div></div>
+<div class="stat-card"><div class="stat-number">27 yrs</div><div class="stat-label">Oldest zero-day found</div></div>
+<div class="stat-card"><div class="stat-number">12</div><div class="stat-label">Glasswing partners</div></div>
+<div class="stat-card"><div class="stat-number">$100M</div><div class="stat-label">In API credits</div></div>
+</div>
+
 ## The Model That Was Too Capable to Ship
 
 Every previous chapter in this booklet has treated frontier model capabilities as a resource to be channeled — something you harness through good architecture, constrain through safety systems, and direct through prompt engineering. This chapter confronts a different problem: what happens when the model's capabilities exceed what you designed for, what you tested for, and what you are prepared to contain?

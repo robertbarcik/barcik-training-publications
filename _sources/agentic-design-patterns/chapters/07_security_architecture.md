@@ -6,6 +6,22 @@
 > *Tradeoff:* Each security layer adds latency and friction; over-constraining the agent makes it useless, under-constraining it makes it dangerous.
 > *When to use:* Any system where an AI agent can read, write, or execute beyond returning text to a user.
 
+<div class="key-points">
+<div class="kp-title">Key Points</div>
+<ul>
+<li>Agents <strong>execute actions</strong>, not just return data — a fundamentally different security category</li>
+<li>Three attack vectors: <strong>prompt injection</strong>, <strong>supply chain compromise</strong>, <strong>indirect injection via tool results</strong></li>
+<li>OS-level sandboxing is the true safety net — prompt-level restrictions alone will be bypassed</li>
+<li>Undercover Mode irony: enumerating secrets to hide them <em>leaked every one of them</em></li>
+<li>Defense-in-depth: <strong>5 layers</strong> — prompt sanitization → output validation → rate limiting → audit logging → human oversight</li>
+</ul>
+</div>
+
+<div class="stat-row">
+<div class="stat-card"><div class="stat-number">24 hrs</div><div class="stat-label">From source leak to weaponized repos with malware</div></div>
+<div class="stat-card"><div class="stat-number">5</div><div class="stat-label">Defense-in-depth layers needed for agentic security</div></div>
+</div>
+
 ## The Fundamental Difference
 
 Traditional APIs receive data and return data. You send a JSON payload, you get a JSON response. The attack surface is well understood: injection, authentication bypass, data exposure. Decades of security engineering have produced reliable defenses --- input validation, parameterized queries, rate limiting, OAuth scopes.
@@ -19,6 +35,12 @@ The Claude Code source leak of March 2026 exposed exactly how a production agent
 ## The Attack Surface of a Coding Agent
 
 A coding agent operates in an environment designed for maximum developer productivity. That same environment provides maximum attack surface. Three vectors stand out.
+
+<div class="risk-cards">
+<div class="risk-card risk-high"><div class="risk-label">PROMPT INJECTION</div><div class="risk-desc">Attacker-controlled repo files (e.g. CLAUDE.md in a PR) hijack the agent's instructions and trigger arbitrary commands</div></div>
+<div class="risk-card risk-high"><div class="risk-label">SUPPLY CHAIN</div><div class="risk-desc">Compromised dependencies execute malware with the agent's full permissions during npm install / pip install</div></div>
+<div class="risk-card risk-medium"><div class="risk-label">INDIRECT INJECTION</div><div class="risk-desc">Adversarial content in web results, API responses, or docs enters the context and steers downstream actions</div></div>
+</div>
 
 ### Prompt injection through repository files
 
@@ -135,6 +157,21 @@ If an agent's contributions are not disclosed, code reviewers cannot apply appro
 On the other hand, blanket disclosure of all tooling details creates its own risks. Revealing which AI model, which version, and which configuration was used to generate code gives attackers information about the model's known weaknesses and potential injection vectors. There is a reasonable case for disclosing AI involvement without disclosing implementation details.
 
 The emerging industry consensus --- reflected in policies from GitHub, major open-source foundations, and the EU AI Act's transparency requirements --- is moving toward mandatory disclosure of AI involvement with discretion over implementation details. Your agent architecture should support this: log AI involvement for audit purposes, provide mechanisms for attribution in commit metadata, but do not embed implementation details (model names, version numbers, internal codenames) in the output that reaches public repositories.
+
+<div class="visual-diagram">
+<div class="diagram-title">Defense-in-Depth: 5 Security Layers</div>
+<div class="diagram-stack">
+<div class="diagram-box layer-1">Input Sanitization<small>Tag provenance, scan for injection patterns</small></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="diagram-box layer-2">Output Validation<small>Check commands against allowlists/blocklists</small></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="diagram-box layer-3">Rate Limiting<small>Bound damage per unit of time</small></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="diagram-box layer-2">Audit Logging<small>Forensic trail of every action</small></div>
+<div class="diagram-arrow">&#8595;</div>
+<div class="diagram-box layer-1">Human Authorization<small>HIGH-risk actions blocked until approved</small></div>
+</div>
+</div>
 
 ## Applying This Pattern
 

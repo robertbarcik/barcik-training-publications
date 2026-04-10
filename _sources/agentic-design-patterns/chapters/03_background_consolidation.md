@@ -6,6 +6,17 @@
 > *Tradeoff:* Background processing consumes tokens and compute even when no user task is active, and aggressive consolidation can discard context that turns out to be relevant later.
 > *When to use:* Any agent that persists memory across sessions and operates over days or weeks --- which is most production agents worth building.
 
+<div class="key-points">
+<div class="kp-title">Key Points</div>
+<ul>
+<li>Agent memory decays without active maintenance — staleness, contradictions, and noise compound over days</li>
+<li>AutoDream spawns a dedicated subagent during idle time to consolidate memory</li>
+<li>Three operations, always in order: <strong>Prune</strong> stale entries → <strong>Merge</strong> fragments into facts → <strong>Optimize</strong> structure for retrieval</li>
+<li>A separate subagent protects the primary agent's context from contamination</li>
+<li>KAIROS extends the pattern into an always-on daemon that triages external events between sessions</li>
+</ul>
+</div>
+
 ## The Decay Problem
 
 If you have ever maintained a shared wiki at work, you already understand the core issue. Day one, the wiki is clean. Every page is accurate and relevant. By month six, half the pages describe processes that no longer exist, three different pages give conflicting instructions for the same task, and the search results are so noisy that people stop trusting the wiki and start asking colleagues directly.
@@ -23,6 +34,12 @@ The rot takes specific forms:
 **Vagueness.** An early-session observation reads: "the database setup seems complicated." This was a fleeting impression, not a concrete fact. But it persists in memory, and the agent now approaches database-related tasks with unwarranted caution, hedging its responses and suggesting simpler alternatives when the user needs the actual complex solution.
 
 Left unmanaged, these problems compound. A study of Claude Code's memory files in active use showed that after two weeks of daily sessions without consolidation, approximately 40% of memory entries were stale, redundant, or vague enough to be counterproductive. The agent was spending context window capacity --- the single most expensive resource it has --- on information that actively degraded its performance.
+
+<div class="stat-row">
+<div class="stat-card"><div class="stat-number">~40%</div><div class="stat-label">Memory entries stale after 2 weeks</div></div>
+<div class="stat-card"><div class="stat-number">15 sec</div><div class="stat-label">KAIROS per-cycle budget</div></div>
+<div class="stat-card"><div class="stat-number">1/20th</div><div class="stat-label">Cost of background vs frontier model</div></div>
+</div>
 
 This is not a theoretical concern. It is a measurable engineering problem with a measurable engineering solution.
 
@@ -78,6 +95,17 @@ The Claude Code source enforces a 200-line cap on memory files. This is a hard l
 Structural optimization involves grouping related entries (all deployment-related facts together, all coding conventions together, all user preferences together), ordering groups by access frequency (the facts the agent needs most often appear earliest, where they are more likely to fall within any truncation window), and formatting entries for fast parsing (consistent structure, no narrative prose, each entry self-contained).
 
 The result is a memory file that reads less like a session log and more like a project configuration file: dense, organized, and immediately actionable.
+
+<div class="visual-diagram">
+<div class="diagram-title">AutoDream: Three Consolidation Operations</div>
+<div class="diagram-flow">
+<div class="diagram-box layer-1">Prune<br><small>Remove stale, redundant &amp; vague entries</small></div>
+<div class="diagram-arrow">&#8594;</div>
+<div class="diagram-box layer-2">Merge<br><small>Combine fragments into concrete facts</small></div>
+<div class="diagram-arrow">&#8594;</div>
+<div class="diagram-box layer-3">Optimize<br><small>Restructure &amp; enforce 200-line cap</small></div>
+</div>
+</div>
 
 ## Why a Separate Subagent?
 
