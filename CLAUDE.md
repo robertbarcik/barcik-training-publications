@@ -37,7 +37,7 @@ After building, copy the HTML output to the site directory for deployment.
 **AWS Profile:** `barcik-demos`
 **Region:** `eu-central-1`
 **S3 Bucket:** `barcik-training-publications`
-**CloudFront Distribution ID:** _(to be created — update this after setup)_
+**CloudFront Distribution ID:** `E1LQ9VRFA5AT7D`
 
 ### Step 1: Sync to S3
 
@@ -58,7 +58,7 @@ aws s3 sync . s3://barcik-training-publications/ \
 
 ```bash
 aws cloudfront create-invalidation \
-  --distribution-id DISTRIBUTION_ID_HERE \
+  --distribution-id E1LQ9VRFA5AT7D \
   --paths "/*" \
   --profile barcik-demos
 ```
