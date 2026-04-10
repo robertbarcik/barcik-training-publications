@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications — barcik.training</title>
+    <style>
+        :root {
+            --navy: #1e3a5f;
+            --accent: #3b82f6;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --card-bg: #f8fafc;
+            --border: #e2e8f0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+        header a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        header a:hover { color: white; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        .pub-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: var(--card-bg);
+            transition: box-shadow 0.2s;
+        }
+        .pub-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .pub-card h2 {
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .pub-card h2 a {
+            color: var(--navy);
+            text-decoration: none;
+        }
+        .pub-card h2 a:hover {
+            color: var(--accent);
+        }
+        .pub-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        .pub-description {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+        .pub-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .tag {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.78rem;
+            color: var(--text-light);
+        }
+        .read-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .read-link:hover { text-decoration: underline; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Publications</h1>
+        <p>Research, guides, and analysis from barcik.training</p>
+        <br>
+        <a href="https://barcik.training">&larr; barcik.training</a>
+    </header>
+
+    <div class="container">
+        <div class="pub-card">
+            <h2><a href="token-economics/">The Token Economics</a></h2>
+            <div class="pub-meta">April 2026 &middot; ~40,000 words &middot; 14 chapters</div>
+            <p class="pub-description">
+                A strategic guide for EU IT services providers navigating GenAI. Covers the economics of self-hosting LLMs vs APIs, viable business model pivots, the vendor ecosystem play, how AI transforms your own delivery model, EU AI Act compliance opportunities, and a practical 18-month roadmap. Grounded in real April 2026 pricing data.
+            </p>
+            <div class="pub-tags">
+                <span class="tag">GenAI Economics</span>
+                <span class="tag">IT Services</span>
+                <span class="tag">EU AI Act</span>
+                <span class="tag">Business Strategy</span>
+                <span class="tag">Self-Hosting vs API</span>
+            </div>
+            <a class="read-link" href="token-economics/">Read the full guide &rarr;</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Robert Barcik &middot; <a href="https://barcik.training">barcik.training</a> &middot; LearningDoe s.r.o.</p>
+    </footer>
+</body>
+</html>

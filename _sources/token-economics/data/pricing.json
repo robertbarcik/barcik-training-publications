@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "last_updated": "2026-04-10",
+    "currency": "USD",
+    "note": "All prices per million tokens unless otherwise specified"
+  },
+  "api_pricing": {
+    "openai": {
+      "gpt_4_1": { "input": 2.00, "output": 8.00, "context_window": "1M", "tier": "flagship" },
+      "gpt_4o": { "input": 2.50, "output": 10.00, "context_window": "128K", "tier": "flagship" },
+      "gpt_4o_mini": { "input": 0.15, "output": 0.60, "context_window": "128K", "tier": "small" }
+    },
+    "anthropic": {
+      "haiku_4_5": { "input": 1.00, "output": 5.00, "context_window": "1M", "tier": "small" },
+      "sonnet_4_6": { "input": 3.00, "output": 15.00, "context_window": "1M", "tier": "mid" },
+      "opus_4_6": { "input": 5.00, "output": 25.00, "context_window": "1M", "tier": "flagship" }
+    },
+    "google": {
+      "flash_lite_2_5": { "input": 0.10, "output": 0.40, "context_window": "1M", "tier": "small" },
+      "flash_2_5": { "input": 0.30, "output": 2.50, "context_window": "1M", "tier": "mid" },
+      "flash_3_preview": { "input": 0.50, "output": 3.00, "context_window": "1M", "tier": "mid" },
+      "pro_2_5": { "input": 1.25, "output": 10.00, "context_window": "1M", "tier": "flagship" },
+      "pro_3_preview": { "input": 2.00, "output": 12.00, "context_window": "1M", "tier": "flagship" }
+    },
+    "mistral": {
+      "small_3_1": { "input": 0.20, "output": 0.60, "context_window": "128K", "tier": "small" },
+      "medium_3": { "input": 1.00, "output": 3.00, "context_window": "128K", "tier": "mid" },
+      "large_3": { "input": 2.00, "output": 6.00, "context_window": "128K", "tier": "flagship" }
+    },
+    "llama_hosted": {
+      "llama_3_2_1b": { "input": 0.02, "output": 0.02, "context_window": "128K", "tier": "tiny", "note": "Via Together AI" },
+      "llama_3_8b": { "input": 0.05, "output": 0.08, "context_window": "128K", "tier": "small" },
+      "llama_4_maverick": { "input": 0.15, "output": 0.60, "context_window": "128K", "tier": "mid" },
+      "llama_3_70b": { "input": 0.70, "output": 0.90, "context_window": "128K", "tier": "large" }
+    }
+  },
+  "gpu_rental_per_hour": {
+    "h100_80gb": { "budget": 1.49, "standard": 3.50, "aws": 6.88, "azure": 12.29 },
+    "h200_141gb": { "budget": 2.29, "standard": 3.78, "aws": 10.60 },
+    "a100_80gb": { "budget": 0.78, "standard": 1.50, "aws": 2.50 },
+    "l40s_48gb": { "budget": 1.00, "standard": 1.55 }
+  },
+  "gpu_purchase": {
+    "h100_80gb": { "per_unit_low": 25000, "per_unit_high": 40000, "server_8gpu_low": 200000, "server_8gpu_high": 400000 },
+    "h200_141gb": { "per_unit_low": 30000, "per_unit_high": 45000, "server_8gpu_low": 308000, "server_8gpu_high": 315000 },
+    "a100_80gb": { "per_unit_low": 15000, "per_unit_high": 17000 },
+    "a100_40gb": { "per_unit_low": 10000, "per_unit_high": 12000 }
+  },
+  "enterprise_seats": {
+    "chatgpt_team": 30,
+    "chatgpt_enterprise": 200,
+    "claude_pro": 20,
+    "claude_team": 30,
+    "claude_enterprise": 200,
+    "gemini_business": 20,
+    "copilot_business": 30
+  },
+  "self_hosting_estimates": {
+    "model_120b": {
+      "fp16_vram_gb": 240,
+      "int8_vram_gb": 120,
+      "int4_vram_gb": 65,
+      "recommended_gpus_100_users": "3-4x 8xH100 nodes",
+      "monthly_cloud_cost_low": 25000,
+      "monthly_cloud_cost_high": 50000,
+      "purchase_cost_low": 600000,
+      "purchase_cost_high": 1200000
+    },
+    "model_20b": {
+      "fp16_vram_gb": 40,
+      "int8_vram_gb": 20,
+      "int4_vram_gb": 12,
+      "recommended_gpus_100_users": "2x H100 80GB",
+      "monthly_cloud_cost_low": 5000,
+      "monthly_cloud_cost_high": 8000,
+      "purchase_cost_low": 50000,
+      "purchase_cost_high": 70000
+    }
+  }
+}
