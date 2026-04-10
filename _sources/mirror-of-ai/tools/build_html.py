@@ -443,12 +443,19 @@ body {{
   z-index: 850;
 }}
 
+/* ----- Content wrapper (centers the reading column) ----- */
+.content-wrapper {{
+  margin-left: var(--sidebar-width);
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem;
+}}
+
 /* ----- Main content area ----- */
 .main-content {{
-  margin-left: var(--sidebar-width);
   max-width: 750px;
-  padding: 2rem 2.5rem 4rem;
-  margin-right: auto;
+  width: 100%;
+  padding: 2rem 1rem 4rem;
 }}
 
 /* ----- Cover ----- */
@@ -719,9 +726,12 @@ p.padding-top {{
   .overlay.active {{
     display: block;
   }}
-  .main-content {{
+  .content-wrapper {{
     margin-left: 0;
-    padding: 3.5rem 1.5rem 3rem;
+    padding: 0 1rem;
+  }}
+  .main-content {{
+    padding: 3.5rem 0.5rem 3rem;
   }}
   .chapter-essay {{
     margin-left: -1.5rem;
@@ -736,7 +746,7 @@ p.padding-top {{
 
 @media (max-width: 600px) {{
   .main-content {{
-    padding: 3.5rem 1rem 2rem;
+    padding: 3.5rem 0.5rem 2rem;
   }}
   .chapter-essay {{
     margin-left: -1rem;
@@ -764,8 +774,11 @@ p.padding-top {{
   .sidebar, .hamburger, .progress-bar, .overlay {{
     display: none !important;
   }}
-  .main-content {{
+  .content-wrapper {{
     margin-left: 0;
+    padding: 0;
+  }}
+  .main-content {{
     max-width: 100%;
   }}
 }}
@@ -796,6 +809,7 @@ p.padding-top {{
 </nav>
 
 <!-- Main content -->
+<div class="content-wrapper">
 <main class="main-content" id="mainContent">
 
   <!-- Cover -->
@@ -808,6 +822,7 @@ p.padding-top {{
 {content_html}
 
 </main>
+</div>
 
 <script>
 (function() {{
