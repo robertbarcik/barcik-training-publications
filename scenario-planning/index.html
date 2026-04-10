@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenario Planning for Generative AI — barcik.training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1e3a5f;
+  --navy-light: #2a5280;
+  --accent: #3b82f6;
+  --bg: #ffffff;
+  --bg-sidebar: #f8fafc;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+  --sidebar-width: 300px;
+  --progress-height: 3px;
+  --orange-red: #E05A33;
+  --purple: #7C6DD8;
+  --cyan: #0EA5C9;
+  --green: #2D7A4F;
+  --dark-brown: #3D2B1F;
+  --risk-color: #dc2626;
+  --chart-bg: #f0f4f8;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* ── Progress bar ── */
+#progress-bar {
+  position: fixed; top: 0; left: 0;
+  width: 0%; height: var(--progress-height);
+  background: var(--accent); z-index: 1000;
+  transition: width 0.1s;
+}
+
+/* ── Sidebar ── */
+#sidebar {
+  position: fixed; top: 0; left: 0;
+  width: var(--sidebar-width); height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  overflow-y: auto; padding: 2rem 0; z-index: 100;
+  transition: transform 0.3s;
+}
+#sidebar-header {
+  padding: 0 1.5rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+#sidebar-header h2 {
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--navy); letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+#sidebar-header p {
+  font-size: 0.78rem; color: var(--text-light);
+  margin-top: 0.3rem; line-height: 1.4;
+}
+#sidebar nav ul { list-style: none; }
+#sidebar nav ul li a {
+  display: block; padding: 0.55rem 1.5rem;
+  font-size: 0.85rem; color: var(--text-light);
+  text-decoration: none; border-left: 3px solid transparent;
+  transition: all 0.2s; line-height: 1.4;
+}
+#sidebar nav ul li a:hover {
+  color: var(--navy);
+  background: rgba(30, 58, 95, 0.04);
+}
+#sidebar nav ul li a.active {
+  color: var(--navy); font-weight: 600;
+  border-left-color: var(--accent);
+  background: rgba(59, 130, 246, 0.06);
+}
+.nav-divider {
+  font-size: 0.7rem; font-weight: 700;
+  color: var(--text-light); text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 1rem 1.5rem 0.3rem;
+  opacity: 0.6;
+}
+
+/* ── Hamburger ── */
+#menu-toggle {
+  display: none; position: fixed;
+  top: 1rem; left: 1rem; z-index: 200;
+  background: var(--navy); color: white;
+  border: none; border-radius: 6px;
+  padding: 0.5rem 0.75rem; font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ── Main content ── */
+#content-wrapper {
+  margin-left: var(--sidebar-width);
+  display: flex; justify-content: center;
+  padding: 0 2rem;
+}
+#content {
+  max-width: 920px; width: 100%;
+  padding: 3rem 1rem 6rem;
+}
+
+/* ── Chapter sections ── */
+.chapter {
+  margin-bottom: 5rem;
+  padding-top: 1rem;
+}
+.chapter-label {
+  font-size: 0.82rem; font-weight: 700;
+  color: var(--accent); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 0.5rem;
+}
+.chapter h2 {
+  font-size: 1.8rem; font-weight: 700;
+  color: var(--navy); line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+.chapter h3 {
+  font-size: 1.15rem; font-weight: 600;
+  color: var(--navy-light);
+  margin-top: 2.5rem; margin-bottom: 0.75rem;
+}
+.chapter-question {
+  font-weight: 400; font-size: 0.75em;
+  color: var(--text-light); font-style: italic;
+}
+p { margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; line-height: 1.8; }
+
+/* ── Cover ── */
+.cover-page {
+  text-align: center;
+  padding: 6rem 0 4rem;
+}
+.cover-label {
+  font-size: 0.85rem; color: var(--text-light);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.cover-page h1 {
+  font-size: 2.8rem; font-weight: 700;
+  color: var(--navy); line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.cover-subtitle {
+  font-size: 1.2rem; color: var(--text-light);
+  margin-bottom: 3rem;
+}
+.cover-meta {
+  font-size: 0.9rem; color: var(--text-light);
+  display: flex; justify-content: center; gap: 2rem;
+}
+
+/* ── Thesis/Risk cards ── */
+.thesis-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; margin-bottom: 20px;
+}
+.thesis-card {
+  background: #fff; border-radius: 12px;
+  padding: 18px 22px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  border: 1px solid var(--border);
+}
+.thesis-card .card-label {
+  font-size: 13px; font-weight: 600; margin-bottom: 5px;
+}
+.thesis-card .card-text {
+  font-size: 13.5px; color: #555; line-height: 1.75;
+}
+
+/* ── Chart wrap ── */
+.chart-wrap {
+  background: #fff; border-radius: 12px;
+  padding: 24px 24px 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  border: 1px solid var(--border);
+  margin-bottom: 20px; position: relative;
+  overflow: hidden;
+}
+.chart-wrap svg { display: block; width: 100%; height: auto; }
+.chart-placeholder {
+  text-align: center; padding: 3rem 1rem;
+  color: var(--text-light); font-size: 0.9rem;
+}
+
+/* ── Info strip ── */
+.info-strip {
+  background: var(--navy); color: #fff;
+  border-radius: 10px; padding: 14px 20px;
+  margin-top: 14px; min-height: 56px;
+  display: flex; align-items: center;
+  transition: opacity .2s;
+}
+.info-hint { color: #94a3b8; font-size: 13px; width: 100%; text-align: center; }
+.info-content { display: flex; width: 100%; gap: 24px; align-items: flex-start; }
+.info-left { flex-shrink: 0; min-width: 180px; }
+.info-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+.info-infra { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 4px; font-style: italic; }
+.info-lock { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 6px; }
+.info-right { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.info-line { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.5; }
+.info-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+
+/* ── Legend ── */
+.legend {
+  display: flex; justify-content: center;
+  gap: 28px; margin-top: 14px; flex-wrap: wrap;
+}
+.legend-item {
+  display: flex; align-items: center;
+  gap: 7px; font-size: 13px;
+  color: #555; font-weight: 500;
+}
+.legend-line { width: 28px; height: 3px; border-radius: 2px; }
+
+/* ── Key numbers ── */
+.key-numbers {
+  display: flex; gap: 12px;
+  margin: 24px 0; flex-wrap: wrap;
+}
+.kn {
+  flex: 1; min-width: 140px;
+  background: var(--bg-sidebar);
+  border-radius: 10px; padding: 14px 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.kn-value {
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--navy); line-height: 1.2;
+}
+.kn-label {
+  font-size: 0.75rem; color: var(--text-light);
+  margin-top: 4px; line-height: 1.3;
+}
+
+/* ── Triggers ── */
+.triggers {
+  list-style: none; padding: 0;
+  margin: 0.5rem 0 1rem;
+}
+.triggers li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative; font-size: 0.92rem;
+  border-bottom: 1px solid var(--border);
+}
+.triggers li::before {
+  content: '\25B6'; position: absolute;
+  left: 0; color: var(--accent); font-size: 0.6rem;
+  top: 0.7rem;
+}
+
+/* ── Implications grid ── */
+.impl-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-top: 0.75rem;
+}
+.impl-card {
+  background: var(--bg-sidebar);
+  border-radius: 10px; padding: 14px 16px;
+  border: 1px solid var(--border);
+}
+.impl-role {
+  font-size: 0.78rem; font-weight: 700;
+  color: var(--accent); text-transform: uppercase;
+  letter-spacing: 0.05em; margin-bottom: 4px;
+}
+.impl-text { font-size: 0.85rem; color: #555; line-height: 1.5; }
+
+/* ── Toggle panels ── */
+.toggle-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--navy); color: #fff;
+  border: none; border-radius: 8px;
+  padding: 10px 18px; font-size: 0.85rem;
+  font-weight: 600; cursor: pointer;
+  margin-top: 12px; transition: background 0.2s;
+  font-family: inherit;
+}
+.toggle-btn:hover { background: var(--navy-light); }
+.toggle-btn .arrow { transition: transform 0.3s; display: inline-block; }
+.toggle-btn.open .arrow { transform: rotate(90deg); }
+.toggle-panel {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+  background: var(--bg-sidebar); border-radius: 10px;
+  margin-top: 10px; border: 1px solid var(--border);
+}
+.toggle-panel.open {
+  max-height: 600px; padding: 20px;
+}
+.toggle-panel-inner { padding: 0; }
+
+/* ── Value chain bar ── */
+.value-chain {
+  display: flex; height: 40px;
+  border-radius: 6px; overflow: hidden;
+  margin: 12px 0;
+}
+.vc-segment {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 600; color: #fff;
+  transition: flex 0.3s;
+  cursor: default; position: relative;
+}
+.vc-segment:hover { filter: brightness(1.15); }
+.vc-tooltip {
+  display: none; position: absolute;
+  bottom: 48px; left: 50%; transform: translateX(-50%);
+  background: var(--navy); color: #fff;
+  padding: 8px 12px; border-radius: 6px;
+  font-size: 0.75rem; white-space: nowrap;
+  font-weight: 400; z-index: 10;
+}
+.vc-segment:hover .vc-tooltip { display: block; }
+
+/* ── Flip cards (S3) ── */
+.flip-cards-row {
+  display: flex; gap: 14px;
+  margin: 20px 0; flex-wrap: wrap;
+  justify-content: center;
+}
+.flip-card {
+  width: 200px; height: 180px;
+  perspective: 600px; cursor: pointer;
+}
+.flip-card-inner {
+  width: 100%; height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  border-radius: 10px; padding: 16px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.flip-card-front { background: #fff; }
+.flip-card-back {
+  background: var(--navy); color: #fff;
+  transform: rotateY(180deg);
+  font-size: 0.8rem; line-height: 1.5;
+}
+.fc-tag {
+  font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 2px 8px; border-radius: 4px;
+  margin-bottom: 8px;
+}
+.fc-tag.survivor { background: #dcfce7; color: #166534; }
+.fc-tag.casualty { background: #fef2f2; color: #991b1b; }
+.fc-tag.tbd { background: #fef9c3; color: #854d0e; }
+.fc-name { font-size: 1.1rem; font-weight: 700; color: var(--navy); }
+.fc-stat { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; }
+.fc-detail { margin-bottom: 6px; }
+
+/* ── Stat bar ── */
+.stat-bar {
+  background: var(--navy); color: #fff;
+  border-radius: 10px; padding: 18px 24px;
+  text-align: center; margin: 20px 0;
+}
+.stat-counter {
+  font-size: 2.5rem; font-weight: 700;
+  color: var(--orange-red);
+}
+.stat-text { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+/* ── Synthesis matrix ── */
+.matrix-container { margin: 1.5rem 0; }
+.matrix-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr;
+  grid-template-rows: 40px 1fr 1fr;
+  gap: 2px;
+}
+.matrix-header {
+  background: var(--navy); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 8px; text-align: center;
+}
+.matrix-corner { background: transparent; }
+.matrix-row-header {
+  background: var(--bg-sidebar);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.78rem; font-weight: 700;
+  color: var(--navy); text-align: center;
+  padding: 8px; border: 1px solid var(--border);
+}
+.matrix-cell {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 4px; padding: 16px;
+  cursor: pointer; transition: all 0.2s;
+}
+.matrix-cell:hover {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  transform: translateY(-1px);
+}
+.matrix-cell h4 {
+  font-size: 0.9rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 4px;
+}
+.matrix-cell .mc-tag {
+  font-size: 0.65rem; font-weight: 600;
+  margin-bottom: 6px; display: inline-block;
+  padding: 1px 6px; border-radius: 3px;
+}
+.matrix-cell p {
+  font-size: 0.8rem; color: var(--text-light);
+  margin: 0; line-height: 1.5;
+}
+
+/* ── Worksheet ── */
+.ws-question {
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px;
+  margin-bottom: 14px;
+}
+.ws-question h4 {
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 6px;
+}
+.ws-question p {
+  font-size: 0.85rem; color: var(--text-light);
+  margin: 0; line-height: 1.5;
+}
+.ws-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-top: 1.5rem;
+}
+.ws-scenario-block {
+  border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px;
+  background: #fff;
+}
+.ws-scenario-block h5 {
+  font-size: 0.82rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 8px;
+}
+.ws-scenario-block .ws-line {
+  border-bottom: 1px dashed var(--border);
+  height: 28px; margin-bottom: 4px;
+}
+
+/* ── Chapter prose ── */
+.chapter-prose {
+  margin: 2.5rem 0 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--border);
+}
+.chapter-prose h4 {
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--navy); margin-top: 2rem;
+  margin-bottom: 0.6rem; line-height: 1.3;
+}
+.chapter-prose h4:first-child { margin-top: 0; }
+.chapter-prose p {
+  line-height: 1.85; margin-bottom: 1.1rem;
+  color: var(--text);
+}
+.chapter-prose blockquote {
+  border-left: 4px solid var(--accent);
+  background: rgba(59, 130, 246, 0.04);
+  padding: 1rem 1.5rem; margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0; font-style: italic;
+}
+.chapter-prose blockquote p:last-child { margin-bottom: 0; }
+.chapter-prose blockquote cite {
+  display: block; font-style: normal;
+  font-size: 0.85rem; color: var(--text-light);
+  margin-top: 0.5rem;
+}
+
+/* ── Credits ── */
+.credits {
+  text-align: center; margin-top: 32px;
+  font-size: 12px; color: #94a3b8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  #sidebar { transform: translateX(-100%); }
+  #sidebar.open { transform: translateX(0); box-shadow: 4px 0 20px rgba(0,0,0,0.15); }
+  #menu-toggle { display: block; }
+  #content-wrapper { margin-left: 0; padding: 0 1rem; }
+  #content { padding: 2rem 0.5rem 4rem; }
+  .cover-page h1 { font-size: 2rem; }
+  .thesis-grid { grid-template-columns: 1fr; }
+  .impl-grid { grid-template-columns: 1fr; }
+  .ws-grid { grid-template-columns: 1fr; }
+  .info-content { flex-direction: column; gap: 10px; }
+  .flip-card { width: 170px; height: 160px; }
+  .matrix-grid { grid-template-columns: 100px 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  #content { padding: 1.5rem 0.5rem 3rem; }
+  body { font-size: 15px; }
+  .key-numbers { flex-direction: column; }
+  .kn { min-width: unset; }
+  .flip-cards-row { flex-direction: column; align-items: center; }
+}
+
+/* ── Print ── */
+@media print {
+  #sidebar, #menu-toggle, #progress-bar { display: none !important; }
+  #content-wrapper { margin-left: 0; padding: 0; }
+  #content { max-width: 100%; }
+  .chapter { page-break-before: always; }
+  .chapter:first-child { page-break-before: auto; }
+}
+
+/* ── Pulse animation (S3 NOW marker) ── */
+@keyframes pulse-ring {
+  0% { r: 8; opacity: 0.8; }
+  100% { r: 18; opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<button id="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <h2>Scenario Planning</h2>
+    <p>for Generative AI</p>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#cover">Cover</a></li>
+      <li><a href="#framing">The Question</a></li>
+      <li class="nav-divider">Scenarios</li>
+      <li><a href="#scenario-1">1. Continued Scaling</a></li>
+      <li><a href="#scenario-2">2. Efficiency Revolution</a></li>
+      <li><a href="#scenario-3">3. Financial Correction</a></li>
+      <li><a href="#scenario-4">4. Plateau + Regulation</a></li>
+      <li class="nav-divider">Synthesis</li>
+      <li><a href="#synthesis">The 2&times;2 Matrix</a></li>
+      <li><a href="#worksheet">Workshop Exercise</a></li>
+    </ul>
+  </nav>
+</aside>
+
+<div id="content-wrapper">
+<main id="content">
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- COVER                                                      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="cover">
+  <div class="cover-page">
+    <div class="cover-label">barcik.training</div>
+    <h1>Scenario Planning<br>for Generative AI</h1>
+    <p class="cover-subtitle">Four futures. One framework. Your strategy.</p>
+    <div class="cover-meta">
+      <span>Robert Barcik</span>
+      <span>April 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- FRAMING                                                    -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="framing">
+  <div class="chapter-label">Introduction</div>
+  <h2>The Question</h2>
+  <p class="lead">The AI industry has committed over <strong>$600&nbsp;billion</strong> in capital expenditure for 2026 alone. That money is already flowing into data centers, GPU clusters, and training runs. It will produce outcomes.</p>
+  <p>The question isn&rsquo;t whether AI will change &mdash; it&rsquo;s <em>which version of change</em> to prepare for.</p>
+  <p>This booklet presents four credible scenarios for the next 2&ndash;3 years. They are not predictions. They are planning tools &mdash; structured what-ifs designed to stress-test your AI strategy and prepare your team for multiple futures simultaneously.</p>
+  <p>The four scenarios map onto two fundamental uncertainties. First: <strong>does scaling continue to deliver capability jumps</strong>, or do we hit diminishing returns at current-ish levels? Second: <strong>does the investment math work out</strong>, or is the infrastructure being built far beyond what revenue can justify? These two axes generate four distinct futures &mdash; continued scaling, efficiency-driven commoditization, a financial correction, and a capability plateau compounded by regulation.</p>
+  <p>Each scenario is anchored by an interactive visualization, followed by a written chapter that unpacks the data and arguments. You can use this booklet in two ways: as a <strong>presentation tool</strong> (lead with the visual, trigger discussion), or as a <strong>standalone reading experience</strong> (read the chapters for the full picture). Both work &mdash; design your session around your audience.</p>
+  <p>At the end, a 2&times;2 matrix maps all four scenarios into a single mental model, and a workshop exercise helps you translate insight into action.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SCENARIO 1: CONTINUED SCALING                              -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="scenario-1">
+  <div class="chapter-label">Scenario 1</div>
+  <h2>Continued Scaling <br><span class="chapter-question">&ldquo;Where Does the Money Go?&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--purple)">The thesis</div>
+      <div class="card-text">The $228B spent in 2024 wasn&rsquo;t buying GPT-4 inference &mdash; that model already ran on 2023 hardware. It funded training clusters for models shipping 2&ndash;3 years later, and inference infrastructure for the next generation. The $700B guided for 2026 funds models whose <em>architectures may not be designed yet</em>.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">The risk</div>
+      <div class="card-text">DeepSeek V3 achieved frontier performance at 10&times; less compute. If algorithmic efficiency leaps continue, today&rsquo;s massive clusters could be overbuilt for training. But labs are betting <em>inference</em> will dominate &mdash; ~70% of AI compute by 2030. The bet is on deployment scale, not just model size.</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <svg id="chart-s1" viewBox="0 0 1100 540" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="info-strip" id="info-s1">
+      <span class="info-hint">Hover or click any green investment dot to explore where the money goes</span>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-line" style="background:#E05A33"></div>Inference capacity &mdash; ~2 yr</div>
+      <div class="legend-item"><div class="legend-line" style="background:#7C6DD8"></div>Training runs &mdash; ~3 yr</div>
+      <div class="legend-item"><div class="legend-line" style="background:#0EA5C9"></div>Research frontier &mdash; ~4+ yr</div>
+    </div>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>The money is already spent</h4>
+    <p>When people debate whether AI will &ldquo;live up to the hype,&rdquo; they often miss a crucial fact: the investment decisions have already been made. The Big Five hyperscalers &mdash; Alphabet, Amazon, Apple, Meta, and Microsoft &mdash; spent a combined $228 billion on capital expenditure in 2024, up 62% from $140 billion in 2023. For 2025, guided spending reaches $416 billion. For 2026, the trajectory points to $700 billion or more, with Oracle adding another $50 billion. Adding up 2025&ndash;2027, Goldman Sachs projects total hyperscaler capex of $1.15 trillion. This money is flowing into GPU clusters, power infrastructure, and data centers &mdash; and the vast majority is earmarked specifically for AI.</p>
+    <p>The reason this matters for planning is that capex doesn&rsquo;t translate into capability instantly. Building a data center takes 12&ndash;24 months. Procuring the chips takes 6&ndash;12 months. Training a frontier model takes another 6&ndash;12 months. Post-training, safety testing, and deployment add 3&ndash;6 more. Each year&rsquo;s spending splits into three bets running at different timescales: <strong>inference capacity</strong> arriving in roughly 2 years, <strong>training runs</strong> for models 3 years out, and <strong>research compute</strong> powering breakthroughs 4+ years away.</p>
+
+    <h4>The staircase pattern</h4>
+    <p>Looking backward, AI capability has advanced in a staircase pattern: a major jump every roughly two years, followed by refinement within that generation. GPT-3 (2020) was dramatically surpassed by GPT-4 (2023), which was then refined through GPT-4 Turbo, GPT-4o, and eventually GPT-4o-mini &mdash; each iteration better and cheaper, but not a fundamentally new capability tier. The same pattern appears with Claude 3 Opus giving way to Claude 3.5 Sonnet and then Claude Opus 4, and now Claude Opus 4.6.</p>
+    <p>If this pattern holds, the $228 billion spent in 2024 is currently producing the training infrastructure for models that will ship in 2026&ndash;2027. The $416 billion committed for 2025 funds models arriving in 2027&ndash;2028. And the $700 billion planned for 2026 is investing in capabilities whose architectures may not even be designed yet &mdash; research compute for ideas that haven&rsquo;t been conceived.</p>
+
+    <h4>What is being built</h4>
+    <p>The scale of individual projects is staggering. Elon Musk&rsquo;s xAI deployed Colossus &mdash; a cluster of 100,000 GPUs &mdash; in just 122 days in late 2024. Microsoft&rsquo;s Rainier project targets 500,000 GPUs. Meta&rsquo;s Abilene aims for 450,000. The Stargate project (a joint venture between OpenAI, Oracle, and SoftBank) plans clusters exceeding one gigawatt of power &mdash; the equivalent of a nuclear power plant dedicated to AI. At these scales, the limiting factor shifts from chip availability to raw electrical power: the Three Mile Island nuclear facility is being restarted specifically to supply AI data centers.</p>
+
+    <h4>The inference bet</h4>
+    <p>A common misunderstanding is that all this money is about training bigger models. In reality, the labs are increasingly betting that <strong>inference</strong> &mdash; running models at scale for millions of users &mdash; will dominate AI compute, accounting for roughly 70% by 2030. Training a frontier model is a one-time cost; serving it to every enterprise customer, every developer, every consumer product is a continuous cost that scales with adoption. The capex surge is as much about building the serving infrastructure for AI-powered products as it is about training the next generation of models.</p>
+    <p>This is the core planning insight of Scenario 1: even if you believe the current generation of AI is &ldquo;good enough,&rdquo; the investment already committed will produce outcomes over the next 2&ndash;4 years. Those outcomes &mdash; faster models, cheaper inference, new capabilities &mdash; will change what&rsquo;s possible and what&rsquo;s expected. Your plans need to account for a moving target, not a snapshot.</p>
+  </div>
+
+  <div class="key-numbers">
+    <div class="kn"><div class="kn-value">$416B</div><div class="kn-label">2025 hyperscaler capex</div></div>
+    <div class="kn"><div class="kn-value">$700B</div><div class="kn-label">2026 capex (guided)</div></div>
+    <div class="kn"><div class="kn-value">~3.5T</div><div class="kn-label">Current frontier model params</div></div>
+    <div class="kn"><div class="kn-value">~2 yr</div><div class="kn-label">Capability staircase cycle</div></div>
+    <div class="kn"><div class="kn-value">70%</div><div class="kn-label">AI compute for inference by 2030</div></div>
+  </div>
+
+  <h3>Trigger signals &mdash; what to watch for</h3>
+  <ul class="triggers">
+    <li>Next-generation models (GPT-5, Claude 5) show a large, undeniable capability jump over predecessors</li>
+    <li>Enterprise AI revenue growth accelerates &mdash; the $500B+ revenue gap begins to close</li>
+    <li>Hyperscaler capex guidance continues rising &gt;30% year-over-year through 2027</li>
+    <li>New model architectures emerge that can efficiently use the massive clusters being built</li>
+  </ul>
+
+  <h3>Implications by role</h3>
+  <div class="impl-grid">
+    <div class="impl-card"><div class="impl-role">Developer</div><div class="impl-text">New capability jumps every ~2 years. Build with model-agnostic abstractions. What&rsquo;s impossible today may be trivial in 18 months.</div></div>
+    <div class="impl-card"><div class="impl-role">Team Lead</div><div class="impl-text">Plan for continuous retraining of team skills. Each model generation changes what tasks can be automated and how.</div></div>
+    <div class="impl-card"><div class="impl-role">CTO / VP Eng</div><div class="impl-text">Justify continued AI investment with the staircase argument &mdash; current spend funds future capabilities, not today&rsquo;s.</div></div>
+    <div class="impl-card"><div class="impl-role">Procurement</div><div class="impl-text">Expect higher API costs initially for each new generation, dropping quickly as competition arrives. Avoid multi-year lock-in.</div></div>
+  </div>
+
+  <p class="credits">Data: company earnings reports &amp; guidance &bull; Big 5 = Alphabet, Amazon, Apple, Meta, Microsoft</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SCENARIO 2: EFFICIENCY REVOLUTION                          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="scenario-2">
+  <div class="chapter-label">Scenario 2</div>
+  <h2>Efficiency Revolution <br><span class="chapter-question">&ldquo;How Much Does GPT-4 Cost?&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--purple)">The thesis</div>
+      <div class="card-text">The cost to train a GPT-4-class model fell <strong>~95%</strong> in under two years. The cost to run one fell <strong>99%</strong>. When capability becomes a commodity, the moat isn&rsquo;t the model &mdash; it&rsquo;s everything around it.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">The risk</div>
+      <div class="card-text">Cost compression assumes algorithmic efficiency continues compounding. If frontier capability requires genuinely new architectures (not just MoE optimizations), the floor may be higher than extrapolation suggests. Mistral&rsquo;s bet only works if the ceiling is low.</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <svg id="chart-s2" viewBox="0 0 1100 560" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="info-strip" id="info-s2">
+      <span class="info-hint">Hover over any bar to see model details and benchmark comparisons</span>
+    </div>
+  </div>
+
+  <button class="toggle-btn" id="toggle-s2" onclick="togglePanel('panel-s2', 'toggle-s2')">
+    <span class="arrow">&#9654;</span> Where does value go if the model is free?
+  </button>
+  <div class="toggle-panel" id="panel-s2">
+    <div class="toggle-panel-inner">
+      <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:12px">Mistral CEO Arthur Mensch: <em>&ldquo;Generic intelligence is a commodity, but contextual intelligence is a scarcity.&rdquo;</em> If models become free, value migrates to the layers around them:</p>
+      <div class="value-chain">
+        <div class="vc-segment" style="flex:1;background:#94a3b8"><span>Model</span><div class="vc-tooltip">Commodity layer &mdash; open-source matches proprietary</div></div>
+        <div class="vc-segment" style="flex:2;background:var(--cyan)"><span>Fine-tune</span><div class="vc-tooltip">Domain adaptation, RLHF, evaluation pipelines</div></div>
+        <div class="vc-segment" style="flex:3;background:var(--purple)"><span>Data &amp; RAG</span><div class="vc-tooltip">Context pipelines, vector search, knowledge management</div></div>
+        <div class="vc-segment" style="flex:3;background:var(--orange-red)"><span>Tooling</span><div class="vc-tooltip">MCP servers, agent frameworks, orchestration, evaluation</div></div>
+        <div class="vc-segment" style="flex:4;background:var(--green)"><span>Domain expertise</span><div class="vc-tooltip">Industry knowledge, workflow design, change management</div></div>
+      </div>
+      <p style="font-size:0.8rem;color:var(--text-light);margin-top:10px;margin-bottom:0">Discussion: <strong>If the model is free, where does your team invest?</strong></p>
+    </div>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>The training cost freefall</h4>
+    <p>In March 2023, OpenAI trained GPT-4 for an estimated $63&ndash;100 million &mdash; Sam Altman confirmed publicly that the cost exceeded $100 million including research and development. By July 2024, Meta had trained Llama 3.1 405B, an open-weight model matching GPT-4 on most benchmarks, for roughly $60 million in compute (30.84 million H100 GPU-hours). Then in December 2024, DeepSeek released V3 &mdash; a model that matched or exceeded GPT-4o on key benchmarks for just $5.6 million in GPU time.</p>
+    <p>That is a roughly 95% cost reduction in 20 months. A month later, DeepSeek released R1, which matched OpenAI&rsquo;s o1 on reasoning tasks for an incremental $294,000 in training cost.</p>
+    <p>The caveats matter: DeepSeek&rsquo;s $5.6 million figure covers only the final pre-training run. Their parent company High-Flyer invested over $500 million in Nvidia GPUs total, and the full cost from base model to R1 is estimated at $6&ndash;7 million by Epoch AI. But even the generous estimate represents a 90%+ reduction from GPT-4. The key innovations enabling this &mdash; FP8 mixed-precision training, mixture-of-experts architectures with load balancing, and custom CUDA kernels achieving 85%+ GPU utilization versus the industry average of 55&ndash;65% &mdash; are algorithmic, not hardware-dependent. They can be replicated.</p>
+
+    <h4>The open-source convergence</h4>
+    <p>The Stanford HAI 2025 AI Index Report documented the most important shift in the AI landscape: the performance gap between the best open-weight and proprietary models, measured by Chatbot Arena Elo ratings, shrank from 8.04% in January 2024 to 1.7% by February 2025 &mdash; a 79% reduction in a single year. On MMLU specifically, the gap between US and Chinese models collapsed from 17.5 percentage points to just 0.3 between the end of 2023 and the end of 2024.</p>
+    <p>Llama 3.1 405B was the first open model to match or exceed GPT-4 across multiple benchmarks in July 2024, roughly 16 months after GPT-4&rsquo;s release. By early 2025, that lag had compressed further. Open-source models now represent 62.8% of all models by count, and the best open LLMs lag closed ones by 5&ndash;22 months on benchmarks &mdash; with the gap narrowing rapidly. One analysis projected open-closed parity by Q2 2026.</p>
+
+    <h4>Inference pricing in freefall</h4>
+    <p>The pricing evolution of OpenAI&rsquo;s own API tells the commoditization story in dollar terms. GPT-4 launched at $60 per million output tokens in March 2023. GPT-4 Turbo brought that down to $30 in November 2023. GPT-4o launched at $15 in May 2024, then was cut to $10 in October. Meanwhile, GPT-4o-mini offered GPT-4-class performance at $0.60 per million tokens &mdash; a 99% reduction from GPT-4&rsquo;s launch price in under two years.</p>
+    <p>Open-source alternatives are even cheaper. Llama 3.3 70B via Groq costs $0.71 per million output tokens. DeepSeek V3 is available at $0.42. Self-hosted 70B models on H100 hardware can reach approximately $0.07 per million tokens at full utilization. On average, open-source models cost 7.3 times less than their proprietary equivalents.</p>
+
+    <h4>Where does value go when the model is free?</h4>
+    <p>Mistral CEO Arthur Mensch has been the most articulate voice on this shift. In a March 2026 piece, he argued that many companies can move their workloads away from closed-source APIs to open-source models, and that the massive capability jumps between model generations have flattened into incremental gains. His strongest formulation: &ldquo;the most valuable AI won&rsquo;t be the one that knows everything about the world; it will be the one that knows everything about <em>you</em>.&rdquo;</p>
+    <p>If Mistral is right &mdash; and the cost data supports the argument &mdash; then the model itself becomes a commodity layer, and value migrates to the layers around it: fine-tuning and domain adaptation, data pipelines and retrieval-augmented generation, tooling and orchestration (agent frameworks, MCP servers, evaluation pipelines), and ultimately domain expertise. The organizations that win in this scenario are not those with the best model, but those with the best understanding of their own problems.</p>
+  </div>
+
+  <div class="key-numbers">
+    <div class="kn"><div class="kn-value">95%</div><div class="kn-label">Training cost drop in 20 months</div></div>
+    <div class="kn"><div class="kn-value">99%</div><div class="kn-label">Inference cost drop (GPT-4 launch to mini)</div></div>
+    <div class="kn"><div class="kn-value">1.7%</div><div class="kn-label">Open vs closed model gap (Elo)</div></div>
+    <div class="kn"><div class="kn-value">62.8%</div><div class="kn-label">Models are now open-source</div></div>
+    <div class="kn"><div class="kn-value">7.3&times;</div><div class="kn-label">Open-source cost advantage</div></div>
+  </div>
+
+  <h3>Trigger signals &mdash; what to watch for</h3>
+  <ul class="triggers">
+    <li>Open-source model matches frontier proprietary within weeks of release, not months</li>
+    <li>Major enterprise shifts production workloads from proprietary APIs to open-source alternatives</li>
+    <li>Inference costs drop below $0.10 per million tokens for GPT-4-class output</li>
+    <li>Hyperscaler capex growth decelerates because efficiency gains reduce hardware requirements</li>
+  </ul>
+
+  <h3>Implications by role</h3>
+  <div class="impl-grid">
+    <div class="impl-card"><div class="impl-role">Developer</div><div class="impl-text">Open-source becomes the default stack. Invest in fine-tuning, RAG, and tooling skills &mdash; not prompt engineering for a single vendor.</div></div>
+    <div class="impl-card"><div class="impl-role">Team Lead</div><div class="impl-text">Build team expertise in the &ldquo;static layer&rdquo; &mdash; data pipelines, evaluation, deployment. Model expertise commoditizes fast.</div></div>
+    <div class="impl-card"><div class="impl-role">CTO / VP Eng</div><div class="impl-text">Reduce vendor lock-in. The value shifts from which model you use to how you integrate it. Invest in infrastructure and domain specialization.</div></div>
+    <div class="impl-card"><div class="impl-role">Procurement</div><div class="impl-text">Shift budgets from API costs to infrastructure and talent. Self-hosting becomes economically viable for high-volume workloads.</div></div>
+  </div>
+
+  <p class="credits">Data: OpenAI API pricing history &bull; DeepSeek technical reports &bull; Stanford HAI 2025 AI Index &bull; Epoch AI</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SCENARIO 3: FINANCIAL CORRECTION                           -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="scenario-3">
+  <div class="chapter-label">Scenario 3</div>
+  <h2>Financial Correction <br><span class="chapter-question">&ldquo;Have We Seen This Before?&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--purple)">The thesis</div>
+      <div class="card-text">A financial correction kills companies, not technology. Amazon survived a <strong>94%</strong> stock drop. The internet didn&rsquo;t disappear &mdash; the funding did. The question isn&rsquo;t whether AI works. It&rsquo;s whether the <em>investment timeline matches the revenue timeline</em>.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">The risk</div>
+      <div class="card-text">The parallel breaks in important ways. Dot-com investors were startups burning VC cash. Today&rsquo;s AI investors are the most profitable companies in history spending from earnings. Nasdaq P/E today is ~26&times; vs 60&times; at the dot-com peak. Calling it a bubble may be correct on timing but wrong on magnitude.</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <svg id="chart-s3" viewBox="0 0 1100 560" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="info-strip" id="info-s3">
+      <span class="info-hint">Hover over timeline events to explore the parallel &bull; Click cards below to flip</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top:1.5rem">Survivors vs. Casualties &mdash; then and now</h3>
+  <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px">Click any card to flip it and see what happened.</p>
+
+  <div class="flip-cards-row">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <div class="fc-tag survivor">Survivor</div>
+          <div class="fc-name">Amazon</div>
+          <div class="fc-stat">Stock: &minus;94%</div>
+          <div class="fc-stat">Peak $106 &rarr; trough $5.51</div>
+        </div>
+        <div class="flip-card-back">
+          <div class="fc-detail"><strong>Revenue never stopped growing.</strong></div>
+          <div class="fc-detail">$2.76B (2000) &rarr; $8.49B (2005)</div>
+          <div class="fc-detail">Had $1B cash from well-timed bond offering</div>
+          <div class="fc-detail" style="margin-top:6px;opacity:0.7">Today: ~$2.5 trillion market cap</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <div class="fc-tag casualty">Casualty</div>
+          <div class="fc-name">Pets.com</div>
+          <div class="fc-stat">Raised $300M</div>
+          <div class="fc-stat">Revenue: $619K</div>
+        </div>
+        <div class="flip-card-back">
+          <div class="fc-detail"><strong>Dead 268 days after IPO.</strong></div>
+          <div class="fc-detail">Spent $70M+ on ads</div>
+          <div class="fc-detail">Negative unit economics from day one</div>
+          <div class="fc-detail" style="margin-top:6px;opacity:0.7">Today: a cautionary tale</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <div class="fc-tag tbd">Today</div>
+          <div class="fc-name">OpenAI</div>
+          <div class="fc-stat">Valuation: $852B</div>
+          <div class="fc-stat">Revenue: $25B ARR</div>
+        </div>
+        <div class="flip-card-back">
+          <div class="fc-detail"><strong>Projects &minus;$14B loss in 2026.</strong></div>
+          <div class="fc-detail">900M+ weekly users</div>
+          <div class="fc-detail">Profitable by 2029 (earliest)</div>
+          <div class="fc-detail" style="margin-top:6px;opacity:0.7">IPO expected Q4 2026 at $1T+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <div class="fc-tag casualty">Casualty</div>
+          <div class="fc-name">Stability AI</div>
+          <div class="fc-stat">CEO resigned Mar 2024</div>
+          <div class="fc-stat">Revenue: &lt;$5M/quarter</div>
+        </div>
+        <div class="flip-card-back">
+          <div class="fc-detail"><strong>Burn rate: $8M/month</strong></div>
+          <div class="fc-detail">~$100M in debt</div>
+          <div class="fc-detail">Couldn&rsquo;t compete on frontier model training costs</div>
+          <div class="fc-detail" style="margin-top:6px;opacity:0.7">The AI-era Pets.com?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-bar">
+    <div class="stat-counter" id="counter-s3">12,000</div>
+    <div class="stat-text">ChatGPT-sized products needed to justify current AI infrastructure capex (Barclays estimate)</div>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>The dot-com precedent</h4>
+    <p>On March 10, 2000, the Nasdaq Composite reached an all-time high of 5,048.62. By October 9, 2002, it had fallen to 1,114 &mdash; a 78% decline that destroyed over $5 trillion in market value. The Nasdaq didn&rsquo;t close above 5,000 again until April 23, 2015 &mdash; a recovery that took fifteen years. At the peak, venture capital investment had surged from roughly $7 billion in 1995 to nearly $100 billion in 2000, with internet companies absorbing 80% of all venture capital. Telecom companies invested more than $500 billion in infrastructure in the five years following the 1996 Telecommunications Act.</p>
+    <p>The lesson that most people take from this period is: &ldquo;it was a bubble and it burst.&rdquo; The more useful lesson is that the survivors and casualties were distinguished by one thing &mdash; not the quality of their technology, but whether they had real revenue, real customers, and cash to survive a funding drought.</p>
+
+    <h4>Amazon vs. Pets.com</h4>
+    <p>Amazon&rsquo;s stock fell 94% from roughly $106 in December 1999 to about $5.51 in late 2001. Yet its revenue grew every single year through the crash: $2.76 billion in 2000, $3.12 billion in 2001, $5.26 billion in 2003, $8.49 billion in 2005. It posted its first profitable quarter in Q4 2001 and its first full profitable year in 2003, with $35 million net income on $5.26 billion revenue. The key decision was a well-timed $1.25 billion bond offering that gave Amazon $1 billion in cash to survive the drought. Today it is worth roughly $2.5 trillion &mdash; over 800 times its trough market cap.</p>
+    <p>Pets.com raised $300 million total, spent over $70 million on advertising while generating only $619,000 in revenue, and shut down 268 days after its IPO. Webvan burned through $1.5 billion building automated warehouses before filing bankruptcy. Boo.com raised $135 million, burned it in 18 months, and sold its assets for under $2 million. The common thread: negative unit economics, no path to profitability, and complete dependence on the next funding round.</p>
+
+    <h4>AI investment has entered unprecedented territory</h4>
+    <p>The combined Big Five capex (Alphabet, Amazon, Meta, Microsoft, Apple) grew from roughly $140 billion in 2022 to $251 billion in 2024 (+62% year-over-year) to a projected $388&ndash;443 billion in 2025 and $600&ndash;640 billion in 2026. Capital intensity has reached 45&ndash;57% of revenue &mdash; historically unprecedented for these companies. Venture funding has concentrated similarly: global AI VC funding grew from roughly $45&ndash;50 billion in 2022 to $211 billion in 2025, the first year AI startups captured more than half (52.7%) of all global venture deal value.</p>
+    <p>OpenAI reached an $852 billion post-money valuation after its $122 billion funding round in March 2026. Annualized revenue hit $25 billion by February 2026, up from roughly $2 billion in 2023. But the company projects a $14&ndash;17 billion loss in 2026, is not expected to be profitable until 2029 at the earliest, and has committed $600 billion in compute spending through 2030. Anthropic reached $380 billion valuation with its $30 billion Series G in February 2026, with revenue growing from $1 billion ARR in December 2024 to an estimated $19&ndash;30 billion ARR by early 2026.</p>
+
+    <h4>The revenue gap</h4>
+    <p>Sequoia partner David Cahn published &ldquo;AI&rsquo;s $600B Question&rdquo; in June 2024, calculating that the AI infrastructure buildout requires roughly $600 billion in annual end-user revenue to justify itself. At the time, actual AI product revenue was roughly $100 billion &mdash; a $500 billion annual gap. Since then, both spending and revenue have grown, but spending has grown far faster: capex roughly tripled while the revenue gap has likely widened, not narrowed. Barclays estimated that current capex levels would require the equivalent of 12,000 ChatGPT-sized products to break even.</p>
+    <p>The enterprise adoption data is sobering: an MIT study found 95% of organizations getting zero return from generative AI investments, and a Deloitte 2026 survey found only 20% of enterprises reporting AI driving revenue, with two-thirds still stuck in pilot phase.</p>
+
+    <h4>Why the parallel breaks &mdash; and why it might not matter</h4>
+    <p>There are important differences from the dot-com era. Today&rsquo;s leading AI investors are massively profitable companies spending from earnings, not startups burning venture capital. Nasdaq forward price-to-earnings ratios are approximately 26 times versus 60 times at the dot-com peak. Enterprise adoption is far more advanced: 87% of large enterprises have implemented AI in some form. But the core structural risk &mdash; investment dramatically outpacing revenue realization &mdash; is identical. And new risks have emerged: AI-related corporate debt has ballooned to $1.2 trillion (JPMorgan), GPU rental prices have already fallen roughly 70% from peak, and the real useful life of GPU infrastructure may be 2&ndash;3 years rather than the 5&ndash;6 years used for accounting depreciation.</p>
+    <p>The question for your planning is not whether AI is valuable. It is. The question is whether your specific vendors, tools, and providers are the Amazon or the Pets.com of this cycle.</p>
+  </div>
+
+  <div class="key-numbers">
+    <div class="kn"><div class="kn-value">$500&ndash;600B</div><div class="kn-label">Annual AI revenue gap</div></div>
+    <div class="kn"><div class="kn-value">94%</div><div class="kn-label">Amazon&rsquo;s stock drop (survived)</div></div>
+    <div class="kn"><div class="kn-value">268 days</div><div class="kn-label">Pets.com IPO to shutdown</div></div>
+    <div class="kn"><div class="kn-value">95%</div><div class="kn-label">Enterprises with zero AI ROI</div></div>
+    <div class="kn"><div class="kn-value">$1.2T</div><div class="kn-label">AI-related corporate debt</div></div>
+  </div>
+
+  <h3>Trigger signals &mdash; what to watch for</h3>
+  <ul class="triggers">
+    <li>OpenAI or Anthropic IPO valuations correct significantly (&gt;30%) within 6 months of listing</li>
+    <li>Hyperscaler capex guidance flattens or declines for the first time since 2022</li>
+    <li>Multiple AI-native startups fail or get acqui-hired in a single quarter (Inflection, Character.AI pattern)</li>
+    <li>GPU rental prices continue falling &mdash; H100 rates already down ~70% from peak</li>
+    <li>Major AI-related debt defaults or CoreWeave-style stranded asset writedowns</li>
+  </ul>
+
+  <h3>Implications by role</h3>
+  <div class="impl-grid">
+    <div class="impl-card"><div class="impl-role">Developer</div><div class="impl-text">Diversify beyond AI-only skills. The developers who survived the dot-com bust were the ones who could build real products, not just demos.</div></div>
+    <div class="impl-card"><div class="impl-role">Team Lead</div><div class="impl-text">Every AI project must have measurable ROI. &ldquo;We&rsquo;re exploring AI&rdquo; won&rsquo;t survive a budget cut. Show business value now.</div></div>
+    <div class="impl-card"><div class="impl-role">CTO / VP Eng</div><div class="impl-text">Stress-test vendor viability. Which of your AI vendors is Amazon (real revenue, cash reserves) and which is Pets.com?</div></div>
+    <div class="impl-card"><div class="impl-role">Procurement</div><div class="impl-text">Negotiate shorter contracts. Avoid lock-in with providers who may not exist in 18 months. Prefer pay-as-you-go over committed spend.</div></div>
+  </div>
+
+  <p class="credits">Data: Nasdaq historical data &bull; Sequoia &ldquo;AI&rsquo;s $600B Question&rdquo; &bull; Barclays Research &bull; MIT/Deloitte enterprise surveys</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SCENARIO 4: PLATEAU + REGULATION                           -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="scenario-4">
+  <div class="chapter-label">Scenario 4</div>
+  <h2>Plateau + Regulation <br><span class="chapter-question">&ldquo;The Shrinking Gain&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--purple)">The thesis</div>
+      <div class="card-text">MMLU gains collapsed from <strong>+26 points</strong> per generation to <strong>&lt;2</strong>. Ilya Sutskever declared &ldquo;the age of scaling is over.&rdquo; Meanwhile, EU AI Act enforcement, copyright litigation, and GDPR are raising the floor of what&rsquo;s required to deploy. The space between &ldquo;what AI can do&rdquo; and &ldquo;what you&rsquo;re allowed to ship&rdquo; is narrowing.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">The risk</div>
+      <div class="card-text">Benchmark saturation may reflect benchmark design, not capability limits. ARC-AGI-2 and FrontierMath show huge headroom on harder tasks. Regulation may slow deployment but also creates moats for compliant players. &ldquo;Boring but useful&rdquo; is still a massive market.</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <svg id="chart-s4" viewBox="0 0 1200 580" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="info-strip" id="info-s4">
+      <span class="info-hint">Hover over benchmark bars or regulation steps for details</span>
+    </div>
+  </div>
+
+  <button class="toggle-btn" id="toggle-s4" onclick="togglePanel('panel-s4', 'toggle-s4')">
+    <span class="arrow">&#9654;</span> But do benchmarks even matter?
+  </button>
+  <div class="toggle-panel" id="panel-s4">
+    <div class="toggle-panel-inner">
+      <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:12px">Lab benchmarks dramatically overstate real-world capability:</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div class="kn" style="flex:1;min-width:180px;background:#fff">
+          <div class="kn-value" style="color:var(--orange-red)">40 pts</div>
+          <div class="kn-label"><strong>Medical diagnosis gap</strong><br>92% accuracy in lab &rarr; 52% in real-world meta-analysis (83 studies)</div>
+        </div>
+        <div class="kn" style="flex:1;min-width:180px;background:#fff">
+          <div class="kn-value" style="color:var(--orange-red)">71 pts</div>
+          <div class="kn-label"><strong>Coding gap</strong><br>97% HumanEval &rarr; 26% on real freelance tasks (SWE-Lancer)</div>
+        </div>
+        <div class="kn" style="flex:1;min-width:180px;background:#fff">
+          <div class="kn-value" style="color:var(--orange-red)">95%</div>
+          <div class="kn-label"><strong>Enterprise ROI gap</strong><br>of organizations report zero return from GenAI investments (MIT)</div>
+        </div>
+      </div>
+      <p style="font-size:0.8rem;color:var(--text-light);margin-top:12px;margin-bottom:0">Discussion: <strong>The ceiling is flattening, the floor is rising, and the current ceiling overstates what you can deploy. What does your AI roadmap look like?</strong></p>
+    </div>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>The flattening curve</h4>
+    <p>MMLU (Massive Multitask Language Understanding) has been the most widely cited AI benchmark for three years. The trajectory of MMLU gains tells a stark story: GPT-3 scored 43.9% in 2020. GPT-3.5 jumped to 70.0% &mdash; a gain of 26.1 points. GPT-4 reached 86.4% &mdash; a gain of 16.4 points. Then the curve flattened dramatically: GPT-4o added just 2.3 points, GPT-4.5 added 2.1, and GPT-5 approximately 1.7. All frontier models now cluster in the 88&ndash;93% range. Since approximately 6.5% of MMLU questions contain errors, the practical ceiling is around 93% &mdash; meaning frontier models are essentially at the top.</p>
+    <p>This flattening isn&rsquo;t limited to MMLU. GSM8K (grade-school math) is completely saturated &mdash; frontier models score 95&ndash;99%. HumanEval (coding) has been pushed to 93&ndash;97%. The industry has responded by creating harder benchmarks: FrontierMath (research-grade mathematics) where AI solves only about 2% of problems, Humanity&rsquo;s Last Exam where the top score is 45.8%, ARC-AGI-2 (genuine generalization) where the best AI score is 54% at $30 per task while humans solve 100%, and BigCodeBench where AI succeeds 35.5% of the time versus a 97% human standard. These harder benchmarks reveal that near-human performance on traditional tests masks fundamental limitations in reasoning and generalization.</p>
+
+    <h4>Peak data and the end of scaling</h4>
+    <p>At NeurIPS 2024, OpenAI co-founder Ilya Sutskever declared what many researchers had been sensing: the age of scaling as we knew it was over. He compared training data to fossil fuels &mdash; a finite resource being rapidly depleted. Epoch AI&rsquo;s peer-reviewed research quantifies the constraint: the total stock of high-quality public text data is estimated at roughly 9 trillion tokens, and models may exhaust this supply between 2026 and 2028. Data movement bottlenecks impose a hard limit at approximately 2&times;10&sup3;&sup1; FLOP &mdash; roughly three years from 2024.</p>
+    <blockquote>
+      <p>Pre-training as we know it will unquestionably end&hellip; because while compute is growing through better hardware, the data is not growing because we have but one internet.</p>
+      <cite>&mdash; Ilya Sutskever, NeurIPS 2024</cite>
+    </blockquote>
+    <p>He described 2020&ndash;2025 as &ldquo;the age of scaling&rdquo; and declared a return to &ldquo;the age of research,&rdquo; where breakthroughs require new conceptual ingredients rather than larger clusters. This doesn&rsquo;t mean AI stops improving &mdash; it means the path to improvement changes from &ldquo;throw more compute at it&rdquo; to &ldquo;invent something fundamentally new.&rdquo;</p>
+
+    <h4>The benchmark-to-deployment gap</h4>
+    <p>For corporate audiences, the most underappreciated data point is this: performance on benchmarks dramatically overstates real-world capability. ChatGPT-4 achieved 92% diagnostic accuracy in controlled medical studies, but a meta-analysis across 83 studies found only 52.1% overall AI diagnostic accuracy in real-world settings &mdash; a nearly 40-point gap. On the SWE-Lancer benchmark of real freelance coding tasks, even top models succeed only 26.2% of the time despite near-perfect HumanEval scores. On RE-Bench long-horizon tasks, AI systems score 4 times higher than humans at 2 hours but humans outperform AI 2:1 at 32 hours &mdash; suggesting current AI excels at pattern-matching but struggles with sustained complex reasoning.</p>
+
+    <h4>The regulatory floor is rising</h4>
+    <p>While the capability ceiling flattens, the regulatory floor is steadily rising. The EU AI Act is the most consequential framework, with enforcement phased in over three years. Prohibited practices (social scoring, manipulative AI, predictive policing) were banned in February 2025. General-purpose AI model obligations took effect in August 2025, activating a penalty regime with fines up to &euro;35 million or 7% of global turnover. High-risk AI system obligations &mdash; requiring conformity assessment, human oversight, and technical documentation before deployment &mdash; apply from August 2026. Full enforcement arrives in August 2027.</p>
+    <p>The compliance costs are substantial: large enterprises face an estimated $8&ndash;15 million initial investment for high-risk systems. In parallel, there are now 56+ copyright lawsuits against AI companies. The Bartz v. Anthropic case produced a $1.5 billion class-wide settlement. The New York Times v. OpenAI case has been consolidated into a multi-district litigation with summary judgment due in April 2026. The combined effect &mdash; diminishing capability gains on top, rising regulatory and legal requirements on the bottom &mdash; is a narrowing &ldquo;deployable innovation space&rdquo; that shapes what organizations can actually ship.</p>
+
+    <h4>Boring but useful</h4>
+    <p>Scenario 4 is not a disaster scenario. It is arguably the most likely near-term outcome for enterprise practitioners. AI becomes reliable, well-understood infrastructure &mdash; similar to cloud computing a decade ago. Not revolutionary, but genuinely useful. The opportunity shifts from &ldquo;what can AI do that was previously impossible?&rdquo; to &ldquo;how can we deploy what already works, reliably and compliantly?&rdquo; Organizations that treat this as a compliance challenge rather than an innovation challenge may actually find the strongest strategic position.</p>
+  </div>
+
+  <div class="key-numbers">
+    <div class="kn"><div class="kn-value">+26 &rarr; &lt;2</div><div class="kn-label">MMLU gain collapse per generation</div></div>
+    <div class="kn"><div class="kn-value">~93%</div><div class="kn-label">MMLU practical ceiling (6.5% errors)</div></div>
+    <div class="kn"><div class="kn-value">&euro;35M</div><div class="kn-label">Max EU AI Act fine (or 7% turnover)</div></div>
+    <div class="kn"><div class="kn-value">2%</div><div class="kn-label">AI score on FrontierMath</div></div>
+    <div class="kn"><div class="kn-value">$8&ndash;15M</div><div class="kn-label">Est. high-risk compliance cost</div></div>
+  </div>
+
+  <h3>Trigger signals &mdash; what to watch for</h3>
+  <ul class="triggers">
+    <li>Next frontier model (GPT-5, Claude 5) shows only incremental benchmark improvement (&lt;3 pts MMLU)</li>
+    <li>EU AI Act enforcement actions begin &mdash; first fines or compliance orders issued against AI providers</li>
+    <li>Major copyright ruling goes against AI training (NYT v. OpenAI summary judgment, due April 2026)</li>
+    <li>Enterprises begin deferring AI projects citing compliance uncertainty rather than budget constraints</li>
+    <li>Ilya Sutskever&rsquo;s thesis is validated: new research paradigms (not scaling) drive the next capability jump</li>
+  </ul>
+
+  <h3>Implications by role</h3>
+  <div class="impl-grid">
+    <div class="impl-card"><div class="impl-role">Developer</div><div class="impl-text">Focus on reliability over capability. Building robust AI systems that work consistently matters more than chasing the latest model.</div></div>
+    <div class="impl-card"><div class="impl-role">Team Lead</div><div class="impl-text">Build compliance into the workflow from day one. Retroactive compliance is 3&ndash;5&times; more expensive than building it in.</div></div>
+    <div class="impl-card"><div class="impl-role">CTO / VP Eng</div><div class="impl-text">AI becomes boring infrastructure &mdash; like cloud. Plan for incremental improvement, not revolutionary leaps. Budget for compliance costs.</div></div>
+    <div class="impl-card"><div class="impl-role">Procurement</div><div class="impl-text">Compliance-ready vendors become premium. Budget $8&ndash;15M for high-risk system compliance. Factor EU AI Act timelines into every AI purchase.</div></div>
+  </div>
+
+  <p class="credits">Data: MMLU/benchmark scores from model papers &bull; EU AI Act timelines &bull; Ilya Sutskever NeurIPS 2024 &bull; Epoch AI data projections</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SYNTHESIS                                                  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="synthesis">
+  <div class="chapter-label">Synthesis</div>
+  <h2>The 2&times;2 Matrix</h2>
+  <p>All four scenarios map onto two fundamental uncertainties: <strong>do capability jumps continue</strong> (or do gains flatten), and <strong>is the investment justified</strong> (or is the infrastructure overbuilt)? Click any cell to navigate to that scenario.</p>
+
+  <div class="matrix-container">
+    <div class="matrix-grid">
+      <div class="matrix-corner"></div>
+      <div class="matrix-header">Investment justified</div>
+      <div class="matrix-header">Infrastructure overbuilt</div>
+
+      <div class="matrix-row-header">Capability jumps continue</div>
+      <div class="matrix-cell" onclick="document.getElementById('scenario-1').scrollIntoView({behavior:'smooth'})" style="border-left:3px solid var(--green)">
+        <div class="mc-tag" style="background:#dcfce7;color:#166534">Scenario 1</div>
+        <h4>Continued Scaling</h4>
+        <p>The staircase holds. Capex translates to capability. Enterprise revenue catches up. Full steam ahead.</p>
+      </div>
+      <div class="matrix-cell" onclick="document.getElementById('scenario-3').scrollIntoView({behavior:'smooth'})" style="border-left:3px solid var(--orange-red)">
+        <div class="mc-tag" style="background:#fef2f2;color:#991b1b">Scenario 3</div>
+        <h4>Financial Correction</h4>
+        <p>The tech works, but the investment timeline doesn&rsquo;t. Correction kills companies, not capability. Amazon vs. Pets.com.</p>
+      </div>
+
+      <div class="matrix-row-header">Capability gains flatten</div>
+      <div class="matrix-cell" onclick="document.getElementById('scenario-4').scrollIntoView({behavior:'smooth'})" style="border-left:3px solid var(--purple)">
+        <div class="mc-tag" style="background:#f3f0ff;color:#5b21b6">Scenario 4</div>
+        <h4>Plateau + Regulation</h4>
+        <p>Diminishing returns meet rising compliance burden. AI becomes boring infrastructure. Useful but not revolutionary.</p>
+      </div>
+      <div class="matrix-cell" onclick="document.getElementById('scenario-2').scrollIntoView({behavior:'smooth'})" style="border-left:3px solid var(--cyan)">
+        <div class="mc-tag" style="background:#ecfeff;color:#155e75">Scenario 2</div>
+        <h4>Efficiency Revolution</h4>
+        <p>Smaller models close the gap. Massive clusters weren&rsquo;t needed. The moat shifts from the model to everything around it.</p>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:1.5rem">These scenarios are <strong>not mutually exclusive</strong>. Elements of several can unfold simultaneously. Compression (Scenario 2) accelerates financial correction (Scenario 3) by commoditizing the very technology hyperscalers are spending $600B+ to build. The capability ceiling (Scenario 4) undermines the revenue projections needed to justify that investment.</p>
+  <p>The strongest strategic position is one that performs adequately under all four scenarios &mdash; not one that bets everything on the one you think is most likely.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- WORKSHEET                                                  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="worksheet">
+  <div class="chapter-label">Workshop Exercise</div>
+  <h2>Scenario Planning Worksheet</h2>
+  <p>For each scenario, answer three questions. There are no right answers &mdash; the value is in the thinking.</p>
+
+  <div class="ws-grid">
+    <div class="ws-scenario-block">
+      <h5 style="color:var(--green)">Scenario 1: Continued Scaling</h5>
+      <p style="font-size:0.78rem;color:var(--text-light);margin-bottom:8px">If this materializes in 12 months&hellip;</p>
+      <div class="ws-line"></div><div class="ws-line"></div><div class="ws-line"></div>
+    </div>
+    <div class="ws-scenario-block">
+      <h5 style="color:var(--cyan)">Scenario 2: Efficiency Revolution</h5>
+      <p style="font-size:0.78rem;color:var(--text-light);margin-bottom:8px">If this materializes in 12 months&hellip;</p>
+      <div class="ws-line"></div><div class="ws-line"></div><div class="ws-line"></div>
+    </div>
+    <div class="ws-scenario-block">
+      <h5 style="color:var(--orange-red)">Scenario 3: Financial Correction</h5>
+      <p style="font-size:0.78rem;color:var(--text-light);margin-bottom:8px">If this materializes in 12 months&hellip;</p>
+      <div class="ws-line"></div><div class="ws-line"></div><div class="ws-line"></div>
+    </div>
+    <div class="ws-scenario-block">
+      <h5 style="color:var(--purple)">Scenario 4: Plateau + Regulation</h5>
+      <p style="font-size:0.78rem;color:var(--text-light);margin-bottom:8px">If this materializes in 12 months&hellip;</p>
+      <div class="ws-line"></div><div class="ws-line"></div><div class="ws-line"></div>
+    </div>
+  </div>
+
+  <div class="ws-question" style="margin-top:1.5rem">
+    <h4>1. Biggest risk to your current project</h4>
+    <p>Under each scenario, what is the single biggest risk to your current AI initiative? Which scenario threatens it most?</p>
+  </div>
+  <div class="ws-question">
+    <h4>2. What would you change today?</h4>
+    <p>For each scenario, what is one decision you would make differently right now &mdash; before you know which scenario materializes?</p>
+  </div>
+  <div class="ws-question">
+    <h4>3. Earliest signal to watch</h4>
+    <p>What&rsquo;s the one observable event that would tell you this scenario is unfolding? Where would you see it first?</p>
+  </div>
+  <div class="ws-question" style="background:#fff;border-left:3px solid var(--accent)">
+    <h4>4. Which scenario are you betting on?</h4>
+    <p>Look at your current AI strategy. Which scenario is it implicitly assuming? What happens if you&rsquo;re wrong?</p>
+  </div>
+  <div class="ws-question" style="background:#fff;border-left:3px solid var(--green)">
+    <h4>5. One action that works under all scenarios</h4>
+    <p>What is one thing you can do this month that improves your position regardless of which future materializes?</p>
+  </div>
+
+  <p style="margin-top:2rem;text-align:center;color:var(--text-light);font-size:0.85rem">
+    Interactive versions of all visualizations: <strong>demos.barcik.training</strong><br>
+    Full research and data: <strong>publications.barcik.training</strong>
+  </p>
+  <p style="text-align:center;color:var(--text-light);font-size:0.78rem">&copy; 2026 Robert Barcik &middot; LearningDoe s.r.o. &middot; barcik.training</p>
+</section>
+
+</main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- JAVASCRIPT                                                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<script>
+'use strict';
+
+// ── Toggle panel helper ──────────────────────────────────────
+function togglePanel(panelId, btnId) {
+  var panel = document.getElementById(panelId);
+  var btn = document.getElementById(btnId);
+  panel.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // ── Navigation ──────────────────────────────────────────────
+  var progressBar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  });
+
+  var chapters = document.querySelectorAll('.chapter');
+  var navLinks = document.querySelectorAll('#sidebar nav a');
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        navLinks.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + id) link.classList.add('active');
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  chapters.forEach(function(ch) { observer.observe(ch); });
+
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('sidebar').classList.remove('open');
+      }
+    });
+  });
+
+  var menuToggle = document.getElementById('menu-toggle');
+  var sidebar = document.getElementById('sidebar');
+  menuToggle.addEventListener('click', function() { sidebar.classList.toggle('open'); });
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth <= 900 && !sidebar.contains(e.target) && e.target !== menuToggle) {
+      sidebar.classList.remove('open');
+    }
+  });
+
+  if (navLinks.length > 0) navLinks[0].classList.add('active');
+
+  // ═══════════════════════════════════════════════════════════
+  // SCENARIO 1: Capex Timeline (adapted from genai-capex-timeline.html)
+  // ═══════════════════════════════════════════════════════════
+  (function() {
+    var capexData = [
+      { year:2020, amount:92,  label:'$92B' },
+      { year:2021, amount:115, label:'$115B' },
+      { year:2022, amount:140, label:'$140B' },
+      { year:2023, amount:140, label:'$140B' },
+      { year:2024, amount:228, label:'$228B', infra:'Colossus: 100K GPUs deployed in 122 days' },
+      { year:2025, amount:416, label:'$416B', infra:'Rainier 500K \u00B7 Abilene 450K GPUs' },
+      { year:2026, amount:700, label:'$700B', projected:true, infra:'Prometheus 1GW \u00B7 Fairwater' },
+      { year:2027, amount:900, label:'$900B', projected:true, infra:'TMI restart \u00B7 multi-GW sites' },
+    ];
+    var modelData = [
+      { year:2022, name:'ChatGPT', detail:'ChatGPT / GPT-3.5', sub:'~175B dense', params:175, confidence:'Confirmed' },
+      { year:2023, name:'GPT-4', detail:'GPT-4 \u00B7 Claude 2 \u00B7 Llama 2', sub:'~1.8T MoE (280B active)', params:1800, confidence:'Leaked' },
+      { year:2024, name:'GPT-4o', detail:'GPT-4o \u00B7 Claude 3.5 \u00B7 Gemini 1.5', sub:'~1\u20132T MoE', params:1500, confidence:'Estimated' },
+      { year:2025, name:'Opus 4', detail:'GPT-4.5 \u00B7 Grok 3 \u00B7 Claude Opus 4', sub:'~2\u20135T MoE', params:3500, confidence:'Estimated' },
+      { year:2026, name:'Opus 4.6', detail:'GPT-5.2 \u00B7 Claude Opus 4.6 \u00B7 Gemini 3', sub:'~2\u20135T', params:3500, confidence:'Estimated' },
+      { year:2027, name:'Mythos?', detail:'Mythos \u00B7 next-gen frontier', sub:'~10\u201320T', params:15000, projected:true, confidence:'Projected' },
+      { year:2028, name:'From $700B', detail:'Models from $700B spend', sub:'~10\u201320T+ (est.)', params:15000, projected:true, confidence:'Projected' },
+    ];
+    var FRONTIERS = [
+      { key:'inference', color:'#E05A33', offset:2, label:'Inference' },
+      { key:'training',  color:'#7C6DD8', offset:3, label:'Training' },
+      { key:'research',  color:'#0EA5C9', offset:4, label:'Research' },
+    ];
+    var CYCLES = [
+      { start:2020, end:2022, label:'GPT-3 gen \u00B7 ~175B', color:'#ddd5c4' },
+      { start:2023, end:2024, label:'GPT-4 gen \u00B7 ~1\u20132T', color:'#d5c4dd' },
+      { start:2025, end:2026, label:'Opus gen \u00B7 ~2\u20135T', color:'#c4ddd5' },
+      { start:2027, end:2028, label:'Next gen \u00B7 ~10\u201320T?', color:'#c4d5dd' },
+    ];
+
+    var W=1100, H=540, topY=180, botY=440, barMaxH=140, maxCapex=950, barW=28;
+    var xLeft=105, xRight=1055, yearMin=2019.5, yearMax=2029.5;
+    function yearToX(yr) { return xLeft + ((yr-yearMin)/(yearMax-yearMin)) * (xRight-xLeft); }
+    function paramRadius(params) {
+      if (!params) return 8;
+      var logMin=Math.log10(175), logMax=Math.log10(15000);
+      var t=(Math.log10(params)-logMin)/(logMax-logMin);
+      return 16+Math.max(0,Math.min(1,t))*24;
+    }
+    var NS='http://www.w3.org/2000/svg';
+    function n(tag,attrs,text) {
+      var e=document.createElementNS(NS,tag);
+      if(attrs) for(var k in attrs){ if(k==='font-size') e.setAttribute(k,String(Number(attrs[k])+2)); else e.setAttribute(k,attrs[k]); }
+      if(text!=null) e.textContent=text;
+      return e;
+    }
+    var svg=document.getElementById('chart-s1');
+    var infoStrip=document.getElementById('info-s1');
+
+    var defs=n('defs');
+    function addM(id,color) {
+      var m=n('marker',{id:id,viewBox:'0 0 10 7',refX:'9',refY:'3.5',markerWidth:'9',markerHeight:'7',orient:'auto'});
+      m.appendChild(n('path',{d:'M0,0.5 L9,3.5 L0,6.5Z',fill:color}));
+      defs.appendChild(m);
+    }
+    addM('s1-arr-tl','#3D2B1F'); addM('s1-arr-inf','#E05A33'); addM('s1-arr-train','#7C6DD8'); addM('s1-arr-res','#0EA5C9');
+    svg.appendChild(defs);
+
+    CYCLES.forEach(function(c) {
+      var x1=yearToX(c.start-0.4), x2=yearToX(c.end+0.4);
+      svg.appendChild(n('rect',{x:x1,y:10,width:x2-x1,height:H-20,rx:8,fill:c.color,opacity:'0.25'}));
+      svg.appendChild(n('text',{x:(x1+x2)/2,y:H-6,'text-anchor':'middle','font-size':'9',fill:'#94a3b8','font-style':'italic'},c.label));
+    });
+
+    var projX=yearToX(2025.5);
+    svg.appendChild(n('line',{x1:projX,y1:14,x2:projX,y2:H-14,stroke:'#b0b8c4','stroke-width':'1','stroke-dasharray':'4 4',opacity:'0.5'}));
+    svg.appendChild(n('text',{x:projX+6,y:26,'font-size':'10','font-style':'italic',fill:'#94a3b8'},'Projected \u2192'));
+
+    var topG=n('g',{class:'top-timeline'});
+    topG.appendChild(n('line',{x1:yearToX(2019.8),y1:topY,x2:xRight,y2:topY,stroke:'#3D2B1F','stroke-width':'2.5','marker-end':'url(#s1-arr-tl)'}));
+    topG.appendChild(n('text',{x:yearToX(2019.8)-6,y:topY-8,'text-anchor':'end','font-size':'13','font-weight':'700',fill:'#3D2B1F'},'Capex'));
+    topG.appendChild(n('text',{x:yearToX(2019.8)-6,y:topY+12,'text-anchor':'end','font-size':'10',fill:'#94a3b8'},'Big 5'));
+
+    var capexDots={}, capexBarGs={};
+    capexData.forEach(function(c) {
+      var x=yearToX(c.year), h=(c.amount/maxCapex)*barMaxH;
+      var g=n('g',{class:'capex-year','data-year':c.year});
+      var bar=n('rect',{x:x-barW/2,y:topY-h,width:barW,height:h,rx:'4',fill:c.projected?'none':'#2D7A4F',stroke:c.projected?'#2D7A4F':'none','stroke-width':c.projected?'1.5':'0','stroke-dasharray':c.projected?'4 3':'none',opacity:c.projected?'0.35':'0.55'});
+      bar.style.transition='opacity .25s';
+      g.appendChild(bar); capexBarGs[c.year]=bar;
+      g.appendChild(n('text',{x:x,y:topY-h-10,'text-anchor':'middle','font-size':'12','font-weight':'600','font-family':"'Inter',monospace",fill:'#2D7A4F',opacity:c.projected?'0.5':'1'},c.label));
+      var yrLabel=c.year>=2026?c.year+'E':''+c.year;
+      g.appendChild(n('text',{x:x,y:topY+18,'text-anchor':'middle','font-size':'11',fill:'#94a3b8','font-family':"'Inter',monospace"},yrLabel));
+      var dot=n('circle',{cx:x,cy:topY,r:'7',fill:'#2D7A4F',stroke:'#fff','stroke-width':'2.5',cursor:'pointer'});
+      dot.style.transition='filter .2s';
+      g.appendChild(dot); capexDots[c.year]=dot;
+      topG.appendChild(g);
+    });
+    svg.appendChild(topG);
+
+    var botG=n('g',{class:'bot-timeline'});
+    botG.appendChild(n('line',{x1:yearToX(2021.5),y1:botY,x2:xRight,y2:botY,stroke:'#3D2B1F','stroke-width':'2.5','marker-end':'url(#s1-arr-tl)'}));
+    botG.appendChild(n('text',{x:yearToX(2021.5)-6,y:botY-8,'text-anchor':'end','font-size':'13','font-weight':'700',fill:'#3D2B1F'},'Models'));
+    botG.appendChild(n('text',{x:yearToX(2021.5)-6,y:botY+12,'text-anchor':'end','font-size':'10',fill:'#94a3b8'},'Capability'));
+
+    var modelDots={}, modelLabels={};
+    modelData.forEach(function(m) {
+      var x=yearToX(m.year), r=paramRadius(m.params);
+      var g=n('g',{class:'model-year','data-year':m.year});
+      var dot=n('circle',{cx:x,cy:botY,r:r,fill:'#3D2B1F',stroke:m.projected?'#fff':'none','stroke-width':m.projected?'2':'0','stroke-dasharray':m.projected?'5 3':'none',cursor:'pointer',opacity:m.projected?'0.45':'0.75'});
+      dot.style.transition='filter .2s';
+      g.appendChild(dot); modelDots[m.year]=dot;
+      if(m.params){
+        var pLabel=m.params>=1000?(m.params/1000)+'T':m.params+'B';
+        if(m.year===2024) pLabel='~1.5T';
+        if(m.year===2025||m.year===2026) pLabel='~3.5T';
+        if(m.year===2027||m.year===2028) pLabel='~15T';
+        g.appendChild(n('text',{x:x,y:botY+4,'text-anchor':'middle','font-size':r>25?'11':'9','font-weight':'600',fill:'#fff'},pLabel));
+      }
+      var nameEl=n('text',{x:x,y:botY+r+14,'text-anchor':'middle','font-size':'11','font-weight':'600',fill:m.projected?'#94a3b8':'#3D2B1F'},m.name);
+      nameEl.style.transition='fill .25s';
+      g.appendChild(nameEl); modelLabels[m.year]=nameEl;
+      g.appendChild(n('text',{x:x,y:botY+r+27,'text-anchor':'middle','font-size':'10',fill:'#94a3b8'},''+m.year));
+      botG.appendChild(g);
+    });
+    [2029,2030,2031].forEach(function(yr){
+      if(yearToX(yr)>xRight) return;
+      var x=yearToX(yr);
+      botG.appendChild(n('circle',{cx:x,cy:botY,r:'3',fill:'none',stroke:'#cbd5e1','stroke-width':'1','stroke-dasharray':'2 2'}));
+      botG.appendChild(n('text',{x:x,y:botY+20,'text-anchor':'middle','font-size':'10',fill:'#cbd5e1'},yr+'?'));
+      modelDots[yr]=botG.lastChild;
+    });
+    svg.appendChild(botG);
+
+    var arrowsG=n('g',{class:'frontier-arrows'});
+    svg.appendChild(arrowsG);
+    var frontierGroups={};
+    capexData.forEach(function(capex) {
+      var sx=yearToX(capex.year), sy=topY+10;
+      var fg=n('g',{class:'frontier-group','data-capex':capex.year,opacity:'0'});
+      fg.style.transition='opacity .3s ease';
+      FRONTIERS.forEach(function(f,fi){
+        var targetYear=capex.year+f.offset;
+        var markerIds=['s1-arr-inf','s1-arr-train','s1-arr-res'];
+        var targetModel=modelData.find(function(m){return m.year===targetYear;});
+        var targetR=targetModel?paramRadius(targetModel.params):5;
+        var ex=yearToX(targetYear), ey=botY-targetR-2, offChart=false;
+        if(ex>xRight-15){ ex=xRight-10; ey=botY-25+fi*8; offChart=true; }
+        var dx=ex-sx, dy=ey-sy;
+        var cp1x=sx+dx*0.06, cp1y=sy+dy*0.55, cp2x=ex-dx*0.12, cp2y=ey-dy*0.18;
+        fg.appendChild(n('path',{d:'M'+sx+','+sy+' C'+cp1x+','+cp1y+' '+cp2x+','+cp2y+' '+ex+','+ey,stroke:f.color,'stroke-width':'2.8',fill:'none','marker-end':'url(#'+markerIds[fi]+')','stroke-linecap':'round'}));
+        if(offChart) fg.appendChild(n('text',{x:ex+2,y:ey+4,'font-size':'9',fill:f.color,opacity:'0.7'},'\u2192'+targetYear));
+      });
+      arrowsG.appendChild(fg);
+      frontierGroups[capex.year]=fg;
+    });
+
+    var lockRing=n('circle',{r:'12',fill:'none',stroke:'#2D7A4F','stroke-width':'2','stroke-dasharray':'4 3',opacity:'0'});
+    lockRing.style.transition='opacity .2s';
+    svg.appendChild(lockRing);
+
+    var activeYear=null, locked=false;
+    function highlightCapex(year) {
+      if(activeYear===year) return; activeYear=year;
+      Object.entries(frontierGroups).forEach(function(e){ e[1].style.opacity=(+e[0]===year)?'1':'0'; });
+      Object.entries(capexDots).forEach(function(e){ if(+e[0]===year){ e[1].setAttribute('r','9'); e[1].style.filter='drop-shadow(0 0 6px rgba(45,122,79,0.4))'; } else { e[1].setAttribute('r','7'); e[1].style.filter='none'; }});
+      Object.entries(capexBarGs).forEach(function(e){ var c=capexData.find(function(c){return c.year===+e[0];}); e[1].style.opacity=(+e[0]===year)?(c.projected?'0.5':'0.8'):(c.projected?'0.25':'0.4'); });
+      var targets=FRONTIERS.map(function(f){return year+f.offset;});
+      Object.entries(modelDots).forEach(function(e){ if(targets.includes(+e[0])){ e[1].style.filter='drop-shadow(0 0 5px rgba(0,0,0,0.25))'; if(modelLabels[+e[0]]) modelLabels[+e[0]].style.fill='#1a202c'; } else { e[1].style.filter='none'; var m=modelData.find(function(m){return m.year===+e[0];}); if(modelLabels[+e[0]]) modelLabels[+e[0]].style.fill=m&&m.projected?'#94a3b8':'#3D2B1F'; }});
+      updateInfo(year);
+    }
+    function updateInfo(year) {
+      var capex=capexData.find(function(c){return c.year===year;});
+      if(!capex){resetInfo();return;}
+      var h='<div class="info-content"><div class="info-left"><div class="info-title">'+capex.label+' invested in '+year+(capex.projected?' (est.)':'')+'</div>';
+      if(capex.infra) h+='<div class="info-infra">\u26A1 '+capex.infra+'</div>';
+      if(locked) h+='<div class="info-lock">\uD83D\uDD12 Locked \u2014 click dot or background to release</div>';
+      h+='</div><div class="info-right">';
+      FRONTIERS.forEach(function(f){ var ty=year+f.offset; var m=modelData.find(function(m){return m.year===ty;}); var desc=m?m.detail+' ('+ty+')':'Models in '+ty+'+'; if(m&&m.sub) desc+=' \u2014 '+m.sub; h+='<div class="info-line"><div class="info-dot" style="background:'+f.color+'"></div><div><strong>'+f.label+'</strong> (~'+f.offset+'yr) \u2192 '+desc+'</div></div>'; });
+      h+='</div></div>';
+      infoStrip.innerHTML=h;
+    }
+    function resetInfo(){ infoStrip.innerHTML='<span class="info-hint">Hover or click any green investment dot to explore where the money goes. Dot size on the model timeline = estimated SOTA model size.</span>'; }
+    function clearHL(){
+      if(locked) return; activeYear=null;
+      Object.values(frontierGroups).forEach(function(g){g.style.opacity='0';});
+      Object.values(capexDots).forEach(function(d){d.setAttribute('r','7');d.style.filter='none';});
+      Object.entries(capexBarGs).forEach(function(e){ var c=capexData.find(function(c){return c.year===+e[0];}); e[1].style.opacity=c.projected?'0.35':'0.55'; });
+      Object.entries(modelDots).forEach(function(e){ e[1].style.filter='none'; var m=modelData.find(function(m){return m.year===+e[0];}); if(modelLabels[+e[0]]) modelLabels[+e[0]].style.fill=m&&m.projected?'#94a3b8':'#3D2B1F'; });
+      lockRing.setAttribute('opacity','0'); resetInfo();
+    }
+    function showLR(year){ var d=capexDots[year]; if(!d) return; lockRing.setAttribute('cx',d.getAttribute('cx')); lockRing.setAttribute('cy',d.getAttribute('cy')); lockRing.setAttribute('opacity','1'); }
+
+    capexData.forEach(function(c){
+      var dot=capexDots[c.year];
+      [dot,capexBarGs[c.year]].forEach(function(el){
+        el.addEventListener('mouseenter',function(){if(!locked) highlightCapex(c.year);});
+        el.addEventListener('mouseleave',function(){if(!locked) clearHL();});
+        el.addEventListener('click',function(evt){
+          evt.stopPropagation();
+          if(locked&&activeYear===c.year){ locked=false; lockRing.setAttribute('opacity','0'); clearHL(); }
+          else { locked=true; highlightCapex(c.year); showLR(c.year); updateInfo(c.year); }
+        });
+      });
+    });
+    modelData.forEach(function(m){
+      var dot=modelDots[m.year]; if(!dot) return; dot.style.cursor='pointer';
+      dot.addEventListener('mouseenter',function(){
+        if(locked) return;
+        var h='<div class="info-content"><div class="info-left"><div class="info-title">'+m.detail+' ('+m.year+')</div><div class="info-infra">'+m.sub+' \u00B7 '+m.confidence+'</div></div><div class="info-right">';
+        [{label:'Inference from',year:m.year-2,color:'#E05A33'},{label:'Trained on',year:m.year-3,color:'#7C6DD8'},{label:'Research from',year:m.year-4,color:'#0EA5C9'}].forEach(function(s){
+          var cap=capexData.find(function(c){return c.year===s.year;});
+          var desc=cap?cap.label+' capex ('+s.year+')':s.year+' capex';
+          h+='<div class="info-line"><div class="info-dot" style="background:'+s.color+'"></div><div><strong>'+s.label+':</strong> '+desc+'</div></div>';
+        });
+        h+='</div></div>'; infoStrip.innerHTML=h;
+      });
+      dot.addEventListener('mouseleave',function(){ if(!locked){if(activeYear) updateInfo(activeYear); else resetInfo();} });
+    });
+    svg.addEventListener('click',function(evt){
+      if(evt.target===svg||(evt.target.tagName==='rect'&&!evt.target.closest('.capex-year'))){ locked=false; lockRing.setAttribute('opacity','0'); clearHL(); }
+    });
+    resetInfo();
+  })();
+
+  // ═══════════════════════════════════════════════════════════
+  // SCENARIO 2: Compression Curve
+  // ═══════════════════════════════════════════════════════════
+  (function() {
+    var trainData = [
+      { model:'GPT-4', org:'OpenAI', year:'Mar 2023', cost:100, detail:'~1.8T MoE \u00B7 Confirmed >$100M (Sam Altman)', type:'proprietary' },
+      { model:'Llama 3.1 405B', org:'Meta', year:'Jul 2024', cost:60, detail:'405B dense \u00B7 30.84M H100 GPU-hours \u00B7 Open-weight', type:'open' },
+      { model:'DeepSeek V3', org:'DeepSeek', year:'Dec 2024', cost:5.6, detail:'671B MoE \u00B7 FP8 + custom CUDA kernels \u00B7 85% GPU utilization', type:'open' },
+      { model:'DeepSeek R1', org:'DeepSeek', year:'Jan 2025', cost:0.3, detail:'Incremental RL on V3 base \u00B7 $294K training cost', type:'open' },
+    ];
+    // Main pricing line: same model tier (GPT-4 class output)
+    var mainLine = [
+      { date:'Mar 2023', price:60, label:'GPT-4', x:0 },
+      { date:'Nov 2023', price:30, label:'GPT-4 Turbo', x:0.67 },
+      { date:'May 2024', price:15, label:'GPT-4o', x:1.17 },
+      { date:'Oct 2024', price:10, label:'GPT-4o (cut)', x:1.58 },
+    ];
+    // Alternative models (different tier / open-source)
+    var altDots = [
+      { date:'Jul 2024', price:0.60, label:'GPT-4o-mini', x:1.33 },
+      { date:'Jan 2025', price:0.42, label:'DeepSeek V3', x:1.83 },
+    ];
+
+    var NS='http://www.w3.org/2000/svg';
+    function n(tag,a,t){ var e=document.createElementNS(NS,tag); if(a) for(var k in a) e.setAttribute(k,a[k]); if(t!=null) e.textContent=t; return e; }
+    var svg=document.getElementById('chart-s2');
+    var info=document.getElementById('info-s2');
+
+    // Title
+    svg.appendChild(n('text',{x:40,y:34,'font-size':'17','font-weight':'700',fill:'#1e3a5f'},'Training Cost to Reach GPT-4-Class Performance'));
+    svg.appendChild(n('text',{x:40,y:54,'font-size':'13',fill:'#94a3b8'},'Estimated cost in millions USD (log scale)'));
+
+    // Log scale for bars
+    var barY0=80, barH=48, barGap=68, barLeft=240, barMaxW=680;
+    var logMin=-0.6, logMax=2.1; // log10 of 0.25 to ~125
+
+    function logW(cost) { return Math.max(20, ((Math.log10(cost)-logMin)/(logMax-logMin))*barMaxW); }
+
+    trainData.forEach(function(d,i) {
+      var y=barY0+i*barGap;
+      var w=logW(d.cost);
+      var color=d.type==='proprietary'?'#7C6DD8':'#0EA5C9';
+
+      // Label
+      svg.appendChild(n('text',{x:barLeft-10,y:y+barH/2+5,'text-anchor':'end','font-size':'14','font-weight':'600',fill:'#1e293b'},d.model));
+      svg.appendChild(n('text',{x:barLeft-10,y:y+barH/2+22,'text-anchor':'end','font-size':'11',fill:'#94a3b8'},d.year));
+
+      // Bar
+      var bar=n('rect',{x:barLeft,y:y,width:w,height:barH,rx:6,fill:color,opacity:'0.75',cursor:'pointer'});
+      bar.style.transition='opacity 0.2s';
+      svg.appendChild(bar);
+
+      // Cost label
+      var costLabel=d.cost>=1?'$'+d.cost+'M':'$'+Math.round(d.cost*1000)+'K';
+      svg.appendChild(n('text',{x:barLeft+w+10,y:y+barH/2+6,'font-size':'15','font-weight':'700',fill:color},costLabel));
+
+      // Hover
+      bar.addEventListener('mouseenter',function(){
+        bar.setAttribute('opacity','1');
+        info.innerHTML='<div class="info-content"><div class="info-left"><div class="info-title">'+d.model+' ('+d.org+', '+d.year+')</div></div><div class="info-right"><div class="info-line" style="font-size:12px">'+d.detail+'</div></div></div>';
+      });
+      bar.addEventListener('mouseleave',function(){
+        bar.setAttribute('opacity','0.75');
+        info.innerHTML='<span class="info-hint">Hover over any bar to see model details and benchmark comparisons</span>';
+      });
+    });
+
+    // Reduction annotation
+    var annX1=barLeft+logW(100)+30, annX2=barLeft+logW(5.6)+30;
+    var annY1=barY0+barH/2, annY2=barY0+2*barGap+barH/2;
+    svg.appendChild(n('line',{x1:annX1,y1:annY1,x2:annX1,y2:annY1+10,stroke:'#E05A33','stroke-width':'2'}));
+    svg.appendChild(n('line',{x1:annX1,y1:annY1+10,x2:annX1,y2:annY2-10,stroke:'#E05A33','stroke-width':'2','stroke-dasharray':'4 3'}));
+    svg.appendChild(n('line',{x1:annX1,y1:annY2-10,x2:annX1,y2:annY2,stroke:'#E05A33','stroke-width':'2'}));
+    svg.appendChild(n('text',{x:annX1+10,y:(annY1+annY2)/2+4,'font-size':'15','font-weight':'700',fill:'#E05A33'},'~95% cost reduction'));
+    svg.appendChild(n('text',{x:annX1+10,y:(annY1+annY2)/2+20,'font-size':'12',fill:'#E05A33',opacity:'0.7'},'in 20 months'));
+
+    // Bottom: Inference pricing mini-chart
+    var infY0=385, infH=130, infLeft=140, infRight=980;
+    svg.appendChild(n('text',{x:40,y:infY0-12,'font-size':'17','font-weight':'700',fill:'#1e3a5f'},'Inference Cost: Output per Million Tokens'));
+    svg.appendChild(n('line',{x1:infLeft,y1:infY0+infH,x2:infRight,y2:infY0+infH,stroke:'#e2e8f0','stroke-width':'1'}));
+
+    var logPriceMin=-0.5, logPriceMax=1.85;
+    function priceToY(p) { return infY0+infH-(Math.log10(p)-logPriceMin)/(logPriceMax-logPriceMin)*infH; }
+    function xToPos(xv) { return infLeft+xv/2*(infRight-infLeft); }
+
+    // Draw main pricing line (GPT-4 tier)
+    var pts=mainLine.map(function(d){ return xToPos(d.x)+','+priceToY(d.price); });
+    svg.appendChild(n('polyline',{points:pts.join(' '),fill:'none',stroke:'#7C6DD8','stroke-width':'2.5','stroke-linejoin':'round'}));
+
+    // Main line points and labels
+    mainLine.forEach(function(d){
+      var px=xToPos(d.x), py=priceToY(d.price);
+      svg.appendChild(n('circle',{cx:px,cy:py,r:4,fill:'#7C6DD8',stroke:'#fff','stroke-width':'2'}));
+      svg.appendChild(n('text',{x:px,y:py-12,'text-anchor':'middle','font-size':'12','font-weight':'600',fill:'#7C6DD8'},'$'+d.price));
+      svg.appendChild(n('text',{x:px,y:py-26,'text-anchor':'middle','font-size':'10',fill:'#94a3b8'},d.label));
+    });
+
+    // Alternative model dots (different tier, shown separately)
+    altDots.forEach(function(d){
+      var px=xToPos(d.x), py=priceToY(d.price);
+      svg.appendChild(n('circle',{cx:px,cy:py,r:5,fill:'#0EA5C9',stroke:'#fff','stroke-width':'2'}));
+      svg.appendChild(n('text',{x:px,y:py+18,'text-anchor':'middle','font-size':'12','font-weight':'600',fill:'#0EA5C9'},'$'+d.price));
+      svg.appendChild(n('text',{x:px,y:py+32,'text-anchor':'middle','font-size':'10',fill:'#94a3b8'},d.label));
+    });
+    // Dashed line connecting alt dots
+    if(altDots.length>=2){
+      var altPts=altDots.map(function(d){return xToPos(d.x)+','+priceToY(d.price);});
+      svg.appendChild(n('polyline',{points:altPts.join(' '),fill:'none',stroke:'#0EA5C9','stroke-width':'1.5','stroke-dasharray':'4 3'}));
+    }
+
+    // Y axis labels
+    [0.5,1,5,10,30,60].forEach(function(p){
+      var y=priceToY(p);
+      if(y>infY0&&y<infY0+infH){
+        svg.appendChild(n('text',{x:infLeft-8,y:y+4,'text-anchor':'end','font-size':'11',fill:'#94a3b8'},'$'+p));
+        svg.appendChild(n('line',{x1:infLeft,y1:y,x2:infRight,y2:y,stroke:'#e2e8f0','stroke-width':'0.5','stroke-dasharray':'3 3'}));
+      }
+    });
+
+    // 99% annotation
+    svg.appendChild(n('text',{x:infRight-5,y:infY0+14,'text-anchor':'end','font-size':'14','font-weight':'700',fill:'#E05A33'},'99%+ reduction in pricing'));
+  })();
+
+  // ═══════════════════════════════════════════════════════════
+  // SCENARIO 3: Dot-Com Parallel
+  // ═══════════════════════════════════════════════════════════
+  (function() {
+    var NS='http://www.w3.org/2000/svg';
+    function n(tag,a,t){ var e=document.createElementNS(NS,tag); if(a) for(var k in a) e.setAttribute(k,a[k]); if(t!=null) e.textContent=t; return e; }
+    var svg=document.getElementById('chart-s3');
+    var info=document.getElementById('info-s3');
+
+    var topEvents = [
+      { x:100, yr:'1997', label:'VC surges to $15B', detail:'Internet companies begin attracting serious venture capital' },
+      { x:260, yr:'1999', label:'VC $54B \u00B7 Pets.com $300M', detail:'Venture investment peaks. Speculative companies raise hundreds of millions.' },
+      { x:420, yr:'Mar 2000', label:'Nasdaq peaks: 5,048', detail:'Nasdaq Composite reaches all-time high of 5,048.62 on March 10, 2000.', peak:true },
+      { x:560, yr:'2001', label:'Amazon \u2212 94%', detail:'Amazon stock falls from $106 to $5.51. Revenue: $3.12B and growing. Pets.com dead after 268 days.' },
+      { x:700, yr:'Oct 2002', label:'Nasdaq trough: 1,114', detail:'Nasdaq falls 78% from peak. $5T+ in market value destroyed. Recovery takes 15 years.' },
+      { x:900, yr:'2003\u20132005', label:'Amazon profitable', detail:'Amazon first profitable year: $35M on $5.26B revenue. Revenue never stopped growing.' },
+    ];
+    var botEvents = [
+      { x:100, yr:'2022', label:'ChatGPT launches', detail:'ChatGPT reaches 100M users in 2 months. Hyperscaler capex: $140B.' },
+      { x:260, yr:'2024', label:'Capex $251B (+62%)', detail:'Sequoia publishes "AI\'s $600B Question." Stability AI CEO resigns. Inflection acqui-hired.' },
+      { x:420, yr:'2025\u20132026', label:'IPOs \u00B7 $700B capex', detail:'OpenAI IPO expected Q4 at $1T+. Anthropic IPO possible Oct at $380B. Capex: $600\u2013640B.', peak:true, now:true },
+      { x:560, yr:'2027?', label:'???', detail:'If history rhymes: correction zone. Revenue gap of $500\u2013600B must close or capex must slow.', projected:true },
+      { x:700, yr:'2028?', label:'???', detail:'Survivors emerge. Which AI companies had real revenue, real customers, and cash reserves?', projected:true },
+      { x:900, yr:'2029+', label:'What survived?', detail:'The technology doesn\'t disappear. The funding does. Who is your vendor in this timeline?', projected:true },
+    ];
+
+    var topY=120, botY=430, lineY=275;
+
+    // Phase labels
+    var phases=[{x:100,w:220,label:'Surge'},{x:320,w:200,label:'Peak'},{x:520,w:200,label:'Correction'},{x:720,w:280,label:'Recovery / ???'}];
+    phases.forEach(function(p){
+      svg.appendChild(n('rect',{x:p.x-10,y:lineY-14,width:p.w,height:28,rx:4,fill:'#e2e8f0',opacity:'0.5'}));
+      svg.appendChild(n('text',{x:p.x+p.w/2-10,y:lineY+5,'text-anchor':'middle','font-size':'12','font-weight':'600',fill:'#94a3b8',opacity:'0.7'},p.label));
+    });
+
+    // Top timeline (dot-com, muted)
+    svg.appendChild(n('text',{x:40,y:topY-55,'font-size':'16','font-weight':'700',fill:'#94a3b8'},'DOT-COM ERA (1997\u20132005)'));
+    svg.appendChild(n('line',{x1:80,y1:topY,x2:960,y2:topY,stroke:'#b0b8c4','stroke-width':'2'}));
+
+    topEvents.forEach(function(ev){
+      var dotColor=ev.peak?'#dc2626':'#94a3b8';
+      var dotR=ev.peak?7:5;
+      svg.appendChild(n('line',{x1:ev.x,y1:topY,x2:ev.x,y2:lineY-14,stroke:'#e2e8f0','stroke-width':'1','stroke-dasharray':'3 3'}));
+      var dot=n('circle',{cx:ev.x,cy:topY,r:dotR,fill:dotColor,stroke:'#fff','stroke-width':'2',cursor:'pointer'});
+      svg.appendChild(dot);
+      svg.appendChild(n('text',{x:ev.x,y:topY-dotR-10,'text-anchor':'middle','font-size':'11','font-weight':'600',fill:'#64748b'},ev.yr));
+      svg.appendChild(n('text',{x:ev.x,y:topY-dotR-24,'text-anchor':'middle','font-size':'10',fill:'#94a3b8'},ev.label));
+
+      dot.addEventListener('mouseenter',function(){
+        dot.setAttribute('r',dotR+2);
+        info.innerHTML='<div class="info-content"><div class="info-left"><div class="info-title" style="color:#94a3b8">'+ev.yr+': '+ev.label+'</div></div><div class="info-right"><div class="info-line" style="font-size:12px">'+ev.detail+'</div></div></div>';
+      });
+      dot.addEventListener('mouseleave',function(){
+        dot.setAttribute('r',dotR);
+        info.innerHTML='<span class="info-hint">Hover over timeline events to explore the parallel \u00B7 Click cards below to flip</span>';
+      });
+    });
+
+    // Bottom timeline (AI era, vivid)
+    svg.appendChild(n('text',{x:40,y:botY-55,'font-size':'16','font-weight':'700',fill:'#1e3a5f'},'AI ERA (2022\u2013202?)'));
+    svg.appendChild(n('line',{x1:80,y1:botY,x2:960,y2:botY,stroke:'#1e3a5f','stroke-width':'2'}));
+
+    botEvents.forEach(function(ev){
+      var dotColor=ev.peak?'#E05A33':ev.projected?'#94a3b8':'#1e3a5f';
+      var dotR=ev.peak?8:5;
+      svg.appendChild(n('line',{x1:ev.x,y1:lineY+14,x2:ev.x,y2:botY,stroke:'#e2e8f0','stroke-width':'1','stroke-dasharray':'3 3'}));
+
+      if(ev.now) {
+        var pulse=n('circle',{cx:ev.x,cy:botY,r:'8',fill:'none',stroke:'#E05A33','stroke-width':'2'});
+        var a1=n('animate',{attributeName:'r',values:'8;18',dur:'1.5s',repeatCount:'indefinite'});
+        var a2=n('animate',{attributeName:'opacity',values:'0.8;0',dur:'1.5s',repeatCount:'indefinite'});
+        pulse.appendChild(a1); pulse.appendChild(a2);
+        svg.appendChild(pulse);
+      }
+
+      var dot=n('circle',{cx:ev.x,cy:botY,r:dotR,fill:dotColor,stroke:'#fff','stroke-width':'2',cursor:'pointer'});
+      if(ev.projected){ dot.setAttribute('stroke-dasharray','3 2'); dot.setAttribute('fill','none'); dot.setAttribute('stroke',dotColor); }
+      svg.appendChild(dot);
+      svg.appendChild(n('text',{x:ev.x,y:botY+dotR+18,'text-anchor':'middle','font-size':'11','font-weight':'600',fill:ev.projected?'#94a3b8':'#1e293b'},ev.yr));
+      svg.appendChild(n('text',{x:ev.x,y:botY+dotR+32,'text-anchor':'middle','font-size':'10',fill:'#94a3b8'},ev.label));
+
+      dot.addEventListener('mouseenter',function(){
+        dot.setAttribute('r',dotR+2);
+        info.innerHTML='<div class="info-content"><div class="info-left"><div class="info-title">'+ev.yr+': '+ev.label+'</div></div><div class="info-right"><div class="info-line" style="font-size:12px">'+ev.detail+'</div></div></div>';
+      });
+      dot.addEventListener('mouseleave',function(){
+        dot.setAttribute('r',dotR);
+        info.innerHTML='<span class="info-hint">Hover over timeline events to explore the parallel \u00B7 Click cards below to flip</span>';
+      });
+    });
+
+    // "NOW" label
+    svg.appendChild(n('text',{x:420,y:botY-20,'text-anchor':'middle','font-size':'14','font-weight':'700',fill:'#E05A33'},'NOW'));
+  })();
+
+  // ═══════════════════════════════════════════════════════════
+  // SCENARIO 4: Capability Ceiling / Squeeze Chart
+  // ═══════════════════════════════════════════════════════════
+  (function() {
+    var NS='http://www.w3.org/2000/svg';
+    function n(tag,a,t){ var e=document.createElementNS(NS,tag); if(a) for(var k in a) e.setAttribute(k,a[k]); if(t!=null) e.textContent=t; return e; }
+    var svg=document.getElementById('chart-s4');
+    var info=document.getElementById('info-s4');
+
+    var benchData = [
+      { gen:'GPT-3\u2192GPT-3.5', year:'2020\u20132022', gain:26.1, from:43.9, to:70.0 },
+      { gen:'GPT-3.5\u2192GPT-4', year:'2022\u20132023', gain:16.4, from:70.0, to:86.4 },
+      { gen:'GPT-4\u2192GPT-4o', year:'2023\u20132024', gain:2.3, from:86.4, to:88.7 },
+      { gen:'GPT-4o\u2192GPT-4.5', year:'2024\u20132025', gain:2.1, from:88.7, to:90.8 },
+      { gen:'GPT-4.5\u2192GPT-5', year:'2025', gain:1.7, from:90.8, to:92.5, projected:true },
+    ];
+    var regData = [
+      { date:'Feb 2025', label:'Prohibited practices', detail:'Social scoring, manipulative AI, predictive policing banned', step:1 },
+      { date:'Aug 2025', label:'GPAI obligations', detail:'General-purpose AI model rules. Penalties: \u20AC35M or 7% of turnover', step:2 },
+      { date:'Aug 2026', label:'High-risk systems', detail:'Conformity assessment, human oversight, technical documentation required', step:3 },
+      { date:'Aug 2027', label:'Full enforcement', detail:'All EU AI Act provisions enforced. Regulatory sandboxes per Member State', step:4 },
+    ];
+
+    var defs=n('defs');
+    var grad=n('linearGradient',{id:'s4-squeeze-grad',x1:'0',y1:'0',x2:'1',y2:'0'});
+    grad.appendChild(n('stop',{offset:'0%','stop-color':'#22c55e','stop-opacity':'0.3'}));
+    grad.appendChild(n('stop',{offset:'40%','stop-color':'#eab308','stop-opacity':'0.25'}));
+    grad.appendChild(n('stop',{offset:'100%','stop-color':'#ef4444','stop-opacity':'0.2'}));
+    defs.appendChild(grad);
+    svg.appendChild(defs);
+
+    // Layout
+    var left=140, right=1000, topBase=100, botBase=450;
+    var barW=80, xs=[];
+    benchData.forEach(function(d,i){ xs.push(left+i*(right-left)/(benchData.length-1)); });
+
+    // Title labels
+    svg.appendChild(n('text',{x:40,y:34,'font-size':'17','font-weight':'700',fill:'#1e3a5f'},'The Shrinking Gain'));
+    svg.appendChild(n('text',{x:40,y:54,'font-size':'13',fill:'#94a3b8'},'MMLU score improvement per model generation vs. rising regulatory requirements'));
+
+    // Ceiling line at ~93%
+    var ceilY=topBase-5;
+    svg.appendChild(n('line',{x1:left-20,y1:ceilY,x2:right+20,y2:ceilY,stroke:'#dc2626','stroke-width':'1','stroke-dasharray':'6 3',opacity:'0.4'}));
+    svg.appendChild(n('text',{x:right+25,y:ceilY+4,'font-size':'11',fill:'#dc2626',opacity:'0.6'},'~93% ceiling'));
+
+    // Benchmark gain bars (hanging from topBase)
+    var maxGain=28, barScale=7;
+    var barBottoms=[], barTops=[];
+
+    benchData.forEach(function(d,i) {
+      var x=xs[i], h=Math.max(15,d.gain*barScale);
+      var y1=topBase, y2=topBase+h;
+      barTops.push(y1); barBottoms.push(y2);
+
+      var bar=n('rect',{x:x-barW/2,y:y1,width:barW,height:h,rx:4,fill:d.projected?'none':'#7C6DD8',stroke:d.projected?'#7C6DD8':'none','stroke-width':d.projected?'1.5':'0','stroke-dasharray':d.projected?'4 3':'none',opacity:'0.7',cursor:'pointer'});
+      bar.style.transition='opacity 0.2s';
+      svg.appendChild(bar);
+
+      // Gain label inside/below bar
+      var gainLabel='+'+d.gain+' pts';
+      svg.appendChild(n('text',{x:x,y:h>30?y1+h/2+5:y2+16,'text-anchor':'middle','font-size':h>30?'14':'12','font-weight':'700',fill:h>30?'#fff':'#7C6DD8'},gainLabel));
+
+      // Generation label above
+      svg.appendChild(n('text',{x:x,y:y1-10,'text-anchor':'middle','font-size':'11','font-weight':'600',fill:'#1e293b'},d.gen));
+
+      bar.addEventListener('mouseenter',function(){
+        bar.setAttribute('opacity','1');
+        info.innerHTML='<div class="info-content"><div class="info-left"><div class="info-title">'+d.gen+' ('+d.year+')</div></div><div class="info-right"><div class="info-line" style="font-size:12px">MMLU: '+d.from+'% \u2192 '+d.to+'% (+'+d.gain+' points)'+(d.projected?' [projected]':'')+'</div></div></div>';
+      });
+      bar.addEventListener('mouseleave',function(){
+        bar.setAttribute('opacity','0.7');
+        info.innerHTML='<span class="info-hint">Hover over benchmark bars or regulation steps for details</span>';
+      });
+    });
+
+    // Regulation staircase (rising from botBase)
+    var stepH=40, stepXs=[];
+    var regLeft=left-40, regRight=right+40;
+    regData.forEach(function(d,i){ stepXs.push(regLeft+i*(regRight-regLeft)/(regData.length-1)); });
+    var stepTops=[];
+
+    regData.forEach(function(d,i) {
+      var x1=stepXs[i], x2=i<regData.length-1?stepXs[i+1]:regRight;
+      var y=botBase-d.step*stepH;
+      stepTops.push(y);
+
+      var step=n('rect',{x:x1,y:y,width:x2-x1,height:botBase-y,rx:0,fill:'#E05A33',opacity:'0.12',cursor:'pointer'});
+      step.style.transition='opacity 0.2s';
+      svg.appendChild(step);
+
+      // Step label
+      svg.appendChild(n('text',{x:(x1+x2)/2,y:y-8,'text-anchor':'middle','font-size':'11','font-weight':'600',fill:'#E05A33'},d.label));
+      svg.appendChild(n('text',{x:(x1+x2)/2,y:y+16,'text-anchor':'middle','font-size':'10',fill:'#94a3b8'},d.date));
+
+      step.addEventListener('mouseenter',function(){
+        step.setAttribute('opacity','0.25');
+        info.innerHTML='<div class="info-content"><div class="info-left"><div class="info-title" style="color:#E05A33">'+d.date+': '+d.label+'</div></div><div class="info-right"><div class="info-line" style="font-size:12px">'+d.detail+'</div></div></div>';
+      });
+      step.addEventListener('mouseleave',function(){
+        step.setAttribute('opacity','0.12');
+        info.innerHTML='<span class="info-hint">Hover over benchmark bars or regulation steps for details</span>';
+      });
+    });
+
+    // Squeeze zone polygon
+    // Top boundary: bottom of each benchmark bar
+    // Bottom boundary: top of each regulation step (interpolated to match x positions)
+    var polyTop='', polyBot='';
+    xs.forEach(function(x,i){
+      polyTop+=x+','+barBottoms[i]+' ';
+    });
+    // Reverse for bottom boundary (right to left)
+    // Interpolate reg step tops at benchmark x positions
+    var regTopAtX=xs.map(function(x){
+      // Linear interpolation of step tops
+      var t=(x-regLeft)/(regRight-regLeft);
+      var idx=Math.min(Math.floor(t*(regData.length-1)),regData.length-2);
+      var localT=(t*(regData.length-1))-idx;
+      var y1=botBase-regData[idx].step*stepH;
+      var y2=botBase-regData[Math.min(idx+1,regData.length-1)].step*stepH;
+      return y1+(y2-y1)*localT;
+    });
+    for(var i=xs.length-1;i>=0;i--){
+      polyBot+=xs[i]+','+regTopAtX[i]+' ';
+    }
+    svg.appendChild(n('polygon',{points:polyTop+polyBot,fill:'url(#s4-squeeze-grad)'}));
+
+    // "Deployable Innovation Space" label
+    var midX=xs[2], midY=(barBottoms[2]+regTopAtX[2])/2;
+    svg.appendChild(n('text',{x:midX,y:midY,'text-anchor':'middle','font-size':'14','font-weight':'600',fill:'#64748b',opacity:'0.7'},'Deployable Innovation Space'));
+
+    // Harder benchmarks annotation (right side)
+    var hardBench=[
+      {name:'FrontierMath',score:'2%',y:topBase+40},
+      {name:'Humanity\'s Last Exam',score:'45.8%',y:topBase+58},
+      {name:'ARC-AGI-2',score:'54%',y:topBase+76},
+    ];
+    svg.appendChild(n('text',{x:right+30,y:topBase+24,'font-size':'11','font-weight':'700',fill:'#94a3b8'},'Harder benchmarks:'));
+    hardBench.forEach(function(b){
+      svg.appendChild(n('text',{x:right+30,y:b.y,'font-size':'10',fill:'#94a3b8'},b.name+': '+b.score));
+    });
+
+    // Sutskever quote
+    svg.appendChild(n('text',{x:550,y:botBase+35,'text-anchor':'middle','font-size':'12','font-style':'italic',fill:'#94a3b8'},'\u201CPre-training as we know it will unquestionably end... we have but one internet.\u201D \u2014 Ilya Sutskever, NeurIPS 2024'));
+  })();
+
+}); // end DOMContentLoaded
+</script>
+</body>
+</html>
