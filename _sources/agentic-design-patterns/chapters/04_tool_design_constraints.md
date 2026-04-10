@@ -201,6 +201,20 @@ The principles from Claude Code's tool design apply directly to any agent you bu
 
 **Make escalation cheap.** Your agent should always have a LOW-risk path to request human help. If the agent encounters a situation where it needs a capability it does not have, the correct behavior is to tell the user, not to find a creative workaround using the tools it does have. Creative workarounds using existing tools are how agents cause unexpected damage.
 
+## The Emerging Standard: Model Context Protocol
+
+The risk classification principles described in this chapter are no longer just internal production patterns. They are being codified into an open industry standard.
+
+The Model Context Protocol (MCP), originally created by Anthropic and donated to the Linux Foundation's Agentic AI Foundation in late 2025, standardizes how AI agents discover, describe, and invoke external tools. As of early 2026, MCP has over 10,000 deployed servers and nearly 100 million monthly SDK downloads, with backing from Anthropic, OpenAI, Google, Microsoft, and AWS.
+
+MCP's tool annotation system maps directly to the risk classification this chapter teaches. Every tool in MCP can declare four annotations: `readOnlyHint` (does this tool modify its environment?), `destructiveHint` (are those modifications irreversible?), `idempotentHint` (are repeated calls safe?), and `openWorldHint` (does this tool interact with entities beyond the agent's workspace?). The critical design choice: all annotations default to worst-case. A tool with no annotations is assumed to be destructive, non-idempotent, and interacting with the open world. This mirrors the whitelist-not-blacklist principle --- you prove safety rather than assuming it.
+
+MCP also enforces least privilege at the protocol level. Each tool server operates in isolation --- it cannot see the conversation, cannot see other servers, and cannot access resources outside its declared scope. The host application mediates everything. This is server-level sandboxing built into the communication protocol itself.
+
+One detail worth replicating in any tool system: MCP's structured error handling. When a tool call fails, the error response includes `suggested_actions` and `follow_up_tools`, giving the model structured guidance on what to try next rather than leaving it to guess. This turns tool failures from dead ends into navigation points.
+
+If you are designing tool interfaces for your agent today, building them as MCP-compatible servers is worth serious consideration. You get standardized discovery, schema validation, risk annotation, and a growing ecosystem of client implementations --- and you avoid building bespoke tool plumbing that you will eventually have to replace.
+
 ## Applying This Pattern
 
 Every agent needs tools, and every tool needs a risk classification. Here is the practitioner checklist.
@@ -214,6 +228,8 @@ Every agent needs tools, and every tool needs a risk classification. Here is the
 - **Maintain a whitelist of known-safe operations.** For tools like shell execution that accept arbitrary input, maintain an explicit list of commands and patterns that are pre-classified as LOW or MEDIUM. Everything not on the list defaults to HIGH. Update the list as you learn which operations your agent performs routinely and safely.
 
 - **Log every tool invocation with its risk classification.** This gives you the data to refine your classifications over time. If a HIGH-risk tool is being invoked dozens of times per session and users are always approving it, consider whether it should be reclassified as MEDIUM. If a MEDIUM-risk tool occasionally causes problems, consider elevating it to HIGH.
+
+- **Consider MCP-compatible tool interfaces.** The Model Context Protocol's annotation vocabulary (`readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`) provides a standardized way to express the risk classification this chapter teaches, and MCP's server isolation enforces least privilege at the protocol level. Building your tools as MCP servers gives you ecosystem compatibility for free.
 
 - **Restrict network access to a whitelist.** If your agent needs web access, enumerate the specific domains it needs and block everything else. The cost of maintaining a whitelist is far lower than the cost of an exfiltration incident. Start with the smallest possible list and add domains only when a specific use case requires them.
 

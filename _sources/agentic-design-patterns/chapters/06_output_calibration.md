@@ -141,6 +141,18 @@ The control does not need to be binary. You can structure it as a spectrum:
 
 The appropriate level depends on the task, the user's expertise, and the consequences of failure. A senior developer debugging a prototype can tolerate Level 3. A junior developer modifying a production database schema should be working at Level 1.
 
+### Self-critique as a calibration mechanism
+
+The assertiveness counterweight is an externally imposed constraint --- you are telling the model to be less confident. A complementary approach is to build self-correction into the agent's workflow: have the agent evaluate its own output before presenting it to the user.
+
+This is the Producer-Critic pattern. The producing agent generates output (code, a plan, a refactoring proposal). A separate evaluation pass --- either a distinct agent or a second LLM call with a different prompt --- reviews the output for hallucinated functions, nonexistent variables, logical errors, and violations of the project's conventions. The evaluation pass does not need to be perfect. It needs to catch enough errors to shift the balance.
+
+In practice, one reflection pass on a coding agent's output typically catches a meaningful fraction of the errors that would otherwise reach the user. Diminishing returns set in quickly: a second pass catches fewer new issues, and a third pass rarely justifies its cost. For most use cases, a single reflection cycle is the right balance between quality and latency.
+
+The counterweight and self-critique address different failure modes. The counterweight is preventive --- it makes the agent less likely to propose aggressive changes in the first place. Self-critique is corrective --- it catches errors in what the agent has already produced. A well-calibrated agent uses both. The counterweight reduces the volume of mistakes. Self-critique catches the ones that get through.
+
+The cost is real: each reflection cycle is an additional LLM call, adding both latency and token spend. Route this decision by task risk. For a low-stakes file rename, skip the reflection. For a database migration script, the cost of one additional LLM call is trivial compared to the cost of a broken migration in production.
+
 ## Applying This Pattern
 
 - **Measure before you trust.** Before deploying any model in your agent, establish baseline false claim rates for your specific task types. Do not rely on the provider's benchmark scores --- they measure capability, not calibration. Run your own evaluations on your own data.

@@ -185,6 +185,10 @@ Chapter 9 described the capability overhang problem --- the gap between what a m
 
 The honest answer is that we do not know. The Mythos evaluation showed a 90x capability jump on a specific task. If jumps of that magnitude are common, then containment strategies designed for the current capability level will be obsolete by the time they are deployed. This does not mean you should not build containment --- it means you should design containment that is easy to update, easy to re-evaluate, and not dependent on specific assumptions about what the model can do.
 
+### How will standardized protocols reshape agent architecture?
+
+The Model Context Protocol (agent-to-tool) and Agent2Agent Protocol (agent-to-agent) are converging as open standards under the Linux Foundation, backed by Anthropic, Google, OpenAI, Microsoft, and AWS. Google's Agent Development Kit already integrates both natively. As these protocols mature, the build-versus-integrate decision shifts fundamentally. The tool constraint patterns (Chapter 4), prompt layering (Chapter 5), and multi-agent orchestration (Chapter 8) in this booklet may increasingly be implemented via protocol-level standards rather than bespoke orchestration code. The question for practitioners is not whether to adopt these protocols, but when --- and how much of your custom orchestration they will eventually replace.
+
 ## The Design Exercise
 
 You have read nine patterns and three reference architectures. Now it is time to apply them. Before you write a line of code, answer these four questions for your specific use case. Write the answers down. They will become the first page of your architecture document.
@@ -215,7 +219,7 @@ What the Claude Code leak revealed, and what this booklet has attempted to teach
 
 The field is young. The patterns will evolve. New constraints will emerge as models become more capable, as regulatory frameworks mature, as user expectations shift. The open questions listed in this chapter are real, and their answers will reshape agent architecture in ways we cannot fully predict.
 
-But the foundations are solid. If you understand the nine patterns in this booklet --- not just what they are, but why they exist and when they apply --- you have a vocabulary for reasoning about agent architecture that will remain useful even as the specific implementations change.
+But the foundations are solid. If you understand the nine patterns in this booklet --- not just what they are, but why they exist and when they apply --- you have a vocabulary for reasoning about agent architecture that will remain useful even as the specific implementations change. The patterns describe what agents need to do. The emerging protocols (MCP, A2A) describe how agents communicate. Frameworks like Google's ADK provide implementation scaffolding. Understanding the patterns gives you the judgment to evaluate which protocols and frameworks to adopt for your specific use case --- and, just as importantly, which to defer.
 
 Start with the simplest architecture that could work. Add complexity in response to observed problems. Red-team your own systems before your users do. And remember the real lesson from the 460 lint suppressions in Claude Code's main file: production agent code is not elegant. It is correct. That is what matters.
 
