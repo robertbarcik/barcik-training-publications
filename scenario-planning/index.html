@@ -1478,13 +1478,24 @@ document.addEventListener('DOMContentLoaded', function() {
     svg.appendChild(n('text',{x:annX1+10,y:(annY1+annY2)/2+20,'font-size':'12',fill:'#E05A33',opacity:'0.7'},'in 20 months'));
 
     // Bottom: Inference pricing chart
-    var infY0=460, infH=220, infLeft=140, infRight=980;
-    svg.appendChild(n('text',{x:40,y:infY0-12,'font-size':'17','font-weight':'700',fill:'#1e3a5f'},'Inference Cost: Output per Million Tokens'));
+    var infY0=470, infH=220, infLeft=160, infRight=980;
+    svg.appendChild(n('text',{x:40,y:infY0-30,'font-size':'17','font-weight':'700',fill:'#1e3a5f'},'Inference Cost: Output per Million Tokens'));
+    svg.appendChild(n('line',{x1:infLeft,y1:infY0,x2:infRight,y2:infY0,stroke:'#e2e8f0','stroke-width':'0.5','stroke-dasharray':'3 3'}));
     svg.appendChild(n('line',{x1:infLeft,y1:infY0+infH,x2:infRight,y2:infY0+infH,stroke:'#e2e8f0','stroke-width':'1'}));
 
-    var logPriceMin=-0.5, logPriceMax=1.85;
+    // Clean log scale: $100, $10, $1, $0.1
+    var logPriceMin=-1, logPriceMax=2; // log10(0.1) to log10(100) — clean decades
     function priceToY(p) { return infY0+infH-(Math.log10(p)-logPriceMin)/(logPriceMax-logPriceMin)*infH; }
     function xToPos(xv) { return infLeft+xv/2*(infRight-infLeft); }
+
+    // Y axis labels — clean decade spacing
+    [{p:100,label:'$100'},{p:10,label:'$10'},{p:1,label:'$1'},{p:0.1,label:'$0.10'}].forEach(function(d){
+      var y=priceToY(d.p);
+      if(y>=infY0-5&&y<=infY0+infH+5){
+        svg.appendChild(n('text',{x:infLeft-10,y:y+4,'text-anchor':'end','font-size':'12','font-weight':'500',fill:'#94a3b8'},d.label));
+        svg.appendChild(n('line',{x1:infLeft,y1:y,x2:infRight,y2:y,stroke:'#e2e8f0','stroke-width':'0.5','stroke-dasharray':'3 3'}));
+      }
+    });
 
     // Draw main pricing line (GPT-4 tier)
     var pts=mainLine.map(function(d){ return xToPos(d.x)+','+priceToY(d.price); });
@@ -1494,20 +1505,23 @@ document.addEventListener('DOMContentLoaded', function() {
     mainLine.forEach(function(d,i){
       var px=xToPos(d.x), py=priceToY(d.price);
       svg.appendChild(n('circle',{cx:px,cy:py,r:5,fill:'#7C6DD8',stroke:'#fff','stroke-width':'2'}));
-      // Alternate label placement to avoid overlaps
-      var labelAbove = (i % 2 === 0);
-      var priceY = labelAbove ? py-14 : py+20;
-      var nameY = labelAbove ? py-30 : py+34;
-      svg.appendChild(n('text',{x:px,y:priceY,'text-anchor':'middle','font-size':'13','font-weight':'600',fill:'#7C6DD8'},'$'+d.price));
-      svg.appendChild(n('text',{x:px,y:nameY,'text-anchor':'middle','font-size':'11',fill:'#94a3b8'},d.label));
+      // First point: label to the right; others alternate above/below
+      if(i===0) {
+        svg.appendChild(n('text',{x:px+12,y:py-8,'text-anchor':'start','font-size':'13','font-weight':'600',fill:'#7C6DD8'},'$'+d.price));
+        svg.appendChild(n('text',{x:px+12,y:py+8,'text-anchor':'start','font-size':'11',fill:'#94a3b8'},d.label));
+      } else {
+        var below = (i % 2 === 1);
+        svg.appendChild(n('text',{x:px,y:below?py+22:py-14,'text-anchor':'middle','font-size':'13','font-weight':'600',fill:'#7C6DD8'},'$'+d.price));
+        svg.appendChild(n('text',{x:px,y:below?py+36:py-28,'text-anchor':'middle','font-size':'11',fill:'#94a3b8'},d.label));
+      }
     });
 
     // Alternative model dots (different tier, shown separately)
     altDots.forEach(function(d){
       var px=xToPos(d.x), py=priceToY(d.price);
       svg.appendChild(n('circle',{cx:px,cy:py,r:5,fill:'#0EA5C9',stroke:'#fff','stroke-width':'2'}));
-      svg.appendChild(n('text',{x:px,y:py+18,'text-anchor':'middle','font-size':'12','font-weight':'600',fill:'#0EA5C9'},'$'+d.price));
-      svg.appendChild(n('text',{x:px,y:py+32,'text-anchor':'middle','font-size':'10',fill:'#94a3b8'},d.label));
+      svg.appendChild(n('text',{x:px,y:py-14,'text-anchor':'middle','font-size':'13','font-weight':'600',fill:'#0EA5C9'},'$'+d.price));
+      svg.appendChild(n('text',{x:px,y:py-28,'text-anchor':'middle','font-size':'11',fill:'#94a3b8'},d.label));
     });
     // Dashed line connecting alt dots
     if(altDots.length>=2){
@@ -1515,17 +1529,8 @@ document.addEventListener('DOMContentLoaded', function() {
       svg.appendChild(n('polyline',{points:altPts.join(' '),fill:'none',stroke:'#0EA5C9','stroke-width':'1.5','stroke-dasharray':'4 3'}));
     }
 
-    // Y axis labels
-    [0.5,1,5,10,30,60].forEach(function(p){
-      var y=priceToY(p);
-      if(y>infY0&&y<infY0+infH){
-        svg.appendChild(n('text',{x:infLeft-8,y:y+4,'text-anchor':'end','font-size':'11',fill:'#94a3b8'},'$'+p));
-        svg.appendChild(n('line',{x1:infLeft,y1:y,x2:infRight,y2:y,stroke:'#e2e8f0','stroke-width':'0.5','stroke-dasharray':'3 3'}));
-      }
-    });
-
     // 99% annotation
-    svg.appendChild(n('text',{x:infRight-5,y:infY0+14,'text-anchor':'end','font-size':'14','font-weight':'700',fill:'#E05A33'},'99%+ reduction in pricing'));
+    svg.appendChild(n('text',{x:infRight-5,y:infY0+18,'text-anchor':'end','font-size':'14','font-weight':'700',fill:'#E05A33'},'99%+ reduction in pricing'));
   })();
 
   // ═══════════════════════════════════════════════════════════
