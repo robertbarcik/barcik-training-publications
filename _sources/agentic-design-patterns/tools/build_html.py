@@ -290,6 +290,50 @@ blockquote p:last-child {
     margin-bottom: 0;
 }
 
+/* Exercise box — hands-on prototyping prompts */
+.exercise {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-left: 4px solid #22c55e;
+    border-radius: 0 10px 10px 0;
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.exercise .exercise-title {
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #166534;
+    margin-bottom: 0.6rem;
+}
+
+.exercise .exercise-body p {
+    margin-bottom: 0.7rem;
+    color: var(--text);
+}
+
+.exercise .exercise-body ol,
+.exercise .exercise-body ul {
+    margin: 0.5rem 0;
+    padding-left: 1.4rem;
+}
+
+.exercise .exercise-body li {
+    margin-bottom: 0.3rem;
+    color: var(--text);
+}
+
+.exercise .exercise-body code {
+    background: rgba(34, 197, 94, 0.1);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+}
+
 /* Key points box — screen-sharing friendly summary */
 .key-points {
     background: var(--bg-sidebar);

@@ -13,11 +13,11 @@
 
 ### About This Booklet
 
-In late March 2026, an inadvertent source map inclusion in an npm package exposed the complete, unobfuscated source code of Anthropic's Claude Code --- approximately 513,000 lines of TypeScript across nearly 1,900 files. This was not a research prototype or a conference demo. It was a production-grade AI coding agent serving millions of developers daily.
+In early 2026, the complete source code of Anthropic's Claude Code became publicly available --- approximately 513,000 lines of TypeScript across nearly 1,900 files. Not a research prototype. Not a conference demo. A production coding agent serving millions of developers daily.
 
-This booklet extracts the architectural patterns from that codebase and translates them into practical guidance for anyone building their own AI agents. The patterns are what matter. They will outlast any single product.
+This booklet treats that codebase as a case study. We extract the architectural patterns, explain why they exist, and translate them into practical guidance for anyone building their own AI agents. The patterns are what matter --- they will outlast any single product or vendor.
 
-Each chapter teaches one design pattern. The structure is consistent: we explain the problem the pattern solves, show how it was implemented in production, discuss the tradeoffs, and provide concrete guidance for applying it in your own systems. No hype, no hand-wringing about the leak itself --- just the engineering and what it means for your work.
+Each chapter teaches one design pattern: the problem it solves, how it works in production, the tradeoffs, and concrete steps for applying it in your own systems. Most chapters include a hands-on exercise you can try with your own coding agent.
 
 ### Who This Booklet Is For
 

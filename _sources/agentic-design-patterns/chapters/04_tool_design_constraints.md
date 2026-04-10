@@ -24,25 +24,25 @@
 
 ## Tools Are the Agent
 
-There is a persistent misconception in early agent design that the language model is the agent and tools are accessories --- optional add-ons that extend what the agent can do. This gets the relationship backwards.
+Imagine two copies of the same language model. Give one `read_file` and `write_file`. Give the other `read_file`, `write_file`, `execute_shell`, and `delete_directory`. Same model, same weights, same training. The first is a text editor. The second can wipe your hard drive.
 
-A language model without tools is a chatbot. It can reason, draft, and suggest, but it cannot act. It cannot read a file, run a test, create a branch, deploy a service, or send an email. The moment you give a model tools, it becomes an agent --- and the tools you give it define what kind of agent it is.
+That example captures the central point of this chapter: tools are not accessories bolted onto an agent. They *are* the agent. A language model without tools is a chatbot --- it can reason, draft, and suggest, but it cannot act. The moment you hand it tools, you define what kind of agent it becomes.
 
-This is not a philosophical point. It is an architectural one. When you design an agent's tool set, you are making the most consequential decisions about the agent's behavior, risk profile, and failure modes. A model with access to `read_file` and `write_file` is a text editor. Add `execute_shell` and it is a system administrator. Add `send_http_request` and it is a network client. Add `delete_directory` and it can cause real damage.
+When you design an agent's tool set, you are making the most consequential decisions about its behavior, risk profile, and failure modes. More consequential than prompt engineering. More consequential than model selection.
 
-The Claude Code source makes this principle explicit in its architecture. The system exposes approximately 30 distinct tools to the model, and every single one of them passes through a risk classification layer before execution. The model does not "have access to the file system." It has access to specific, individually classified operations on the file system, each with its own authorization requirements.
+Claude Code makes this explicit. The system exposes approximately 30 distinct tools, and every one passes through a risk classification layer before execution. The model does not "have access to the file system." It has access to specific, individually classified operations on the file system, each with its own authorization requirements.
 
 > **The principle is simple:** tool design is agent design. The set of tools you expose, and the constraints you place on each one, determines your agent's capability envelope more than any prompt engineering or model selection.
 
 ## The Risk Classification System
 
-Every tool invocation in Claude Code is assigned one of three risk levels: LOW, MEDIUM, or HIGH. The classification is not based on what the tool is, but on what the specific invocation does. The same tool can be LOW risk in one context and HIGH risk in another.
+Every tool invocation in Claude Code is assigned one of three risk levels: LOW, MEDIUM, or HIGH. The classification depends on what the specific invocation does, not on which tool it calls. The same tool can be LOW risk in one context and HIGH risk in another.
 
 ### LOW Risk: Silent Auto-Approval
 
 LOW-risk operations execute without any user notification. The agent calls them, they run, results come back. The user never knows it happened unless they inspect the agent's work afterward.
 
-Examples from the Claude Code source:
+Examples:
 
 - **Reading files.** The `Read` tool at any file path the agent has access to. Reading cannot modify state, so it is inherently low risk.
 - **Listing directory contents.** Knowing what files exist does not change anything.
@@ -50,7 +50,7 @@ Examples from the Claude Code source:
 - **Searching file contents.** Grep, ripgrep, and similar search operations. Read-only by definition.
 - **Glob pattern matching.** Finding files by name pattern. Again, read-only.
 
-The common thread: LOW-risk operations are strictly read-only. They cannot modify files, cannot change system state, cannot transmit data externally, and cannot cause any outcome that requires reversal. The agent can execute thousands of LOW-risk operations per session without any human oversight, and the worst possible outcome is wasted compute.
+What ties these together? They are all strictly read-only. They cannot modify files, change system state, or transmit data externally. The agent can execute thousands of them per session without human oversight. The worst possible outcome is wasted compute.
 
 ### MEDIUM Risk: Visible but Proceeding
 
@@ -89,7 +89,7 @@ HIGH-risk operations have one or more of these characteristics: they are irrever
 
 ## The 85-Domain Web Whitelist
 
-One of the most revealing constraints in the Claude Code source is the `WebSearchTool` configuration. Claude Code does not have unrestricted internet access. The web search capability is restricted to exactly 85 pre-approved domains.
+Claude Code does not have unrestricted internet access. The web search capability is restricted to exactly 85 pre-approved domains.
 
 This list includes documentation sites (MDN, Stack Overflow, the official docs for major frameworks and languages), package registries (npm, PyPI, crates.io), and reference sources (GitHub, Wikipedia). It does not include arbitrary websites, social media platforms, news sites, or any domain not explicitly enumerated.
 
@@ -107,9 +107,9 @@ The body-only parsing is a separate security measure. Metadata in `<head>` eleme
 
 ## Why Constraints Improve Agents
 
-This is counterintuitive for engineers coming from a capabilities-first mindset. If the model can access the entire internet, why limit it to 85 domains? If it can run any shell command, why classify some as HIGH risk and block them?
+If the model can access the entire internet, why limit it to 85 domains? If it can run any shell command, why classify some as HIGH risk and block them?
 
-The answer is that constraints improve agent performance, not just agent safety.
+Because constraints improve agent performance, not just agent safety.
 
 ### Smaller action space, better planning
 
@@ -121,19 +121,19 @@ This is directly analogous to API design in software engineering. A well-designe
 
 When you constrain the action space, you constrain the error space. An agent that can only read and write files in a single project directory cannot accidentally delete the operating system. An agent that can only access 85 web domains cannot be tricked into sending data to an attacker's server. The worst-case failure of a constrained agent is bounded and recoverable; the worst-case failure of an unconstrained agent is unbounded.
 
-This matters for user trust. Users who know that the agent cannot do catastrophic things are more willing to let it operate autonomously on routine tasks. Paradoxically, an agent with tighter constraints often receives more autonomy from users than an agent with loose constraints, because users trust it more.
+This matters for trust. If you know the agent cannot do catastrophic things, you are more willing to let it operate autonomously on routine tasks. Paradoxically, a more constrained agent often receives *more* autonomy from users than a loosely constrained one.
 
 ### Behavior is more predictable
 
 Constraints eliminate entire categories of behavior. If the agent cannot access the network, you do not need to worry about network-related failure modes. If it cannot delete files outside the project, you do not need to worry about cross-project contamination. Each constraint you add removes a class of potential behaviors, making the agent's overall behavior more predictable and easier to test.
 
-Predictability is not just a safety property. It is a usability property. Users develop mental models of what the agent will and will not do. Constraints make those mental models accurate. When the mental model matches reality, users work with the agent more effectively.
+Predictability is a usability property, not just a safety one. You develop a mental model of what the agent will and will not do. Constraints make that mental model accurate. When it matches reality, you work with the agent more effectively.
 
 > **The paradox of constraint:** Agents with fewer capabilities often outperform agents with more capabilities, because the constrained agent spends its reasoning on the task while the unconstrained agent spends its reasoning on capability selection, error recovery, and navigating the consequences of overly broad actions.
 
 ## Least Privilege as an Architectural Principle
 
-The principle of least privilege --- every component should have only the minimum access necessary to perform its function --- is decades old in security engineering. Applying it to AI agents requires thinking about privilege at three distinct levels.
+Least privilege --- every component should have only the minimum access necessary to perform its function --- is decades old in security engineering. What changes when you apply it to AI agents? You need to think about privilege at three distinct levels.
 
 ### OS-Level Privilege
 
@@ -195,7 +195,7 @@ Several patterns emerge from this comparison.
 
 **The HIGH tier is defined by irreversibility and external impact.** Processing a refund cannot be undone. Pushing to a remote repository affects collaborators. Executing a write query changes production data. These operations share the property that mistakes are expensive and difficult to reverse.
 
-**Escalation to a human is always LOW risk.** An agent that asks for help cannot cause harm by asking. This is worth noting because some agent designs inadvertently discourage escalation by making it a heavyweight operation. It should be the easiest thing an agent can do.
+**Escalation to a human is always LOW risk.** An agent that asks for help cannot cause harm by asking. Some agent designs inadvertently discourage escalation by making it a heavyweight operation. It should be the easiest thing an agent can do.
 
 ## File System Access Patterns
 
@@ -233,9 +233,22 @@ MCP's tool annotation system maps directly to the risk classification this chapt
 
 MCP also enforces least privilege at the protocol level. Each tool server operates in isolation --- it cannot see the conversation, cannot see other servers, and cannot access resources outside its declared scope. The host application mediates everything. This is server-level sandboxing built into the communication protocol itself.
 
-One detail worth replicating in any tool system: MCP's structured error handling. When a tool call fails, the error response includes `suggested_actions` and `follow_up_tools`, giving the model structured guidance on what to try next rather than leaving it to guess. This turns tool failures from dead ends into navigation points.
+One detail worth stealing: MCP's structured error handling. When a tool call fails, the error response includes `suggested_actions` and `follow_up_tools`, giving the model structured guidance on what to try next rather than leaving it to guess. Tool failures become navigation points instead of dead ends.
 
 If you are designing tool interfaces for your agent today, building them as MCP-compatible servers is worth serious consideration. You get standardized discovery, schema validation, risk annotation, and a growing ecosystem of client implementations --- and you avoid building bespoke tool plumbing that you will eventually have to replace.
+
+<div class="exercise">
+<div class="exercise-title">Try It: Risk Classification in Practice</div>
+<div class="exercise-body">
+<p>List 15 actions your coding agent can perform — reading a file, writing a file, running a test suite, executing an arbitrary shell command, <code>git commit</code>, <code>git push --force</code>, deleting a directory, making an HTTP request, modifying a config file outside the project, and so on.</p>
+<ol>
+<li>Classify each action as LOW, MEDIUM, or HIGH risk using the criteria from this chapter.</li>
+<li>Now test your classifications: ask your agent to perform something you marked as HIGH. Does its permission system catch it?</li>
+<li>Find at least one case where the actual risk level surprises you — where something you thought was safe turns out to have a dangerous edge case, or something you feared turns out to be well-contained.</li>
+</ol>
+<p>The surprises are the point. Your initial classifications reflect your mental model of risk. The agent's actual behavior reflects the implemented constraints. The gap between the two is where security incidents live.</p>
+</div>
+</div>
 
 ## Applying This Pattern
 
@@ -261,7 +274,7 @@ Every agent needs tools, and every tool needs a risk classification. Here is the
 
 - **Test your constraints, not just your capabilities.** Write tests that verify the agent cannot do things it should not be able to do. Can it read files outside its project scope? Can it execute a shell command without classification? Can it access a non-whitelisted URL? These negative tests are at least as important as the positive tests that verify the agent can do its job.
 
-> **What to take from this chapter:** Tools define what your agent is. A risk classification system --- LOW (auto-approve), MEDIUM (visible, proceeding), HIGH (blocked pending authorization) --- provides the framework for safe tool execution. Constraints on the action space do not just improve safety; they improve the agent's reasoning, predictability, and the user's willingness to grant autonomy. Apply least privilege at three levels: OS sandboxing, tool-set curation, and data access controls. Build the whitelist, not the blacklist. And enforce constraints in the runtime, not just the prompt.
+Here is the uncomfortable test for your own agent: list every tool it has access to, then ask yourself which ones could cause damage you cannot reverse. If you cannot answer that question quickly, your tool design needs work. Tools define what your agent is. Classify them into LOW, MEDIUM, and HIGH tiers. Apply least privilege at three levels --- OS sandboxing, tool-set curation, and data access controls. Build the whitelist, not the blacklist. And enforce constraints in the runtime, not just the prompt. The agent that earns the most autonomy is the one whose boundaries you trust.
 
 ---
 

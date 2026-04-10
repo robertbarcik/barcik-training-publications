@@ -28,15 +28,15 @@
 
 If you have only used language models through a chat interface, you may think of a prompt as a question. At production scale, this framing is inadequate. The Claude Code system prompt is not a question. It is a specification --- thousands of tokens of carefully structured behavioral instructions that define what the agent can do, how it should do it, and what it must never attempt.
 
-The leaked source revealed a system prompt that reads more like a software requirements document than a conversational opener. It includes tool usage protocols, output formatting rules, safety constraints, file handling procedures, git workflow instructions, operating system detection logic, and detailed behavioral guidance for dozens of edge cases. This is not unusual for production agents. It is the norm.
+The Claude Code system prompt reads more like a software requirements document than a conversational opener. It includes tool usage protocols, output formatting rules, safety constraints, file handling procedures, git workflow instructions, operating system detection logic, and detailed behavioral guidance for dozens of edge cases. Not unusual for production agents --- this is the norm.
 
-The shift in mental model matters. When you treat your system prompt as software, you apply software engineering practices to it: version control, review, testing, modular decomposition. When you treat it as a query you typed into a box, you get the kind of fragile, contradictory instruction sets that plague most hobby-grade agent implementations.
+The shift in mental model matters. Treating your system prompt as software means applying software engineering practices: version control, review, testing, modular decomposition. Treating it as a query you typed into a box gets you the fragile, contradictory instruction sets that plague most hobby-grade agent implementations.
 
 The industry is increasingly calling this discipline "context engineering" --- a deliberate evolution from "prompt engineering" that reflects a fundamental change in scope. The work is no longer about crafting individual prompts. It is about designing the complete informational environment provided to the model: system instructions, project configuration, tool descriptions, retrieved data, conversation history, and implicit environmental state. The Model Context Protocol (MCP) formalizes one dimension of this by defining who controls each type of context: **Prompts** are user-controlled templates, **Resources** are application-controlled data, and **Tools** are model-controlled functions. This maps cleanly to the multi-layer model we will examine next.
 
 Consider the difference. A casual system prompt might say: "You are a helpful coding assistant. Be careful with files." A production system prompt specifies: which tools are available and their exact parameter schemas, which file operations require user confirmation, how to handle merge conflicts, when to prefer editing over rewriting, how to format commit messages, and what to do when a pre-commit hook fails. The casual prompt leaves behavior undefined. The production prompt closes the gaps.
 
-This is not pedantry. In an autonomous agent that executes code, creates files, and runs shell commands, every undefined behavior is a potential failure mode. The system prompt is your first and most important layer of defense.
+In an autonomous agent that executes code, creates files, and runs shell commands, every undefined behavior is a potential failure mode. The system prompt is your first and most important layer of defense.
 
 ## Multi-Layer Prompt Composition
 
@@ -101,11 +101,11 @@ Here is the assembly pipeline, visualized as the sequence in which content enter
 └─────────────────────────────────────────────────────┘
 ```
 
-Each layer has a different author, a different rate of change, and a different purpose. This decomposition is not accidental. It is the architectural pattern that makes the agent simultaneously controllable by its vendor, configurable by its users, and responsive to its immediate context.
+The ordering is deliberate: cacheable, static content sits at the top; volatile, per-turn content sits at the bottom. This means the API can reuse the cached prefix across calls and only reprocess what actually changed. Each layer has a different author, a different rate of change, and a different purpose. The decomposition makes the agent simultaneously controllable by its vendor, configurable by its users, and responsive to its immediate context.
 
 ### Layer 1: The system prompt
 
-The system prompt is Anthropic's behavioral contract with the model. It ships with the product and changes only on release boundaries. It defines the agent's identity, its safety constraints, its tool usage protocols, and its default behaviors. This layer is opaque to the end user --- you cannot edit it, and until the leak, you could not read it.
+The system prompt is Anthropic's behavioral contract with the model. It ships with the product and changes only on release boundaries. It defines the agent's identity, its safety constraints, its tool usage protocols, and its default behaviors. This layer is opaque to the end user --- you cannot edit it, and Anthropic does not publish its full contents.
 
 ### Layer 2: CLAUDE.md injection
 
@@ -135,7 +135,7 @@ Let us work through the arithmetic. Suppose your system prompt is 4,000 tokens, 
 
 At Anthropic's current pricing for Claude Opus 4.6 ($5.00 per million input tokens), those static layers alone cost $9.00 per two-hour session. Scale that across a team of 20 developers, each running multiple sessions per day, and the prompt overhead becomes a material line item in your infrastructure budget.
 
-Now consider what happens when the CLAUDE.md file is verbose. The community discovered this cost dynamic almost immediately after the leak revealed how CLAUDE.md injection works. A well-intentioned developer might write a 500-line CLAUDE.md file documenting every convention, every architectural decision, every deployment procedure for their project. At roughly 1.5 tokens per word and 10 words per line, that is 7,500 tokens --- re-injected on every turn.
+Now consider what happens when the CLAUDE.md file is verbose. The community discovered this cost dynamic quickly once CLAUDE.md injection became widely understood. A well-intentioned developer might write a 500-line CLAUDE.md file documenting every convention, every architectural decision, every deployment procedure for their project. At roughly 1.5 tokens per word and 10 words per line, that is 7,500 tokens --- re-injected on every turn.
 
 The community's response was swift and rational. Within days, best practices emerged: keep CLAUDE.md extremely short. Use it only for immutable behavioral rules --- the things the agent must know on every turn. Relegate one-time context (project history, architectural explanations, onboarding information) to files that the agent can read on demand, not content that is force-injected into every request.
 
@@ -145,9 +145,9 @@ This principle applies to any agent system, not just Claude Code. If you are bui
 
 ## The Instruction Fidelity Problem
 
-There is a second reason to keep prompts lean, beyond cost. Longer prompts do not linearly increase compliance.
+Cost is not the only reason to keep prompts lean. Longer prompts do not linearly increase compliance.
 
-This is counterintuitive. You might expect that adding more instructions would make the model more reliable --- more rules, more guardrails, more specificity. In practice, the relationship between prompt length and instruction fidelity follows a curve with diminishing returns and, past a certain point, actual degradation.
+You might expect that adding more instructions would make the model more reliable --- more rules, more guardrails, more specificity. The relationship between prompt length and instruction fidelity actually follows a curve with diminishing returns and, past a certain point, outright degradation.
 
 The mechanism is straightforward. Language models attend to all tokens in their context, but attention is not uniform. Instructions at the beginning and end of the prompt receive stronger attention than those buried in the middle. When you pack 200 behavioral rules into a system prompt, the model will reliably follow the first 20 and the last 20. The 160 in the middle compete for attention, and some will be ignored or misapplied --- especially when they conflict with each other.
 
@@ -167,7 +167,7 @@ This changes the economics dramatically. Our 9,000-token static overhead, which 
 
 But prompt caching is not just a billing optimization. It is an architectural enabler. Consider the multi-agent orchestration pattern covered in Chapter 8: Claude Code can spawn sub-agents to handle parallel tasks. Each sub-agent makes its own API calls with its own context window. Without caching, the system prompt and tool descriptions would be reprocessed from scratch for every sub-agent call, making the swarm topology economically impractical. With caching, multiple agents sharing the same prompt prefix amortize the cost across all their calls.
 
-This has a design implication. When you structure your prompt layers, the content most likely to be shared across calls should be placed first --- at the top of the prompt prefix. Content that varies between calls should come last. This is not about readability or logical organization. It is about maximizing cache hit rates.
+This has a design implication. When you structure your prompt layers, the content most likely to be shared across calls should be placed first --- at the top of the prompt prefix. Content that varies between calls should come last. Readability and logical organization are secondary here. Cache hit rates drive the ordering.
 
 The practical ordering:
 
@@ -185,7 +185,7 @@ The CLAUDE.md pattern deserves special attention because it represents something
 
 In traditional software, changing an application's behavior requires changing its code, which requires a developer, a code review, a deployment. The CLAUDE.md pattern breaks this chain. A project lead who has never written a line of TypeScript can create a CLAUDE.md file that says "never modify files in the /legacy directory" or "always run the linter before committing" and the agent will comply. The instruction takes effect immediately, requires no deployment, and persists as long as the file exists.
 
-This is the "configuration over code" principle applied to AI behavior. And it creates a new category of stakeholder in your system: the prompt author, who is neither the agent developer nor the end user, but someone who shapes the agent's behavior for a particular context.
+Call it "configuration over code" applied to AI behavior. It also creates a new category of stakeholder in your system: the prompt author, who is neither the agent developer nor the end user, but someone who shapes the agent's behavior for a particular context.
 
 The implications for enterprise deployment are substantial. Consider a large organization with 50 repositories, each maintained by a different team with different conventions. Without CLAUDE.md, the agent behaves identically in every repository --- which means it will violate conventions in most of them. With CLAUDE.md, each team encodes its conventions into a file that ships with the repository, and the agent adapts its behavior accordingly.
 
@@ -197,7 +197,7 @@ The pattern has a limitation worth noting. CLAUDE.md instructions are advisory, 
 
 ## Structuring Instructions for Maximum Fidelity
 
-The Claude Code source reveals several concrete techniques for getting the model to reliably follow instructions, techniques that apply to any agent you build.
+Several concrete techniques for maximizing instruction fidelity emerge from the Claude Code system prompt --- and they apply to any agent you build.
 
 **Imperative over declarative.** "Never push to the remote repository unless the user explicitly asks" is more reliably followed than "The agent should generally avoid pushing code." Imperatives create clearer behavioral boundaries.
 
@@ -221,6 +221,20 @@ The discipline required is the same as for any long-lived specification: periodi
 
 For production agent systems, this means treating your prompt as a versioned artifact with a review cycle, not a write-once document that grows indefinitely.
 
+<div class="exercise">
+<div class="exercise-title">Try It: Prompt Budget Audit</div>
+<div class="exercise-body">
+<p>Take your coding agent's current configuration file (CLAUDE.md or equivalent). Count the tokens — paste it into a tokenizer or estimate at ~4 characters per token. At your model's pricing, calculate what this configuration costs you per conversational turn. Now rewrite it: cut the token count in half while keeping the rules that matter most.</p>
+<ol>
+<li>Copy your CLAUDE.md (or system prompt) and count its tokens.</li>
+<li>Multiply by your model's per-token input price. That is your per-turn cost for this file alone.</li>
+<li>Rewrite a slimmed-down version at half the token count. Cut anything the agent was already ignoring or could look up on demand.</li>
+<li>Test both versions on the same coding task.</li>
+</ol>
+<p>Did the shorter version miss anything important? Did the longer version contain rules the agent was already ignoring? The gap between "tokens spent" and "rules followed" is your waste.</p>
+</div>
+</div>
+
 ## Applying This Pattern
 
 - **Budget your prompt token spend.** Calculate the per-turn cost of your system prompt, tool descriptions, and injected context. If the number surprises you, it should. Set a token budget for each prompt layer and enforce it the way you enforce memory budgets in performance-critical code.
@@ -238,6 +252,8 @@ For production agent systems, this means treating your prompt as a versioned art
 - **Limit CLAUDE.md files to behavioral rules.** If you are using a project-level instruction file, keep it under 50 lines. Every line costs tokens on every turn. If a project's CLAUDE.md is longer than its README, something has gone wrong.
 
 - **Plan for prompt maintenance.** Schedule quarterly reviews of your system prompt. Remove instructions that address issues fixed at the model level. Consolidate redundant rules. Test that removals do not reintroduce old failure modes. A lean prompt is a healthy prompt.
+
+Go look at your agent's system prompt right now. Count the tokens. Multiply by the number of turns in a typical session. Multiply by the number of developers on your team. That is the number you are actually paying for --- and you should be able to justify every token in it.
 
 ---
 

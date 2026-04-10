@@ -27,15 +27,15 @@
 
 ## The Capybara v8 Regression
 
-Anthropic's internal model taxonomy, exposed in the leaked source, uses animal codenames to identify the models powering different product tiers. Tengu refers to the Claude Code application itself. Fennec is the codename for Opus 4.6, the flagship model. Capybara designates an advanced intermediate-tier model --- more capable than the lightweight options, less expensive than the frontier tier. Numbat references an unreleased future model, and Mythos refers to the frontier research models.
+Anthropic's internal model taxonomy uses animal codenames to identify the models powering different product tiers. Tengu refers to the Claude Code application itself. Fennec is the codename for Opus 4.6, the flagship model. Capybara designates an advanced intermediate-tier model --- more capable than the lightweight options, less expensive than the frontier tier. Numbat references an unreleased future model, and Mythos refers to the frontier research models.
 
-The codenames are not the interesting part. The telemetry data attached to them is.
+The codenames are not the interesting part. The data attached to them is.
 
-Internal evaluation metrics revealed that Capybara v8 --- a model upgrade intended to improve capability --- exhibited a 29-30% false claims rate in production. This was not a marginal increase. Capybara v4, the version it replaced, had a false claims rate of 16.7%. The upgrade nearly doubled the rate at which the model confidently asserted things that were not true.
+Internal evaluations showed that Capybara v8 --- a model upgrade intended to improve capability --- exhibited a 29-30% false claims rate in production. This was not a marginal increase. Capybara v4, the version it replaced, had a false claims rate of 16.7%. The upgrade nearly doubled the rate at which the model confidently asserted things that were not true.
 
 Let that number settle. In an autonomous coding agent, a 30% false claims rate means that roughly one in three factual assertions the model makes --- about function signatures, variable types, API behaviors, file contents --- could be wrong. And the model does not flag these assertions as uncertain. It states them with the same confidence it uses for assertions that happen to be correct.
 
-This was documented internally as an "actual regression." Not a cosmetic issue. Not a style problem. A measurable degradation in the reliability of the model's outputs, introduced by an upgrade that improved the model's capabilities in other dimensions.
+Internally, this was labeled an "actual regression." A measurable degradation in output reliability, introduced by an upgrade that improved capabilities in other dimensions.
 
 ## Why Confident Errors Are Worse Than Hesitant Ones
 
@@ -47,7 +47,7 @@ Now multiply this by every developer on a team, across every session, over weeks
 
 > **The core problem:** An agent that confidently executes wrong actions is worse than one that hesitates, because confident errors bypass the human's verification instinct. When the agent sounds certain, the human stops checking.
 
-This is not a hypothetical concern. It is the fundamental challenge of deploying autonomous agents in production. The model's confidence is not correlated with its accuracy in the way human confidence (imperfectly) correlates with human expertise. A model can be maximally confident and maximally wrong simultaneously. The user has no reliable signal to distinguish the two states.
+This problem sits at the center of autonomous agent deployment. The model's confidence bears no reliable correlation with its accuracy --- unlike human confidence, which at least imperfectly tracks expertise. A model can be maximally confident and maximally wrong simultaneously. The user has no signal to distinguish the two states.
 
 ## The Assertiveness-Accuracy Tradeoff
 
@@ -59,17 +59,17 @@ But this creates a direct tension with accuracy. A model that always commits to 
 
 Anthropic's response to the Capybara v8 regression was to implement what the internal documentation calls an "assertiveness counterweight" --- a behavioral control layered into the system prompt that explicitly instructs the model to limit its autonomous actions, verify assumptions before acting, and flag uncertainty rather than suppressing it.
 
-This is a remarkable architectural choice. Rather than retraining the model to be less confident (which risks degrading its capabilities), they added a prompt-level behavioral constraint that handicaps the model's autonomy. The agent is told, in effect: you are capable of making bold decisions, but we are going to make you hesitate anyway, because your confidence is not calibrated to your accuracy.
+Note the architectural choice: rather than retraining the model to be less confident (which risks degrading its capabilities), the team added a prompt-level behavioral constraint that handicaps the model's autonomy. The agent is told, in effect: you are capable of making bold decisions, but we are going to make you hesitate anyway, because your confidence is not calibrated to your accuracy.
 
 The tradeoff is real. The assertiveness counterweight makes the agent slower. It increases the number of turns required to complete a task. It introduces more "let me verify" steps that feel redundant when the model happens to be correct. Users who upgraded to the new model version noticed the change and some complained about the agent being "less helpful." But the alternative --- an agent that confidently introduces bugs into codebases at a 30% rate --- is not a viable product.
 
 ## Stop Sequence Failures and the Fragility of Model Upgrades
 
-The Capybara v8 issues went beyond false claims. Internal telemetry also documented a roughly 10% failure rate involving false triggers of stop sequences. When `<functions>` tags appeared at the tail of the prompt --- a normal occurrence in the tool-calling protocol --- the model would sometimes interpret the tag as a signal to stop generating rather than as context to process. The result: truncated or empty responses that broke the agent's execution loop.
+False claims were not the only problem. Telemetry data also documented a roughly 10% failure rate involving false triggers of stop sequences. When `<functions>` tags appeared at the tail of the prompt --- a normal occurrence in the tool-calling protocol --- the model would sometimes interpret the tag as a signal to stop generating rather than as context to process. The result: truncated or empty responses that broke the agent's execution loop.
 
 A separate failure mode involved complete stalls on empty `tool_result` messages. When a tool returned no output (a successful but silent operation, like writing a file with no errors), the model would sometimes fail to continue generating, treating the empty result as an error condition or end-of-conversation signal.
 
-These failures illustrate a principle that matters for any production agent system: model upgrades are not safe by default. A model that passes all your benchmark evaluations can still introduce novel failure modes that your test suite never anticipated, because the failure modes emerge from the interaction between the model's behavior and your system's protocol, not from the model's capabilities in isolation.
+The lesson generalizes: model upgrades are not safe by default. A model that passes all your benchmark evaluations can still introduce failure modes your test suite never anticipated. These failures emerge from the interaction between the model's behavior and your system's protocol, not from capabilities in isolation.
 
 The `<functions>` tag issue is a particularly instructive example. The model was trained on vast amounts of markup, including XML-like tags. The v8 model had learned to associate certain tag patterns with stopping behavior, creating a subtle interference between the model's language understanding and the application protocol built on top of it. No amount of capability benchmarking would have caught this. Only production telemetry --- monitoring actual agent behavior across thousands of sessions --- revealed the pattern.
 
@@ -77,7 +77,7 @@ The `<functions>` tag issue is a particularly instructive example. The model was
 
 ## Model Selection as an Architectural Decision
 
-The Claude Code architecture does not use a single model for all tasks. The leaked source reveals a routing layer that selects different models based on the nature of the operation. This is not just a cost optimization. It is a reliability architecture.
+The Claude Code architecture does not use a single model for all tasks. A routing layer selects different models based on the nature of the operation --- a reliability architecture, not just a cost optimization.
 
 Consider the spectrum of tasks an agent performs in a typical coding session:
 
@@ -124,7 +124,7 @@ There is a counterintuitive relationship between model capability and reliabilit
 
 The mechanism is this: as models gain the ability to perform more complex reasoning and abstraction, they also gain the ability to construct more elaborate --- and more plausible-sounding --- incorrect explanations. A small model that hallucinates a function name produces an obviously wrong output that a developer spots immediately. A large model that constructs a coherent but incorrect explanation of why a race condition occurs in a specific code path produces an output that a developer might spend 30 minutes investigating before realizing the entire analysis was fabricated.
 
-This is not a speculative concern. The jump from 16.7% to 30% false claims between Capybara v4 and v8 happened alongside improvements in the model's benchmark scores. The model got better at coding tasks on standard evaluations and simultaneously got worse at accurately reporting what it knew. It became more capable and less calibrated in the same upgrade.
+The data backs this up. The jump from 16.7% to 30% false claims between Capybara v4 and v8 happened alongside improvements in the model's benchmark scores. The model got better at coding tasks on standard evaluations and simultaneously got worse at accurately reporting what it knew. It became more capable and less calibrated in the same upgrade.
 
 The implication for agent architects: do not assume that upgrading to a more powerful model will improve your agent's end-to-end reliability. It may improve capability (the agent can handle harder tasks) while degrading calibration (the agent is wrong more often on easy tasks, and wrong more convincingly on hard ones). You need separate metrics for both dimensions.
 
@@ -132,7 +132,7 @@ The implication for agent architects: do not assume that upgrading to a more pow
 
 ## Building Calibration Into Your Agent
 
-Production calibration is not a one-time exercise. It is an ongoing operational discipline, similar to monitoring latency or error rates in a traditional service. Here is what it requires.
+Calibration requires ongoing operational discipline, closer to monitoring latency or error rates in a traditional service than to a one-time tuning pass. Here is what it requires.
 
 ### Instrument false claim rates
 
@@ -164,11 +164,25 @@ The assertiveness counterweight is an externally imposed constraint --- you are 
 
 This is the Producer-Critic pattern. The producing agent generates output (code, a plan, a refactoring proposal). A separate evaluation pass --- either a distinct agent or a second LLM call with a different prompt --- reviews the output for hallucinated functions, nonexistent variables, logical errors, and violations of the project's conventions. The evaluation pass does not need to be perfect. It needs to catch enough errors to shift the balance.
 
-In practice, one reflection pass on a coding agent's output typically catches a meaningful fraction of the errors that would otherwise reach the user. Diminishing returns set in quickly: a second pass catches fewer new issues, and a third pass rarely justifies its cost. For most use cases, a single reflection cycle is the right balance between quality and latency.
+A single reflection pass on a coding agent's output typically catches a meaningful fraction of the errors that would otherwise reach the user. Diminishing returns set in quickly: a second pass catches fewer new issues, and a third pass rarely justifies its cost. For most use cases, a single reflection cycle is the right balance between quality and latency.
 
 The counterweight and self-critique address different failure modes. The counterweight is preventive --- it makes the agent less likely to propose aggressive changes in the first place. Self-critique is corrective --- it catches errors in what the agent has already produced. A well-calibrated agent uses both. The counterweight reduces the volume of mistakes. Self-critique catches the ones that get through.
 
 The cost is real: each reflection cycle is an additional LLM call, adding both latency and token spend. Route this decision by task risk. For a low-stakes file rename, skip the reflection. For a database migration script, the cost of one additional LLM call is trivial compared to the cost of a broken migration in production.
+
+<div class="exercise">
+<div class="exercise-title">Try It: False Claim Spotting</div>
+<div class="exercise-body">
+<p>Pick a small file from a codebase you know well — something around 50-100 lines. Ask your coding agent to describe what the code does, line by line if needed. Then verify every factual claim.</p>
+<ol>
+<li>Does that function exist? Does it take those parameters? Does the return type match?</li>
+<li>Count the false claims.</li>
+<li>Now try again with a more specific prompt: "List every function, its parameters, and return type — mark anything you are uncertain about."</li>
+<li>Did the error rate drop? Did asking for uncertainty markers change the agent's behavior?</li>
+</ol>
+<p>This is calibration measurement in miniature. The gap between what the agent asserts and what the code actually contains is the false claim rate you would see at scale.</p>
+</div>
+</div>
 
 ## Applying This Pattern
 
@@ -187,6 +201,8 @@ The cost is real: each reflection cycle is an additional LLM call, adding both l
 - **Design for graceful uncertainty.** Train your agent's prompts to express uncertainty constructively. "I believe this function takes two arguments, but let me verify" is better than both "this function takes two arguments" (when wrong) and "I don't know anything about this function" (when the model actually has useful partial knowledge). The goal is calibrated confidence, not zero confidence.
 
 - **Plan for the non-linear scaling trap.** When evaluating newer, more capable models, test specifically for overconfidence regressions. A model that scores higher on coding benchmarks but produces more plausible-sounding errors is a net negative for your agent's reliability. Measure both dimensions independently.
+
+> **The bottom line:** Capability and reliability are different axes. An agent that impresses you on a demo can erode trust across a team in a week if its confidence outpaces its accuracy. Measure false claims the way you measure uptime --- continuously, per-model, with alerts when the numbers move.
 
 ---
 

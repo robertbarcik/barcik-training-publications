@@ -33,11 +33,11 @@ A single AI agent operating on a complex task faces three hard constraints.
 
 **Role confusion.** When you ask a single agent to plan an approach, implement it, and then critically review its own work, you are asking for three cognitively distinct behaviors from one context. The planning mindset ("what is the best approach?") conflicts with the implementation mindset ("just get it working") which conflicts with the review mindset ("what is wrong with this?"). In practice, a single agent asked to review its own code finds far fewer issues than a separate agent reviewing the same code with fresh context. The sunk-cost bias is not just a human phenomenon --- language models that generated code in the same context are measurably less likely to identify problems with it.
 
-These are not theoretical limits. They are the practical ceiling that every team building on single-agent architecture encounters once tasks exceed a certain complexity threshold. The question is what to do about it.
+These are not theoretical limits. They are the ceiling that teams hit once tasks exceed a certain complexity threshold. The question is what to do about it.
 
 ## The Swarm Topology
 
-The Claude Code source revealed a multi-agent architecture built around what is best described as a swarm topology. The structure has four components:
+Claude Code implements a multi-agent architecture built around what is best described as a swarm topology. The structure has four components:
 
 ```
                     ┌──────────┐
@@ -171,7 +171,7 @@ Agents communicate by sending structured messages to each other, typically throu
 
 A hybrid approach where agents post partial results to a shared "blackboard," and other agents monitor the blackboard for information relevant to their tasks. The orchestrator manages the blackboard and notifies agents when relevant information appears. This is useful when the dependencies between subtasks are not fully known in advance --- agents can adapt their behavior based on what other agents have discovered.
 
-The Claude Code swarm uses primarily message passing through the orchestrator, with the shared prompt cache serving as a limited form of shared memory for foundational context. This is a pragmatic choice: message passing is the easiest to debug and audit, and the shared cache handles the highest-volume data sharing (project context) without the complexity of a full shared memory system.
+Claude Code's swarm uses message passing through the orchestrator, with the shared prompt cache serving as a limited form of shared memory for foundational context. A pragmatic choice: message passing is the easiest to debug and audit, and the shared cache handles the highest-volume data sharing (project context) without the complexity of a full shared memory system.
 
 ## Failure Modes You Must Design For
 
@@ -179,27 +179,27 @@ Multi-agent systems introduce failure modes that do not exist in single-agent ar
 
 ### Cascading errors
 
-Agent A completes its task but produces subtly incorrect output. Agent B, which depends on Agent A's output, proceeds with the incorrect input and produces its own output --- which is now wrong in a way that compounds Agent A's error. Agent C depends on Agent B. By the time the error is detected, three agents have done work that must be discarded.
+Agent A completes its task but produces subtly incorrect output. Agent B, depending on A's output, proceeds with the bad input and compounds the error. Agent C depends on B. By the time anyone notices, three agents have done work that must be thrown away.
 
-The defense is validation at every handoff point. When the orchestrator passes Agent A's output to Agent B, it should validate that output against the original requirements and known constraints. Catching errors at the handoff is dramatically cheaper than catching them after three more agents have built on the flawed foundation.
+Validate at every handoff point. When the orchestrator passes Agent A's output to Agent B, check it against the original requirements and known constraints. Catching errors at the handoff is dramatically cheaper than catching them three agents downstream.
 
 ### Circular delegation
 
-Agent A encounters a subproblem it cannot solve and requests help from the orchestrator. The orchestrator spawns Agent B to handle it. Agent B encounters a related subproblem and requests help. The orchestrator, following the same logic, spawns an agent to handle it --- which produces a task equivalent to Agent A's original task. Without cycle detection, this loops indefinitely.
+Agent A hits a subproblem it cannot solve and asks the orchestrator for help. The orchestrator spawns Agent B. Agent B hits a related subproblem, asks for help, and the orchestrator --- following the same logic --- spawns an agent whose task is equivalent to Agent A's original task. Without cycle detection, this loops forever.
 
-The defense is tracking the task ancestry. Every spawned agent carries a lineage record: which task spawned it, which task spawned that task, back to the original user request. If a new task is semantically equivalent to an ancestor task, the orchestrator rejects it and forces the requesting agent to handle it directly or report failure.
+Track task ancestry. Every spawned agent carries a lineage record: which task spawned it, which task spawned that, back to the original user request. If a new task is semantically equivalent to an ancestor task, reject it. Force the requesting agent to handle the problem directly or report failure.
 
 ### Agents disagreeing on approach
 
-A coder agent implements a solution using approach X. A reviewer agent rejects it and suggests approach Y. The coder agent revises using approach Y. The reviewer now has concerns about approach Y that it did not raise initially. This back-and-forth can continue indefinitely.
+The coder implements approach X. The reviewer rejects it, suggests Y. The coder revises. The reviewer now has concerns about Y that it never raised initially. This back-and-forth can continue indefinitely.
 
-The defense is bounded iteration. Set a maximum number of review cycles (typically two to three). If agreement is not reached within the bound, escalate to the orchestrator, which either makes a decision or escalates to the human. Unbounded revision loops are the multi-agent equivalent of an infinite loop in code.
+Set a maximum number of review cycles --- two to three is typical. If agreement is not reached within the bound, escalate to the orchestrator, which either decides or escalates to the human. Unbounded revision loops are the multi-agent equivalent of an infinite loop in code.
 
 ### Cost explosions from unbounded spawning
 
-The orchestrator decomposes a task into subtasks. One subtask turns out to be complex, so its assigned agent requests further decomposition. The sub-subtasks also request decomposition. Without limits, a single user request can spawn dozens of agents, each consuming context tokens, model inference time, and tool invocations.
+The orchestrator decomposes a task. One subtask turns out to be complex, so its agent requests further decomposition. The sub-subtasks do the same. Without limits, a single user request spawns dozens of agents, each consuming context tokens, model inference time, and tool invocations.
 
-The defense is a cost budget. Before decomposing a task, the orchestrator allocates a token budget and a wall-clock time budget. Each spawned agent receives a fraction of the remaining budget. When an agent's budget is exhausted, it must produce its best result with what it has, not request more resources. The orchestrator tracks cumulative spend across all agents and can abort the entire swarm if the total exceeds a hard limit.
+Allocate a cost budget before decomposing. Each spawned agent receives a fraction of the remaining budget. When an agent's budget runs out, it produces its best result with what it has --- no requesting more resources. The orchestrator tracks cumulative spend across all agents and aborts the entire swarm if the total exceeds a hard limit.
 
 > **Design insight:** Every multi-agent failure mode has the same root cause: insufficient constraints on inter-agent interaction. The orchestrator's primary job is not assigning work --- it is enforcing boundaries. Budget limits, iteration caps, cycle detection, and handoff validation are the four non-negotiable constraints.
 
@@ -231,7 +231,7 @@ The practical takeaway: the swarm patterns in this chapter handle within-system 
 
 ## When Multi-Agent Is Overkill
 
-Multi-agent orchestration is powerful, but it is not always the right tool. The overhead of decomposition, spawning, coordination, and result aggregation is real. For tasks that take a single agent less than a few minutes, the coordination overhead of a multi-agent approach often exceeds the time saved through parallelism.
+Not every problem needs a swarm. The overhead of decomposition, spawning, coordination, and result aggregation is real. For tasks that take a single agent less than a few minutes, the coordination overhead of a multi-agent approach often exceeds the time saved through parallelism.
 
 Rules of thumb:
 
@@ -241,7 +241,20 @@ Rules of thumb:
 - **Research-heavy tasks:** A research swarm (multiple research agents gathering information in parallel, feeding a single coder agent) is one of the highest-ROI multi-agent configurations. Research is embarrassingly parallel and benefits from cheap models.
 - **Tasks requiring diverse expertise:** If a task spans multiple domains (database migration + API changes + frontend updates + infrastructure config), specialized agents for each domain produce better results than a generalist agent attempting all four.
 
-The cost-benefit calculation should be explicit. Before spawning a swarm, estimate: how long would a single agent take? How much would the swarm cost in additional tokens? Is the time saved worth the additional spend? If the answer is not clearly yes, use a single agent.
+Make the cost-benefit calculation explicit. Before spawning a swarm, estimate: how long would a single agent take? How much would the swarm cost in additional tokens? Is the time saved worth the additional spend? If the answer is not clearly yes, use a single agent.
+
+<div class="exercise">
+<div class="exercise-title">Try It: Two-Agent Split</div>
+<div class="exercise-body">
+<p>Pick a real coding task you would normally handle with a single agent session --- something like "add input validation to this API endpoint" or "refactor this module to use async/await."</p>
+<ol>
+<li>Use one agent session to <strong>plan only</strong>: identify which files to change, describe each change in plain language, note the order of operations. Save that plan as a text file.</li>
+<li>Open a fresh agent session and hand it <strong>only the plan</strong> --- no additional context about the codebase beyond what the plan says. Let it execute.</li>
+<li>Compare the result to doing the whole thing in a single session.</li>
+</ol>
+<p>Where did the handoff lose information? Was the planner's output specific enough for the executor? This is multi-agent coordination in its simplest form --- and the gaps you find are the same gaps that plague automated orchestrators at scale.</p>
+</div>
+</div>
 
 ## Applying This Pattern
 
@@ -265,7 +278,7 @@ When building multi-agent orchestration into your own system, follow this progre
 
 - **Evaluate A2A and MCP for cross-system collaboration.** If your agents need to collaborate with external systems or agents you do not control, the Agent2Agent protocol handles inter-agent discovery and task delegation, while MCP standardizes tool access. These protocols solve cross-system problems that internal swarm orchestration cannot --- and they are converging as industry standards under the Linux Foundation.
 
-> **What to take from this chapter**: Multi-agent orchestration solves real problems --- context limits, sequential bottlenecks, role confusion --- but introduces its own failure modes that require deliberate design. The shared prompt cache is the enabling architecture that makes multi-agent economically viable, reducing marginal agent cost by up to 90%. Start with two agents (planner + executor), add a reviewer third, and enforce cost budgets and authorization gates from the beginning. The orchestrator's primary job is not assigning work --- it is enforcing constraints. Design for the failure modes (cascading errors, circular delegation, cost explosions) before they find you in production.
+The bottom line: multi-agent orchestration solves real problems --- context limits, sequential bottlenecks, role confusion --- but it buys you new failure modes that require deliberate design. The shared prompt cache makes it economically viable, cutting marginal agent cost by up to 90%. Start with two agents (planner + executor), add a reviewer third, enforce cost budgets and authorization gates from the beginning. The orchestrator's primary job is not assigning work. It is enforcing constraints. Design for cascading errors, circular delegation, and cost explosions before they find you in production.
 
 ---
 

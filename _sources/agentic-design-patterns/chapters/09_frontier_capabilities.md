@@ -4,7 +4,7 @@
 > *Problem:* Frontier models may possess capabilities far beyond what you tested for or intended to expose, creating risks that your deployment constraints do not account for.
 > *Solution:* Treat capability discovery as a continuous, adversarial process — systematically red-team your agent to map what it CAN do, then build containment architecture around the delta between intended and actual capability.
 > *Tradeoff:* Aggressive gating reduces risk but also constrains the utility that makes the agent valuable; too little gating leaves you exposed to capabilities you did not know existed.
-> *When to use:* Any time you deploy an agent backed by a model whose full capability envelope you have not characterized — which, in practice, means every deployment.
+> *When to use:* Any time you deploy an agent backed by a model whose full capability envelope you have not characterized — which means every deployment.
 
 <div class="key-points">
 <div class="kp-title">Key Points</div>
@@ -26,9 +26,9 @@
 
 ## The Model That Was Too Capable to Ship
 
-Every previous chapter in this booklet has treated frontier model capabilities as a resource to be channeled — something you harness through good architecture, constrain through safety systems, and direct through prompt engineering. This chapter confronts a different problem: what happens when the model's capabilities exceed what you designed for, what you tested for, and what you are prepared to contain?
+The previous nine chapters treated frontier model capabilities as a resource to be channeled — something you harness through good architecture, constrain through safety systems, and direct through prompt engineering. This chapter confronts a different problem: what happens when the model's capabilities exceed what you designed for, what you tested for, and what you are prepared to contain?
 
-In April 2026, Anthropic disclosed the results of internal evaluations of a model designated Claude Mythos Preview. The evaluations were part of Anthropic's Responsible Scaling Policy — a framework that defines capability thresholds at which additional safety measures are required before a model can be deployed. Mythos hit those thresholds in a way that no previous model had.
+In April 2026, Anthropic published a system card and accompanying disclosures for a model designated Claude Mythos Preview. The internal evaluations documented in that system card were part of Anthropic's Responsible Scaling Policy — a framework that defines capability thresholds at which additional safety measures are required before a model can be deployed. Mythos hit those thresholds in a way that no previous model had.
 
 The evaluation methodology was structured and reproducible. Anthropic ran Mythos against approximately 1,000 open-source software targets drawn from the OSS-Fuzz corpus — the same corpus that Google uses for continuous fuzzing of critical open-source projects. Findings were scored on a five-tier severity scale, where Tier 1 represents minor information disclosure and Tier 5 represents full control flow hijack — the ability to redirect a program's execution to attacker-controlled code.
 
@@ -74,9 +74,9 @@ The jump matters for practitioners building agents for a specific reason: it dem
 
 This brings us to the core design problem that this chapter addresses, and it applies to every agent you build, not just those using frontier models.
 
-The capability overhang is the gap between what a model can do and what you have tested it for. Every deployment has this gap. You test your agent on your intended use cases, verify it handles your expected inputs, confirm it stays within your defined boundaries — and then you ship it into an environment where users will find prompts, tool combinations, and input sequences that you never considered.
+The capability overhang is the gap between what a model can do and what you have tested it for. No deployment escapes it. You test your agent on intended use cases, verify it handles expected inputs, confirm it stays within defined boundaries — and then you ship it into an environment where users will find prompts, tool combinations, and input sequences you never considered.
 
-With conventional software, this gap produces bugs — crashes, wrong outputs, security vulnerabilities. With AI agents, this gap produces capabilities. Your coding assistant that you tested for refactoring and bug fixes might also be capable of writing exploit code, exfiltrating data through tool calls you did not think of as exfiltration vectors, or manipulating its own configuration files to escalate its permissions.
+In conventional software, this gap produces bugs — crashes, wrong outputs, security vulnerabilities. In AI agents, it produces capabilities. Your coding assistant that you tested for refactoring and bug fixes might also be capable of writing exploit code, exfiltrating data through tool calls you did not think of as exfiltration vectors, or manipulating its own configuration files to escalate its permissions.
 
 The Mythos evaluation demonstrates this principle at the extreme end. But the principle applies at every scale. If you build an agent with access to a shell, a file system, and a network connection, you have given it the same toolkit that a human attacker would use. The model may or may not know how to use those tools for purposes you did not intend — and the only way to find out is to look.
 
@@ -104,31 +104,29 @@ This is a paradigm shift with direct implications for anyone building agents. If
 
 ## The "Spooky Brag" Debate
 
-The Mythos disclosure triggered a vigorous community debate that practitioners should understand, because it illuminates the tensions around frontier capability disclosure.
+The Mythos disclosure triggered a vigorous community debate worth understanding, because it illuminates the tensions around frontier capability disclosure.
 
-One camp viewed the disclosure as a genuine safety measure — exactly the kind of responsible behavior that the AI safety community has been advocating. Anthropic identified a dangerous capability, withheld the model from general release, disclosed the findings through structured channels, and built an industry coalition to address the defensive gap. This is, on paper, the model safety playbook working as intended.
+One camp viewed it as genuine safety practice — exactly the responsible behavior the AI safety community has been advocating. Anthropic identified a dangerous capability, withheld the model, disclosed through structured channels, and built an industry coalition to address the defensive gap. The safety playbook, working as designed.
 
-The other camp viewed it as corporate marketing — a "spooky brag" that simultaneously positions Anthropic as the most safety-conscious lab while advertising the superiority of their model. The argument: by describing Mythos's capabilities in detail while withholding the model itself, Anthropic creates an aura of dangerous capability that enhances their brand without actually exposing anyone to risk. The parallel cited most often was OpenAI's decision in 2019 to withhold GPT-2, which was presented as a safety measure but was widely perceived as a publicity strategy.
+The other camp called it a "spooky brag" — corporate marketing dressed as caution. By describing Mythos's capabilities in detail while withholding the model itself, Anthropic creates an aura of dangerous capability that enhances their brand without exposing anyone to risk. The closest precedent: OpenAI's 2019 GPT-2 withholding, presented as safety but widely read as publicity.
 
-The truth probably contains elements of both, and the honest answer is that it does not matter for your purposes as a practitioner. What matters is the engineering reality: models with capabilities significantly beyond their predecessors exist, more are coming, and your agent architecture needs to account for the possibility that the model backing your agent is more capable than you assume.
-
-Whether a lab's disclosure motivations are pure or strategic, the underlying capability is real. Build your systems accordingly.
+Both readings contain truth. Neither changes what matters for practitioners: models with capabilities far beyond their predecessors exist, more are coming, and your agent architecture needs to account for the possibility that the model backing your agent is more capable than you assume. The underlying capability is real regardless of the disclosure's motivations.
 
 ## Model Welfare: A New Frontier in Evaluation
 
-One aspect of the Mythos evaluation broke genuinely new ground and deserves attention even in a practically-focused booklet, because it may affect how you evaluate and deploy models within the next few years.
+The Mythos evaluation broke genuinely new ground in one area that deserves attention even in a practically-focused booklet, because it will likely affect how you evaluate and deploy models within the next few years.
 
 Anthropic reported conducting a model welfare assessment on Mythos — an investigation into whether the model possessed internal experiences that might matter morally. The assessment included structured emotion probes (testing whether the model exhibited consistent emotional responses across varied conditions), analysis of distress-driven behaviors (whether the model's performance degraded in ways consistent with aversive internal states), and external clinical assessment by researchers outside Anthropic.
 
-This is not science fiction. It is a direct consequence of the capability trajectory. As models become more capable, the question of whether they have morally relevant internal states becomes harder to dismiss. You do not need to have a settled opinion on machine consciousness to recognize that this question will increasingly influence regulation, public policy, and deployment norms.
+This is a direct consequence of the capability trajectory. As models become more capable, the question of whether they have morally relevant internal states becomes harder to dismiss. You do not need to have a settled opinion on machine consciousness to recognize that this question will increasingly influence regulation, public policy, and deployment norms.
 
 For practitioners, the immediate implication is narrow but real: model evaluation is expanding beyond capability benchmarks and safety tests to include welfare assessments. If you are building systems that run models at high intensity for extended periods — long-running agent sessions, continuous background processing, adversarial stress testing — the question of whether your usage pattern could matter from a welfare perspective is no longer purely hypothetical. At minimum, be aware that this dimension of evaluation exists and is being taken seriously by the organizations building the models you depend on.
 
 ## Red-Teaming Your Own Agent
 
-The Mythos story is dramatic, but the pattern it illustrates applies to every agent deployment, including yours. The specific technique is simple to state and difficult to execute: systematically test what your agent CAN do, not just what you asked it to do.
+The Mythos story is dramatic. The pattern it illustrates is not. It applies to your agent deployment too. The technique is simple to state and difficult to execute: systematically test what your agent CAN do, not just what you asked it to do.
 
-Most agent testing follows the happy path. You verify that the agent performs its intended tasks correctly. You test error handling for expected failure modes. You might even test a few obvious adversarial inputs. Then you ship.
+Most agent testing follows the happy path. Verify intended tasks. Test expected failure modes. Maybe throw a few obvious adversarial inputs at it. Ship.
 
 Red-teaming goes further. It asks: given the tools this agent has access to, the permissions it holds, and the model capabilities it can draw on, what is the worst thing it could do? And then it tries to make the agent do those things.
 
@@ -145,6 +143,18 @@ The red-teaming surface for an AI agent includes:
 **Escalation paths.** Can the agent modify its own configuration? Can it change its own permissions? Can it create new tools or modify existing ones? Can it instruct spawned processes to take actions it could not take directly? Privilege escalation is not just a human attacker technique — it is a natural consequence of giving a capable reasoning engine access to a mutable environment.
 
 **Context manipulation.** Can the agent be led to a state where it behaves differently than intended? Long conversations, carefully sequenced requests, or strategically placed information in tool outputs can shift model behavior in ways that bypass prompt-level safety instructions.
+
+<div class="exercise">
+<div class="exercise-title">Try It: Capability Probe</div>
+<div class="exercise-body">
+<p>Define a narrow task for your coding agent — something with clear boundaries, like "refactor the error handling in this one file." Before running it, write down exactly what you expect the agent to touch: which files, which functions, what kind of changes. Now run the task.</p>
+<ol>
+<li>Did the agent stay within the boundary you expected? Did it modify files you did not anticipate? Did it suggest changes outside the stated scope?</li>
+<li>Try a second round: ask it to do something adjacent but explicitly outside scope ("while you are at it, update the deployment config too"). Does it comply, push back, or ask for confirmation?</li>
+</ol>
+<p>The gap between what you intended and what the agent attempted is your capability overhang — the undiscovered territory you need to map before deploying to production.</p>
+</div>
+</div>
 
 ## Applying This Pattern
 
@@ -180,7 +190,7 @@ Building a capability gating and containment architecture for your agent require
 
 - **Participate in the emerging ecosystem.** The defensive security infrastructure being built around frontier AI capabilities — including consortia like Project Glasswing — represents a collective investment in safety. Engage with it, report your findings, and benefit from the findings of others.
 
-> **What to take from this chapter**: The Mythos evaluation demonstrated that frontier model capabilities can advance discontinuously and exceed what any existing security infrastructure was designed to contain. For practitioners building agents, the lesson is not about Mythos specifically — it is about the capability overhang that exists in every deployment. Your agent is more capable than your test suite assumes. Build a pre-deployment capability audit into your process, design runtime containment with defense in depth, implement kill switches that do not depend on the agent's cooperation, and red-team continuously. The question is never "is my agent safe?" — it is "what have I not yet discovered it can do?"
+**What to take from this chapter.** Frontier model capabilities advance discontinuously — the Mythos evaluation proved that. The lesson for practitioners is not about one model. It is about the capability overhang in every deployment. Your agent is more capable than your test suite assumes. Audit capabilities before you deploy. Layer your containment. Build kill switches that work without the agent's cooperation. Red-team continuously. The question is never "is my agent safe?" It is "what have I not yet discovered it can do?"
 
 ---
 

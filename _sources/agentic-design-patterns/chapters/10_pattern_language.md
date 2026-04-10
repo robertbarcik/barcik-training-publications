@@ -33,7 +33,7 @@ Over the previous nine chapters, we extracted nine design patterns from the Clau
 | 8 | Multi-Agent Swarm Orchestration | Decompose complex tasks across specialized agents with shared context and coordinated execution | Ch 8 |
 | 9 | Capability Gating / Containment | Systematically discover what your agent can do, then build containment around the gap between intended and actual capability | Ch 9 |
 
-These patterns are not a checklist. Not every agent needs every pattern, and some patterns add complexity that is not justified for simpler deployments. The art is in selection and composition.
+These patterns are not a checklist. Your agent does not need all nine, and some add complexity that is not justified for simpler deployments. The art is in selection and composition.
 
 ## How Patterns Compose
 
@@ -155,9 +155,9 @@ The agent swarm distributes work across multiple specialized agents with shared 
 
 ## The Maturity Curve
 
-The most common mistake in agent architecture is over-engineering early. Teams read about swarm orchestration and capability gating and defense-in-depth and conclude that they need all of it from day one. They spend six months building infrastructure and never ship an agent.
+The most common mistake in agent architecture is over-engineering early. Teams read about swarm orchestration and capability gating and defense-in-depth and conclude that they need all of it from day one. Six months of infrastructure work. No shipped agent.
 
-The right approach is to start at the simplest architecture that could work for your use case and add patterns as requirements demand.
+Start at the simplest architecture that could work for your use case. Add patterns as requirements demand.
 
 **Week 1--4: Build a solo agent.** Get a model calling tools, reading files, executing commands. Implement basic tool classification (read/write/destructive) and a simple memory file. Ship it to yourself. Use it daily. Learn where it breaks.
 
@@ -173,21 +173,21 @@ The right approach is to start at the simplest architecture that could work for 
 
 One topic that runs through the entire booklet deserves explicit treatment here, because it affects how you can use what you have learned.
 
-The Claude Code source code was exposed inadvertently. Reading it directly and reimplementing it would raise serious legal and ethical concerns. But the architectural patterns it embodies are not proprietary --- they are engineering solutions to universal problems that any agent developer faces.
+The architectural patterns in Claude Code are visible through its public behavior, its documentation, and the community analysis that has grown around it. But the specific source code is Anthropic's intellectual property. The question for practitioners is not "how do I replicate the code?" but "how do architectural patterns transfer between systems?"
 
-The claurst project demonstrated one approach to this tension. Claurst is a Rust reimplementation of Claude Code's functionality that used a two-phase abstraction process:
+The claurst project offers one answer. Claurst is a Rust reimplementation of Claude Code's functionality that used a two-phase abstraction process:
 
-1. **Phase 1 (Specification):** One AI system read the leaked source code and produced 14 behavioral specifications --- documents describing what the system does, how its components interact, and what invariants it maintains. No code was included in the specifications, only architectural and behavioral descriptions.
+1. **Phase 1 (Specification):** One AI system analyzed Claude Code's observable behavior and produced 14 behavioral specifications --- documents describing what the system does, how its components interact, and what invariants it maintains. No code was included in the specifications, only architectural and behavioral descriptions.
 
-2. **Phase 2 (Implementation):** A second AI system, which had never been exposed to the original source code, wrote a complete implementation in Rust based solely on the behavioral specifications.
+2. **Phase 2 (Implementation):** A second AI system, working only from those behavioral specifications, wrote a complete implementation in Rust. The result is original code that solves the same problems through the same architectural patterns.
 
-This two-phase process is a clean-room reimplementation adapted for the AI era. It demonstrates that architectural patterns can be transferred effectively without copying code. The specifications capture the design intent --- the "what" and "why" --- while the implementation is entirely original.
+This two-phase process demonstrates something important: architectural patterns transfer without copying code. The specifications capture design intent --- the "what" and "why" --- while the implementation is entirely independent.
 
-This matters for you because it validates the approach this booklet takes. The patterns described in Chapters 1 through 9 are not Claude Code's intellectual property. They are engineering patterns that emerge from the constraints of building production AI agents. Skeptical memory, risk-classified tools, layered prompts, background consolidation --- these are solutions to problems that every agent builder faces. You can implement them in any language, on any platform, with any model, without reference to Anthropic's code.
+This matters because the patterns described in Chapters 1 through 9 are universal. They are engineering responses to engineering constraints that any agent builder faces. Skeptical memory, risk-classified tools, layered prompts, background consolidation --- different teams, working independently with different models and different languages, converge on these same solutions. You can implement them in any language, on any platform, with any model, because the constraints that produce them are shared.
 
 ## Open Questions
 
-Intellectual honesty requires acknowledging what the field has not yet resolved. These are the questions that will shape agent architecture over the next two to five years, and where the answers today are genuinely uncertain.
+Some questions remain genuinely unresolved. They will shape agent architecture over the next two to five years, and the honest answer to most of them is "we do not know yet."
 
 ### How do you measure agent reliability in production?
 
@@ -211,11 +211,25 @@ The current approaches --- priority queues, resource locks, dedicated capacity -
 
 Chapter 9 described the capability overhang problem --- the gap between what a model can do and what you have tested for. The uncomfortable question is whether this gap is closable. If model capabilities advance faster than our ability to characterize them, then capability gating is a rearguard action --- useful for slowing down risk exposure, but not for eliminating it.
 
-The honest answer is that we do not know. The Mythos evaluation showed a 90x capability jump on a specific task. If jumps of that magnitude are common, then containment strategies designed for the current capability level will be obsolete by the time they are deployed. This does not mean you should not build containment --- it means you should design containment that is easy to update, easy to re-evaluate, and not dependent on specific assumptions about what the model can do.
+We do not know. The Mythos evaluation showed a 90x capability jump on a specific task. If jumps of that magnitude are common, containment strategies designed for the current capability level will be obsolete by the time they are deployed. This does not mean you should skip containment --- it means you should design containment that is easy to update, easy to re-evaluate, and not dependent on specific assumptions about what the model can do.
 
 ### How will standardized protocols reshape agent architecture?
 
 The Model Context Protocol (agent-to-tool) and Agent2Agent Protocol (agent-to-agent) are converging as open standards under the Linux Foundation, backed by Anthropic, Google, OpenAI, Microsoft, and AWS. Google's Agent Development Kit already integrates both natively. As these protocols mature, the build-versus-integrate decision shifts fundamentally. The tool constraint patterns (Chapter 4), prompt layering (Chapter 5), and multi-agent orchestration (Chapter 8) in this booklet may increasingly be implemented via protocol-level standards rather than bespoke orchestration code. The question for practitioners is not whether to adopt these protocols, but when --- and how much of your custom orchestration they will eventually replace.
+
+<div class="exercise">
+<div class="exercise-title">Try It: Your Architecture in 15 Minutes (Capstone)</div>
+<div class="exercise-body">
+<p>This exercise ties the booklet together. Pick a real project — something you are working on or want to build. Open your coding agent and work through these four steps:</p>
+<ol>
+<li>Answer the four design questions from this chapter out loud (trust boundary, required patterns, token budget, worst-case action). Write the answers into a new file called ARCHITECTURE.md.</li>
+<li>Based on your answers, choose Solo, Supervised, or Swarm as your starting architecture.</li>
+<li>Ask your coding agent to generate a first-draft CLAUDE.md for this project, incorporating the patterns you selected — persistent context rules, tool constraints, risk classification levels, prompt structure.</li>
+<li>Review what the agent produced. What did it get right? What did it miss? What would you change?</li>
+</ol>
+<p>You now have the skeleton of a real agent architecture. The next step is to build.</p>
+</div>
+</div>
 
 ## The Design Exercise
 
@@ -227,7 +241,7 @@ Who uses the agent? Who is affected by its actions? If the agent makes a mistake
 
 **2. Which patterns from this booklet does your use case require?**
 
-Start with the minimum. Every agent needs some form of prompt architecture (Pattern 5) and some form of tool constraints (Pattern 4). Beyond that, add patterns only when you can name the specific problem they solve in your context. "It seems like a good idea" is not a sufficient reason. "Users will interact across sessions and the agent must maintain continuity" is.
+Start with the minimum. Some form of prompt architecture (Pattern 5) and some form of tool constraints (Pattern 4) are table stakes. Beyond those two, add patterns only when you can name the specific problem they solve in your context. "It seems like a good idea" is not sufficient. "Users will interact across sessions and the agent must maintain continuity" is.
 
 **3. What is your token budget per session?**
 
@@ -239,17 +253,17 @@ This is the capability gating question (Pattern 9), made personal. Be specific. 
 
 ## Where This Leaves You
 
-This booklet began with 513,000 lines of TypeScript and a claim: that production agent architecture is fundamentally a systems engineering problem, not an AI problem. Nine chapters later, that claim should feel less like an assertion and more like an observation.
+This booklet began with 513,000 lines of TypeScript and a claim: production agent architecture is fundamentally a systems engineering problem, not an AI problem. Nine chapters later, that should feel less like an assertion and more like an observation.
 
 The patterns we have examined --- persistent context, background consolidation, risk-classified tools, layered prompts, output calibration, defense in depth, swarm orchestration, capability gating --- are engineering patterns. They are responses to engineering constraints: limited context windows, finite token budgets, probabilistic outputs, safety requirements, cost ceilings, latency bounds. The model provides the intelligence. The architecture provides the agency.
 
-What the Claude Code leak revealed, and what this booklet has attempted to teach, is that these patterns are not proprietary secrets. They are the natural solutions that emerge when capable engineers confront the real constraints of building AI agents for production use. Different teams, working independently, with different models and different codebases, will arrive at similar patterns --- because the constraints are universal.
+What studying Claude Code's architecture reveals --- and what this booklet has attempted to teach --- is that these patterns are not proprietary secrets. They are the natural solutions that emerge when capable engineers confront the real constraints of building AI agents for production use. Different teams, working independently, with different models and different codebases, arrive at similar patterns. The constraints are universal.
 
 The field is young. The patterns will evolve. New constraints will emerge as models become more capable, as regulatory frameworks mature, as user expectations shift. The open questions listed in this chapter are real, and their answers will reshape agent architecture in ways we cannot fully predict.
 
 But the foundations are solid. If you understand the nine patterns in this booklet --- not just what they are, but why they exist and when they apply --- you have a vocabulary for reasoning about agent architecture that will remain useful even as the specific implementations change. The patterns describe what agents need to do. The emerging protocols (MCP, A2A) describe how agents communicate. Frameworks like Google's ADK provide implementation scaffolding. Understanding the patterns gives you the judgment to evaluate which protocols and frameworks to adopt for your specific use case --- and, just as importantly, which to defer.
 
-Start with the simplest architecture that could work. Add complexity in response to observed problems. Red-team your own systems before your users do. And remember the real lesson from the 460 lint suppressions in Claude Code's main file: production agent code is not elegant. It is correct. That is what matters.
+Start with the simplest architecture that could work. Add complexity in response to observed problems. Red-team your own systems before your users do. Remember those 460 lint suppressions in Claude Code's main file. Production agent code is not elegant. It is correct. Correctness is what matters.
 
 Build the thing. Ship it. Learn from what breaks. Iterate.
 
