@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code Setup — How It All Works</title>
+    <style>
+:root {
+    --navy: #1e3a5f;
+    --navy-light: #2a5280;
+    --accent: #3b82f6;
+    --bg: #ffffff;
+    --bg-sidebar: #f8fafc;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --code-bg: #f1f5f9;
+    --sidebar-width: 300px;
+    --progress-height: 3px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+}
+
+/* Progress bar */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: var(--progress-height);
+    background: var(--accent);
+    z-index: 1000;
+    transition: width 0.1s;
+}
+
+/* Sidebar */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 2rem 0;
+    z-index: 100;
+    transition: transform 0.3s;
+}
+
+#sidebar-header {
+    padding: 0 1.5rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1rem;
+}
+
+#sidebar-header h2 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+#sidebar-header p {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-top: 0.3rem;
+    line-height: 1.4;
+}
+
+#sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar nav ul li a {
+    display: block;
+    padding: 0.55rem 1.5rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+    line-height: 1.4;
+}
+
+#sidebar nav ul li a:hover {
+    color: var(--navy);
+    background: rgba(30, 58, 95, 0.04);
+}
+
+#sidebar nav ul li a.active {
+    color: var(--navy);
+    font-weight: 600;
+    border-left-color: var(--accent);
+    background: rgba(59, 130, 246, 0.06);
+}
+
+/* Hamburger menu */
+#menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 200;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Main content wrapper */
+#content-wrapper {
+    margin-left: var(--sidebar-width);
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+/* Main content */
+#content {
+    max-width: 780px;
+    width: 100%;
+    padding: 3rem 1rem 6rem;
+}
+
+/* Chapter sections */
+.chapter {
+    margin-bottom: 5rem;
+    padding-top: 1rem;
+}
+
+.chapter:first-child {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.chapter-number {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+}
+
+/* Typography */
+h1 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+h3 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--navy-light);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+p {
+    margin-bottom: 1.1rem;
+}
+
+/* Lists */
+ul, ol {
+    margin-bottom: 1.1rem;
+    padding-left: 1.8rem;
+}
+
+li {
+    margin-bottom: 0.4rem;
+}
+
+/* Strong / emphasis */
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* Code */
+code {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+}
+
+pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+thead {
+    background: var(--navy);
+    color: white;
+}
+
+th {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+tbody tr:nth-child(even) {
+    background: var(--bg-sidebar);
+}
+
+tbody tr:hover {
+    background: rgba(59, 130, 246, 0.04);
+}
+
+/* Blockquotes (used for callouts / key takeaways) */
+blockquote {
+    border-left: 4px solid var(--accent);
+    background: rgba(59, 130, 246, 0.04);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: normal;
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Horizontal rules (chapter dividers) */
+hr {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 4rem 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    #sidebar {
+        transform: translateX(-100%);
+    }
+    #sidebar.open {
+        transform: translateX(0);
+        box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+    }
+    #menu-toggle {
+        display: block;
+    }
+    #content-wrapper {
+        margin-left: 0;
+        padding: 0 1rem;
+    }
+    #content {
+        padding: 2rem 0.5rem 4rem;
+    }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.3rem; }
+    table { font-size: 0.82rem; }
+    th, td { padding: 0.5rem 0.6rem; }
+}
+
+@media (max-width: 600px) {
+    #content { padding: 1.5rem 1rem 3rem; }
+    body { font-size: 15.5px; }
+}
+
+/* Print */
+@media print {
+    #sidebar, #menu-toggle, #progress-bar { display: none !important; }
+    #content-wrapper { margin-left: 0; padding: 0; }
+    #content { max-width: 100%; }
+    .chapter { page-break-before: always; }
+    .chapter:first-child { page-break-before: auto; }
+}
+</style>
+</head>
+<body>
+    <div id="progress-bar"></div>
+
+    <button id="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+
+    <aside id="sidebar">
+        <div id="sidebar-header">
+            <h2>Claude Code Setup</h2>
+            <p>Configuration, memory, security, and workflow</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#intro">Claude Code Setup</a></li>
+                <li><a href="#the-big-picture">1. The Big Picture</a></li>
+                <li><a href="#layer-1-claude-md">2. Layer 1: CLAUDE.md</a></li>
+                <li><a href="#layer-2-memory">3. Layer 2: Memory</a></li>
+                <li><a href="#layer-3-permissions">4. Layer 3: Permissions</a></li>
+                <li><a href="#cli-integrations">5. CLI Integrations</a></li>
+                <li><a href="#portability">6. Portability Across Machines</a></li>
+                <li><a href="#security-considerations">7. Security Considerations</a></li>
+                <li><a href="#directory-structure">8. Directory Structure Reference</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div id="content-wrapper">
+        <main id="content">
+
+        <!-- Frontmatter / Intro -->
+        <section class="chapter" id="intro">
+            <h1>Claude Code Setup — How It All Works</h1>
+            <hr>
+            <p><em>By Robert Barcik</em></p>
+            <p><em>Reference guide</em></p>
+            <hr>
+            <p>This document explains how Claude Code is configured across this repository hub. Useful as a reference for Robert and as teaching material for students.</p>
+        </section>
+
+        <!-- Section 1: The Big Picture -->
+        <section class="chapter" id="the-big-picture">
+            <div class="chapter-number">Section 1</div>
+            <h2>The Big Picture</h2>
+
+            <p>Claude Code is an AI coding assistant that runs in the terminal. It can read/edit files, run shell commands, and use CLI tools (like <code>git</code>, <code>gh</code>, <code>aws</code>). What makes it powerful is the <strong>persistent context system</strong> — files and settings that tell it about your projects, preferences, and conventions.</p>
+
+            <p>There are three layers of persistent context:</p>
+
+<pre><code>~/.claude/                          &lt;-- Global (your machine)
+  settings.json                     &lt;-- Global settings &amp; permissions
+  projects/
+    -Users-robertbarcik-git-repos/  &lt;-- Per-project memories (keyed by launch directory)
+      memory/
+        MEMORY.md                   &lt;-- Memory index
+        user_profile.md             &lt;-- Individual memory files
+        ...
+
+~/git-repos/                        &lt;-- Your working directory
+  CLAUDE.md                         &lt;-- Project instructions (Claude reads this)
+  .claude/
+    settings.local.json             &lt;-- Local permissions for this directory
+  barcik-training/
+    CLAUDE.md                       &lt;-- Repo-specific instructions
+    .claude/
+      settings.local.json           &lt;-- Repo-specific permissions</code></pre>
+        </section>
+
+        <!-- Section 2: Layer 1 — CLAUDE.md -->
+        <section class="chapter" id="layer-1-claude-md">
+            <div class="chapter-number">Section 2</div>
+            <h2>Layer 1: CLAUDE.md — Project Instructions</h2>
+
+            <p><code>CLAUDE.md</code> is a markdown file Claude reads at the start of every conversation. Think of it as a briefing document. It typically contains:</p>
+
+            <ul>
+                <li>What the project is</li>
+                <li>Key commands (build, test, deploy)</li>
+                <li>Architecture conventions</li>
+                <li>Anything Claude should know before touching the code</li>
+            </ul>
+
+            <p><strong>Where Claude looks for it:</strong></p>
+            <ul>
+                <li>In the directory you launch from</li>
+                <li>In parent directories (walking up the tree)</li>
+                <li>It does <strong>not</strong> descend into subdirectories automatically</li>
+            </ul>
+
+            <p><strong>Example:</strong> The hub-level <code>CLAUDE.md</code> in this directory lists all repositories with one-line descriptions and documents the shared AWS deployment pattern. Each repo (like <code>barcik-training-demos/</code>) has its own <code>CLAUDE.md</code> with repo-specific deploy commands and conventions.</p>
+
+            <p><strong>Hub pattern:</strong> When launching Claude from a parent directory that contains multiple repos, a hub <code>CLAUDE.md</code> provides cross-repo context. When Claude focuses on a specific repo, it can read that repo's own <code>CLAUDE.md</code> on demand.</p>
+        </section>
+
+        <!-- Section 3: Layer 2 — Memory -->
+        <section class="chapter" id="layer-2-memory">
+            <div class="chapter-number">Section 3</div>
+            <h2>Layer 2: Memory — What Claude Remembers Across Conversations</h2>
+
+            <p>Claude Code has a file-based memory system that persists between conversations. Memories are stored in <code>~/.claude/projects/&lt;encoded-path&gt;/memory/</code>.</p>
+
+            <p><strong>The path encoding</strong> is based on where you launch Claude from. For example:</p>
+            <ul>
+                <li>Launching from <code>/Users/robertbarcik/git-repos/</code> stores memories in <code>~/.claude/projects/-Users-robertbarcik-git-repos/memory/</code></li>
+                <li>Launching from <code>/Users/robertbarcik/git-repos/bloom-session/</code> stores memories in <code>~/.claude/projects/-Users-robertbarcik-git-repos-bloom-session/memory/</code></li>
+            </ul>
+
+            <p>This means <strong>each launch directory has its own memory bucket</strong>. If you always launch from the same place, memories accumulate there. If you launch from different directories, memories are spread across multiple buckets.</p>
+
+            <h3>Memory Types</h3>
+
+            <p>Each memory file has YAML frontmatter with a type:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>user</code></td>
+                        <td>Who you are, your expertise, preferences</td>
+                        <td>"Robert is a professional AI trainer, prefers Claude as creative partner"</td>
+                    </tr>
+                    <tr>
+                        <td><code>feedback</code></td>
+                        <td>Corrections and confirmed approaches</td>
+                        <td>"Never use reveal.js for slides — custom HTML works better"</td>
+                    </tr>
+                    <tr>
+                        <td><code>project</code></td>
+                        <td>Ongoing work context, goals, decisions</td>
+                        <td>"Migrating barcik.training from Google Sites to S3+CloudFront"</td>
+                    </tr>
+                    <tr>
+                        <td><code>reference</code></td>
+                        <td>Pointers to external resources</td>
+                        <td>"Pipeline bugs are tracked in Linear project INGEST"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Example memory file</strong> (<code>user_profile.md</code>):</p>
+
+<pre><code>---
+name: Robert Barcik - Trainer &amp; Consultant
+description: Robert is a professional AI/Data trainer and consultant
+type: user
+---
+
+Robert Barcik is a professional trainer specializing in Data, AI,
+and EU AI Act compliance. He runs his business through LearningDoe, s.r.o.
+He values Claude as a creative partner and prefers building/deploying
+things directly rather than using traditional CMS tools.</code></pre>
+
+            <p><strong>MEMORY.md</strong> is the index file — it lists all memories with one-line summaries. Claude loads this at the start of every conversation to decide which memories are relevant.</p>
+
+            <h3>What Claude Does NOT Save to Memory</h3>
+
+            <ul>
+                <li>Code patterns or architecture (derivable from reading the code)</li>
+                <li>Git history (use <code>git log</code>)</li>
+                <li>Debugging solutions (the fix is in the code)</li>
+                <li>Anything already in CLAUDE.md files</li>
+                <li>Temporary task state</li>
+            </ul>
+        </section>
+
+        <!-- Section 4: Layer 3 — Permissions -->
+        <section class="chapter" id="layer-3-permissions">
+            <div class="chapter-number">Section 4</div>
+            <h2>Layer 3: Permissions — settings.local.json</h2>
+
+            <p>Claude Code asks for permission before running shell commands. To avoid being prompted repeatedly, you can whitelist commands in <code>.claude/settings.local.json</code>:</p>
+
+<pre><code>{
+  "permissions": {
+    "allow": [
+      "Bash(aws s3:*)",
+      "Bash(gh:*)",
+      "Bash(git:*)"
+    ]
+  }
+}</code></pre>
+
+            <p>The <code>*</code> is a wildcard — <code>Bash(aws s3:*)</code> allows any command starting with <code>aws s3</code>.</p>
+
+            <p>These files can exist at multiple levels:</p>
+            <ul>
+                <li><code>~/.claude/settings.json</code> — global (all projects)</li>
+                <li><code>&lt;project&gt;/.claude/settings.local.json</code> — per-project</li>
+            </ul>
+
+            <p><strong>Note:</strong> Permission entries often contain absolute paths (e.g., <code>/Users/robertbarcik/...</code>), which makes them <strong>machine-specific</strong>. This is by design — they're meant to be local configuration.</p>
+        </section>
+
+        <!-- Section 5: CLI Integrations -->
+        <section class="chapter" id="cli-integrations">
+            <div class="chapter-number">Section 5</div>
+            <h2>CLI Integrations</h2>
+
+            <p>Claude Code doesn't have its own AWS or GitHub credentials. It uses whatever CLI tools are already configured on your machine:</p>
+
+            <h3>GitHub (<code>gh</code>)</h3>
+            <ul>
+                <li>Installed and authenticated separately (<code>gh auth login</code>)</li>
+                <li>Auth token stored in the macOS keyring</li>
+                <li>Claude uses it by running <code>gh</code> commands (create PRs, check issues, etc.)</li>
+                <li>Config lives in <code>~/.config/gh/</code></li>
+            </ul>
+
+            <h3>AWS CLI</h3>
+            <ul>
+                <li>Configured separately (<code>aws configure</code>)</li>
+                <li>Credentials stored in <code>~/.aws/credentials</code> (plaintext — be aware)</li>
+                <li>Claude uses a named profile (e.g., <code>--profile barcik-demos</code>)</li>
+                <li>The profile name is documented in CLAUDE.md so Claude knows which one to use</li>
+            </ul>
+
+            <h3>API Keys for LLM Projects</h3>
+
+            <p>The research and tutorial repos need API keys (primarily OpenRouter, sometimes OpenAI) to call LLM APIs. These are managed separately from AWS/GitHub credentials.</p>
+
+            <p><strong>Framework/research repos</strong> (geobias, selfjudge, vigil, bloom-session, localdesk, petri-session):</p>
+            <ul>
+                <li>Keys are stored in <code>.env</code> files in each repo's root directory</li>
+                <li>All repos use <code>python-dotenv</code> — the <code>.env</code> file is loaded automatically when running the CLI</li>
+                <li><code>.env</code> is gitignored in every repo, so keys never get committed</li>
+                <li>Each repo has a <code>.env.example</code> showing which keys are needed</li>
+            </ul>
+
+<pre><code># Typical workflow to set up a new key:
+cd geobias/
+cp .env.example .env
+# Edit .env and paste your key:
+#   OPENROUTER_API_KEY=sk-or-v1-your-actual-key</code></pre>
+
+            <p>When collaborating with Claude Code, you can simply paste a new key in the conversation and ask Claude to write it into the appropriate <code>.env</code> files. Since these files are gitignored, the key stays local.</p>
+
+            <p><strong>Tutorial repos</strong> (genai-in-python-tutorial, testing-tutorial, vector_databases-tutorial, ADK-tutorial, MCP-tutorial):</p>
+            <ul>
+                <li>Notebooks use a Colab-first pattern with local fallback:</li>
+            </ul>
+
+<pre><code>try:
+    from google.colab import userdata
+    api_key = userdata.get('OPENAI_API_KEY')
+except:
+    api_key = getpass.getpass("Enter your API key: ")
+os.environ["OPENAI_API_KEY"] = api_key</code></pre>
+
+            <ul>
+                <li>On Google Colab: students store keys in Colab Secrets (sidebar &gt; key icon)</li>
+                <li>Running locally: students get an interactive prompt — the key is never saved to disk</li>
+                <li>No keys are hardcoded or leaked in notebook outputs</li>
+            </ul>
+
+            <p><strong>Key rotation:</strong> When you revoke and regenerate API keys on a provider's dashboard, the only files that need updating are the <code>.env</code> files in the repos you're actively using. Tutorial notebooks don't need changes — students always enter their own keys at runtime.</p>
+        </section>
+
+        <!-- Section 6: Portability Across Machines -->
+        <section class="chapter" id="portability">
+            <div class="chapter-number">Section 6</div>
+            <h2>Portability Across Machines</h2>
+
+            <p>This is the key gotcha — <strong>most of the Claude Code context system is local to one machine</strong>.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>What</th>
+                        <th>Portable?</th>
+                        <th>How</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CLAUDE.md files (in repos)</td>
+                        <td>Yes</td>
+                        <td>Travels with git</td>
+                    </tr>
+                    <tr>
+                        <td>Per-repo <code>.claude/settings.local.json</code></td>
+                        <td>Partially</td>
+                        <td>Only if committed to git; paths may differ across machines</td>
+                    </tr>
+                    <tr>
+                        <td>Memories (<code>~/.claude/projects/</code>)</td>
+                        <td>No</td>
+                        <td>Manual copy</td>
+                    </tr>
+                    <tr>
+                        <td>Hub CLAUDE.md (not in a repo)</td>
+                        <td>No</td>
+                        <td>Manual copy</td>
+                    </tr>
+                    <tr>
+                        <td>Hub settings.local.json</td>
+                        <td>No</td>
+                        <td>Manual copy</td>
+                    </tr>
+                    <tr>
+                        <td><code>gh</code> auth</td>
+                        <td>No</td>
+                        <td>Run <code>gh auth login</code> on each machine</td>
+                    </tr>
+                    <tr>
+                        <td>AWS credentials</td>
+                        <td>No</td>
+                        <td>Copy <code>~/.aws/</code> or reconfigure</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Practical Transfer Checklist</h3>
+
+            <p>When setting up a new Mac:</p>
+            <ol>
+                <li>Clone your repos (CLAUDE.md files come along)</li>
+                <li>Copy <code>~/.claude/</code> from the old machine (memories + global settings)</li>
+                <li>Copy the hub <code>CLAUDE.md</code> and <code>README.md</code> to the parent directory</li>
+                <li>Run <code>gh auth login</code></li>
+                <li>Configure AWS credentials (<code>aws configure --profile barcik-demos</code>)</li>
+                <li>Re-create or copy <code>.claude/settings.local.json</code> files (adjust paths if needed)</li>
+            </ol>
+
+            <p>Alternatively, skip steps 2-3 and let Claude rebuild memories naturally over a few conversations. The CLAUDE.md files in repos carry the most critical context.</p>
+        </section>
+
+        <!-- Section 7: Security Considerations -->
+        <section class="chapter" id="security-considerations">
+            <div class="chapter-number">Section 7</div>
+            <h2>Security Considerations</h2>
+
+            <p>When giving an AI agent access to your terminal, CLI tools, and browser, it's important to understand the attack surface and set up appropriate guardrails. The key principle is <strong>defense in depth</strong>: don't rely on a single layer (like the AI's behavioral rules). Use server-side protections that can't be bypassed locally.</p>
+
+            <h3>The Two Types of Protection</h3>
+
+            <p><strong>Server-side (can't be bypassed from your machine):</strong></p>
+            <ul>
+                <li>GitHub branch protection — blocks force-push/deletion regardless of what runs locally</li>
+                <li>AWS IAM policies — blocks unauthorized actions regardless of what runs locally</li>
+                <li>GitHub token scopes — missing scopes can't be worked around</li>
+            </ul>
+
+            <p><strong>Client-side (bypassable with <code>--dangerously-skip-permissions</code> or a rogue tool):</strong></p>
+            <ul>
+                <li>Claude Code's permission system (<code>settings.local.json</code>)</li>
+                <li>Claude's behavioral rules ("never force-push without asking")</li>
+                <li>Interactive approval prompts</li>
+            </ul>
+
+            <p>A well-secured setup uses server-side walls for catastrophic risks and client-side controls for everyday guardrails.</p>
+
+            <h3>GitHub — Branch Protection</h3>
+
+            <p>Claude (and any coding assistant) uses the <code>gh</code> CLI with your authenticated token. The <code>repo</code> scope grants full access: push, force-push, delete branches, manage PRs/issues. The <code>delete_repo</code> scope is <strong>not</strong> granted, so repos can't be deleted.</p>
+
+            <p><strong>Branch protection</strong> is the critical server-side safeguard. When enabled on <code>main</code>:</p>
+
+<pre><code># Enable on a repo (one-time setup):
+gh api repos/OWNER/REPO/branches/main/protection \
+  -X PUT \
+  -F "enforce_admins=true" \
+  -F "required_pull_request_reviews=null" \
+  -F "required_status_checks=null" \
+  -F "restrictions=null" \
+  -F "allow_force_pushes=false" \
+  -F "allow_deletions=false"</code></pre>
+
+            <p>Key settings:</p>
+            <ul>
+                <li><code>allow_force_pushes=false</code> — no tool can rewrite history on <code>main</code></li>
+                <li><code>allow_deletions=false</code> — no tool can delete the <code>main</code> branch</li>
+                <li><code>enforce_admins=true</code> — even the repo owner can't bypass (this matters! without it, any tool using your credentials could still force-push)</li>
+                <li>No required PRs — keeps the solo workflow frictionless (normal pushes still work)</li>
+            </ul>
+
+            <p><strong>Result:</strong> Any <code>git push --force</code> to <code>main</code> gets rejected by GitHub with <code>Cannot force-push to this protected branch</code>. This works regardless of which AI tool, script, or human runs the command.</p>
+
+            <p><strong>GitHub Pro ($4/month) is required</strong> for branch protection on private repos. On the free plan, only public repos can be protected.</p>
+
+            <p>If you ever legitimately need to force-push, temporarily disable <code>enforce_admins</code>, do the push, then re-enable. The friction is intentional.</p>
+
+            <h3>AWS — IAM Policy Analysis</h3>
+
+            <p>Claude uses the AWS CLI with a named profile (<code>barcik-demos</code>). The IAM user (<code>barcik-demos-deployer</code>) has a tightly scoped policy:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Permission</th>
+                        <th>Scoped to</th>
+                        <th>Risk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>S3 PutObject/DeleteObject/ListBucket</td>
+                        <td>3 specific buckets only</td>
+                        <td>Low — can only modify website files</td>
+                    </tr>
+                    <tr>
+                        <td>CloudFront CreateInvalidation</td>
+                        <td>Specific distribution + all</td>
+                        <td>Low — cache busting only, free tier</td>
+                    </tr>
+                    <tr>
+                        <td>CloudFront CreateDistribution</td>
+                        <td>All (<code>*</code>)</td>
+                        <td>Low — could create distributions but no cost risk</td>
+                    </tr>
+                    <tr>
+                        <td>Route53 ChangeResourceRecordSets</td>
+                        <td>All (<code>*</code>)</td>
+                        <td>Medium — could modify DNS records</td>
+                    </tr>
+                    <tr>
+                        <td>ACM ListCertificates/Describe</td>
+                        <td>All (<code>*</code>)</td>
+                        <td>None — read-only</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>What this user explicitly CANNOT do:</strong></p>
+            <ul>
+                <li>Launch EC2 instances, RDS databases, Lambda functions, or any compute</li>
+                <li>Create/delete S3 buckets (except the named ones)</li>
+                <li>Modify IAM users, roles, or policies</li>
+                <li>Access billing or account settings</li>
+            </ul>
+
+            <p><strong>Cost risk: effectively zero.</strong> The only billable actions are S3 storage (pennies) and CloudFront invalidations (first 1,000/month free). No path to expensive resources.</p>
+
+            <p><strong>Potential tightening</strong> (optional, for after initial setup is complete):</p>
+            <ul>
+                <li>Scope <code>cloudfront:CreateDistribution</code> to specific distributions instead of <code>*</code></li>
+                <li>Scope <code>route53:ChangeResourceRecordSets</code> to the specific hosted zone ARN</li>
+                <li>These broader permissions were useful during initial infrastructure setup but aren't needed for day-to-day deploys</li>
+            </ul>
+
+            <h3>Local Machine — The Permission System</h3>
+
+            <p>Claude Code asks for approval before running shell commands. Commands can be pre-approved in <code>.claude/settings.local.json</code>:</p>
+
+<pre><code>{
+  "permissions": {
+    "allow": [
+      "Bash(aws s3:*)",
+      "Bash(git:*)",
+      "Bash(gh:*)"
+    ]
+  }
+}</code></pre>
+
+            <p>The <code>*</code> wildcard matches anything after the prefix. <code>Bash(git:*)</code> allows <code>git status</code>, <code>git commit</code>, but also <code>git push --force</code> and <code>git reset --hard</code>. For tighter control:</p>
+
+<pre><code>{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push origin:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)"
+    ]
+  }
+}</code></pre>
+
+            <p>This version allows everyday git operations but would prompt you before <code>git push --force</code>, <code>git reset --hard</code>, or <code>git clean</code>. The trade-off is more prompts during normal work.</p>
+
+            <p><strong>What the permission system controls vs. doesn't:</strong></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>What</th>
+                        <th>Permission needed?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Shell commands (<code>Bash</code> tool)</td>
+                        <td>Yes — must be approved or pre-approved</td>
+                    </tr>
+                    <tr>
+                        <td>Reading files (<code>Read</code> tool)</td>
+                        <td>No — always allowed, any file on your machine</td>
+                    </tr>
+                    <tr>
+                        <td>Writing/editing files (<code>Write</code>/<code>Edit</code> tools)</td>
+                        <td>Depends on permission mode</td>
+                    </tr>
+                    <tr>
+                        <td>Creating files</td>
+                        <td>Depends on permission mode</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong><code>--dangerously-skip-permissions</code>:</strong> This flag disables all prompts. Every command runs without approval. Server-side protections (GitHub branch protection, AWS IAM) still hold, but local damage (deleting files, overwriting uncommitted work, exfiltrating secrets) has no safety net. Avoid this unless you have a specific reason and understand the risks.</p>
+
+            <h3>Commands to Watch Out For</h3>
+
+            <p>When an AI coding assistant asks to run a command and you're reviewing the approval prompt, here's a quick reference of commands that deserve extra scrutiny:</p>
+
+            <p><strong>Destructive — can lose work irreversibly:</strong></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>What it does</th>
+                        <th>Danger</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>rm -rf &lt;path&gt;</code></td>
+                        <td>Recursively deletes files/directories</td>
+                        <td>Gone forever (no trash)</td>
+                    </tr>
+                    <tr>
+                        <td><code>git reset --hard</code></td>
+                        <td>Discards all uncommitted changes</td>
+                        <td>Uncommitted work is lost</td>
+                    </tr>
+                    <tr>
+                        <td><code>git checkout .</code> / <code>git restore .</code></td>
+                        <td>Discards all modified files</td>
+                        <td>Same as above</td>
+                    </tr>
+                    <tr>
+                        <td><code>git clean -fd</code></td>
+                        <td>Deletes all untracked files</td>
+                        <td>New files you haven't committed are gone</td>
+                    </tr>
+                    <tr>
+                        <td><code>git push --force</code></td>
+                        <td>Overwrites remote branch history</td>
+                        <td>Blocked by branch protection if set up</td>
+                    </tr>
+                    <tr>
+                        <td><code>git branch -D &lt;branch&gt;</code></td>
+                        <td>Force-deletes a local branch</td>
+                        <td>Commits only in reflog for 90 days</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Data exfiltration — could leak secrets:</strong></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>What it does</th>
+                        <th>Danger</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>curl -X POST &lt;url&gt; -d "$(cat ...)"</code></td>
+                        <td>Sends file contents to a URL</td>
+                        <td>Could leak credentials, keys</td>
+                    </tr>
+                    <tr>
+                        <td><code>wget</code>/<code>curl</code> piped to <code>bash</code></td>
+                        <td>Downloads and runs unknown code</td>
+                        <td>Arbitrary code execution</td>
+                    </tr>
+                    <tr>
+                        <td><code>cat ~/.aws/credentials</code></td>
+                        <td>Reads AWS secrets</td>
+                        <td>Fine locally, dangerous if shared</td>
+                    </tr>
+                    <tr>
+                        <td><code>cat ~/.ssh/id_*</code></td>
+                        <td>Reads SSH private keys</td>
+                        <td>Same as above</td>
+                    </tr>
+                    <tr>
+                        <td><code>echo $ENV_VAR</code></td>
+                        <td>Prints environment variables</td>
+                        <td>May contain API keys</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>System modification — hard to undo:</strong></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>What it does</th>
+                        <th>Danger</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>brew install/uninstall</code></td>
+                        <td>Installs/removes system packages</td>
+                        <td>Usually fine, but check what</td>
+                    </tr>
+                    <tr>
+                        <td><code>pip install</code> / <code>npm install -g</code></td>
+                        <td>Installs packages globally</td>
+                        <td>Could conflict with other projects</td>
+                    </tr>
+                    <tr>
+                        <td><code>chmod</code>/<code>chown</code></td>
+                        <td>Changes file permissions/ownership</td>
+                        <td>Can break things subtly</td>
+                    </tr>
+                    <tr>
+                        <td><code>sudo &lt;anything&gt;</code></td>
+                        <td>Runs as root</td>
+                        <td>Full system access</td>
+                    </tr>
+                    <tr>
+                        <td><code>launchctl</code></td>
+                        <td>Manages system services</td>
+                        <td>Can start persistent processes</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <blockquote>
+                <p><strong>Rule of thumb:</strong> If you're tired and not sure, <strong>deny the command</strong> and ask what it does. A denied command can always be re-run; a destructive command can't be un-run.</p>
+            </blockquote>
+
+            <h3>Chrome and Computer Use</h3>
+
+            <p>Claude can interact with your browser via the Chrome extension and with native apps via computer use:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Access level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Chrome extension</strong> (<code>claude-in-chrome</code>)</td>
+                        <td>Can navigate, click, fill forms, read page content in Chrome</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Computer use on browsers</strong></td>
+                        <td>Read-only (can see screen, can't click/type)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Computer use on terminals/IDEs</strong></td>
+                        <td>Click-only (can click buttons, can't type)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Computer use on other apps</strong></td>
+                        <td>Full access (mouse + keyboard)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Risks:</strong></p>
+            <ul>
+                <li>If you're logged into sensitive accounts (banking, email, admin consoles) in Chrome, Claude could interact with those pages through the extension</li>
+                <li>Computer-use screenshots capture whatever is on screen, including sensitive content</li>
+                <li>Accidental clicks on "delete" or "send" in web apps could have consequences</li>
+            </ul>
+
+            <p><strong>Recommended setup:</strong></p>
+            <ul>
+                <li>Use a <strong>dedicated Chrome profile</strong> for Claude work sessions (Chrome &gt; Profile icon &gt; Add). Keep your personal/work accounts logged in on a different profile.</li>
+                <li>Only enable the Chrome extension when you need browser automation</li>
+                <li>Claude must call <code>request_access</code> before controlling any native app — you approve each one</li>
+            </ul>
+
+            <h3>Using Other AI Coding Assistants</h3>
+
+            <p>The security analysis above applies to <strong>any</strong> AI coding tool, not just Claude Code. If you're testing another LLM-based assistant:</p>
+
+            <ul>
+                <li><strong>Server-side protections hold:</strong> GitHub branch protection and AWS IAM policies work regardless of which tool is running locally. These are your most reliable safeguards.</li>
+                <li><strong>Behavioral rules don't transfer:</strong> Claude Code has built-in instructions to confirm destructive actions. Other tools may not. The permission prompt is your last line of defense.</li>
+                <li><strong>Never use "skip permissions" with untested tools.</strong> Without a permission system, a less careful model could delete files, leak secrets, or trash your local repos without any prompt.</li>
+                <li><strong>The commands-to-watch-out-for list above applies universally.</strong> Memorize the red flags — they're the same regardless of which AI is proposing the command.</li>
+            </ul>
+        </section>
+
+        <!-- Section 8: Directory Structure Reference -->
+        <section class="chapter" id="directory-structure">
+            <div class="chapter-number">Section 8</div>
+            <h2>Directory Structure Reference</h2>
+
+<pre>~/.claude/
+  settings.json                           # Global settings
+  projects/
+    -Users-robertbarcik-git-repos/
+      memory/
+        MEMORY.md                         # Index of memories for this launch dir
+        user_profile.md                   # Who Robert is
+        project_website_rebuild.md        # barcik.training migration project
+        reference_aws_deployment.md       # AWS infra details
+    -Users-robertbarcik-git-repos-bloom-session/
+      memory/
+        MEMORY.md
+        project_bloom_session.md          # Bloom framework session context
+    -Users-robertbarcik-git-repos-EXIN-AI-Foundation-Prep/
+      memory/
+        MEMORY.md
+        project_exam_prep.md              # EXIN exam prep context
+    -Users-robertbarcik-git-repos-barcik-training-exin-ai-foundation/
+      memory/
+        MEMORY.md
+        project_overview.md
+        feedback_slides.md                # Never use reveal.js
+        reference_aws.md
+
+~/git-repos/
+  CLAUDE.md                               # Hub instructions
+  README.md                               # This file
+  .claude/settings.local.json             # Hub permissions
+  barcik-training/
+    CLAUDE.md
+  barcik-training-demos/
+    CLAUDE.md
+    .claude/settings.local.json
+    .claude/skills/SKILL.md
+  ...</pre>
+        </section>
+
+        </main>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Progress bar
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+    });
+
+    // Sidebar navigation highlighting
+    const chapters = document.querySelectorAll('.chapter');
+    const navLinks = document.querySelectorAll('#sidebar nav a');
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    chapters.forEach(function(ch) { observer.observe(ch); });
+
+    // Smooth scrolling
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Close sidebar on mobile
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    menuToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('open');
+    });
+
+    // Close sidebar on outside click (mobile)
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 900 &&
+            !sidebar.contains(e.target) &&
+            e.target !== menuToggle) {
+            sidebar.classList.remove('open');
+        }
+    });
+
+    // Mark first nav item as active
+    if (navLinks.length > 0) navLinks[0].classList.add('active');
+});
+</script>
+</body>
+</html>
