@@ -485,7 +485,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <hr>
 
     <h3>About This Booklet</h3>
-    <p>You already run Llama 3.3. It works. Tickets get resolved, code gets reviewed, documents get summarised. Then someone on your team opens HuggingFace, sees a new model with better benchmark scores, and asks: should we switch?</p>
+    <p>You have GPUs. You have a model running in production. It works. Tickets get resolved, code gets reviewed, documents get summarised. Then someone on your team opens HuggingFace, sees a new model with better benchmark scores, and asks: should we switch?</p>
     <p>You do not know. Not because you are uninformed, but because the question is unanswerable without context. Switch for which task? On which GPU? At what quantisation? Serving how many users? Under what license? The model is one variable in a system of constraints, and the leaderboard answers none of them.</p>
     <p>This booklet does not tell you which model to pick today. By the time you read this, the rankings will have shifted. What it gives you is the machinery to answer the question yourself &mdash; this time and every time after. Part 1 maps the five major families: who builds them, why, and what that means for you. Part 2 connects the landscape to your actual hardware. Part 3 gives you a decision framework and four scenarios to stress-test it.</p>
     <p>The numbers are current as of April 2026. The framework should outlast them.</p>
@@ -495,7 +495,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
         <li><strong>Operations and services professionals</strong> deploying AI on company hardware</li>
         <li><strong>IT teams</strong> managing GPU infrastructure for internal or client workloads</li>
         <li><strong>Technical decision-makers</strong> evaluating which models to run on-prem</li>
-        <li><strong>Anyone with an H100, H200, or DGX Spark</strong> who needs to make model choices without a dedicated ML research team</li>
+        <li><strong>Anyone deploying LLMs on datacenter or workstation GPUs</strong> who needs to make model choices without a dedicated ML research team</li>
     </ul>
 
     <h3>How to Read</h3>
@@ -532,7 +532,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="chapter-label">Context</div>
     <h1>Why Not Just a Comparison Table?</h1>
 
-    <p>In December 2024, the safe recommendation was straightforward: Llama 3.3 70B, run it on your H100, done. Six months later, Qwen 3 had overtaken it on most benchmarks. Six months after that, Gemma 4 arrived with Apache 2.0 licensing and Mistral Small 4 rewrote what a 6B-active-parameter model could do. Anyone who built their strategy around a December 2024 comparison table spent 2025 on the wrong model.</p>
+    <p>In December 2024, the safe recommendation was straightforward: Llama 3.3 70B, run it on an H100, done. Six months later, Qwen 3 had overtaken it on most benchmarks. Six months after that, Gemma 4 arrived with Apache 2.0 licensing and Mistral Small 4 rewrote what a 6B-active-parameter model could do. Anyone who built their strategy around a December 2024 comparison table spent 2025 on the wrong model.</p>
 
     <p>The problem is not that comparison tables are wrong when published. The problem is that they are <strong>right for about eight weeks</strong>. The mean engagement duration for any model on HuggingFace is approximately six weeks before it is superseded. Building your model strategy around a snapshot is like choosing a server vendor based on last quarter&rsquo;s benchmark &mdash; the number was accurate, the decision was not.</p>
 
@@ -608,7 +608,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
         <p>If you are running open-weight models today, you are probably running Llama. That is its greatest strength &mdash; ecosystem depth, battle-tested tooling, the most derivative models on HuggingFace (~85K) &mdash; and increasingly its only differentiator, as competitors match or exceed its quality.</p>
 
-        <p><strong>Llama 3.3 70B</strong> remains the practical workhorse: 405B-class quality through distillation, fits on your H100 at FP8 (~70GB), runs with every inference engine. Llama 4 (April 2025) pivoted to multimodal MoE &mdash; Scout (109B total, 17B active, 10M context) fits on a single H100 at INT4, but the ecosystem around Llama 4 has been slower to mature than Llama 3.x.</p>
+        <p><strong>Llama 3.3 70B</strong> remains the practical workhorse: 405B-class quality through distillation, fits on a single H100 at FP8 (~70GB), runs with every inference engine. Llama 4 (April 2025) pivoted to multimodal MoE &mdash; Scout (109B total, 17B active, 10M context) fits on a single H100 at INT4, but the ecosystem around Llama 4 has been slower to mature than Llama 3.x.</p>
 
         <p><strong>The risk:</strong> Meta released Muse Spark in April 2026 &mdash; their first <em>proprietary</em> model. The community reads this as a potential signal that future frontier releases may not be open. Meta open-weights to prevent platform lock-in by other AI providers; if that strategic calculus changes, so does Llama&rsquo;s future.</p>
 
@@ -617,7 +617,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
             <ul>
                 <li><strong>You value ecosystem maturity</strong> over cutting-edge benchmarks &mdash; every tool, tutorial, and fine-tune assumes Llama compatibility</li>
                 <li><strong>License caveat:</strong> Not Apache 2.0. Requires &ldquo;Built with Llama&rdquo; branding. <strong>EU entities cannot use Llama 4 multimodal models</strong> (text-only fine)</li>
-                <li><strong>On your hardware:</strong> Llama 3.3 70B on H100 at FP8. Llama 4 Scout at Q4 on H100 or DGX Spark</li>
+                <li><strong>Fits on:</strong> Llama 3.3 70B on H100 at FP8. Llama 4 Scout at Q4 on H100 or DGX Spark</li>
             </ul>
         </div>
     </div>
@@ -641,7 +641,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
                 <li><strong>You want the best quality at 27&ndash;31B</strong> with a clean Apache 2.0 license and no geopolitical complications</li>
                 <li><strong>Speed caveat:</strong> Inference is slower than competitors &mdash; the 26B MoE ran at ~11 tok/s where Qwen 3.5 hit 60+ on the same hardware. Community engine optimisations are catching up</li>
                 <li><strong>License trap:</strong> Gemma 1&ndash;3 used a restrictive custom license. Verify you are using Gemma 4</li>
-                <li><strong>On your hardware:</strong> 31B dense or 26B MoE on H100 or DGX Spark at Q4 (~18&ndash;20GB)</li>
+                <li><strong>Fits on:</strong> 31B dense or 26B MoE on H100 or DGX Spark at Q4 (~18&ndash;20GB)</li>
             </ul>
         </div>
     </div>
@@ -665,7 +665,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
                 <li><strong>You need multilingual, coding, or reasoning capability</strong> and the workload is not in a regulated/sensitive category</li>
                 <li><strong>You need a size the others do not offer</strong> &mdash; only Qwen covers 0.6B to 480B</li>
                 <li><strong>Compliance overhead:</strong> Chinese origin means extra due diligence for EU regulated, defence, and public sector workloads</li>
-                <li><strong>On your hardware:</strong> QwQ-32B or Qwen 3 8B/14B on DGX Spark. Qwen 3 235B MoE on two H200s at FP8</li>
+                <li><strong>Fits on:</strong> QwQ-32B or Qwen 3 8B/14B on DGX Spark. Qwen 3 235B MoE on two H200s at FP8</li>
             </ul>
         </div>
     </div>
@@ -1233,7 +1233,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <p>The single-user numbers above tell only half the story. Batched inference shifts the bottleneck from bandwidth to compute. Llama 3.1 8B on the DGX Spark at batch size 32 achieved <strong>368 tok/s total throughput</strong> via SGLang &mdash; an 18&times; increase over single-user. If your use case is a queue of requests rather than an interactive chat, smaller models batched efficiently can handle surprisingly high volumes.</p>
 
     <blockquote>
-        <p><strong>Practical guidance:</strong> Your H100 will run circles around the DGX Spark for any model that fits in 80GB. The Spark&rsquo;s value is running models that do not fit on the H100 (120B MoE, prototyping 200B+) and serving as a quiet, desk-side development environment. When a model graduates from prototyping to production, move it to the H100 or H200 behind vLLM.</p>
+        <p><strong>Practical guidance:</strong> An H100 will run circles around the DGX Spark for any model that fits in 80GB. The Spark&rsquo;s value is running models that do not fit on an H100 (120B MoE, prototyping 200B+) and serving as a quiet, desk-side development environment. When a model graduates from prototyping to production, move it to datacenter GPUs behind vLLM.</p>
     </blockquote>
 </section>
 
@@ -1397,7 +1397,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
                 <li>Output quality will be ~95&ndash;97% of what they had (Q4 quantisation). Most users will not notice</li>
                 <li>Latency per response will likely be similar or slightly slower than the hosted API, depending on their previous provider&rsquo;s hardware</li>
                 <li>They are now responsible for uptime, monitoring, and model updates. Set up Prometheus metrics from vLLM&rsquo;s <code>/metrics</code> endpoint and NVIDIA DCGM Exporter for GPU monitoring</li>
-                <li>When the H200s arrive, migrate to FP8 for full quality restoration and better concurrent user handling</li>
+                <li>If you upgrade to H200 later, migrate to FP8 for full quality restoration and better concurrent user handling</li>
             </ul>
             <p><strong>Timeline:</strong> vLLM + AWQ Llama 3.3 70B can be serving in production within a day. The pre-quantised AWQ model is available on HuggingFace. The remaining time is for testing, monitoring setup, and load testing at 20 concurrent users.</p>
         </div>
@@ -1416,7 +1416,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <h2>Signals That Matter</h2>
     <ul>
         <li><strong>New model releases from the five families.</strong> Not every release requires action. Check: is it a new architecture or just a version bump? Does it target a size range you use? Does it change the licensing? A new Qwen 4 with a different license matters. A Qwen 3.5.1 patch does not</li>
-        <li><strong>Hardware availability.</strong> When your H200s arrive, re-run the &ldquo;what fits&rdquo; analysis. Models that were too large or too slow may suddenly become viable. Two H200s (282GB combined) open up the 235B MoE tier</li>
+        <li><strong>Hardware changes.</strong> When new hardware arrives &mdash; H200s, next-gen Blackwell, a second DGX Spark &mdash; re-run the &ldquo;what fits&rdquo; analysis. Models that were too large or too slow may suddenly become viable. Two H200s (282GB combined) open up the 235B MoE tier</li>
         <li><strong>Quantisation breakthroughs.</strong> Recent advances in 2-bit quantisation (like QuIP# and AQLM) are narrowing the quality gap below Q4. If 2-bit reaches the Q4 quality level, it doubles the effective models you can fit on existing hardware</li>
         <li><strong>Inference framework updates.</strong> SGLang and vLLM release roughly monthly. Major features (better MoE support, new quantisation backends, speculative decoding improvements) can change throughput by 30&ndash;50%</li>
         <li><strong>Licensing changes.</strong> Track the specific model version&rsquo;s license, not the family&rsquo;s reputation. Mistral went from Apache 2.0 to restrictive and back. Gemma went from restrictive to Apache 2.0. The next shift could go either direction for any family</li>
