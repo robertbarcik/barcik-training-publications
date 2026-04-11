@@ -485,9 +485,9 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <hr>
 
     <h3>About This Booklet</h3>
-    <p>Every few weeks, a new open-weight model drops. The benchmarks look impressive, the community lights up, and someone on your team asks: should we switch?</p>
-    <p>This booklet does not answer that question for today&rsquo;s models. By the time you read this, the leaderboard will have shuffled again. Instead, it gives you something more durable: a framework for making that decision yourself, every time a new model arrives.</p>
-    <p>Part 1 maps the five major model families &mdash; who makes them, why, and where they are heading. Part 2 connects that landscape to your actual hardware: what fits, what runs fast enough, and what the quantization trade-offs really look like. Part 3 gives you a reusable decision framework and four scenarios to practice with.</p>
+    <p>You already run Llama 3.3. It works. Tickets get resolved, code gets reviewed, documents get summarised. Then someone on your team opens HuggingFace, sees a new model with better benchmark scores, and asks: should we switch?</p>
+    <p>You do not know. Not because you are uninformed, but because the question is unanswerable without context. Switch for which task? On which GPU? At what quantisation? Serving how many users? Under what license? The model is one variable in a system of constraints, and the leaderboard answers none of them.</p>
+    <p>This booklet does not tell you which model to pick today. By the time you read this, the rankings will have shifted. What it gives you is the machinery to answer the question yourself &mdash; this time and every time after. Part 1 maps the five major families: who builds them, why, and what that means for you. Part 2 connects the landscape to your actual hardware. Part 3 gives you a decision framework and four scenarios to stress-test it.</p>
     <p>The numbers are current as of April 2026. The framework should outlast them.</p>
 
     <h3>Who This Is For</h3>
@@ -532,16 +532,14 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="chapter-label">Context</div>
     <h1>Why Not Just a Comparison Table?</h1>
 
-    <p>If you have been following open-weight models for any length of time, you have seen the pattern. A new model comes out. Everyone runs benchmarks. Blog posts declare a new winner. Two months later, the next model drops and the cycle repeats.</p>
+    <p>In December 2024, the safe recommendation was straightforward: Llama 3.3 70B, run it on your H100, done. Six months later, Qwen 3 had overtaken it on most benchmarks. Six months after that, Gemma 4 arrived with Apache 2.0 licensing and Mistral Small 4 rewrote what a 6B-active-parameter model could do. Anyone who built their strategy around a December 2024 comparison table spent 2025 on the wrong model.</p>
 
-    <p>Comparison tables expire. In early 2025, Llama 3.3 70B was the default recommendation for on-prem deployments. By mid-2025, Qwen 3 had overtaken it on most benchmarks. By early 2026, Gemma 4 arrived with Apache 2.0 licensing and competitive quality, and Mistral Small 4 rewrote what a 6B-active-parameter model could do. A table from any of those moments would mislead you today.</p>
+    <p>The problem is not that comparison tables are wrong when published. The problem is that they are <strong>right for about eight weeks</strong>. The mean engagement duration for any model on HuggingFace is approximately six weeks before it is superseded. Building your model strategy around a snapshot is like choosing a server vendor based on last quarter&rsquo;s benchmark &mdash; the number was accurate, the decision was not.</p>
 
-    <p>What does not expire is knowing <strong>how to evaluate</strong>. The variables that matter &mdash; your hardware constraints, your use case requirements, the licensing implications, the inference cost &mdash; are the same regardless of which model is newest. A team that understands these variables can read a model card and make a decision in an afternoon. A team that relies on recommendations needs to ask for help every time the landscape shifts.</p>
-
-    <p>That is the difference this booklet aims to create.</p>
+    <p>What does not change every eight weeks: your hardware constraints, your use case requirements, the licensing implications, and the inference cost structure. A team that understands these variables can read a model card on release day and reach a defensible decision by end of day. A team that waits for someone else&rsquo;s recommendation table is always two months behind.</p>
 
     <blockquote>
-        <p><strong>The goal:</strong> When a new model drops two months from now, you can evaluate it yourself using the framework from this booklet &mdash; without waiting for someone else&rsquo;s recommendation.</p>
+        <p><strong>The goal:</strong> When the next model drops, you evaluate it yourself &mdash; against your hardware, your constraints, your use cases &mdash; without waiting for someone else&rsquo;s table.</p>
     </blockquote>
 </section>
 
@@ -596,132 +594,126 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="chapter-label">Part 1: Model Families</div>
     <h1>Family by Family</h1>
 
-    <p>Each family exists because its parent company has a strategic reason to give away expensive models for free. Understanding that reason tells you how committed they are to continuing &mdash; and what strings might be attached.</p>
+    <p>Do not read this section as a catalog. Read it as context for decisions you will make in Part 3. For each family, the question that matters is: <strong>under what circumstances would I choose this one?</strong> The corporate strategy behind each is a single sentence &mdash; enough to understand their commitment to open weights. The rest is what you need for model selection.</p>
+    <p><em style="color: var(--text-light); font-size: 0.9rem;">Specific model versions (Llama 3.3, Gemma 4, Qwen 3.5) will be superseded. The families, their licensing philosophies, and the &ldquo;when to choose&rdquo; criteria are more stable &mdash; those are what to retain.</em></p>
 
     <!-- ── LLAMA ── -->
     <div class="family-card">
-        <h3>Meta Llama</h3>
+        <h3>Meta Llama &mdash; the incumbent you already know</h3>
         <div class="family-meta">
             <span class="license-meta">Meta Community License</span>
             <span>US origin</span>
             <span>1.2B+ cumulative downloads</span>
         </div>
 
-        <p><strong>Why Meta open-weights.</strong> Zuckerberg&rsquo;s stated logic: prevent platform lock-in. If any single company monopolises the AI layer, Meta risks being gated out &mdash; the same position they have with Apple&rsquo;s App Store. By commoditising the model layer, Meta ensures it can always access frontier AI without depending on a competitor.</p>
+        <p>If you are running open-weight models today, you are probably running Llama. That is its greatest strength &mdash; ecosystem depth, battle-tested tooling, the most derivative models on HuggingFace (~85K) &mdash; and increasingly its only differentiator, as competitors match or exceed its quality.</p>
 
-        <p><strong>Where it stands.</strong> Llama 4 (April 2025) pivoted to natively multimodal MoE. Llama 4 Scout activates 17B of 109B total with a 10M token context window &mdash; fits on a single H100 at INT4. Llama 4 Maverick scales to 400B total (17B active) with 1M context. The practical workhorse for most on-prem deployments remains <strong>Llama 3.3 70B</strong>, which delivers Llama 3.1 405B-class performance through distillation.</p>
+        <p><strong>Llama 3.3 70B</strong> remains the practical workhorse: 405B-class quality through distillation, fits on your H100 at FP8 (~70GB), runs with every inference engine. Llama 4 (April 2025) pivoted to multimodal MoE &mdash; Scout (109B total, 17B active, 10M context) fits on a single H100 at INT4, but the ecosystem around Llama 4 has been slower to mature than Llama 3.x.</p>
 
-        <p><strong>The uncertainty.</strong> Meta&rsquo;s April 2026 release of Muse Spark &mdash; a proprietary reasoning model &mdash; is the first non-open-weight release from Meta&rsquo;s new Superintelligence Labs. The community is watching closely to see if this signals a strategic pivot away from open weights.</p>
+        <p><strong>The risk:</strong> Meta released Muse Spark in April 2026 &mdash; their first <em>proprietary</em> model. The community reads this as a potential signal that future frontier releases may not be open. Meta open-weights to prevent platform lock-in by other AI providers; if that strategic calculus changes, so does Llama&rsquo;s future.</p>
 
         <div class="key-points">
-            <div class="kp-title">Key considerations</div>
+            <div class="kp-title">When to choose Llama</div>
             <ul>
-                <li><strong>License:</strong> Not Apache 2.0. Requires &ldquo;Built with Llama&rdquo; branding. 700M MAU cap. EU entities cannot use Llama 4 multimodal models (text-only models are fine)</li>
-                <li><strong>Sweet spot:</strong> Llama 3.3 70B on H100 at FP8 (~70GB) &mdash; the most battle-tested open-weight model for production</li>
-                <li><strong>Ecosystem:</strong> Largest derivative model count (~85K on HuggingFace), broadest inference tool support</li>
-                <li><strong>Watch for:</strong> Whether Meta continues open-weight releases or pivots to proprietary</li>
+                <li><strong>You value ecosystem maturity</strong> over cutting-edge benchmarks &mdash; every tool, tutorial, and fine-tune assumes Llama compatibility</li>
+                <li><strong>License caveat:</strong> Not Apache 2.0. Requires &ldquo;Built with Llama&rdquo; branding. <strong>EU entities cannot use Llama 4 multimodal models</strong> (text-only fine)</li>
+                <li><strong>On your hardware:</strong> Llama 3.3 70B on H100 at FP8. Llama 4 Scout at Q4 on H100 or DGX Spark</li>
             </ul>
         </div>
     </div>
 
     <!-- ── GEMMA ── -->
     <div class="family-card">
-        <h3>Google Gemma</h3>
+        <h3>Google Gemma &mdash; distilled Gemini, now with a real license</h3>
         <div class="family-meta">
             <span class="license-apache">Apache 2.0 (from Gemma 4)</span>
             <span>US origin</span>
             <span>400M+ downloads</span>
         </div>
 
-        <p><strong>Why Google open-weights.</strong> Gemma is the complement to Gemini, not a competitor. Google distils research from its closed Gemini models into smaller open Gemma variants. Edge and local inference drives adoption of Google&rsquo;s broader ecosystem (Cloud, Android, TPUs). The move to Apache 2.0 with Gemma 4 was a direct competitive response to Qwen and Mistral capturing developer mindshare.</p>
+        <p>Gemma models are distilled from Google&rsquo;s closed Gemini research, which gives them outsized capability per parameter. The move to Apache 2.0 with Gemma 4 (April 2026) removed the licensing friction that had held back enterprise adoption of earlier versions &mdash; this was a direct competitive response to Qwen and Mistral.</p>
 
-        <p><strong>Where it stands.</strong> Gemma 4 (April 2026) ships in four sizes: E2B and E4B for edge/phone, 26B MoE (3.8B active, near-31B quality), and 31B dense which ranks #3 on Arena AI among open models. The 26B MoE is the standout &mdash; it delivers near-frontier quality while activating only 3.8B parameters per token, making it remarkably efficient to serve. Specialised variants exist for medical (MedGemma), translation, security, and embeddings.</p>
+        <p>The <strong>26B MoE</strong> is the standout: it activates only 3.8B parameters per token yet delivers near-31B dense quality (#6 on Arena AI). The <strong>31B dense</strong> model ranks #3 on Arena AI among all open models. Specialised variants exist for medical, translation, security, and embeddings &mdash; Google is building a complete task-specific portfolio, which matters if you want models that work together.</p>
 
         <div class="key-points">
-            <div class="kp-title">Key considerations</div>
+            <div class="kp-title">When to choose Gemma</div>
             <ul>
-                <li><strong>License:</strong> Apache 2.0 from Gemma 4 onward. Gemma 1&ndash;3 used a restrictive custom license &mdash; verify which version you are using</li>
-                <li><strong>Sweet spot:</strong> Gemma 4 31B dense or 26B MoE on a single H100 or DGX Spark at Q4 (~18&ndash;20GB)</li>
-                <li><strong>Known weakness:</strong> Inference speed lags competitors. The 26B MoE ran at ~11 tok/s on mid-range hardware where Qwen 3.5 hit 60+ tok/s</li>
-                <li><strong>Watch for:</strong> Speed optimisations in community inference engines; Google&rsquo;s commitment level versus Gemini priorities</li>
+                <li><strong>You want the best quality at 27&ndash;31B</strong> with a clean Apache 2.0 license and no geopolitical complications</li>
+                <li><strong>Speed caveat:</strong> Inference is slower than competitors &mdash; the 26B MoE ran at ~11 tok/s where Qwen 3.5 hit 60+ on the same hardware. Community engine optimisations are catching up</li>
+                <li><strong>License trap:</strong> Gemma 1&ndash;3 used a restrictive custom license. Verify you are using Gemma 4</li>
+                <li><strong>On your hardware:</strong> 31B dense or 26B MoE on H100 or DGX Spark at Q4 (~18&ndash;20GB)</li>
             </ul>
         </div>
     </div>
 
     <!-- ── QWEN ── -->
     <div class="family-card">
-        <h3>Alibaba Qwen</h3>
+        <h3>Alibaba Qwen &mdash; technically best, geopolitically complicated</h3>
         <div class="family-meta">
             <span class="license-apache">Apache 2.0 (from Qwen 3)</span>
             <span>Chinese origin</span>
             <span>700M+ downloads</span>
         </div>
 
-        <p><strong>Why Alibaba open-weights.</strong> Qwen is a cloud revenue flywheel. Open models drive developer adoption on Alibaba Cloud, where AI-related revenues grew at triple-digit rates for eight consecutive quarters. CEO Eddie Wu called Qwen &ldquo;the operating system of the AI era.&rdquo;</p>
+        <p>By the numbers, Qwen wins. Most-forked family on HuggingFace (180K+ derivatives). Widest size range (0.6B to 480B). 201+ languages versus Llama&rsquo;s ~8. Strongest reasoning model at the 32B tier (QwQ-32B). Most aggressive release cadence. Qwen 3.5 introduced Gated DeltaNet &mdash; linear attention with constant memory complexity, a genuine architectural step beyond standard transformers. Alibaba open-weights to drive cloud revenue; their AI business has grown at triple-digit rates for eight consecutive quarters.</p>
 
-        <p><strong>Where it stands.</strong> Qwen is technically dominant. It has the most-forked model family on HuggingFace (180K+ derivative models), the widest size range in the industry (0.6B to 480B), and supports 201+ languages &mdash; far superior to Llama&rsquo;s ~8 for multilingual EU deployments. Qwen 3.5 introduced Gated DeltaNet, a linear attention architecture with constant memory complexity &mdash; a genuine architectural innovation beyond standard transformers. QwQ-32B is one of the strongest reasoning models at any size.</p>
-
-        <p><strong>The geopolitical reality.</strong> China&rsquo;s National Intelligence Law obligates all Chinese companies to cooperate with government intelligence operations. The EU AI Act requires training data transparency &mdash; Qwen provides none. For EU teams: self-host on EU infrastructure (never use Alibaba Cloud API endpoints for GDPR-sensitive data), avoid deployment in high-risk AI Act categories without legal review, and treat Qwen as a strong option for non-sensitive workloads where its technical superiority justifies the compliance overhead.</p>
+        <p>The complication is not technical. China&rsquo;s National Intelligence Law obligates all Chinese companies to cooperate with government intelligence operations. The EU AI Act requires training data transparency &mdash; Qwen provides none. <strong>For EU teams:</strong> always self-host on EU infrastructure (never Alibaba Cloud API for GDPR data), avoid high-risk AI Act categories without legal review, and treat Qwen as a strong default for non-sensitive workloads where its technical lead justifies the compliance conversation.</p>
 
         <div class="key-points">
-            <div class="kp-title">Key considerations</div>
+            <div class="kp-title">When to choose Qwen</div>
             <ul>
-                <li><strong>License:</strong> Apache 2.0 from Qwen 3 onward. Technically unrestricted, but Chinese origin creates compliance overhead for regulated workloads</li>
-                <li><strong>Sweet spot:</strong> QwQ-32B and Qwen 3 8B/14B on DGX Spark. Qwen 3 235B MoE on two H200s at FP8</li>
-                <li><strong>Strongest at:</strong> Multilingual, coding (Qwen3-Coder), reasoning (QwQ), sheer breadth of sizes</li>
-                <li><strong>Watch for:</strong> EU regulatory developments on Chinese AI models; continued innovation pace</li>
+                <li><strong>You need multilingual, coding, or reasoning capability</strong> and the workload is not in a regulated/sensitive category</li>
+                <li><strong>You need a size the others do not offer</strong> &mdash; only Qwen covers 0.6B to 480B</li>
+                <li><strong>Compliance overhead:</strong> Chinese origin means extra due diligence for EU regulated, defence, and public sector workloads</li>
+                <li><strong>On your hardware:</strong> QwQ-32B or Qwen 3 8B/14B on DGX Spark. Qwen 3 235B MoE on two H200s at FP8</li>
             </ul>
         </div>
     </div>
 
     <!-- ── MISTRAL ── -->
     <div class="family-card">
-        <h3>Mistral AI</h3>
+        <h3>Mistral AI &mdash; the EU sovereignty option</h3>
         <div class="family-meta">
             <span class="license-apache">Apache 2.0 (current lineup)</span>
             <span>EU origin (Paris)</span>
             <span>~700 employees</span>
         </div>
 
-        <p><strong>Why Mistral open-weights.</strong> Europe&rsquo;s sovereign AI play. Mistral is the only major AI lab headquartered in the EU, fully under EU jurisdiction, not subject to the US CLOUD Act. France and Germany have established joint frameworks for public administration AI using Mistral. The French Ministry of Armed Forces signed a 2026&ndash;2030 framework agreement for Mistral deployment across all military branches.</p>
+        <p>The only major AI lab headquartered in the EU. Full EU jurisdiction, no US CLOUD Act exposure. The French Ministry of Armed Forces signed a 2026&ndash;2030 deployment framework. France and Germany have established joint public administration AI frameworks using Mistral. If your client&rsquo;s procurement requires EU-origin software, Mistral may be the only choice that passes legal review.</p>
 
-        <p><strong>Where it stands.</strong> Mistral Small 4 (March 2026) is the standout: 119B total, ~6B active, 128 experts, with a configurable <code>reasoning_effort</code> parameter (from &ldquo;none&rdquo; for fast chat to &ldquo;high&rdquo; for step-by-step reasoning). It unifies instruct, reasoning, coding, and vision in one model. Mistral Large 3 reaches 675B total (41B active) for frontier workloads. Ministral 3 covers the compact tier at 3B/8B/14B. Mistral Compute, launching 2026, will be Mistral&rsquo;s own European cloud &mdash; 18,000 Grace Blackwell chips.</p>
-
-        <p><strong>A licensing cautionary tale.</strong> Mistral&rsquo;s history illustrates why you track license changes. Original Mistral 7B was Apache 2.0. Then Codestral (2024) introduced a non-commercial license, Mistral Large 2 went research-only, community backlash followed, and Mistral pivoted back. All current general-purpose models are Apache 2.0. The lesson: check the license on the specific model version you are deploying, not the family&rsquo;s reputation.</p>
+        <p><strong>Mistral Small 4</strong> (March 2026) is architecturally clever: 119B total, ~6B active, with a configurable <code>reasoning_effort</code> parameter that lets one model serve as both a fast chatbot and a step-by-step reasoner. Ministral 3 covers the compact tier (3B/8B/14B). <strong>Licensing lesson:</strong> Mistral went from Apache 2.0 (original 7B) to non-commercial (Codestral) to research-only (Large 2) and back to Apache 2.0 after community backlash. Always check the license on the specific version, not the family reputation.</p>
 
         <div class="key-points">
-            <div class="kp-title">Key considerations</div>
+            <div class="kp-title">When to choose Mistral</div>
             <ul>
-                <li><strong>License:</strong> Apache 2.0 for all current general-purpose models. Devstral 2 has a $20M/month revenue gate (modified MIT)</li>
-                <li><strong>Sweet spot:</strong> Ministral 3 8B/14B on DGX Spark or H100. Mistral Small 4 on two H200s or 4&times;H100</li>
-                <li><strong>EU advantage:</strong> Full EU jurisdiction, no CLOUD Act exposure, government-validated for sensitive workloads</li>
-                <li><strong>Watch for:</strong> Mistral Compute launch; whether EU regulatory alignment translates to mandatory adoption in public sector</li>
+                <li><strong>EU data sovereignty is a hard requirement</strong> &mdash; regulated industries, public sector, defence</li>
+                <li><strong>You want a single model that flexes</strong> between fast chat and deep reasoning (Mistral Small 4&rsquo;s <code>reasoning_effort</code> parameter)</li>
+                <li><strong>HW requirement:</strong> Mistral Small 4 needs 2&times;H200 or 4&times;H100. Ministral 3 8B/14B fits anywhere</li>
+                <li><strong>Watch for:</strong> Mistral Compute (their own EU cloud, 18K Blackwell chips, launching 2026)</li>
             </ul>
         </div>
     </div>
 
     <!-- ── PHI ── -->
     <div class="family-card">
-        <h3>Microsoft Phi</h3>
+        <h3>Microsoft Phi &mdash; the specialist that ignores general knowledge</h3>
         <div class="family-meta">
             <span class="license-mit">MIT License</span>
             <span>US origin</span>
             <span>Small Language Models</span>
         </div>
 
-        <p><strong>Why Microsoft open-weights.</strong> Phi serves a dual strategy: frontier models through OpenAI (GPT-4/5) for Azure revenue, and open-weight Phi for edge, device, and cost-sensitive scenarios. Phi drives ONNX Runtime adoption and validates Copilot+ PC hardware. It is Microsoft&rsquo;s developer on-ramp to Azure.</p>
+        <p>Phi is not trying to be a general-purpose assistant. It is a reasoning engine trained on synthetic &ldquo;textbook quality&rdquo; data that deliberately removes factual content to preserve reasoning capacity. The result: Phi-4-reasoning-plus (14B) outperforms DeepSeek-R1 (671B) on AIME math problems. Phi-4-multimodal (5.6B) tops the HuggingFace speech recognition leaderboard. Phi-4-mini (3.8B) runs on CPU. Microsoft open-weights Phi to drive ONNX Runtime adoption and serve as the developer on-ramp to Azure.</p>
 
-        <p><strong>Where it stands.</strong> Phi occupies a unique niche: small models that punch above their weight through synthetic &ldquo;textbook quality&rdquo; training data. Phi-4 (14B) and Phi-4-reasoning-plus outperform DeepSeek-R1 (671B MoE) on AIME 2025 math competition problems. Phi-4-multimodal (5.6B) handles speech, vision, and text with Mixture-of-LoRAs. Phi-4-mini (3.8B) runs on virtually anything, including CPU-only.</p>
-
-        <p><strong>The trade-off.</strong> Phi models explicitly sacrifice factual knowledge for reasoning capacity. TriviaQA scores are low. The 16K context window on base Phi-4 is restrictive. Agentic capability is &ldquo;very limited.&rdquo; Multilingual support is primarily English. Phi is a specialised reasoning engine that needs RAG augmentation for knowledge-heavy tasks, not a general-purpose assistant.</p>
+        <p>The trade-off is explicit. TriviaQA scores are low. The 16K context window on base Phi-4 rules out large-document tasks. Multilingual is weak (primarily English). Agentic capability is &ldquo;very limited.&rdquo; If you need Phi for knowledge-heavy work, pair it with RAG.</p>
 
         <div class="key-points">
-            <div class="kp-title">Key considerations</div>
+            <div class="kp-title">When to choose Phi</div>
             <ul>
-                <li><strong>License:</strong> MIT &mdash; the most permissive option available. Zero restrictions whatsoever</li>
-                <li><strong>Sweet spot:</strong> Phi-4 14B on DGX Spark with NVFP4. Phi-4-mini 3.8B on CPU for always-on tasks</li>
-                <li><strong>Best at:</strong> Math, coding, scientific reasoning at small parameter counts</li>
-                <li><strong>Not for:</strong> General knowledge tasks, multilingual use cases, agentic workflows, long-context workloads</li>
+                <li><strong>Your task is math, code, or scientific reasoning</strong> and you want the smallest model that handles it</li>
+                <li><strong>You need something that runs on CPU</strong> or minimal hardware (Phi-4-mini at 3.8B)</li>
+                <li><strong>License:</strong> MIT &mdash; zero restrictions of any kind. The cleanest legal option</li>
+                <li><strong>Not for:</strong> General chat, multilingual, long-context, agentic workflows</li>
             </ul>
         </div>
     </div>
@@ -917,6 +909,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <h1>What Fits Where</h1>
 
     <p>Here is the table that matters. For each model size, it shows the VRAM required at different precision levels and whether it fits on your three hardware targets. &ldquo;Fits&rdquo; means loads with room for KV cache at moderate usage. &ldquo;Tight&rdquo; means it loads but leaves minimal headroom.</p>
+    <p><em style="color: var(--text-light); font-size: 0.9rem;">The VRAM column values are durable &mdash; they follow from the formula (params &times; bytes). The specific model names will rotate; the size tiers and memory math will not.</em></p>
 
     <div class="table-wrapper">
     <table>
@@ -1161,6 +1154,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <p>A model that &ldquo;fits&rdquo; is not the same as a model that &ldquo;performs.&rdquo; Here is what your hardware actually delivers at the token level.</p>
 
     <h2>Single-User Decode Speed</h2>
+    <p><em style="color: var(--text-light); font-size: 0.9rem;">Snapshot data &mdash; April 2026. These numbers change with firmware updates, framework versions, and new model architectures. The formula (bandwidth &divide; model size) is durable; the specific tok/s values are not. Re-benchmark when your stack changes.</em></p>
     <p>This is the number that determines whether a model feels interactive. Measured in tokens per second during generation:</p>
 
     <div class="table-wrapper">
