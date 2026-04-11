@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open-Weight Models &mdash; Model Families &amp; Selection for On-Prem Inference</title>
+<style>
+:root {
+    --navy: #1e3a5f;
+    --navy-light: #2a5280;
+    --accent: #3b82f6;
+    --bg: #ffffff;
+    --bg-sidebar: #f8fafc;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --code-bg: #f1f5f9;
+    --sidebar-width: 300px;
+    --progress-height: 3px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+}
+
+/* ── Progress bar ── */
+#progress-bar {
+    position: fixed; top: 0; left: 0;
+    width: 0%; height: var(--progress-height);
+    background: var(--accent); z-index: 1000;
+    transition: width 0.1s;
+}
+
+/* ── Sidebar ── */
+#sidebar {
+    position: fixed; top: 0; left: 0;
+    width: var(--sidebar-width); height: 100vh;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    overflow-y: auto; padding: 2rem 0; z-index: 100;
+    transition: transform 0.3s;
+}
+#sidebar-header {
+    padding: 0 1.5rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1rem;
+}
+#sidebar-header h2 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--navy); letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+#sidebar-header p {
+    font-size: 0.78rem; color: var(--text-light);
+    margin-top: 0.3rem; line-height: 1.4;
+}
+#sidebar nav ul { list-style: none; }
+#sidebar nav ul li a {
+    display: block; padding: 0.55rem 1.5rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem; color: var(--text-light);
+    text-decoration: none; border-left: 3px solid transparent;
+    transition: all 0.2s; line-height: 1.4;
+}
+#sidebar nav ul li a:hover {
+    color: var(--navy);
+    background: rgba(30, 58, 95, 0.04);
+}
+#sidebar nav ul li a.active {
+    color: var(--navy); font-weight: 600;
+    border-left-color: var(--accent);
+    background: rgba(59, 130, 246, 0.06);
+}
+.nav-divider {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.7rem; font-weight: 700;
+    color: var(--text-light); text-transform: uppercase;
+    letter-spacing: 0.08em; padding: 1rem 1.5rem 0.3rem;
+    opacity: 0.6;
+}
+
+/* ── Hamburger ── */
+#menu-toggle {
+    display: none; position: fixed;
+    top: 1rem; left: 1rem; z-index: 200;
+    background: var(--navy); color: white;
+    border: none; border-radius: 6px;
+    padding: 0.5rem 0.75rem; font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* ── Main content ── */
+#content-wrapper {
+    margin-left: var(--sidebar-width);
+    display: flex; justify-content: center;
+    padding: 0 2rem;
+}
+#content {
+    max-width: 780px; width: 100%;
+    padding: 3rem 1rem 6rem;
+}
+
+/* ── Sections ── */
+.chapter {
+    margin-bottom: 5rem;
+    padding-top: 1rem;
+}
+.chapter:first-child {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--border);
+}
+
+/* ── Typography ── */
+h1 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 1rem;
+    line-height: 1.25; letter-spacing: -0.01em;
+}
+h2 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.45rem; font-weight: 700;
+    color: var(--navy); margin: 2.5rem 0 1rem;
+    line-height: 1.3;
+}
+h3 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--navy); margin: 2rem 0 0.75rem;
+    line-height: 1.35;
+}
+p { margin-bottom: 1.1rem; }
+ul, ol { margin: 0.8rem 0 1.2rem 1.5rem; }
+li { margin-bottom: 0.4rem; }
+strong { color: var(--navy); }
+blockquote {
+    border-left: 4px solid var(--accent);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    background: rgba(59, 130, 246, 0.04);
+    border-radius: 0 8px 8px 0;
+    font-size: 0.97rem;
+}
+blockquote p:last-child { margin-bottom: 0; }
+code {
+    background: var(--code-bg);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.88em;
+}
+hr {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 3rem 0;
+}
+
+/* ── Chapter label ── */
+.chapter-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent); margin-bottom: 0.5rem;
+}
+
+/* ── Tables ── */
+table {
+    width: 100%; border-collapse: collapse;
+    margin: 1.5rem 0; font-size: 0.9rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+th {
+    background: var(--navy); color: white;
+    padding: 0.7rem 0.8rem; text-align: left;
+    font-weight: 600; font-size: 0.82rem;
+    letter-spacing: 0.02em;
+}
+td {
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+}
+tr:nth-child(even) { background: var(--bg-sidebar); }
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ── Stat cards ── */
+.stat-row {
+    display: flex; gap: 1rem;
+    margin: 1.5rem 0; flex-wrap: wrap;
+}
+.stat-card {
+    flex: 1; min-width: 140px;
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem; text-align: center;
+}
+.stat-card .stat-number {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--navy); line-height: 1.2;
+}
+.stat-card .stat-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem; color: var(--text-light);
+    margin-top: 0.3rem; line-height: 1.3;
+}
+
+/* ── Key points box ── */
+.key-points {
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.92rem; line-height: 1.6;
+}
+.key-points .kp-title {
+    font-weight: 700; font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--navy); margin-bottom: 0.6rem;
+}
+.key-points ul { margin: 0; padding-left: 1.4rem; }
+.key-points li { margin-bottom: 0.35rem; color: var(--text); }
+
+/* ── Visual diagrams ── */
+.visual-diagram {
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.88rem;
+}
+.visual-diagram .diagram-title {
+    font-weight: 700; font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--navy); margin-bottom: 1rem;
+    text-align: center;
+}
+.diagram-flow {
+    display: flex; align-items: center;
+    justify-content: center; gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.diagram-flow .diagram-box {
+    padding: 0.6rem 1rem;
+    border-radius: 8px; text-align: center;
+    min-width: 90px; font-size: 0.82rem;
+    font-weight: 600; line-height: 1.3;
+}
+.diagram-flow .diagram-box small {
+    display: block; font-weight: 400;
+    font-size: 0.72rem; opacity: 0.85;
+    margin-top: 0.1rem;
+}
+.diagram-flow .diagram-arrow {
+    font-size: 1.2rem; color: var(--text-light);
+}
+.diagram-box.layer-1 { background: var(--navy); color: white; }
+.diagram-box.layer-2 { background: var(--navy-light); color: white; }
+.diagram-box.layer-3 { background: var(--accent); color: white; }
+.diagram-box.layer-4 { background: #64748b; color: white; }
+.diagram-box.layer-5 { background: #94a3b8; color: white; }
+
+.diagram-stack {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.4rem;
+}
+.diagram-stack .diagram-box {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px; text-align: center;
+    width: 80%; max-width: 420px;
+    font-size: 0.85rem; font-weight: 600;
+    line-height: 1.3;
+}
+.diagram-stack .diagram-box small {
+    display: block; font-weight: 400;
+    font-size: 0.75rem; opacity: 0.85;
+    margin-top: 0.15rem;
+}
+.diagram-stack .diagram-arrow {
+    font-size: 1rem; color: var(--text-light);
+    line-height: 1;
+}
+
+/* ── Risk cards ── */
+.risk-cards {
+    display: flex; gap: 1rem;
+    margin: 1.5rem 0; flex-wrap: wrap;
+}
+.risk-card {
+    flex: 1; min-width: 180px;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.risk-card.risk-low { background: #f0fdf4; border: 1px solid #86efac; }
+.risk-card.risk-medium { background: #fefce8; border: 1px solid #fde047; }
+.risk-card.risk-high { background: #fef2f2; border: 1px solid #fca5a5; }
+.risk-card .risk-label {
+    font-weight: 700; font-size: 0.82rem;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+}
+.risk-low .risk-label { color: #166534; }
+.risk-medium .risk-label { color: #854d0e; }
+.risk-high .risk-label { color: #991b1b; }
+.risk-card .risk-desc {
+    font-size: 0.82rem; color: var(--text);
+    line-height: 1.5;
+}
+
+/* ── Exercise blocks ── */
+.exercise {
+    background: #f0fdf4;
+    border-left: 4px solid #22c55e;
+    border-radius: 0 10px 10px 0;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.92rem; line-height: 1.6;
+}
+.exercise .exercise-title {
+    font-weight: 700; font-size: 0.82rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: #166534; margin-bottom: 0.6rem;
+}
+.exercise .exercise-body p { margin-bottom: 0.7rem; color: var(--text); }
+.exercise .exercise-body ul { margin: 0.5rem 0; padding-left: 1.4rem; }
+.exercise .exercise-body li { margin-bottom: 0.3rem; color: var(--text); }
+
+/* ── Toggle panels ── */
+.toggle-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--navy); color: #fff;
+    border: none; border-radius: 8px;
+    padding: 10px 18px; font-size: 0.85rem;
+    font-weight: 600; cursor: pointer;
+    margin-top: 12px; transition: background 0.2s;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.toggle-btn:hover { background: var(--navy-light); }
+.toggle-btn .arrow { transition: transform 0.3s; display: inline-block; }
+.toggle-btn.open .arrow { transform: rotate(90deg); }
+.toggle-panel {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s;
+    background: var(--bg-sidebar); border-radius: 10px;
+    margin-top: 10px; border: 1px solid var(--border);
+}
+.toggle-panel.open {
+    max-height: 1200px; padding: 20px;
+}
+.toggle-panel-inner { padding: 0; }
+.toggle-panel-inner p { margin-bottom: 0.7rem; font-size: 0.92rem; }
+.toggle-panel-inner ul { margin: 0.5rem 0; padding-left: 1.4rem; }
+.toggle-panel-inner li { margin-bottom: 0.3rem; font-size: 0.92rem; }
+.toggle-panel-inner strong { color: var(--navy); }
+
+/* ── Family cards ── */
+.family-card {
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0 2rem;
+}
+.family-card h3 {
+    margin-top: 0;
+}
+.family-meta {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+.family-meta span {
+    display: inline-block;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.15rem 0.6rem;
+    margin-right: 0.4rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.78rem;
+}
+.family-meta span.license-apache { border-color: #86efac; background: #f0fdf4; color: #166534; }
+.family-meta span.license-meta { border-color: #fde047; background: #fefce8; color: #854d0e; }
+.family-meta span.license-mit { border-color: #93c5fd; background: #eff6ff; color: #1e40af; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    #sidebar { transform: translateX(-100%); }
+    #sidebar.open {
+        transform: translateX(0);
+        box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+    }
+    #menu-toggle { display: block; }
+    #content-wrapper { margin-left: 0; padding: 0 1rem; }
+    #content { padding: 2rem 0.5rem 4rem; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.3rem; }
+    table { font-size: 0.82rem; }
+    th, td { padding: 0.5rem 0.6rem; }
+}
+@media (max-width: 600px) {
+    #content { padding: 1.5rem 1rem 3rem; }
+    body { font-size: 15.5px; }
+    .stat-row, .risk-cards { flex-direction: column; }
+    .diagram-flow { flex-direction: column; }
+    .diagram-flow .diagram-arrow { transform: rotate(90deg); }
+}
+
+/* ── Print ── */
+@media print {
+    #sidebar, #menu-toggle, #progress-bar { display: none !important; }
+    #content-wrapper { margin-left: 0; padding: 0; }
+    #content { max-width: 100%; }
+    .chapter { page-break-before: always; }
+    .chapter:first-child { page-break-before: auto; }
+    .toggle-panel { max-height: none !important; padding: 20px !important; }
+}
+</style>
+</head>
+<body>
+    <div id="progress-bar"></div>
+
+    <button id="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+
+    <aside id="sidebar">
+        <div id="sidebar-header">
+            <h2>Open-Weight Models</h2>
+            <p>Model Selection for On-Prem Inference</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#cover">Cover</a></li>
+                <li><a href="#intro">Introduction</a></li>
+                <li class="nav-divider">Part 1: Model Families</li>
+                <li><a href="#families-overview">The Landscape</a></li>
+                <li><a href="#family-profiles">Family by Family</a></li>
+                <li><a href="#beyond-llms">Beyond LLMs</a></li>
+                <li class="nav-divider">Part 2: Practical Selection</li>
+                <li><a href="#hardware-reality">The Hardware Reality</a></li>
+                <li><a href="#what-fits">What Fits Where</a></li>
+                <li><a href="#quantization">Quantization</a></li>
+                <li><a href="#inference-frameworks">Inference Frameworks</a></li>
+                <li><a href="#throughput">Memory &amp; Throughput</a></li>
+                <li class="nav-divider">Part 3: Decision Framework</li>
+                <li><a href="#decision-framework">The Framework</a></li>
+                <li><a href="#exercise">Scenario Exercise</a></li>
+                <li><a href="#watch-signals">What to Watch</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div id="content-wrapper">
+        <main id="content">
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- COVER                                                      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="cover">
+    <h1>Open-Weight Model Families &amp; Model Selection</h1>
+    <h2 style="color: var(--text-light); font-weight: 400; font-size: 1.2rem; margin-top: -0.5rem;">A Decision Framework for On-Prem Inference</h2>
+    <hr>
+    <p><strong>April 2026</strong></p>
+    <p><em>By Robert Barcik</em><br>
+    <em>LearningDoe s.r.o.</em></p>
+    <hr>
+
+    <h3>About This Booklet</h3>
+    <p>Every few weeks, a new open-weight model drops. The benchmarks look impressive, the community lights up, and someone on your team asks: should we switch?</p>
+    <p>This booklet does not answer that question for today&rsquo;s models. By the time you read this, the leaderboard will have shuffled again. Instead, it gives you something more durable: a framework for making that decision yourself, every time a new model arrives.</p>
+    <p>Part 1 maps the five major model families &mdash; who makes them, why, and where they are heading. Part 2 connects that landscape to your actual hardware: what fits, what runs fast enough, and what the quantization trade-offs really look like. Part 3 gives you a reusable decision framework and four scenarios to practice with.</p>
+    <p>The numbers are current as of April 2026. The framework should outlast them.</p>
+
+    <h3>Who This Is For</h3>
+    <ul>
+        <li><strong>Operations and services professionals</strong> deploying AI on company hardware</li>
+        <li><strong>IT teams</strong> managing GPU infrastructure for internal or client workloads</li>
+        <li><strong>Technical decision-makers</strong> evaluating which models to run on-prem</li>
+        <li><strong>Anyone with an H100, H200, or DGX Spark</strong> who needs to make model choices without a dedicated ML research team</li>
+    </ul>
+
+    <h3>How to Read</h3>
+    <p>Read in order for the full picture. If you already know the model families and just need the practical selection guidance, skip to Part 2. If you want the decision framework and exercise, jump to Part 3 &mdash; but you will get more from it having read Parts 1 and 2 first.</p>
+
+    <hr>
+    <h3>Table of Contents</h3>
+    <p><strong>Part 1: Model Families</strong></p>
+    <ol>
+        <li>The Landscape in 2026</li>
+        <li>Family by Family</li>
+        <li>Beyond LLMs</li>
+    </ol>
+    <p><strong>Part 2: Practical Selection</strong></p>
+    <ol start="4">
+        <li>The Hardware Reality</li>
+        <li>What Fits Where</li>
+        <li>Quantization</li>
+        <li>Inference Frameworks</li>
+        <li>Memory &amp; Throughput</li>
+    </ol>
+    <p><strong>Part 3: Decision Framework</strong></p>
+    <ol start="9">
+        <li>The Decision Framework</li>
+        <li>Scenario Exercise</li>
+        <li>What to Watch</li>
+    </ol>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- INTRODUCTION                                               -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="intro">
+    <div class="chapter-label">Context</div>
+    <h1>Why Not Just a Comparison Table?</h1>
+
+    <p>If you have been following open-weight models for any length of time, you have seen the pattern. A new model comes out. Everyone runs benchmarks. Blog posts declare a new winner. Two months later, the next model drops and the cycle repeats.</p>
+
+    <p>Comparison tables expire. In early 2025, Llama 3.3 70B was the default recommendation for on-prem deployments. By mid-2025, Qwen 3 had overtaken it on most benchmarks. By early 2026, Gemma 4 arrived with Apache 2.0 licensing and competitive quality, and Mistral Small 4 rewrote what a 6B-active-parameter model could do. A table from any of those moments would mislead you today.</p>
+
+    <p>What does not expire is knowing <strong>how to evaluate</strong>. The variables that matter &mdash; your hardware constraints, your use case requirements, the licensing implications, the inference cost &mdash; are the same regardless of which model is newest. A team that understands these variables can read a model card and make a decision in an afternoon. A team that relies on recommendations needs to ask for help every time the landscape shifts.</p>
+
+    <p>That is the difference this booklet aims to create.</p>
+
+    <blockquote>
+        <p><strong>The goal:</strong> When a new model drops two months from now, you can evaluate it yourself using the framework from this booklet &mdash; without waiting for someone else&rsquo;s recommendation.</p>
+    </blockquote>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PART 1: THE LANDSCAPE                                      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="families-overview">
+    <div class="chapter-label">Part 1: Model Families</div>
+    <h1>The Landscape in 2026</h1>
+
+    <p>Eighteen months ago, if someone asked you to run an LLM on your own hardware, the answer was some variant of Llama. Today, five organisations compete to be the default choice, and their models have converged on a licensing model that would have seemed unlikely in 2024: genuine permissive open licensing.</p>
+
+    <div class="stat-row">
+        <div class="stat-card">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Major model families</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">Apache 2.0</div>
+            <div class="stat-label">Now the default license</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">MoE</div>
+            <div class="stat-label">Dominant architecture at frontier</div>
+        </div>
+    </div>
+
+    <h2>The Families</h2>
+    <p>Five families dominate the open-weight landscape: <strong>Llama</strong> (Meta), <strong>Gemma</strong> (Google DeepMind), <strong>Qwen</strong> (Alibaba Cloud), <strong>Mistral</strong> (Mistral AI, Paris), and <strong>Phi</strong> (Microsoft). Between them, they cover parameter counts from 600 million to 680 billion, every major modality, and nearly every viable on-prem deployment scenario.</p>
+
+    <p>These families are more stable reference points than specific model versions. A version (Llama 3.3, Qwen 3.5) might be superseded in months. The family behind it &mdash; its philosophy, its licensing approach, its community ecosystem, its preferred architecture &mdash; evolves more slowly and tells you more about where your investment will end up.</p>
+
+    <h2>Two Architecture Eras</h2>
+    <p>Understanding one distinction will help you make sense of everything that follows: <strong>dense versus Mixture of Experts (MoE)</strong>.</p>
+
+    <p>A <strong>dense model</strong> activates all its parameters for every token. A 70B dense model does 70 billion computations per token and needs enough memory to hold all 70 billion parameters. Straightforward.</p>
+
+    <p>A <strong>MoE model</strong> has a large total parameter count but activates only a fraction per token. Mistral Small 4 has 119B total parameters but activates only ~6B per token. You get frontier-quality outputs at small-model inference cost &mdash; but you still need enough memory to <em>store</em> all 119B parameters. MoE trades memory for compute efficiency.</p>
+
+    <p>Every frontier open-weight release since mid-2025 uses MoE: DeepSeek R1, Qwen 3.5, Mistral Large 3, Llama 4, Gemma 4&rsquo;s 26B variant. Dense models (27&ndash;32B) remain the sweet spot for single-GPU deployment, but the trend is clear.</p>
+
+    <h2>The Licensing Convergence</h2>
+    <p>The biggest practical shift of the past year is not a model &mdash; it is a license. <strong>Apache 2.0 has become the default</strong> for new open-weight releases. Gemma 4, Qwen 3/3.5, Mistral&rsquo;s current lineup, and DeepSeek V3 all use it. Microsoft&rsquo;s Phi uses MIT (even more permissive). The only major holdout is Meta&rsquo;s Llama, which uses a custom community license with branding requirements, a 700M monthly-active-user cap, and &mdash; critically for EU-based teams &mdash; restrictions on multimodal models in the EU.</p>
+
+    <p>For an IT services company, this means that four of the five families impose <strong>zero commercial restrictions</strong> on your use. You can deploy them for clients, embed them in products, fine-tune them, and redistribute derivatives without legal friction. That was not the case 18 months ago.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- FAMILY PROFILES                                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="family-profiles">
+    <div class="chapter-label">Part 1: Model Families</div>
+    <h1>Family by Family</h1>
+
+    <p>Each family exists because its parent company has a strategic reason to give away expensive models for free. Understanding that reason tells you how committed they are to continuing &mdash; and what strings might be attached.</p>
+
+    <!-- ── LLAMA ── -->
+    <div class="family-card">
+        <h3>Meta Llama</h3>
+        <div class="family-meta">
+            <span class="license-meta">Meta Community License</span>
+            <span>US origin</span>
+            <span>1.2B+ cumulative downloads</span>
+        </div>
+
+        <p><strong>Why Meta open-weights.</strong> Zuckerberg&rsquo;s stated logic: prevent platform lock-in. If any single company monopolises the AI layer, Meta risks being gated out &mdash; the same position they have with Apple&rsquo;s App Store. By commoditising the model layer, Meta ensures it can always access frontier AI without depending on a competitor.</p>
+
+        <p><strong>Where it stands.</strong> Llama 4 (April 2025) pivoted to natively multimodal MoE. Llama 4 Scout activates 17B of 109B total with a 10M token context window &mdash; fits on a single H100 at INT4. Llama 4 Maverick scales to 400B total (17B active) with 1M context. The practical workhorse for most on-prem deployments remains <strong>Llama 3.3 70B</strong>, which delivers Llama 3.1 405B-class performance through distillation.</p>
+
+        <p><strong>The uncertainty.</strong> Meta&rsquo;s April 2026 release of Muse Spark &mdash; a proprietary reasoning model &mdash; is the first non-open-weight release from Meta&rsquo;s new Superintelligence Labs. The community is watching closely to see if this signals a strategic pivot away from open weights.</p>
+
+        <div class="key-points">
+            <div class="kp-title">Key considerations</div>
+            <ul>
+                <li><strong>License:</strong> Not Apache 2.0. Requires &ldquo;Built with Llama&rdquo; branding. 700M MAU cap. EU entities cannot use Llama 4 multimodal models (text-only models are fine)</li>
+                <li><strong>Sweet spot:</strong> Llama 3.3 70B on H100 at FP8 (~70GB) &mdash; the most battle-tested open-weight model for production</li>
+                <li><strong>Ecosystem:</strong> Largest derivative model count (~85K on HuggingFace), broadest inference tool support</li>
+                <li><strong>Watch for:</strong> Whether Meta continues open-weight releases or pivots to proprietary</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── GEMMA ── -->
+    <div class="family-card">
+        <h3>Google Gemma</h3>
+        <div class="family-meta">
+            <span class="license-apache">Apache 2.0 (from Gemma 4)</span>
+            <span>US origin</span>
+            <span>400M+ downloads</span>
+        </div>
+
+        <p><strong>Why Google open-weights.</strong> Gemma is the complement to Gemini, not a competitor. Google distils research from its closed Gemini models into smaller open Gemma variants. Edge and local inference drives adoption of Google&rsquo;s broader ecosystem (Cloud, Android, TPUs). The move to Apache 2.0 with Gemma 4 was a direct competitive response to Qwen and Mistral capturing developer mindshare.</p>
+
+        <p><strong>Where it stands.</strong> Gemma 4 (April 2026) ships in four sizes: E2B and E4B for edge/phone, 26B MoE (3.8B active, near-31B quality), and 31B dense which ranks #3 on Arena AI among open models. The 26B MoE is the standout &mdash; it delivers near-frontier quality while activating only 3.8B parameters per token, making it remarkably efficient to serve. Specialised variants exist for medical (MedGemma), translation, security, and embeddings.</p>
+
+        <div class="key-points">
+            <div class="kp-title">Key considerations</div>
+            <ul>
+                <li><strong>License:</strong> Apache 2.0 from Gemma 4 onward. Gemma 1&ndash;3 used a restrictive custom license &mdash; verify which version you are using</li>
+                <li><strong>Sweet spot:</strong> Gemma 4 31B dense or 26B MoE on a single H100 or DGX Spark at Q4 (~18&ndash;20GB)</li>
+                <li><strong>Known weakness:</strong> Inference speed lags competitors. The 26B MoE ran at ~11 tok/s on mid-range hardware where Qwen 3.5 hit 60+ tok/s</li>
+                <li><strong>Watch for:</strong> Speed optimisations in community inference engines; Google&rsquo;s commitment level versus Gemini priorities</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── QWEN ── -->
+    <div class="family-card">
+        <h3>Alibaba Qwen</h3>
+        <div class="family-meta">
+            <span class="license-apache">Apache 2.0 (from Qwen 3)</span>
+            <span>Chinese origin</span>
+            <span>700M+ downloads</span>
+        </div>
+
+        <p><strong>Why Alibaba open-weights.</strong> Qwen is a cloud revenue flywheel. Open models drive developer adoption on Alibaba Cloud, where AI-related revenues grew at triple-digit rates for eight consecutive quarters. CEO Eddie Wu called Qwen &ldquo;the operating system of the AI era.&rdquo;</p>
+
+        <p><strong>Where it stands.</strong> Qwen is technically dominant. It has the most-forked model family on HuggingFace (180K+ derivative models), the widest size range in the industry (0.6B to 480B), and supports 201+ languages &mdash; far superior to Llama&rsquo;s ~8 for multilingual EU deployments. Qwen 3.5 introduced Gated DeltaNet, a linear attention architecture with constant memory complexity &mdash; a genuine architectural innovation beyond standard transformers. QwQ-32B is one of the strongest reasoning models at any size.</p>
+
+        <p><strong>The geopolitical reality.</strong> China&rsquo;s National Intelligence Law obligates all Chinese companies to cooperate with government intelligence operations. The EU AI Act requires training data transparency &mdash; Qwen provides none. For EU teams: self-host on EU infrastructure (never use Alibaba Cloud API endpoints for GDPR-sensitive data), avoid deployment in high-risk AI Act categories without legal review, and treat Qwen as a strong option for non-sensitive workloads where its technical superiority justifies the compliance overhead.</p>
+
+        <div class="key-points">
+            <div class="kp-title">Key considerations</div>
+            <ul>
+                <li><strong>License:</strong> Apache 2.0 from Qwen 3 onward. Technically unrestricted, but Chinese origin creates compliance overhead for regulated workloads</li>
+                <li><strong>Sweet spot:</strong> QwQ-32B and Qwen 3 8B/14B on DGX Spark. Qwen 3 235B MoE on two H200s at FP8</li>
+                <li><strong>Strongest at:</strong> Multilingual, coding (Qwen3-Coder), reasoning (QwQ), sheer breadth of sizes</li>
+                <li><strong>Watch for:</strong> EU regulatory developments on Chinese AI models; continued innovation pace</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── MISTRAL ── -->
+    <div class="family-card">
+        <h3>Mistral AI</h3>
+        <div class="family-meta">
+            <span class="license-apache">Apache 2.0 (current lineup)</span>
+            <span>EU origin (Paris)</span>
+            <span>~700 employees</span>
+        </div>
+
+        <p><strong>Why Mistral open-weights.</strong> Europe&rsquo;s sovereign AI play. Mistral is the only major AI lab headquartered in the EU, fully under EU jurisdiction, not subject to the US CLOUD Act. France and Germany have established joint frameworks for public administration AI using Mistral. The French Ministry of Armed Forces signed a 2026&ndash;2030 framework agreement for Mistral deployment across all military branches.</p>
+
+        <p><strong>Where it stands.</strong> Mistral Small 4 (March 2026) is the standout: 119B total, ~6B active, 128 experts, with a configurable <code>reasoning_effort</code> parameter (from &ldquo;none&rdquo; for fast chat to &ldquo;high&rdquo; for step-by-step reasoning). It unifies instruct, reasoning, coding, and vision in one model. Mistral Large 3 reaches 675B total (41B active) for frontier workloads. Ministral 3 covers the compact tier at 3B/8B/14B. Mistral Compute, launching 2026, will be Mistral&rsquo;s own European cloud &mdash; 18,000 Grace Blackwell chips.</p>
+
+        <p><strong>A licensing cautionary tale.</strong> Mistral&rsquo;s history illustrates why you track license changes. Original Mistral 7B was Apache 2.0. Then Codestral (2024) introduced a non-commercial license, Mistral Large 2 went research-only, community backlash followed, and Mistral pivoted back. All current general-purpose models are Apache 2.0. The lesson: check the license on the specific model version you are deploying, not the family&rsquo;s reputation.</p>
+
+        <div class="key-points">
+            <div class="kp-title">Key considerations</div>
+            <ul>
+                <li><strong>License:</strong> Apache 2.0 for all current general-purpose models. Devstral 2 has a $20M/month revenue gate (modified MIT)</li>
+                <li><strong>Sweet spot:</strong> Ministral 3 8B/14B on DGX Spark or H100. Mistral Small 4 on two H200s or 4&times;H100</li>
+                <li><strong>EU advantage:</strong> Full EU jurisdiction, no CLOUD Act exposure, government-validated for sensitive workloads</li>
+                <li><strong>Watch for:</strong> Mistral Compute launch; whether EU regulatory alignment translates to mandatory adoption in public sector</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── PHI ── -->
+    <div class="family-card">
+        <h3>Microsoft Phi</h3>
+        <div class="family-meta">
+            <span class="license-mit">MIT License</span>
+            <span>US origin</span>
+            <span>Small Language Models</span>
+        </div>
+
+        <p><strong>Why Microsoft open-weights.</strong> Phi serves a dual strategy: frontier models through OpenAI (GPT-4/5) for Azure revenue, and open-weight Phi for edge, device, and cost-sensitive scenarios. Phi drives ONNX Runtime adoption and validates Copilot+ PC hardware. It is Microsoft&rsquo;s developer on-ramp to Azure.</p>
+
+        <p><strong>Where it stands.</strong> Phi occupies a unique niche: small models that punch above their weight through synthetic &ldquo;textbook quality&rdquo; training data. Phi-4 (14B) and Phi-4-reasoning-plus outperform DeepSeek-R1 (671B MoE) on AIME 2025 math competition problems. Phi-4-multimodal (5.6B) handles speech, vision, and text with Mixture-of-LoRAs. Phi-4-mini (3.8B) runs on virtually anything, including CPU-only.</p>
+
+        <p><strong>The trade-off.</strong> Phi models explicitly sacrifice factual knowledge for reasoning capacity. TriviaQA scores are low. The 16K context window on base Phi-4 is restrictive. Agentic capability is &ldquo;very limited.&rdquo; Multilingual support is primarily English. Phi is a specialised reasoning engine that needs RAG augmentation for knowledge-heavy tasks, not a general-purpose assistant.</p>
+
+        <div class="key-points">
+            <div class="kp-title">Key considerations</div>
+            <ul>
+                <li><strong>License:</strong> MIT &mdash; the most permissive option available. Zero restrictions whatsoever</li>
+                <li><strong>Sweet spot:</strong> Phi-4 14B on DGX Spark with NVFP4. Phi-4-mini 3.8B on CPU for always-on tasks</li>
+                <li><strong>Best at:</strong> Math, coding, scientific reasoning at small parameter counts</li>
+                <li><strong>Not for:</strong> General knowledge tasks, multilingual use cases, agentic workflows, long-context workloads</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── LICENSING SUMMARY TABLE ── -->
+    <h2>Licensing at a Glance</h2>
+    <div class="table-wrapper">
+    <table>
+        <tr>
+            <th>Family</th>
+            <th>License</th>
+            <th>Commercial use</th>
+            <th>Key restriction</th>
+        </tr>
+        <tr>
+            <td><strong>Qwen 3+</strong></td>
+            <td>Apache 2.0</td>
+            <td>Unrestricted</td>
+            <td>Chinese origin &rarr; compliance overhead for regulated workloads</td>
+        </tr>
+        <tr>
+            <td><strong>Mistral (current)</strong></td>
+            <td>Apache 2.0</td>
+            <td>Unrestricted</td>
+            <td>Devstral 2: $20M/month revenue gate</td>
+        </tr>
+        <tr>
+            <td><strong>Gemma 4</strong></td>
+            <td>Apache 2.0</td>
+            <td>Unrestricted</td>
+            <td>Gemma 1&ndash;3 used restrictive license &mdash; check version</td>
+        </tr>
+        <tr>
+            <td><strong>Phi</strong></td>
+            <td>MIT</td>
+            <td>Unrestricted</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td><strong>Llama</strong></td>
+            <td>Meta Community</td>
+            <td>Under 700M MAU</td>
+            <td>&ldquo;Built with Llama&rdquo; branding; EU multimodal restriction</td>
+        </tr>
+    </table>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- BEYOND LLMs                                                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="beyond-llms">
+    <div class="chapter-label">Part 1: Model Families</div>
+    <h1>Beyond LLMs: When Smaller Models Win</h1>
+
+    <p>The default instinct &mdash; &ldquo;just use the LLM for everything&rdquo; &mdash; is one of the most expensive mistakes an operations team can make. An LLM is a generalist. For defined, repeatable tasks, a specialised small model will be faster, cheaper, and often more accurate.</p>
+
+    <p>Consider a ticket routing task. A fine-tuned DistilBERT (66M parameters) achieves 95%+ accuracy at 2&ndash;5ms latency. A 70B LLM achieves 85&ndash;92% accuracy at 500ms&ndash;5s latency. At a million classifications per month, the cost difference is roughly <strong>$50 versus $5,000&ndash;50,000</strong> in GPU infrastructure.</p>
+
+    <p>Here is what the specialised model landscape looks like:</p>
+
+    <div class="key-points">
+        <div class="kp-title">Specialised models worth knowing</div>
+        <ul>
+            <li><strong>Embedding models</strong> (BGE-M3, Qwen3-Embedding, Nomic Embed) &mdash; convert text to vectors for semantic search and RAG retrieval. 100&ndash;600M parameters. Essential for any RAG pipeline. e5-small (118M) achieved 100% Top-5 retrieval accuracy, outperforming an 8B embedding model at 16ms versus 195ms</li>
+            <li><strong>NER / entity extraction</strong> (GLiNER, 100&ndash;350M) &mdash; zero-shot Named Entity Recognition. Define entity types at runtime (server names, error codes, IPs) without retraining. Outperforms ChatGPT on NER benchmarks</li>
+            <li><strong>Classifiers</strong> (DistilBERT, 66M) &mdash; ticket routing, sentiment analysis, priority detection. 2&ndash;5ms latency</li>
+            <li><strong>Rerankers</strong> (BGE-reranker-v2-m3, 568M) &mdash; second-stage scoring after embedding retrieval. Improves RAG quality by up to 48%. Reranking 50 documents takes ~1.5 seconds</li>
+            <li><strong>Speech recognition</strong> (Whisper large-v3-turbo, 809M) &mdash; 5.4&times; faster than Whisper large-v3 with near-equivalent accuracy. Self-hostable on a single GPU</li>
+        </ul>
+    </div>
+
+    <h2>The Right-Sizing Principle</h2>
+    <p>The optimal architecture uses each model for what it does best. A practical IT operations pipeline:</p>
+
+    <div class="table-wrapper">
+    <table>
+        <tr>
+            <th>Step</th>
+            <th>Model type</th>
+            <th>Params</th>
+            <th>Latency</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td>1. Classify</td>
+            <td>DistilBERT</td>
+            <td>66M</td>
+            <td>3ms</td>
+            <td>Route ticket, detect priority</td>
+        </tr>
+        <tr>
+            <td>2. Extract</td>
+            <td>GLiNER</td>
+            <td>100&ndash;350M</td>
+            <td>10ms</td>
+            <td>Server names, error codes, IPs</td>
+        </tr>
+        <tr>
+            <td>3. Embed</td>
+            <td>BGE-M3</td>
+            <td>568M</td>
+            <td>20ms</td>
+            <td>Semantic search for similar incidents</td>
+        </tr>
+        <tr>
+            <td>4. Rerank</td>
+            <td>bge-reranker</td>
+            <td>110M</td>
+            <td>50ms</td>
+            <td>Refine top-k results</td>
+        </tr>
+        <tr>
+            <td>5. Generate</td>
+            <td>LLM (7B&ndash;70B)</td>
+            <td>7&ndash;70B</td>
+            <td>500ms+</td>
+            <td>Human-readable resolution summary</td>
+        </tr>
+    </table>
+    </div>
+
+    <p>Steps 1&ndash;4 use approximately <strong>1.2GB VRAM total</strong> and complete in under 100ms. The LLM in step 5 is called only when needed, with pre-filtered context, reducing LLM costs by 80%+ while improving answer quality.</p>
+
+    <blockquote>
+        <p><strong>The principle:</strong> Do not use a 70B model for a task a 300M model handles better. Reserve the LLM for reasoning and generation. Use specialised models for classification, extraction, search, and ranking.</p>
+    </blockquote>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PART 2: HARDWARE REALITY                                   -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="hardware-reality">
+    <div class="chapter-label">Part 2: Practical Selection</div>
+    <h1>The Hardware Reality</h1>
+
+    <p>Before you pick a model, you need to know what your hardware can actually do. Not what the marketing says &mdash; what happens when you load a model and start generating tokens.</p>
+
+    <p>Two numbers determine your experience: <strong>memory capacity</strong> (can the model fit?) and <strong>memory bandwidth</strong> (how fast can it generate?). The second one is less intuitive but more important for user experience.</p>
+
+    <div class="stat-row">
+        <div class="stat-card">
+            <div class="stat-number">80 GB</div>
+            <div class="stat-label">H100 HBM3<br>3.35 TB/s bandwidth</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">141 GB</div>
+            <div class="stat-label">H200 HBM3e<br>4.8 TB/s bandwidth</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">128 GB</div>
+            <div class="stat-label">DGX Spark unified<br>273 GB/s bandwidth</div>
+        </div>
+    </div>
+
+    <h2>Why Bandwidth Matters More Than You Think</h2>
+    <p>During token generation, the GPU must stream the entire model from memory for every single token. The formula is simple:</p>
+
+    <blockquote>
+        <p><strong>tokens/second &asymp; memory bandwidth &divide; model size in bytes</strong></p>
+    </blockquote>
+
+    <p>This is why the DGX Spark, despite having 128GB of memory (more than an H100), generates tokens <strong>12&times; slower</strong> than the H100 for models that fit on both. The Spark&rsquo;s 273 GB/s bandwidth is just 8% of the H100&rsquo;s 3.35 TB/s. It can <em>load</em> enormous models. It cannot <em>run</em> them fast.</p>
+
+    <p>The practical threshold for interactive use is roughly <strong>&gt;10 tokens/second</strong>. Below 5 tok/s, users will find the experience frustrating. This directly constrains which models are viable for which hardware &mdash; not just whether they fit, but whether they are usable.</p>
+
+    <h2>The VRAM Budget</h2>
+    <p>A model&rsquo;s memory footprint is not just its weights. You also need room for the KV cache (which grows with context length and concurrent users) and framework overhead.</p>
+
+    <div class="visual-diagram">
+        <div class="diagram-title">VRAM Budget Breakdown</div>
+        <div class="diagram-stack">
+            <div class="diagram-box layer-1">Model weights <small>Params &times; bytes per weight</small></div>
+            <div class="diagram-arrow">&darr;</div>
+            <div class="diagram-box layer-2">KV cache <small>Grows with context length &times; batch size</small></div>
+            <div class="diagram-arrow">&darr;</div>
+            <div class="diagram-box layer-3">Framework overhead <small>CUDA context, activations, buffers</small></div>
+            <div class="diagram-arrow">&darr;</div>
+            <div class="diagram-box layer-4">Total VRAM needed <small>Multiply weight size by 1.3&ndash;1.5&times; for estimate</small></div>
+        </div>
+    </div>
+
+    <p>The base formula: <strong>weight memory = parameters &times; bytes per weight</strong>. At FP16 (2 bytes per parameter), a 70B model needs ~140GB just for weights. At Q4 (0.5 bytes), it drops to ~35GB. The 1.3&ndash;1.5&times; multiplier accounts for KV cache and overhead at moderate concurrency.</p>
+
+    <p>The KV cache deserves special attention. For Llama 3.1 70B at BF16, it consumes roughly <strong>0.31 MB per token per request</strong>. At 8K context with 4 concurrent users, that is ~10GB &mdash; manageable. At 128K context with 4 users, it is ~160GB &mdash; exceeding the model weights. Long context and high concurrency are the hidden VRAM killers.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- WHAT FITS WHERE                                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="what-fits">
+    <div class="chapter-label">Part 2: Practical Selection</div>
+    <h1>What Fits Where</h1>
+
+    <p>Here is the table that matters. For each model size, it shows the VRAM required at different precision levels and whether it fits on your three hardware targets. &ldquo;Fits&rdquo; means loads with room for KV cache at moderate usage. &ldquo;Tight&rdquo; means it loads but leaves minimal headroom.</p>
+
+    <div class="table-wrapper">
+    <table>
+        <tr>
+            <th>Model size</th>
+            <th>FP16</th>
+            <th>FP8 / INT8</th>
+            <th>Q4 / INT4</th>
+            <th>H100 (80GB)</th>
+            <th>DGX Spark (128GB)</th>
+            <th>H200 (141GB)</th>
+        </tr>
+        <tr>
+            <td><strong>3&ndash;4B</strong> <small>(Phi-4-mini, Ministral 3B)</small></td>
+            <td>~7 GB</td>
+            <td>~4 GB</td>
+            <td>~2 GB</td>
+            <td>Fits easily</td>
+            <td>Fits easily</td>
+            <td>Fits easily</td>
+        </tr>
+        <tr>
+            <td><strong>7&ndash;8B</strong> <small>(Llama 3.1 8B, Qwen 3 8B)</small></td>
+            <td>~16 GB</td>
+            <td>~8 GB</td>
+            <td>~4.5 GB</td>
+            <td>Fits easily</td>
+            <td>Fits easily</td>
+            <td>Fits easily</td>
+        </tr>
+        <tr>
+            <td><strong>14B</strong> <small>(Phi-4, Qwen 3 14B, Ministral 14B)</small></td>
+            <td>~28 GB</td>
+            <td>~14 GB</td>
+            <td>~8 GB</td>
+            <td>Fits</td>
+            <td>Fits</td>
+            <td>Fits</td>
+        </tr>
+        <tr>
+            <td><strong>27&ndash;32B</strong> <small>(Gemma 4 31B, QwQ-32B, Qwen 3 32B)</small></td>
+            <td>~64 GB</td>
+            <td>~32 GB</td>
+            <td>~18 GB</td>
+            <td>FP8: tight. Q4: fits</td>
+            <td>FP16: fits. FP8: fits</td>
+            <td>Fits at any precision</td>
+        </tr>
+        <tr>
+            <td><strong>70B</strong> <small>(Llama 3.3 70B)</small></td>
+            <td>~140 GB</td>
+            <td>~70 GB</td>
+            <td>~35 GB</td>
+            <td>FP8: tight. Q4: fits</td>
+            <td>Q4: fits but slow (~4&ndash;8 tok/s)</td>
+            <td>FP8: fits with headroom</td>
+        </tr>
+        <tr>
+            <td><strong>109B MoE</strong> <small>(Llama 4 Scout, 17B active)</small></td>
+            <td>~218 GB</td>
+            <td>~109 GB</td>
+            <td>~55 GB</td>
+            <td>Q4: fits</td>
+            <td>Q4: fits, fast (MoE)</td>
+            <td>FP8: fits</td>
+        </tr>
+        <tr>
+            <td><strong>119B MoE</strong> <small>(Mistral Small 4, 6B active)</small></td>
+            <td>~238 GB</td>
+            <td>~119 GB</td>
+            <td>~60 GB</td>
+            <td>Q4: tight</td>
+            <td>Q4: fits, fast (MoE)</td>
+            <td>FP8: fits</td>
+        </tr>
+        <tr>
+            <td><strong>235B MoE</strong> <small>(Qwen 3 235B, 22B active)</small></td>
+            <td>~470 GB</td>
+            <td>~235 GB</td>
+            <td>~118 GB</td>
+            <td>Does not fit</td>
+            <td>NVFP4: tight (or 2&times; Spark)</td>
+            <td>2&times;H200 at FP8</td>
+        </tr>
+    </table>
+    </div>
+
+    <p><strong>The rule of thumb:</strong> multiply billion parameters by 2 to get GB at FP16. Divide by 2 for FP8, by 4 for Q4. Then multiply by 1.3&ndash;1.5&times; for practical deployment with KV cache headroom.</p>
+
+    <blockquote>
+        <p><strong>Key insight:</strong> MoE models are the DGX Spark&rsquo;s best friend. A 120B MoE that activates only 20B parameters per token runs at 40&ndash;55 tok/s on the Spark &mdash; because the bandwidth bottleneck scales with <em>active</em> parameters, not total. A 70B dense model on the same hardware crawls at 4&ndash;8 tok/s. If you are deploying on the Spark, think MoE first.</p>
+    </blockquote>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- QUANTIZATION                                               -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="quantization">
+    <div class="chapter-label">Part 2: Practical Selection</div>
+    <h1>Quantization: The Compression Trade-off</h1>
+
+    <p>Quantization reduces the precision of model weights to fit larger models in less memory and run them faster. The question operations teams care about: <strong>how much quality do you actually lose?</strong></p>
+
+    <p>The short answer: at 4-bit, almost nothing. Below 4-bit, a lot.</p>
+
+    <div class="risk-cards">
+        <div class="risk-card risk-low">
+            <div class="risk-label">FP16 / BF16 &mdash; Full Precision</div>
+            <div class="risk-desc">
+                Baseline quality. No loss. 2 bytes per parameter.<br>
+                <strong>Use when:</strong> You have the VRAM and need maximum quality (fine-tuning, quality-critical production).
+            </div>
+        </div>
+        <div class="risk-card risk-low">
+            <div class="risk-label">FP8 / INT8 &mdash; Half Size</div>
+            <div class="risk-desc">
+                ~99% quality retained. 1 byte per parameter. Doubles throughput on H100/H200.<br>
+                <strong>Use when:</strong> Production GPU serving. This is the default for H100/H200 deployments.
+            </div>
+        </div>
+        <div class="risk-card risk-medium">
+            <div class="risk-label">Q4 / INT4 &mdash; Quarter Size</div>
+            <div class="risk-desc">
+                ~95&ndash;97% quality retained. 0.5 bytes per parameter. 4&times; size reduction from FP16.<br>
+                <strong>Use when:</strong> You need a larger model to fit on limited hardware. The quality loss is imperceptible for most operational tasks.
+            </div>
+        </div>
+        <div class="risk-card risk-high">
+            <div class="risk-label">Q3 / Q2 &mdash; Below 4-bit</div>
+            <div class="risk-desc">
+                Quality drops steeply and non-linearly. Q2_K showed 7.94% perplexity increase versus 0.51% for Q4_K_M.<br>
+                <strong>Use when:</strong> Emergency only &mdash; the model absolutely must fit and nothing else will work.
+            </div>
+        </div>
+    </div>
+
+    <h2>The Format Zoo, Simplified</h2>
+    <p>Five quantization formats matter in practice. Do not worry about the rest.</p>
+
+    <div class="key-points">
+        <div class="kp-title">Which format for which situation</div>
+        <ul>
+            <li><strong>GGUF</strong> (Q4_K_M, Q5_K_M, etc.) &mdash; the universal format. Works on CPU, NVIDIA, AMD, Apple Silicon. Single self-contained file. <strong>Your default for Ollama and local deployment</strong></li>
+            <li><strong>AWQ</strong> &mdash; activation-aware 4-bit for GPU production serving. Excellent vLLM integration via Marlin kernels. <strong>Your default for GPU production with vLLM or SGLang</strong></li>
+            <li><strong>GPTQ</strong> &mdash; the only 4-bit format that supports LoRA adapters in vLLM. Use it when you need multi-LoRA production deployments</li>
+            <li><strong>NVFP4</strong> &mdash; NVIDIA&rsquo;s Blackwell-native FP4 format. Native Tensor Core execution on DGX Spark, no dequantisation step. <strong>Your default on DGX Spark via TensorRT-LLM</strong></li>
+            <li><strong>EXL2</strong> &mdash; mixed-precision, best quality-per-bit. NVIDIA-only, single-user. Use for personal development on RTX GPUs</li>
+        </ul>
+    </div>
+
+    <h2>Where to Get Pre-Quantised Models</h2>
+    <p>You almost never need to quantise yourself. On HuggingFace, look for <strong>bartowski</strong> and <strong>Unsloth</strong> for GGUF models (every quant level, importance-matrix calibrated). Check the <strong>nvidia/</strong> namespace for NVFP4 models. Model publishers increasingly provide official AWQ/GPTQ variants.</p>
+
+    <p>When evaluating pre-quantised models: prefer K-quants (Q4_K_M) over legacy quants (Q4_0), check download counts for community validation, and verify the upload date &mdash; quantisation of a brand-new model may have bugs in the first week.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- INFERENCE FRAMEWORKS                                       -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="inference-frameworks">
+    <div class="chapter-label">Part 2: Practical Selection</div>
+    <h1>Inference Frameworks</h1>
+
+    <p>You have picked a model, chosen a quantisation level, and confirmed it fits your hardware. Now: what software do you use to actually run it?</p>
+
+    <p>The right answer depends on one question: <strong>how many concurrent users do you need to serve?</strong></p>
+
+    <h2>The Five That Matter</h2>
+
+    <div class="key-points">
+        <div class="kp-title">Framework comparison</div>
+        <ul>
+            <li><strong>Ollama</strong> &mdash; the 30-second start. <code>ollama run llama3.3</code> and you are serving. Docker-style model management, OpenAI-compatible API. Pre-installed on DGX Spark. <strong>Limitation:</strong> no continuous batching. At 50 concurrent users, time-to-first-token climbs to 3,200ms versus 145ms on vLLM. Use for 1&ndash;5 users</li>
+            <li><strong>vLLM</strong> &mdash; the production workhorse. PagedAttention eliminates 60&ndash;80% of KV cache memory waste. Continuous batching handles concurrent requests efficiently. Prometheus metrics, health endpoints, Helm charts for Kubernetes. Powers production at Stripe, Meta, Mistral AI. Use for 5+ concurrent users</li>
+            <li><strong>SGLang</strong> &mdash; vLLM&rsquo;s newer challenger. RadixAttention automatically reuses shared prefixes across requests (75&ndash;90% cache hit rates for multi-turn chat). 29% higher throughput than vLLM on batch inference. Use when your workload is dominated by multi-turn conversations or RAG pipelines</li>
+            <li><strong>TensorRT-LLM</strong> &mdash; maximum NVIDIA performance. 15&ndash;30% above vLLM in matched benchmarks. Native NVFP4 support, EAGLE-3 speculative decoding. <strong>Cost:</strong> requires compiling a TensorRT engine per GPU architecture (~28 min for 70B). Use when maximum throughput on NVIDIA hardware justifies the setup investment</li>
+            <li><strong>llama.cpp</strong> &mdash; CPU and hybrid workloads. The C/C++ engine behind Ollama. Hybrid CPU+GPU offloading via <code>--n-gpu-layers N</code>. Use for edge, air-gapped, or always-on workloads where latency is not critical</li>
+        </ul>
+    </div>
+
+    <h2>The Decision in Practice</h2>
+    <div class="table-wrapper">
+    <table>
+        <tr>
+            <th>Your scenario</th>
+            <th>Use this</th>
+            <th>Why</th>
+        </tr>
+        <tr>
+            <td>Getting started / prototyping</td>
+            <td><strong>Ollama</strong></td>
+            <td>30-second install, zero configuration</td>
+        </tr>
+        <tr>
+            <td>DGX Spark quick start</td>
+            <td><strong>Ollama</strong></td>
+            <td>Pre-installed, officially partnered</td>
+        </tr>
+        <tr>
+            <td>DGX Spark maximum performance</td>
+            <td><strong>SGLang</strong> or <strong>TensorRT-LLM</strong></td>
+            <td>Leverages NVFP4 and Blackwell kernels</td>
+        </tr>
+        <tr>
+            <td>Multi-user production API</td>
+            <td><strong>vLLM</strong></td>
+            <td>Continuous batching, mature monitoring</td>
+        </tr>
+        <tr>
+            <td>Multi-turn chat / RAG</td>
+            <td><strong>SGLang</strong></td>
+            <td>75&ndash;90% prefix cache hit rate</td>
+        </tr>
+        <tr>
+            <td>Maximum throughput (H100/H200)</td>
+            <td><strong>SGLang</strong> or <strong>TensorRT-LLM</strong></td>
+            <td>29% (SGLang) to 30% (TRT-LLM) above vLLM</td>
+        </tr>
+        <tr>
+            <td>CPU-only or hybrid</td>
+            <td><strong>llama.cpp</strong></td>
+            <td>The only real option for mixed compute</td>
+        </tr>
+        <tr>
+            <td>Minimum ops overhead</td>
+            <td><strong>vLLM</strong></td>
+            <td>Richest Prometheus metrics, Helm charts</td>
+        </tr>
+    </table>
+    </div>
+
+    <p>One note on HuggingFace TGI: it entered maintenance mode in December 2025. HuggingFace now officially recommends vLLM or SGLang for new deployments. If you see TGI mentioned in tutorials, know that it is a legacy recommendation.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- THROUGHPUT                                                  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="throughput">
+    <div class="chapter-label">Part 2: Practical Selection</div>
+    <h1>Memory &amp; Throughput Realities</h1>
+
+    <p>A model that &ldquo;fits&rdquo; is not the same as a model that &ldquo;performs.&rdquo; Here is what your hardware actually delivers at the token level.</p>
+
+    <h2>Single-User Decode Speed</h2>
+    <p>This is the number that determines whether a model feels interactive. Measured in tokens per second during generation:</p>
+
+    <div class="table-wrapper">
+    <table>
+        <tr>
+            <th>Model</th>
+            <th>Quant</th>
+            <th>H100</th>
+            <th>H200 (est.)</th>
+            <th>DGX Spark</th>
+        </tr>
+        <tr>
+            <td><strong>8B</strong> (Llama 3.1 8B)</td>
+            <td>FP8</td>
+            <td>~250&ndash;300</td>
+            <td>~360&ndash;430</td>
+            <td>~20&ndash;34</td>
+        </tr>
+        <tr>
+            <td><strong>8B</strong></td>
+            <td>NVFP4</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td>~38&ndash;40</td>
+        </tr>
+        <tr>
+            <td><strong>14B</strong> (Qwen 3 14B)</td>
+            <td>NVFP4</td>
+            <td>~180</td>
+            <td>~260</td>
+            <td>~22</td>
+        </tr>
+        <tr>
+            <td><strong>27&ndash;32B</strong> (Gemma 3 27B)</td>
+            <td>Q4</td>
+            <td>~80&ndash;110</td>
+            <td>~120&ndash;160</td>
+            <td>~9&ndash;11</td>
+        </tr>
+        <tr>
+            <td><strong>70B</strong> (Llama 3.3 70B)</td>
+            <td>Q4</td>
+            <td>~60&ndash;96</td>
+            <td>~90&ndash;137</td>
+            <td>~4&ndash;8</td>
+        </tr>
+        <tr>
+            <td><strong>70B</strong></td>
+            <td>FP8</td>
+            <td>~35&ndash;48</td>
+            <td>~48&ndash;69</td>
+            <td>~2.7&ndash;4</td>
+        </tr>
+        <tr>
+            <td><strong>120B MoE</strong> (GPT-OSS, 20B active)</td>
+            <td>MXFP4</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td>~41&ndash;55</td>
+        </tr>
+    </table>
+    </div>
+
+    <p>The pattern is clear. On the DGX Spark:</p>
+    <ul>
+        <li><strong>8B&ndash;14B dense models</strong> at 20&ndash;40 tok/s &mdash; comfortable for interactive use</li>
+        <li><strong>27&ndash;32B dense models</strong> at 9&ndash;11 tok/s &mdash; borderline interactive</li>
+        <li><strong>MoE models up to 120B</strong> at 40&ndash;55 tok/s &mdash; comfortable, because bandwidth scales with active parameters</li>
+        <li><strong>70B dense</strong> at 4&ndash;8 tok/s &mdash; not viable for interactive use</li>
+    </ul>
+
+    <h2>The H200 Advantage</h2>
+    <p>Moving from H100 to H200 gives you a consistent <strong>~1.4&times; speedup</strong> from the bandwidth increase (4.8 versus 3.35 TB/s). But the bigger win is capacity: Llama 70B at FP8 (~84GB with overhead) fits on <strong>one H200</strong> but needs <strong>two H100s</strong> with tensor parallelism. That eliminates inter-GPU communication overhead and effectively doubles your serving capacity per model.</p>
+
+    <h2>Batching Changes Everything</h2>
+    <p>The single-user numbers above tell only half the story. Batched inference shifts the bottleneck from bandwidth to compute. Llama 3.1 8B on the DGX Spark at batch size 32 achieved <strong>368 tok/s total throughput</strong> via SGLang &mdash; an 18&times; increase over single-user. If your use case is a queue of requests rather than an interactive chat, smaller models batched efficiently can handle surprisingly high volumes.</p>
+
+    <blockquote>
+        <p><strong>Practical guidance:</strong> Your H100 will run circles around the DGX Spark for any model that fits in 80GB. The Spark&rsquo;s value is running models that do not fit on the H100 (120B MoE, prototyping 200B+) and serving as a quiet, desk-side development environment. When a model graduates from prototyping to production, move it to the H100 or H200 behind vLLM.</p>
+    </blockquote>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PART 3: DECISION FRAMEWORK                                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="decision-framework">
+    <div class="chapter-label">Part 3: Decision Framework</div>
+    <h1>The Decision Framework</h1>
+
+    <p>When a new model drops, do not start with the benchmarks. Start with your constraints. The following sequence will get you to a defensible choice in under an hour.</p>
+
+    <div class="visual-diagram">
+        <div class="diagram-title">Model Selection Flow</div>
+        <div class="diagram-flow">
+            <div class="diagram-box layer-1">Define task <small>What exactly?</small></div>
+            <div class="diagram-arrow">&#10132;</div>
+            <div class="diagram-box layer-2">Check HW <small>VRAM ceiling</small></div>
+            <div class="diagram-arrow">&#10132;</div>
+            <div class="diagram-box layer-3">Filter families <small>License, origin</small></div>
+            <div class="diagram-arrow">&#10132;</div>
+            <div class="diagram-box layer-2">Size &amp; quant <small>Fit + speed</small></div>
+            <div class="diagram-arrow">&#10132;</div>
+            <div class="diagram-box layer-4">Framework <small>Concurrency</small></div>
+            <div class="diagram-arrow">&#10132;</div>
+            <div class="diagram-box layer-5">Validate <small>Test on your data</small></div>
+        </div>
+    </div>
+
+    <h2>Six Questions to Ask Every Time</h2>
+
+    <div class="key-points">
+        <div class="kp-title">The model selection checklist</div>
+        <ul>
+            <li><strong>1. What is the task?</strong> Chat, code generation, document summarisation, RAG, translation, classification, entity extraction? If the task is narrow and repeatable (classification, NER, routing), check whether a specialised small model handles it better than an LLM</li>
+            <li><strong>2. What hardware do I have?</strong> Calculate your VRAM ceiling. Use the formula: params &times; bytes per weight &times; 1.3&ndash;1.5. This eliminates models that cannot fit before you waste time evaluating them</li>
+            <li><strong>3. How many concurrent users?</strong> 1 user? Ollama is fine. 5&ndash;20 users? You need vLLM or SGLang with continuous batching. 50+? You need either a smaller model, more hardware, or both</li>
+            <li><strong>4. What quality floor is acceptable?</strong> Can you tolerate Q4 quality loss (~3&ndash;5%)? For internal tools and prototyping, almost always yes. For client-facing quality-critical output, you may want FP8 or higher</li>
+            <li><strong>5. What licensing constraints apply?</strong> Is this for a regulated client? EU public sector? Defence? Mistral gives you EU sovereignty. Llama&rsquo;s branding requirement may be a problem. Qwen requires a compliance conversation for sensitive workloads</li>
+            <li><strong>6. What does the ecosystem look like?</strong> How many fine-tuned variants exist on HuggingFace? Is the model well-supported by your chosen inference framework? A technically superior model with no community tooling is a risky choice</li>
+        </ul>
+    </div>
+
+    <h2>When to Re-Evaluate</h2>
+    <p>You do not need to re-evaluate every time a new model drops. Re-evaluate when:</p>
+    <ul>
+        <li>Your hardware changes (new GPUs, new memory capacity)</li>
+        <li>Your use case requirements change (new language, higher concurrency, new modality)</li>
+        <li>A new model family appears (not a version update &mdash; a genuinely new player)</li>
+        <li>Your current model&rsquo;s family changes licensing (check release notes, not just headlines)</li>
+        <li>You see a &gt;20% improvement on your specific task in independent benchmarks (not leaderboard games &mdash; your actual evaluation set)</li>
+    </ul>
+
+    <p>Version updates within a family (Qwen 3 &rarr; Qwen 3.5) are worth a quick test on your evaluation set. They are not worth a full re-architecture.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- EXERCISE                                                    -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="exercise">
+    <div class="chapter-label">Part 3: Decision Framework</div>
+    <h1>Scenario Exercise</h1>
+
+    <p>Four scenarios. For each, use the decision framework to choose a model, quantisation level, and inference framework. Justify your choice. Then reveal the suggested approach and compare.</p>
+
+    <p>There is no single correct answer &mdash; the point is whether your reasoning follows the framework and whether you can defend your choice against the constraints.</p>
+
+    <!-- ── SCENARIO A ── -->
+    <div class="exercise">
+        <div class="exercise-title">Scenario A: The Internal Helpdesk Bot</div>
+        <div class="exercise-body">
+            <p>Your client wants an on-prem chatbot for their internal IT helpdesk. The bot should answer common questions about password resets, VPN setup, printer configuration, and software installation. It needs to handle <strong>10 concurrent users</strong> during peak hours. Conversations are in <strong>English and German</strong>. The client insists on EU data residency.</p>
+            <p><strong>Available hardware:</strong> DGX Spark (128GB unified memory)</p>
+            <p><strong>Your task:</strong> Choose a model, quantisation level, and inference framework. Justify each choice.</p>
+        </div>
+    </div>
+    <button class="toggle-btn" id="toggle-a" onclick="togglePanel('panel-a', 'toggle-a')">
+        <span class="arrow">&#9654;</span> Reveal suggested approach
+    </button>
+    <div class="toggle-panel" id="panel-a">
+        <div class="toggle-panel-inner">
+            <p><strong>Suggested model: Mistral Small 4 (119B MoE, ~6B active) at Q4</strong></p>
+            <p><strong>Why this model:</strong> The task is conversational helpdesk &mdash; it needs good instruction following, multilingual capability (English + German), and reasonable speed for 10 concurrent users. Mistral Small 4 activates only ~6B parameters per token despite 119B total, so on the DGX Spark it will deliver decent MoE throughput. At Q4, it needs ~60GB of the 128GB &mdash; leaving room for KV cache. Mistral&rsquo;s EU origin satisfies the data residency requirement cleanly.</p>
+            <p><strong>Why not alternatives:</strong> Qwen 3 14B would be faster on the Spark (~22 tok/s at NVFP4) but the Chinese origin creates unnecessary compliance friction given the EU residency requirement. Llama 3.3 70B at Q4 fits but at 4&ndash;8 tok/s single-user it is too slow for 10 concurrent users. Gemma 4 31B at Q4 (~18GB) would be lighter and fast enough at ~15 tok/s &mdash; a legitimate alternative, especially if Mistral Small 4&rsquo;s MoE throughput proves insufficient on the Spark.</p>
+            <p><strong>Framework: SGLang</strong> &mdash; the multi-turn chat workload benefits from RadixAttention prefix caching. Ollama would struggle at 10 concurrent users (no continuous batching). vLLM is also viable here.</p>
+            <p><strong>Fallback:</strong> If Mistral Small 4 is too slow for 10 users on the Spark, drop to Gemma 4 31B dense at Q4 or Qwen 3 14B at FP8. Test both and measure actual throughput at target concurrency before committing.</p>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- ── SCENARIO B ── -->
+    <div class="exercise">
+        <div class="exercise-title">Scenario B: The Code Review Assistant</div>
+        <div class="exercise-body">
+            <p>Your development team wants an on-prem code review assistant. It should review pull requests, suggest improvements, and flag potential security issues. Single-user at a time is acceptable. The codebase is primarily <strong>Python and TypeScript</strong>. Some PRs are large &mdash; up to <strong>32K tokens of context</strong> needed.</p>
+            <p><strong>Available hardware:</strong> H100 (80GB)</p>
+            <p><strong>Your task:</strong> Choose a model, quantisation level, and inference framework. Justify each choice.</p>
+        </div>
+    </div>
+    <button class="toggle-btn" id="toggle-b" onclick="togglePanel('panel-b', 'toggle-b')">
+        <span class="arrow">&#9654;</span> Reveal suggested approach
+    </button>
+    <div class="toggle-panel" id="panel-b">
+        <div class="toggle-panel-inner">
+            <p><strong>Suggested model: Qwen 3 32B at FP8, or QwQ-32B at FP8</strong></p>
+            <p><strong>Why this model:</strong> Code review is a reasoning-heavy task that benefits from larger models. At FP8, a 32B model needs ~32GB + overhead &mdash; fits comfortably on the H100 with ~40GB free for KV cache at 32K context. Qwen 3 is the strongest coding family at this size range, and QwQ-32B adds chain-of-thought reasoning that helps with security analysis. Both support 128K+ context windows, more than enough for 32K token PRs.</p>
+            <p><strong>Why not alternatives:</strong> Llama 3.3 70B at FP8 (~70GB) would fit on the H100 but leaves only ~10GB for KV cache, which at 32K context might cause problems. Phi-4 14B excels at code but its 16K context window is too short. Devstral 2 (123B dense) is purpose-built for code but needs more than 80GB even at Q4.</p>
+            <p><strong>Framework: vLLM</strong> with FP8 &mdash; single-user so no batching pressure, but vLLM&rsquo;s PagedAttention efficiently manages the large KV cache at 32K context. Ollama would also work fine for single-user.</p>
+            <p><strong>Quantisation: FP8</strong> &mdash; with 80GB available and a 32B model, there is no reason to drop below FP8. You keep ~99% quality and have headroom for the context window.</p>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- ── SCENARIO C ── -->
+    <div class="exercise">
+        <div class="exercise-title">Scenario C: The Document Processing Pipeline</div>
+        <div class="exercise-body">
+            <p>A client needs to extract structured data from scanned invoices &mdash; vendor name, invoice number, line items, amounts, tax, and total. The documents are PDFs that have been OCR&rsquo;d. Processing happens <strong>overnight in batch</strong> &mdash; no real-time requirement. Volume: <strong>5,000 documents per night</strong>. The output must be structured JSON.</p>
+            <p><strong>Available hardware:</strong> DGX Spark (128GB unified memory)</p>
+            <p><strong>Your task:</strong> Choose the right approach. This one might not need an LLM at all &mdash; or it might.</p>
+        </div>
+    </div>
+    <button class="toggle-btn" id="toggle-c" onclick="togglePanel('panel-c', 'toggle-c')">
+        <span class="arrow">&#9654;</span> Reveal suggested approach
+    </button>
+    <div class="toggle-panel" id="panel-c">
+        <div class="toggle-panel-inner">
+            <p><strong>Suggested approach: pipeline of specialised models, not a single LLM</strong></p>
+            <p><strong>Step 1 &mdash; NER extraction:</strong> Use GLiNER (100&ndash;350M) to extract entity types directly: vendor name, invoice number, amounts, dates. Define entity types at runtime. Runs on CPU at ~10ms per document. For 5,000 docs: ~50 seconds total.</p>
+            <p><strong>Step 2 &mdash; Structured output:</strong> For invoices where GLiNER&rsquo;s extraction is clean (likely 70&ndash;85% of documents), map directly to JSON. No LLM needed.</p>
+            <p><strong>Step 3 &mdash; LLM fallback:</strong> For the remaining 15&ndash;30% where extraction is ambiguous (multi-page invoices, unusual formats), use Qwen 3 8B at NVFP4 on the DGX Spark to parse the full text and produce structured JSON. At ~38 tok/s single-user and batch processing, you can process ~200 tokens per document &times; 1,500 documents in roughly 2 hours.</p>
+            <p><strong>Why not just use the LLM for everything:</strong> 5,000 documents &times; ~500 input tokens each &times; ~200 output tokens = ~3.5M tokens. At single-user speed on the Spark, that is ~25 hours for an 8B model. With the pipeline approach, 85% of documents finish in under a minute, and the LLM handles only the hard cases. Total processing time drops to ~2&ndash;3 hours.</p>
+            <p><strong>Framework:</strong> GLiNER runs standalone (pip install, no GPU needed). For the LLM fallback, use Ollama for simplicity (batch queue, no concurrent users) or vLLM with batching for faster throughput.</p>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- ── SCENARIO D ── -->
+    <div class="exercise">
+        <div class="exercise-title">Scenario D: The Emergency Migration</div>
+        <div class="exercise-body">
+            <p>Your client was using a hosted API running Llama 3.3 70B for a customer-facing Q&amp;A system. The API provider just announced they are shutting down in <strong>one week</strong>. The client needs to self-host a replacement immediately. The system handles ~20 concurrent users during business hours. Responses must be in English. Quality cannot noticeably degrade &mdash; customers are used to the current output quality.</p>
+            <p><strong>Available hardware:</strong> H100 (80GB)</p>
+            <p><strong>Your task:</strong> What do you deploy, and what do you tell the client about the trade-offs?</p>
+        </div>
+    </div>
+    <button class="toggle-btn" id="toggle-d" onclick="togglePanel('panel-d', 'toggle-d')">
+        <span class="arrow">&#9654;</span> Reveal suggested approach
+    </button>
+    <div class="toggle-panel" id="panel-d">
+        <div class="toggle-panel-inner">
+            <p><strong>Suggested model: Llama 3.3 70B at Q4 (GGUF Q4_K_M or AWQ 4-bit)</strong></p>
+            <p><strong>Why the same model:</strong> The requirement is &ldquo;quality cannot noticeably degrade.&rdquo; The fastest way to guarantee that is to run the same model. Llama 3.3 70B at Q4 needs ~46GB total, fitting on the H100 with ~34GB headroom for KV cache and batching.</p>
+            <p><strong>Why Q4 and not FP8:</strong> At FP8 (~84GB total with overhead), the model barely fits and leaves almost no room for the KV cache needed by 20 concurrent users. At Q4, you have the headroom. The ~3&ndash;5% quality loss from Q4 is less noticeable than the latency degradation from running out of KV cache space.</p>
+            <p><strong>Framework: vLLM</strong> with AWQ quantisation &mdash; this is not optional at 20 concurrent users. Ollama would queue requests and create unacceptable wait times. vLLM with continuous batching and PagedAttention can serve 20 users at ~60&ndash;96 tok/s system throughput at Q4. Enable FP8 KV cache (<code>kv_cache_dtype="fp8"</code>) to double your KV cache capacity.</p>
+            <p><strong>What to tell the client:</strong></p>
+            <ul>
+                <li>Output quality will be ~95&ndash;97% of what they had (Q4 quantisation). Most users will not notice</li>
+                <li>Latency per response will likely be similar or slightly slower than the hosted API, depending on their previous provider&rsquo;s hardware</li>
+                <li>They are now responsible for uptime, monitoring, and model updates. Set up Prometheus metrics from vLLM&rsquo;s <code>/metrics</code> endpoint and NVIDIA DCGM Exporter for GPU monitoring</li>
+                <li>When the H200s arrive, migrate to FP8 for full quality restoration and better concurrent user handling</li>
+            </ul>
+            <p><strong>Timeline:</strong> vLLM + AWQ Llama 3.3 70B can be serving in production within a day. The pre-quantised AWQ model is available on HuggingFace. The remaining time is for testing, monitoring setup, and load testing at 20 concurrent users.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- WHAT TO WATCH                                              -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="watch-signals">
+    <div class="chapter-label">Part 3: Decision Framework</div>
+    <h1>What to Watch</h1>
+
+    <p>The landscape changes fast. Here is what to monitor so you know when to re-evaluate.</p>
+
+    <h2>Signals That Matter</h2>
+    <ul>
+        <li><strong>New model releases from the five families.</strong> Not every release requires action. Check: is it a new architecture or just a version bump? Does it target a size range you use? Does it change the licensing? A new Qwen 4 with a different license matters. A Qwen 3.5.1 patch does not</li>
+        <li><strong>Hardware availability.</strong> When your H200s arrive, re-run the &ldquo;what fits&rdquo; analysis. Models that were too large or too slow may suddenly become viable. Two H200s (282GB combined) open up the 235B MoE tier</li>
+        <li><strong>Quantisation breakthroughs.</strong> Recent advances in 2-bit quantisation (like QuIP# and AQLM) are narrowing the quality gap below Q4. If 2-bit reaches the Q4 quality level, it doubles the effective models you can fit on existing hardware</li>
+        <li><strong>Inference framework updates.</strong> SGLang and vLLM release roughly monthly. Major features (better MoE support, new quantisation backends, speculative decoding improvements) can change throughput by 30&ndash;50%</li>
+        <li><strong>Licensing changes.</strong> Track the specific model version&rsquo;s license, not the family&rsquo;s reputation. Mistral went from Apache 2.0 to restrictive and back. Gemma went from restrictive to Apache 2.0. The next shift could go either direction for any family</li>
+        <li><strong>EU regulatory developments.</strong> The EU AI Act is now enforceable. Watch for guidance on training data transparency requirements (affects Qwen), high-risk AI system classifications, and any new restrictions on model deployment in regulated sectors</li>
+    </ul>
+
+    <h2>Where to Look</h2>
+    <div class="key-points">
+        <div class="kp-title">Monitoring sources</div>
+        <ul>
+            <li><strong>Chatbot Arena (LMArena.ai)</strong> &mdash; the most reliable quality ranking. 6M+ blind human A/B votes. More trustworthy than any benchmark leaderboard</li>
+            <li><strong>HuggingFace model pages</strong> &mdash; check download counts, derivative models, and community discussions for practical deployment experience</li>
+            <li><strong>r/LocalLLaMA</strong> &mdash; the fastest signal for new model quality, quantisation issues, and inference framework bugs</li>
+            <li><strong>Model family blogs/release notes</strong> &mdash; Mistral blog, Google AI blog, Qwen GitHub, Meta Llama blog, Microsoft Research blog</li>
+            <li><strong>Your own evaluation set</strong> &mdash; the most important signal. Build a set of 50&ndash;100 representative prompts from your actual use cases and evaluate new models against it. No external benchmark replaces this</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <p>The open-weight landscape in April 2026 offers more options, better licensing, and more capable models than at any point in the history of accessible AI. Five families compete fiercely. Apache 2.0 is the norm. A single H100 runs models that would have required a data centre three years ago.</p>
+
+    <p>But the models are not the hard part. The hard part is matching the right model to the right task on the right hardware with the right trade-offs &mdash; and having the confidence to make that call yourself when the next release drops.</p>
+
+    <p>That is what the framework is for. Use it.</p>
+
+    <hr>
+
+    <p style="text-align: center; color: var(--text-light); font-size: 0.9rem;">
+        <strong>Robert Barcik</strong> &middot; <a href="https://barcik.training" style="color: var(--accent);">barcik.training</a> &middot; LearningDoe s.r.o. &middot; April 2026
+    </p>
+</section>
+
+        </main>
+    </div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- JAVASCRIPT                                                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<script>
+'use strict';
+
+// ── Toggle panel helper ──────────────────────────────────────
+function togglePanel(panelId, btnId) {
+    var panel = document.getElementById(panelId);
+    var btn = document.getElementById(btnId);
+    panel.classList.toggle('open');
+    btn.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // ── Progress bar ─────────────────────────────────────────
+    var progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', function() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+    });
+
+    // ── Sidebar navigation highlighting ──────────────────────
+    var chapters = document.querySelectorAll('.chapter');
+    var navLinks = document.querySelectorAll('#sidebar nav a');
+
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                var id = entry.target.id;
+                navLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + id) link.classList.add('active');
+                });
+            }
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    chapters.forEach(function(ch) { observer.observe(ch); });
+
+    // ── Smooth scroll ────────────────────────────────────────
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        });
+    });
+
+    // ── Mobile menu toggle ───────────────────────────────────
+    var menuToggle = document.getElementById('menu-toggle');
+    var sidebar = document.getElementById('sidebar');
+    menuToggle.addEventListener('click', function() { sidebar.classList.toggle('open'); });
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 900 && !sidebar.contains(e.target) && e.target !== menuToggle) {
+            sidebar.classList.remove('open');
+        }
+    });
+});
+</script>
+</body>
+</html>
