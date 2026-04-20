@@ -13,6 +13,13 @@
             --bg: #ffffff;
             --card-bg: #f8fafc;
             --border: #e2e8f0;
+            /* Section accent colors */
+            --booklets: #3b82f6;      /* blue — strategic guides */
+            --reports: #8b5cf6;       /* violet — empirical research */
+            --guides: #d97706;        /* amber — reference & legacy */
+            --booklets-bg: #eff6ff;
+            --reports-bg: #f5f3ff;
+            --guides-bg: #fffbeb;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -56,9 +63,12 @@
             margin-top: 2.5rem;
             margin-bottom: 1.25rem;
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 2px solid currentColor;
         }
         .section-label:first-child { margin-top: 0; }
+        .section-label.booklets { color: var(--booklets); }
+        .section-label.reports { color: var(--reports); }
+        .section-label.guides { color: var(--guides); }
         .section-label .section-note {
             font-size: 0.75rem;
             font-weight: 400;
@@ -69,15 +79,22 @@
         }
         .pub-card {
             border: 1px solid var(--border);
+            border-left: 4px solid var(--border);
             border-radius: 12px;
             padding: 2rem;
             margin-bottom: 2rem;
             background: var(--card-bg);
-            transition: box-shadow 0.2s;
+            transition: box-shadow 0.2s, border-left-color 0.2s;
         }
         .pub-card:hover {
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
+        .pub-card.section-booklets { border-left-color: var(--booklets); background: var(--booklets-bg); }
+        .pub-card.section-reports { border-left-color: var(--reports); background: var(--reports-bg); }
+        .pub-card.section-guides { border-left-color: var(--guides); background: var(--guides-bg); }
+        .pub-card.section-booklets .read-link { color: var(--booklets); }
+        .pub-card.section-reports .read-link { color: var(--reports); }
+        .pub-card.section-guides .read-link { color: var(--guides); }
         .pub-card h2 {
             font-size: 1.4rem;
             color: var(--navy);
@@ -143,9 +160,9 @@
     </header>
 
     <div class="container">
-        <div class="section-label">Booklets <span class="section-note">Long-form strategic guides and practitioner references</span></div>
+        <div class="section-label booklets">Booklets <span class="section-note">Long-form strategic guides and practitioner references</span></div>
 
-        <div class="pub-card">
+        <div class="pub-card section-booklets">
             <h2><a href="agent-horizon/">The Agent Horizon</a></h2>
             <div class="pub-meta">April 2026 &middot; ~25,000 words &middot; 13 chapters</div>
             <p class="pub-description">
@@ -161,7 +178,7 @@
             <a class="read-link" href="agent-horizon/">Read the booklet &rarr;</a>
         </div>
 
-        <div class="pub-card">
+        <div class="pub-card section-booklets">
             <h2><a href="open-weight-models/">Open-Weight Model Families &amp; Model Selection</a></h2>
             <div class="pub-meta">April 2026 &middot; Interactive booklet &middot; 3 parts &middot; Workshop exercise</div>
             <p class="pub-description">
@@ -177,7 +194,7 @@
             <a class="read-link" href="open-weight-models/">Read the booklet &rarr;</a>
         </div>
 
-        <div class="pub-card">
+        <div class="pub-card section-booklets">
             <h2><a href="agentic-design-patterns/">Building Agentic AI &mdash; Design Patterns from Production</a></h2>
             <div class="pub-meta">April 2026 &middot; ~28,000 words &middot; 10 chapters</div>
             <p class="pub-description">
@@ -193,7 +210,7 @@
             <a class="read-link" href="agentic-design-patterns/">Read the booklet &rarr;</a>
         </div>
 
-        <div class="pub-card">
+        <div class="pub-card section-booklets">
             <h2><a href="llm-human-interaction-patterns/">LLM-Human Interaction Design Patterns for Operations</a></h2>
             <div class="pub-meta">April 2026 &middot; ~30,000 words &middot; 10 chapters</div>
             <p class="pub-description">
@@ -209,7 +226,7 @@
             <a class="read-link" href="llm-human-interaction-patterns/">Read the booklet &rarr;</a>
         </div>
 
-        <div class="pub-card">
+        <div class="pub-card section-booklets">
             <h2><a href="scenario-planning/">Scenario Planning for Generative AI</a></h2>
             <div class="pub-meta">April 2026 &middot; Interactive booklet &middot; 4 scenarios &middot; Workshop exercise</div>
             <p class="pub-description">
@@ -225,7 +242,7 @@
             <a class="read-link" href="scenario-planning/">Read the booklet &rarr;</a>
         </div>
 
-        <div class="pub-card">
+        <div class="pub-card section-booklets">
             <h2><a href="token-economics/">The Token Economics</a></h2>
             <div class="pub-meta">April 2026 &middot; ~40,000 words &middot; 14 chapters</div>
             <p class="pub-description">
@@ -241,9 +258,9 @@
             <a class="read-link" href="token-economics/">Read the full guide &rarr;</a>
         </div>
 
-        <div class="section-label">Research Reports <span class="section-note">Evaluation studies and empirical research</span></div>
+        <div class="section-label reports">Research Reports <span class="section-note">Evaluation studies and empirical research</span></div>
 
-        <div class="pub-card">
+        <div class="pub-card section-reports">
             <h2><a href="reports/geobias-7b/">GeoBias — 7B Model Evaluation Report</a></h2>
             <div class="pub-meta">March 2026 &middot; Research report &middot; 5 models &middot; 3 evaluators</div>
             <p class="pub-description">
@@ -258,7 +275,7 @@
             <a class="read-link" href="reports/geobias-7b/">View the report &rarr;</a>
         </div>
 
-        <div class="pub-card">
+        <div class="pub-card section-reports">
             <h2><a href="reports/selfjudge/">SelfJudge — Can Small LLMs Judge Their Own Outputs?</a></h2>
             <div class="pub-meta">March 2026 &middot; Research report &middot; 5 models (1B&ndash;27B)</div>
             <p class="pub-description">
@@ -273,7 +290,7 @@
             <a class="read-link" href="reports/selfjudge/">View the report &rarr;</a>
         </div>
 
-        <div class="pub-card">
+        <div class="pub-card section-reports">
             <h2><a href="reports/bloom/">Bloom — AI Behavioral Safety Evaluation</a></h2>
             <div class="pub-meta">March 2026 &middot; Research report &middot; 11 behaviors tested</div>
             <p class="pub-description">
@@ -288,9 +305,9 @@
             <a class="read-link" href="reports/bloom/">View the report &rarr;</a>
         </div>
 
-        <div class="section-label">Guides &amp; Legacy <span class="section-note">Reference guides and earlier publications</span></div>
+        <div class="section-label guides">Guides &amp; Legacy <span class="section-note">Reference guides and earlier publications</span></div>
 
-        <div class="pub-card">
+        <div class="pub-card section-guides">
             <h2><a href="claude-code-setup/">Claude Code Setup — How It All Works</a></h2>
             <div class="pub-meta">2026 &middot; Reference guide &middot; 9 sections</div>
             <p class="pub-description">
@@ -306,7 +323,7 @@
             <a class="read-link" href="claude-code-setup/">Read the guide &rarr;</a>
         </div>
 
-        <div class="pub-card">
+        <div class="pub-card section-guides">
             <h2><a href="mirror-of-ai/">The Mirror of Artificial Intelligence</a></h2>
             <div class="pub-meta">2023 &middot; 38 stories + 9 essays &middot; 42 AI-generated illustrations &middot; Available in English &amp; Slovak</div>
             <p class="pub-description">
