@@ -70,8 +70,39 @@ For building publications:
 pip3 install python-docx markdown
 ```
 
+## Source conventions
+
+Publications in this repo follow one of three source-location patterns:
+
+1. **Full markdown sources** — chapter `.md` files under `_sources/<slug>/chapters/` with a `build_html.py` that produces the deployed HTML. Use this pattern for new long-form booklets.
+2. **HTML-only** — some publications were built elsewhere (or imported) and only the final `<slug>/index.html` lives in this repo. Listed with a `—` in the Source column below.
+3. **External sibling repo** — one publication (LLM-Human Interaction Patterns) ships with an interactive app, so its source + app live in their own GitHub repo. The deployed booklet HTML is copied into this repo under the publication's slug.
+
 ## Current publications
 
-| Publication | Path | Source | Words | Status |
-|---|---|---|---|---|
-| The Token Economics | `/token-economics/` | `_sources/token-economics/` | ~40,000 | Published |
+### Booklets
+
+| Publication | Path | Source | Words / Chapters |
+|---|---|---|---|
+| The Agent Horizon | `/agent-horizon/` | `_sources/agent-horizon/` | ~25,000 / 13 chapters |
+| Open-Weight Model Families & Model Selection | `/open-weight-models/` | — (HTML-only) | Interactive, 3 parts |
+| Building Agentic AI — Design Patterns from Production | `/agentic-design-patterns/` | `_sources/agentic-design-patterns/` | ~28,000 / 10 chapters |
+| LLM-Human Interaction Design Patterns for Operations | `/llm-human-interaction-patterns/` | [github.com/robertbarcik/llm-human-interaction-patterns](https://github.com/robertbarcik/llm-human-interaction-patterns) (`booklet/_sources/`) | ~30,000 / 10 chapters |
+| Scenario Planning for Generative AI | `/scenario-planning/` | `_sources/scenario-planning/` (data-sources.md only) | Interactive, 4 scenarios |
+| The Token Economics | `/token-economics/` | `_sources/token-economics/` | ~40,000 / 14 chapters |
+
+### Research Reports
+
+| Publication | Path | Source | Notes |
+|---|---|---|---|
+| GeoBias — 7B Model Evaluation Report | `/reports/geobias-7b/` | — (HTML-only) | Analysis repo: [github.com/robertbarcik/geobias](https://github.com/robertbarcik/geobias) |
+| SelfJudge — Can Small LLMs Judge Their Own Outputs? | `/reports/selfjudge/` | — (HTML-only) | Analysis repo: [github.com/robertbarcik/selfjudge](https://github.com/robertbarcik/selfjudge) |
+| Bloom — AI Behavioral Safety Evaluation | `/reports/bloom/` | — (HTML-only) | Analysis repo: [github.com/robertbarcik/bloom](https://github.com/robertbarcik/bloom) |
+
+### Guides & Legacy
+
+| Publication | Path | Source | Notes |
+|---|---|---|---|
+| Claude Code Setup — How It All Works | `/claude-code-setup/` | — (HTML-only) | Reference guide, 9 sections |
+| The Mirror of Artificial Intelligence (EN) | `/mirror-of-ai/` | `_sources/mirror-of-ai/` | 38 stories + 9 essays, 2023 |
+| Zrkadlo umelej inteligencie (SK) | `/mirror-of-ai-sk/` | `_sources/mirror-of-ai-sk/` | Slovak edition of Mirror of AI |
