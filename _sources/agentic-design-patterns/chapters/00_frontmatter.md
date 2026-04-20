@@ -7,7 +7,9 @@
 **April 2026**
 
 *By Robert Barcik*
+
 *LearningDoe s.r.o.*
+
 *Contact: [robert@barcik.training](mailto:robert@barcik.training)*
 
 ---
