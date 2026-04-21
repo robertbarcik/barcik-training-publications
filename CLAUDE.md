@@ -84,7 +84,7 @@ Publications in this repo follow one of three source-location patterns:
 
 | Publication | Path | Source | Words / Chapters |
 |---|---|---|---|
-| The Agent Horizon | `/agent-horizon/` | `_sources/agent-horizon/` | ~25,000 / 13 chapters |
+| The Agent Horizon | `/agent-horizon/` | `_sources/agent-horizon/` | ~16,000 / 11 chapters (V2) |
 | Open-Weight Model Families & Model Selection | `/open-weight-models/` | — (HTML-only) | Interactive, 3 parts |
 | Building Agentic AI — Design Patterns from Production | `/agentic-design-patterns/` | `_sources/agentic-design-patterns/` | ~28,000 / 10 chapters |
 | LLM-Human Interaction Design Patterns for Operations | `/llm-human-interaction-patterns/` | [github.com/robertbarcik/llm-human-interaction-patterns](https://github.com/robertbarcik/llm-human-interaction-patterns) (`booklet/_sources/`) | ~30,000 / 10 chapters |
