@@ -157,3 +157,13 @@ The critical differences are:
 3. **The model-hardware fit matters enormously.** Choosing a 120B model where a fine-tuned 20B would suffice does not just waste money — it can make the entire business case collapse. Model selection is now an infrastructure decision.
 
 The next chapter takes these hardware realities and turns them into a full cost comparison against commercial APIs. When does self-hosting make sense? At what user count? For which workloads? The answer, as you might expect, depends entirely on the numbers.
+
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~4-6 months*
+>
+> This chapter cites specific hardware prices and framework state-of-the-art — both move fast. Re-verify when reading or quoting:
+>
+> - **GPU purchase prices** in the hardware comparison table (H100, H200, A100, L40S, RTX 4090). Tracked down 10-20% year-over-year through 2025 and into 2026; expect continued softening as Blackwell ships in volume.
+> - **Serving framework landscape** — vLLM remains the production standard but competes with TGI, SGLang, and increasingly vendor-specific runtimes. Speculative decoding, PagedAttention successors, and MoE-specific optimisations emerge quarterly.
+> - **Configuration-to-user ratios** (e.g., "2x H100 serves 100 users at INT8") drift as inference efficiency improves. Today's 100-user config may serve 150-200 users on the same hardware in 12 months.
+>
+> The structural framing — VRAM dominates sizing, KV cache scales with concurrent users, bandwidth is the bottleneck — is stable and will age well.

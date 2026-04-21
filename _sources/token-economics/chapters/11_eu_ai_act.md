@@ -222,6 +222,17 @@ The concrete moves:
 
 The regulation is complex. The opportunity is straightforward.
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~18-24 months*
+>
+> The EU AI Act's statutory text is stable. The implementing landscape is not.
+>
+> - **Enforcement dates** (Feb 2025, Aug 2025, Aug 2026, Aug 2027) are fixed in the regulation. The **August 2026 high-risk-systems deadline** is the load-bearing date for most of this chapter's opportunity framing.
+> - **Implementing guidance, harmonised standards, and conformity-assessment procedures** are still being published — most notably by the AI Office, ENISA, and the European standardisation organisations. Expect meaningful new material through 2026-2027.
+> - **National transposition and competent-authority designations** vary by member state and are still being finalised in several jurisdictions. Public-sector procurement implications (Chapter's final section) are especially member-state-specific.
+> - **Service pricing** ($20-50K assessments, $3-10K/month monitoring) will compress as the market matures past the initial compliance crunch — likely 18-24 months after the August 2026 deadline bites.
+>
+> Re-verify statutory references against the current consolidated text of Regulation (EU) 2024/1689 before quoting to clients.
+
 ---
 
 *Next: [Chapter 12 — Pricing Models and Packaging](12_pricing_models.md)*

@@ -177,4 +177,15 @@ This is not a question of whether AI will transform your delivery model. It is a
 
 ---
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~9 months*
+>
+> The direction (AI compresses MSP economics, outcome-based pricing wins) is durable. Specific metrics will age:
+>
+> - **Case-study deflection rates** (Moveworks 88% at Broadcom, Aisera 75%, NIB 60% cost reduction) anchor to specific vendor deployments; these numbers either climb further or get superseded by newer case studies each year.
+> - **The "45% B2B ticket deflection"** industry average ticks up quarterly as tooling matures — expect 55-65% as a baseline by 2027.
+> - **MSP M&A data** (50% increase in 2024 deals, 200 → 120 MSSP consolidation projection) reflects a specific point in the consolidation cycle. The consolidation story persists; the specific headline numbers will move.
+> - **AIOps market size ($40B by 2026)** and **per-user rate compression ("25% in the next two years")** are analyst projections — treat as directional and re-check against fresh analyst data before citing.
+
+---
+
 *Next: [Chapter 10 — EU AI Act: Your Compliance Opportunity](11_eu_ai_act.md)*

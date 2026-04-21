@@ -284,6 +284,43 @@ blockquote p:last-child {
     margin-bottom: 0;
 }
 
+/* Freshness Watch — amber aside flagging time-sensitive claims */
+.freshness-watch {
+    border-left: 4px solid #d97706;
+    background: rgba(217, 119, 6, 0.06);
+    padding: 1rem 1.5rem;
+    margin: 2.5rem 0 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+}
+
+.freshness-watch > p:first-child {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #92400e;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
+}
+
+.freshness-watch > p:first-child em {
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #a16207;
+    font-size: 0.92em;
+}
+
+.freshness-watch ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.freshness-watch p:last-child {
+    margin-bottom: 0;
+}
+
 /* Horizontal rules (chapter dividers) */
 hr {
     border: none;
@@ -346,7 +383,7 @@ hr {
                 <li><a href="#the-token-economics">The Token Economics</a></li>
 <li><a href="#chapter-1-the-genai-moment-for-it-services-providers">1. Chapter 1: The GenAI Moment for IT Services Providers</a></li>
 <li><a href="#chapter-2-how-large-language-models-actually-run">2. Chapter 2: How Large Language Models Actually Run</a></li>
-<li><a href="#chapter-3-the-cost-equation-self-hosting-vs-api-at-every-scale">3. Chapter 3: The Cost Equation — Self-Hosting vs API at Every Scale</a></li>
+<li><a href="#chapter-3-the-cost-equation-api-rental-and-on-prem-economics-at-every-scale">3. Chapter 3: The Cost Equation — API, Rental, and On-Prem Economics at Every Scale</a></li>
 <li><a href="#chapter-4-why-hyperscalers-win-on-price">4. Chapter 4: Why Hyperscalers Win on Price</a></li>
 <li><a href="#chapter-5-the-vendor-ecosystem-play">5. Chapter 5: The Vendor Ecosystem Play</a></li>
 <li><a href="#chapter-6-business-model-the-privacy-proxy">6. Chapter 6: Business Model: The Privacy Proxy</a></li>
@@ -488,6 +525,14 @@ hr {
 <blockquote>
 <p><strong>What to take from this chapter</strong>: The GenAI shift creates two distinct realities. For cloud-comfortable clients, the API providers are 5-10x cheaper than you at serving AI — the middleman markup model is broken. For on-prem-required clients, managed AI infrastructure is a viable, profitable business that builds on your existing expertise. Most EU IT services providers will serve both segments, and the winners will be those who understand which economic game they are playing with each client. The rest of this booklet gives you the numbers and the strategies for both.</p>
 </blockquote>
+<hr>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~12-18 months</em></p>
+<p>The structural argument in this chapter — middleman markup broken for cloud-comfortable clients, managed infrastructure viable for on-prem-required clients — is durable. Narrower claims to re-verify over time:</p>
+<ul>
+<li>The specific &ldquo;5-10x cheaper&rdquo; API-vs-self-hosting ratio is recalculated in Chapter 3 each edition; watch for that number to widen (as hyperscalers deploy more custom silicon) or narrow (as open-source efficiency improves).</li>
+<li>The split between cloud-comfortable and on-prem-required EU clients is shifting as hyperscalers add EU data residency features — see Chapter 6&rsquo;s Freshness Watch for the details.</li>
+</ul>
+</aside>
 <hr>
 <p><em>Next: <a href="02_how_llms_run.md">Chapter 2 — How Large Language Models Actually Run</a></em></p>
         </section>
@@ -730,231 +775,70 @@ hr {
 </li>
 </ol>
 <p>The next chapter takes these hardware realities and turns them into a full cost comparison against commercial APIs. When does self-hosting make sense? At what user count? For which workloads? The answer, as you might expect, depends entirely on the numbers.</p>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~4-6 months</em></p>
+<p>This chapter cites specific hardware prices and framework state-of-the-art — both move fast. Re-verify when reading or quoting:</p>
+<ul>
+<li><strong>GPU purchase prices</strong> in the hardware comparison table (H100, H200, A100, L40S, RTX 4090). Tracked down 10-20% year-over-year through 2025 and into 2026; expect continued softening as Blackwell ships in volume.</li>
+<li><strong>Serving framework landscape</strong> — vLLM remains the production standard but competes with TGI, SGLang, and increasingly vendor-specific runtimes. Speculative decoding, PagedAttention successors, and MoE-specific optimisations emerge quarterly.</li>
+<li><strong>Configuration-to-user ratios</strong> (e.g., &ldquo;2x H100 serves 100 users at INT8&rdquo;) drift as inference efficiency improves. Today&rsquo;s 100-user config may serve 150-200 users on the same hardware in 12 months.</li>
+</ul>
+<p>The structural framing — VRAM dominates sizing, KV cache scales with concurrent users, bandwidth is the bottleneck — is stable and will age well.</p>
+</aside>
         </section>
 
-        <section class="chapter" id="chapter-3-the-cost-equation-self-hosting-vs-api-at-every-scale">
+        <section class="chapter" id="chapter-3-the-cost-equation-api-rental-and-on-prem-economics-at-every-scale">
             <div class="chapter-number">Chapter 3</div>
-            <h1>Chapter 3: The Cost Equation — Self-Hosting vs API at Every Scale</h1>
+            <h1>Chapter 3: The Cost Equation — API, Rental, and On-Prem Economics at Every Scale</h1>
 <p>This is the chapter where we stop talking in abstractions and start talking in euros. If you take away one thing from this booklet, it should be the numbers on these pages. They will either confirm your strategic direction or force you to change it.</p>
-<p>We will walk through the full cost of self-hosting large language models at different scales, compare those costs against current API pricing, and — critically — show you that the right comparison depends on which clients you serve. For cloud-comfortable clients, the API comparison is what matters. For on-premises-required clients, the comparison that matters is entirely different: your managed service versus the client doing it themselves. Both economics are covered in this chapter.</p>
+<p>Before we run the numbers, we need to be precise about what we are comparing. There are three distinct ways to run a production AI workload, and the economics of each are genuinely different. The previous edition of this chapter muddled two of them under a single &ldquo;self-hosting&rdquo; label; this one separates them. We will then walk through the full cost of each mode at four scales (10, 100, 500, and 1,000 users), compare them against each other and against commercial APIs, and — critically — show that for on-premises-required clients the comparison that matters is different again: your managed service versus the client doing it themselves.</p>
 <hr>
-<h2>Self-Hosting a 120B Parameter Model (100 Users)</h2>
-<p>Let us start with the scenario many IT services providers instinctively imagine: hosting a large, frontier-class open-weight model for a mid-size enterprise client. Something like Llama 3.1 405B quantized to fit, or a full-precision 120B parameter model such as Mistral Large or a fine-tuned derivative.</p>
-<h3>Compute Requirements</h3>
-<p>A 120B parameter model at FP16 requires roughly 240 GB of GPU VRAM just for the weights. Add KV-cache for concurrent users, activation memory, and operational headroom, and you need 3 to 4 nodes of 8xH100 (80 GB each) to serve 100 concurrent users with acceptable latency.</p>
-<h3>The Monthly Bill</h3>
+<h2>The Three Deployment Modes</h2>
+<p>Every AI workload runs in one of three modes. Pricing, capital structure, and operational burden differ substantially across them.</p>
 <table>
 <thead>
 <tr>
-<th>Cost Component</th>
-<th>Monthly Estimate</th>
+<th>Mode</th>
+<th>One-line definition</th>
+<th>Who owns the GPU</th>
+<th>Who runs the model stack</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>GPU cloud rental (3-4 nodes, 8xH100 each)</td>
-<td>$30,000 - $50,000</td>
+<td><strong>API consumption</strong></td>
+<td>Pay per token to a commercial provider</td>
+<td>The hyperscaler</td>
+<td>The hyperscaler</td>
 </tr>
 <tr>
-<td>Networking and storage</td>
-<td>$1,500 - $3,000</td>
+<td><strong>Rented dedicated inference</strong></td>
+<td>Reserve GPU-hours from a cloud provider and run your own model on them</td>
+<td>The cloud provider (AWS, GCP, Azure, Lambda, RunPod, CoreWeave)</td>
+<td>You</td>
 </tr>
 <tr>
-<td>Monitoring and observability</td>
-<td>$1,000 - $2,000</td>
-</tr>
-<tr>
-<td>DevOps / ML engineering staff (fractional)</td>
-<td>$8,000 - $15,000</td>
-</tr>
-<tr>
-<td>On-call and incident management</td>
-<td>$3,000 - $5,000</td>
-</tr>
-<tr>
-<td>Application hosting (API gateway, auth, logging)</td>
-<td>$2,000 - $4,000</td>
-</tr>
-<tr>
-<td>Security and compliance overhead</td>
-<td>$2,000 - $4,000</td>
-</tr>
-<tr>
-<td><strong>Total monthly cost</strong></td>
-<td><strong>$47,500 - $83,000</strong></td>
+<td><strong>Owned on-prem inference</strong></td>
+<td>Buy the hardware; install in your rack or a colo</td>
+<td>You</td>
+<td>You</td>
 </tr>
 </tbody>
 </table>
-<h3>Per-User Reality</h3>
-<table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Raw compute per user</td>
-<td>$300 - $500/month</td>
-</tr>
-<tr>
-<td>Compute + operations per user</td>
-<td>$475 - $830/month</td>
-</tr>
-<tr>
-<td>Realistic all-in per user</td>
-<td><strong>$600 - $1,000/month</strong></td>
-</tr>
-</tbody>
-</table>
-<p>The &ldquo;realistic all-in&rdquo; figure includes a margin buffer, amortized setup costs, and the inevitable underutilization during off-peak hours. GPU clusters do not scale to zero.</p>
-<blockquote>
-<p><strong>Key takeaway:</strong> At $600-1,000 per user per month, a self-hosted 120B model is essentially unsellable. Enterprise AI seats from OpenAI, Anthropic, and Google run $20-30 per user per month for standard tiers and $200 per seat for the most premium enterprise packages. You cannot compete on price. You would need to sell on a value proposition so compelling that customers pay 3-5x the market rate. For most IT services providers, this is not a viable business.</p>
-</blockquote>
+<p><strong>API consumption</strong> is the lowest-friction option — OpenAI, Anthropic, Google, and Mistral take your prompt and bill you per million tokens. You write zero infrastructure code.</p>
+<p><strong>Rented dedicated inference</strong> is what most teams mean when they casually say &ldquo;self-hosting.&rdquo; You spin up an instance with attached H100s, deploy vLLM or TGI, load an open-weight model, and serve it. The physical GPU is someone else&rsquo;s capital; you are paying monthly (or hourly) for exclusive access.</p>
+<p><strong>Owned on-prem inference</strong> is the traditional IT model — purchase order, depreciation schedule, rack space, power contract, spare units in the storeroom. Nothing leaves your perimeter. Capital expenditure up front, lower operating cost per month after that.</p>
+<p>A fourth mode — <strong>local/edge inference</strong>, where the model runs on an employee laptop — is the subject of Chapter 7 and has economics of its own. This chapter is about the three above.</p>
+<p>When you read a table in this chapter, look at the label. Every cost table below is tagged with one of those three modes. That is the distinction the previous edition was missing.</p>
 <hr>
-<h2>Self-Hosting a 20B Parameter Model at Different Scales</h2>
-<p>The more realistic play for an IT services provider is a smaller, more efficient model — 20B parameters or fewer. Models like Mistral Small, Llama 3.1 8B/70B (quantized), or domain-specific fine-tunes in the 7-20B range. These models can deliver strong performance on focused enterprise tasks while running on significantly less hardware.</p>
-<h3>10 Users — Dedicated Per-Customer Deployment</h3>
-<p>This is the &ldquo;private AI appliance&rdquo; scenario. One customer, one deployment, full data isolation.</p>
-<p><strong>Cloud option:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Monthly Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1x A6000 or L40S (INT8 quantized)</td>
-<td>$2,000 - $3,000</td>
-</tr>
-<tr>
-<td>Ops overhead (monitoring, support, patching)</td>
-<td>$500 - $1,000</td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td><strong>$2,500 - $4,000</strong></td>
-</tr>
-<tr>
-<td><strong>Per user</strong></td>
-<td><strong>$250 - $400</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Hardware appliance option:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Upfront hardware (server + GPU)</td>
-<td>$10,000 - $15,000 (one-time)</td>
-</tr>
-<tr>
-<td>Monthly software license + remote support</td>
-<td>$1,000 - $2,000</td>
-</tr>
-<tr>
-<td><strong>Amortized per user (over 36 months)</strong></td>
-<td><strong>$100 - $200/month</strong></td>
-</tr>
-</tbody>
-</table>
-<p>The appliance model is interesting because it shifts the cost structure. The upfront capital expense is significant, but the ongoing per-user cost drops considerably. This works best for regulated industries where data must stay on-premises — healthcare, legal, financial services.</p>
-<h3>100 Users — Shared Departmental Deployment</h3>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Monthly Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2x H100 (handling concurrency and throughput)</td>
-<td>$5,000 - $8,000</td>
-</tr>
-<tr>
-<td>Ops overhead (scaled)</td>
-<td>$5,000 - $8,000</td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td><strong>$10,000 - $16,000</strong></td>
-</tr>
-<tr>
-<td><strong>Per user</strong></td>
-<td><strong>$100 - $160</strong></td>
-</tr>
-</tbody>
-</table>
-<p>At this scale, the operations overhead is roughly equal to compute. You need proper monitoring, a deployment pipeline, someone on call, and a process for model updates and security patches. The GPU may run itself, but the system around it does not.</p>
-<h3>500 Users — Business Unit or Mid-Size Enterprise</h3>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Monthly Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2-3x H100 (with load balancing)</td>
-<td>$7,500 - $12,000</td>
-</tr>
-<tr>
-<td>Ops overhead (dedicated team fraction)</td>
-<td>$3,500 - $6,000</td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td><strong>$11,000 - $18,000</strong></td>
-</tr>
-<tr>
-<td><strong>Per user</strong></td>
-<td><strong>$22 - $36</strong></td>
-</tr>
-</tbody>
-</table>
-<p>This is where self-hosting starts to become competitive. Utilization improves dramatically with more users — 500 users generate enough traffic to keep GPU clusters reasonably busy throughout the business day. The per-user ops cost drops because you are spreading the same monitoring, support, and tooling across more seats.</p>
-<h3>1,000 Users — Large Enterprise or Multi-Tenant Platform</h3>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Monthly Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>3-4x H100 (high-throughput serving)</td>
-<td>$11,000 - $18,000</td>
-</tr>
-<tr>
-<td>Ops overhead (dedicated team)</td>
-<td>$7,000 - $9,000</td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td><strong>$18,000 - $27,000</strong></td>
-</tr>
-<tr>
-<td><strong>Per user</strong></td>
-<td><strong>$18 - $27</strong></td>
-</tr>
-</tbody>
-</table>
-<p>At 1,000 users, the economics tilt decisively. You are now in the range where self-hosting a smaller model can undercut API pricing for mid-tier models — and you retain full data sovereignty. This is the sweet spot for providers who can aggregate demand across multiple clients.</p>
+<h2>How We Are Modelling Usage</h2>
+<p>Every number that follows depends on a usage assumption. Every crossover point, every &ldquo;this beats that&rdquo; statement, every conclusion moves if the assumption changes. So let us make it explicit.</p>
+<p>The baseline throughout this chapter is <strong>one million tokens per user per day</strong>, split in a 3:1 input-to-output ratio. That is a heavy-usage assumption appropriate for a knowledge worker who has integrated AI into their daily workflow — a developer using a coding assistant across the full day, an analyst running retrieval against large document sets, a consultant with a long-running agentic workflow summarising meetings and drafting outputs.</p>
+<p>To orient yourself: 1M tokens is roughly 750 pages of English text per day per user, input and output combined. That sounds large until you count tool-using agents that re-read their own context on every turn, retrieval systems that stuff 30-40K tokens of context into every call, and the reality that output tokens are the tip of the iceberg in an agentic workload.</p>
+<p><strong>Calibrate this to your clients.</strong> If your population is lighter — casual chat, occasional summarisation, 100-300K tokens per user per day — all the API-side numbers in this chapter drop proportionally while the rental and owned numbers stay almost unchanged (fixed GPU cost does not shrink with lower utilisation). The practical effect: at 300K tokens/day, every crossover point between self-hosted and API moves roughly three times further to the right. Self-hosting for 300 users at light usage economically resembles self-hosting for 100 users at heavy usage.</p>
+<p>Sample your own clients before committing to any of these tables. The 1M/day baseline is a defensible upper bound for knowledge-worker teams that have actually adopted AI; it is an overestimate for populations still in the pilot phase.</p>
 <hr>
 <h2>API Pricing Landscape (April 2026)</h2>
-<p>Before comparing self-hosting to APIs, let us establish what the commercial API market actually charges today. Prices are listed per million tokens for input and output respectively.</p>
+<p>Since every mode eventually gets compared against API pricing, we establish that first. Prices are per million tokens — input and output respectively.</p>
 <h3>Frontier and Mid-Tier Model Pricing</h3>
 <table>
 <thead>
@@ -1060,11 +944,68 @@ hr {
 </table>
 <p>Several patterns jump out of this table.</p>
 <p>First, <strong>the price floor keeps dropping</strong>. Google&rsquo;s Flash-Lite at $0.10/$0.40 and Llama 8B at $0.05/$0.08 are nearly free for most business use cases. A year ago, these price points did not exist for models of comparable capability.</p>
-<p>Second, <strong>there is a 50-100x spread</strong> between the cheapest and most expensive models. A Gemini Flash-Lite call costs roughly 1/50th of a Claude Opus 4.6 call. For most routine enterprise tasks — summarization, classification, extraction, simple Q&amp;A — the cheaper models are more than adequate.</p>
-<p>Third, <strong>output tokens are 3-5x more expensive than input tokens</strong> across most providers. This matters for your cost modeling: a chatbot that produces long, detailed responses will cost significantly more than one that gives concise answers.</p>
+<p>Second, <strong>there is a 50-100x spread</strong> between the cheapest and most expensive models. A Gemini Flash-Lite call costs roughly 1/50th of a Claude Opus 4.6 call. For most routine enterprise tasks — summarisation, classification, extraction, simple Q&amp;A — the cheaper models are more than adequate.</p>
+<p>Third, <strong>output tokens are 3-5x more expensive than input tokens</strong> across most providers. This matters for your cost modelling: a chatbot that produces long, detailed responses will cost significantly more than one that gives concise answers.</p>
+<h3>API Cost at 100 Users — Worked Example</h3>
+<p>With our 1M-tokens-per-user-per-day baseline, 100 users generate roughly 3 billion tokens per month. At a 3:1 input-to-output ratio, here is the monthly cost across model tiers:</p>
+<table>
+<thead>
+<tr>
+<th>Model Tier</th>
+<th>Blended Rate (per M tokens)</th>
+<th>Monthly Cost (3B tokens)</th>
+<th>Per User</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gemini Flash-Lite</td>
+<td>~$0.18</td>
+<td>$540</td>
+<td>$5.40</td>
+</tr>
+<tr>
+<td>GPT-4o-mini</td>
+<td>~$0.30</td>
+<td>$900</td>
+<td>$9.00</td>
+</tr>
+<tr>
+<td>Llama 70B (hosted)</td>
+<td>~$0.75</td>
+<td>$2,250</td>
+<td>$22.50</td>
+</tr>
+<tr>
+<td>Mistral Medium</td>
+<td>~$1.50</td>
+<td>$4,500</td>
+<td>$45.00</td>
+</tr>
+<tr>
+<td>Claude Haiku 4.5</td>
+<td>~$2.00</td>
+<td>$6,000</td>
+<td>$60.00</td>
+</tr>
+<tr>
+<td>GPT-4o</td>
+<td>~$4.40</td>
+<td>$13,200</td>
+<td>$132.00</td>
+</tr>
+<tr>
+<td>Claude Sonnet 4.6</td>
+<td>~$6.00</td>
+<td>$18,000</td>
+<td>$180.00</td>
+</tr>
+</tbody>
+</table>
+<p>Budget-tier usage at $5.40 per user per month is the benchmark every self-hosted deployment will struggle to beat on cost alone. Hold that number — we return to it repeatedly.</p>
 <hr>
 <h2>GPU Rental Prices (April 2026)</h2>
-<p>For those planning self-hosted deployments, here are current cloud GPU rental rates. Prices vary significantly by provider, commitment level, and availability.</p>
+<p>These are the rates that drive the Rental mode math below. Prices vary significantly by provider, commitment level, and availability.</p>
 <table>
 <thead>
 <tr>
@@ -1101,76 +1042,19 @@ hr {
 </tr>
 </tbody>
 </table>
-<p>The lower end of these ranges reflects spot pricing or long-term reservations with smaller GPU cloud providers (Lambda, RunPod, Vast.ai). The higher end reflects on-demand pricing from the major hyperscalers (AWS, Azure, GCP). For production workloads requiring reliability and SLAs, budget toward the mid-to-upper range.</p>
+<p>The lower end of these ranges reflects spot pricing or long-term reservations with smaller GPU cloud providers (Lambda, RunPod, Vast.ai, CoreWeave). The higher end reflects on-demand pricing from the major hyperscalers (AWS, Azure, GCP). For production workloads requiring reliability and SLAs, budget toward the mid-to-upper range.</p>
 <blockquote>
 <p><strong>Key takeaway:</strong> GPU rental prices have declined roughly 30-40% year-over-year as supply expanded, but they remain substantial. A single H100 at mid-range pricing ($2,500-$3,500/month) costs more per month than many traditional server configurations. This is GPU-as-a-premium-commodity, not GPU-as-a-utility.</p>
 </blockquote>
 <hr>
-<h2>API Cost Analysis: 100 Users Scenario</h2>
-<p>Now let us make the comparison concrete. Take our 100-user scenario and run the numbers through API pricing.</p>
-<h3>Assumptions</h3>
-<ul>
-<li>100 users, each generating approximately 1 million tokens per day (a mix of input and output)</li>
-<li>That is 100 million tokens per day, or roughly <strong>3 billion tokens per month</strong></li>
-<li>Blended rate assumes a typical 3:1 input-to-output token ratio</li>
-</ul>
-<h3>API Cost at Different Price Points</h3>
-<table>
-<thead>
-<tr>
-<th>Model Tier</th>
-<th>Blended Rate (per M tokens)</th>
-<th>Monthly Cost (3B tokens)</th>
-<th>Per User</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Gemini Flash-Lite</td>
-<td>~$0.18</td>
-<td>$540</td>
-<td>$5.40</td>
-</tr>
-<tr>
-<td>GPT-4o-mini</td>
-<td>~$0.30</td>
-<td>$900</td>
-<td>$9.00</td>
-</tr>
-<tr>
-<td>Llama 70B (hosted)</td>
-<td>~$0.75</td>
-<td>$2,250</td>
-<td>$22.50</td>
-</tr>
-<tr>
-<td>Claude Haiku 4.5</td>
-<td>~$2.00</td>
-<td>$6,000</td>
-<td>$60.00</td>
-</tr>
-<tr>
-<td>Mistral Medium</td>
-<td>~$1.50</td>
-<td>$4,500</td>
-<td>$45.00</td>
-</tr>
-<tr>
-<td>GPT-4o</td>
-<td>~$4.40</td>
-<td>$13,200</td>
-<td>$132.00</td>
-</tr>
-<tr>
-<td>Claude Sonnet 4.6</td>
-<td>~$6.00</td>
-<td>$18,000</td>
-<td>$180.00</td>
-</tr>
-</tbody>
-</table>
-<h3>Self-Hosting Cost for the Same 100 Users</h3>
-<p>From our earlier analysis of a self-hosted 20B model:</p>
+<h2>Mode B — Rented Dedicated Inference</h2>
+<p>This is the mode many teams think of first when they imagine &ldquo;running a model ourselves.&rdquo; You reserve GPU capacity from a cloud provider, deploy an open-weight model, and serve it yourself. The economics are direct: monthly GPU rental plus operations overhead.</p>
+<h3>Briefly: Why the 120B Frontier-Class Play Does Not Work</h3>
+<p>A full-precision 120B parameter model (Llama 3.1 405B quantised, Mistral Large, or similar) requires 3-4 nodes of 8xH100 to serve 100 concurrent users, with GPU rental alone running $30,000-$50,000 per month and a realistic all-in cost of $600-$1,000 per user per month once ops, observability, networking, and staff are included. Enterprise AI seats from the hyperscalers list at $20-$30 per user per month for standard tiers and up to $200 at the premium end. The math does not work — you would need a value proposition so compelling that customers pay 3-5x the going rate. For the overwhelming majority of IT services providers, frontier-class self-hosting in rental mode is not a business. We are not dwelling on it because it is a dead end; read on for the mode that does work.</p>
+<h3>Rental: 20B Model at Four Scales</h3>
+<p>The realistic play is a smaller, more efficient model — 20B parameters or fewer. Models like Mistral Small, Llama 3.1 8B/70B (quantised), or domain-specific fine-tunes in the 7-20B range deliver strong performance on focused enterprise tasks while running on far less hardware.</p>
+<h4>Rental: 10 Users — Dedicated Per-Customer Deployment</h4>
+<p>The &ldquo;private AI appliance&rdquo; scenario in rental form. One customer, one deployment, full data isolation.</p>
 <table>
 <thead>
 <tr>
@@ -1180,11 +1064,38 @@ hr {
 </thead>
 <tbody>
 <tr>
-<td>Compute (2x H100)</td>
+<td>1x A6000 or L40S (INT8 quantised)</td>
+<td>$2,000 - $3,000</td>
+</tr>
+<tr>
+<td>Ops overhead (monitoring, support, patching)</td>
+<td>$500 - $1,000</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$2,500 - $4,000</strong></td>
+</tr>
+<tr>
+<td><strong>Per user</strong></td>
+<td><strong>$250 - $400</strong></td>
+</tr>
+</tbody>
+</table>
+<h4>Rental: 100 Users — Shared Departmental Deployment</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Monthly Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2x H100 (handling concurrency and throughput)</td>
 <td>$5,000 - $8,000</td>
 </tr>
 <tr>
-<td>Operations overhead</td>
+<td>Ops overhead</td>
 <td>$5,000 - $8,000</td>
 </tr>
 <tr>
@@ -1197,149 +1108,423 @@ hr {
 </tr>
 </tbody>
 </table>
-<h3>The Comparison</h3>
+<p>At 100 users, operations overhead is roughly equal to compute. You need proper monitoring, a deployment pipeline, someone on call, and a process for model updates and security patches. The GPU may run itself, but the system around it does not. A note on the ops line: 100 users typically represents a newly-launched deployment in validation. Per-user ops is higher here than at 500 users because you are still hand-holding. At 500+ users the same ops capability is spread over more seats.</p>
+<h4>Rental: 500 Users — Business Unit or Mid-Size Enterprise</h4>
 <table>
 <thead>
 <tr>
-<th>Deployment</th>
+<th>Component</th>
 <th>Monthly Cost</th>
-<th>Per User</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>API: GPT-4o-mini</td>
-<td>$900</td>
-<td>$9</td>
+<td>2-3x H100 (with load balancing)</td>
+<td>$7,500 - $12,000</td>
 </tr>
 <tr>
-<td>API: Claude Haiku 4.5</td>
-<td>$6,000</td>
-<td>$60</td>
+<td>Ops overhead (share of dedicated team)</td>
+<td>$3,500 - $6,000</td>
 </tr>
 <tr>
-<td>API: Mistral Medium</td>
-<td>$4,500</td>
-<td>$45</td>
+<td><strong>Total</strong></td>
+<td><strong>$11,000 - $18,000</strong></td>
 </tr>
 <tr>
-<td><strong>Self-hosted 20B model</strong></td>
-<td><strong>$10,000 - $16,000</strong></td>
-<td><strong>$100 - $160</strong></td>
-</tr>
-<tr>
-<td>API: GPT-4o</td>
-<td>$13,200</td>
-<td>$132</td>
-</tr>
-<tr>
-<td>API: Claude Sonnet 4.6</td>
-<td>$18,000</td>
-<td>$180</td>
+<td><strong>Per user</strong></td>
+<td><strong>$22 - $36</strong></td>
 </tr>
 </tbody>
 </table>
-<p>The pattern is clear. <strong>Self-hosting is more expensive than small and mid-tier API models, and only approaches cost parity with frontier API models.</strong> At 100 users, you are paying $13,000-$16,000 per month for a 20B parameter model that is objectively less capable than Claude Sonnet or GPT-4o — which cost about the same via API.</p>
+<p>This is where self-hosting starts to become competitive. Utilisation improves dramatically with more users — 500 users generate enough traffic to keep GPU clusters reasonably busy throughout the business day. The per-user ops cost drops because you are spreading the same monitoring, support, and tooling across more seats.</p>
+<h4>Rental: 1,000 Users — Large Enterprise or Multi-Tenant Platform</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Monthly Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3-4x H100 (high-throughput serving)</td>
+<td>$11,000 - $18,000</td>
+</tr>
+<tr>
+<td>Ops overhead (dedicated team)</td>
+<td>$7,000 - $9,000</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$18,000 - $27,000</strong></td>
+</tr>
+<tr>
+<td><strong>Per user</strong></td>
+<td><strong>$18 - $27</strong></td>
+</tr>
+</tbody>
+</table>
+<p>At 1,000 users, the economics tilt decisively. You are now in the range where rental of a smaller model can undercut API pricing for mid-tier models — and you retain full data sovereignty. This is the sweet spot for providers who can aggregate demand across multiple clients.</p>
+<h3>The Utilisation Headwind</h3>
+<p>Every number above assumes your rented GPUs run 24/7. They do — you pay for 730 hours per month whether your users are active or asleep. A dedicated 2x H100 cluster serving 100 users is likely at 30-40% average utilisation during business hours and near zero at night and on weekends. You are paying for 100% of capacity and using 30-40% of it.</p>
+<p>Hyperscaler APIs flatten this curve across millions of geographically distributed users and run their fleets at 80-90%+ utilisation. The structural cost advantage this creates is one of the reasons API pricing can sit below what looks like a sensible floor — Chapter 4 explores the mechanics in detail.</p>
+<hr>
+<h2>Mode C — Owned On-Prem Inference</h2>
+<p>This is the mode that receives shortest treatment in most write-ups and needs the most attention here, because for EU regulated-industry clients it is often the only viable architecture.</p>
+<p>In owned mode, you (or your client) buy the GPU. Capital expenditure up front, then electricity, cooling, networking, colo or data-centre space, and staff. Amortised over a three-year accounting life, the compute line looks very different from rental.</p>
+<h3>The Capex Reality: What the Hardware Actually Costs</h3>
+<p>From Chapter 2&rsquo;s hardware table, 2026 pricing:</p>
+<table>
+<thead>
+<tr>
+<th>GPU</th>
+<th>Purchase Price</th>
+<th>VRAM</th>
+<th>Typical Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVIDIA H100 80 GB (SXM)</td>
+<td>$25,000 - $40,000</td>
+<td>80 GB HBM3</td>
+<td>Production inference, 20B-70B models</td>
+</tr>
+<tr>
+<td>NVIDIA H200 141 GB</td>
+<td>$30,000 - $45,000</td>
+<td>141 GB HBM3e</td>
+<td>Larger models, higher throughput</td>
+</tr>
+<tr>
+<td>NVIDIA A100 80 GB</td>
+<td>$15,000 - $17,000</td>
+<td>80 GB HBM2e</td>
+<td>Previous gen, good price/performance</td>
+</tr>
+<tr>
+<td>NVIDIA L40S</td>
+<td>$7,000 - $10,000</td>
+<td>48 GB GDDR6X</td>
+<td>Inference-optimised, smaller models</td>
+</tr>
+</tbody>
+</table>
+<p>A server chassis, NVLink/NVSwitch interconnect, networking, PSU, and rack integration adds roughly 20-30% to the GPU cost per node. A 2xH100 inference node turnkey lands around $75,000-$95,000. Colo (if you are not racking in your own DC) runs $500-$1,500 per month for a single-node footprint including power and cooling.</p>
+<h3>Owned: 20B Model at Four Scales</h3>
+<p>The same model sizing as the rental section, but pricing the hardware as owned capital on a 36-month amortisation. Ops costs are the same as rental — those are people and tooling, not hardware.</p>
+<h4>Owned: 10 Users — The Hardware Appliance</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Upfront hardware (server + L40S + rack kit)</td>
+<td>$10,000 - $15,000 (one-time)</td>
+</tr>
+<tr>
+<td>Monthly amortisation (36 months)</td>
+<td>$280 - $420</td>
+</tr>
+<tr>
+<td>Colo / power / cooling (if hosted)</td>
+<td>$300 - $600</td>
+</tr>
+<tr>
+<td>Software license + remote support</td>
+<td>$500 - $1,000</td>
+</tr>
+<tr>
+<td><strong>Monthly equivalent</strong></td>
+<td><strong>$1,100 - $2,000</strong></td>
+</tr>
+<tr>
+<td><strong>Per user</strong></td>
+<td><strong>$110 - $200</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The appliance model shifts the cost structure dramatically. The upfront capital expense is significant, but once amortised the ongoing per-user cost drops below rental. This works best for regulated industries where data must stay on-premises — healthcare, legal, financial services.</p>
+<h4>Owned: 100 Users — Shared Departmental Deployment</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Monthly Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2x H100 purchased (amortised 36 mo)</td>
+<td>$1,700 - $2,400</td>
+</tr>
+<tr>
+<td>Server, networking, rack, spares buffer</td>
+<td>$400 - $600</td>
+</tr>
+<tr>
+<td>Colo / power / cooling</td>
+<td>$800 - $1,500</td>
+</tr>
+<tr>
+<td>Ops overhead</td>
+<td>$5,000 - $8,000</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$7,900 - $12,500</strong></td>
+</tr>
+<tr>
+<td><strong>Per user</strong></td>
+<td><strong>$79 - $125</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Compare this to rental at the same scale ($10,000-$16,000). The delta is not huge — roughly 20-30% — because ops dominates. But it matters, and the compute line itself is 3x cheaper owned than rented.</p>
+<h4>Owned: 500 Users — Business Unit Deployment</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Monthly Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3x H100 purchased (amortised 36 mo)</td>
+<td>$2,500 - $3,600</td>
+</tr>
+<tr>
+<td>Server, networking, rack, spares buffer</td>
+<td>$600 - $900</td>
+</tr>
+<tr>
+<td>Colo / power / cooling</td>
+<td>$1,200 - $2,200</td>
+</tr>
+<tr>
+<td>Ops overhead (share of dedicated team)</td>
+<td>$3,500 - $6,000</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$7,800 - $12,700</strong></td>
+</tr>
+<tr>
+<td><strong>Per user</strong></td>
+<td><strong>$16 - $25</strong></td>
+</tr>
+</tbody>
+</table>
+<p>At 500 users, owned is materially cheaper than rental and starts to undercut mid-tier API pricing ($60/user at Haiku / Mistral Medium rates). This is where the owned-hardware case becomes commercially compelling.</p>
+<h4>Owned: 1,000 Users — Large Enterprise or Multi-Tenant Platform</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Monthly Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4x H100 purchased (amortised 36 mo)</td>
+<td>$3,300 - $4,800</td>
+</tr>
+<tr>
+<td>Server, networking, rack, spares buffer</td>
+<td>$800 - $1,200</td>
+</tr>
+<tr>
+<td>Colo / power / cooling</td>
+<td>$1,800 - $3,200</td>
+</tr>
+<tr>
+<td>Ops overhead (dedicated team)</td>
+<td>$7,000 - $9,000</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$12,900 - $18,200</strong></td>
+</tr>
+<tr>
+<td><strong>Per user</strong></td>
+<td><strong>$13 - $18</strong></td>
+</tr>
+</tbody>
+</table>
+<p>At 1,000 users, owned hardware serving a 20B model lands around $13-18 per user per month — competitive with hosted Llama 70B API pricing and comfortably below anything mid-tier or frontier.</p>
 <blockquote>
-<p><strong>Key takeaway:</strong> The traditional hosting logic is inverted. In traditional IT, self-hosting at moderate scale (100+ users) was almost always cheaper than buying a managed service. With AI, the hyperscaler API providers benefit from massive GPU fleets, custom silicon, and unbeatable economies of scale. Self-hosting only wins on cost at 500+ users with a smaller model — and even then, only if you are comparing against mid-tier API pricing. If your client is happy with GPT-4o-mini or Gemini Flash-Lite, no self-hosted deployment can compete on price. The case for self-hosting must rest on something other than cost.</p>
+<p><strong>Key takeaway:</strong> Owned on-prem is systematically cheaper than rental on the compute line (roughly 3x for long-lived deployments) because renting for 36 months costs as much as buying three of the same GPUs. The savings narrow once ops overhead is included — ops is the same either way — but the owned mode is the right choice whenever you have confidence the workload will persist for the amortisation window.</p>
 </blockquote>
 <hr>
-<h2>The Complete Scale Comparison</h2>
-<p>Here is the summary view that every IT services provider should have pinned to their wall. We compare self-hosting a 20B model against API costs across four deployment scales.</p>
-<h3>Self-Hosted 20B Model vs API — Monthly Total Cost</h3>
+<h2>Rent vs. Own: The Gap the Old Chapter Hid</h2>
+<p>Directly comparing the 100-user scenario across modes makes the gap visible:</p>
+<table>
+<thead>
+<tr>
+<th>Line item</th>
+<th>Rental</th>
+<th>Owned (36 mo amortised)</th>
+<th>Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compute</td>
+<td>$5,000 - $8,000/mo</td>
+<td>$1,700 - $2,400/mo</td>
+<td>~3x</td>
+</tr>
+<tr>
+<td>Infrastructure (networking, colo, power)</td>
+<td>bundled</td>
+<td>$1,200 - $2,100/mo</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Ops overhead</td>
+<td>$5,000 - $8,000/mo</td>
+<td>$5,000 - $8,000/mo</td>
+<td>1x</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$10,000 - $16,000</strong></td>
+<td><strong>$7,900 - $12,500</strong></td>
+<td><strong>~1.3x</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Three questions determine which mode fits a given client:</p>
+<ol>
+<li><strong>How long will this workload run?</strong> Amortised purchase is cheaper only if you use the hardware for at least 24-30 months. For pilots, proofs of concept, or workloads with uncertain longevity, rental is correct even at premium prices.</li>
+<li><strong>Who owns the capital risk?</strong> Owned hardware is a depreciating asset. If GPU prices drop 30% next year (they did this year), your $60,000 cluster is worth $42,000 on the used market. Rental has no residual-value risk.</li>
+<li><strong>Does the client require physical control of the hardware?</strong> Banks, defence contractors, classified environments, and some hospital systems have policies that rule out shared cloud infrastructure entirely — even &ldquo;dedicated&rdquo; rental. These clients are owned-mode by default.</li>
+</ol>
+<p>For everything else, the decision is an economic one: pay 30% more each month for the flexibility to turn it off, or commit capital and capture the 3x compute saving.</p>
+<hr>
+<h2>Hardware Lifetime and Refresh Economics</h2>
+<p>Every owned-hardware calculation in this chapter uses a 36-month amortisation. That is the standard accounting convention. It is also, in practice, an incomplete picture. If you are advising a client on an owned-hardware AI deployment, you owe them a more honest view of the hardware lifetime question.</p>
+<p><strong>Nvidia&rsquo;s published service life</strong> for its data-centre GPUs is three to five years. Both numbers are correct depending on what you mean. Three years is the point at which the GPU has depreciated to zero on a typical corporate books and is eligible for refresh. Five years is the point at which the hardware itself typically starts showing failures under continuous load — fan wear, thermal paste degradation, HBM memory errors climbing above acceptable thresholds.</p>
+<p><strong>Inference is gentler than training.</strong> Most of the public failure data on large GPU fleets comes from training workloads, where GPUs run at sustained 95%+ utilisation for weeks at a time and failure rates of several percent per 10,000-GPU fleet per month have been publicly documented. Inference loads are bursty and thermally less punishing. Real-world failure rates for a well-cooled inference fleet are lower, but they are not zero — budget a small spare-unit reserve (one extra GPU per 8-10 production units) and an RMA process that does not require taking the service offline.</p>
+<p><strong>Accounting life, physical life, and useful life are three different numbers.</strong></p>
+<ul>
+<li>Accounting life (36 months) governs depreciation on the client&rsquo;s balance sheet.</li>
+<li>Physical life (often 5+ years) governs when the hardware actually fails.</li>
+<li>Useful life — the one that matters for strategy — is typically governed by technology obsolescence, not by hardware failure. The H100 is being displaced by the H200 which is being displaced by Blackwell. In 36 months, today&rsquo;s H100s will still work. They will also be competing against hardware that is 2-3x faster at the same power envelope, running models that are more efficient on newer architectures. Your client will probably refresh before the hardware fails.</li>
+</ul>
+<p><strong>What this means for TCO modelling:</strong></p>
+<ol>
+<li><strong>Budget a replacement cycle.</strong> Do not promise a client &ldquo;36 months and the hardware is free.&rdquo; Promise 36 months to full amortisation, with a refresh decision at month 30 based on what newer silicon is capable of by then.</li>
+<li><strong>Reserve spare units.</strong> One extra GPU per rack is cheap insurance against the RMA timeline on replacements, which can stretch to weeks for in-demand SKUs.</li>
+<li><strong>Consider the used-hardware market.</strong> H100s from decommissioned training fleets have been entering the secondary market in increasing volumes since mid-2025, typically at 40-60% of MSRP. For clients who need capacity but not leading-edge performance, this can cut capex in half.</li>
+<li><strong>Plan for progressive quantisation.</strong> The same GPU hardware will run better-quantised versions of the same models over time as quantisation research advances. A 20B model that needs 40GB of VRAM at INT8 today may run at comparable quality on 20GB at INT4 in 18 months. Your owned cluster grows in effective capacity without any hardware change.</li>
+</ol>
+<p>The consumer-hardware analog matters for Chapter 7, where the same refresh-and-depreciation dynamics apply to corporate laptops running local models — but the economics are still favourable because the client already owns the laptops.</p>
+<hr>
+<h2>The Unified Comparison</h2>
+<p>The table every IT services provider should have on their wall: the same 20B model workload across all three modes, at all four scales, compared against the three API tiers.</p>
+<h3>Monthly Total Cost — Three Modes, Four Scales</h3>
 <table>
 <thead>
 <tr>
 <th>Scale</th>
-<th>Self-Hosted (Total)</th>
-<th>API: Budget Tier</th>
-<th>API: Mid Tier</th>
-<th>API: Frontier</th>
+<th>API Budget</th>
+<th>API Mid</th>
+<th>API Frontier</th>
+<th>Rental 20B</th>
+<th>Owned 20B</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>10 users</td>
-<td>$2,500 - $4,000</td>
 <td>$54</td>
 <td>$600</td>
 <td>$1,800</td>
+<td>$2,500 - $4,000</td>
+<td>$1,100 - $2,000</td>
 </tr>
 <tr>
 <td>100 users</td>
-<td>$10,000 - $16,000</td>
 <td>$540</td>
 <td>$6,000</td>
 <td>$18,000</td>
+<td>$10,000 - $16,000</td>
+<td>$7,900 - $12,500</td>
 </tr>
 <tr>
 <td>500 users</td>
-<td>$11,000 - $18,000</td>
 <td>$2,700</td>
 <td>$30,000</td>
 <td>$90,000</td>
+<td>$11,000 - $18,000</td>
+<td>$7,800 - $12,700</td>
 </tr>
 <tr>
 <td>1,000 users</td>
-<td>$18,000 - $27,000</td>
 <td>$5,400</td>
 <td>$60,000</td>
 <td>$180,000</td>
+<td>$18,000 - $27,000</td>
+<td>$12,900 - $18,200</td>
 </tr>
 </tbody>
 </table>
 <p><em>Budget tier: Gemini Flash-Lite / GPT-4o-mini class (~$0.18-$0.30/M blended). Mid tier: Claude Haiku / Mistral Medium class (~$2.00/M blended). Frontier: Claude Sonnet / GPT-4o class (~$6.00/M blended). Assumes 1M tokens/user/day.</em></p>
-<h3>Self-Hosted 20B Model vs API — Per-User Monthly Cost</h3>
+<h3>Per-User Monthly Cost — Three Modes, Four Scales</h3>
 <table>
 <thead>
 <tr>
 <th>Scale</th>
-<th>Self-Hosted</th>
-<th>API: Budget</th>
-<th>API: Mid</th>
-<th>API: Frontier</th>
+<th>API Budget</th>
+<th>API Mid</th>
+<th>API Frontier</th>
+<th>Rental 20B</th>
+<th>Owned 20B</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>10 users</td>
-<td>$250 - $400</td>
 <td>$5.40</td>
 <td>$60</td>
 <td>$180</td>
+<td>$250 - $400</td>
+<td>$110 - $200</td>
 </tr>
 <tr>
 <td>100 users</td>
-<td>$100 - $160</td>
 <td>$5.40</td>
 <td>$60</td>
 <td>$180</td>
+<td>$100 - $160</td>
+<td>$79 - $125</td>
 </tr>
 <tr>
 <td>500 users</td>
-<td>$22 - $36</td>
 <td>$5.40</td>
 <td>$60</td>
 <td>$180</td>
+<td>$22 - $36</td>
+<td>$16 - $25</td>
 </tr>
 <tr>
 <td>1,000 users</td>
-<td>$18 - $27</td>
 <td>$5.40</td>
 <td>$60</td>
 <td>$180</td>
+<td>$18 - $27</td>
+<td>$13 - $18</td>
 </tr>
 </tbody>
 </table>
-<p>API pricing is perfectly linear — the per-user cost does not change with scale. Self-hosting costs drop dramatically as you add users. The crossover points are:</p>
-<ul>
-<li><strong>Self-hosting beats mid-tier APIs</strong> at roughly 400-500 users</li>
-<li><strong>Self-hosting beats frontier APIs</strong> at roughly 100-200 users</li>
-<li><strong>Self-hosting never beats budget-tier APIs</strong> at any realistic scale</li>
-</ul>
-<h3>The Crossover Chart</h3>
-<p>If you plotted per-user cost against number of users, you would see two very different curves. The API line is flat — $5.40 per user whether you have 10 or 10,000. The self-hosting curve is a steep hyperbola, starting at $250-$400 for 10 users and asymptotically approaching $15-$20 for very large deployments.</p>
-<p>The lines cross at different points depending on which API tier you are comparing against:</p>
+<p>API pricing is perfectly linear — the per-user cost does not change with scale. Self-hosted costs (both rental and owned) drop dramatically as you add users. The crossover points depend on which API tier you are comparing against and which self-hosted mode.</p>
+<h3>Crossover Points</h3>
 <table>
 <thead>
 <tr>
@@ -1349,34 +1534,83 @@ hr {
 </thead>
 <tbody>
 <tr>
-<td>Self-hosted vs Budget API (Flash-Lite, 4o-mini)</td>
-<td><strong>Never</strong> (self-hosting is always more expensive)</td>
+<td>Rental 20B vs Budget API (Flash-Lite, 4o-mini)</td>
+<td><strong>Never</strong> (rental is always more expensive)</td>
 </tr>
 <tr>
-<td>Self-hosted vs Mid-tier API (Haiku, Mistral Medium)</td>
+<td>Owned 20B vs Budget API</td>
+<td><strong>Never</strong> (ops overhead floor exceeds budget API)</td>
+</tr>
+<tr>
+<td>Rental 20B vs Mid-tier API (Haiku, Mistral Medium)</td>
 <td><strong>~400-500 users</strong></td>
 </tr>
 <tr>
-<td>Self-hosted vs Frontier API (Sonnet, GPT-4o)</td>
+<td>Owned 20B vs Mid-tier API</td>
+<td><strong>~250-350 users</strong></td>
+</tr>
+<tr>
+<td>Rental 20B vs Frontier API (Sonnet, GPT-4o)</td>
 <td><strong>~100-200 users</strong></td>
 </tr>
 <tr>
-<td>Self-hosted vs Premium API (Opus, GPT-4.1 + heavy usage)</td>
+<td>Owned 20B vs Frontier API</td>
+<td><strong>~50-100 users</strong></td>
+</tr>
+<tr>
+<td>Rental 20B vs Premium API (Opus, GPT-4.1 + heavy usage)</td>
 <td><strong>~50-80 users</strong></td>
+</tr>
+<tr>
+<td>Owned 20B vs Premium API</td>
+<td><strong>~30-50 users</strong></td>
 </tr>
 </tbody>
 </table>
+<p>Owning hardware shifts every crossover earlier by a factor of roughly 1.5-2x compared to renting. For a client committed to the workload, this is the difference between self-hosting being viable at 150 users rather than 300.</p>
 <hr>
-<h2>The On-Premises Economics: A Different Comparison</h2>
-<p>Everything above compares your self-hosting costs against API prices. That is the right comparison for clients who can use cloud APIs. But for a significant segment of the EU enterprise market — banking, healthcare, defense, legal, public sector, and any organization whose compliance or legal teams have ruled out external AI APIs — the API price is irrelevant. It is not an option they can choose.</p>
-<p>For these clients, the comparison that matters is entirely different:</p>
+<h2>What These Numbers Do Not Capture</h2>
+<p>Before drawing strategic conclusions from the table above, the caveats.</p>
+<p><strong>Factors favouring APIs:</strong></p>
 <ul>
-<li><strong>Your managed AI service</strong> vs. <strong>the client building and running it themselves</strong></li>
-<li><strong>Your managed AI service</strong> vs. <strong>the client having no AI at all</strong></li>
+<li>Zero setup time — you can be live in hours, not weeks</li>
+<li>Automatic model upgrades — when a frontier model improves, you get it free</li>
+<li>Elastic scaling — pay nothing during weekends and holidays</li>
+<li>No GPU procurement risk — you never own depreciating hardware</li>
+<li>No failure exposure — the hyperscaler replaces GPUs transparently</li>
 </ul>
-<p>This is traditional IT services economics, and the numbers look much more favorable.</p>
+<p><strong>Factors favouring rental:</strong></p>
+<ul>
+<li>Full stack control without capital commitment</li>
+<li>Data sovereignty to the extent the provider&rsquo;s data-processing agreement allows it</li>
+<li>Ability to run open-weight or fine-tuned models the hyperscalers do not offer</li>
+<li>Predictable monthly cost, no surprise bills from a prompt injection or runaway agent</li>
+<li>Independence from model deprecation or API terms changes</li>
+</ul>
+<p><strong>Factors favouring owned on-prem:</strong></p>
+<ul>
+<li>True data sovereignty — tokens never leave your perimeter</li>
+<li>Compliance with the strictest EU regulatory requirements for regulated industries</li>
+<li>Full hardware control, including air-gapped deployments</li>
+<li>Lower long-run compute cost (3x on the compute line)</li>
+<li>Unlimited usage against a fixed cost — no per-token pressure on adoption</li>
+<li>Predictable refresh cycle you control</li>
+</ul>
+<p>For EU IT services providers, the data sovereignty and compliance arguments are often the strongest justification for owned on-prem. The cost math alone rarely supports rental over API for cloud-comfortable clients, but combine cost with a genuine compliance requirement and owned on-prem starts to look like the right answer for a meaningful share of the market.</p>
+<blockquote>
+<p><strong>Key takeaway:</strong> Do not build your business case on cost savings from self-hosting against APIs. For cloud-comfortable clients, you will lose that argument. Build the case on data sovereignty, regulatory compliance, and customisation — and use these numbers to know exactly what premium you are asking the client to pay, and why that premium is worth it.</p>
+</blockquote>
+<hr>
+<h2>The On-Premises Economics: A Different Comparison Entirely</h2>
+<p>Everything above compares the three modes against each other and against API pricing. That is the right framing for clients who have a choice. For a significant segment of the EU enterprise market — banking, healthcare, defence, legal, public sector, and any organisation whose compliance or legal team has ruled out external AI APIs — API pricing is irrelevant. It is not an option they can select.</p>
+<p>For these clients, the comparison that matters is different:</p>
+<ul>
+<li><strong>Your managed owned on-prem service</strong> vs. <strong>the client building and running it themselves</strong></li>
+<li><strong>Your managed owned on-prem service</strong> vs. <strong>the client having no AI at all</strong></li>
+</ul>
+<p>This is traditional IT managed-services economics, and the numbers look much more favourable.</p>
 <h3>What It Costs a Client to Do It Themselves</h3>
-<p>Consider a mid-sized European bank that wants to run a 20B model on-premises for 100 internal users. If they build and manage the infrastructure themselves, they need:</p>
+<p>Consider a mid-sized European bank that wants to run a 20B model on-premises for 100 internal users. If the bank builds and manages the infrastructure itself, it needs:</p>
 <table>
 <thead>
 <tr>
@@ -1386,7 +1620,7 @@ hr {
 </thead>
 <tbody>
 <tr>
-<td>GPU hardware (2x H100, amortized over 3 years)</td>
+<td>GPU hardware (2x H100, amortised over 3 years)</td>
 <td>$17,000 - $23,000</td>
 </tr>
 <tr>
@@ -1423,7 +1657,8 @@ hr {
 </tr>
 </tbody>
 </table>
-<p>The dominant cost is not hardware — it is people. An ML engineer who can deploy, optimize, and maintain LLM inference infrastructure commands a significant salary in the EU market, and the client needs at least one full-time. Many will need more, especially during the initial setup phase.</p>
+<p>The dominant cost is not hardware — it is people. An ML engineer who can deploy, optimise, and maintain LLM inference infrastructure commands a significant salary in the EU market, and the client needs at least one full-time. Many will need more, especially during the initial setup phase.</p>
+<p>Notice the gap with the $79-125 per-user number from the owned-hardware table above. The same hardware, the same model, the same scale — but $79-125 when you (the IT services provider) run it, and $125-204 when the client runs it alone. That gap is your margin opportunity, and it is structural.</p>
 <h3>What You Can Charge as a Managed Service</h3>
 <p>As an IT services provider, you have advantages the individual client does not:</p>
 <ul>
@@ -1432,7 +1667,7 @@ hr {
 <li><strong>Operational maturity.</strong> You have been managing infrastructure for decades. The client&rsquo;s newly-hired ML engineer is figuring it out for the first time.</li>
 <li><strong>Vendor relationships.</strong> You negotiate GPU procurement and cloud pricing at volume.</li>
 </ul>
-<p>These advantages let you deliver the same service at a lower cost than the client can achieve alone — the exact same economics that made traditional IT managed services profitable.</p>
+<p>These advantages let you deliver the same service at a lower cost than the client can achieve alone — the same economics that made traditional IT managed services profitable.</p>
 <table>
 <thead>
 <tr>
@@ -1467,20 +1702,21 @@ hr {
 </tr>
 </tbody>
 </table>
+<p><em>The &ldquo;Your Cost&rdquo; column uses rental-mode pricing from Mode B. If you run owned hardware, your costs drop further (see the Mode C tables) and margins improve accordingly.</em></p>
 <p>At 10 users, the economics are especially compelling. A small client cannot justify a full-time ML engineer for 10 users, but they still need someone to manage the infrastructure. Your shared-expertise model gives them enterprise-grade AI ops at a fraction of the cost of doing it themselves.</p>
 <p>At 100 users, you price competitively with the client&rsquo;s DIY cost while capturing a healthy margin. The client gets operational reliability, SLAs, and the ability to focus their internal team on using AI rather than running it.</p>
 <p>At 500+ users, the client starts to have enough scale to justify their own team — but even then, your platform approach (serving multiple clients on shared infrastructure, with isolated data) can remain cost-competitive.</p>
 <blockquote>
-<p><strong>Key takeaway:</strong> For on-prem-required clients, your competition is not OpenAI or Google. It is the client&rsquo;s internal IT team. And you beat internal IT teams the same way you always have: through operational specialization, shared costs across multiple clients, and mature tooling. The margin structure looks like traditional managed services — 40-55% — not the razor-thin margins of trying to compete with hyperscaler API pricing.</p>
+<p><strong>Key takeaway:</strong> For on-prem-required clients, your competition is not OpenAI or Google. It is the client&rsquo;s internal IT team. And you beat internal IT teams the same way you always have: through operational specialisation, shared costs across multiple clients, and mature tooling. The margin structure looks like traditional managed services — 40-55% — not the razor-thin margins of trying to compete with hyperscaler API pricing.</p>
 </blockquote>
 <h3>The Market Size Question</h3>
 <p>How large is the on-prem segment? No published data answers this precisely for GenAI specifically, but several indicators suggest it is substantial in the EU market:</p>
 <ul>
-<li><strong>Banking and financial services</strong>: ECB and national regulators increasingly scrutinize cloud concentration risk. Many EU banks maintain strict policies requiring sensitive data processing on-premises or in private cloud.</li>
-<li><strong>Healthcare</strong>: Patient data under GDPR has stringent processing requirements. Many EU healthcare systems have explicit policies against external AI APIs for clinical data.</li>
-<li><strong>Public sector</strong>: Government organizations across EU member states frequently require on-premises or sovereign cloud deployment for sensitive workloads.</li>
-<li><strong>Legal</strong>: Attorney-client privilege and professional confidentiality obligations create strong incentives for on-prem AI.</li>
-<li><strong>Defense and critical infrastructure</strong>: By definition, these sectors require controlled environments.</li>
+<li><strong>Banking and financial services:</strong> ECB and national regulators increasingly scrutinise cloud concentration risk. Many EU banks maintain strict policies requiring sensitive data processing on-premises or in private cloud.</li>
+<li><strong>Healthcare:</strong> Patient data under GDPR has stringent processing requirements. Many EU healthcare systems have explicit policies against external AI APIs for clinical data.</li>
+<li><strong>Public sector:</strong> Government organisations across EU member states frequently require on-premises or sovereign cloud deployment for sensitive workloads.</li>
+<li><strong>Legal:</strong> Attorney-client privilege and professional confidentiality obligations create strong incentives for on-prem AI.</li>
+<li><strong>Defence and critical infrastructure:</strong> By definition, these sectors require controlled environments.</li>
 </ul>
 <p>For a typical EU IT services provider whose client base skews toward regulated industries, the on-prem segment could represent 30-60% of potential AI service revenue. This is not a niche — it may be the core market.</p>
 <h3>The Combined Picture</h3>
@@ -1517,31 +1753,26 @@ hr {
 </table>
 <p>The healthiest business combines all three: infrastructure margins from on-prem clients, integration and advisory revenue from cloud-comfortable clients, and compliance services layered across both. Do not make the mistake of focusing exclusively on one segment when the other may be equally or more lucrative.</p>
 <hr>
-<h2>What These Numbers Do Not Capture</h2>
-<p>The tables above cover the direct, measurable costs. But several factors shift the equation in ways that are harder to quantify:</p>
-<p><strong>Factors favoring APIs:</strong>
-- Zero setup time — you can be live in hours, not weeks
-- Automatic model upgrades — when GPT-4.1 improves, you get it free
-- Elastic scaling — pay nothing during weekends and holidays
-- No GPU procurement risk — you never own depreciating hardware</p>
-<p><strong>Factors favoring self-hosting:</strong>
-- Data sovereignty — tokens never leave your infrastructure
-- Regulatory compliance — some EU regulations and client contracts require on-premises processing
-- Customization — fine-tuning, custom system prompts with no rate limits, specialized tooling
-- Predictable costs — no surprise bills from a prompt injection attack or runaway agent loop
-- Independence — no vendor can deprecate your model or change your terms overnight</p>
-<p>For EU IT services providers, the data sovereignty and compliance arguments are often the strongest justification for self-hosting. The cost math alone rarely supports it. But combine cost with a genuine compliance requirement, and the self-hosting premium starts to look like a reasonable price for regulatory peace of mind.</p>
-<blockquote>
-<p><strong>Key takeaway:</strong> Do not build your business case on cost savings from self-hosting. Build it on the value of data sovereignty, regulatory compliance, and customization. Then use these numbers to price your offering realistically — knowing exactly what premium you are asking customers to pay, and why that premium is worth it.</p>
-</blockquote>
-<hr>
 <h2>Practical Implications for Your Pricing Strategy</h2>
-<p>These numbers lead to three immediate conclusions for how you should think about pricing:</p>
+<p>These numbers lead to four immediate conclusions for how you should think about pricing:</p>
 <p><strong>1. Do not try to undercut API providers on price.</strong> You will lose. OpenAI, Google, and Anthropic are spending billions on custom silicon and infrastructure. Your cost per token will always be higher than theirs for equivalent model quality.</p>
-<p><strong>2. For on-prem clients, price against the client&rsquo;s DIY cost — not against API pricing.</strong> A managed AI infrastructure service at $180/user/month is expensive compared to a $5.40/user/month API call, but it is a bargain compared to the $125-$204/user/month it would cost the client to build and staff it themselves. Frame your pricing against the right benchmark.</p>
-<p><strong>3. Price on value, not on cost-plus.</strong> If your service provides data sovereignty, compliance assurance, or specialized fine-tuning, price those outcomes directly. A $180/user/month service that keeps patient data on-premises is a different product from a $5.40/user/month API call that sends data to US servers.</p>
-<p><strong>4. Consider hybrid architectures.</strong> Route sensitive queries through your self-hosted infrastructure and non-sensitive queries through cheap APIs. This keeps your GPU utilization high on the work that actually requires privacy, while keeping costs down on everything else. We will explore this model in detail in Chapter 5.</p>
-<p>The numbers tell two stories. For cloud-comfortable clients, the strategy is not about running models cheaper than the hyperscalers — it is about delivering expertise, integration, and compliance on top of their APIs. For on-prem-required clients, you are still in the infrastructure business, and the economics work in your favour — as long as you price against the right comparison.</p>
+<p><strong>2. For on-prem clients, price against the client&rsquo;s DIY cost — not against API pricing.</strong> A managed AI infrastructure service at $180 per user per month is expensive compared to a $5.40 per user per month API call, but it is a bargain compared to the $125-$204 per user per month it would cost the client to build and staff it themselves. Frame your pricing against the right benchmark.</p>
+<p><strong>3. Price on value, not on cost-plus.</strong> If your service provides data sovereignty, compliance assurance, or specialised fine-tuning, price those outcomes directly. A $180/user/month service that keeps patient data on-premises is a different product from a $5.40/user/month API call that sends data to US servers.</p>
+<p><strong>4. Consider hybrid architectures.</strong> Route sensitive queries through your owned infrastructure and non-sensitive queries through cheap APIs. This keeps your GPU utilisation high on the work that actually requires privacy, while keeping costs down on everything else. We explore this model in detail in Chapter 5, and Chapter 7 extends the logic further to local-on-device inference — which, for workloads that fit, produces compute costs of literally zero.</p>
+<p>The numbers tell two stories. For cloud-comfortable clients, the strategy is not about running models cheaper than the hyperscalers — it is about delivering expertise, integration, and compliance on top of their APIs. For on-prem-required clients, you are still in the infrastructure business, and the economics work in your favour — as long as you price against the right comparison and commit to the amortisation window that makes owned hardware viable.</p>
+<hr>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~4 months</em></p>
+<p>This chapter contains the booklet&rsquo;s most time-sensitive numbers. Claims most likely to shift within 3-6 months:</p>
+<ul>
+<li>The <strong>API pricing table</strong> — every provider listed changes prices at least once per quarter, and the overall trend is downward. Re-verify Gemini Flash-Lite, GPT-4o-mini, Claude Haiku, and Llama 70B quotes before quoting to a client.</li>
+<li><strong>GPU rental rates</strong> — hyperscaler and neocloud spot markets move monthly. H100 pricing specifically has been tracking down 2-4% per month.</li>
+<li><strong>Named model versions</strong> (GPT-4.1, Claude Sonnet 4.6, Gemini Flash-Lite, Llama 3.1 70B) — new releases typically ship every 2-4 months and may rename, reprice, or supersede these entries.</li>
+<li>The <strong>crossover points</strong> flow directly from the pricing tables; they move whenever either side moves.</li>
+</ul>
+<p>What should hold up longer: the three-mode framing, the rent-vs-own gap (~3x on compute), the shape of the scale curve (owned beats rental which beats API at different user counts), and the on-prem market economics. If you are reading this more than six months after the date above, treat every specific dollar figure as directional, but the structural argument should still track.</p>
+</aside>
+<hr>
+<p><em>Chapter 4 examines why the API side of the comparison is not just cheaper today but structurally cheaper — and what that means for any strategy built on competing with the hyperscalers on price.</em></p>
         </section>
 
         <section class="chapter" id="chapter-4-why-hyperscalers-win-on-price">
@@ -1659,6 +1890,16 @@ hr {
 <blockquote>
 <p><strong>Key takeaway:</strong> Know which game you are playing. For cloud-comfortable clients, the hyperscaler cost advantage is structural and permanent — compete on expertise, not on compute. For on-prem-required clients, the infrastructure business works because the hyperscaler alternative does not exist for them. Most EU IT services providers will serve both segments, and the winners will be those who price and position correctly for each.</p>
 </blockquote>
+<hr>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~9 months</em></p>
+<p>The five structural advantages (custom silicon, utilisation, model optimisations, scale amortisation, strategic underpricing) will hold. Specific claims most likely to shift:</p>
+<ul>
+<li>The <strong>&ldquo;75% NVIDIA gross margin&rdquo;</strong> figure tracks NVIDIA&rsquo;s public financials. A downturn in AI capex or meaningful competition from AMD MI300X or TPU-for-hire offerings could compress this within 12-18 months.</li>
+<li><strong>&ldquo;Strategic underpricing&rdquo;</strong> — providers may move toward cost-reflective pricing once market share stabilises. Expect Gemini Flash-Lite, GPT-4o-mini, and similar budget tiers to float upward (or split into paid/free tiers) if this happens.</li>
+<li>The <strong>&ldquo;$1-3 per million output tokens&rdquo; actual-cost estimates</strong> are informed guesses drawn from public disclosures and industry analysis. Treat as directional.</li>
+<li><strong>Microsoft Maia, AWS Trainium/Inferentia, Google TPU</strong> generations change roughly annually — by the time you read this, the referenced generation may be superseded.</li>
+</ul>
+</aside>
 <hr>
 <p><em>Chapter 5 examines the first viable business model: acting as a privacy and compliance proxy between your clients and the hyperscaler APIs they need but cannot use directly.</em></p>
         </section>
@@ -1869,6 +2110,17 @@ hr {
 <p><strong>Key takeaway:</strong> The vendor ecosystem play is the right first move for most EU IT services providers. It is fast, low-risk, and directly monetizes your existing partnerships. But it is a bridge to more differentiated capabilities, not a destination. The license margin pays the bills. The services margin funds the transformation. And the transformation is what keeps you relevant when the vendors inevitably make adoption easier without your help.</p>
 </blockquote>
 <hr>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~3-6 months</em></p>
+<p>Every table of vendor pricing in this chapter is on the short end of the half-life scale. Re-verify before quoting:</p>
+<ul>
+<li><strong>Microsoft Copilot for M365 pricing</strong> (EUR 18-30 per user per month), the 50% partner incentive increase, and AB-900 certification details — Microsoft has adjusted partner terms twice in the past 18 months.</li>
+<li><strong>SAP Joule AI Unit pricing</strong> (EUR 7/unit, 100-unit minimum) and the Base vs. Premium boundary — SAP&rsquo;s consumption thresholds tend to shift at quarterly cadence.</li>
+<li><strong>GitHub Copilot tiers</strong> ($19 Business, $39 Enterprise) and <strong>Google Gemini for Workspace</strong> bundling terms.</li>
+<li><strong>Adoption statistics</strong> (70% of Fortune 500, PwC 230,000-user rollout, UK government 26-minutes-saved pilot) — these become dated references within a year as new case studies replace them.</li>
+</ul>
+<p>The structural argument — licenses are the anchor, services are the profit, bundle or be commoditised — is durable regardless of price moves.</p>
+</aside>
+<hr>
 <p><em>Chapter 6 examines the first independent business model: acting as a privacy and compliance proxy between your clients and the frontier AI models they need but cannot use directly.</em></p>
         </section>
 
@@ -2030,6 +2282,16 @@ hr {
 <blockquote>
 <p><strong>Key takeaway:</strong> The privacy proxy is viable as an add-on and fragile as a standalone business. Build it as a layer in your managed AI services stack. Combine it with compliance consulting, integration services, and audit-readiness support. Do not bet the company on a gap that the AI providers are actively working to close — but do use it to deepen client relationships while the gap remains open.</p>
 </blockquote>
+<hr>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~9 months</em></p>
+<p>The fragility of this model is tied to how fast the hyperscalers close the native data-handling gap. Watch:</p>
+<ul>
+<li><strong>Azure OpenAI Service EU data boundary</strong>, <strong>Anthropic regional processing</strong>, and <strong>Google Cloud data residency</strong> announcements. Each meaningful improvement erodes the privacy proxy&rsquo;s standalone value proposition.</li>
+<li><strong>Dedicated privacy middleware vendors</strong> (Private AI, Protecto, Skyflow, Microsoft Presidio). Their PII detection capabilities improve every quarter; re-check competitive positioning before greenlighting a proxy build.</li>
+<li><strong>The 10% markup on API spend</strong> cited in the economics — if API prices halve (as they have repeatedly), a 10% markup on a smaller base becomes harder to justify as a standalone business line.</li>
+</ul>
+<p>The recommendation — &ldquo;build it as a layer, not a company&rdquo; — is robust against all of the above.</p>
+</aside>
 <hr>
 <p><em>Chapter 7 examines the most technically independent model: deploying open-source AI directly on employee devices, where no data ever leaves the hardware your client already owns.</em></p>
         </section>
@@ -2311,6 +2573,16 @@ hr {
 <p><strong>Key takeaway:</strong> Local deployment is the most naturally defensible AI business model for IT services providers. Zero data exfiltration, zero compute cost, strong margins at scale, and a trajectory that turns today&rsquo;s adequate local models into tomorrow&rsquo;s good-enough-for-everything models. Start building this capability now. The providers who establish local deployment expertise in 2026 will own the market when on-device AI becomes the default enterprise deployment model in 2028 and beyond.</p>
 </blockquote>
 <hr>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~6 months</em></p>
+<p>Local deployment is where the model/hardware trajectory moves fastest. Re-verify:</p>
+<ul>
+<li><strong>Named open-source models</strong> (Llama 3.3 8B, Mistral 7B v0.4, Phi-4, Qwen 2.5) — new releases ship roughly quarterly and supersede prior generations. The specific versions quoted here will be outdated within 3-4 months; the <em>class</em> of capability (competitive 8-13B models running on a laptop) is the durable claim.</li>
+<li><strong>Hardware viability thresholds</strong> — the &ldquo;24GB MacBook runs an 8-13B model&rdquo; boundary will expand as quantisation improves and unified memory grows. Expect 36-48GB machines to become mainstream corporate specs and 30-40B models to become viable on them within 24 months, not the 2-3 years cited.</li>
+<li><strong>Daily heavy-usage API costs</strong> ($9,000-$18,000/year for power users) track API pricing, which is trending down. The break-even calculation for local hardware stays favourable but the specific numbers move.</li>
+<li><strong>Runtime state-of-the-art</strong> — llama.cpp, MLX, Ollama, LM Studio, and commercial equivalents evolve continuously. Re-evaluate the stack before committing to tooling choices.</li>
+</ul>
+</aside>
+<hr>
 <p><em>Chapter 8 examines the third independent business model: providing the testing, security, and agentic infrastructure that every organization deploying AI — whether in the cloud or locally — needs but almost none have built.</em></p>
         </section>
 
@@ -2497,6 +2769,16 @@ hr {
 <blockquote>
 <p><strong>What to take from this chapter:</strong> Three related opportunities — testing, security, and agentic infrastructure — plus multi-model management offer high-margin services that enterprises cannot easily build in-house. Start with agentic infrastructure because it maps closest to existing skills and generates revenue fastest. Invest in testing and security in parallel — regulatory demand is certain and margins are highest, but talent requirements are steeper and time to revenue is longer. The model is just an API call. Everything around it is your business.</p>
 </blockquote>
+<hr>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~9 months</em></p>
+<p>The three service categories are durable; the specifics of how you deliver them will evolve.</p>
+<ul>
+<li><strong>EU AI Act enforcement dates</strong> (August 2026 for high-risk systems, August 2027 for safety-components in sectoral-regulated products) are fixed in law, but implementing guidance and conformity-assessment procedures are still being published and will continue to evolve through 2026-2027.</li>
+<li><strong>Service pricing</strong> (assessment $20-50K, monitoring $3-10K/month, red-teaming $30-80K) reflects current market rates. Expect these to compress as the market matures and more providers enter — 12-24 month window before this becomes more commoditised.</li>
+<li><strong>MCP, RAG tooling, and vector database landscape</strong> — the specific products and standards cited here change every 6-12 months. The underlying disciplines (API integration, data engineering) are permanent.</li>
+<li><strong>Threat landscape</strong> — prompt injection, model poisoning, jailbreak techniques evolve continuously. Any specific attack described in this chapter may be mitigated by the time you read it; the categories remain relevant.</li>
+</ul>
+</aside>
 <hr>
 <p><em>Chapter 9 examines how the same AI you are learning to sell to clients is simultaneously transforming how you deliver your existing services — and why that internal disruption may be the most important strategic challenge you face.</em></p>
         </section>
@@ -2737,6 +3019,16 @@ hr {
 <p><strong>What to take from this chapter</strong>: The same AI you are learning to sell to clients is simultaneously transforming how you deliver your existing services. The providers who adopt it internally first — measuring the impact, retraining their teams, and redesigning their pricing — will expand their margins, scale their capacity, and build the most credible sales pitch in the market. The providers who wait will find themselves on the wrong side of a consolidation wave that is already underway. This is not a future problem. The numbers are already real, the tools are already available, and your competitors are already moving.</p>
 </blockquote>
 <hr>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~9 months</em></p>
+<p>The direction (AI compresses MSP economics, outcome-based pricing wins) is durable. Specific metrics will age:</p>
+<ul>
+<li><strong>Case-study deflection rates</strong> (Moveworks 88% at Broadcom, Aisera 75%, NIB 60% cost reduction) anchor to specific vendor deployments; these numbers either climb further or get superseded by newer case studies each year.</li>
+<li><strong>The &ldquo;45% B2B ticket deflection&rdquo;</strong> industry average ticks up quarterly as tooling matures — expect 55-65% as a baseline by 2027.</li>
+<li><strong>MSP M&amp;A data</strong> (50% increase in 2024 deals, 200 → 120 MSSP consolidation projection) reflects a specific point in the consolidation cycle. The consolidation story persists; the specific headline numbers will move.</li>
+<li><strong>AIOps market size ($40B by 2026)</strong> and <strong>per-user rate compression (&ldquo;25% in the next two years&rdquo;)</strong> are analyst projections — treat as directional and re-check against fresh analyst data before citing.</li>
+</ul>
+</aside>
+<hr>
 <p><em>Next: <a href="11_eu_ai_act.md">Chapter 10 — EU AI Act: Your Compliance Opportunity</a></em></p>
         </section>
 
@@ -2803,6 +3095,15 @@ hr {
 <h2>From Passive to Active Indispensability</h2>
 <p>In the old model, you were indispensable because leaving you was painful — passive lock-in. In the new model, you must be indispensable because the alternative is worse — the client managing multi-model orchestration, evaluation, compliance, and optimization on their own. This is active indispensability: the client stays because your contribution is visible and measurable, not because switching is hard.</p>
 <p>Active indispensability is harder to build but more durable. It depends on expertise the client can see and value, not on information asymmetry. The providers who internalize this earliest will have a significant head start — not because the work is impossibly complex, but because the transformation from infrastructure operators to intelligence advisors takes time. The window is open now.</p>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~4-6 months</em></p>
+<p>The structural claim — lock-in has migrated from infrastructure to model-specific choices — is durable. Specific technical details move faster:</p>
+<ul>
+<li><strong>Context window sizes</strong> (Claude&rsquo;s 200K vs GPT-4o&rsquo;s 128K) change approximately every 6-9 months as new model versions ship. The gap between providers is narrowing.</li>
+<li><strong>Tool/function calling schema incompatibility</strong> between OpenAI, Anthropic, and Google formats is a real lock-in vector today. Standardisation efforts (OpenAPI-style function specs, MCP) may partially address this by 2027.</li>
+<li><strong>Named features</strong> (OpenAI Assistants API, specific provider tool formats) can be deprecated or renamed — verify current naming before writing client-facing architecture documents.</li>
+</ul>
+<p>The defensive strategies (abstract the model layer, own the integration, build switching capability as a service) get <em>more</em> valuable as the underlying API landscape evolves, not less.</p>
+</aside>
 <hr>
 <p><em>Next: <a href="09_eu_ai_act.md">Chapter 9 — EU AI Act: Your Compliance Opportunity</a></em></p>
         </section>
@@ -2968,6 +3269,16 @@ hr {
 </li>
 </ol>
 <p>The regulation is complex. The opportunity is straightforward.</p>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~18-24 months</em></p>
+<p>The EU AI Act&rsquo;s statutory text is stable. The implementing landscape is not.</p>
+<ul>
+<li><strong>Enforcement dates</strong> (Feb 2025, Aug 2025, Aug 2026, Aug 2027) are fixed in the regulation. The <strong>August 2026 high-risk-systems deadline</strong> is the load-bearing date for most of this chapter&rsquo;s opportunity framing.</li>
+<li><strong>Implementing guidance, harmonised standards, and conformity-assessment procedures</strong> are still being published — most notably by the AI Office, ENISA, and the European standardisation organisations. Expect meaningful new material through 2026-2027.</li>
+<li><strong>National transposition and competent-authority designations</strong> vary by member state and are still being finalised in several jurisdictions. Public-sector procurement implications (Chapter&rsquo;s final section) are especially member-state-specific.</li>
+<li><strong>Service pricing</strong> ($20-50K assessments, $3-10K/month monitoring) will compress as the market matures past the initial compliance crunch — likely 18-24 months after the August 2026 deadline bites.</li>
+</ul>
+<p>Re-verify statutory references against the current consolidated text of Regulation (EU) 2024/1689 before quoting to clients.</p>
+</aside>
 <hr>
 <p><em>Next: <a href="12_pricing_models.md">Chapter 12 — Pricing Models and Packaging</a></em></p>
         </section>
@@ -3243,6 +3554,17 @@ hr {
 <p><strong>What to take from this chapter</strong>: Your biggest pricing risk is not charging too much — it is being compared to $30/seat consumer AI products. Avoid this by selling solutions, not components. Start new clients with a low-risk assessment ($5,000-15,000), grow into implementation ($20,000-80,000), and anchor long-term relationships with managed service retainers ($3,000-25,000/month). Bundle aggressively. Price on value delivered, not tokens consumed. And remember: the model is your cost of goods sold, not your product.</p>
 </blockquote>
 <hr>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~9-12 months</em></p>
+<p>The five pricing models and three-tier packaging framework are durable. The number ranges are not.</p>
+<ul>
+<li><strong>Consumer AI reference prices</strong> (ChatGPT Team $30/seat, Claude Pro $20, Microsoft Copilot $30) set the anchoring ceiling. These have been stable for 12 months but could shift if providers introduce new tiers or consolidate pricing pages.</li>
+<li><strong>Three-tier framework price bands</strong> ($20-40 Starter, $50-80 Professional, $100-200 Enterprise per user per month) reflect 2026 EU market rates. Expect the entry tier to compress toward $15-30 as local-deployment solutions commoditise; enterprise tier is sticky.</li>
+<li><strong>Service-level price guide</strong> (assessment $5-15K, implementation $20-80K, monthly retainer $3-25K) assumes CEE-delivery cost structure — re-verify against your local market and adjust the 30-50% Western-European premium if applicable.</li>
+<li><strong>Per-outcome pricing examples</strong> (Intercom Fin at $0.99/resolution) change as specific vendors update their pricing pages.</li>
+</ul>
+<p>Where this chapter cross-references Chapter 3 benchmarks (API prices, self-hosted per-user costs, on-prem DIY figures), those numbers move in sync — always consult the latest edition of Chapter 3 before quoting.</p>
+</aside>
+<hr>
 <p><em>Next: <a href="11_talent_team.md">Chapter 11 — Talent and Team Structure</a></em></p>
         </section>
 
@@ -3358,6 +3680,15 @@ hr {
 <h2>The Cost of Waiting</h2>
 <p>Every month you delay, the gap widens in two ways. First, the AI talent market gets more competitive — the engineers you could hire today will cost more next year. Second, your best people are watching. If they see their company ignoring AI, the curious and ambitious ones will leave for employers who take it seriously.</p>
 <p>The talent transformation is not something you defer until the business case is proven. It is part of proving the business case. You cannot land AI projects without AI capability, and you cannot build capability overnight. The time to start is not when you are ready. It is now, precisely because you are not ready.</p>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~9-12 months</em></p>
+<p>The five roles and upskilling path are stable. Market-dependent numbers are not.</p>
+<ul>
+<li><strong>CEE vs Western salary bands</strong> (EUR 45-80K CEE ML engineer vs EUR 90-150K Western) reflect early 2026 market conditions. The gap has been compressing roughly 5-10% annually as remote work pressure persists.</li>
+<li><strong>Upskilling cost estimates</strong> (EUR 2-5K per person in training, EUR 10-25K per cohort) track commodity training-content prices and are fairly stable.</li>
+<li><strong>University programme references</strong> (Charles, Warsaw, Comenius, Budapest Technology) — programme offerings and research depth change year-over-year; re-check the specific institutions most relevant to your recruiting geography.</li>
+<li><strong>Remote-hiring dynamics</strong> — the pressure from Western employers hiring CEE talent remotely has intensified; the &ldquo;closing gap&rdquo; caveat is more urgent than it was 12 months ago.</li>
+</ul>
+</aside>
 <hr>
 <p><em>Next: <a href="14_do_nothing_roadmap.md">Chapter 14 — The &ldquo;Do Nothing&rdquo; Scenario and Your 18-Month Roadmap</a></em></p>
         </section>
@@ -3517,6 +3848,15 @@ hr {
 <p>The window for building AI capability in the EU IT services market is open right now. The technology is accessible. The client demand is real and growing. The regulatory environment, for once, favours local providers who understand European requirements. And the competition, while moving, has not yet locked up the market.</p>
 <p>Eighteen months from now, you will either be a provider with AI capabilities, client references, and a growing pipeline — or you will be a provider watching from the sidelines as your competitors capture the relationships that used to be yours.</p>
 <p>The math is clear. The path is laid out. The first step is yours to take.</p>
+<aside class="freshness-watch"><p><strong>Freshness Watch</strong> · <em>verified April 2026 · estimated half-life: ~12+ months</em></p>
+<p>The 18-month roadmap structure is framework-level and will age slowly. Specifics to re-verify:</p>
+<ul>
+<li><strong>Budget ranges per phase</strong> (EUR 20-50K Phase 1, EUR 40-80K Phase 2, EUR 60-120K Phase 3) reflect 2026 EU cost structures — re-calibrate against your actual salary, tooling, and API-credit costs before committing.</li>
+<li><strong>Starting-technology defaults</strong> (&ldquo;use frontier APIs in Phase 1, consider local deployment in Phase 3&rdquo;) follow the capability curve of the most recent model generation. If open-source models close the frontier gap faster than expected, Phase 2 and Phase 3 timing compresses.</li>
+<li><strong>The 2028 &ldquo;AI as default entry point&rdquo; claim</strong> is a market-trajectory bet grounded in current consolidation data (Chapter 9). If that consolidation stalls, the urgency argument weakens; if it accelerates, the window closes faster than 18 months.</li>
+</ul>
+<p>The core argument — doing nothing is not neutral, the competitor who starts today has an 18-month head start you cannot buy — is structural and durable.</p>
+</aside>
 <hr>
 <p><em>End of The Token Economics: A Strategic Guide for EU IT Services Providers Navigating GenAI</em></p>
         </section>

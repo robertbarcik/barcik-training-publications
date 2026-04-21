@@ -290,6 +290,43 @@ blockquote p:last-child {
     margin-bottom: 0;
 }
 
+/* Freshness Watch — amber aside flagging time-sensitive claims */
+.freshness-watch {
+    border-left: 4px solid #d97706;
+    background: rgba(217, 119, 6, 0.06);
+    padding: 1rem 1.5rem;
+    margin: 2.5rem 0 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+}
+
+.freshness-watch > p:first-child {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #92400e;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
+}
+
+.freshness-watch > p:first-child em {
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #a16207;
+    font-size: 0.92em;
+}
+
+.freshness-watch ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.freshness-watch p:last-child {
+    margin-bottom: 0;
+}
+
 /* Horizontal rules (chapter dividers) */
 hr {
     border: none;
@@ -423,12 +460,29 @@ def make_id(title):
     return re.sub(r"\s+", "-", slug).strip("-")
 
 
+# Freshness Watch: transform blockquotes whose first strong element is
+# "Freshness Watch" into a distinct <aside> for time-sensitive callouts.
+# Convention: blockquote must start with <p><strong>Freshness Watch</strong>...
+FRESHNESS_RE = re.compile(
+    r'<blockquote>\s*<p><strong>Freshness Watch</strong>(.*?)</blockquote>',
+    re.DOTALL,
+)
+
+
+def transform_freshness(html):
+    return FRESHNESS_RE.sub(
+        lambda m: f'<aside class="freshness-watch"><p><strong>Freshness Watch</strong>{m.group(1)}</aside>',
+        html,
+    )
+
+
 def md_to_html(text):
-    return markdown.markdown(
+    html = markdown.markdown(
         text,
         extensions=["tables", "fenced_code", "smarty"],
         output_format="html5"
     )
+    return transform_freshness(html)
 
 
 def build():

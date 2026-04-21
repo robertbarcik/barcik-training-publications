@@ -156,6 +156,16 @@ Eighteen months from now, you will either be a provider with AI capabilities, cl
 
 The math is clear. The path is laid out. The first step is yours to take.
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~12+ months*
+>
+> The 18-month roadmap structure is framework-level and will age slowly. Specifics to re-verify:
+>
+> - **Budget ranges per phase** (EUR 20-50K Phase 1, EUR 40-80K Phase 2, EUR 60-120K Phase 3) reflect 2026 EU cost structures — re-calibrate against your actual salary, tooling, and API-credit costs before committing.
+> - **Starting-technology defaults** ("use frontier APIs in Phase 1, consider local deployment in Phase 3") follow the capability curve of the most recent model generation. If open-source models close the frontier gap faster than expected, Phase 2 and Phase 3 timing compresses.
+> - **The 2028 "AI as default entry point" claim** is a market-trajectory bet grounded in current consolidation data (Chapter 9). If that consolidation stalls, the urgency argument weakens; if it accelerates, the window closes faster than 18 months.
+>
+> The core argument — doing nothing is not neutral, the competitor who starts today has an 18-month head start you cannot buy — is structural and durable.
+
 ---
 
 *End of The Token Economics: A Strategic Guide for EU IT Services Providers Navigating GenAI*

@@ -158,4 +158,16 @@ The providers who build their entire strategy around the privacy proxy will find
 
 ---
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~9 months*
+>
+> The fragility of this model is tied to how fast the hyperscalers close the native data-handling gap. Watch:
+>
+> - **Azure OpenAI Service EU data boundary**, **Anthropic regional processing**, and **Google Cloud data residency** announcements. Each meaningful improvement erodes the privacy proxy's standalone value proposition.
+> - **Dedicated privacy middleware vendors** (Private AI, Protecto, Skyflow, Microsoft Presidio). Their PII detection capabilities improve every quarter; re-check competitive positioning before greenlighting a proxy build.
+> - **The 10% markup on API spend** cited in the economics — if API prices halve (as they have repeatedly), a 10% markup on a smaller base becomes harder to justify as a standalone business line.
+>
+> The recommendation — "build it as a layer, not a company" — is robust against all of the above.
+
+---
+
 *Chapter 7 examines the most technically independent model: deploying open-source AI directly on employee devices, where no data ever leaves the hardware your client already owns.*

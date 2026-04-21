@@ -125,4 +125,13 @@ Throughout, we use real numbers. The pricing data referenced in this booklet is 
 
 ---
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~12-18 months*
+>
+> The structural argument in this chapter — middleman markup broken for cloud-comfortable clients, managed infrastructure viable for on-prem-required clients — is durable. Narrower claims to re-verify over time:
+>
+> - The specific "5-10x cheaper" API-vs-self-hosting ratio is recalculated in Chapter 3 each edition; watch for that number to widen (as hyperscalers deploy more custom silicon) or narrow (as open-source efficiency improves).
+> - The split between cloud-comfortable and on-prem-required EU clients is shifting as hyperscalers add EU data residency features — see Chapter 6's Freshness Watch for the details.
+
+---
+
 *Next: [Chapter 2 — How Large Language Models Actually Run](02_how_llms_run.md)*

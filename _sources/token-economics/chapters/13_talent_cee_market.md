@@ -119,6 +119,15 @@ Every month you delay, the gap widens in two ways. First, the AI talent market g
 
 The talent transformation is not something you defer until the business case is proven. It is part of proving the business case. You cannot land AI projects without AI capability, and you cannot build capability overnight. The time to start is not when you are ready. It is now, precisely because you are not ready.
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~9-12 months*
+>
+> The five roles and upskilling path are stable. Market-dependent numbers are not.
+>
+> - **CEE vs Western salary bands** (EUR 45-80K CEE ML engineer vs EUR 90-150K Western) reflect early 2026 market conditions. The gap has been compressing roughly 5-10% annually as remote work pressure persists.
+> - **Upskilling cost estimates** (EUR 2-5K per person in training, EUR 10-25K per cohort) track commodity training-content prices and are fairly stable.
+> - **University programme references** (Charles, Warsaw, Comenius, Budapest Technology) — programme offerings and research depth change year-over-year; re-check the specific institutions most relevant to your recruiting geography.
+> - **Remote-hiring dynamics** — the pressure from Western employers hiring CEE talent remotely has intensified; the "closing gap" caveat is more urgent than it was 12 months ago.
+
 ---
 
 *Next: [Chapter 14 — The "Do Nothing" Scenario and Your 18-Month Roadmap](14_do_nothing_roadmap.md)*

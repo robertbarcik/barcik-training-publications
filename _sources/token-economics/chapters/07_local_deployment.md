@@ -227,4 +227,15 @@ This is the good news chapter. Of all the business model pivots available to EU 
 
 ---
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~6 months*
+>
+> Local deployment is where the model/hardware trajectory moves fastest. Re-verify:
+>
+> - **Named open-source models** (Llama 3.3 8B, Mistral 7B v0.4, Phi-4, Qwen 2.5) — new releases ship roughly quarterly and supersede prior generations. The specific versions quoted here will be outdated within 3-4 months; the *class* of capability (competitive 8-13B models running on a laptop) is the durable claim.
+> - **Hardware viability thresholds** — the "24GB MacBook runs an 8-13B model" boundary will expand as quantisation improves and unified memory grows. Expect 36-48GB machines to become mainstream corporate specs and 30-40B models to become viable on them within 24 months, not the 2-3 years cited.
+> - **Daily heavy-usage API costs** ($9,000-$18,000/year for power users) track API pricing, which is trending down. The break-even calculation for local hardware stays favourable but the specific numbers move.
+> - **Runtime state-of-the-art** — llama.cpp, MLX, Ollama, LM Studio, and commercial equivalents evolve continuously. Re-evaluate the stack before committing to tooling choices.
+
+---
+
 *Chapter 8 examines the third independent business model: providing the testing, security, and agentic infrastructure that every organization deploying AI — whether in the cloud or locally — needs but almost none have built.*

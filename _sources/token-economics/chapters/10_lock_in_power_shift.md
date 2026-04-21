@@ -104,6 +104,16 @@ In the old model, you were indispensable because leaving you was painful — pas
 
 Active indispensability is harder to build but more durable. It depends on expertise the client can see and value, not on information asymmetry. The providers who internalize this earliest will have a significant head start — not because the work is impossibly complex, but because the transformation from infrastructure operators to intelligence advisors takes time. The window is open now.
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~4-6 months*
+>
+> The structural claim — lock-in has migrated from infrastructure to model-specific choices — is durable. Specific technical details move faster:
+>
+> - **Context window sizes** (Claude's 200K vs GPT-4o's 128K) change approximately every 6-9 months as new model versions ship. The gap between providers is narrowing.
+> - **Tool/function calling schema incompatibility** between OpenAI, Anthropic, and Google formats is a real lock-in vector today. Standardisation efforts (OpenAPI-style function specs, MCP) may partially address this by 2027.
+> - **Named features** (OpenAI Assistants API, specific provider tool formats) can be deprecated or renamed — verify current naming before writing client-facing architecture documents.
+>
+> The defensive strategies (abstract the model layer, own the integration, build switching capability as a service) get *more* valuable as the underlying API landscape evolves, not less.
+
 ---
 
 *Next: [Chapter 9 — EU AI Act: Your Compliance Opportunity](09_eu_ai_act.md)*

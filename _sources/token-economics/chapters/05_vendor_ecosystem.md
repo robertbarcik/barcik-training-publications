@@ -165,4 +165,17 @@ But if it is your only move three years from now, you have a problem. The adopti
 
 ---
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~3-6 months*
+>
+> Every table of vendor pricing in this chapter is on the short end of the half-life scale. Re-verify before quoting:
+>
+> - **Microsoft Copilot for M365 pricing** (EUR 18-30 per user per month), the 50% partner incentive increase, and AB-900 certification details — Microsoft has adjusted partner terms twice in the past 18 months.
+> - **SAP Joule AI Unit pricing** (EUR 7/unit, 100-unit minimum) and the Base vs. Premium boundary — SAP's consumption thresholds tend to shift at quarterly cadence.
+> - **GitHub Copilot tiers** ($19 Business, $39 Enterprise) and **Google Gemini for Workspace** bundling terms.
+> - **Adoption statistics** (70% of Fortune 500, PwC 230,000-user rollout, UK government 26-minutes-saved pilot) — these become dated references within a year as new case studies replace them.
+>
+> The structural argument — licenses are the anchor, services are the profit, bundle or be commoditised — is durable regardless of price moves.
+
+---
+
 *Chapter 6 examines the first independent business model: acting as a privacy and compliance proxy between your clients and the frontier AI models they need but cannot use directly.*

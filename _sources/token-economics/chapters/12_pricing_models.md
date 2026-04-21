@@ -176,4 +176,17 @@ This means your sales team needs to stop talking about technology and start talk
 
 ---
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~9-12 months*
+>
+> The five pricing models and three-tier packaging framework are durable. The number ranges are not.
+>
+> - **Consumer AI reference prices** (ChatGPT Team $30/seat, Claude Pro $20, Microsoft Copilot $30) set the anchoring ceiling. These have been stable for 12 months but could shift if providers introduce new tiers or consolidate pricing pages.
+> - **Three-tier framework price bands** ($20-40 Starter, $50-80 Professional, $100-200 Enterprise per user per month) reflect 2026 EU market rates. Expect the entry tier to compress toward $15-30 as local-deployment solutions commoditise; enterprise tier is sticky.
+> - **Service-level price guide** (assessment $5-15K, implementation $20-80K, monthly retainer $3-25K) assumes CEE-delivery cost structure — re-verify against your local market and adjust the 30-50% Western-European premium if applicable.
+> - **Per-outcome pricing examples** (Intercom Fin at $0.99/resolution) change as specific vendors update their pricing pages.
+>
+> Where this chapter cross-references Chapter 3 benchmarks (API prices, self-hosted per-user costs, on-prem DIY figures), those numbers move in sync — always consult the latest edition of Chapter 3 before quoting.
+
+---
+
 *Next: [Chapter 11 — Talent and Team Structure](11_talent_team.md)*

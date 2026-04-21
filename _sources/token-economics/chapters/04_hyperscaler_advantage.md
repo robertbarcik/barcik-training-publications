@@ -138,4 +138,15 @@ For this client segment, competing on infrastructure price is not viable. But th
 
 ---
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~9 months*
+>
+> The five structural advantages (custom silicon, utilisation, model optimisations, scale amortisation, strategic underpricing) will hold. Specific claims most likely to shift:
+>
+> - The **"75% NVIDIA gross margin"** figure tracks NVIDIA's public financials. A downturn in AI capex or meaningful competition from AMD MI300X or TPU-for-hire offerings could compress this within 12-18 months.
+> - **"Strategic underpricing"** — providers may move toward cost-reflective pricing once market share stabilises. Expect Gemini Flash-Lite, GPT-4o-mini, and similar budget tiers to float upward (or split into paid/free tiers) if this happens.
+> - The **"$1-3 per million output tokens" actual-cost estimates** are informed guesses drawn from public disclosures and industry analysis. Treat as directional.
+> - **Microsoft Maia, AWS Trainium/Inferentia, Google TPU** generations change roughly annually — by the time you read this, the referenced generation may be superseded.
+
+---
+
 *Chapter 5 examines the first viable business model: acting as a privacy and compliance proxy between your clients and the hyperscaler APIs they need but cannot use directly.*

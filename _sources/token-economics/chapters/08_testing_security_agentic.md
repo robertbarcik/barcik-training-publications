@@ -174,4 +174,15 @@ In parallel, invest in testing and security:
 
 ---
 
+> **Freshness Watch** · *verified April 2026 · estimated half-life: ~9 months*
+>
+> The three service categories are durable; the specifics of how you deliver them will evolve.
+>
+> - **EU AI Act enforcement dates** (August 2026 for high-risk systems, August 2027 for safety-components in sectoral-regulated products) are fixed in law, but implementing guidance and conformity-assessment procedures are still being published and will continue to evolve through 2026-2027.
+> - **Service pricing** (assessment $20-50K, monitoring $3-10K/month, red-teaming $30-80K) reflects current market rates. Expect these to compress as the market matures and more providers enter — 12-24 month window before this becomes more commoditised.
+> - **MCP, RAG tooling, and vector database landscape** — the specific products and standards cited here change every 6-12 months. The underlying disciplines (API integration, data engineering) are permanent.
+> - **Threat landscape** — prompt injection, model poisoning, jailbreak techniques evolve continuously. Any specific attack described in this chapter may be mitigated by the time you read it; the categories remain relevant.
+
+---
+
 *Chapter 9 examines how the same AI you are learning to sell to clients is simultaneously transforming how you deliver your existing services — and why that internal disruption may be the most important strategic challenge you face.*
