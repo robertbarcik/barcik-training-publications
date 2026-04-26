@@ -429,7 +429,7 @@ hr {
 <p>Whether the leapfrog actually happens depends on things that are genuinely unknowable in April 2026. But the pattern is strong enough that any European enterprise planning its agent strategy should at least ask: <em>are we about to repeat the cloud cycle, or skip ahead?</em> Chapter 9 develops this directly.</p>
 <p>The rest of this booklet is an elaboration of the picture above. The goal through Chapter 11 is to be specific enough that when you finish, you can tell a colleague what MCP is, why ADK and LangGraph are not in the same category, and what your organisation should actually do about any of it.</p>
 <hr>
-<p><em>Next: <a href="02_layer_cake.md">Chapter 2 — The Layer Cake</a></em></p>
+<p><em>Next: <a href="#chapter-2-the-layer-cake">Chapter 2 — The Layer Cake</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-2-the-layer-cake">
@@ -484,7 +484,7 @@ hr {
 <p><strong>What to take from this chapter:</strong> The agent stack has four layers — orchestration, LLM, access (MCP + A2A), actual systems. Frameworks, models, and protocols are compositional, not competitive. The single most common mistake in agent-development discourse is treating a framework (ADK, LangGraph) as if it were competing with a protocol (MCP). It isn&rsquo;t. Everything in this booklet is an elaboration of that picture.</p>
 </blockquote>
 <hr>
-<p><em>Next: <a href="03_protocol_layer.md">Chapter 3 — The Protocol Layer</a></em></p>
+<p><em>Next: <a href="#chapter-3-the-protocol-layer-mcp-and-a2a">Chapter 3 — The Protocol Layer</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-3-the-protocol-layer-mcp-and-a2a">
@@ -530,7 +530,7 @@ hr {
 <p><strong>What to take from this chapter:</strong> MCP is the settled protocol for agent-to-tool and agent-to-data access. A2A is the emerging protocol for agent-to-agent — less settled but gaining consensus. Both live at the access layer of the stack, underneath the orchestration layer. Treat MCP as ambient infrastructure: consume the vendor servers, build your own for internal systems. Treat A2A as an architectural concern you&rsquo;ll act on when multi-agent needs become real — but pick frameworks with a credible A2A roadmap even if you&rsquo;re single-agent today.</p>
 </blockquote>
 <hr>
-<p><em>Next: <a href="04_orchestration_layer.md">Chapter 4 — The Orchestration Layer</a></em></p>
+<p><em>Next: <a href="#chapter-4-the-orchestration-layer">Chapter 4 — The Orchestration Layer</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-4-the-orchestration-layer">
@@ -571,7 +571,7 @@ hr {
 <p>It&rsquo;s easy — especially for developers coming from traditional software — to think of the orchestration layer as &ldquo;the agent.&rdquo; It isn&rsquo;t. The orchestration layer is the manager. The actual intelligence is in the LLM layer below it. The actual capability is in the tools and data exposed via MCP. The actual value is produced by the systems at the bottom. A good framework is valuable the way a good project manager is valuable: it makes a team of smart specialists work well together. And no framework, however polished, rescues weak specialists.</p>
 <p>The corollary: when agent projects fail, the instinct is often to switch frameworks. This is almost always wrong. The failure is usually in the tool surface, the prompt design, the evaluation harness, or the model choice — not the orchestrator. Diagnose first. <strong>If your first instinct when an agent misbehaves is to reach for a different framework, you&rsquo;re probably treating the wrong disease.</strong></p>
 <hr>
-<p><em>Next: <a href="05_vendor_frameworks.md">Chapter 5 — The Vendor Frameworks</a></em></p>
+<p><em>Next: <a href="#chapter-5-the-vendor-frameworks">Chapter 5 — The Vendor Frameworks</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-5-the-vendor-frameworks">
@@ -642,7 +642,7 @@ hr {
 <p><strong>What to take from this chapter:</strong> Vendor frameworks are the PaaS of the agent era — opinionated, fast, and deeply aligned with the vendor that built them. Each has a genuine strength and a specific gravitational pull. The right choice depends on which ecosystem you already live in and how much portability you&rsquo;ll trade for speed. Chapter 8 handles lock-in consequences per vendor; this chapter established what each framework is on its own terms.</p>
 </blockquote>
 <hr>
-<p><em>Next: <a href="06_agnostic_frameworks.md">Chapter 6 — The Agnostic Frameworks</a></em></p>
+<p><em>Next: <a href="#chapter-6-the-agnostic-frameworks">Chapter 6 — The Agnostic Frameworks</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-6-the-agnostic-frameworks">
@@ -686,7 +686,7 @@ hr {
 <p>For a typical enterprise in 2026, the honest answer is: probably a vendor SDK today, with a realistic option to migrate to an agnostic framework in 2027 if scale, regulatory environment, or vendor relationship demands. For a <em>regulated</em> enterprise — particularly in Europe, where Chapter 9&rsquo;s compliance concerns bite — the answer tips more strongly toward the agnostic camp from the start.</p>
 <p><strong>Insurance policies have costs. They pay off in specific scenarios. Whether they&rsquo;re worth it depends on how much risk you&rsquo;re carrying and how much you believe the scenarios will come to pass.</strong> That&rsquo;s the agnostic case, honestly stated.</p>
 <hr>
-<p><em>Next: <a href="07_observability_cost_governance.md">Chapter 7 — Observability, Evaluation, and Cost</a></em></p>
+<p><em>Next: <a href="#chapter-7-observability-evaluation-and-cost">Chapter 7 — Observability, Evaluation, and Cost</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-7-observability-evaluation-and-cost">
@@ -756,7 +756,7 @@ hr {
 <p>The implication: for regulated enterprises, the observability stack is <strong>compliance infrastructure before it&rsquo;s quality infrastructure</strong>. The choices — trace granularity, retention periods, access controls, audit workflows — have legal consequences, not just operational ones. Chapter 9 covers the architecture of a compliant EU deployment in detail.</p>
 <p><strong>Very few enterprises in 2026 have a mature observability practice in place. Most are somewhere between &ldquo;we log model calls&rdquo; and &ldquo;we have a dashboard but nobody looks at it.&rdquo; The gap between those two states and &ldquo;this works&rdquo; is the single biggest predictor of whether an agent program matures into something strategic.</strong></p>
 <hr>
-<p><em>Next: <a href="08_lock_in_question.md">Chapter 8 — The Lock-In Question</a></em></p>
+<p><em>Next: <a href="#chapter-8-the-lock-in-question">Chapter 8 — The Lock-In Question</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-8-the-lock-in-question">
@@ -871,7 +871,7 @@ hr {
 <p><strong>What to take from this chapter:</strong> &ldquo;Model-agnostic&rdquo; in vendor-framework marketing usually means &ldquo;you can technically swap the model&rdquo; — not &ldquo;the framework&rsquo;s headline capabilities survive the swap.&rdquo; Lock-in ranges from low (LangGraph, CrewAI) to medium (ADK) to high (OpenAI Agents SDK) to very high (Claude Agent SDK). AWS and Azure invert the pattern: model-flexible, cloud-locked. For most enterprises, vendor lock-in is a price worth paying for velocity, until it isn&rsquo;t — and the conditions under which it isn&rsquo;t are regulatory risk, vendor pricing power, workload criticality, and data sovereignty. Know which of those apply to you before committing.</p>
 </blockquote>
 <hr>
-<p><em>Next: <a href="09_eu_angle.md">Chapter 9 — The EU Angle</a></em></p>
+<p><em>Next: <a href="#chapter-9-the-eu-angle">Chapter 9 — The EU Angle</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-9-the-eu-angle">
@@ -927,7 +927,7 @@ hr {
 <p><strong>What to take from this chapter:</strong> The EU has structural reasons — AI Act, data sovereignty, sovereign-AI policy, the memory of the cloud lock-in cycle — to skip &ldquo;deep vendor commitment followed by painful migration&rdquo; and go straight to hybrid, agnostic, observability-heavy agent architectures. Not every European enterprise should take this option, but more should than currently are. Framework trade-offs tilt more decisively toward agnostic in Europe than elsewhere. The sovereign-AI landscape is thinner than US narratives suggest but not threadbare — credible enough to plan on. The EU Routing Pattern (agnostic orchestration + per-interaction model choice + European observability) is the architecture that survives most regulatory weather.</p>
 </blockquote>
 <hr>
-<p><em>Next: <a href="10_squeezed_timeline.md">Chapter 10 — Will the Timeline Actually Squeeze?</a></em></p>
+<p><em>Next: <a href="#chapter-10-will-the-timeline-actually-squeeze">Chapter 10 — Will the Timeline Actually Squeeze?</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-10-will-the-timeline-actually-squeeze">
@@ -954,7 +954,7 @@ hr {
 <p><strong>Our forecast in one sentence:</strong> Regulated European enterprises will Leapfrog by roughly 2028; most other enterprises will live through a compressed but real version of the cloud-era Lock-In Cycle; vendor SDKs will win the short term and the agnostic frameworks plus their observability ecosystem will win the long term for workloads that matter most — unless three of the six named indicators above don&rsquo;t move as described, in which case I&rsquo;ve mis-read the cycle.</p>
 </blockquote>
 <hr>
-<p><em>Next: <a href="11_picking_your_stack.md">Chapter 11 — Picking Your Stack</a></em></p>
+<p><em>Next: <a href="#chapter-11-picking-your-stack">Chapter 11 — Picking Your Stack</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-11-picking-your-stack">

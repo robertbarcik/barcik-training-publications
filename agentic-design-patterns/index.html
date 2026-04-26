@@ -820,7 +820,7 @@ hr {
 <li>The model provides the intelligence. The architecture provides the agency.</li>
 </ol>
 <hr>
-<p><em>Next: <a href="02_persistent_context.md">Chapter 2 — The Persistent Context Problem</a></em></p>
+<p><em>Next: <a href="#chapter-2-the-persistent-context-problem">Chapter 2 — The Persistent Context Problem</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-2-the-persistent-context-problem">
@@ -1159,7 +1159,7 @@ hr {
 <p><strong>Key insight:</strong> Appending everything to the context window fails on cost, size, and staleness — the three constraints arrive in that order and each one hurts more than the last. The Skeptical Memory pattern answers all three with a layered hierarchy, a pointer-based index, and an explicit trust model where the agent verifies before it acts. But if you remember only one thing from this chapter, make it this: an agent that distrusts its own memory is safer than an agent with perfect recall and blind confidence.</p>
 </blockquote>
 <hr>
-<p><em>Next: <a href="03_background_consolidation.md">Chapter 3 — Background Consolidation</a></em></p>
+<p><em>Next: <a href="#chapter-3-background-consolidation">Chapter 3 — Background Consolidation</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-3-background-consolidation">
@@ -1318,7 +1318,7 @@ hr {
 <p><strong>What to take from this chapter:</strong> Memory is not a write-once store. It rots. AutoDream fights that rot with three operations &mdash; prune, merge, optimize &mdash; run by a dedicated subagent during idle time. KAIROS extends the same idea into always-on event monitoring between sessions. Both use cheap models for structured maintenance, reserving expensive frontier models for interactive reasoning. If your agent persists memory across sessions, build consolidation from day one. You will not notice the need until performance has already degraded.</p>
 </blockquote>
 <hr>
-<p><em>Next: <a href="04_tool_design_constraints.md">Chapter 4 &mdash; Tool Design and Constraint Architecture</a></em></p>
+<p><em>Next: <a href="#chapter-4-tool-design-and-constraint-architecture">Chapter 4 &mdash; Tool Design and Constraint Architecture</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-4-tool-design-and-constraint-architecture">
@@ -1590,7 +1590,7 @@ hr {
 </ul>
 <p>Here is the uncomfortable test for your own agent: list every tool it has access to, then ask yourself which ones could cause damage you cannot reverse. If you cannot answer that question quickly, your tool design needs work. Tools define what your agent is. Classify them into LOW, MEDIUM, and HIGH tiers. Apply least privilege at three levels &mdash; OS sandboxing, tool-set curation, and data access controls. Build the whitelist, not the blacklist. And enforce constraints in the runtime, not just the prompt. The agent that earns the most autonomy is the one whose boundaries you trust.</p>
 <hr>
-<p><em>Next: <a href="05_prompt_architecture.md">Chapter 5 &mdash; Prompt Architecture and the Cost of Instructions</a></em></p>
+<p><em>Next: <a href="#chapter-5-prompt-architecture-and-the-cost-of-instructions">Chapter 5 &mdash; Prompt Architecture and the Cost of Instructions</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-5-prompt-architecture-and-the-cost-of-instructions">
@@ -1796,7 +1796,7 @@ hr {
 </ul>
 <p>Go look at your agent&rsquo;s system prompt right now. Count the tokens. Multiply by the number of turns in a typical session. Multiply by the number of developers on your team. That is the number you are actually paying for &mdash; and you should be able to justify every token in it.</p>
 <hr>
-<p><em>Next: <a href="06_output_calibration.md">Chapter 6 — Output Calibration and the Assertiveness Problem</a></em></p>
+<p><em>Next: <a href="#chapter-6-output-calibration-and-the-assertiveness-problem">Chapter 6 — Output Calibration and the Assertiveness Problem</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-6-output-calibration-and-the-assertiveness-problem">
@@ -1998,7 +1998,7 @@ hr {
 <p><strong>The bottom line:</strong> Capability and reliability are different axes. An agent that impresses you on a demo can erode trust across a team in a week if its confidence outpaces its accuracy. Measure false claims the way you measure uptime &mdash; continuously, per-model, with alerts when the numbers move.</p>
 </blockquote>
 <hr>
-<p><em>Next: <a href="07_security_architecture.md">Chapter 7 — Security Architecture for Agentic Systems</a></em></p>
+<p><em>Next: <a href="#chapter-7-security-architecture-for-agentic-systems">Chapter 7 — Security Architecture for Agentic Systems</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-7-security-architecture-for-agentic-systems">
@@ -2166,7 +2166,7 @@ hr {
 </ul>
 <p>Agent security is not API security with extra steps. It is a fundamentally different problem because agents execute actions, not just return data. Claude Code&rsquo;s architecture demonstrates both the sophistication of production agent security (risk classification, sandboxing, human-in-the-loop gates) and its limits (Undercover Mode&rsquo;s ironic failure, supply chain vulnerability). Defense-in-depth &mdash; layering OS sandboxing, input sanitization, output validation, rate limiting, audit logging, and human authorization &mdash; is the only architecture that survives contact with real adversaries. Start with the sandbox. Everything else is a second line of defense.</p>
 <hr>
-<p><em>Next: <a href="08_multi_agent_orchestration.md">Chapter 8 &mdash; Multi-Agent Orchestration</a></em></p>
+<p><em>Next: <a href="#chapter-8-multi-agent-orchestration">Chapter 8 &mdash; Multi-Agent Orchestration</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-8-multi-agent-orchestration">
@@ -2379,7 +2379,7 @@ hr {
 </ul>
 <p>The bottom line: multi-agent orchestration solves real problems &mdash; context limits, sequential bottlenecks, role confusion &mdash; but it buys you new failure modes that require deliberate design. The shared prompt cache makes it economically viable, cutting marginal agent cost by up to 90%. Start with two agents (planner + executor), add a reviewer third, enforce cost budgets and authorization gates from the beginning. The orchestrator&rsquo;s primary job is not assigning work. It is enforcing constraints. Design for cascading errors, circular delegation, and cost explosions before they find you in production.</p>
 <hr>
-<p><em>Next: <a href="09_frontier_capabilities.md">Chapter 9 &mdash; Frontier Capabilities and Containment</a></em></p>
+<p><em>Next: <a href="#chapter-9-frontier-capabilities-and-containment">Chapter 9 &mdash; Frontier Capabilities and Containment</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-9-frontier-capabilities-and-containment">
@@ -2533,7 +2533,7 @@ hr {
 </ul>
 <p><strong>What to take from this chapter.</strong> Frontier model capabilities advance discontinuously — the Mythos evaluation proved that. The lesson for practitioners is not about one model. It is about the capability overhang in every deployment. Your agent is more capable than your test suite assumes. Audit capabilities before you deploy. Layer your containment. Build kill switches that work without the agent&rsquo;s cooperation. Red-team continuously. The question is never &ldquo;is my agent safe?&rdquo; It is &ldquo;what have I not yet discovered it can do?&rdquo;</p>
 <hr>
-<p><em>Next: <a href="10_pattern_language.md">Chapter 10 — Building Your Own Agent: A Pattern Language</a></em></p>
+<p><em>Next: <a href="#chapter-10-building-your-own-agent">Chapter 10 — Building Your Own Agent: A Pattern Language</a></em></p>
         </section>
 
         <section class="chapter" id="chapter-10-building-your-own-agent">
