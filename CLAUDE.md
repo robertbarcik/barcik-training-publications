@@ -95,6 +95,7 @@ Publications in this repo follow one of three source-location patterns:
 
 | Publication | Path | Source | Notes |
 |---|---|---|---|
+| Warden — Testing LLM-as-Judge Defenses Against Public Jailbreaks | `/warden/` | `_sources/warden/` | ~19,500 / 9 chapters + 3 appendices. Analysis repo: [github.com/robertbarcik/warden](https://github.com/robertbarcik/warden) |
 | GeoBias — 7B Model Evaluation Report | `/reports/geobias-7b/` | — (HTML-only) | Analysis repo: [github.com/robertbarcik/geobias](https://github.com/robertbarcik/geobias) |
 | SelfJudge — Can Small LLMs Judge Their Own Outputs? | `/reports/selfjudge/` | — (HTML-only) | Analysis repo: [github.com/robertbarcik/selfjudge](https://github.com/robertbarcik/selfjudge) |
 | Bloom — AI Behavioral Safety Evaluation | `/reports/bloom/` | — (HTML-only) | Analysis repo: [github.com/robertbarcik/bloom](https://github.com/robertbarcik/bloom) |
