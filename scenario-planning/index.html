@@ -499,6 +499,142 @@ p { margin-bottom: 1rem; }
   font-size: 12px; color: #94a3b8;
 }
 
+/* ── Source/projection tags (small inline pills) ── */
+.tag {
+  display: inline-block;
+  font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 1px 6px; border-radius: 3px;
+  margin-left: 4px; vertical-align: 2px;
+  white-space: nowrap;
+}
+.tag-reported { background: #e0f2fe; color: #075985; }
+.tag-projected { background: #fef9c3; color: #854d0e; }
+.tag-speculation { background: #fce7f3; color: #9d174d; }
+.tag-estimated { background: #f1f5f9; color: #475569; }
+
+/* ── Scenario 2 tables ── */
+.s2-tables-wrap { margin: 20px 0 12px; }
+.s2-table-block { margin-bottom: 26px; }
+.s2-table-title {
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 8px;
+}
+.s2-table {
+  width: 100%; border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  font-size: 0.85rem;
+}
+.s2-table th {
+  background: var(--navy); color: #fff;
+  font-weight: 600; text-align: left;
+  padding: 10px 14px;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+.s2-table td {
+  padding: 10px 14px;
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.s2-table tr:nth-child(even) td { background: #fafbfc; }
+.s2-table .s2-cost { font-weight: 700; color: var(--navy); white-space: nowrap; }
+.s2-table .s2-muted { color: #94a3b8; }
+.s2-table-caption {
+  font-size: 0.78rem; color: var(--text-light);
+  font-style: italic; line-height: 1.55;
+  margin-top: 8px; padding: 0 4px;
+}
+
+/* ── Author note callout ── */
+.author-note {
+  background: #fffbf2;
+  border-left: 4px solid #d97706;
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 1.5rem 0;
+  font-size: 0.92rem; line-height: 1.7;
+  color: var(--text);
+}
+.author-note .an-label {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: #b45309; margin-bottom: 6px;
+}
+.author-note p { margin-bottom: 0.6rem; }
+.author-note p:last-child { margin-bottom: 0; }
+
+/* ── Cross-cutting banner (Scenario 5) ── */
+.cross-cutting-banner {
+  background: linear-gradient(90deg, #f0f9ff 0%, #fef3c7 100%);
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  color: #78350f;
+  display: flex; align-items: center; gap: 10px;
+}
+.cross-cutting-banner .ccb-icon {
+  font-weight: 700; font-size: 0.7rem;
+  background: #b45309; color: #fff;
+  padding: 2px 8px; border-radius: 4px;
+  letter-spacing: 0.05em; flex-shrink: 0;
+}
+
+/* ── Hypothesis label strip (Mistral value chain) ── */
+.hypothesis-strip {
+  background: #fef3c7;
+  border: 1px dashed #d97706;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.72rem;
+  color: #78350f;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+/* ── Worksheet trigger blocks (V2) ── */
+.ws-trigger-block {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  background: #fff;
+  margin-bottom: 14px;
+}
+.ws-trigger-block h5 {
+  font-size: 0.92rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.ws-trigger-prompt {
+  margin-bottom: 12px;
+}
+.ws-trigger-prompt:last-child { margin-bottom: 0; }
+.ws-trigger-prompt .wsp-label {
+  font-size: 0.75rem; font-weight: 700;
+  color: var(--accent); text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 4px;
+}
+.ws-trigger-prompt .wsp-question {
+  font-size: 0.82rem; color: var(--text-light);
+  margin-bottom: 6px; line-height: 1.5;
+}
+.ws-trigger-prompt .wsp-line {
+  border-bottom: 1px dashed var(--border);
+  height: 24px;
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   #sidebar { transform: translateX(-100%); }
@@ -513,6 +649,8 @@ p { margin-bottom: 1rem; }
   .info-content { flex-direction: column; gap: 10px; }
   .flip-card { width: 170px; height: 160px; }
   .matrix-grid { grid-template-columns: 100px 1fr 1fr; }
+  .s2-table { font-size: 0.78rem; }
+  .s2-table th, .s2-table td { padding: 8px 10px; }
 }
 @media (max-width: 600px) {
   #content { padding: 1.5rem 0.5rem 3rem; }
@@ -557,8 +695,10 @@ p { margin-bottom: 1rem; }
       <li><a href="#scenario-2">2. Efficiency Revolution</a></li>
       <li><a href="#scenario-3">3. Financial Correction</a></li>
       <li><a href="#scenario-4">4. Plateau + Regulation</a></li>
+      <li><a href="#scenario-5">5. Agentic Acceleration</a></li>
       <li class="nav-divider">Synthesis</li>
       <li><a href="#synthesis">The 2&times;2 Matrix</a></li>
+      <li><a href="#practice">How to Use This</a></li>
       <li><a href="#worksheet">Workshop Exercise</a></li>
     </ul>
   </nav>
@@ -591,10 +731,15 @@ p { margin-bottom: 1rem; }
   <h2>The Question</h2>
   <p class="lead">The AI industry has committed over <strong>$600&nbsp;billion</strong> in capital expenditure for 2026 alone. That money is already flowing into data centers, GPU clusters, and training runs. It will produce outcomes.</p>
   <p>The question isn&rsquo;t whether AI will change &mdash; it&rsquo;s <em>which version of change</em> to prepare for.</p>
-  <p>This booklet presents four credible scenarios for the next 2&ndash;3 years. They are not predictions. They are planning tools &mdash; structured what-ifs designed to stress-test your AI strategy and prepare your team for multiple futures simultaneously.</p>
-  <p>The four scenarios map onto two fundamental uncertainties. First: <strong>does scaling continue to deliver capability jumps</strong>, or do we hit diminishing returns at current-ish levels? Second: <strong>does the investment math work out</strong>, or is the infrastructure being built far beyond what revenue can justify? These two axes generate four distinct futures &mdash; continued scaling, efficiency-driven commoditization, a financial correction, and a capability plateau compounded by regulation.</p>
+  <p>This booklet presents five credible scenarios for the next 2&ndash;3 years. They are not predictions. They are planning tools &mdash; structured what-ifs designed to stress-test your AI strategy and prepare your team for multiple futures simultaneously.</p>
+  <p>Four of them map onto two fundamental uncertainties. First: <strong>does scaling continue to deliver capability jumps</strong>, or do we hit diminishing returns at current-ish levels? Second: <strong>does the investment math work out</strong>, or is the infrastructure being built far beyond what revenue can justify? These two axes generate four distinct futures &mdash; continued scaling, efficiency-driven commoditization, a financial correction, and a capability plateau compounded by regulation. A fifth scenario &mdash; agentic acceleration &mdash; sits outside the 2&times;2 because it changes the capability axis entirely: capability comes from how long a model can autonomously work, not from how large it is.</p>
   <p>Each scenario is anchored by an interactive visualization, followed by a written chapter that unpacks the data and arguments. You can use this booklet in two ways: as a <strong>presentation tool</strong> (lead with the visual, trigger discussion), or as a <strong>standalone reading experience</strong> (read the chapters for the full picture). Both work &mdash; design your session around your audience.</p>
-  <p>At the end, a 2&times;2 matrix maps all four scenarios into a single mental model, and a workshop exercise helps you translate insight into action.</p>
+  <p>At the end, a 2&times;2 matrix maps the four primary scenarios into a single mental model, a short note describes how to use this in practice, and a workshop exercise helps you translate insight into action.</p>
+
+  <div class="author-note">
+    <div class="an-label">A note on what this booklet is &mdash; and isn&rsquo;t</div>
+    <p>I&rsquo;m not going to tell you which scenario will play out; I don&rsquo;t think that&rsquo;s the right question. The right question is which signals you&rsquo;d watch and how you&rsquo;d respond. The scenarios in this booklet are scaffolding for a habit: <strong>foresee, watch triggers, adjust</strong>. If a scenario goes stale, retire it. If a trigger fires, act. That stance is behind every page that follows.</p>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -689,27 +834,124 @@ p { margin-bottom: 1rem; }
     </div>
   </div>
 
-  <div class="chart-wrap">
-    <svg id="chart-s2" viewBox="0 0 1100 740" preserveAspectRatio="xMidYMid meet"></svg>
-    <div class="info-strip" id="info-s2">
-      <span class="info-hint">Hover over any bar to see model details and benchmark comparisons</span>
+  <div class="s2-tables-wrap">
+
+    <div class="s2-table-block">
+      <div class="s2-table-title">Training cost to reach a stated capability tier</div>
+      <table class="s2-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Org</th>
+            <th>Released</th>
+            <th>Training cost</th>
+            <th>Capability claim</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>GPT-4</strong></td>
+            <td>OpenAI</td>
+            <td>Mar 2023</td>
+            <td class="s2-cost">&gt;$100M</td>
+            <td>Frontier &mdash; set the &ldquo;GPT-4 class&rdquo; bar</td>
+          </tr>
+          <tr>
+            <td><strong>Llama 3.1 405B</strong></td>
+            <td>Meta</td>
+            <td>Jul 2024</td>
+            <td class="s2-cost">~$60M <span class="s2-muted">(compute)</span></td>
+            <td>Matches GPT-4 on most public benchmarks</td>
+          </tr>
+          <tr>
+            <td><strong>DeepSeek V3</strong></td>
+            <td>DeepSeek</td>
+            <td>Dec 2024</td>
+            <td class="s2-cost">$5.6M <span class="s2-muted">(final pre-training run)</span></td>
+            <td>Matches/beats GPT-4o on key benchmarks</td>
+          </tr>
+          <tr>
+            <td><strong>DeepSeek R1</strong></td>
+            <td>DeepSeek</td>
+            <td>Jan 2025</td>
+            <td class="s2-cost">+$294K <span class="s2-muted">(RL on V3 base)</span></td>
+            <td>Matches OpenAI o1 on reasoning</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="s2-table-caption">DeepSeek&rsquo;s $5.6M figure is the final pre-training run only; Epoch AI estimates the full base-to-R1 cost at $6&ndash;7M, and parent company High-Flyer invested $500M+ in GPUs total. R1 reuses V3&rsquo;s pre-training, so it isn&rsquo;t a from-scratch GPT-4-class run. The cleanest like-for-like comparison is GPT-4 &rarr; DeepSeek V3: roughly <strong>95% reduction in 20 months</strong>.</div>
     </div>
+
+    <div class="s2-table-block">
+      <div class="s2-table-title">Inference price &mdash; per million output tokens</div>
+      <table class="s2-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Frontier tier (closed)</th>
+            <th>Sub-frontier closed</th>
+            <th>Open-source equivalent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mar 2023</td>
+            <td class="s2-cost">GPT-4: $60</td>
+            <td class="s2-muted">&mdash;</td>
+            <td class="s2-muted">&mdash;</td>
+          </tr>
+          <tr>
+            <td>Nov 2023</td>
+            <td class="s2-cost">GPT-4 Turbo: $30</td>
+            <td class="s2-muted">&mdash;</td>
+            <td class="s2-muted">&mdash;</td>
+          </tr>
+          <tr>
+            <td>May 2024</td>
+            <td class="s2-cost">GPT-4o: $15</td>
+            <td class="s2-muted">&mdash;</td>
+            <td class="s2-muted">&mdash;</td>
+          </tr>
+          <tr>
+            <td>Jul 2024</td>
+            <td class="s2-muted">&mdash;</td>
+            <td class="s2-cost">GPT-4o-mini: $0.60</td>
+            <td class="s2-cost">Llama 3 70B (Groq): ~$0.79</td>
+          </tr>
+          <tr>
+            <td>Oct 2024</td>
+            <td class="s2-cost">GPT-4o (cut): $10</td>
+            <td class="s2-muted">&mdash;</td>
+            <td class="s2-muted">&mdash;</td>
+          </tr>
+          <tr>
+            <td>Jan 2025</td>
+            <td class="s2-muted">&mdash;</td>
+            <td class="s2-muted">&mdash;</td>
+            <td class="s2-cost">DeepSeek V3: $0.42</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="s2-table-caption">Like-for-like at the frontier tier: GPT-4 ($60) &rarr; GPT-4o ($10) is an <strong>83% drop in 19 months</strong>. The often-cited <strong>99% drop</strong> compares GPT-4 launch ($60) to GPT-4o-mini ($0.60) &mdash; a different (cheaper) capability tier. That comparison is still useful as a &ldquo;what does GPT-4-class output cost today?&rdquo; question, but it isn&rsquo;t a frontier-to-frontier comparison.</div>
+    </div>
+
   </div>
 
   <button class="toggle-btn" id="toggle-s2" onclick="togglePanel('panel-s2', 'toggle-s2')">
-    <span class="arrow">&#9654;</span> Where does value go if the model is free?
+    <span class="arrow">&#9654;</span> Mensch&rsquo;s hypothesis: where does value go?
   </button>
   <div class="toggle-panel" id="panel-s2">
     <div class="toggle-panel-inner">
-      <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:12px">Mistral CEO Arthur Mensch: <em>&ldquo;Generic intelligence is a commodity, but contextual intelligence is a scarcity.&rdquo;</em> If models become free, value migrates to the layers around them:</p>
+      <div class="hypothesis-strip">Hypothesis &mdash; not measured data</div>
+      <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:12px">Mistral CEO Arthur Mensch&rsquo;s thesis (paraphrased from early-2026 interviews): <em>generic intelligence will commoditize, so competitive advantage moves to specialized systems built around your specific data and domain.</em> Below are the layers he points to. Segment widths are equal &mdash; this is a stake-in-the-ground for discussion, not a measured value distribution:</p>
       <div class="value-chain">
         <div class="vc-segment" style="flex:1;background:#94a3b8"><span>Model</span><div class="vc-tooltip">Commodity layer &mdash; open-source matches proprietary</div></div>
-        <div class="vc-segment" style="flex:2;background:var(--cyan)"><span>Fine-tune</span><div class="vc-tooltip">Domain adaptation, RLHF, evaluation pipelines</div></div>
-        <div class="vc-segment" style="flex:3;background:var(--purple)"><span>Data &amp; RAG</span><div class="vc-tooltip">Context pipelines, vector search, knowledge management</div></div>
-        <div class="vc-segment" style="flex:3;background:var(--orange-red)"><span>Tooling</span><div class="vc-tooltip">MCP servers, agent frameworks, orchestration, evaluation</div></div>
-        <div class="vc-segment" style="flex:4;background:var(--green)"><span>Domain expertise</span><div class="vc-tooltip">Industry knowledge, workflow design, change management</div></div>
+        <div class="vc-segment" style="flex:1;background:var(--cyan)"><span>Fine-tune</span><div class="vc-tooltip">Domain adaptation, RLHF, evaluation pipelines</div></div>
+        <div class="vc-segment" style="flex:1;background:var(--purple)"><span>Data &amp; RAG</span><div class="vc-tooltip">Context pipelines, vector search, knowledge management</div></div>
+        <div class="vc-segment" style="flex:1;background:var(--orange-red)"><span>Tooling</span><div class="vc-tooltip">MCP servers, agent frameworks, orchestration, evaluation</div></div>
+        <div class="vc-segment" style="flex:1;background:var(--green)"><span>Domain expertise</span><div class="vc-tooltip">Industry knowledge, workflow design, change management</div></div>
       </div>
-      <p style="font-size:0.8rem;color:var(--text-light);margin-top:10px;margin-bottom:0">Discussion: <strong>If the model is free, where does your team invest?</strong></p>
+      <p style="font-size:0.8rem;color:var(--text-light);margin-top:10px;margin-bottom:0">Discussion: <strong>If the model is free, which of these layers is your team actually investing in &mdash; and which would Mensch say you should be?</strong></p>
     </div>
   </div>
 
@@ -728,7 +970,7 @@ p { margin-bottom: 1rem; }
     <p>Open-source alternatives are even cheaper. Llama 3.3 70B via Groq costs $0.71 per million output tokens. DeepSeek V3 is available at $0.42. Self-hosted 70B models on H100 hardware can reach approximately $0.07 per million tokens at full utilization. On average, open-source models cost 7.3 times less than their proprietary equivalents.</p>
 
     <h4>Where does value go when the model is free?</h4>
-    <p>Mistral CEO Arthur Mensch has been the most articulate voice on this shift. In a March 2026 piece, he argued that many companies can move their workloads away from closed-source APIs to open-source models, and that the massive capability jumps between model generations have flattened into incremental gains. His strongest formulation: &ldquo;the most valuable AI won&rsquo;t be the one that knows everything about the world; it will be the one that knows everything about <em>you</em>.&rdquo;</p>
+    <p>Mistral CEO Arthur Mensch has been the most articulate voice on this shift. Across early-2026 interviews &mdash; the Big Technology Podcast in January, Davos and Bloomberg the same month, the Economic Times in February &mdash; he framed AI as becoming infrastructure, &ldquo;a utility&rdquo; measured by efficiency, capital discipline, and reliable delivery rather than novelty. His most quoted line: &ldquo;My generation of engineers has more or less succeeded in commoditizing its own profession.&rdquo; The corollary, which he argues consistently, is that competitive advantage will increasingly accrue not to whoever has the largest model, but to whoever builds the most specialized system around their specific data and domain.</p>
     <p>If Mistral is right &mdash; and the cost data supports the argument &mdash; then the model itself becomes a commodity layer, and value migrates to the layers around it: fine-tuning and domain adaptation, data pipelines and retrieval-augmented generation, tooling and orchestration (agent frameworks, MCP servers, evaluation pipelines), and ultimately domain expertise. The organizations that win in this scenario are not those with the best model, but those with the best understanding of their own problems.</p>
   </div>
 
@@ -827,14 +1069,14 @@ p { margin-bottom: 1rem; }
         <div class="flip-card-front">
           <div class="fc-tag tbd">Today</div>
           <div class="fc-name">OpenAI</div>
-          <div class="fc-stat">Valuation: $852B</div>
-          <div class="fc-stat">Revenue: $25B ARR</div>
+          <div class="fc-stat">Valuation: $852B<span class="tag tag-reported">reported</span></div>
+          <div class="fc-stat">Revenue: $25B ARR<span class="tag tag-reported">reported</span></div>
         </div>
         <div class="flip-card-back">
           <div class="fc-detail"><strong>Projects &minus;$14B loss in 2026.</strong></div>
           <div class="fc-detail">900M+ weekly users</div>
           <div class="fc-detail">Profitable by 2029 (earliest)</div>
-          <div class="fc-detail" style="margin-top:6px;opacity:0.7">IPO expected Q4 2026 at $1T+</div>
+          <div class="fc-detail" style="margin-top:6px;opacity:0.7">IPO expected Q4 2026 at $1T+ <em>(speculation)</em></div>
         </div>
       </div>
     </div>
@@ -873,11 +1115,11 @@ p { margin-bottom: 1rem; }
 
     <h4>AI investment has entered unprecedented territory</h4>
     <p>The combined Big Five capex (Alphabet, Amazon, Meta, Microsoft, Apple) grew from roughly $140 billion in 2022 to $251 billion in 2024 (+62% year-over-year) to a projected $388&ndash;443 billion in 2025 and $600&ndash;640 billion in 2026. Capital intensity has reached 45&ndash;57% of revenue &mdash; historically unprecedented for these companies. Venture funding has concentrated similarly: global AI VC funding grew from roughly $45&ndash;50 billion in 2022 to $211 billion in 2025, the first year AI startups captured more than half (52.7%) of all global venture deal value.</p>
-    <p>OpenAI reached an $852 billion post-money valuation after its $122 billion funding round in March 2026. Annualized revenue hit $25 billion by February 2026, up from roughly $2 billion in 2023. But the company projects a $14&ndash;17 billion loss in 2026, is not expected to be profitable until 2029 at the earliest, and has committed $600 billion in compute spending through 2030. Anthropic reached $380 billion valuation with its $30 billion Series G in February 2026, with revenue growing from $1 billion ARR in December 2024 to an estimated $19&ndash;30 billion ARR by early 2026.</p>
+    <p>OpenAI reached an $852 billion post-money valuation<span class="tag tag-reported">reported</span> after its $122 billion funding round in March 2026. Annualized revenue hit $25 billion by February 2026<span class="tag tag-reported">reported</span>, up from roughly $2 billion in 2023. But the company projects a $14&ndash;17 billion loss in 2026<span class="tag tag-projected">projected</span>, is not expected to be profitable until 2029 at the earliest, and has committed $600 billion in compute spending through 2030. Anthropic reached $380 billion valuation with its $30 billion Series G in February 2026<span class="tag tag-reported">reported</span>, with revenue growing from $1 billion ARR in December 2024 to an estimated $19&ndash;30 billion ARR by early 2026<span class="tag tag-estimated">estimated</span>.</p>
 
     <h4>The revenue gap</h4>
     <p>Sequoia partner David Cahn published &ldquo;AI&rsquo;s $600B Question&rdquo; in June 2024, calculating that the AI infrastructure buildout requires roughly $600 billion in annual end-user revenue to justify itself. At the time, actual AI product revenue was roughly $100 billion &mdash; a $500 billion annual gap. Since then, both spending and revenue have grown, but spending has grown far faster: capex roughly tripled while the revenue gap has likely widened, not narrowed. Barclays estimated that current capex levels would require the equivalent of 12,000 ChatGPT-sized products to break even.</p>
-    <p>The enterprise adoption data is sobering: an MIT study found 95% of organizations getting zero return from generative AI investments, and a Deloitte 2026 survey found only 20% of enterprises reporting AI driving revenue, with two-thirds still stuck in pilot phase.</p>
+    <p>The enterprise adoption data is sobering. An MIT NANDA study found 95% of organizations reporting zero return from generative AI investments &mdash; though that figure has been criticized for measurement design (no baselines, parallel-pilot deployments, six-month cutoff), and even with conservative reframings the gap is real, not 95% large. A more rigorously designed Deloitte 2026 survey found only 20% of enterprises reporting AI driving revenue, with two-thirds still stuck in pilot phase.</p>
 
     <h4>Why the parallel breaks &mdash; and why it might not matter</h4>
     <p>There are important differences from the dot-com era. Today&rsquo;s leading AI investors are massively profitable companies spending from earnings, not startups burning venture capital. Nasdaq forward price-to-earnings ratios are approximately 26 times versus 60 times at the dot-com peak. Enterprise adoption is far more advanced: 87% of large enterprises have implemented AI in some form. But the core structural risk &mdash; investment dramatically outpacing revenue realization &mdash; is identical. And new risks have emerged: AI-related corporate debt has ballooned to $1.2 trillion (JPMorgan), GPU rental prices have already fallen roughly 70% from peak, and the real useful life of GPU infrastructure may be 2&ndash;3 years rather than the 5&ndash;6 years used for accounting depreciation.</p>
@@ -888,7 +1130,7 @@ p { margin-bottom: 1rem; }
     <div class="kn"><div class="kn-value">$500&ndash;600B</div><div class="kn-label">Annual AI revenue gap</div></div>
     <div class="kn"><div class="kn-value">94%</div><div class="kn-label">Amazon&rsquo;s stock drop (survived)</div></div>
     <div class="kn"><div class="kn-value">268 days</div><div class="kn-label">Pets.com IPO to shutdown</div></div>
-    <div class="kn"><div class="kn-value">95%</div><div class="kn-label">Enterprises with zero AI ROI</div></div>
+    <div class="kn"><div class="kn-value">20%</div><div class="kn-label">Enterprises reporting AI-driven revenue (Deloitte)</div></div>
     <div class="kn"><div class="kn-value">$1.2T</div><div class="kn-label">AI-related corporate debt</div></div>
   </div>
 
@@ -953,8 +1195,8 @@ p { margin-bottom: 1rem; }
           <div class="kn-label"><strong>Coding gap</strong><br>97% HumanEval &rarr; 26% on real freelance tasks (SWE-Lancer)</div>
         </div>
         <div class="kn" style="flex:1;min-width:180px;background:#fff">
-          <div class="kn-value" style="color:var(--orange-red)">95%</div>
-          <div class="kn-label"><strong>Enterprise ROI gap</strong><br>of organizations report zero return from GenAI investments (MIT)</div>
+          <div class="kn-value" style="color:var(--orange-red)">20%</div>
+          <div class="kn-label"><strong>Enterprise revenue impact</strong><br>of enterprises report AI driving revenue; two-thirds still in pilot (Deloitte 2026)</div>
         </div>
       </div>
       <p style="font-size:0.8rem;color:var(--text-light);margin-top:12px;margin-bottom:0">Discussion: <strong>The ceiling is flattening, the floor is rising, and the current ceiling overstates what you can deploy. What does your AI roadmap look like?</strong></p>
@@ -1014,6 +1256,87 @@ p { margin-bottom: 1rem; }
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SCENARIO 5: AGENTIC ACCELERATION (cross-cutting)           -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="scenario-5">
+  <div class="cross-cutting-banner">
+    <span class="ccb-icon">Cross-cutting</span>
+    <span>This scenario sits outside the 2&times;2 matrix. Its capability axis is different &mdash; capability comes from agentic systems and post-training, not from larger pre-training runs. We treat it separately for clarity, not because it&rsquo;s less important.</span>
+  </div>
+
+  <div class="chapter-label">Scenario 5</div>
+  <h2>Agentic Acceleration <br><span class="chapter-question">&ldquo;What If The Capability Axis Was Wrong?&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--purple)">The thesis</div>
+      <div class="card-text">Pre-training plateaus, but capability keeps jumping &mdash; through agentic systems, tool use, and long-horizon RL. METR&rsquo;s measured task-completion time horizon for frontier models has been <strong>doubling every 7 months historically</strong>, and the 2024&ndash;25 trajectory looks closer to <strong>4 months</strong>. Capex on inference clusters and serving infrastructure is more justified than capex on ever-larger pre-training runs.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">The risk</div>
+      <div class="card-text">Time-horizon gains may saturate at sub-day tasks. Agentic systems are far more brittle in production than in benchmarks &mdash; error compounding kills long workflows. SWE-Lancer (real freelance tasks) sits at <strong>26%</strong> even as SWE-bench Verified reaches <strong>94%</strong>. The benchmark ceiling and the deployment ceiling may be different ceilings entirely.</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <svg id="chart-s5" viewBox="0 0 1100 540" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="info-strip" id="info-s5">
+      <span class="info-hint">Hover any point or doubling line for details</span>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-line" style="background:#7C6DD8"></div>Frontier model 50% time horizon (METR)</div>
+      <div class="legend-item"><div class="legend-line" style="background:#0EA5C9"></div>7-month doubling (historical 2019&ndash;25)</div>
+      <div class="legend-item"><div class="legend-line" style="background:#E05A33"></div>4-month doubling (2024&ndash;25 acceleration)</div>
+    </div>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>The capability axis the matrix doesn&rsquo;t see</h4>
+    <p>Scenarios 1 and 4 share an assumption: capability is what you measure with MMLU, parameter counts, and pre-training compute. That assumption was reasonable through 2023. By 2026, the dominant lab thesis at Anthropic, OpenAI, and Google has shifted &mdash; capability now comes increasingly from <em>how a model uses time</em>: tool calls, long-context reasoning, multi-step planning, recoverable error handling. The question stops being &ldquo;how well does the model answer one prompt?&rdquo; and becomes &ldquo;how long can the model work on something autonomously before something breaks?&rdquo;</p>
+
+    <h4>The METR time-horizon trajectory</h4>
+    <p>METR (Model Evaluation &amp; Threat Research) publishes a measured benchmark called Time Horizon: the duration of human work a model can complete with 50% reliability. Their original 2019&ndash;2025 dataset, released in March 2025, showed the frontier doubling roughly every <strong>7 months</strong>. Their TH 1.1 update (January 2026) used 34% more tasks and doubled the count of 8-hour-plus tasks. The headline finding: the 2024&ndash;25 trajectory looks closer to a <strong>4-month doubling</strong> &mdash; an acceleration, not a deceleration. Claude 3.7 Sonnet, on this benchmark, has a 50% time horizon of around 50 minutes.</p>
+    <p>If the 4-month doubling holds, frontier models cross the 8-hour threshold by late 2026 or early 2027 &mdash; meaning they can do a routine knowledge-worker&rsquo;s day of work autonomously, with 50% reliability, on benchmark-style tasks. If the 7-month doubling reasserts itself, that crossover slips to 2028. The difference matters enormously for any organization planning a 24-month AI roadmap.</p>
+
+    <h4>Why this is cross-cutting, not a fifth quadrant</h4>
+    <p>The four prior scenarios disagree about whether scaling and capex pay off, but they share a vocabulary &mdash; model size, training cost, MMLU. Agentic acceleration changes the vocabulary. Capability isn&rsquo;t a function of parameter count; it&rsquo;s a function of how much wall-clock work the model can do before an error compounds. That reframes Scenario 1 (capex on inference clusters becomes more justified than capex on training clusters), partially rescues Scenario 2 (smaller models with strong tool use can match larger ones), and fundamentally challenges Scenario 4 (benchmark plateaus on single-prompt tasks may be irrelevant to long-horizon work).</p>
+
+    <h4>The deployment-versus-benchmark gap</h4>
+    <p>The risk card is real, and the SWE-bench / SWE-Lancer split is the cleanest illustration. SWE-bench Verified is now saturated at roughly 94% &mdash; Claude Sonnet 4.5 hit 93.9% in 2025, and OpenAI has publicly recommended switching to SWE-bench Pro for measuring frontier coding progress. But SWE-Lancer, which evaluates real freelance tasks rather than curated GitHub issues, sits at 26%. RE-Bench shows AI scoring 4&times; higher than humans at 2-hour tasks but humans outperforming AI 2:1 at 32-hour tasks. The pattern is consistent: in the lab, capability is jumping fast; in production, error compounding still kills long workflows. Whether the gap closes is a question of engineering and tooling more than of base-model capability.</p>
+
+    <h4>What this scenario implies for capex</h4>
+    <p>If agentic acceleration is the live thesis, the capex story changes shape. The <strong>training</strong> portion of hyperscaler spend (the largest pre-training runs) becomes harder to justify on its own &mdash; smaller models with strong post-training, RL, and tool use can match the capabilities of larger ones. The <strong>inference</strong> portion of capex, which already accounts for an estimated 70% of AI compute by 2030, becomes <em>more</em> justified, because every agentic workflow is a multi-token, multi-call, often multi-hour inference workload. Reasoning models like o1, o3, and Claude with extended thinking can spend orders of magnitude more compute per task than chat-style models. Capex isn&rsquo;t wrong &mdash; but its allocation between training and serving is.</p>
+  </div>
+
+  <div class="key-numbers">
+    <div class="kn"><div class="kn-value">7 mo</div><div class="kn-label">Historical task-horizon doubling (METR 2019&ndash;25)</div></div>
+    <div class="kn"><div class="kn-value">4 mo</div><div class="kn-label">2024&ndash;25 doubling (METR TH 1.1)</div></div>
+    <div class="kn"><div class="kn-value">~50 min</div><div class="kn-label">Claude 3.7 Sonnet 50% time horizon</div></div>
+    <div class="kn"><div class="kn-value">94% &harr; 26%</div><div class="kn-label">SWE-bench Verified vs SWE-Lancer</div></div>
+    <div class="kn"><div class="kn-value">32 h</div><div class="kn-label">RE-Bench horizon where humans still beat AI 2:1</div></div>
+  </div>
+
+  <h3>Trigger signals &mdash; what to watch for</h3>
+  <ul class="triggers">
+    <li>Frontier models reach 8h+ task horizons on routine knowledge work (METR / equivalent benchmark)</li>
+    <li>Multi-day autonomous agents enter production at major enterprises with measurable, audited ROI</li>
+    <li>Newer agentic benchmarks (SWE-bench Pro, ARC-AGI-2 with tools, OSWorld) show large jumps without pre-training scale-ups</li>
+    <li>Hyperscaler capex shifts visibly from training to inference and tool-ecosystem infrastructure</li>
+    <li>Counter-trigger: time horizons plateau below 4 hours for two consecutive frontier releases</li>
+  </ul>
+
+  <h3>Implications by role</h3>
+  <div class="impl-grid">
+    <div class="impl-card"><div class="impl-role">Developer</div><div class="impl-text">Reliability and observability matter more than prompt cleverness. Build with retry logic, intermediate checkpoints, and tool-call audit trails. The hard part is the long tail, not the happy path.</div></div>
+    <div class="impl-card"><div class="impl-role">Team Lead</div><div class="impl-text">Invest in evaluation infrastructure now. The bottleneck on shipping agents isn&rsquo;t building them &mdash; it&rsquo;s knowing when they&rsquo;re trustworthy. Eval pipelines compound; build them before you need them.</div></div>
+    <div class="impl-card"><div class="impl-role">CTO / VP Eng</div><div class="impl-text">Plan for inference-heavy workloads. Reasoning models can use 10&ndash;100&times; more tokens per task. Budget and architecture should assume agentic workflows, not chat.</div></div>
+    <div class="impl-card"><div class="impl-role">Procurement</div><div class="impl-text">Vendor evaluation should include long-horizon task benchmarks, not just single-prompt scores. Ask for production reliability data, not just leaderboard positions.</div></div>
+  </div>
+
+  <p class="credits">Data: METR Time Horizons (TH 1.0 Mar 2025, TH 1.1 Jan 2026) &bull; SWE-bench Verified / SWE-Lancer / RE-Bench leaderboards &bull; OpenAI guidance on benchmark deprecation</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
 <!-- SYNTHESIS                                                  -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <section class="chapter" id="synthesis">
@@ -1048,13 +1371,36 @@ p { margin-bottom: 1rem; }
       <div class="matrix-cell" onclick="document.getElementById('scenario-2').scrollIntoView({behavior:'smooth'})" style="border-left:3px solid var(--cyan)">
         <div class="mc-tag" style="background:#ecfeff;color:#155e75">Scenario 2</div>
         <h4>Efficiency Revolution</h4>
-        <p>Smaller models close the gap. Massive clusters weren&rsquo;t needed. The moat shifts from the model to everything around it.</p>
+        <p>Capability stays strong but cheap. The infrastructure scale was wrong, not the capability bet. Value migrates from the model to everything around it.</p>
       </div>
     </div>
   </div>
 
-  <p style="margin-top:1.5rem">These scenarios are <strong>not mutually exclusive</strong>. Elements of several can unfold simultaneously. Compression (Scenario 2) accelerates financial correction (Scenario 3) by commoditizing the very technology hyperscalers are spending $600B+ to build. The capability ceiling (Scenario 4) undermines the revenue projections needed to justify that investment.</p>
-  <p>The strongest strategic position is one that performs adequately under all four scenarios &mdash; not one that bets everything on the one you think is most likely.</p>
+  <p style="margin-top:1.5rem">These four scenarios share a vocabulary &mdash; model size, capex, capability measured by single-prompt benchmarks. <strong>Scenario 5 (Agentic Acceleration) sits outside this matrix</strong> because it changes the vocabulary entirely: capability comes from how long a model can autonomously work before something breaks, not from how large it is. Its outcomes overlap with Scenarios 1 and 2 in unpredictable ways &mdash; it can rescue parts of the inference-capex bet from Scenario 1 while reinforcing the commoditization story in Scenario 2.</p>
+
+  <p>These scenarios are <strong>not mutually exclusive</strong>. Elements of several can unfold simultaneously. Compression (Scenario 2) accelerates financial correction (Scenario 3) by commoditizing the very technology hyperscalers are spending $600B+ to build. The pre-training plateau (Scenario 4) undermines the revenue projections needed to justify that investment &mdash; unless agentic capability (Scenario 5) generates value the matrix axes don&rsquo;t see.</p>
+  <p>The strongest strategic position is one that performs adequately under all five scenarios &mdash; not one that bets everything on the one you think is most likely.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- HOW TO USE THIS IN PRACTICE                                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="practice">
+  <div class="chapter-label">Practice</div>
+  <h2>How to Use This in Practice</h2>
+  <p class="lead">If you take one thing from this booklet, take this: scenarios are useful only if you commit to a habit. The habit is foresee, watch triggers, adjust. The scenarios are scaffolding for that habit, not a forecast.</p>
+
+  <h3>Pre-commit to triggers, not predictions</h3>
+  <p>The most useful artifact in this booklet is the trigger list under each scenario. Far more than the prose or the matrix, the triggers are what tell you something has shifted. Decide now &mdash; before the headlines &mdash; what would update you. &ldquo;If the next frontier model gains less than three MMLU points, I will start budgeting for compliance.&rdquo; &ldquo;If GPU rental prices fall another 30%, I will renegotiate our vendor contract.&rdquo; The point is to short-circuit the response time between observing a signal and acting on it.</p>
+
+  <h3>Review on a cadence</h3>
+  <p>Quarterly is probably right for most teams. Faster than that and you&rsquo;re reading noise; slower and you miss real shifts. Each review, walk through the trigger list and ask: <em>has any trigger fired? Has any disconfirming signal landed? What changed in our environment?</em> Update your stance accordingly. The output of the review is rarely &ldquo;we were wrong&rdquo; &mdash; more often it&rsquo;s &ldquo;we should weight this scenario heavier than we did last quarter.&rdquo;</p>
+
+  <h3>Let scenarios go stale</h3>
+  <p>If a scenario&rsquo;s triggers haven&rsquo;t fired in 18 months and its disconfirming evidence has been steadily accumulating, the scenario probably isn&rsquo;t live anymore. Retire it. Replace it with one that better describes the world you&rsquo;re actually living in. This booklet is a snapshot of mid-2026; by mid-2027 at least one of these scenarios will likely need replacing. That&rsquo;s the system working, not failing.</p>
+
+  <h3>What I think</h3>
+  <p>I want to be precise about my view: I think this <em>approach</em> &mdash; scenarios plus triggers plus periodic adjustment &mdash; is the healthy way to navigate a technology that changes this fast. I do not think any one of the five scenarios in this booklet is the right one to bet on. People are eager to jump to conclusions, and prediction makes good copy, but conclusions in a domain moving at this rate go stale before they&rsquo;re acted on. The discipline of holding several scenarios open simultaneously, watching what fires, and updating without ego is, I believe, the actual skill worth building.</p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -1062,50 +1408,106 @@ p { margin-bottom: 1rem; }
 <!-- ═══════════════════════════════════════════════════════════ -->
 <section class="chapter" id="worksheet">
   <div class="chapter-label">Workshop Exercise</div>
-  <h2>Scenario Planning Worksheet</h2>
-  <p>For each scenario, answer three questions. There are no right answers &mdash; the value is in the thinking.</p>
+  <h2>Trigger Drill</h2>
+  <p>This worksheet is built around triggers, not predictions. For each scenario, answer three questions. The point isn&rsquo;t to be right about which scenario unfolds &mdash; it&rsquo;s to know what you&rsquo;d notice and what you&rsquo;d do.</p>
 
-  <div class="ws-grid">
-    <div class="ws-scenario-block">
-      <h5 style="color:var(--green)">Scenario 1: Continued Scaling</h5>
-      <p style="font-size:0.78rem;color:var(--text-light);margin-bottom:8px">If this materializes in 12 months&hellip;</p>
-      <div class="ws-line"></div><div class="ws-line"></div><div class="ws-line"></div>
+  <div class="ws-trigger-block" style="border-left:3px solid var(--green)">
+    <h5 style="color:var(--green)">Scenario 1 &mdash; Continued Scaling</h5>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">First trigger to fire</div>
+      <div class="wsp-question">Of this scenario&rsquo;s trigger signals, which would fire first? Where would you see it?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
     </div>
-    <div class="ws-scenario-block">
-      <h5 style="color:var(--cyan)">Scenario 2: Efficiency Revolution</h5>
-      <p style="font-size:0.78rem;color:var(--text-light);margin-bottom:8px">If this materializes in 12 months&hellip;</p>
-      <div class="ws-line"></div><div class="ws-line"></div><div class="ws-line"></div>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">First decision</div>
+      <div class="wsp-question">If that trigger fires, what&rsquo;s the FIRST decision you make &mdash; and within how many days?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
     </div>
-    <div class="ws-scenario-block">
-      <h5 style="color:var(--orange-red)">Scenario 3: Financial Correction</h5>
-      <p style="font-size:0.78rem;color:var(--text-light);margin-bottom:8px">If this materializes in 12 months&hellip;</p>
-      <div class="ws-line"></div><div class="ws-line"></div><div class="ws-line"></div>
-    </div>
-    <div class="ws-scenario-block">
-      <h5 style="color:var(--purple)">Scenario 4: Plateau + Regulation</h5>
-      <p style="font-size:0.78rem;color:var(--text-light);margin-bottom:8px">If this materializes in 12 months&hellip;</p>
-      <div class="ws-line"></div><div class="ws-line"></div><div class="ws-line"></div>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">Disconfirming evidence</div>
+      <div class="wsp-question">What would update you AWAY from this scenario? How would you notice?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
     </div>
   </div>
 
-  <div class="ws-question" style="margin-top:1.5rem">
-    <h4>1. Biggest risk to your current project</h4>
-    <p>Under each scenario, what is the single biggest risk to your current AI initiative? Which scenario threatens it most?</p>
+  <div class="ws-trigger-block" style="border-left:3px solid var(--cyan)">
+    <h5 style="color:var(--cyan)">Scenario 2 &mdash; Efficiency Revolution</h5>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">First trigger to fire</div>
+      <div class="wsp-question">Which trigger signal would you see first &mdash; an open-source release matching frontier within weeks, an enterprise migration off proprietary APIs, or sub-$0.10 inference?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">First decision</div>
+      <div class="wsp-question">If that trigger fires, what&rsquo;s the FIRST decision &mdash; and within how many days?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">Disconfirming evidence</div>
+      <div class="wsp-question">What would update you AWAY from the commoditization thesis?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
   </div>
-  <div class="ws-question">
-    <h4>2. What would you change today?</h4>
-    <p>For each scenario, what is one decision you would make differently right now &mdash; before you know which scenario materializes?</p>
+
+  <div class="ws-trigger-block" style="border-left:3px solid var(--orange-red)">
+    <h5 style="color:var(--orange-red)">Scenario 3 &mdash; Financial Correction</h5>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">First trigger to fire</div>
+      <div class="wsp-question">IPO valuation correction, hyperscaler capex flattening, AI-startup failures in a single quarter, or GPU debt defaults &mdash; which fires first?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">First decision</div>
+      <div class="wsp-question">If your AI vendor turns out to be Pets.com rather than Amazon, what&rsquo;s your first move?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">Disconfirming evidence</div>
+      <div class="wsp-question">What would tell you the revenue gap is closing rather than widening?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
   </div>
-  <div class="ws-question">
-    <h4>3. Earliest signal to watch</h4>
-    <p>What&rsquo;s the one observable event that would tell you this scenario is unfolding? Where would you see it first?</p>
+
+  <div class="ws-trigger-block" style="border-left:3px solid var(--purple)">
+    <h5 style="color:var(--purple)">Scenario 4 &mdash; Plateau + Regulation</h5>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">First trigger to fire</div>
+      <div class="wsp-question">Sub-3-point MMLU jump, first EU AI Act enforcement action, or a major copyright ruling &mdash; which is most observable from where you sit?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">First decision</div>
+      <div class="wsp-question">If AI becomes &ldquo;boring infrastructure&rdquo; like cloud, what&rsquo;s the first thing you stop doing? What&rsquo;s the first thing you start?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">Disconfirming evidence</div>
+      <div class="wsp-question">What would tell you a real capability jump is still coming?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
   </div>
-  <div class="ws-question" style="background:#fff;border-left:3px solid var(--accent)">
-    <h4>4. Which scenario are you betting on?</h4>
-    <p>Look at your current AI strategy. Which scenario is it implicitly assuming? What happens if you&rsquo;re wrong?</p>
+
+  <div class="ws-trigger-block" style="border-left:3px solid #d97706">
+    <h5 style="color:#b45309">Scenario 5 &mdash; Agentic Acceleration <span style="font-size:0.7rem;font-weight:400;color:var(--text-light);text-transform:uppercase;letter-spacing:0.04em">(cross-cutting)</span></h5>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">First trigger to fire</div>
+      <div class="wsp-question">8h+ task horizons, multi-day production agents with audited ROI, or capex visibly shifting from training to inference &mdash; which fires first?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">First decision</div>
+      <div class="wsp-question">If reliable multi-hour agents arrive, what part of your team&rsquo;s work changes first &mdash; and what&rsquo;s your first investment?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
+    <div class="ws-trigger-prompt">
+      <div class="wsp-label">Disconfirming evidence</div>
+      <div class="wsp-question">What would tell you time-horizon doubling has stalled below the threshold that matters for your work?</div>
+      <div class="wsp-line"></div><div class="wsp-line"></div>
+    </div>
   </div>
-  <div class="ws-question" style="background:#fff;border-left:3px solid var(--green)">
-    <h4>5. One action that works under all scenarios</h4>
+
+  <div class="ws-question" style="background:#fff;border-left:3px solid var(--green);margin-top:2rem">
+    <h4>One action that works under all five scenarios</h4>
     <p>What is one thing you can do this month that improves your position regardless of which future materializes?</p>
   </div>
 
@@ -1402,137 +1804,6 @@ document.addEventListener('DOMContentLoaded', function() {
     resetInfo();
   })();
 
-  // ═══════════════════════════════════════════════════════════
-  // SCENARIO 2: Compression Curve
-  // ═══════════════════════════════════════════════════════════
-  (function() {
-    var trainData = [
-      { model:'GPT-4', org:'OpenAI', year:'Mar 2023', cost:100, detail:'~1.8T MoE \u00B7 Confirmed >$100M (Sam Altman)', type:'proprietary' },
-      { model:'Llama 3.1 405B', org:'Meta', year:'Jul 2024', cost:60, detail:'405B dense \u00B7 30.84M H100 GPU-hours \u00B7 Open-weight', type:'open' },
-      { model:'DeepSeek V3', org:'DeepSeek', year:'Dec 2024', cost:5.6, detail:'671B MoE \u00B7 FP8 + custom CUDA kernels \u00B7 85% GPU utilization', type:'open' },
-      { model:'DeepSeek R1', org:'DeepSeek', year:'Jan 2025', cost:0.3, detail:'Incremental RL on V3 base \u00B7 $294K training cost', type:'open' },
-    ];
-    // Main pricing line: same model tier (GPT-4 class output)
-    var mainLine = [
-      { date:'Mar 2023', price:60, label:'GPT-4', x:0 },
-      { date:'Nov 2023', price:30, label:'GPT-4 Turbo', x:0.67 },
-      { date:'May 2024', price:15, label:'GPT-4o', x:1.17 },
-      { date:'Oct 2024', price:10, label:'GPT-4o (cut)', x:1.58 },
-    ];
-    // Alternative models (different tier / open-source)
-    var altDots = [
-      { date:'Jul 2024', price:0.60, label:'GPT-4o-mini', x:1.33 },
-      { date:'Jan 2025', price:0.42, label:'DeepSeek V3', x:1.83 },
-    ];
-
-    var NS='http://www.w3.org/2000/svg';
-    function n(tag,a,t){ var e=document.createElementNS(NS,tag); if(a) for(var k in a) e.setAttribute(k,a[k]); if(t!=null) e.textContent=t; return e; }
-    var svg=document.getElementById('chart-s2');
-    var info=document.getElementById('info-s2');
-
-    // Title
-    svg.appendChild(n('text',{x:40,y:34,'font-size':'17','font-weight':'700',fill:'#1e3a5f'},'Training Cost to Reach GPT-4-Class Performance'));
-    svg.appendChild(n('text',{x:40,y:54,'font-size':'13',fill:'#94a3b8'},'Estimated cost in millions USD (log scale)'));
-
-    // Log scale for bars
-    var barY0=80, barH=48, barGap=68, barLeft=240, barMaxW=680;
-    var logMin=-0.6, logMax=2.1; // log10 of 0.25 to ~125
-
-    function logW(cost) { return Math.max(20, ((Math.log10(cost)-logMin)/(logMax-logMin))*barMaxW); }
-
-    trainData.forEach(function(d,i) {
-      var y=barY0+i*barGap;
-      var w=logW(d.cost);
-      var color=d.type==='proprietary'?'#7C6DD8':'#0EA5C9';
-
-      // Label
-      svg.appendChild(n('text',{x:barLeft-10,y:y+barH/2+5,'text-anchor':'end','font-size':'14','font-weight':'600',fill:'#1e293b'},d.model));
-      svg.appendChild(n('text',{x:barLeft-10,y:y+barH/2+22,'text-anchor':'end','font-size':'11',fill:'#94a3b8'},d.year));
-
-      // Bar
-      var bar=n('rect',{x:barLeft,y:y,width:w,height:barH,rx:6,fill:color,opacity:'0.75',cursor:'pointer'});
-      bar.style.transition='opacity 0.2s';
-      svg.appendChild(bar);
-
-      // Cost label
-      var costLabel=d.cost>=1?'$'+d.cost+'M':'$'+Math.round(d.cost*1000)+'K';
-      svg.appendChild(n('text',{x:barLeft+w+10,y:y+barH/2+6,'font-size':'15','font-weight':'700',fill:color},costLabel));
-
-      // Hover
-      bar.addEventListener('mouseenter',function(){
-        bar.setAttribute('opacity','1');
-        info.innerHTML='<div class="info-content"><div class="info-left"><div class="info-title">'+d.model+' ('+d.org+', '+d.year+')</div></div><div class="info-right"><div class="info-line" style="font-size:12px">'+d.detail+'</div></div></div>';
-      });
-      bar.addEventListener('mouseleave',function(){
-        bar.setAttribute('opacity','0.75');
-        info.innerHTML='<span class="info-hint">Hover over any bar to see model details and benchmark comparisons</span>';
-      });
-    });
-
-    // Reduction annotation
-    var annX1=barLeft+logW(100)+30, annX2=barLeft+logW(5.6)+30;
-    var annY1=barY0+barH/2, annY2=barY0+2*barGap+barH/2;
-    svg.appendChild(n('line',{x1:annX1,y1:annY1,x2:annX1,y2:annY1+10,stroke:'#E05A33','stroke-width':'2'}));
-    svg.appendChild(n('line',{x1:annX1,y1:annY1+10,x2:annX1,y2:annY2-10,stroke:'#E05A33','stroke-width':'2','stroke-dasharray':'4 3'}));
-    svg.appendChild(n('line',{x1:annX1,y1:annY2-10,x2:annX1,y2:annY2,stroke:'#E05A33','stroke-width':'2'}));
-    svg.appendChild(n('text',{x:annX1+10,y:(annY1+annY2)/2+4,'font-size':'15','font-weight':'700',fill:'#E05A33'},'~95% cost reduction'));
-    svg.appendChild(n('text',{x:annX1+10,y:(annY1+annY2)/2+20,'font-size':'12',fill:'#E05A33',opacity:'0.7'},'in 20 months'));
-
-    // Bottom: Inference pricing chart
-    var infY0=470, infH=220, infLeft=160, infRight=980;
-    svg.appendChild(n('text',{x:40,y:infY0-30,'font-size':'17','font-weight':'700',fill:'#1e3a5f'},'Inference Cost: Output per Million Tokens'));
-    svg.appendChild(n('line',{x1:infLeft,y1:infY0,x2:infRight,y2:infY0,stroke:'#e2e8f0','stroke-width':'0.5','stroke-dasharray':'3 3'}));
-    svg.appendChild(n('line',{x1:infLeft,y1:infY0+infH,x2:infRight,y2:infY0+infH,stroke:'#e2e8f0','stroke-width':'1'}));
-
-    // Clean log scale: $100, $10, $1, $0.1
-    var logPriceMin=-1, logPriceMax=2; // log10(0.1) to log10(100) — clean decades
-    function priceToY(p) { return infY0+infH-(Math.log10(p)-logPriceMin)/(logPriceMax-logPriceMin)*infH; }
-    function xToPos(xv) { return infLeft+xv/2*(infRight-infLeft); }
-
-    // Y axis labels — clean decade spacing
-    [{p:100,label:'$100'},{p:10,label:'$10'},{p:1,label:'$1'},{p:0.1,label:'$0.10'}].forEach(function(d){
-      var y=priceToY(d.p);
-      if(y>=infY0-5&&y<=infY0+infH+5){
-        svg.appendChild(n('text',{x:infLeft-10,y:y+4,'text-anchor':'end','font-size':'12','font-weight':'500',fill:'#94a3b8'},d.label));
-        svg.appendChild(n('line',{x1:infLeft,y1:y,x2:infRight,y2:y,stroke:'#e2e8f0','stroke-width':'0.5','stroke-dasharray':'3 3'}));
-      }
-    });
-
-    // Draw main pricing line (GPT-4 tier)
-    var pts=mainLine.map(function(d){ return xToPos(d.x)+','+priceToY(d.price); });
-    svg.appendChild(n('polyline',{points:pts.join(' '),fill:'none',stroke:'#7C6DD8','stroke-width':'2.5','stroke-linejoin':'round'}));
-
-    // Main line points and labels
-    mainLine.forEach(function(d,i){
-      var px=xToPos(d.x), py=priceToY(d.price);
-      svg.appendChild(n('circle',{cx:px,cy:py,r:5,fill:'#7C6DD8',stroke:'#fff','stroke-width':'2'}));
-      // First point: label to the right; others alternate above/below
-      if(i===0) {
-        svg.appendChild(n('text',{x:px+12,y:py-8,'text-anchor':'start','font-size':'13','font-weight':'600',fill:'#7C6DD8'},'$'+d.price));
-        svg.appendChild(n('text',{x:px+12,y:py+8,'text-anchor':'start','font-size':'11',fill:'#94a3b8'},d.label));
-      } else {
-        var below = (i % 2 === 1);
-        svg.appendChild(n('text',{x:px,y:below?py+22:py-14,'text-anchor':'middle','font-size':'13','font-weight':'600',fill:'#7C6DD8'},'$'+d.price));
-        svg.appendChild(n('text',{x:px,y:below?py+36:py-28,'text-anchor':'middle','font-size':'11',fill:'#94a3b8'},d.label));
-      }
-    });
-
-    // Alternative model dots (different tier, shown separately)
-    altDots.forEach(function(d){
-      var px=xToPos(d.x), py=priceToY(d.price);
-      svg.appendChild(n('circle',{cx:px,cy:py,r:5,fill:'#0EA5C9',stroke:'#fff','stroke-width':'2'}));
-      svg.appendChild(n('text',{x:px,y:py-14,'text-anchor':'middle','font-size':'13','font-weight':'600',fill:'#0EA5C9'},'$'+d.price));
-      svg.appendChild(n('text',{x:px,y:py-28,'text-anchor':'middle','font-size':'11',fill:'#94a3b8'},d.label));
-    });
-    // Dashed line connecting alt dots
-    if(altDots.length>=2){
-      var altPts=altDots.map(function(d){return xToPos(d.x)+','+priceToY(d.price);});
-      svg.appendChild(n('polyline',{points:altPts.join(' '),fill:'none',stroke:'#0EA5C9','stroke-width':'1.5','stroke-dasharray':'4 3'}));
-    }
-
-    // 99% annotation
-    svg.appendChild(n('text',{x:infRight-5,y:infY0+18,'text-anchor':'end','font-size':'14','font-weight':'700',fill:'#E05A33'},'99%+ reduction in pricing'));
-  })();
 
   // ═══════════════════════════════════════════════════════════
   // SCENARIO 3: Dot-Com Parallel
@@ -1773,6 +2044,127 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Sutskever quote
     svg.appendChild(n('text',{x:550,y:botBase+35,'text-anchor':'middle','font-size':'12','font-style':'italic',fill:'#94a3b8'},'\u201CPre-training as we know it will unquestionably end... we have but one internet.\u201D \u2014 Ilya Sutskever, NeurIPS 2024'));
+  })();
+
+  // ===========================================================
+  // SCENARIO 5: Agentic Time-Horizon Chart (METR-inspired)
+  // ===========================================================
+  (function() {
+    var NS='http://www.w3.org/2000/svg';
+    function n(tag,a,t){ var e=document.createElementNS(NS,tag); if(a) for(var k in a) e.setAttribute(k,a[k]); if(t!=null) e.textContent=t; return e; }
+    var svg=document.getElementById('chart-s5');
+    var info=document.getElementById('info-s5');
+    if(!svg) return;
+
+    // Approximate METR Time Horizon trajectory.
+    // Time values in seconds (log scale on Y).
+    var pts = [
+      { date:'Feb 2019', label:'GPT-2',              t:2,    x:0.00, detail:'METR-style task horizon ~2 sec. Pre-instruction-tuning era.' },
+      { date:'Jun 2020', label:'GPT-3',              t:9,    x:0.18, detail:'~9 sec horizon. Few-shot prompting becomes viable.' },
+      { date:'Mar 2022', label:'InstructGPT',        t:60,   x:0.40, detail:'~1 min horizon. RLHF tuning lifts short-task reliability.' },
+      { date:'Mar 2023', label:'GPT-4',              t:300,  x:0.52, detail:'~5 min horizon. First frontier model with reliable multi-step reasoning.' },
+      { date:'Mar 2024', label:'Claude 3 Opus',      t:900,  x:0.65, detail:'~15 min horizon. Long context + tool use begin to compound.' },
+      { date:'Jun 2024', label:'Claude 3.5 Sonnet',  t:1500, x:0.69, detail:'~25 min horizon. Strong agentic coding emerges.' },
+      { date:'Feb 2025', label:'Claude 3.7 Sonnet',  t:3000, x:0.78, detail:'~50 min horizon (METR TH 1.1, Jan 2026). Reasoning + extended thinking.' },
+      { date:'2026 frontier', label:'extrapolated',  t:10800,x:0.92, detail:'~3 h horizon under 4-month doubling extrapolation. Not measured \u2014 trajectory only.', projected:true }
+    ];
+
+    // Layout
+    var left=110, right=1010, topBase=70, botBase=440;
+    var W=right-left, H=botBase-topBase;
+    function xPos(x){ return left + x * W; }
+    // Log Y from 1 sec (10^0) to 8 hours (~28800 sec, ~10^4.46)
+    var logMin=0, logMax=4.5;
+    function yPos(t){ return botBase - (Math.log10(t) - logMin) / (logMax - logMin) * H; }
+
+    // Title
+    svg.appendChild(n('text',{x:40,y:30,'font-size':'17','font-weight':'700',fill:'#1e3a5f'},'Frontier model task-horizon trajectory (approximated)'));
+    svg.appendChild(n('text',{x:40,y:50,'font-size':'12',fill:'#94a3b8'},'50% time horizon \u2014 the duration of human work the model completes with 50% reliability'));
+
+    // Y-axis gridlines and labels
+    var yTicks = [
+      { t:1,     label:'1 sec' },
+      { t:10,    label:'10 sec' },
+      { t:60,    label:'1 min' },
+      { t:600,   label:'10 min' },
+      { t:3600,  label:'1 h' },
+      { t:14400, label:'4 h' },
+      { t:28800, label:'8 h' }
+    ];
+    yTicks.forEach(function(d){
+      var y=yPos(d.t);
+      if(y>=topBase-2 && y<=botBase+2){
+        svg.appendChild(n('line',{x1:left,y1:y,x2:right,y2:y,stroke:'#e2e8f0','stroke-width':'0.5','stroke-dasharray':'3 3'}));
+        svg.appendChild(n('text',{x:left-10,y:y+4,'text-anchor':'end','font-size':'11',fill:'#94a3b8'},d.label));
+      }
+    });
+
+    // X-axis baseline
+    svg.appendChild(n('line',{x1:left,y1:botBase,x2:right,y2:botBase,stroke:'#cbd5e1','stroke-width':'1'}));
+
+    // X-axis year labels
+    var years=[{x:0,label:'2019'},{x:0.25,label:'2021'},{x:0.5,label:'2023'},{x:0.75,label:'2025'},{x:1,label:'2027'}];
+    years.forEach(function(yr){
+      svg.appendChild(n('text',{x:xPos(yr.x),y:botBase+18,'text-anchor':'middle','font-size':'11','font-weight':'500',fill:'#64748b'},yr.label));
+    });
+
+    // ----- Doubling reference lines -----
+    // Anchor both lines to GPT-4 (Mar 2023, ~5 min = 300 sec)
+    // 7-month doubling: log2 increase per (7/12) year
+    // 4-month doubling: log2 increase per (4/12) year
+    // 2019-2027 span on x in our layout: x=0 at Feb 2019, x=1 at ~Jan 2027 (~8 years)
+    function yearsBetween(x1, x2){ return (x2 - x1) * 8; }
+
+    function drawDoubling(monthsPerDouble, color, dash){
+      // Compute reference t at each year
+      var anchorX=0.52, anchorT=300; // Mar 2023, 5 min
+      var doublesPerYear = 12 / monthsPerDouble;
+      var path=[];
+      for(var x=0; x<=1.001; x+=0.01){
+        var dy = (x - anchorX) * 8 * doublesPerYear; // doublings from anchor
+        var t = anchorT * Math.pow(2, dy);
+        if(t < 0.5) continue;
+        if(t > 80000) continue;
+        path.push(xPos(x)+','+yPos(t));
+      }
+      var line=n('polyline',{points:path.join(' '),fill:'none',stroke:color,'stroke-width':'1.5',opacity:'0.55','stroke-dasharray':dash||'5 4'});
+      svg.appendChild(line);
+    }
+    drawDoubling(7, '#0EA5C9', '6 4');
+    drawDoubling(4, '#E05A33', '3 4');
+
+    // Doubling line labels (right side)
+    svg.appendChild(n('text',{x:right-5,y:yPos(40000),'text-anchor':'end','font-size':'11','font-weight':'600',fill:'#E05A33'},'4-mo doubling'));
+    svg.appendChild(n('text',{x:right-5,y:yPos(7000),'text-anchor':'end','font-size':'11','font-weight':'600',fill:'#0EA5C9'},'7-mo doubling'));
+
+    // 8-hour threshold annotation
+    var thresholdY = yPos(28800);
+    svg.appendChild(n('line',{x1:left,y1:thresholdY,x2:right,y2:thresholdY,stroke:'#dc2626','stroke-width':'1','stroke-dasharray':'2 4',opacity:'0.5'}));
+    svg.appendChild(n('text',{x:left+8,y:thresholdY-6,'font-size':'10',fill:'#dc2626',opacity:'0.75','font-style':'italic'},'8-hour threshold \u2014 routine knowledge-worker day'));
+
+    // ----- Plot model points -----
+    pts.forEach(function(p){
+      var px=xPos(p.x), py=yPos(p.t);
+      var color=p.projected?'#94a3b8':'#7C6DD8';
+      var ring=n('circle',{cx:px,cy:py,r:p.projected?5:6,fill:p.projected?'#fff':color,stroke:color,'stroke-width':p.projected?'2':'2.5','stroke-dasharray':p.projected?'3 2':'',cursor:'pointer'});
+      ring.style.transition='r 0.15s';
+      svg.appendChild(ring);
+
+      // Label above
+      svg.appendChild(n('text',{x:px,y:py-12,'text-anchor':'middle','font-size':'10.5','font-weight':'600',fill:p.projected?'#94a3b8':'#1e293b'},p.label));
+
+      ring.addEventListener('mouseenter',function(){
+        ring.setAttribute('r', p.projected?7:8);
+        info.innerHTML='<div class="info-content"><div class="info-left"><div class="info-title">'+p.label+' ('+p.date+')</div></div><div class="info-right"><div class="info-line" style="font-size:12px">'+p.detail+'</div></div></div>';
+      });
+      ring.addEventListener('mouseleave',function(){
+        ring.setAttribute('r', p.projected?5:6);
+        info.innerHTML='<span class="info-hint">Hover any point or doubling line for details</span>';
+      });
+    });
+
+    // Footer source line
+    svg.appendChild(n('text',{x:right,y:botBase+38,'text-anchor':'end','font-size':'10','font-style':'italic',fill:'#94a3b8'},'Trajectory approximated from METR Time Horizon dataset (TH 1.0 Mar 2025; TH 1.1 Jan 2026). Data points illustrative.'));
   })();
 
 }); // end DOMContentLoaded
