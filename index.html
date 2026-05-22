@@ -230,6 +230,47 @@
             font-size: 0.95rem;
         }
         .read-link:hover { text-decoration: underline; }
+        .new-badge {
+            display: inline-block;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: white;
+            margin-left: 0.55rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 100px;
+            background: var(--accent);
+            position: relative;
+            top: -0.18rem;
+        }
+        .pub-card.section-booklets .new-badge { background: var(--booklets); }
+        .pub-card.section-reports .new-badge { background: var(--reports); }
+        .pub-card.section-guides .new-badge { background: var(--guides); }
+        .section-label .count {
+            font-weight: 400;
+            opacity: 0.5;
+            margin-left: 0.1rem;
+        }
+        .pub-companion {
+            font-size: 0.83rem;
+            color: var(--text-light);
+            margin-top: -0.35rem;
+            margin-bottom: 1rem;
+        }
+        .pub-companion a {
+            color: var(--text-light);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 1px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .pub-card.section-booklets .pub-companion a:hover {
+            color: var(--booklets);
+            border-bottom-color: var(--booklets);
+        }
         footer {
             text-align: center;
             padding: 2rem;
@@ -264,14 +305,15 @@
     </header>
 
     <div class="container">
-        <div id="booklets-section" class="section-label booklets">Booklets <span class="section-note">Long-form strategic guides and practitioner references</span></div>
+        <div id="booklets-section" class="section-label booklets">Booklets <span class="count">(7)</span> <span class="section-note">Long-form strategic guides and practitioner references</span></div>
 
         <div class="pub-card section-booklets">
-            <h2><a href="economics-of-the-frontier/">The Economics of the Frontier</a></h2>
+            <h2><a href="economics-of-the-frontier/">The Economics of the Frontier</a><span class="new-badge">New</span></h2>
             <div class="pub-meta">May 2026 &middot; ~13,000 words &middot; 7 ledgers &middot; 4 figures</div>
             <p class="pub-description">
-                How the frontier AI labs &mdash; Anthropic, OpenAI, Mistral, the Chinese labs &mdash; actually make and lose money. The companion to <em>The Token Economics</em>, told from the seller's side: not what AI costs you, but how sturdy the businesses selling it really are. Seven "ledgers" each decode one mechanism &mdash; how a lab turns money into a model and back again, how headline numbers are built (run-rate vs GAAP, gross vs net), Dario Amodei's per-model "vintage" math and the inference margin under it, why Anthropic and OpenAI are no longer the same kind of company, the race to become the utility company of intelligence, the circular hyperscaler financing, and the labs outside the US duopoly. Built around one habit: never repeat a frontier number you haven't first translated into something a human can picture. Every load-bearing figure carries a provenance tag and a numbered source.
+                How the frontier AI labs &mdash; Anthropic, OpenAI, Mistral, the Chinese labs &mdash; actually make and lose money. Told from the seller's side: not what AI costs you, but how sturdy the businesses selling it really are. Seven "ledgers" each decode one mechanism &mdash; run-rate vs GAAP accounting, per-model "vintage" economics and the inference margin beneath them, the circular hyperscaler financing, and the labs outside the US duopoly. Every load-bearing figure carries a provenance tag and a numbered source.
             </p>
+            <p class="pub-companion">Companion to &rarr; <a href="token-economics/">The Token Economics</a></p>
             <div class="pub-tags">
                 <span class="tag">AI Lab Economics</span>
                 <span class="tag">Anthropic vs OpenAI</span>
@@ -320,6 +362,7 @@
             <p class="pub-description">
                 Actionable architectural patterns for building AI coding agents and agentic systems, extracted from production-grade architecture. Covers persistent memory, background consolidation, tool constraints, prompt economics, output calibration, security, multi-agent orchestration, and capability gating. Each chapter teaches one pattern with practitioner guidance.
             </p>
+            <p class="pub-companion">Companion to &rarr; <a href="llm-human-interaction-patterns/">LLM-Human Interaction Design Patterns</a></p>
             <div class="pub-tags">
                 <span class="tag">Agentic AI</span>
                 <span class="tag">Design Patterns</span>
@@ -334,8 +377,9 @@
             <h2><a href="llm-human-interaction-patterns/">LLM-Human Interaction Design Patterns for Operations</a></h2>
             <div class="pub-meta">April 2026 &middot; ~30,000 words &middot; 10 chapters</div>
             <p class="pub-description">
-                How to design the seam between AI agents and human operators. Covers five structural interaction patterns, cognitive biases that undermine handoffs, SBAR-based context presentation, trust calibration, failure mode design with kill switches and circuit breakers, and organizational governance. Includes prompt templates, architecture patterns, and a self-assessment worksheet. Companion to Building Agentic AI.
+                How to design the seam between AI agents and human operators. Covers five structural interaction patterns, cognitive biases that undermine handoffs, SBAR-based context presentation, trust calibration, failure mode design with kill switches and circuit breakers, and organizational governance. Includes prompt templates, architecture patterns, and a self-assessment worksheet.
             </p>
+            <p class="pub-companion">Companion to &rarr; <a href="agentic-design-patterns/">Building Agentic AI</a></p>
             <div class="pub-tags">
                 <span class="tag">Human-AI Interaction</span>
                 <span class="tag">Design Patterns</span>
@@ -348,9 +392,9 @@
 
         <div class="pub-card section-booklets">
             <h2><a href="scenario-planning/">Scenario Planning for Generative AI</a></h2>
-            <div class="pub-meta">April 2026 &middot; Interactive booklet &middot; 4 scenarios &middot; Workshop exercise</div>
+            <div class="pub-meta">May 2026 &middot; Interactive booklet &middot; 6 currents &middot; Workshop exercise</div>
             <p class="pub-description">
-                Four credible scenarios for the next 2&ndash;3 years of generative AI &mdash; continued scaling, efficiency revolution, financial correction, and plateau with regulation. Each scenario features an interactive visualization anchor, key data points, trigger signals, and role-specific implications. Includes a 2&times;2 synthesis matrix and a scenario planning worksheet for team exercises.
+                Six currents shaping the next 2&ndash;3 years of generative AI &mdash; continued scaling, the efficiency revolution, a financial correction, sovereignty, the move from lab to production, and the new economics of hours and dollars. Not rival forecasts but forces that run at once: each current carries trigger signals to watch and role-specific implications, with two interactive visualizations. Closes with how the currents interact and a trigger-drill worksheet for team exercises.
             </p>
             <div class="pub-tags">
                 <span class="tag">Scenario Planning</span>
@@ -368,6 +412,7 @@
             <p class="pub-description">
                 A strategic guide for EU IT services providers navigating GenAI. Covers the economics of self-hosting LLMs vs APIs, viable business model pivots, the vendor ecosystem play, how AI transforms your own delivery model, EU AI Act compliance opportunities, and a practical 18-month roadmap. Grounded in real April 2026 pricing data.
             </p>
+            <p class="pub-companion">Companion to &rarr; <a href="economics-of-the-frontier/">The Economics of the Frontier</a></p>
             <div class="pub-tags">
                 <span class="tag">GenAI Economics</span>
                 <span class="tag">IT Services</span>
@@ -375,14 +420,14 @@
                 <span class="tag">Business Strategy</span>
                 <span class="tag">Self-Hosting vs API</span>
             </div>
-            <a class="read-link" href="token-economics/">Read the full guide &rarr;</a>
+            <a class="read-link" href="token-economics/">Read the booklet &rarr;</a>
         </div>
 
-        <div id="reports-section" class="section-label reports">Research Reports <span class="section-note">Evaluation studies and empirical research</span></div>
+        <div id="reports-section" class="section-label reports">Research Reports <span class="count">(4)</span> <span class="section-note">Evaluation studies and empirical research</span></div>
 
         <div class="pub-card section-reports">
-            <h2><a href="warden/">Warden — Testing LLM-as-Judge Defenses Against Public Jailbreaks</a></h2>
-            <div class="pub-meta">May 2026 &middot; Research booklet &middot; 1,680 trials &middot; 3 targets &middot; 4 judge designs</div>
+            <h2><a href="warden/">Warden &mdash; Testing LLM-as-Judge Defenses Against Public Jailbreaks</a></h2>
+            <div class="pub-meta">May 2026 &middot; Research report &middot; 1,680 trials &middot; 3 targets &middot; 4 judge designs</div>
             <p class="pub-description">
                 Empirical study of LLM-as-judge defenses against the public jailbreak corpus from <a href="https://github.com/Exocija/ZetaLib">ZetaLib</a>. Three open-weight target models (DeepSeek Chat v3.1, DeepSeek v3.2, GLM-4.6) tested against 20 attacks &times; 4 deployment-rule shapes &times; 7 defense conditions. The hypothesis &mdash; that a competent LLM-as-judge defeats most public attacks &mdash; holds, but the popular implementation (input-side filtering) over-blocks legitimate inputs to a degree that would force the defense to be turned off. Includes a deployment playbook for engineering teams and hands-on exercises for students.
             </p>
@@ -393,7 +438,7 @@
                 <span class="tag">LLM-as-Judge</span>
                 <span class="tag">Defense Evaluation</span>
             </div>
-            <a class="read-link" href="warden/">View the booklet &rarr;</a>
+            <a class="read-link" href="warden/">Read the report &rarr;</a>
         </div>
 
         <div class="pub-card section-reports">
@@ -408,7 +453,7 @@
                 <span class="tag">Geopolitical Bias</span>
                 <span class="tag">Research</span>
             </div>
-            <a class="read-link" href="reports/geobias-7b/">View the report &rarr;</a>
+            <a class="read-link" href="reports/geobias-7b/">Read the report &rarr;</a>
         </div>
 
         <div class="pub-card section-reports">
@@ -423,7 +468,7 @@
                 <span class="tag">Small LLMs</span>
                 <span class="tag">Research</span>
             </div>
-            <a class="read-link" href="reports/selfjudge/">View the report &rarr;</a>
+            <a class="read-link" href="reports/selfjudge/">Read the report &rarr;</a>
         </div>
 
         <div class="pub-card section-reports">
@@ -438,10 +483,10 @@
                 <span class="tag">Behavioral Evaluation</span>
                 <span class="tag">Red-Teaming</span>
             </div>
-            <a class="read-link" href="reports/bloom/">View the report &rarr;</a>
+            <a class="read-link" href="reports/bloom/">Read the report &rarr;</a>
         </div>
 
-        <div id="guides-section" class="section-label guides">Guides &amp; Legacy <span class="section-note">Reference guides, sketches, and earlier publications</span></div>
+        <div id="guides-section" class="section-label guides">Guides &amp; Legacy <span class="count">(2)</span> <span class="section-note">Reference guides, sketches, and earlier publications</span></div>
 
         <div class="pub-card section-guides">
             <h2><a href="claude-code-setup/">Claude Code Setup — How It All Works</a></h2>
