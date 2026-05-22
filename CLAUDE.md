@@ -89,6 +89,7 @@ Publications in this repo follow one of three source-location patterns:
 | Building Agentic AI — Design Patterns from Production | `/agentic-design-patterns/` | `_sources/agentic-design-patterns/` | ~28,000 / 10 chapters |
 | LLM-Human Interaction Design Patterns for Operations | `/llm-human-interaction-patterns/` | [github.com/robertbarcik/llm-human-interaction-patterns](https://github.com/robertbarcik/llm-human-interaction-patterns) (`booklet/_sources/`) | ~30,000 / 10 chapters |
 | Scenario Planning for Generative AI | `/scenario-planning/` | `_sources/scenario-planning/` (data-sources.md only) | 6 currents (May 2026 rewrite); 2 interactive SVGs (S1 capex, S3 dot-com) + 4 presenter cards |
+| The Economics of the Frontier | `/economics-of-the-frontier/` | `_sources/economics-of-the-frontier/` (research-report.md, references.md, figures/build_figures.py) | ~13,000 / 7 ledgers; HTML-only hand-built; 4 static figures rendered by matplotlib (`build_figures.py` → `economics-of-the-frontier/figures/*.png`) |
 | The Token Economics | `/token-economics/` | `_sources/token-economics/` | ~40,000 / 14 chapters |
 
 ### Research Reports
