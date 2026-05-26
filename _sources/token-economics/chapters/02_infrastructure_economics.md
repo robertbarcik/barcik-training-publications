@@ -45,6 +45,24 @@ When a model processes a conversation, it computes intermediate values called **
 
 If you have run a database, think of the KV cache as the equivalent of connection-level session memory. Each active user consumes a share of memory proportional to the length of their conversation.
 
+### Per-Token KV Cost: A Working Formula
+
+The paragraph above said the KV cache grows with every token in every active conversation. The actual per-token cost is roughly:
+
+> **bytes per token ≈ 2 × n_layers × n_kv_heads × head_dim × bytes_per_element**
+
+The `2` covers keys and values. The critical term is **n_kv_heads** — not the full number of attention heads, but the number of *key/value* heads. Modern models use **Grouped-Query Attention (GQA)**, where many query heads share a small number of KV heads. This is the single biggest reason KV cache shrank dramatically between 2022 and 2025.
+
+Reference numbers at FP16:
+
+| Model architecture | Per-token KV (FP16) | 10K-token conversation | 100K-token conversation |
+|---|---|---|---|
+| Llama 3 70B (GQA, 8 KV heads, 80 layers) | ~320 KB | ~3.2 GB | ~32 GB |
+| Aggressive GQA / MQA / MLA designs | ~30-100 KB | ~0.3-1 GB | ~3-10 GB |
+| Legacy MHA (GPT-3-era, no GQA) | several MB | ~25-50 GB | impractical |
+
+The 10x spread across architectures is why the aggregate number in the next section ("80-150 GB for 100 users at 16K tokens on a 120B model") implies a KV-efficient design — typically MQA, MLA, or FP8-quantized KV cache. If you self-host a model that does not use one of these techniques, your KV footprint can easily be 5-10x the headline figure.
+
 ### The Math Gets Serious at Scale
 
 Consider a realistic enterprise scenario: 100 concurrent users working with a 120B parameter model. Some are having straightforward Q&A sessions (4K-8K context). Others are running agentic workflows — code generation, document analysis, multi-step reasoning — that push to 32K-128K tokens per session.
@@ -62,6 +80,20 @@ Let that sink in: the KV cache for 100 users can require as much VRAM as the mod
 
 Notice that quantizing the model weights helps with the first row, but the KV cache does not shrink proportionally — it depends on the model's hidden dimensions and number of attention heads, not the weight precision. This is why quantization alone does not solve the multi-user scaling problem.
 
+### Three Things Called "Caching"
+
+The word "caching" appears in three different contexts in LLM serving, and confusing them leads to wrong intuitions about cost and capacity.
+
+**1. In-VRAM KV cache.** What the formulas above describe — the per-token state that grows during an active conversation, lives in GPU memory, and frees when the session ends or evicts. It is a **capacity** cost: every byte you allocate to one user is a byte you cannot give another.
+
+**2. API prompt caching (vendor discount).** When OpenAI, Anthropic, DeepSeek and others advertise "cached input tokens at ~10% of normal price," they are persisting the precomputed KV state for a *prefix* of your prompt — in tiered hot memory (HBM → DRAM, occasionally NVMe), not on disk. TTLs are short: Anthropic defaults to 5 minutes, extendable to 1 hour. A cache hit skips the prefill step, so you pay the discount **and** get a much faster time-to-first-token. The discount reflects compute saved, not storage saved.
+
+**3. Idle conversations in a chatbot UI.** When a user closes a long ChatGPT or Claude.ai conversation and reopens it tomorrow, the vendor is **not** holding the KV in VRAM. They are persisting only the **text** of the conversation. On resume, the model re-prefills the entire history from scratch — which is the noticeable lag before the first reply on a long-history conversation.
+
+The invariant that pulls these together: **once decoding starts, the per-token VRAM footprint is identical regardless of how the KV got there**. Cache hits save prefill compute, time-to-first-token, and (on APIs) money — they do not change throughput or per-token VRAM during generation.
+
+One nuance for self-hosters: vLLM's **Automatic Prefix Caching** (APC) genuinely holds KV state in VRAM across turns. That is excellent for short-idle multi-turn sessions but useless for "user comes back tomorrow." API vendors solve the tomorrow case with massive tiered storage and aggressive eviction at scale; small self-hosted shops cannot replicate that economics — for them, prefix caching is a "stay-warm-for-a-few-minutes" feature only.
+
 > **Key takeaway**: When sizing GPU infrastructure, the model weights are the floor, not the ceiling. For multi-user deployments, the KV cache often dominates your memory planning. Every additional concurrent user with a long context window costs real VRAM.
 
 ## Throughput: Tokens Per Second Per User
@@ -73,6 +105,23 @@ A good interactive experience requires **30-50 tokens per second** per user. Bel
 For 100 concurrent users, that means your infrastructure must sustain **3,000-5,000 tokens per second in aggregate**. This is the equivalent of sizing network bandwidth for concurrent connections — each user needs a guaranteed minimum, and the infrastructure must handle the aggregate peak.
 
 Throughput depends on GPU compute power (measured in TFLOPS), memory bandwidth (how fast data moves between VRAM and compute units), and how efficiently the serving software schedules work across multiple requests.
+
+### The Single-Stream Ceiling: Bandwidth ÷ Model Size
+
+There is a simple back-of-the-envelope formula that explains why memory bandwidth matters so much. To generate **one** token, the GPU must read **the entire model weights** from VRAM through the compute units and back. So the per-stream throughput ceiling is roughly:
+
+> **tokens/sec (single stream) ≈ memory bandwidth ÷ model size in memory**
+
+A worked example: a 20B model at INT8 (~20 GB of weights) on a single H100 (3.35 TB/s = 3,350 GB/s):
+
+3,350 ÷ 20 ≈ **167 tokens/sec per stream** (theoretical ceiling; real-world is typically 30% lower due to KV-cache reads, attention overhead, and inter-kernel gaps).
+
+Two consequences fall out of this:
+
+1. **Smaller models feel snappier** because the ceiling scales 1:1 with model size. A 20B model on an H100 has roughly 6x the per-stream ceiling of a 120B model on the same hardware — most of why a small model feels more responsive to interactive users, regardless of how much compute you throw at it.
+2. **Batching is non-negotiable for multi-user serving.** The model weights are read once per generation step and applied across every user in the batch. Reading 120 GB of weights to serve eight users in one batch costs essentially the same bandwidth as serving one — which is why an 8x H100 node sustains 30-50 tokens/sec for 20-30 concurrent users rather than one user at the roofline.
+
+This is also why, in the GPU table that follows, the bandwidth column matters more than the TFLOPS column for inference workloads. You will rarely run out of compute before you run out of bandwidth.
 
 ## GPU Hardware: A Practical Comparison
 
@@ -165,5 +214,6 @@ The next chapter takes these hardware realities and turns them into a full cost 
 > - **GPU purchase prices** in the hardware comparison table (H100, H200, A100, L40S, RTX 4090). Tracked down 10-20% year-over-year through 2025 and into 2026; expect continued softening as Blackwell ships in volume.
 > - **Serving framework landscape** — vLLM remains the production standard but competes with TGI, SGLang, and increasingly vendor-specific runtimes. Speculative decoding, PagedAttention successors, and MoE-specific optimisations emerge quarterly.
 > - **Configuration-to-user ratios** (e.g., "2x H100 serves 100 users at INT8") drift as inference efficiency improves. Today's 100-user config may serve 150-200 users on the same hardware in 12 months.
+> - **KV-cache architecture and API prompt-caching specifics** — per-token KV depends heavily on KV-head count (MHA vs GQA vs MQA vs MLA designs differ by 10x or more), and vendor prompt-cache pricing and TTLs are revised quarterly. Re-verify the Llama 3 70B reference numbers and Anthropic's 5-minute / 1-hour TTLs when quoting.
 >
 > The structural framing — VRAM dominates sizing, KV cache scales with concurrent users, bandwidth is the bottleneck — is stable and will age well.
