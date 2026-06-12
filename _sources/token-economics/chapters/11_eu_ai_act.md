@@ -1,5 +1,14 @@
 # Chapter 11: EU AI Act: Your Compliance Opportunity
 
+> **At a glance**
+>
+> - EU AI Act compliance is roughly 20% legal interpretation and 80% technical implementation. Lawyers define the obligations; someone has to build the systems — that someone is you.
+> - Most of your enterprise clients are "deployers" of high-risk AI systems: they need working human oversight, logging, monitoring, and incident reporting — not policies on paper.
+> - Eight service lines, from AI inventory and classification (the natural entry point) to post-market monitoring (the natural retainer).
+> - Never sell "compliance" — sell AI deployment that is compliant from day one. Bundled compliance is value; unbundled compliance is a cost to be minimized.
+>
+> **The number to remember:** August 2026 — when high-risk system obligations become enforceable. Your best sales tool, with a countdown attached.
+
 Every technology regulation creates two groups: those who see it as a cost to be minimized, and those who see it as a service to be sold. The EU AI Act is the most significant piece of AI regulation in the world, and for EU-based IT services providers, it is firmly in the second category.
 
 This chapter is not a legal primer. You can hire a lawyer for that. What it is: a practical guide to the specific implementation work the Act demands, why that work is technical rather than legal, and how to position your firm as the one who does it.
@@ -115,7 +124,7 @@ Once a high-risk AI system is in production, the obligations do not stop. Deploy
 
 ## Data Sovereignty as a Premium Service
 
-In Chapter 5, we discussed the privacy proxy model and its economics. The EU AI Act adds a regulatory dimension that strengthens the case for EU-hosted AI services in specific segments.
+In Chapter 6, we discussed the privacy proxy model and its economics. The EU AI Act adds a regulatory dimension that strengthens the case for EU-hosted AI services in specific segments.
 
 Some clients do not just prefer to keep data in the EU. They are legally required to. The combination of GDPR data transfer restrictions, sector-specific regulations, and the EU AI Act's requirements around data governance and system monitoring creates scenarios where sending data to US-based AI providers is genuinely not an option:
 
@@ -148,9 +157,9 @@ The difference is profound. In the first pitch, you are a cost centre. In the se
 
 This positioning works especially well when combined with the capabilities from earlier chapters:
 
-- **Privacy proxy (Chapter 5) + EU AI Act compliance** = "We route your AI usage through EU infrastructure with full regulatory compliance built in."
-- **Local deployment (Chapter 6) + EU AI Act compliance** = "We deploy AI on your employees' devices — no data leaves your organization, and every deployment meets EU AI Act requirements."
-- **Testing and security (Chapter 7) + EU AI Act compliance** = "We test and monitor your AI systems for quality, security, and regulatory compliance as a single managed service."
+- **Privacy proxy (Chapter 6) + EU AI Act compliance** = "We route your AI usage through EU infrastructure with full regulatory compliance built in."
+- **Local deployment (Chapter 7) + EU AI Act compliance** = "We deploy AI on your employees' devices — no data leaves your organization, and every deployment meets EU AI Act requirements."
+- **Testing and security (Chapter 8) + EU AI Act compliance** = "We test and monitor your AI systems for quality, security, and regulatory compliance as a single managed service."
 
 Each of these is a stronger proposition than any component sold alone. The compliance layer makes the technical offering more valuable, and the technical offering makes the compliance tangible rather than theoretical.
 

@@ -1,5 +1,14 @@
 # Chapter 12: Pricing Models and Packaging
 
+> **At a glance**
+>
+> - Your biggest pricing risk is not charging too much — it is being compared to $30/seat ChatGPT. If your offering looks like "access to an AI chatbot," you have already lost.
+> - Five pricing models — per-seat, token passthrough, retainer, project-plus-retainer, outcome-based — each matched to a different cost structure and engagement type.
+> - Project-plus-retainer is the highest-total-value pattern: $20-80K implementation, then $3-25K/month — $165-325K over a 24-month engagement.
+> - Bundle aggressively. The model is your cost of goods sold, not your product — flour to the bakery, not the bread.
+>
+> **The number to remember:** $30 per seat — the consumer anchor every proposal you write will be compared against.
+
 You have built the capability. You understand the infrastructure economics, the business models, the compliance landscape. Now comes the question that determines whether any of it generates revenue: how do you actually price this?
 
 Pricing GenAI services is harder than pricing traditional IT services, and the reason is simple. Your client has a reference point, and that reference point is devastating. ChatGPT Team costs $30 per seat per month. Claude Pro costs $20. Microsoft Copilot costs $30. These are frontier-level AI products, built by companies with tens of billions in infrastructure investment, offered at prices that would not cover your team's coffee budget.
@@ -22,7 +31,7 @@ There is no single correct way to price GenAI services. The right model depends 
 
 This is the model most familiar to enterprise buyers. It is easy to budget, easy to compare, and easy to procure. The client knows exactly what they will spend: 200 users at $50 per seat equals $10,000 per month, no surprises.
 
-**Where it works**: Per-seat pricing works best when your underlying cost structure is predominantly fixed — which means it is a natural fit for the local deployment model discussed in Chapter 6. If you have deployed a model running on the client's own hardware or on your managed infrastructure, your costs do not scale meaningfully with per-user activity. A user who sends 500 queries per day and a user who sends 5 queries per month cost you roughly the same in infrastructure. The fixed subscription captures this reality cleanly.
+**Where it works**: Per-seat pricing works best when your underlying cost structure is predominantly fixed — which means it is a natural fit for the local deployment model discussed in Chapter 7. If you have deployed a model running on the client's own hardware or on your managed infrastructure, your costs do not scale meaningfully with per-user activity. A user who sends 500 queries per day and a user who sends 5 queries per month cost you roughly the same in infrastructure. The fixed subscription captures this reality cleanly.
 
 A practical example: $50 per user per month for a managed local AI deployment including guardrails, model updates, basic RAG over company documents, and 8/5 support. At 100 users, that is $5,000 per month in revenue against perhaps $1,500-2,000 in infrastructure and support costs. The margins are healthy because the heavy users are subsidized by the light ones.
 
@@ -36,7 +45,7 @@ A practical example: $50 per user per month for a managed local AI deployment in
 
 This is the most transparent model and, for that reason, the most dangerous. The client can see exactly what the underlying API calls cost, exactly what your markup is, and exactly how much they would save by going direct.
 
-**Where it works**: The passthrough model makes sense for the privacy proxy architecture (Chapter 5), where your value-add is demonstrably not the model itself but the compliance layer, PII stripping, and audit trail you wrap around it. A client paying $5,000 per month in API costs plus a $1,500 compliance premium understands they are paying for the privacy infrastructure, not for a more expensive version of the same API.
+**Where it works**: The passthrough model makes sense for the privacy proxy architecture (Chapter 6), where your value-add is demonstrably not the model itself but the compliance layer, PII stripping, and audit trail you wrap around it. A client paying $5,000 per month in API costs plus a $1,500 compliance premium understands they are paying for the privacy infrastructure, not for a more expensive version of the same API.
 
 It also works during early-stage engagements where the client wants to experiment with AI without committing to a fixed subscription. "Pay for what you use, plus our management fee" is a low-friction way to start a relationship.
 
@@ -72,7 +81,7 @@ A practical structure:
 
 This is the highest total-value pricing model and the one that most naturally aligns with how enterprise AI deployments actually work. There is an upfront phase — discovery, architecture, integration, testing, deployment — followed by an ongoing phase of maintenance, monitoring, updates, and optimization.
 
-**Where it works**: This model is a natural fit for compliance-heavy engagements (Chapter 9), custom RAG implementations, and any deployment that requires significant integration with existing client systems. The project fee covers your intensive engineering effort during setup; the retainer covers the long tail of keeping it running, keeping it compliant, and keeping it current as models evolve.
+**Where it works**: This model is a natural fit for compliance-heavy engagements (Chapter 11), custom RAG implementations, and any deployment that requires significant integration with existing client systems. The project fee covers your intensive engineering effort during setup; the retainer covers the long tail of keeping it running, keeping it compliant, and keeping it current as models evolve.
 
 Example engagement:
 - **Phase 1 — Assessment and Architecture** (4-6 weeks): $15,000-25,000. Discovery, data audit, architecture design, compliance gap analysis.
@@ -189,4 +198,4 @@ This means your sales team needs to stop talking about technology and start talk
 
 ---
 
-*Next: [Chapter 11 — Talent and Team Structure](11_talent_team.md)*
+*Next: [Chapter 13 — Talent and the CEE Market](13_talent_cee_market.md)*

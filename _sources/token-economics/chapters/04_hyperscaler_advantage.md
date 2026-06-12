@@ -1,14 +1,23 @@
 # Chapter 4: Why Hyperscalers Win on Price
 
-In Chapter 3, we ran the numbers on self-hosting versus API access. The result was not close. Even under generous assumptions — cheap CEE electricity, aggressive hardware negotiation, high utilization — the cost-per-token gap between your on-premises setup and a hyperscaler API call ranged from 5x to 15x, depending on model class and workload profile.
+> **At a glance**
+>
+> - The hyperscalers' price advantage is structural, not temporary. Five factors compound: custom silicon (no NVIDIA margin), 85% vs 35% utilization, model-specific engineering, scale amortization, and strategic underpricing.
+> - Cheaper CEE labor, lower margins, or better open-source models cannot close the gap — it is rooted in silicon and scale.
+> - Current API prices are land-grab prices, subsidized by billions in strategic investment. They will stabilize at hyperscaler cost structures, not yours.
+> - None of this matters for clients who cannot use external APIs. There you compete against the client's internal IT team — a competition you can win, at managed-services margins.
+>
+> **The number to remember:** 10-30x — the realistic all-in, quality-matched cost advantage of the largest providers over your self-hosted stack.
+
+In Chapter 3, we ran the numbers on self-hosting versus API access. The headline finding needs careful reading. Yes, a self-hosted 20B model at high utilisation can undercut the *price* of a mid-tier API at 250+ users — but that is a small model measured against the price tag of a more capable one. Compare like for like — your cost per token against the API price for *equivalent model quality* — and the gap ranges from 5x to 15x against you, at every scale, under generous assumptions. The crossovers in Chapter 3 exist only because a smaller model is sometimes good enough for the workload; they never come from out-operating the hyperscalers.
 
 Many readers will look at those numbers and think: *this is temporary.* Prices will come down. Open-source models will catch up. We will optimize. And some of that is true — prices are dropping, open models are improving, and there are real optimizations to make.
 
-But the core pricing gap is structural. It is not a market inefficiency waiting to be corrected. It is the result of at least five compounding advantages that hyperscalers have and you do not. Understanding these advantages is not defeatist — it is the foundation of every viable strategy we discuss in Chapters 5 through 7.
+But the core pricing gap is structural. It is not a market inefficiency waiting to be corrected. It is the result of at least five compounding advantages that hyperscalers have and you do not. Understanding these advantages is not defeatist — it is the foundation of every viable strategy we discuss in Chapters 5 through 8.
 
 ## Custom Silicon: The Single Biggest Factor
 
-When you run inference on NVIDIA H100s, you are not just paying for silicon. You are paying for NVIDIA's gross margins, which have consistently exceeded 75% since the AI boom began. For every dollar you spend on GPU hardware, roughly 75 cents is NVIDIA's profit. That profit margin is baked into every self-hosted token you produce.
+When you run inference on NVIDIA H100s, you are not just paying for silicon. You are paying for NVIDIA's gross margins, which have consistently exceeded 75% since the AI boom began. For every dollar you spend on the GPU itself, roughly 75 cents is NVIDIA's gross profit — margin over manufacturing cost. That margin is baked into every self-hosted token you produce.
 
 Google does not pay that margin. Its TPU (Tensor Processing Unit) chips are designed in-house, fabricated at cost through TSMC, and deployed exclusively in Google data centers. There is no external vendor extracting a 75% margin from the silicon. The same logic applies to Amazon's Trainium and Inferentia chips and to Microsoft's Maia accelerator, which entered production in late 2025.
 
@@ -80,11 +89,13 @@ These prices are not the floor. But they are also not sustainable reflections of
 
 Cutting through the strategic pricing and working from hardware costs, energy, and engineering estimates, here is what frontier inference likely costs the major providers on their optimized infrastructure:
 
-**Frontier models** (GPT-4o, Claude Sonnet, Gemini Pro) — actual provider cost is probably **$1-3 per million output tokens** on fully optimized custom silicon with high utilization. They sell at $2.50-15.00, meaning margins range from thin to healthy depending on the model and provider.
+**Frontier models** (GPT-4.1, Claude Sonnet, Gemini Pro) — actual provider cost is probably **$1-3 per million output tokens** on fully optimized custom silicon with high utilization. They sell at $2.00-15.00, meaning margins range from thin to healthy depending on the model and provider.
 
 **Small/fast models** (GPT-4o-mini, Gemini Flash, Claude Haiku) — actual provider cost is probably **$0.05-0.20 per million tokens** at hyperscaler scale. They sell at $0.10-0.60, meaning some of these are genuinely near-cost or below-cost offerings.
 
-Now compare those numbers to what self-hosting costs. From Chapter 3, a well-run on-premises deployment of a 70B open-source model lands at roughly **$8-15 per million output tokens** when you honestly account for hardware depreciation, energy, operations, and realistic utilization.
+Now compare those numbers to what self-hosting costs. A well-run on-premises deployment of a **70B-class** open-source model — the size you need to even approach frontier quality — lands at roughly **$8-15 per million output tokens** at realistic enterprise utilization (30-40%), once you honestly account for hardware depreciation, energy, and operations.
+
+To reconcile this with Chapter 3: the owned 20B deployment at 1,000 users worked out to roughly $2 per million output tokens — much better, but that is a smaller model at favourable utilisation, and its quality-matched API competitor is the budget tier selling at $0.40-0.60 per million output. At every quality-matched point, the API equivalent undercuts your self-hosted cost.
 
 You are not competing with the API price. You are not even competing with the provider's actual cost. You are operating in a fundamentally different cost regime.
 
@@ -100,7 +111,7 @@ These advantages do not merely add up — they compound. Consider the full chain
 | Scale amortization | 2-5x |
 | **Combined theoretical advantage** | **36-300x** |
 
-The real-world gap is smaller than the theoretical maximum because these factors overlap and interact. But a 10-30x all-in cost advantage is realistic for the largest providers. Even a conservative 5-10x gap is devastating if you are trying to compete on price.
+The real-world gap is smaller than the theoretical maximum because these factors overlap and interact — utilisation and scale amortisation are partly the same advantage counted twice, and Chapter 3's per-user figures already bake the utilisation penalty into your side of the ledger. But a 10-30x all-in cost advantage is realistic for the largest providers. Even a conservative 5-10x gap is devastating if you are trying to compete on price.
 
 ## When the Hyperscaler Advantage Does Not Matter
 
@@ -132,7 +143,7 @@ This gap cannot be closed by:
 - **Better open-source models.** The model quality gap is narrowing. The *infrastructure efficiency* gap is not.
 - **Waiting for prices to stabilize.** Prices will stabilize eventually. They will stabilize at a level that reflects hyperscaler cost structures, not yours.
 
-For this client segment, competing on infrastructure price is not viable. But this is only part of the story. The next three chapters explore business models that work across both client segments: the privacy proxy for cloud-comfortable clients with compliance concerns (Chapter 5), local deployment on employee devices (Chapter 6), and testing, security, and agentic infrastructure services (Chapter 7). For on-prem-required clients, the infrastructure business remains viable — and the services in Chapters 5-7 add margin on top.
+For this client segment, competing on infrastructure price is not viable. But this is only part of the story. Chapter 5 covers the fastest near-term revenue path — implementing the AI your vendor partners already ship — and the three chapters after it explore business models that work across both client segments: the privacy proxy for cloud-comfortable clients with compliance concerns (Chapter 6), local deployment on employee devices (Chapter 7), and testing, security, and agentic infrastructure services (Chapter 8). For on-prem-required clients, the infrastructure business remains viable — and the services in Chapters 5-8 add margin on top.
 
 > **Key takeaway:** Know which game you are playing. For cloud-comfortable clients, the hyperscaler cost advantage is structural and permanent — compete on expertise, not on compute. For on-prem-required clients, the infrastructure business works because the hyperscaler alternative does not exist for them. Most EU IT services providers will serve both segments, and the winners will be those who price and position correctly for each.
 
@@ -149,4 +160,4 @@ For this client segment, competing on infrastructure price is not viable. But th
 
 ---
 
-*Chapter 5 examines the first viable business model: acting as a privacy and compliance proxy between your clients and the hyperscaler APIs they need but cannot use directly.*
+*Chapter 5 examines the path of least resistance: reselling and implementing the AI features your existing vendor partners are embedding into the products your clients already use.*

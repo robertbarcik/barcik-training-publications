@@ -1,5 +1,14 @@
 # Chapter 14: The "Do Nothing" Scenario and Your 18-Month Roadmap
 
+> **At a glance**
+>
+> - Doing nothing is not neutral. AI becomes the front door to the client relationship — and whoever walks through it first takes the hosting contract with them.
+> - The 18-month roadmap: Foundation (months 1-6: learn, build one internal tool) → First clients (7-12: two or three friendly pilots, APIs not self-hosting) → Scale (13-18: one or two packaged offerings, 5-10 paying clients).
+> - Eight mistakes early movers already made — from competing with OpenAI on price to promising "your own GPT." Skip them.
+> - The reframe that drives everything: you are an expertise company that sometimes operates infrastructure — invest, hire, sell, and price accordingly.
+>
+> **The number to remember:** 18 months — the head start a competitor who begins today has over you if you wait. It cannot be bought back.
+
 ---
 
 ## The Comfortable Default
@@ -82,7 +91,7 @@ The goal is learning with real clients. Revenue is welcome but secondary.
 
 4. **Build your first repeatable delivery template.** Document the discovery process, architecture decisions, implementation steps, and handoff procedure. The second pilot should be faster than the first.
 
-5. **Develop initial pricing models and packaging.** Test different approaches — per-user fees, project-based pricing, token pass-through, or hybrids. Review Chapter 10.
+5. **Develop initial pricing models and packaging.** Test different approaches — per-user fees, project-based pricing, token pass-through, or hybrids. Review Chapter 12.
 
 6. **Hire or contract 1-2 AI-experienced engineers if budget allows.** Even one person who has deployed AI in production dramatically accelerates your team's learning.
 
@@ -96,7 +105,7 @@ The goal is productizing what you have learned.
 
 1. **Double down on what works.** Your pilots will reveal which use cases resonate, which delivery approaches are efficient, and which pricing sticks. Deprioritize what did not work — sunk cost discipline matters.
 
-2. **Develop 1-2 packaged offerings.** Based on the business models explored in Chapters 5-7, build repeatable service packages with clear scope, pricing, and deliverables. Local deployment plus compliance for privacy-sensitive clients, or agentic infrastructure monitoring — whatever your pilots validated.
+2. **Develop 1-2 packaged offerings.** Based on the business models explored in Chapters 5-8, build repeatable service packages with clear scope, pricing, and deliverables. Local deployment plus compliance for privacy-sensitive clients, or agentic infrastructure monitoring — whatever your pilots validated.
 
 3. **Build model-agnostic architecture capabilities.** Ensure your framework can swap models without rebuilding the application. This protects clients from lock-in and protects you from the next model landscape shift.
 
@@ -126,7 +135,7 @@ We return, in this final chapter, to the question posed in Chapter 1:
 
 > **In five years, will your company's primary revenue come from infrastructure you operate, or from expertise you deliver?**
 
-The eleven chapters between that question and this answer have built the case from every angle — the economics of self-hosting, the structural advantages of hyperscalers, the business models that work, the regulatory landscape, the talent market, the pricing dynamics. Here is what all of it points to.
+The twelve chapters between that question and this answer have built the case from every angle — the economics of self-hosting, the structural advantages of hyperscalers, the business models that work, the regulatory landscape, the talent market, the pricing dynamics. Here is what all of it points to.
 
 The infrastructure margin in generative AI is being compressed to near zero for anyone who is not a hyperscaler. The GPU is becoming a commodity input, not the product. The companies that try to compete on compute will find themselves in an unwinnable race against providers with trillion-dollar capital bases and global-scale infrastructure.
 

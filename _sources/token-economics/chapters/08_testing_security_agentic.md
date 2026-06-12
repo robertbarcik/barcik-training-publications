@@ -1,5 +1,14 @@
 # Chapter 8: Business Model: Testing, Security, and Agentic Infrastructure
 
+> **At a glance**
+>
+> - Three service lines around the model, not in it: testing and validation (highest margin, scarcest talent), GenAI security (extends your security practice), and agentic infrastructure (fastest to revenue).
+> - The EU AI Act makes testing demand mandatory: conformity assessments at $20-50K per system plus $3-10K monthly monitoring — recurring by law.
+> - The model is just an API call. MCP servers, RAG pipelines, tool integrations, and guardrails are integration work you have done for decades, in a new protocol.
+> - Sequence matters: start with agentic infrastructure, build testing and security expertise in parallel, let multi-model management emerge from experience.
+>
+> **The number to remember:** 3-6 months — for your existing integration engineers to reach their first paying agentic engagement.
+
 The previous two chapters examined business models built around a single core capability — the privacy proxy in Chapter 6, local model deployment in Chapter 7. This chapter covers three related opportunities that share an important characteristic: they are emerging as distinct service categories that enterprises will need but cannot easily build internally.
 
 Testing and validation, GenAI-specific security, and agentic infrastructure each represent high-margin work for providers who invest in the right skills early. They span a wide range of difficulty, time to revenue, and alignment with existing IT services capabilities. The common thread is that none are about running models. They are about everything that surrounds the model — the evaluation, the protection, and the plumbing that makes AI systems work in production.
@@ -75,7 +84,7 @@ Of the three opportunities, agentic infrastructure is the most accessible for IT
 
 ### The Shift to Agentic AI
 
-Enterprise GenAI is moving beyond simple prompt-response interactions toward tool use, multi-step workflows, autonomous agents, and orchestration layers. The model itself — Claude, GPT-4o, Gemini, or open-source — is just one component. Increasingly, it is the least differentiated component.
+Enterprise GenAI is moving beyond simple prompt-response interactions toward tool use, multi-step workflows, autonomous agents, and orchestration layers. The model itself — Claude, GPT-4.1, Gemini, or open-source — is just one component. Increasingly, it is the least differentiated component.
 
 The value is in everything around the model:
 
@@ -113,7 +122,7 @@ The ongoing management is where recurring revenue lives. RAG pipelines need tuni
 
 No serious enterprise will run a single model for all use cases. The emerging pattern:
 
-- **Frontier API models** (Claude, GPT-4o, Gemini) for complex reasoning and customer-facing interactions
+- **Frontier API models** (Claude, GPT-4.1, Gemini) for complex reasoning and customer-facing interactions
 - **Smaller API models** (Claude Haiku, GPT-4o mini) for high-volume, lower-complexity tasks
 - **Locally deployed open-source models** for sensitive data that cannot leave the organization
 - **Fine-tuned models** for domain-specific tasks — medical terminology, legal analysis, industry classification

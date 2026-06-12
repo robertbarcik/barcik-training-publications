@@ -1,5 +1,14 @@
 # Chapter 5: The Vendor Ecosystem Play
 
+> **At a glance**
+>
+> - The fastest near-term AI revenue is unglamorous: implementing the AI your vendor partners already ship — Microsoft Copilot, SAP Joule, ServiceNow Now Assist.
+> - License resale margins are modest (~20%). The services around the license — assessment, pilot, rollout, optimization — are four to ten times larger, at 50-70% margins.
+> - 95% of enterprise AI pilots deliver no measurable ROI (MIT, 2025). That failure rate is your market: you sell the bridge from "we turned it on" to "it changed how we work."
+> - This is the lowest-risk, least-differentiated play. Use it as your entry point and cash engine — not your destination.
+>
+> **The number to remember:** 4-10x — services revenue versus license margin on the same Copilot deployment.
+
 Chapters 2 through 4 delivered a clear message: on raw compute economics, the hyperscalers win. For cloud-comfortable clients, competing on infrastructure price is a losing proposition. For on-prem-required clients, the managed infrastructure business works, but it serves a specific segment.
 
 So where does the broadest, fastest near-term AI revenue come from?
@@ -25,7 +34,7 @@ Microsoft has made the most aggressive push, and for most EU IT services provide
 | Business (month-to-month) | EUR 25.20/user/month |
 | Enterprise | EUR 30/user/month |
 
-Adoption has been significant but uneven. 70% of Fortune 500 companies have adopted Copilot for Microsoft 365, though "adopted" here often means pilot programs or phased departmental rollouts rather than wall-to-wall deployment. The UK government ran a pilot with 20,000 civil servants and reported an average of 26 minutes saved per employee per day — a number that, if sustained at scale, represents a compelling ROI story. PwC has deployed Copilot to over 230,000 users across more than 100 countries, making it one of the largest enterprise AI rollouts to date.
+Adoption has been significant but uneven. Microsoft reports that 70% of Fortune 500 companies have adopted Copilot for Microsoft 365, though "adopted" here often means pilot programs or phased departmental rollouts rather than wall-to-wall deployment. The UK government's cross-departmental trial with 20,000 civil servants (GDS, 2024-25) reported an average of 26 minutes saved per employee per day — a number that, if sustained at scale, represents a compelling ROI story. PwC has deployed Copilot to over 230,000 users across more than 100 countries, making it one of the largest enterprise AI rollouts to date.
 
 For partners, the economics improved materially in early 2026 when Microsoft increased partner incentives by approximately 50%. Investment funds now cover up to 20% of engagement costs for consultancy, planning, adoption, rollout, and education activities. Microsoft also introduced the Copilot certification (AB-900) and new specialization tracks, signalling that they want a certified partner ecosystem driving adoption, not just license sales.
 
@@ -106,15 +115,15 @@ Before you build your entire AI practice around vendor-embedded AI, you need to 
 
 **You are not building proprietary capability.** Every implementation methodology you develop, every training program you create, every adoption framework you design — your competitors are building the same things. There is nothing about a Copilot deployment at a 500-person company in Munich that cannot be replicated by another Microsoft partner in Munich. The differentiation is in execution quality and client relationships, not in proprietary technology.
 
-**The wrapper economy is struggling.** Across the broader AI market, 95% of businesses built as thin wrappers around someone else's AI capability are struggling to sustain revenue. The vendor ecosystem play is a higher-quality version of this — you are wrapping established enterprise products, not raw APIs — but the underlying dynamic is the same: you are renting someone else's capability and adding a services layer.
+**The wrapper economy is struggling.** Across the broader AI market, businesses built as thin wrappers around someone else's AI capability have struggled to sustain revenue and defend margins. The vendor ecosystem play is a higher-quality version of this — you are wrapping established enterprise products, not raw APIs — but the underlying dynamic is the same: you are renting someone else's capability and adding a services layer.
 
-**Clients increasingly want your brand, not the vendor's.** White-label demand is growing — 68% of enterprise AI inquiries now request provider-branded solutions rather than visibly resold vendor products. Clients want "your AI-powered analytics platform," not "we will help you set up Copilot." This tension between what the vendor ecosystem offers (branded vendor AI) and what clients want (your differentiated solution) will only intensify.
+**Clients increasingly want your brand, not the vendor's.** White-label demand is growing — clients increasingly ask for provider-branded solutions rather than visibly resold vendor products. Clients want "your AI-powered analytics platform," not "we will help you set up Copilot." This tension between what the vendor ecosystem offers (branded vendor AI) and what clients want (your differentiated solution) will only intensify.
 
 ## The Real Opportunity: Making Adoption Actually Work
 
 Here is the counterargument, and it is a strong one.
 
-Ninety-five percent of enterprise AI pilots fail to deliver measurable ROI. Not because the technology does not work, but because organizations cannot bridge the gap between "we turned it on" and "it changed how we work." That gap is your entire business opportunity.
+MIT's NANDA initiative studied 300 enterprise GenAI deployments and concluded that 95% of enterprise AI pilots deliver no measurable P&L impact (*The GenAI Divide: State of AI in Business*, 2025). Not because the technology does not work — the study points squarely at flawed integration and a "learning gap" — but because organizations cannot bridge the distance between "we turned it on" and "it changed how we work." That gap is your entire business opportunity.
 
 The analyst data reinforces this. Gartner projects that 40% of enterprise applications will include task-specific AI agents by the end of 2026, up from less than 5% at the start of 2025. That is an extraordinary adoption curve — and Forrester estimates that three out of four firms attempting advanced agentic architectures independently will fail.
 
@@ -130,7 +139,7 @@ This means structured adoption programs:
 
 There is also a compliance dimension that connects directly to Chapter 11 of this booklet. Every vendor AI deployment in the EU needs an AI Act compliance overlay. Which Copilot features constitute "AI systems" under the Act? What transparency obligations apply when SAP Joule generates procurement recommendations? Who is responsible for bias in ServiceNow's AI-generated incident categorization? These questions do not have default answers in the vendor documentation, and your clients need help navigating them.
 
-> **Key takeaway:** 95% of AI pilots fail to deliver ROI. That failure rate is your market. The providers who can turn vendor AI products into measurable business outcomes — not just activated licenses — will command premium services fees regardless of what happens to license margins.
+> **Key takeaway:** 95% of AI pilots fail to deliver measurable ROI (MIT, 2025). That failure rate is your market. The providers who can turn vendor AI products into measurable business outcomes — not just activated licenses — will command premium services fees regardless of what happens to license margins.
 
 ## How to Position This
 
@@ -175,6 +184,8 @@ But if it is your only move three years from now, you have a problem. The adopti
 > - **Adoption statistics** (70% of Fortune 500, PwC 230,000-user rollout, UK government 26-minutes-saved pilot) — these become dated references within a year as new case studies replace them.
 >
 > The structural argument — licenses are the anchor, services are the profit, bundle or be commoditised — is durable regardless of price moves.
+
+> **Sources** · Fortune 500 Copilot adoption: Microsoft-reported. UK civil-servant trial: UK Government Digital Service, *Microsoft 365 Copilot Experiment: Cross-Government Findings Report* (2025). Pilot-failure rate: MIT NANDA, *The GenAI Divide: State of AI in Business* (2025). Agentic-application and architecture-failure projections: Gartner and Forrester analyst forecasts (2025).
 
 ---
 

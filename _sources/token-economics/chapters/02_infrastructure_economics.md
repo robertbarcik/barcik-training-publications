@@ -1,5 +1,14 @@
 # Chapter 2: How Large Language Models Actually Run
 
+> **At a glance**
+>
+> - Running an LLM is a sizing problem you already know — just with VRAM instead of RAM, and tokens per second instead of connections.
+> - Model weights are the floor of your memory budget. The KV cache — per-user conversation state — is what grows with concurrent users, and it often rivals the weights themselves.
+> - Per-user speed has a hard ceiling: memory bandwidth divided by model size. Bandwidth, not compute, is the bottleneck.
+> - The hardware consequence: a 20B model serves 100 users for under $80,000; a 120B model needs $600,000+. Model selection is an infrastructure decision.
+>
+> **The number to remember:** 30-50 tokens per second per user — the interactive-experience target that all capacity planning is sized around.
+
 You already know how to size a database server. You know that a PostgreSQL instance handling 500 concurrent connections needs a certain amount of RAM for shared buffers, work memory, and connection overhead. You can estimate that a 2TB database with heavy read traffic needs specific IOPS and a certain number of CPU cores.
 
 Running a large language model is the same kind of engineering problem — just with different hardware. The bottleneck moves from CPU and RAM to GPUs and VRAM, the workload shifts from disk I/O to matrix multiplication, and the scaling unit changes from "connections" to "tokens per second." But the thinking process is identical: understand the resource demands, match them to hardware, and plan for concurrent users.
@@ -183,7 +192,7 @@ Having the right GPUs is necessary but not sufficient. The software layer that s
 
 **llama.cpp** takes a different approach — it is optimized for running quantized models on consumer hardware, including CPU-only inference. Performance is lower than GPU-native frameworks, but it runs anywhere and is remarkably efficient for its weight class.
 
-**MLX** is Apple's framework for running models on Apple Silicon. If your clients have fleets of M2/M3/M4 MacBooks or Mac Studios, MLX enables local inference using the unified memory architecture. A Mac Studio with 192 GB of unified memory can run a 70B model — something we will explore in Chapter 6.
+**MLX** is Apple's framework for running models on Apple Silicon. If your clients have fleets of M2/M3/M4 MacBooks or Mac Studios, MLX enables local inference using the unified memory architecture. A Mac Studio with 192 GB of unified memory can run a 70B model — something we will explore in Chapter 7.
 
 ### Three Techniques That Matter
 

@@ -1,5 +1,14 @@
 # Chapter 1: The GenAI Moment for IT Services Providers
 
+> **At a glance**
+>
+> - For twenty years, the business was operating infrastructure between vendor and client. GenAI breaks that for half the market: the vendor is now cheaper than the middleman.
+> - Two client realities. Cloud-comfortable clients can buy AI from hyperscalers 5-10x cheaper than you can serve it. On-prem-required clients still need exactly what you have always sold: managed infrastructure.
+> - The questions clients ask now — which model, how to keep data private, how to integrate, how to evaluate quality, how to comply — are expertise questions, not hosting questions.
+> - The five-year question: will your primary revenue come from infrastructure you operate, or expertise you deliver?
+>
+> **The number to remember:** 5-10x — the API providers' price advantage over your self-hosting, for clients who are free to choose.
+
 ---
 
 ## A Business That Made Perfect Sense
@@ -65,7 +74,7 @@ For cloud-comfortable clients, this confidence is misplaced. GenAI is not primar
 
 For on-prem-required clients, however, the adaptation instinct is actually correct. These clients still need someone to procure GPU hardware, deploy models, optimize inference, handle updates, and monitor production systems. This is operational expertise wrapped around infrastructure — exactly the service you have been selling for decades. The technology changes (GPUs instead of CPUs, vLLM instead of Apache), but the relationship is the same: you operate complex infrastructure so the client does not have to.
 
-The challenge is that even for on-prem clients, the skill requirements have shifted. Managing GPU clusters and ML inference pipelines is different from managing virtual machines and databases. We cover this transition in detail in Chapter 11.
+The challenge is that even for on-prem clients, the skill requirements have shifted. Managing GPU clusters and ML inference pipelines is different from managing virtual machines and databases. We cover this transition in detail in Chapter 13.
 
 ### What the client actually needs now
 
@@ -134,4 +143,4 @@ Throughout, we use real numbers. The pricing data referenced in this booklet is 
 
 ---
 
-*Next: [Chapter 2 — How Large Language Models Actually Run](02_how_llms_run.md)*
+*Next: [Chapter 2 — How Large Language Models Actually Run](02_infrastructure_economics.md)*

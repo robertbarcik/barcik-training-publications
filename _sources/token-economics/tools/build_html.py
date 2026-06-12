@@ -327,6 +327,59 @@ blockquote p:last-child {
     margin-bottom: 0;
 }
 
+/* At a glance — navy chapter-opening panel with presenter talking points */
+.at-a-glance {
+    border: 1px solid rgba(30, 58, 95, 0.18);
+    border-left: 4px solid var(--navy);
+    background: linear-gradient(180deg, rgba(30, 58, 95, 0.05), rgba(30, 58, 95, 0.02));
+    padding: 1.1rem 1.5rem;
+    margin: 0 0 2.2rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.97rem;
+}
+
+.at-a-glance > p:first-child {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+}
+
+.at-a-glance ul {
+    margin-top: 0.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.at-a-glance li {
+    margin-bottom: 0.45rem;
+}
+
+.at-a-glance p:last-child {
+    margin-bottom: 0;
+}
+
+.at-a-glance p:last-child strong {
+    color: var(--navy);
+}
+
+/* Table captions — numbered labels above tables */
+.table-caption {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 1.8rem 0 0 0;
+}
+
+.table-caption + table {
+    margin-top: 0.5rem;
+}
+
 /* Horizontal rules (chapter dividers) */
 hr {
     border: none;
@@ -476,13 +529,45 @@ def transform_freshness(html):
     )
 
 
+# At a glance: transform blockquotes whose first strong element is
+# "At a glance" into a navy chapter-opening panel (presenter talking points).
+ATAGLANCE_RE = re.compile(
+    r'<blockquote>\s*<p><strong>At a glance</strong>(.*?)</blockquote>',
+    re.DOTALL,
+)
+
+
+def transform_at_a_glance(html):
+    return ATAGLANCE_RE.sub(
+        lambda m: f'<aside class="at-a-glance"><p><strong>At a glance</strong>{m.group(1)}</aside>',
+        html,
+    )
+
+
+# Table captions: an italic paragraph "Table N.M — Title" becomes a styled
+# caption label (rendered above the table it precedes in the markdown).
+TABLE_CAPTION_RE = re.compile(
+    r'<p><em>(Table \d+\.\d+[^<]*)</em></p>',
+)
+
+
+def transform_table_captions(html):
+    return TABLE_CAPTION_RE.sub(
+        lambda m: f'<p class="table-caption">{m.group(1)}</p>',
+        html,
+    )
+
+
 def md_to_html(text):
     html = markdown.markdown(
         text,
         extensions=["tables", "fenced_code", "smarty"],
         output_format="html5"
     )
-    return transform_freshness(html)
+    html = transform_freshness(html)
+    html = transform_at_a_glance(html)
+    html = transform_table_captions(html)
+    return html
 
 
 def build():
@@ -528,6 +613,15 @@ def build():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Token Economics — A Strategic Guide for EU IT Services Providers</title>
+    <meta name="description" content="A strategic guide for EU IT services providers navigating GenAI: self-hosting vs APIs, business model pivots, EU AI Act compliance, and an 18-month roadmap.">
+    <link rel="canonical" href="https://publications.barcik.training/token-economics/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Token Economics — A Strategic Guide for EU IT Services Providers">
+    <meta property="og:description" content="A strategic guide for EU IT services providers navigating GenAI: self-hosting vs APIs, business model pivots, EU AI Act compliance, and an 18-month roadmap.">
+    <meta property="og:url" content="https://publications.barcik.training/token-economics/">
+    <meta property="og:image" content="https://publications.barcik.training/assets/og-card.png">
+    <meta name="twitter:card" content="summary_large_image">
     <style>{CSS}</style>
 </head>
 <body>

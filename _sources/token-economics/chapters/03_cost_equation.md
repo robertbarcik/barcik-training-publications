@@ -1,14 +1,27 @@
 # Chapter 3: The Cost Equation — API, Rental, and On-Prem Economics at Every Scale
 
-This is the chapter where we stop talking in abstractions and start talking in euros. If you take away one thing from this booklet, it should be the numbers on these pages. They will either confirm your strategic direction or force you to change it.
+> **At a glance**
+>
+> - There are three ways to run a production AI workload — API per-token, rented GPUs, owned hardware — and their economics are genuinely different. Every table in this chapter is tagged with its mode.
+> - API cost is linear: $5.40 (budget tier) to $180 (frontier tier) per user per month, at any scale. Self-hosted cost per user falls steeply with scale.
+> - Owned hardware beats rental roughly 3x on the compute line. Against mid-tier API prices, an owned 20B deployment crosses over at roughly 250-350 users — but only where the smaller model is genuinely good enough for the workload.
+> - For on-prem-required clients, the comparison flips entirely: your managed service against the client's DIY cost of $125-204 per user per month. That is traditional managed-services economics, at 40-55% margins.
+>
+> **The number to remember:** $5.40 — the budget-tier API cost per user per month. Every self-hosted business case must answer to it.
 
-Before we run the numbers, we need to be precise about what we are comparing. There are three distinct ways to run a production AI workload, and the economics of each are genuinely different. The previous edition of this chapter muddled two of them under a single "self-hosting" label; this one separates them. We will then walk through the full cost of each mode at four scales (10, 100, 500, and 1,000 users), compare them against each other and against commercial APIs, and — critically — show that for on-premises-required clients the comparison that matters is different again: your managed service versus the client doing it themselves.
+This is the chapter where we stop talking in abstractions and start talking in money. If you take away one thing from this booklet, it should be the numbers on these pages. They will either confirm your strategic direction or force you to change it.
+
+Before we run the numbers, we need to be precise about what we are comparing. There are three distinct ways to run a production AI workload, and the economics of each are genuinely different. We will walk through the full cost of each mode at four scales (10, 100, 500, and 1,000 users), compare them against each other and against commercial APIs, and — critically — show that for on-premises-required clients the comparison that matters is different again: your managed service versus the client doing it themselves.
+
+A note on currency: API prices, GPU hardware, and rental rates in this chapter are quoted in USD, because that is how the vendors quote them. Salaries, license fees, and budgets elsewhere in the booklet are in EUR, because that is how the EU market quotes them. The convention throughout: each number stays in the currency its market actually uses.
 
 ---
 
 ## The Three Deployment Modes
 
 Every AI workload runs in one of three modes. Pricing, capital structure, and operational burden differ substantially across them.
+
+*Table 3.1 — The three deployment modes*
 
 | Mode | One-line definition | Who owns the GPU | Who runs the model stack |
 |---|---|---|---|
@@ -24,7 +37,7 @@ Every AI workload runs in one of three modes. Pricing, capital structure, and op
 
 A fourth mode — **local/edge inference**, where the model runs on an employee laptop — is the subject of Chapter 7 and has economics of its own. This chapter is about the three above.
 
-When you read a table in this chapter, look at the label. Every cost table below is tagged with one of those three modes. That is the distinction the previous edition was missing.
+When you read a table in this chapter, check the label. Every cost table below is tagged with one of those three modes. Mixing them is how business cases go wrong.
 
 ---
 
@@ -44,9 +57,9 @@ Sample your own clients before committing to any of these tables. The 1M/day bas
 
 ## API Pricing Landscape (April 2026)
 
-Since every mode eventually gets compared against API pricing, we establish that first. Prices are per million tokens — input and output respectively.
+Since every mode eventually gets compared against API pricing, we establish that first. Here is what the four major providers and hosted open-weight models charge, per million tokens, input and output respectively.
 
-### Frontier and Mid-Tier Model Pricing
+*Table 3.2 — API pricing per million tokens, April 2026 (mode: API)*
 
 | Provider | Model | Input (per M tokens) | Output (per M tokens) |
 |---|---|---|---|
@@ -74,9 +87,9 @@ Second, **there is a 50-100x spread** between the cheapest and most expensive mo
 
 Third, **output tokens are 3-5x more expensive than input tokens** across most providers. This matters for your cost modelling: a chatbot that produces long, detailed responses will cost significantly more than one that gives concise answers.
 
-### API Cost at 100 Users — Worked Example
+Now let us turn that pricing into a monthly bill. With our 1M-tokens-per-user-per-day baseline, 100 users generate roughly 3 billion tokens per month. At a 3:1 input-to-output ratio, here is what that costs across model tiers.
 
-With our 1M-tokens-per-user-per-day baseline, 100 users generate roughly 3 billion tokens per month. At a 3:1 input-to-output ratio, here is the monthly cost across model tiers:
+*Table 3.3 — API monthly cost at 100 users, by model tier (mode: API)*
 
 | Model Tier | Blended Rate (per M tokens) | Monthly Cost (3B tokens) | Per User |
 |---|---|---|---|
@@ -95,6 +108,8 @@ Budget-tier usage at $5.40 per user per month is the benchmark every self-hosted
 ## GPU Rental Prices (April 2026)
 
 These are the rates that drive the Rental mode math below. Prices vary significantly by provider, commitment level, and availability.
+
+*Table 3.4 — GPU rental rates, April 2026 (mode: Rental)*
 
 | GPU | Hourly Rate Range | Monthly Estimate (730 hrs) |
 |---|---|---|
@@ -118,53 +133,35 @@ This is the mode many teams think of first when they imagine "running a model ou
 
 A full-precision 120B parameter model (Llama 3.1 405B quantised, Mistral Large, or similar) requires 3-4 nodes of 8xH100 to serve 100 concurrent users, with GPU rental alone running $30,000-$50,000 per month and a realistic all-in cost of $600-$1,000 per user per month once ops, observability, networking, and staff are included. Enterprise AI seats from the hyperscalers list at $20-$30 per user per month for standard tiers and up to $200 at the premium end. The math does not work — you would need a value proposition so compelling that customers pay 3-5x the going rate. For the overwhelming majority of IT services providers, frontier-class self-hosting in rental mode is not a business. We are not dwelling on it because it is a dead end; read on for the mode that does work.
 
-### Rental: 20B Model at Four Scales
+### The Realistic Play: A 20B Model
 
 The realistic play is a smaller, more efficient model — 20B parameters or fewer. Models like Mistral Small, Llama 3.1 8B/70B (quantised), or domain-specific fine-tunes in the 7-20B range deliver strong performance on focused enterprise tasks while running on far less hardware.
 
-#### Rental: 10 Users — Dedicated Per-Customer Deployment
+To see how a rental deployment's cost is actually constructed, here is the full build-up at the 100-user scale — a shared departmental deployment, the most common first serious engagement.
 
-The "private AI appliance" scenario in rental form. One customer, one deployment, full data isolation.
-
-| Component | Monthly Cost |
-|---|---|
-| 1x A6000 or L40S (INT8 quantised) | $2,000 - $3,000 |
-| Ops overhead (monitoring, support, patching) | $500 - $1,000 |
-| **Total** | **$2,500 - $4,000** |
-| **Per user** | **$250 - $400** |
-
-#### Rental: 100 Users — Shared Departmental Deployment
+*Table 3.5 — Rental cost build-up at 100 users, 20B model (mode: Rental)*
 
 | Component | Monthly Cost |
 |---|---|
 | 2x H100 (handling concurrency and throughput) | $5,000 - $8,000 |
-| Ops overhead | $5,000 - $8,000 |
+| Ops overhead (monitoring, support, patching, on-call) | $5,000 - $8,000 |
 | **Total** | **$10,000 - $16,000** |
 | **Per user** | **$100 - $160** |
 
-At 100 users, operations overhead is roughly equal to compute. You need proper monitoring, a deployment pipeline, someone on call, and a process for model updates and security patches. The GPU may run itself, but the system around it does not. A note on the ops line: 100 users typically represents a newly-launched deployment in validation. Per-user ops is higher here than at 500 users because you are still hand-holding. At 500+ users the same ops capability is spread over more seats.
+Notice that at this scale, operations overhead is roughly equal to compute. You need proper monitoring, a deployment pipeline, someone on call, and a process for model updates and security patches. The GPU may run itself, but the system around it does not. And 100 users typically represents a newly-launched deployment in validation — per-user ops is higher here than at larger scales because you are still hand-holding.
 
-#### Rental: 500 Users — Business Unit or Mid-Size Enterprise
+Now the same construction at all four scales. This is the table that shows why scale changes everything.
 
-| Component | Monthly Cost |
-|---|---|
-| 2-3x H100 (with load balancing) | $7,500 - $12,000 |
-| Ops overhead (share of dedicated team) | $3,500 - $6,000 |
-| **Total** | **$11,000 - $18,000** |
-| **Per user** | **$22 - $36** |
+*Table 3.6 — Rental at four scales, 20B model (mode: Rental)*
 
-This is where self-hosting starts to become competitive. Utilisation improves dramatically with more users — 500 users generate enough traffic to keep GPU clusters reasonably busy throughout the business day. The per-user ops cost drops because you are spreading the same monitoring, support, and tooling across more seats.
+| Scale | GPU Rental | Ops Overhead | Total Monthly | Per User |
+|---|---|---|---|---|
+| 10 users (dedicated per-customer appliance) | $2,000 - $3,000 | $500 - $1,000 | $2,500 - $4,000 | $250 - $400 |
+| 100 users (shared departmental) | $5,000 - $8,000 | $5,000 - $8,000 | $10,000 - $16,000 | $100 - $160 |
+| 500 users (business unit / mid-size enterprise) | $7,500 - $12,000 | $3,500 - $6,000 | $11,000 - $18,000 | $22 - $36 |
+| 1,000 users (large enterprise / multi-tenant) | $11,000 - $18,000 | $7,000 - $9,000 | $18,000 - $27,000 | $18 - $27 |
 
-#### Rental: 1,000 Users — Large Enterprise or Multi-Tenant Platform
-
-| Component | Monthly Cost |
-|---|---|
-| 3-4x H100 (high-throughput serving) | $11,000 - $18,000 |
-| Ops overhead (dedicated team) | $7,000 - $9,000 |
-| **Total** | **$18,000 - $27,000** |
-| **Per user** | **$18 - $27** |
-
-At 1,000 users, the economics tilt decisively. You are now in the range where rental of a smaller model can undercut API pricing for mid-tier models — and you retain full data sovereignty. This is the sweet spot for providers who can aggregate demand across multiple clients.
+Read the per-user column from top to bottom: $250-400, then $100-160, then $22-36, then $18-27. The story of self-hosting is in that column. At 10 users — the "private AI appliance" scenario with full data isolation for a single customer — the per-user cost is painful. At 500 users, utilisation improves dramatically: that many users generate enough traffic to keep GPU clusters reasonably busy throughout the business day, and the same monitoring, support, and tooling is spread across more seats. At 1,000 users, the economics tilt decisively — rental of a smaller model starts to undercut API pricing for mid-tier models while retaining full data sovereignty. This is the sweet spot for providers who can aggregate demand across multiple clients.
 
 ### The Utilisation Headwind
 
@@ -176,13 +173,15 @@ Hyperscaler APIs flatten this curve across millions of geographically distribute
 
 ## Mode C — Owned On-Prem Inference
 
-This is the mode that receives shortest treatment in most write-ups and needs the most attention here, because for EU regulated-industry clients it is often the only viable architecture.
+This is the mode that receives the shortest treatment in most write-ups and needs the most attention here, because for EU regulated-industry clients it is often the only viable architecture.
 
 In owned mode, you (or your client) buy the GPU. Capital expenditure up front, then electricity, cooling, networking, colo or data-centre space, and staff. Amortised over a three-year accounting life, the compute line looks very different from rental.
 
 ### The Capex Reality: What the Hardware Actually Costs
 
-From Chapter 2's hardware table, 2026 pricing:
+First, the price tags. From Chapter 2's hardware table, at 2026 pricing:
+
+*Table 3.7 — GPU purchase prices, April 2026 (mode: Owned)*
 
 | GPU | Purchase Price | VRAM | Typical Use |
 |---|---|---|---|
@@ -193,24 +192,11 @@ From Chapter 2's hardware table, 2026 pricing:
 
 A server chassis, NVLink/NVSwitch interconnect, networking, PSU, and rack integration adds roughly 20-30% to the GPU cost per node. A 2xH100 inference node turnkey lands around $75,000-$95,000. Colo (if you are not racking in your own DC) runs $500-$1,500 per month for a single-node footprint including power and cooling.
 
-### Owned: 20B Model at Four Scales
+### Owned: The Same 20B Workload, Priced as Capital
 
-The same model sizing as the rental section, but pricing the hardware as owned capital on a 36-month amortisation. Ops costs are the same as rental — those are people and tooling, not hardware.
+Here is the same 100-user deployment as Table 3.5, but with the hardware owned and amortised over 36 months instead of rented. Ops costs are unchanged — those are people and tooling, not hardware.
 
-#### Owned: 10 Users — The Hardware Appliance
-
-| Component | Cost |
-|---|---|
-| Upfront hardware (server + L40S + rack kit) | $10,000 - $15,000 (one-time) |
-| Monthly amortisation (36 months) | $280 - $420 |
-| Colo / power / cooling (if hosted) | $300 - $600 |
-| Software license + remote support | $500 - $1,000 |
-| **Monthly equivalent** | **$1,100 - $2,000** |
-| **Per user** | **$110 - $200** |
-
-The appliance model shifts the cost structure dramatically. The upfront capital expense is significant, but once amortised the ongoing per-user cost drops below rental. This works best for regulated industries where data must stay on-premises — healthcare, legal, financial services.
-
-#### Owned: 100 Users — Shared Departmental Deployment
+*Table 3.8 — Owned cost build-up at 100 users, 20B model, 36-month amortisation (mode: Owned)*
 
 | Component | Monthly Cost |
 |---|---|
@@ -221,41 +207,32 @@ The appliance model shifts the cost structure dramatically. The upfront capital 
 | **Total** | **$7,900 - $12,500** |
 | **Per user** | **$79 - $125** |
 
-Compare this to rental at the same scale ($10,000-$16,000). The delta is not huge — roughly 20-30% — because ops dominates. But it matters, and the compute line itself is 3x cheaper owned than rented.
+Compare the compute line to rental: $1,700-2,400 owned versus $5,000-8,000 rented for the same two H100s. The compute itself is roughly 3x cheaper when owned. The total delta is smaller — roughly 20-30% — because ops dominates and ops is the same either way. But the gap is real, and it compounds at scale.
 
-#### Owned: 500 Users — Business Unit Deployment
+And the full scale ladder, owned:
 
-| Component | Monthly Cost |
-|---|---|
-| 3x H100 purchased (amortised 36 mo) | $2,500 - $3,600 |
-| Server, networking, rack, spares buffer | $600 - $900 |
-| Colo / power / cooling | $1,200 - $2,200 |
-| Ops overhead (share of dedicated team) | $3,500 - $6,000 |
-| **Total** | **$7,800 - $12,700** |
-| **Per user** | **$16 - $25** |
+*Table 3.9 — Owned at four scales, 20B model, 36-month amortisation (mode: Owned)*
 
-At 500 users, owned is materially cheaper than rental and starts to undercut mid-tier API pricing ($60/user at Haiku / Mistral Medium rates). This is where the owned-hardware case becomes commercially compelling.
+| Scale | GPUs (amortised) | Infra + Colo | Ops / Support | Total Monthly | Per User |
+|---|---|---|---|---|---|
+| 10 users (hardware appliance, L40S-class) | $280 - $420 | $300 - $600 | $500 - $1,000 | $1,100 - $2,000 | $110 - $200 |
+| 100 users (2x H100, shared departmental) | $1,700 - $2,400 | $1,200 - $2,100 | $5,000 - $8,000 | $7,900 - $12,500 | $79 - $125 |
+| 500 users (3x H100, business unit) | $2,500 - $3,600 | $1,800 - $3,100 | $3,500 - $6,000 | $7,800 - $12,700 | $16 - $25 |
+| 1,000 users (4x H100, large enterprise) | $3,300 - $4,800 | $2,600 - $4,400 | $7,000 - $9,000 | $12,900 - $18,200 | $13 - $18 |
 
-#### Owned: 1,000 Users — Large Enterprise or Multi-Tenant Platform
+*The 10-user row includes a software license and remote support line in place of full ops staffing; upfront hardware for the appliance is $10,000-$15,000 one-time.*
 
-| Component | Monthly Cost |
-|---|---|
-| 4x H100 purchased (amortised 36 mo) | $3,300 - $4,800 |
-| Server, networking, rack, spares buffer | $800 - $1,200 |
-| Colo / power / cooling | $1,800 - $3,200 |
-| Ops overhead (dedicated team) | $7,000 - $9,000 |
-| **Total** | **$12,900 - $18,200** |
-| **Per user** | **$13 - $18** |
+The same per-user story as rental, but cheaper at every rung. The 10-user appliance — upfront capital, then low ongoing cost — works best for regulated industries where data must stay on-premises: healthcare, legal, financial services. At 500 users, owned hardware starts to undercut mid-tier API pricing ($60/user at Haiku / Mistral Medium rates); this is where the owned-hardware case becomes commercially compelling. At 1,000 users, owned hardware serving a 20B model lands at $13-18 per user per month — competitive with hosted Llama 70B API pricing and comfortably below anything mid-tier or frontier.
 
-At 1,000 users, owned hardware serving a 20B model lands around $13-18 per user per month — competitive with hosted Llama 70B API pricing and comfortably below anything mid-tier or frontier.
-
-> **Key takeaway:** Owned on-prem is systematically cheaper than rental on the compute line (roughly 3x for long-lived deployments) because renting for 36 months costs as much as buying three of the same GPUs. The savings narrow once ops overhead is included — ops is the same either way — but the owned mode is the right choice whenever you have confidence the workload will persist for the amortisation window.
+> **Key takeaway:** Owned on-prem is systematically cheaper than rental on the compute line (roughly 3x for long-lived deployments) because renting for 36 months costs as much as buying three of the same GPUs. The savings narrow once ops overhead is included — ops is the same either way — but owned is the right choice whenever you have confidence the workload will persist for the amortisation window.
 
 ---
 
-## Rent vs. Own: The Gap the Old Chapter Hid
+## Rent vs. Own: The 3x Compute Gap
 
-Directly comparing the 100-user scenario across modes makes the gap visible:
+Directly comparing the 100-user scenario across modes makes the gap visible.
+
+*Table 3.10 — Rent vs. own at 100 users, 20B model (modes: Rental vs. Owned)*
 
 | Line item | Rental | Owned (36 mo amortised) | Ratio |
 |---|---|---|---|
@@ -301,9 +278,9 @@ The consumer-hardware analog matters for Chapter 7, where the same refresh-and-d
 
 ## The Unified Comparison
 
-The table every IT services provider should have on their wall: the same 20B model workload across all three modes, at all four scales, compared against the three API tiers.
+Now we put everything on one page: the same 20B model workload across all three modes, at all four scales, compared against the three API tiers. This is the table every IT services provider should have on their wall.
 
-### Monthly Total Cost — Three Modes, Four Scales
+*Table 3.11 — Monthly total cost: three modes vs. three API tiers, at four scales (all modes)*
 
 | Scale | API Budget | API Mid | API Frontier | Rental 20B | Owned 20B |
 |---|---|---|---|---|---|
@@ -314,7 +291,9 @@ The table every IT services provider should have on their wall: the same 20B mod
 
 *Budget tier: Gemini Flash-Lite / GPT-4o-mini class (~$0.18-$0.30/M blended). Mid tier: Claude Haiku / Mistral Medium class (~$2.00/M blended). Frontier: Claude Sonnet / GPT-4o class (~$6.00/M blended). Assumes 1M tokens/user/day.*
 
-### Per-User Monthly Cost — Three Modes, Four Scales
+The same data, per user — this is the view that makes the structural difference obvious:
+
+*Table 3.12 — Per-user monthly cost: three modes vs. three API tiers (all modes)*
 
 | Scale | API Budget | API Mid | API Frontier | Rental 20B | Owned 20B |
 |---|---|---|---|---|---|
@@ -323,9 +302,9 @@ The table every IT services provider should have on their wall: the same 20B mod
 | 500 users | $5.40 | $60 | $180 | $22 - $36 | $16 - $25 |
 | 1,000 users | $5.40 | $60 | $180 | $18 - $27 | $13 - $18 |
 
-API pricing is perfectly linear — the per-user cost does not change with scale. Self-hosted costs (both rental and owned) drop dramatically as you add users. The crossover points depend on which API tier you are comparing against and which self-hosted mode.
+API pricing is perfectly linear — the per-user cost does not change with scale. Self-hosted costs (both rental and owned) drop dramatically as you add users. Where the falling self-hosted curve crosses each flat API line is the crossover point — and those crossovers are the strategic heart of this chapter.
 
-### Crossover Points
+*Table 3.13 — Crossover points: where self-hosting a 20B model beats each API tier on price (all modes)*
 
 | Comparison | Crossover Point |
 |---|---|
@@ -340,11 +319,13 @@ API pricing is perfectly linear — the per-user cost does not change with scale
 
 Owning hardware shifts every crossover earlier by a factor of roughly 1.5-2x compared to renting. For a client committed to the workload, this is the difference between self-hosting being viable at 150 users rather than 300.
 
+**Read this table with one critical caveat: it compares token prices, not capabilities.** The rows pitting a self-hosted 20B model against frontier and premium API tiers do not mean a 20B open-weight model *is* Claude Sonnet or Opus — it is not, and your users will notice on complex reasoning, long-document analysis, and demanding coding tasks (Chapter 2's model-fit point, and Chapter 7's quality-gap discussion, apply in full). A crossover is only meaningful where the smaller model is genuinely adequate for the workload. The first two rows are the honest like-for-like comparison — and there, self-hosting never wins on price. Every other row answers a different and more practical question: "if a 20B model can do this job, at what scale does running it ourselves beat paying frontier prices?"
+
 ---
 
 ## What These Numbers Do Not Capture
 
-Before drawing strategic conclusions from the table above, the caveats.
+Before drawing strategic conclusions from the tables above, the caveats.
 
 **Factors favouring APIs:**
 
@@ -390,7 +371,9 @@ This is traditional IT managed-services economics, and the numbers look much mor
 
 ### What It Costs a Client to Do It Themselves
 
-Consider a mid-sized European bank that wants to run a 20B model on-premises for 100 internal users. If the bank builds and manages the infrastructure itself, it needs:
+Consider a mid-sized European bank that wants to run a 20B model on-premises for 100 internal users. If the bank builds and manages the infrastructure itself, here is the bill it faces.
+
+*Table 3.14 — Client DIY cost: 20B model on-prem, 100 users, annual (mode: Owned, client-operated)*
 
 | Cost Component | Annual Cost |
 |---|---|
@@ -406,7 +389,7 @@ Consider a mid-sized European bank that wants to run a 20B model on-premises for
 
 The dominant cost is not hardware — it is people. An ML engineer who can deploy, optimise, and maintain LLM inference infrastructure commands a significant salary in the EU market, and the client needs at least one full-time. Many will need more, especially during the initial setup phase.
 
-Notice the gap with the $79-125 per-user number from the owned-hardware table above. The same hardware, the same model, the same scale — but $79-125 when you (the IT services provider) run it, and $125-204 when the client runs it alone. That gap is your margin opportunity, and it is structural.
+Notice the gap with the $79-125 per-user number from Table 3.8. The same hardware, the same model, the same scale — but $79-125 when you (the IT services provider) run it, and $125-204 when the client runs it alone. That gap is your margin opportunity, and it is structural.
 
 ### What You Can Charge as a Managed Service
 
@@ -419,21 +402,23 @@ As an IT services provider, you have advantages the individual client does not:
 
 These advantages let you deliver the same service at a lower cost than the client can achieve alone — the same economics that made traditional IT managed services profitable.
 
+*Table 3.15 — Managed-service pricing vs. client DIY cost (mode: Owned/Rental, provider-operated)*
+
 | Deployment Scale | Your Cost | You Charge | Client DIY Cost | Your Margin |
 |---|---|---|---|---|
 | 10 users (dedicated) | $2,500 - $4,000/mo | $5,000 - $8,000/mo | $7,000 - $12,000/mo | 40-55% |
-| 100 users (shared infra) | $10,000 - $16,000/mo | $18,000 - $28,000/mo | $12,500 - $20,400/mo | 40-50% |
+| 100 users (shared infra) | $10,000 - $16,000/mo | $14,000 - $22,000/mo | $12,500 - $20,400/mo | 30-45% |
 | 500 users (platform) | $11,000 - $18,000/mo | $22,000 - $35,000/mo | $20,000 - $35,000/mo | 45-55% |
 
-*The "Your Cost" column uses rental-mode pricing from Mode B. If you run owned hardware, your costs drop further (see the Mode C tables) and margins improve accordingly.*
+*The "Your Cost" column uses rental-mode pricing from Table 3.6. If you run owned hardware, your costs drop further (Table 3.9) and margins improve accordingly.*
 
 At 10 users, the economics are especially compelling. A small client cannot justify a full-time ML engineer for 10 users, but they still need someone to manage the infrastructure. Your shared-expertise model gives them enterprise-grade AI ops at a fraction of the cost of doing it themselves.
 
-At 100 users, you price competitively with the client's DIY cost while capturing a healthy margin. The client gets operational reliability, SLAs, and the ability to focus their internal team on using AI rather than running it.
+At 100 users, your price sits in the middle of the client's DIY range — sometimes slightly above it. That is fine, and you should defend it openly: the client paying you avoids the ML hiring risk, gets an SLA instead of a single point of failure, and is live in weeks instead of quarters. What they are buying is not cheaper compute — it is the removal of a capability they would struggle to build and retain. If a procurement team insists on a line-by-line comparison with the DIY figure, anchor on the hiring market for ML engineers, not on the hardware.
 
 At 500+ users, the client starts to have enough scale to justify their own team — but even then, your platform approach (serving multiple clients on shared infrastructure, with isolated data) can remain cost-competitive.
 
-> **Key takeaway:** For on-prem-required clients, your competition is not OpenAI or Google. It is the client's internal IT team. And you beat internal IT teams the same way you always have: through operational specialisation, shared costs across multiple clients, and mature tooling. The margin structure looks like traditional managed services — 40-55% — not the razor-thin margins of trying to compete with hyperscaler API pricing.
+> **Key takeaway:** For on-prem-required clients, your competition is not OpenAI or Google. It is the client's internal IT team. And you beat internal IT teams the same way you always have: through operational specialisation, shared costs across multiple clients, and mature tooling. The margin structure looks like traditional managed services — 40-55% at most scales — not the razor-thin margins of trying to compete with hyperscaler API pricing.
 
 ### The Market Size Question
 
@@ -449,7 +434,9 @@ For a typical EU IT services provider whose client base skews toward regulated i
 
 ### The Combined Picture
 
-The reality for most EU IT services providers is that they will serve both segments simultaneously:
+The reality for most EU IT services providers is that they will serve both segments simultaneously.
+
+*Table 3.16 — The combined picture: roles, revenue models, and margins by client segment*
 
 | Client Segment | Your Role | Revenue Model | Margin |
 |---|---|---|---|
@@ -471,7 +458,7 @@ These numbers lead to four immediate conclusions for how you should think about 
 
 **3. Price on value, not on cost-plus.** If your service provides data sovereignty, compliance assurance, or specialised fine-tuning, price those outcomes directly. A $180/user/month service that keeps patient data on-premises is a different product from a $5.40/user/month API call that sends data to US servers.
 
-**4. Consider hybrid architectures.** Route sensitive queries through your owned infrastructure and non-sensitive queries through cheap APIs. This keeps your GPU utilisation high on the work that actually requires privacy, while keeping costs down on everything else. We explore this model in detail in Chapter 5, and Chapter 7 extends the logic further to local-on-device inference — which, for workloads that fit, produces compute costs of literally zero.
+**4. Consider hybrid architectures.** Route sensitive queries through your owned infrastructure and non-sensitive queries through cheap APIs. This keeps your GPU utilisation high on the work that actually requires privacy, while keeping costs down on everything else. We explore this model in detail in Chapter 6, and Chapter 7 extends the logic further to local-on-device inference — which, for workloads that fit, produces compute costs of literally zero.
 
 The numbers tell two stories. For cloud-comfortable clients, the strategy is not about running models cheaper than the hyperscalers — it is about delivering expertise, integration, and compliance on top of their APIs. For on-prem-required clients, you are still in the infrastructure business, and the economics work in your favour — as long as you price against the right comparison and commit to the amortisation window that makes owned hardware viable.
 

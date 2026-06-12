@@ -1,10 +1,19 @@
 # Chapter 6: Business Model: The Privacy Proxy
 
+> **At a glance**
+>
+> - The model: sit between your client and the AI APIs — strip PII on the way out, re-inject it on the way back, and sell compliance, audit trails, and accountability.
+> - The economics are thin: roughly a 10% premium on API spend, and you need 50+ clients before dedicated staff costs break even.
+> - The model is fragile: every vendor announcement on EU data residency erodes the gap your business depends on.
+> - The verdict: build it as a layer of a broader managed AI and compliance service — never as a standalone product.
+>
+> **The number to remember:** ~$500 per client per month — the gross margin that makes this a feature, not a company.
+
 Chapter 5 described the most accessible path into AI revenue: reselling and implementing the AI features that your existing vendor partners ship. It works, it generates cash flow, and it builds credibility. But it leaves you dependent on the vendor's roadmap, the vendor's pricing, and the vendor's partner program terms.
 
 This chapter and the next two explore more independent business models — ways to build proprietary capability that a vendor cannot take away with a program change. We start with the model that feels most natural to European IT services providers: sitting between your clients and the public AI APIs, acting as a privacy and compliance intermediary.
 
-The pitch is simple. Your client wants to use Claude, GPT-4o, or Gemini. They cannot — or believe they cannot — send their data directly to these APIs because of GDPR obligations, internal data governance policies, or contractual restrictions with their own customers. You build a proxy layer that strips personally identifiable information before it reaches the API, anonymizes sensitive business data, and re-injects the necessary context when the response comes back. The client gets frontier model intelligence. You handle the compliance headache. Everyone sleeps at night.
+The pitch is simple. Your client wants to use Claude, GPT-4.1, or Gemini. They cannot — or believe they cannot — send their data directly to these APIs because of GDPR obligations, internal data governance policies, or contractual restrictions with their own customers. You build a proxy layer that strips personally identifiable information before it reaches the API, anonymizes sensitive business data, and re-injects the necessary context when the response comes back. The client gets frontier model intelligence. You handle the compliance headache. Everyone sleeps at night.
 
 It is an appealing concept. It is also more complicated — and more fragile — than it first appears.
 
@@ -42,7 +51,9 @@ The proxy infrastructure itself is cheap. You are running a stateless processing
 
 ### At Scale
 
-| Number of Clients | Monthly Proxy Margin | Monthly Infrastructure Cost | Net Monthly Margin |
+A note on the accounting before the table: the per-client infrastructure line above is billed to clients at cost, so your gross margin per client is the compliance premium alone. The infrastructure cost column below is your *shared platform* cost — the proxy fleet, PII-detection tooling, monitoring, and audit storage that serve all clients at once and grow sub-linearly with client count. Client-billed infrastructure fees are assumed to roughly offset raw compute; the platform around it is what you carry.
+
+| Number of Clients | Premium Revenue (10% of API spend) | Your Shared Platform Cost | Net Monthly Margin |
 |---|---|---|---|
 | 10 | $5,000 | $3,000 - $5,000 | $0 - $2,000 |
 | 25 | $12,500 | $5,000 - $8,000 | $4,500 - $7,500 |

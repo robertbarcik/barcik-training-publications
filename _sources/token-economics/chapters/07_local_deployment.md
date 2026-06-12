@@ -1,5 +1,14 @@
 # Chapter 7: Business Model: Local Deployment on Employee Devices
 
+> **At a glance**
+>
+> - The model runs on the employee's laptop. No token ever leaves the device — the only architecture that can make a zero-data-exfiltration guarantee.
+> - Your infrastructure cost is literally zero: the client owns the hardware, the models are open-source, your fee is margin minus labor. At 500+ users, gross margins reach 77%+.
+> - The quality gap versus frontier models is real today and closing fast — small models improve while every chip vendor races on NPU performance.
+> - The smart deployment is hybrid: local model for the routine 80-90% of tokens, cloud fallback for the demanding peaks.
+>
+> **The number to remember:** $0 — your marginal compute cost per token, forever.
+
 Chapter 6 described the privacy proxy — a model with genuine value but structural fragility. Your business depends on a compliance gap between what AI providers offer natively and what clients require, and that gap is closing. The proxy adds a layer of trust. It does not eliminate the fundamental issue: your client's data still leaves the building.
 
 This chapter describes a model where the data never leaves the device. Not "we promise not to store it." Not "we process it in the EU." Not "we offer zero data retention." The data literally never touches a network interface. The model runs on the employee's laptop, the prompt stays on the laptop, the response is generated on the laptop, and nothing — not a single token — is transmitted anywhere.
@@ -57,7 +66,7 @@ Here is where the economics become genuinely compelling.
 
 Consider a knowledge worker who uses AI heavily — a consultant, analyst, developer, or content creator. Not a casual user asking one question per day, but someone who has integrated AI into their workflow and runs dozens of sessions daily.
 
-| Usage Level | Daily Tokens | API Cost (GPT-4o class) | API Cost (Claude Sonnet class) | Annual API Cost |
+| Usage Level | Daily Tokens | API Cost (GPT-4.1 class) | API Cost (Claude Sonnet class) | Annual API Cost |
 |---|---|---|---|---|
 | Light user | ~100K tokens | $0.30-0.50/day | $0.25-0.45/day | $100-180/year |
 | Moderate user | ~1M tokens | $3-5/day | $2.50-4.50/day | $900-1,800/year |
@@ -112,13 +121,13 @@ If you manage endpoints today — deploy software, push updates, enforce securit
 
 ## The Trajectory Argument
 
-This is the most important section of this chapter, because it addresses the obvious objection: "But local models are not as good as Claude or GPT-4o."
+This is the most important section of this chapter, because it addresses the obvious objection: "But local models are not as good as Claude or GPT-4.1."
 
-That is true today. A quantized 8B model running on a MacBook is noticeably less capable than GPT-4o or Claude Sonnet at complex multi-step reasoning, long-document analysis, nuanced coding tasks, and sophisticated creative writing. The quality gap is real and your clients will notice it.
+That is true today. A quantized 8B model running on a MacBook is noticeably less capable than GPT-4.1 or Claude Sonnet at complex multi-step reasoning, long-document analysis, nuanced coding tasks, and sophisticated creative writing. The quality gap is real and your clients will notice it.
 
 But consider the trajectory.
 
-The best 8-13B models available in early 2026 — Llama 3.3 8B, Mistral 7B v0.4, Phi-4, Qwen 2.5 — are already substantially better than GPT-3.5 was when it launched ChatGPT and ignited the entire generative AI revolution. GPT-3.5 was good enough to onboard 100 million users in two months. Today's local models exceed that capability, running entirely on a laptop, with no internet connection required.
+The best 8-13B models available in early 2026 — Llama 3.1 8B, Phi-4, Qwen 2.5, and the current crop of small Mistral models — are already substantially better than GPT-3.5 was when it launched ChatGPT and ignited the entire generative AI revolution. GPT-3.5 was good enough to onboard 100 million users in two months. Today's local models exceed that capability, running entirely on a laptop, with no internet connection required.
 
 And the trajectory is accelerating from both sides: models are getting better at smaller sizes, and hardware is getting more powerful.
 
@@ -146,7 +155,7 @@ The trajectory is encouraging. The present has real limitations. Your sales team
 
 ### Quality Gap Is Noticeable
 
-A user who has experienced Claude Sonnet or GPT-4o will notice the difference when using a local 8B model. Complex multi-step reasoning degrades. Nuanced coding tasks produce more errors. Long-context analysis — the kind where a user pastes a 50-page contract and asks for a summary — may exceed the local model's effective context window or produce less accurate results. Creative writing lacks the polish of frontier models.
+A user who has experienced Claude Sonnet or GPT-4.1 will notice the difference when using a local 8B model. Complex multi-step reasoning degrades. Nuanced coding tasks produce more errors. Long-context analysis — the kind where a user pastes a 50-page contract and asks for a summary — may exceed the local model's effective context window or produce less accurate results. Creative writing lacks the polish of frontier models.
 
 This is not a subtle difference. Users will compare, and the comparison will not always favor the local model. Your positioning must be honest about what the local model excels at (fast responses, data privacy, offline availability, unlimited usage) and where users should expect to use a cloud model for demanding tasks.
 
@@ -231,7 +240,7 @@ This is the good news chapter. Of all the business model pivots available to EU 
 >
 > Local deployment is where the model/hardware trajectory moves fastest. Re-verify:
 >
-> - **Named open-source models** (Llama 3.3 8B, Mistral 7B v0.4, Phi-4, Qwen 2.5) — new releases ship roughly quarterly and supersede prior generations. The specific versions quoted here will be outdated within 3-4 months; the *class* of capability (competitive 8-13B models running on a laptop) is the durable claim.
+> - **Named open-source models** (Llama 3.1 8B, Phi-4, Qwen 2.5, small Mistral models) — new releases ship roughly quarterly and supersede prior generations. The specific versions quoted here will be outdated within 3-4 months; the *class* of capability (competitive 8-13B models running on a laptop) is the durable claim.
 > - **Hardware viability thresholds** — the "24GB MacBook runs an 8-13B model" boundary will expand as quantisation improves and unified memory grows. Expect 36-48GB machines to become mainstream corporate specs and 30-40B models to become viable on them within 24 months, not the 2-3 years cited.
 > - **Daily heavy-usage API costs** ($9,000-$18,000/year for power users) track API pricing, which is trending down. The break-even calculation for local hardware stays favourable but the specific numbers move.
 > - **Runtime state-of-the-art** — llama.cpp, MLX, Ollama, LM Studio, and commercial equivalents evolve continuously. Re-evaluate the stack before committing to tooling choices.

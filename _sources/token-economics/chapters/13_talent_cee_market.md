@@ -1,5 +1,14 @@
 # Chapter 13: Talent and the CEE Market
 
+> **At a glance**
+>
+> - Five roles make a GenAI practice: solutions architect, ML engineer, integration engineer, AI ops, prompt engineer. Only the ML engineer usually requires an external hire.
+> - A senior developer with six months of focused upskilling covers 70-80% of the work in typical early AI engagements.
+> - The CEE salary advantage (EUR 45-80K vs EUR 90-150K in Western hubs) is real but compressing — remote Western employers are bidding it away.
+> - Your ability to hire AI talent tracks the visibility of your AI work. Ship something real, then talk about it publicly.
+>
+> **The number to remember:** 12-18 months — the realistic time to build AI capability. Client decisions are happening now; start before you are ready.
+
 Everything we have discussed so far — the business models, the pricing strategies, the compliance opportunities — depends on one thing: having people who can actually deliver.
 
 This is where many IT services providers in Central and Eastern Europe hit the wall. Not because the strategy is wrong, but because the team that built and maintains traditional infrastructure is not the same team that builds and delivers AI services. The skills overlap is real, but it is incomplete. And the gap between what you have and what you need cannot be closed by sending everyone to a weekend workshop.

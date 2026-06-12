@@ -1,5 +1,14 @@
 # Chapter 10: The Lock-In Power Shift
 
+> **At a glance**
+>
+> - Lock-in used to favor you: the client's environment was complex and you were the one who knew it. With GenAI, lock-in migrates to the model vendors — prompts, tool schemas, evaluation pipelines, fine-tunes.
+> - Your defense is architectural: own the abstraction layer, the integration layer, and the data layer — model-agnostic by design.
+> - Switching capability is the new value proposition: if you can swap Claude for GPT-4.1 for Gemini in days, you hold the negotiating power your client needs.
+> - The goal shifts from passive indispensability (leaving you is painful) to active indispensability (your contribution is visible and measured).
+>
+> **The number to remember:** one afternoon — how long a competent developer needs to integrate an LLM API. Everything you charge for must clear that bar.
+
 Every IT services provider understands lock-in. You may not call it that in client meetings — you say "deep partnership" or "institutional knowledge" — but the mechanism is the same. The more entangled your systems become with the client's operations, the harder it is for them to leave. The harder it is for them to leave, the more predictable your revenue.
 
 This chapter is about what happens when that lock-in migrates away from you and toward the model vendors. It is a shift many providers have not fully reckoned with, because the daily work feels familiar even as the power dynamics underneath are quietly rearranging.
@@ -116,4 +125,4 @@ Active indispensability is harder to build but more durable. It depends on exper
 
 ---
 
-*Next: [Chapter 9 — EU AI Act: Your Compliance Opportunity](09_eu_ai_act.md)*
+*Next: [Chapter 11 — EU AI Act: Your Compliance Opportunity](11_eu_ai_act.md)*
