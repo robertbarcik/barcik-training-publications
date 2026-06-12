@@ -556,6 +556,35 @@ p { margin-bottom: 1rem; }
 .tag-notyet { background: #f1f5f9; color: #475569; }
 .tag-counter { background: #fce7f3; color: #9d174d; }
 
+/* ── Composite cards (synthesis) ── */
+.composite-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin: 14px 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+.composite-card .cc-strip { height: 4px; }
+.composite-card .cc-body { padding: 16px 20px; }
+.composite-card .cc-pair {
+  font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-light); margin-bottom: 2px;
+}
+.composite-card .cc-name {
+  font-size: 1.02rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 10px;
+}
+.composite-card .cc-row { margin-bottom: 8px; font-size: 0.9rem; line-height: 1.65; }
+.composite-card .cc-row:last-child { margin-bottom: 0; }
+.composite-card .cc-row .cc-k {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--accent);
+  display: block; margin-bottom: 1px;
+}
+
 /* ── Hypothesis label strip (Mistral value chain) ── */
 .hypothesis-strip {
   background: #fef3c7;
@@ -1504,13 +1533,73 @@ p { margin-bottom: 1rem; }
 <section class="chapter" id="synthesis">
   <div class="chapter-label">Synthesis</div>
   <h2>How the Currents Interact</h2>
-  <p>The six currents are not independent. They reinforce and contradict each other in specific ways &mdash; and the value of holding them all open at once is mostly in seeing those interactions clearly. Three patterns are worth naming.</p>
+  <p>The six currents are not independent &mdash; and reading them one at a time is the most natural mistake to make with this booklet. People argue about scaling, <em>or</em> the bubble, <em>or</em> sovereignty, one lens at a time. But planning errors rarely live inside a single current; they live in the cross-terms &mdash; the combinations whose consequences are not the sum of their parts. This section names the five combinations most worth holding in your head, each with the trigger pair that signals it and the move it should provoke.</p>
 
-  <p><strong>Reinforcement.</strong> <em>Efficiency Revolution</em> (Current 2) accelerates <em>Sovereignty</em> (Current 4): cheap, frontier-equivalent open-weight inference is what makes EU-onshore deployment a real procurement choice rather than a slogan. <em>Hours and Dollars</em> (6) reinforces <em>From Lab to Production</em> (5): longer autonomy widens the gap between what an agent can do in a demo and what teams can actually deploy reliably, because eval and red-team work scales with task duration. <em>Continued Scaling</em> (1) reinforces <em>Hours and Dollars</em> (6) on the inference side: the capex shift from training to serving makes longer agentic runs cheaper.</p>
+  <div class="author-note">
+    <div class="an-label">The operating rule</div>
+    <p style="margin-bottom:0"><strong>A single trigger fires &rarr; reweight.</strong> Shift attention and budget toward that current; no structural change yet. <strong>A pair fires within the same quarter &rarr; restructure.</strong> Pairs are where strategy actually changes &mdash; that is what the composites below are for.</p>
+  </div>
 
-  <p><strong>Contradiction &mdash; sometimes only apparent.</strong> <em>Continued Scaling</em> (1) and <em>Efficiency Revolution</em> (2) pull capex in opposite directions but resolve via the training-vs-inference split: train-cluster spend gets harder to defend, serving-cluster spend gets easier. <em>Financial Correction</em> (3) and <em>Continued Scaling</em> (1) look opposed but aren&rsquo;t mutually exclusive &mdash; both can be true at once: the technology works, individual products generate real revenue, <em>and</em> the investment timeline doesn&rsquo;t match the revenue timeline. <em>Sovereignty</em> (4) cuts diagonally across (2) and (3): commoditization makes sovereign options viable, while vendor concentration risk is the failure mode that makes them necessary.</p>
+  <p><strong>The basic wiring first.</strong> Efficiency (2) arms Sovereignty (4): cheap frontier-equivalent open-weight is what turns on-shore deployment from slogan into procurement choice. Hours and Dollars (6) leans on From Lab to Production (5): eval and supervision burden scales with task duration. Scaling (1) and Efficiency (2) pull capex in opposite directions but resolve through the training-versus-serving split: train-cluster spend gets harder to defend, serving-cluster spend easier. And Scaling (1) and Correction (3) look like opposites but are not mutually exclusive &mdash; the technology can work, products can earn real revenue, and the investment timeline can still miss the revenue timeline. That&rsquo;s the wiring. The composites are what happens when current actually flows through it.</p>
 
-  <p><strong>The stance.</strong> No current is &ldquo;the answer.&rdquo; The strongest planning position is the one that performs adequately under all six &mdash; not the one that bets everything on whichever current seems most live this quarter. Lock to none; watch triggers in all; let scenarios go stale when their triggers haven&rsquo;t fired in 18 months and replace them with what better describes the world you&rsquo;re actually living in. That discipline is what this booklet exists to make routine.</p>
+  <div class="composite-card">
+    <div class="cc-strip" style="background:linear-gradient(90deg, var(--green) 50%, var(--orange-red) 50%)"></div>
+    <div class="cc-body">
+      <div class="cc-pair">Current 1 &times; Current 3</div>
+      <div class="cc-name">A. The Successful Bubble</div>
+      <div class="cc-row"><span class="cc-k">Watch for</span>The Mythos / Spud generation deploys fully and confirms the capability step &mdash; <em>and</em> a listed AI lab corrects more than 30% within six months of its IPO.</div>
+      <div class="cc-row"><span class="cc-k">The interaction term</span>These two feel mutually exclusive; the dot-com precedent says they co-occur. The internet worked <em>and</em> the funding died. A correction does not pause the capability pipeline that is already paid for: 2024&ndash;25 capex still delivers its 2026&ndash;28 models even if 2027 guidance gets slashed. The composite world is capability arriving into a funding drought &mdash; the last guaranteed wave lands while the next one thins out. You don&rsquo;t get to skip adoption because the market crashed; you get to adopt from survivors, at better prices, while the decoder&rsquo;s forward arrows go dark beyond 2028.</div>
+      <div class="cc-row"><span class="cc-k">First move</span>Sort your vendor list into &ldquo;survives a funding drought&rdquo; and &ldquo;doesn&rsquo;t&rdquo; <em>before</em> both triggers fire &mdash; and time any lock-in to the capability wave that is already funded, not the one that depends on 2027 money.</div>
+    </div>
+  </div>
+
+  <div class="composite-card">
+    <div class="cc-strip" style="background:linear-gradient(90deg, var(--green) 50%, var(--cyan) 50%)"></div>
+    <div class="cc-body">
+      <div class="cc-pair">Current 1 &times; Current 2</div>
+      <div class="cc-name">B. The Two-Speed Frontier</div>
+      <div class="cc-row"><span class="cc-k">Watch for</span>The staircase steps again at the very top &mdash; <em>while</em> open-weight matches the previous step within weeks. The early evidence is already in the logs: Fable 5 launched at a price <em>premium</em> (Current 2&rsquo;s counter-signal) while the tier below it commoditizes on schedule.</div>
+      <div class="cc-row"><span class="cc-k">The interaction term</span>Both currents winning at once doesn&rsquo;t average out &mdash; it splits the market into an escalator and a plateau. The capability premium concentrates into a thinning slice of workloads that genuinely need each new step; everything else commoditizes underneath. The strategic question stops being &ldquo;which vendor&rdquo; and becomes per-workflow: <em>is this workload on the escalator or the plateau?</em> Most portfolios are 90% plateau and budget as if they were 90% escalator.</div>
+      <div class="cc-row"><span class="cc-k">First move</span>Tag every AI workflow in your portfolio as escalator or plateau, and re-price the plateau ones against open-weight this quarter.</div>
+    </div>
+  </div>
+
+  <div class="composite-card">
+    <div class="cc-strip" style="background:linear-gradient(90deg, var(--cyan) 50%, var(--dark-brown) 50%)"></div>
+    <div class="cc-body">
+      <div class="cc-pair">Current 2 &times; Current 4</div>
+      <div class="cc-name">C. The Sovereign Dividend &mdash; and Its Residue</div>
+      <div class="cc-row"><span class="cc-k">Watch for</span>Open-weight parity at the capability tier your workloads actually need &mdash; <em>plus</em> any new severance event, supply-chain designation, or data-residency rule.</div>
+      <div class="cc-row"><span class="cc-k">The interaction term</span>Efficiency is what makes sovereignty affordable: when Current 2 fires, it arms Current 4&rsquo;s escape hatch. But composite B adds a sting most plans miss. If commoditization covers the plateau while the frontier stays closed and premium, your <em>residual</em> lock-in concentrates in exactly your highest-value, escalator workloads &mdash; the ones a severance event hurts most. Sovereignty risk doesn&rsquo;t shrink uniformly as open-weight improves; it pools at the top of your stack, where you can least afford it.</div>
+      <div class="cc-row"><span class="cc-k">First move</span>For each escalator workflow, write down the degraded-but-acceptable open-weight fallback &mdash; and actually test it once, before anyone forces the question.</div>
+    </div>
+  </div>
+
+  <div class="composite-card">
+    <div class="cc-strip" style="background:linear-gradient(90deg, #d97706 50%, var(--purple) 50%)"></div>
+    <div class="cc-body">
+      <div class="cc-pair">Current 6 &times; Current 5</div>
+      <div class="cc-name">D. The Autonomy Trap</div>
+      <div class="cc-row"><span class="cc-k">Watch for</span>Agent time-horizons keep doubling every ~3&ndash;4 months (already confirmed in Current 6&rsquo;s log) &mdash; <em>while</em> your own pilot-to-production conversion rate sits below 20%.</div>
+      <div class="cc-row"><span class="cc-k">The interaction term</span>Longer autonomy makes the deployment gap <em>more</em> binding, not less. Eval and supervision burden scales with task duration, so every doubling of agent hours raises the bar for the organization that hasn&rsquo;t built the eval muscle &mdash; the cheapest agent-hour is worthless if you can&rsquo;t supervise it. Current 6&rsquo;s displacement math becomes real only for organizations that did Current 5&rsquo;s homework. The trap is that waiting for more capable agents <em>feels</em> prudent and actually compounds the gap: the capability you&rsquo;re waiting for raises the supervision bar you haven&rsquo;t started building toward.</div>
+      <div class="cc-row"><span class="cc-k">First move</span>Staff evaluation and red-team capacity now, sized for the agent autonomy of two doublings from today &mdash; not for the agents you currently run.</div>
+    </div>
+  </div>
+
+  <div class="composite-card">
+    <div class="cc-strip" style="background:linear-gradient(90deg, var(--orange-red) 50%, var(--dark-brown) 50%)"></div>
+    <div class="cc-body">
+      <div class="cc-pair">Current 3 &times; Current 4</div>
+      <div class="cc-name">E. The Cheap Hedge</div>
+      <div class="cc-row"><span class="cc-k">Watch for</span>Either failure mode: a vendor-viability event (funding dries up, the Pets.com outcome) or a vendor-access event (a sovereign severs the relationship, the February 2026 outcome).</div>
+      <div class="cc-row"><span class="cc-k">The interaction term</span>From the buyer&rsquo;s seat, these two completely different failure modes are indistinguishable: the API stops answering, mid-contract, through no fault of yours. Which means one investment hedges both currents at once &mdash; a portable inference layer behind your retrieval and eval stack, plus contracts with explicit exit clauses. It is the only place in this booklet where two currents share a single hedge, which makes it the cheapest insurance on offer.</div>
+      <div class="cc-row"><span class="cc-k">First move</span>Run one planned vendor-swap exercise this quarter and measure how long it takes. That number &mdash; days, weeks, or &ldquo;we couldn&rsquo;t&rdquo; &mdash; is your exposure to two currents simultaneously.</div>
+    </div>
+  </div>
+
+  <p><strong>Running composites in practice.</strong> In your quarterly review, don&rsquo;t stop at &ldquo;did a trigger fire?&rdquo; Ask the second question: <em>did a pair fire within the same quarter?</em> The June 2026 trigger logs already contain one live pair-candidate: Current 1 fired early in variant form and Current 3&rsquo;s IPO trigger went live in the same month &mdash; composite A, the Successful Bubble, is the one to track into 2027. And these five are not a complete list; they are the five most load-bearing for a typical enterprise. The two currents most specific to <em>your</em> organization may form a composite that matters more &mdash; the worksheet&rsquo;s trigger drill gives you the raw material to write it.</p>
+
+  <p><strong>The stance.</strong> No current is &ldquo;the answer.&rdquo; The strongest planning position is the one that performs adequately under all six &mdash; not the one that bets everything on whichever current seems most live this quarter. Lock to none; watch triggers in all; treat a single firing as a reason to reweight and a pair firing as the moment strategy actually changes; let currents go stale when their triggers haven&rsquo;t fired in 18 months and replace them with what better describes the world you&rsquo;re actually living in. That discipline is what this booklet exists to make routine.</p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
