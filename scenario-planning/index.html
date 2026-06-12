@@ -533,6 +533,29 @@ p { margin-bottom: 1rem; }
 .author-note p { margin-bottom: 0.6rem; }
 .author-note p:last-child { margin-bottom: 0; }
 
+/* ── Trigger log (dated status of trigger signals) ── */
+.trigger-log {
+  background: #f0faf4;
+  border-left: 4px solid var(--green);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.88rem; line-height: 1.65;
+}
+.trigger-log .tl-label {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--green); margin-bottom: 8px;
+}
+.trigger-log ul { list-style: none; margin: 0; padding: 0; }
+.trigger-log li { padding: 5px 0; }
+.trigger-log li + li { border-top: 1px solid rgba(45,122,79,0.12); }
+.trigger-log .tl-date { color: var(--text-light); font-size: 0.78rem; }
+.tag-fired { background: #dcfce7; color: #166534; }
+.tag-moved { background: #fef9c3; color: #854d0e; }
+.tag-notyet { background: #f1f5f9; color: #475569; }
+.tag-counter { background: #fce7f3; color: #9d174d; }
+
 /* ── Hypothesis label strip (Mistral value chain) ── */
 .hypothesis-strip {
   background: #fef3c7;
@@ -634,6 +657,8 @@ p { margin-bottom: 1rem; }
     <ul>
       <li><a href="#cover">Cover</a></li>
       <li><a href="#framing">The Question</a></li>
+      <li class="nav-divider">The Method</li>
+      <li><a href="#decoder">The Capex Decoder</a></li>
       <li class="nav-divider">Currents</li>
       <li><a href="#scenario-1">1. Continued Scaling</a></li>
       <li><a href="#scenario-2">2. Efficiency Revolution</a></li>
@@ -662,7 +687,7 @@ p { margin-bottom: 1rem; }
     <p class="cover-subtitle">Six currents. One habit. Your strategy.</p>
     <div class="cover-meta">
       <span>Robert Barcik</span>
-      <span>May 2026</span>
+      <span>June 2026</span>
       <span><a href="mailto:robert@barcik.training" style="color: inherit;">robert@barcik.training</a></span>
     </div>
   </div>
@@ -674,13 +699,14 @@ p { margin-bottom: 1rem; }
 <section class="chapter" id="framing">
   <div class="chapter-label">Introduction</div>
   <h2>The Question</h2>
-  <p class="lead">The AI industry has committed over <strong>$600&nbsp;billion</strong> in capital expenditure for 2026 alone. That money is already flowing into data centers, GPU clusters, and training runs. It will produce outcomes.</p>
+  <p class="lead">The four biggest hyperscalers have guided roughly <strong>$700&nbsp;billion</strong> in capital expenditure for 2026 alone. That money is already flowing into data centers, GPU clusters, and training runs. It will produce outcomes.</p>
   <p>The question isn&rsquo;t whether AI will change &mdash; it&rsquo;s <em>which forces</em> to plan against.</p>
   <p>A word on the title. Classic scenario planning &mdash; the discipline this booklet borrows its method from &mdash; builds a few distinct, internally-consistent future worlds and asks how you&rsquo;d fare in each. This booklet does something deliberately different: instead of whole future worlds, it tracks six <strong>currents</strong> &mdash; the forces those worlds would be built from. In a field moving this fast, the forces are more stable, and more observable, than any single future. The <em>method</em> is still scenario planning &mdash; foresee, watch triggers, adjust &mdash; but the units you apply it to are currents, not scenarios.</p>
   <p>This booklet sketches <strong>six underlying currents</strong> &mdash; forces actively moving the field over the next 2&ndash;3 years. They are not predictions and they are not a matrix. They are planning lenses, each with its own data, its own thesis, and its own trigger signals to watch.</p>
   <p>The six currents are: <strong>Continued Scaling</strong> (the $700B capex bet on the next capability staircase), <strong>Efficiency Revolution</strong> (frontier capability becoming a commodity), <strong>Financial Correction</strong> (whether the investment timeline matches the revenue timeline), <strong>Sovereignty</strong> (what happens when a vendor&rsquo;s access collides with a sovereign&rsquo;s authority), <strong>From Lab to Production</strong> (the deployment gap that is now the binding constraint), and <strong>Hours and Dollars</strong> (the two units that will decide displacement &mdash; how long an agent can work, and at what cost). They reinforce and contradict each other in specific ways &mdash; that&rsquo;s the point of holding several open at once.</p>
+  <p>Before the currents comes the instrument. The next section &mdash; <strong>the capex decoder</strong> &mdash; shows how to read the future from money that has already been spent: every dollar of hyperscaler capex is a dated bet on capability arriving two, three, or four years later. The six currents are forces you watch <em>through</em> that instrument. Spend time with the decoder first; the currents will read faster for it.</p>
   <p>Each current is anchored by either a visualization or a presenter card with key figures, followed by a written chapter that unpacks the data and arguments. You can use this booklet in two ways: as a <strong>presentation tool</strong> (lead with the visual or card, trigger discussion), or as a <strong>standalone reading experience</strong> (read the chapters for the full picture). Both work &mdash; design your session around your audience.</p>
-  <p>At the end, a short synthesis describes how the currents interact, a note explains how to use this in practice, and a workshop exercise helps you translate insight into action.</p>
+  <p>At the end, a short synthesis describes how the currents interact, a note explains how to use this in practice, and a workshop exercise helps you translate insight into action. Throughout, each current carries a dated <strong>trigger log</strong> &mdash; a running record of which of its trigger signals have actually fired since the previous edition. The log is the part of this booklet that is supposed to change every time you open it.</p>
 
   <div class="author-note">
     <div class="an-label">A note on what this booklet is &mdash; and isn&rsquo;t</div>
@@ -689,22 +715,25 @@ p { margin-bottom: 1rem; }
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
-<!-- SCENARIO 1: CONTINUED SCALING                              -->
+<!-- THE METHOD: THE CAPEX DECODER                              -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section class="chapter" id="scenario-1">
-  <div class="chapter-label">Current 1</div>
-  <h2>Continued Scaling <br><span class="chapter-question">&ldquo;Where Does the Money Go?&rdquo;</span></h2>
+<section class="chapter" id="decoder">
+  <div class="chapter-label">The Method</div>
+  <h2>The Capex Decoder <br><span class="chapter-question">&ldquo;Reading the future from money already spent&rdquo;</span></h2>
 
   <div class="thesis-grid">
     <div class="thesis-card">
-      <div class="card-label" style="color:var(--purple)">The thesis</div>
-      <div class="card-text">The $228B spent in 2024 wasn&rsquo;t buying GPT-4 inference &mdash; that model already ran on 2023 hardware. It funded training clusters for models shipping 2&ndash;3 years later, and inference infrastructure for the next generation. The $700B guided for 2026 funds models whose <em>architectures may not be designed yet</em>.</div>
+      <div class="card-label" style="color:var(--purple)">How to read it</div>
+      <div class="card-text">The $228B spent in 2024 wasn&rsquo;t buying GPT-4 inference &mdash; that model already ran on 2023 hardware. It funded training clusters for models shipping 2&ndash;3 years later, and inference infrastructure for the next generation. The ~$700B guided for 2026 funds models whose <em>architectures may not be designed yet</em>. Every capex dollar carries a date stamp for when its capability arrives.</div>
     </div>
     <div class="thesis-card">
-      <div class="card-label" style="color:var(--orange-red)">The risk</div>
-      <div class="card-text">DeepSeek V3 achieved frontier performance at 10&times; less compute. If algorithmic efficiency leaps continue, today&rsquo;s massive clusters could be overbuilt for training. But labs are betting <em>inference</em> will dominate &mdash; ~70% of AI compute by 2030. The bet is on deployment scale, not just model size.</div>
+      <div class="card-label" style="color:var(--orange-red)">What it can&rsquo;t tell you</div>
+      <div class="card-text">Capex is a forecast made by people who can be wrong. It tells you what the labs <em>expect</em> to exist, not what will. Efficiency leaps can strand the bet (Current 2), the funding can dry up before the payoff (Current 3), and a sovereign can sever the buyer from the seller (Current 4). The decoder dates the bets; the currents stress-test them.</div>
     </div>
   </div>
+
+  <p>When people debate whether AI will &ldquo;live up to the hype,&rdquo; they often miss a crucial fact: the investment decisions have already been made. You don&rsquo;t have to guess what the labs believe about the future &mdash; you can read it off their balance sheets. The Big Four hyperscalers &mdash; Alphabet, Amazon, Meta, and Microsoft &mdash; spent a combined $228 billion on capital expenditure in 2024, up 62% from $140 billion in 2023. For 2025, guided spending reached $416 billion. For 2026, guidance points to roughly $700 billion &mdash; Microsoft around $190B, Amazon around $200B, Alphabet $175&ndash;185B, Meta $115&ndash;135B &mdash; with Oracle adding tens of billions on top. This money is flowing into GPU clusters, power infrastructure, and data centers, and the vast majority is earmarked specifically for AI.</p>
+  <p>The reason this is an <em>instrument</em> rather than just a large number is that capex doesn&rsquo;t translate into capability instantly. Building a data center takes 12&ndash;24 months. Procuring the chips takes 6&ndash;12 months. Training a frontier model takes another 6&ndash;12 months. Post-training, safety testing, and deployment add 3&ndash;6 more. Each year&rsquo;s spending splits into three bets running at different timescales: <strong>inference capacity</strong> arriving in roughly 2 years, <strong>training runs</strong> for models 3 years out, and <strong>research compute</strong> powering breakthroughs 4+ years away. Trace any year&rsquo;s money forward and you get a dated map of the future the labs themselves are planning for. The timeline below is that map &mdash; click any investment dot and follow its three arrows.</p>
 
   <div class="chart-wrap">
     <svg id="chart-s1" viewBox="0 0 1100 540" preserveAspectRatio="xMidYMid meet"></svg>
@@ -719,13 +748,10 @@ p { margin-bottom: 1rem; }
   </div>
 
   <div class="chapter-prose">
-    <h4>The money is already spent</h4>
-    <p>When people debate whether AI will &ldquo;live up to the hype,&rdquo; they often miss a crucial fact: the investment decisions have already been made. The Big Five hyperscalers &mdash; Alphabet, Amazon, Apple, Meta, and Microsoft &mdash; spent a combined $228 billion on capital expenditure in 2024, up 62% from $140 billion in 2023. For 2025, guided spending reaches $416 billion. For 2026, the trajectory points to $700 billion or more, with Oracle adding another $50 billion. Adding up 2025&ndash;2027, Goldman Sachs projects total hyperscaler capex of $1.15 trillion. This money is flowing into GPU clusters, power infrastructure, and data centers &mdash; and the vast majority is earmarked specifically for AI.</p>
-    <p>The reason this matters for planning is that capex doesn&rsquo;t translate into capability instantly. Building a data center takes 12&ndash;24 months. Procuring the chips takes 6&ndash;12 months. Training a frontier model takes another 6&ndash;12 months. Post-training, safety testing, and deployment add 3&ndash;6 more. Each year&rsquo;s spending splits into three bets running at different timescales: <strong>inference capacity</strong> arriving in roughly 2 years, <strong>training runs</strong> for models 3 years out, and <strong>research compute</strong> powering breakthroughs 4+ years away.</p>
-
     <h4>The staircase pattern</h4>
-    <p>Looking backward, AI capability has advanced in a staircase pattern: a major jump every roughly two years, followed by refinement within that generation. GPT-3 (2020) was dramatically surpassed by GPT-4 (2023), which was then refined through GPT-4 Turbo, GPT-4o, and eventually GPT-4o-mini &mdash; each iteration better and cheaper, but not a fundamentally new capability tier. The same pattern appears with Claude 3 Opus giving way to Claude 3.5 Sonnet and then Claude Opus 4, and now Claude Opus 4.6.</p>
-    <p>If this pattern holds, the $228 billion spent in 2024 is currently producing the training infrastructure for models that will ship in 2026&ndash;2027. The $416 billion committed for 2025 funds models arriving in 2027&ndash;2028. And the $700 billion planned for 2026 is investing in capabilities whose architectures may not even be designed yet &mdash; research compute for ideas that haven&rsquo;t been conceived. The clearest demonstration of this lag came on March 24, 2026, when OpenAI completed pre-training of GPT-6 (&ldquo;Spud&rdquo;) at the Abilene Stargate facility &mdash; a model whose existence was funded by 2024&rsquo;s capex, roughly three years before its expected public launch. Anthropic&rsquo;s next-generation &ldquo;Mythos&rdquo; sits in a similar lane, in limited testing with cybersecurity defenders as of Q1 2026.</p>
+    <p>Looking backward, AI capability has advanced in a staircase pattern: a major jump every roughly two years, followed by refinement within that generation. GPT-3 (2020) was dramatically surpassed by GPT-4 (2023), which was then refined through GPT-4 Turbo, GPT-4o, and eventually GPT-4o-mini &mdash; each iteration better and cheaper, but not a fundamentally new capability tier. The same pattern appears with Claude 3 Opus giving way to Claude 3.5 Sonnet, then Claude Opus 4, refined through Opus 4.6 and 4.7 &mdash; until the next step landed in June 2026 with the Claude 5 generation.</p>
+    <p>If this pattern holds, the $228 billion spent in 2024 is currently producing the training infrastructure for models that ship in 2026&ndash;2027. The $416 billion committed for 2025 funds models arriving in 2027&ndash;2028. And the ~$700 billion planned for 2026 is investing in capabilities whose architectures may not even be designed yet &mdash; research compute for ideas that haven&rsquo;t been conceived. The clearest demonstration of this lag came on March 24, 2026, when OpenAI completed pre-training of GPT-6 (&ldquo;Spud&rdquo;) at the Abilene Stargate facility &mdash; a model whose existence was funded by 2024&rsquo;s capex, roughly three years before its expected public launch. Anthropic ran the same lane faster: its next-generation &ldquo;Mythos&rdquo; model spent Q1 2026 in limited testing with cybersecurity defenders, then shipped publicly on June 9, 2026 as <strong>Claude Fable 5</strong> &mdash; the unrestricted Mythos 5 variant reserved for cyberdefenders &mdash; priced at $10 input / $50 output per million tokens. Capability paid for by money committed before its architecture had a name.</p>
+    <p>That release is worth pausing on, because it demonstrates both the power and the limit of this instrument. The May edition of this booklet plotted &ldquo;Mythos&rdquo; on the timeline above as a <em>2027 projection</em>. It arrived in June 2026 &mdash; a year early. The decoder told us roughly what was coming and whose money was paying for it; it did not promise the staircase would keep a polite schedule. Use it to date the bets, not to set your watch.</p>
 
     <div class="author-note">
       <div class="an-label">Inside the capex decision</div>
@@ -738,29 +764,65 @@ p { margin-bottom: 1rem; }
       <p style="margin-bottom:0">A $700B line gets defended in a board meeting because all three of those slides look credible together &mdash; not because anyone has faith in scaling as an article of belief. When the slides stop looking credible, the line gets cut. Watching the slides is the planning skill.</p>
     </div>
 
+    <h4>How to use it from here</h4>
+    <p>The decoder gives you a discipline for reading AI news. When a capability headline lands, ask which year&rsquo;s money produced it. When a capex announcement lands, ask which years it will produce &mdash; serving capacity in two, models in three, breakthroughs in four. The six currents that follow are the forces pulling on this machinery: whether the staircase keeps climbing (Current 1), whether efficiency strands the clusters (Current 2), whether the investment timeline survives contact with the revenue timeline (Current 3), whether a sovereign cuts the wire between you and your vendor (Current 4), whether any of it actually reaches production (Current 5), and whether the hours-and-dollars math starts moving work (Current 6). Each current ends with trigger signals to watch &mdash; and the decoder is how you date a trigger when it fires.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CURRENT 1: CONTINUED SCALING                               -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="scenario-1">
+  <div class="chapter-label">Current 1</div>
+  <h2>Continued Scaling <br><span class="chapter-question">&ldquo;Does the staircase keep climbing?&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--purple)">The thesis</div>
+      <div class="card-text">The capability staircase keeps stepping: a major jump roughly every two years, and the ~$700B guided for 2026 is priced on at least one more step <em>above</em> the Claude 5 / GPT-6 generation now arriving. The money is committed either way &mdash; the outcomes will land on your roadmap whether or not you planned for them.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">The risk</div>
+      <div class="card-text">DeepSeek V3 achieved frontier performance at 10&times; less compute. If algorithmic efficiency leaps continue, today&rsquo;s massive clusters could be overbuilt for training. But labs are betting <em>inference</em> will dominate &mdash; ~70% of AI compute by 2030. The bet is on deployment scale, not just model size.</div>
+    </div>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>The bet, stated plainly</h4>
+    <p>The <a href="#decoder">capex decoder</a> shows where the money goes and when it comes back as capability. This current is the bet that the spending keeps being right &mdash; that above the step the field just took, there is at least one more, and that the clusters being poured today will be the ones that train it.</p>
+    <p>Note what just happened to this bet: it paid out. The 2024 cohort of capex was earmarked, in part, for models shipping 2026&ndash;2027 &mdash; and on June 9, 2026, the Claude 5 generation arrived as the first Mythos-class capability jump, a year ahead of this booklet&rsquo;s own projection. The live question is therefore no longer whether the 2024 money was wasted. It is whether the ~$700 billion of 2026 money buys a step <em>above</em> Claude 5 and GPT-6 &mdash; or whether the staircase flattens just as the most expensive clusters in history come online. That is what the trigger signals below are tuned to detect.</p>
+
     <h4>What is being built</h4>
     <p>The scale of individual projects is staggering. Elon Musk&rsquo;s xAI deployed Colossus &mdash; a cluster of 100,000 GPUs &mdash; in just 122 days in late 2024. Microsoft&rsquo;s Rainier project targets 500,000 GPUs. Meta&rsquo;s Abilene aims for 450,000. The Stargate project (a joint venture between OpenAI, Oracle, and SoftBank) plans clusters exceeding one gigawatt of power &mdash; the equivalent of a nuclear power plant dedicated to AI. At these scales, the limiting factor shifts from chip availability to raw electrical power: the Three Mile Island nuclear facility is being restarted specifically to supply AI data centers.</p>
 
     <h4>The inference bet</h4>
     <p>A common misunderstanding is that all this money is about training bigger models. In reality, the labs are increasingly betting that <strong>inference</strong> &mdash; running models at scale for millions of users &mdash; will dominate AI compute, accounting for roughly 70% by 2030. Training a frontier model is a one-time cost; serving it to every enterprise customer, every developer, every consumer product is a continuous cost that scales with adoption. The capex surge is as much about building the serving infrastructure for AI-powered products as it is about training the next generation of models.</p>
-    <p>This is the core planning insight of Scenario 1: even if you believe the current generation of AI is &ldquo;good enough,&rdquo; the investment already committed will produce outcomes over the next 2&ndash;4 years. Those outcomes &mdash; faster models, cheaper inference, new capabilities &mdash; will change what&rsquo;s possible and what&rsquo;s expected. Your plans need to account for a moving target, not a snapshot.</p>
+    <p>This is the core planning insight of Current 1: even if you believe the current generation of AI is &ldquo;good enough,&rdquo; the investment already committed will produce outcomes over the next 2&ndash;4 years. Those outcomes &mdash; faster models, cheaper inference, new capabilities &mdash; will change what&rsquo;s possible and what&rsquo;s expected. Your plans need to account for a moving target, not a snapshot.</p>
   </div>
 
   <div class="key-numbers">
-    <div class="kn"><div class="kn-value">$416B</div><div class="kn-label">2025 hyperscaler capex</div></div>
-    <div class="kn"><div class="kn-value">$700B</div><div class="kn-label">2026 capex (guided)</div></div>
-    <div class="kn"><div class="kn-value">~3.5T</div><div class="kn-label">Current frontier model params</div></div>
+    <div class="kn"><div class="kn-value">$416B</div><div class="kn-label">2025 Big Four capex</div></div>
+    <div class="kn"><div class="kn-value">~$700B</div><div class="kn-label">2026 capex (guided)</div></div>
+    <div class="kn"><div class="kn-value">~3.5T</div><div class="kn-label">Frontier model params (est.)</div></div>
     <div class="kn"><div class="kn-value">~2 yr</div><div class="kn-label">Capability staircase cycle</div></div>
     <div class="kn"><div class="kn-value">70%</div><div class="kn-label">AI compute for inference by 2030</div></div>
   </div>
 
   <h3>Trigger signals &mdash; what to watch for</h3>
   <ul class="triggers">
-    <li>Next-generation models (GPT-5, Claude 5) show a large, undeniable capability jump over predecessors</li>
+    <li>The <em>next</em> generation above Claude 5 / GPT-6 shows another large, undeniable capability jump</li>
     <li>Enterprise AI revenue growth accelerates &mdash; the $500B+ revenue gap begins to close</li>
     <li>Hyperscaler capex guidance continues rising &gt;30% year-over-year through 2027</li>
     <li>New model architectures emerge that can efficiently use the massive clusters being built</li>
   </ul>
+
+  <div class="trigger-log">
+    <div class="tl-label">Trigger log &mdash; June 2026 edition</div>
+    <ul>
+      <li><span class="tag tag-fired">Fired</span> <strong>Next-gen capability jump.</strong> <span class="tl-date">June 9, 2026 &mdash;</span> Claude Fable 5 / Mythos 5 released: the first Mythos-class model generally available, state-of-the-art on nearly every tested benchmark. The May edition listed &ldquo;GPT-5, Claude 5 show a large jump&rdquo; as a signal to watch and plotted Mythos as a 2027 projection; it fired a year early. The trigger above has been re-armed for the generation after this one.</li>
+      <li><span class="tag tag-notyet">Not yet</span> <strong>Revenue gap closing.</strong> Anthropic&rsquo;s run-rate revenue roughly quintupled in five months (Current 3), but spending is still growing faster than sector-wide AI revenue.</li>
+    </ul>
+  </div>
 
   <h3>Implications by role</h3>
   <div class="impl-grid">
@@ -770,7 +832,7 @@ p { margin-bottom: 1rem; }
     <div class="impl-card"><div class="impl-role">Procurement</div><div class="impl-text">Expect higher API costs initially for each new generation, dropping quickly as competition arrives. Avoid multi-year lock-in.</div></div>
   </div>
 
-  <p class="credits">Data: company earnings reports &amp; guidance &bull; Big 5 = Alphabet, Amazon, Apple, Meta, Microsoft</p>
+  <p class="credits">Data: company earnings reports &amp; guidance (Q1 2026) &bull; Big Four = Alphabet, Amazon, Meta, Microsoft</p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -910,7 +972,7 @@ p { margin-bottom: 1rem; }
           </tr>
           <tr>
             <td>Apr 2026</td>
-            <td class="s2-cost">Opus 4.7: ~$75</td>
+            <td class="s2-cost">Opus 4.7: $25</td>
             <td class="s2-muted">&mdash;</td>
             <td class="s2-cost">DeepSeek V4-Pro: $2.48 <span class="s2-muted">(~10&times; cheaper at frontier-equivalent)</span></td>
           </tr>
@@ -957,11 +1019,11 @@ p { margin-bottom: 1rem; }
 
     <h4>Inference pricing in freefall</h4>
     <p>The pricing evolution of OpenAI&rsquo;s own API tells the commoditization story in dollar terms. GPT-4 launched at $60 per million output tokens in March 2023. GPT-4 Turbo brought that down to $30 in November 2023. GPT-4o launched at $15 in May 2024, then was cut to $10 in October. Meanwhile, GPT-4o-mini offered GPT-4-class performance at $0.60 per million tokens &mdash; a 99% reduction from GPT-4&rsquo;s launch price in under two years.</p>
-    <p>Open-source alternatives are even cheaper. Llama 3.3 70B via Groq costs $0.71 per million output tokens. DeepSeek V3 is available at $0.42. Self-hosted 70B models on H100 hardware can reach approximately $0.07 per million tokens at full utilization. On average, open-source models cost 7.3 times less than their proprietary equivalents.</p>
+    <p>Open-source alternatives are even cheaper. Llama 3 70B via Groq costs roughly $0.79 per million output tokens. DeepSeek V3 is available at $0.42. Self-hosted 70B models on H100 hardware can reach approximately $0.07 per million tokens at full utilization. On average, open-source models cost 7.3 times less than their proprietary equivalents.</p>
 
     <h4>The April 2026 wave</h4>
     <p>Over an 18-day window in April 2026, three frontier-class open-weight coding models shipped. <strong>GLM-5.1</strong> (Zhipu, April 7) is 744B MoE / 40B active under MIT license and posts 58.4% on SWE-Bench Pro &mdash; ahead of GPT-5.4 and Opus 4.6 on that bench. <strong>Qwen 3.6</strong> (Alibaba, April 16) split into variants; the 35B-A3B open variant runs on a single RTX 4090 with quantization and posts 73.4% SWE-Bench Verified &mdash; the throughput sweet spot for solo developers and on-prem deployments. <strong>Kimi K2.6</strong> (Moonshot, April 20) is 1T total / 32B active and introduces a 300-agent swarm primitive for parallel exploration on hard tickets &mdash; an agentic precursor that connects to <em>Hours and Dollars</em> in Section 6. <strong>DeepSeek V4-Pro</strong> (April 24) posts 80.6% SWE-Bench Verified at $0.28 input / $2.48 output per million tokens with a 1M-token context window &mdash; roughly an order of magnitude cheaper than Opus 4.6 at comparable coding capability, using hybrid attention (Compressed Sparse + Heavily Compressed) at about 27% of V3.2&rsquo;s per-token FLOPs. <strong>Mistral Medium 3.5</strong> (April 29) ships as a 128B dense model, self-hostable from Hugging Face, with 77.6% SWE-Bench Verified and configurable reasoning effort per request &mdash; the cleanest EU-data-residency narrative on the market, paired with Mistral&rsquo;s $400M ARR (January 2026) at a $13.8B valuation.</p>
-    <p>By May 2026, the buyer question is no longer &ldquo;is open-weight good enough.&rdquo; It is which open-weight per workload, which hosting stack, and which sovereign deployment shape. For EU enterprises in particular, these intersect directly with the sovereignty story in Section 4 &mdash; for the first time, &ldquo;self-hostable frontier-equivalent&rdquo; isn&rsquo;t a euphemism.</p>
+    <p>By mid-2026, the buyer question is no longer &ldquo;is open-weight good enough.&rdquo; It is which open-weight per workload, which hosting stack, and which sovereign deployment shape. For EU enterprises in particular, these intersect directly with the sovereignty story in Section 4 &mdash; for the first time, &ldquo;self-hostable frontier-equivalent&rdquo; isn&rsquo;t a euphemism.</p>
 
     <h4>Where does value go when the model is free?</h4>
     <p>Mistral CEO Arthur Mensch has been the most articulate voice on this shift. Across early-2026 interviews &mdash; the Big Technology Podcast in January, Davos and Bloomberg the same month, the Economic Times in February &mdash; he framed AI as becoming infrastructure, &ldquo;a utility&rdquo; measured by efficiency, capital discipline, and reliable delivery rather than novelty. His most quoted line: &ldquo;My generation of engineers has more or less succeeded in commoditizing its own profession.&rdquo; The corollary, which he argues consistently, is that competitive advantage will increasingly accrue not to whoever has the largest model, but to whoever builds the most specialized system around their specific data and domain.</p>
@@ -982,6 +1044,14 @@ p { margin-bottom: 1rem; }
     <li>Inference costs drop below $0.10 per million tokens for GPT-4-class output</li>
     <li>Hyperscaler capex growth decelerates because efficiency gains reduce hardware requirements</li>
   </ul>
+
+  <div class="trigger-log">
+    <div class="tl-label">Trigger log &mdash; June 2026 edition</div>
+    <ul>
+      <li><span class="tag tag-counter">Counter-signal</span> <strong>Frontier prices went up, not down.</strong> <span class="tl-date">June 9, 2026 &mdash;</span> Claude Fable 5 launched at $10 input / $50 output per million tokens &mdash; double Opus 4.7. The efficiency revolution is real one tier below the frontier; at the very top, a genuine capability jump still commands a premium. Watch whether open-weight labs close <em>this</em> gap on the usual 5&ndash;22-month lag.</li>
+      <li><span class="tag tag-notyet">Not yet</span> <strong>Sub-$0.10 GPT-4-class inference.</strong> DeepSeek V3 at $0.42 and self-hosted 70B at ~$0.07 (full utilization) bracket the threshold; no major API has crossed it at honest quality.</li>
+    </ul>
+  </div>
 
   <h3>Implications by role</h3>
   <div class="impl-grid">
@@ -1069,7 +1139,7 @@ p { margin-bottom: 1rem; }
           <div class="fc-detail"><strong>Projects &minus;$14B loss in 2026.</strong></div>
           <div class="fc-detail">900M+ weekly users</div>
           <div class="fc-detail">Profitable by 2029 (earliest)</div>
-          <div class="fc-detail" style="margin-top:6px;opacity:0.7">IPO expected Q4 2026 at $1T+ <em>(speculation)</em></div>
+          <div class="fc-detail" style="margin-top:6px;opacity:0.7">IPO window 2026&ndash;27 at $1T+; Anthropic filed first <em>(speculation)</em></div>
         </div>
       </div>
     </div>
@@ -1103,16 +1173,16 @@ p { margin-bottom: 1rem; }
     <p>The lesson that most people take from this period is: &ldquo;it was a bubble and it burst.&rdquo; The more useful lesson is that the survivors and casualties were distinguished by one thing &mdash; not the quality of their technology, but whether they had real revenue, real customers, and cash to survive a funding drought.</p>
 
     <h4>The bubble argument has matured</h4>
-    <p>The most visible bear voice of the past two years &mdash; Ed Zitron &mdash; has been notable not for being right but for how the argument has had to shift. His original case, sustained across blog posts and his &ldquo;Better Offline&rdquo; podcast, was economic: AI was a value-destruction machine, hyperscaler capex was insane, and the unit economics simply did not work. Some of that case has aged well (the ROI gap is real). Most of it has not. Inference costs have fallen 99% over two years. Anthropic crossed $30B+ ARR by spring 2026 and reportedly overtook OpenAI on business adoption in May. Cost decline plus revenue growth made the original economic argument harder to sustain in its strongest form. Kelsey Piper, writing in <em>The Argument</em>, documented the shift: Zitron&rsquo;s case has migrated from &ldquo;the economics don&rsquo;t work&rdquo; toward fraud and accounting allegations against OpenAI and the hyperscalers.</p>
-    <p>The bear case is still alive, and parts of it remain sharp. But the goalposts moved &mdash; and that itself is a signal worth weighing. A bubble argument that survives a 99% cost decline by switching from economics to fraud is a weaker argument than one that didn&rsquo;t have to switch. Hold the correction scenario open; don&rsquo;t hold this particular version of it as the bear case.</p>
+    <p>The most visible bear voice of the past two years &mdash; Ed Zitron &mdash; has been notable not for being right but for how the argument has had to shift. His original case, sustained across blog posts and his &ldquo;Better Offline&rdquo; podcast, was economic: AI was a value-destruction machine, hyperscaler capex was insane, and the unit economics simply did not work. Some of that case has aged well (the ROI gap is real). Most of it has not. Frontier-tier inference prices fell roughly 83% in 19 months &mdash; 99% if you accept a cheaper capability tier, a distinction Current 2 unpacks. Anthropic&rsquo;s annualized revenue passed OpenAI&rsquo;s in April 2026 ($30B vs $25B)<span class="tag tag-reported">reported</span> and reached a reported $47B run-rate by mid-May. Cost decline plus revenue growth made the original economic argument harder to sustain in its strongest form. Kelsey Piper, writing in <em>The Argument</em>, documented the shift: Zitron&rsquo;s case has migrated from &ldquo;the economics don&rsquo;t work&rdquo; toward fraud and accounting allegations against OpenAI and the hyperscalers.</p>
+    <p>The bear case is still alive, and parts of it remain sharp. But the goalposts moved &mdash; and that itself is a signal worth weighing. A bubble argument that survives collapsing costs and compounding revenue by switching from economics to fraud is a weaker argument than one that didn&rsquo;t have to switch. Hold the correction scenario open; don&rsquo;t hold this particular version of it as the bear case.</p>
 
     <h4>Amazon vs. Pets.com</h4>
     <p>Amazon&rsquo;s stock fell 94% from roughly $106 in December 1999 to about $5.51 in late 2001. Yet its revenue grew every single year through the crash: $2.76 billion in 2000, $3.12 billion in 2001, $5.26 billion in 2003, $8.49 billion in 2005. It posted its first profitable quarter in Q4 2001 and its first full profitable year in 2003, with $35 million net income on $5.26 billion revenue. The key decision was a well-timed $1.25 billion bond offering that gave Amazon $1 billion in cash to survive the drought. Today it is worth roughly $2.5 trillion &mdash; over 800 times its trough market cap.</p>
     <p>Pets.com raised $300 million total, spent over $70 million on advertising while generating only $619,000 in revenue, and shut down 268 days after its IPO. Webvan burned through $1.5 billion building automated warehouses before filing bankruptcy. Boo.com raised $135 million, burned it in 18 months, and sold its assets for under $2 million. The common thread: negative unit economics, no path to profitability, and complete dependence on the next funding round.</p>
 
     <h4>AI investment has entered unprecedented territory</h4>
-    <p>The combined Big Five capex (Alphabet, Amazon, Meta, Microsoft, Apple) grew from roughly $140 billion in 2022 to $251 billion in 2024 (+62% year-over-year) to a projected $388&ndash;443 billion in 2025 and $600&ndash;640 billion in 2026. Capital intensity has reached 45&ndash;57% of revenue &mdash; historically unprecedented for these companies. Venture funding has concentrated similarly: global AI VC funding grew from roughly $45&ndash;50 billion in 2022 to $211 billion in 2025, the first year AI startups captured more than half (52.7%) of all global venture deal value.</p>
-    <p>OpenAI reached an $852 billion post-money valuation<span class="tag tag-reported">reported</span> after its $122 billion funding round in March 2026. Annualized revenue hit $25 billion by February 2026<span class="tag tag-reported">reported</span>, up from roughly $2 billion in 2023. But the company projects a $14&ndash;17 billion loss in 2026<span class="tag tag-projected">projected</span>, is not expected to be profitable until 2029 at the earliest, and has committed $600 billion in compute spending through 2030. Anthropic reached $380 billion valuation with its $30 billion Series G in February 2026<span class="tag tag-reported">reported</span>, with revenue growing from $1 billion ARR in December 2024 to an estimated $19&ndash;30 billion ARR by early 2026<span class="tag tag-estimated">estimated</span>.</p>
+    <p>The combined Big Four capex (Alphabet, Amazon, Meta, Microsoft) grew from roughly $140 billion in 2023 to $228 billion in 2024 (+62% year-over-year), to $416 billion in 2025, to roughly $700 billion guided for 2026 &mdash; the same series the <a href="#decoder">capex decoder</a> plots. Capital intensity has reached historically unprecedented shares of revenue for these companies. Venture funding has concentrated similarly: global AI VC funding grew from roughly $45&ndash;50 billion in 2022 to $211 billion in 2025, the first year AI startups captured more than half (52.7%) of all global venture deal value.</p>
+    <p>OpenAI reached an $852 billion post-money valuation<span class="tag tag-reported">reported</span> after its $122 billion funding round in March 2026. Annualized revenue hit $25 billion by February 2026<span class="tag tag-reported">reported</span>, up from roughly $2 billion in 2023. But the company projects a $14&ndash;17 billion loss in 2026<span class="tag tag-projected">projected</span>, is not expected to be profitable until 2029 at the earliest, and has committed $600 billion in compute spending through 2030. Anthropic&rsquo;s trajectory has been even steeper: revenue grew from $1 billion ARR in December 2024 to roughly $9 billion at the end of 2025 to a $47 billion run-rate by mid-May 2026<span class="tag tag-reported">reported</span>, its Series H closed at $965 billion post-money<span class="tag tag-reported">reported</span>, and on June 1, 2026 it filed a confidential S-1 &mdash; the most concrete IPO signal short of a roadshow.</p>
 
     <h4>The revenue gap</h4>
     <p>Sequoia partner David Cahn published &ldquo;AI&rsquo;s $600B Question&rdquo; in June 2024, calculating that the AI infrastructure buildout requires roughly $600 billion in annual end-user revenue to justify itself. At the time, actual AI product revenue was roughly $100 billion &mdash; a $500 billion annual gap. Since then, both spending and revenue have grown, but spending has grown far faster: capex roughly tripled while the revenue gap has likely widened, not narrowed. Barclays estimated that current capex levels would require the equivalent of 12,000 ChatGPT-sized products to break even.</p>
@@ -1126,7 +1196,7 @@ p { margin-bottom: 1rem; }
     <p>Concentration this extreme is usually argued as safety &mdash; the giants won&rsquo;t fail. The Anthropic-Pentagon situation (covered in Section 4) is the case to study before agreeing. A single sovereign decision in February 2026 severed access to a major AI vendor for the entire US federal government, mid-contract, with little notice. The technology kept working. The vendor didn&rsquo;t fail. The buyer simply couldn&rsquo;t buy. That is a vendor-concentration failure mode the dot-com analogy didn&rsquo;t have. Stress-testing your AI strategy against vendor severance is now first-class planning work, not paranoia.</p>
 
     <h4>Why the parallel breaks &mdash; and why it might not matter</h4>
-    <p>There are important differences from the dot-com era. Today&rsquo;s leading AI investors are massively profitable companies spending from earnings, not startups burning venture capital. Nasdaq forward price-to-earnings ratios are approximately 26 times versus 60 times at the dot-com peak. Enterprise adoption is far more advanced: 87% of large enterprises have implemented AI in some form. But the core structural risk &mdash; investment dramatically outpacing revenue realization &mdash; is identical. And new risks have emerged: AI-related corporate debt has ballooned to $1.2 trillion (JPMorgan), GPU rental prices have already fallen roughly 70% from peak, and the real useful life of GPU infrastructure may be 2&ndash;3 years rather than the 5&ndash;6 years used for accounting depreciation.</p>
+    <p>There are important differences from the dot-com era. Today&rsquo;s leading AI investors are massively profitable companies spending from earnings, not startups burning venture capital. Nasdaq forward price-to-earnings ratios are approximately 26 times versus 60 times at the dot-com peak. Enterprise adoption is far more advanced: the large majority of big enterprises have implemented AI in some form, even if mostly in pilots. But the core structural risk &mdash; investment dramatically outpacing revenue realization &mdash; is identical. And new risks have emerged: AI-related corporate debt has ballooned to $1.2 trillion (JPMorgan), GPU rental prices have already fallen roughly 70% from peak, and the real useful life of GPU infrastructure may be 2&ndash;3 years rather than the 5&ndash;6 years used for accounting depreciation.</p>
     <p>The question for your planning is not whether AI is valuable. It is. The question is whether your specific vendors, tools, and providers are the Amazon or the Pets.com of this cycle.</p>
   </div>
 
@@ -1146,6 +1216,14 @@ p { margin-bottom: 1rem; }
     <li>GPU rental prices continue falling &mdash; H100 rates already down ~70% from peak</li>
     <li>Major AI-related debt defaults or CoreWeave-style stranded asset writedowns</li>
   </ul>
+
+  <div class="trigger-log">
+    <div class="tl-label">Trigger log &mdash; June 2026 edition</div>
+    <ul>
+      <li><span class="tag tag-fired">Armed</span> <strong>The IPO trigger is now live.</strong> <span class="tl-date">June 1, 2026 &mdash;</span> Anthropic filed a confidential S-1 (Series H closed at $965B post-money; run-rate revenue ~$47B in mid-May, up from ~$9B at the end of 2025)<span class="tag tag-reported">reported</span>. The &ldquo;&gt;30% correction within 6 months of listing&rdquo; signal goes from hypothetical to measurable the day it trades. Mark the calendar; this is the cleanest trigger in the booklet.</li>
+      <li><span class="tag tag-notyet">Not yet</span> <strong>Capex flattening.</strong> All four hyperscalers raised 2026 guidance in the Q1 reporting cycle. The opposite of this trigger.</li>
+    </ul>
+  </div>
 
   <h3>Implications by role</h3>
   <div class="impl-grid">
@@ -1194,11 +1272,11 @@ p { margin-bottom: 1rem; }
 
   <div class="chapter-prose">
     <h4>Two collisions, one pattern</h4>
-    <p>Two events in spring 2026 turned sovereignty from hypothetical to operational. The first: on February 27, 2026, the US Defense Secretary designated Anthropic a &ldquo;supply chain risk,&rdquo; and the Trump administration ordered federal agencies to stop using Claude. Anthropic and the Pentagon had signed a $200 million contract in July 2025 under Anthropic&rsquo;s acceptable-use policy; the Pentagon wanted &ldquo;all lawful purposes&rdquo; access without limitation, and Anthropic refused to remove restrictions on autonomous weapons and domestic mass surveillance. Anthropic sued, won a preliminary injunction in late March (Judge Rita Lin called the designation &ldquo;Orwellian&rdquo; and First Amendment retaliation), then lost an appeals court bid in early April. As of late April, the White House was reportedly developing a workaround to let federal agencies use new Anthropic models, sidestepping the supply-chain designation. The technology never stopped working. The buyer simply could not buy.</p>
+    <p>Two events in spring 2026 turned sovereignty from hypothetical to operational. The first: on February 27, 2026, the US Defense Secretary designated Anthropic a &ldquo;supply chain risk,&rdquo; and the Trump administration ordered federal agencies to stop using Claude. Anthropic and the Pentagon had signed a $200 million contract in July 2025 under Anthropic&rsquo;s acceptable-use policy; the Pentagon wanted &ldquo;all lawful purposes&rdquo; access without limitation, and Anthropic refused to remove restrictions on autonomous weapons and domestic mass surveillance. Anthropic sued, won a preliminary injunction in late March (Judge Rita Lin called the designation &ldquo;Orwellian&rdquo; and First Amendment retaliation), then lost an appeals court bid in early April. As of June 2026 the litigation is still live, and the designation has proven narrower in practice than first implied &mdash; Anthropic argued, and Microsoft agreed, that it cannot reach customers outside the defense contracts themselves, so Claude remained available through M365, GitHub, and AI Foundry. But the headline lesson stands: the technology never stopped working. The buyer simply could not buy.</p>
     <p>The second: on April 8, Meta launched Muse Spark, its first proprietary closed-weight model, from Meta Superintelligence Labs under Alexandr Wang. After nearly a decade of public commitment to open frontier AI, Meta&rsquo;s frontier development is now closed. Existing Llama models remain available but no longer evolve. The combination of $115&ndash;135B in 2026 capex, competitive pressure from Chinese labs building commercial products on top of Llama, and the strategic goal of a deeply integrated &ldquo;personal superintelligence&rdquo; tied to Meta&rsquo;s user data drove the shift. Yann LeCun, Meta&rsquo;s most visible open-source advocate, departed in November 2025. The &ldquo;Linux of AI&rdquo; thesis did not survive contact with $100B+ compute economics &mdash; at the Western frontier.</p>
 
     <h4>The Chinese open-weight wave fills the gap</h4>
-    <p>Within 18 days in April 2026, three frontier-class open-weight coding models shipped from Chinese labs: GLM-5.1 (Zhipu, MIT-licensed 744B MoE / 40B active, 58.4% SWE-Bench Pro), Kimi K2.6 (Moonshot, 1T total / 32B active with a 300-agent swarm primitive), and DeepSeek V4-Pro (1.6T total / 49B active, 80.6% SWE-Bench Verified at roughly an order of magnitude lower output cost than Opus 4.6). Qwen 3.6 (Alibaba, April 16) split into variants; the 35B-A3B open variant runs on a single RTX 4090 with quantization. By workload as of May 2026: DeepSeek V4-Pro for cheap large-context coding agents, Kimi K2.6 for hard multi-step tickets with its swarm primitive, GLM-5.1 for self-hosted production where MIT licensing matters, Qwen 3.6-35B-A3B for local laptop or single-GPU deployment. Llama 4 remains integration-default but is no longer evolving.</p>
+    <p>Within 18 days in April 2026, three frontier-class open-weight coding models shipped from Chinese labs: GLM-5.1 (Zhipu, MIT-licensed 744B MoE / 40B active, 58.4% SWE-Bench Pro), Kimi K2.6 (Moonshot, 1T total / 32B active with a 300-agent swarm primitive), and DeepSeek V4-Pro (1.6T total / 49B active, 80.6% SWE-Bench Verified at roughly an order of magnitude lower output cost than Opus 4.6). Qwen 3.6 (Alibaba, April 16) split into variants; the 35B-A3B open variant runs on a single RTX 4090 with quantization. By workload as of mid-2026: DeepSeek V4-Pro for cheap large-context coding agents, Kimi K2.6 for hard multi-step tickets with its swarm primitive, GLM-5.1 for self-hosted production where MIT licensing matters, Qwen 3.6-35B-A3B for local laptop or single-GPU deployment. Llama 4 remains integration-default but is no longer evolving.</p>
 
     <h4>What this means for EU enterprises</h4>
     <p>The buyer question has shifted from &ldquo;is open-weight good enough&rdquo; to a multi-part procurement question: which open-weight per workload, which hosting stack, which sovereign deployment shape. Mistral Medium 3.5 (128B dense, self-hostable, $400M ARR at a $13.8B valuation) is the cleanest EU-data-residency narrative on the market &mdash; dense rather than MoE, easier to deploy than the Chinese stacks, sovereign-aligned. Self-hosted Chinese open-weight is the other major option, with two caveats worth flagging: geopolitical exposure if procurement frameworks tighten, and dataset-provenance questions that some EU regulators are starting to ask.</p>
@@ -1213,6 +1291,14 @@ p { margin-bottom: 1rem; }
     <li>EU enterprises shifting production workloads from US-hosted APIs to EU-sovereign or self-hosted stacks at material volume</li>
     <li>Counter-trigger: a US/EU/CN diplomatic settlement that re-normalizes cross-jurisdictional vendor access</li>
   </ul>
+
+  <div class="trigger-log">
+    <div class="tl-label">Trigger log &mdash; June 2026 edition</div>
+    <ul>
+      <li><span class="tag tag-moved">Plot twist</span> <strong>The severed vendor is now a government partner.</strong> <span class="tl-date">June 9, 2026 &mdash;</span> Four months after the supply-chain designation, Anthropic shipped Claude Mythos 5 &mdash; the strongest cybersecurity model in the world &mdash; to cyberdefenders through Project Glasswing, <em>in collaboration with the US government</em>, while the Pentagon litigation continues. Sovereign access is not a binary; it is renegotiated capability-by-capability. Plan for that, not for a clean &ldquo;on/off&rdquo; switch.</li>
+      <li><span class="tag tag-notyet">Not yet</span> <strong>New designations or AUP collisions.</strong> No second severance event since February. The Anthropic case remains the live precedent to study.</li>
+    </ul>
+  </div>
 
   <h3>Implications by role</h3>
   <div class="impl-grid">
@@ -1270,12 +1356,12 @@ p { margin-bottom: 1rem; }
     <p><strong>Second, far more testing and validation work.</strong> This is the part most enterprises systematically underestimate. An LLM can confabulate plausibly, an agent can take actions, output reaches end-users directly, and the damage potential of an undetected failure is qualitatively higher than &ldquo;our regression test set drifted.&rdquo; The work that was once 10&ndash;15% of MLOps spend &mdash; evaluation, monitoring, output review &mdash; becomes first-class infrastructure. Eval pipelines, red-teaming, calibration of human review, behavior change-management when a model upgrades: these are not afterthoughts. They are the deployment work itself. Teams that staff the bridge with the MLOps shape will discover the bridge is built wrong.</p>
 
     <h4>The benchmark-to-deployment gap, quantified</h4>
-    <p>The same pattern shows up in every domain that has been measured carefully. ChatGPT-4 achieved 92% diagnostic accuracy in controlled medical studies, but a meta-analysis across 83 studies found only 52.1% overall AI diagnostic accuracy in real-world settings &mdash; nearly a 40-point gap. On the SWE-Lancer benchmark of real freelance coding tasks, even top models succeed only 26.2% of the time despite near-perfect HumanEval scores. On RE-Bench long-horizon tasks, AI systems score 4&times; higher than humans at 2 hours but humans outperform AI 2:1 at 32 hours. Deloitte&rsquo;s 2026 enterprise survey found 20% of enterprises reporting AI-driven revenue, with two-thirds still stuck in pilot. None of these numbers describe a capability problem. They describe a deployment problem.</p>
+    <p>The same pattern shows up in every domain that has been measured carefully. GPT-4 achieved 92% diagnostic accuracy in controlled medical studies, but a meta-analysis across 83 studies found only 52.1% overall AI diagnostic accuracy in real-world settings &mdash; nearly a 40-point gap. (The two numbers come from different studies, models, and task designs, so don&rsquo;t treat the subtraction as a measurement &mdash; the consistent <em>shape</em>, lab score far above field score, is the finding.) On the SWE-Lancer benchmark of real freelance coding tasks, even top models succeed only 26.2% of the time despite near-perfect HumanEval scores. On RE-Bench long-horizon tasks, AI systems score 4&times; higher than humans at 2 hours but humans outperform AI 2:1 at 32 hours. Deloitte&rsquo;s 2026 enterprise survey found 20% of enterprises reporting AI-driven revenue, with two-thirds still stuck in pilot. None of these numbers describe a capability problem. They describe a deployment problem.</p>
 
     <h4>Regulation as a secondary force raising the floor</h4>
     <p>Regulation isn&rsquo;t the headline of this current, but it is a real second-order force, and one piece of news clarifies how to weight it. On May 7, 2026, EU negotiators reached provisional political agreement on the Digital Omnibus on AI: Annex III high-risk obligations are postponed from August 2, 2026 to December 2, 2027 (a 16-month deferral), and Annex I product-regulated high-risk obligations are deferred from August 2, 2027 to August 2, 2028. Watermarking and AI-content transparency shift by only three months, to December 2, 2026.</p>
     <p>The delay should not reduce urgency for buyers. General-purpose AI model obligations under Articles 50&ndash;55 are <em>unchanged</em> and continue on the original schedule. Article 5 prohibitions are already in force. The Article 4 AI literacy obligation is already binding. Standards and guidance will still publish close to the new deadlines. The Code of Practice on synthetic content is expected to finalise in May or June 2026. What the omnibus moved was the most expensive, most operationally heavy obligations &mdash; precisely the ones tied to deployment of high-risk systems. The deployment gap is the headline; regulation is the floor underneath it, which the omnibus moved but did not remove.</p>
-    <p>Copyright runs in parallel. The Bartz v. Anthropic case produced a $1.5 billion class-wide settlement. The New York Times v. OpenAI multi-district litigation had summary judgment due in April 2026. There are 56+ ongoing copyright lawsuits against AI companies. Every settlement raises the floor of data-provenance and due-diligence work required to deploy an LLM in production. Treat this as friction on the deployment side, not as a separate force.</p>
+    <p>Copyright runs in parallel. The Bartz v. Anthropic case produced a $1.5 billion class-wide settlement. The New York Times v. OpenAI multi-district litigation is still grinding through discovery &mdash; the expected spring 2026 summary judgment did not materialize; instead, a January 2026 ruling forced OpenAI to hand over a 20-million-conversation sample of ChatGPT logs, which will shape the fair-use fight. There are 56+ ongoing copyright lawsuits against AI companies. Every settlement raises the floor of data-provenance and due-diligence work required to deploy an LLM in production. Treat this as friction on the deployment side, not as a separate force.</p>
 
     <h4>What teams that bridge the gap actually look like</h4>
     <p>The 2015 resolution was cross-functional teams &mdash; data scientist plus software engineer plus platform engineer. The 2026 resolution looks similar in shape but reweighted: <strong>evaluation engineers</strong>, <strong>red-team specialists</strong>, and <strong>workflow designers</strong> become first-class roles. Less feature-store work; more behavioral testing. Less ETL; more output review. Less concept drift; more model upgrades that change personality. The teams that ship LLM features into production at scale in 2026 are the ones that have already staffed this shape. Most haven&rsquo;t.</p>
@@ -1297,6 +1383,14 @@ p { margin-bottom: 1rem; }
     <li>Evaluation / red-team roles become standard line items in enterprise AI procurement</li>
     <li>Counter-trigger: a turnkey LLM-deployment toolchain (eval + monitoring + retrieval) becomes commoditized in the way MLOps did between 2018 and 2022</li>
   </ul>
+
+  <div class="trigger-log">
+    <div class="tl-label">Trigger log &mdash; June 2026 edition</div>
+    <ul>
+      <li><span class="tag tag-moved">Moved</span> <strong>NYT v. OpenAI summary judgment slipped.</strong> <span class="tl-date">June 2026 &mdash;</span> The merits ruling expected in spring did not land; the case is still in discovery, with a January order forcing OpenAI to produce 20 million ChatGPT conversation logs. The copyright floor under deployment keeps rising on settlements (Bartz: $1.5B), not yet on precedent.</li>
+      <li><span class="tag tag-notyet">Not yet</span> <strong>EU enforcement.</strong> No first enforcement action yet under the obligations that stayed on schedule (GPAI, Article 5). The Digital Omnibus deferral (May 2026) bought deployers time on Annex III &mdash; it did not change this trigger.</li>
+    </ul>
+  </div>
 
   <h3>Implications by role</h3>
   <div class="impl-grid">
@@ -1333,9 +1427,9 @@ p { margin-bottom: 1rem; }
     </p>
     <div class="key-numbers">
       <div class="kn"><div class="kn-value">8 h+</div><div class="kn-label">Target threshold: one undisturbed knowledge-worker day</div></div>
-      <div class="kn"><div class="kn-value">4 mo</div><div class="kn-label">2024&ndash;25 METR doubling cadence (Claude 3.7 Sonnet at ~50 min)</div></div>
+      <div class="kn"><div class="kn-value">~3 mo</div><div class="kn-label">METR doubling from 2024 onward (TH 1.1, Jan 2026)</div></div>
       <div class="kn"><div class="kn-value">~$8 / hr</div><div class="kn-label">Opus 4.7 autonomous coding (moderate load, ~1M tok/hr)</div></div>
-      <div class="kn"><div class="kn-value">~$2 / hr</div><div class="kn-label">Sonnet 4.6 same workflow</div></div>
+      <div class="kn"><div class="kn-value">~$5 / hr</div><div class="kn-label">Sonnet 4.6 same workflow</div></div>
       <div class="kn"><div class="kn-value">$130&ndash;245 / hr</div><div class="kn-label">Loaded US senior dev (EU: &euro;100&ndash;150/hr)</div></div>
     </div>
     <p style="font-size:0.85rem;color:var(--text-light);margin-top:10px">
@@ -1348,20 +1442,20 @@ p { margin-bottom: 1rem; }
     <p>The conversation about AI capability is changing because the people who buy capability are not benchmark researchers. Employers do not care whether a model added two points on MMLU. They care about two numbers. First: <strong>how many hours an agent can work on something autonomously before a human needs to step in</strong>. Second: <strong>what an hour of that autonomous work costs</strong>, in API tokens or compute, compared to the loaded hourly rate of the person it would otherwise be done by. Those two numbers, multiplied, are the displacement math. The first is improving observably on a roughly four-month doubling cadence. The second is collapsing on the curve Section 2 covers. The product of the two is what will decide which work moves and which doesn&rsquo;t.</p>
 
     <h4>Where the autonomy is today</h4>
-    <p>The first unit is no longer hypothetical. The observable artifacts as of May 2026: Claude Code routinely runs multi-hour autonomous coding sessions; Anthropic&rsquo;s Computer Use lets an agent drive a desktop directly; Cursor (with Composer 2.5) and Windsurf (bundling Devin Cloud) sell agentic coding by the hour, not by the demo. Google demonstrated Antigravity 2.0 by having 93 sub-agents generate 2.6 billion tokens to build the core framework of an operating system in roughly 12 hours &mdash; theatre, yes, but the artifact existed. Gemini Spark, announced at I/O on May 19, is a personal agent that runs cloud-side 24/7 even when the user&rsquo;s device is off. Anthropic&rsquo;s &ldquo;Dreaming&rdquo; feature gives models memory consolidation across long-running work. None of these tools clear the 8-hour undisturbed-work threshold reliably yet, but several can sustain hours of useful autonomous work in narrow domains. That was not true a year ago.</p>
+    <p>The first unit is no longer hypothetical. The observable artifacts as of mid-2026: Claude Code routinely runs multi-hour autonomous coding sessions; Anthropic&rsquo;s Computer Use lets an agent drive a desktop directly; Cursor (with Composer 2.5) and Windsurf (bundling Devin Cloud) sell agentic coding by the hour, not by the demo. Google demonstrated Antigravity 2.0 by having 93 sub-agents generate 2.6 billion tokens to build the core framework of an operating system in roughly 12 hours &mdash; theatre, yes, but the artifact existed. Gemini Spark, announced at I/O on May 19, is a personal agent that runs cloud-side 24/7 even when the user&rsquo;s device is off. Anthropic&rsquo;s &ldquo;Dreaming&rdquo; feature gives models memory consolidation across long-running work. None of these tools clear the 8-hour undisturbed-work threshold reliably yet, but several can sustain hours of useful autonomous work in narrow domains. That was not true a year ago.</p>
 
     <h4>The cost comparison</h4>
     <p>The displacement framing only works if the second unit lines up with the first. Take a representative knowledge-worker task that takes a senior practitioner about eight hours: a mid-complexity coding ticket with tests, or a structured analysis with document synthesis. Today&rsquo;s math, using May 2026 prices and observed Claude Code token telemetry:</p>
     <ul style="margin:0 0 1rem 1.25rem;font-size:0.95rem;line-height:1.7">
       <li><strong>Claude Opus 4.7</strong> at $5 input / $25 output per million tokens. A moderately loaded autonomous coding agent burns on the order of <strong>1M tokens per hour</strong> (typically ~700K input, ~300K output, with most input cached). At cached-input pricing, that lands at roughly <strong>$8 per agent-hour</strong>. An 8-hour autonomous run lands near <strong>$65&ndash;$80</strong>. A heavy multi-tool autonomous workload pushing 3&ndash;5M tokens per hour pushes per-hour cost into the <strong>$25&ndash;$45</strong> range.</li>
-      <li><strong>Claude Sonnet 4.6</strong> at $3 input / $15 output per million tokens. Same workload at moderate load: roughly <strong>$2 per agent-hour</strong>; an 8-hour run lands near <strong>$15&ndash;$25</strong>. Heavy load reaches <strong>$8&ndash;$15</strong> per hour.</li>
+      <li><strong>Claude Sonnet 4.6</strong> at $3 input / $15 output per million tokens. Same workload at moderate load: roughly <strong>$5 per agent-hour</strong> (the ~300K output tokens alone cost $4.50); an 8-hour run lands near <strong>$35&ndash;$45</strong>. Heavy load reaches <strong>$15&ndash;$25</strong> per hour.</li>
       <li><strong>Senior developer comparator</strong>: in the US, loaded hourly cost typically lands at <strong>$130&ndash;$245</strong> per hour (base $110&ndash;$175 plus 20&ndash;40% loaded for benefits, taxes, overhead). In Western Europe the equivalent runs <strong>&euro;100&ndash;&euro;150</strong> fully loaded; in CEE roughly half that. Per 8-hour day, that&rsquo;s <strong>$1,000&ndash;$2,000</strong> US / <strong>&euro;800&ndash;&euro;1,200</strong> Western EU.</li>
     </ul>
-    <p>The raw ratio, before any overhead, is striking: an autonomous Opus 4.7 hour costs <strong>roughly 15&ndash;30&times;</strong> less than the senior US developer hour it would replace; an autonomous Sonnet 4.6 hour costs roughly 60&ndash;100&times; less. Most observers stop here, get excited, and reach the wrong conclusion. The honest number adds review and retry overhead: every autonomous hour today realistically needs roughly 20&ndash;40 minutes of human supervision, evaluation runs, and retry cycles before the work ships. That overhead compresses the effective gap into something more like <strong>3&ndash;10&times;</strong> cheaper for the right workflow, and to break-even or worse for workflows where the model still gets stuck.</p>
+    <p>The raw ratio, before any overhead, is striking: an autonomous Opus 4.7 hour costs <strong>roughly 15&ndash;30&times;</strong> less than the senior US developer hour it would replace; an autonomous Sonnet 4.6 hour costs roughly 30&ndash;50&times; less. Most observers stop here, get excited, and reach the wrong conclusion. The honest number adds review and retry overhead: every autonomous hour today realistically needs roughly 20&ndash;40 minutes of human supervision, evaluation runs, and retry cycles before the work ships. That overhead compresses the effective gap into something more like <strong>3&ndash;10&times;</strong> cheaper for the right workflow, and to break-even or worse for workflows where the model still gets stuck.</p>
     <p>Section 2 explains why the underlying token gap closes faster than people expect: frontier-equivalent inference costs fell ~99% in two years and the April 2026 open-weight wave (DeepSeek V4-Pro at $0.28/$2.48 per MTok) is another factor of 10 below paid frontier. The crossover for any specific workflow depends mostly on two things: how much human supervision overhead it still needs, and what the loaded-cost comparator actually is in your geography. Pick one workflow your team actually does. Estimate both numbers. Track the ratio quarterly. That ratio, more than any benchmark, will tell you when displacement becomes economic.</p>
 
     <h4>The METR data point</h4>
-    <p>One supporting data point is worth keeping in view. METR (Model Evaluation &amp; Threat Research) publishes a measured benchmark called Time Horizon: the duration of human work a model can complete with 50% reliability. Their 2019&ndash;2025 dataset showed the frontier doubling roughly every 7 months. Their TH 1.1 update (January 2026) used more tasks and far more 8-hour-plus measurements. The 2024&ndash;25 trajectory looks closer to a 4-month doubling. Claude 3.7 Sonnet&rsquo;s 50% time horizon sits around 50 minutes. If the 4-month doubling holds, frontier models cross the 8-hour threshold by late 2026 or early 2027. If the 7-month doubling reasserts, that slips to 2028. Either way, the trajectory is the input to the displacement curve, not the headline number.</p>
+    <p>One supporting data point is worth keeping in view. METR (Model Evaluation &amp; Threat Research) publishes a measured benchmark called Time Horizon: the duration of human work a model can complete with 50% reliability. Their 2019&ndash;2025 dataset showed the frontier doubling roughly every 7 months. Their TH 1.1 update (January 2026) expanded the task suite by a third and doubled the number of 8-hour-plus tasks &mdash; and measured from 2024 onward, the doubling time comes out near <strong>3 months</strong> (89 days). The anchors move fast: Claude 3.7 Sonnet (early 2025) sat around a 50-minute horizon, while METR&rsquo;s February&ndash;March 2026 pilot with the frontier labs reported the strongest agents <em>near or beyond the reliable measurement range of the benchmark itself</em>. If the ~3&ndash;4-month doubling holds, frontier models cross the 8-hour threshold by late 2026 or early 2027 &mdash; the ruler may run out before the calendar does. If the older 7-month cadence reasserts, that slips toward 2028. Either way, the trajectory is the input to the displacement curve, not the headline number.</p>
 
     <h4>What this implies for capex</h4>
     <p>If &ldquo;hours of autonomous work&rdquo; is the right capability axis, the capex picture from Section 1 changes shape. The <strong>training</strong> portion of hyperscaler spend &mdash; the largest pre-training runs &mdash; becomes harder to justify on its own; smaller models with strong post-training, RL, and tool use can match the capabilities of larger ones for many workflows. The <strong>inference</strong> portion, already projected at roughly 70% of AI compute by 2030, becomes <em>more</em> justified, because every long-running agent is a multi-token, multi-call, often multi-hour inference workload. Reasoning models with extended thinking can use 10&ndash;100&times; more tokens per task than chat-style models. Capex is not wrong. Its allocation between training and serving is what shifts.</p>
@@ -1369,7 +1463,7 @@ p { margin-bottom: 1rem; }
 
   <div class="key-numbers">
     <div class="kn"><div class="kn-value">~$8 / hr</div><div class="kn-label">Opus 4.7 autonomous (moderate, ~1M tok/hr)</div></div>
-    <div class="kn"><div class="kn-value">~$2 / hr</div><div class="kn-label">Sonnet 4.6 same workflow</div></div>
+    <div class="kn"><div class="kn-value">~$5 / hr</div><div class="kn-label">Sonnet 4.6 same workflow</div></div>
     <div class="kn"><div class="kn-value">$130&ndash;245</div><div class="kn-label">US senior dev loaded hourly comparator</div></div>
     <div class="kn"><div class="kn-value">3&ndash;10&times;</div><div class="kn-label">Net displacement gap after review &amp; retry overhead</div></div>
     <div class="kn"><div class="kn-value">94% &harr; 26%</div><div class="kn-label">SWE-bench Verified vs SWE-Lancer (production gap)</div></div>
@@ -1384,10 +1478,18 @@ p { margin-bottom: 1rem; }
     <li>Counter-trigger: net agent cost-per-hour (after supervision overhead) stays above human comparator on representative tasks for two consecutive frontier releases</li>
   </ul>
 
+  <div class="trigger-log">
+    <div class="tl-label">Trigger log &mdash; June 2026 edition</div>
+    <ul>
+      <li><span class="tag tag-fired">Confirmed</span> <strong>The doubling cadence held &mdash; and may be faster.</strong> <span class="tl-date">Jan&ndash;Mar 2026 &mdash;</span> METR&rsquo;s TH 1.1 puts the 2024-onward doubling near 3 months, and their spring pilot reported frontier agents near or beyond the benchmark&rsquo;s reliable measurement range. The first unit (hours) is moving at the fast end of this chapter&rsquo;s assumptions.</li>
+      <li><span class="tag tag-notyet">Not yet</span> <strong>Cost-per-hour benchmarks.</strong> No major vendor publishes agent cost-per-hour alongside accuracy yet &mdash; you still have to compute it yourself, which is exactly what the Team Lead card below asks you to do.</li>
+    </ul>
+  </div>
+
   <h3>Implications by role</h3>
   <div class="impl-grid">
     <div class="impl-card"><div class="impl-role">Developer</div><div class="impl-text">Reliability and observability matter more than prompt cleverness. Retry logic, intermediate checkpoints, tool-call audit trails. The hard part is the long tail, not the happy path.</div></div>
-    <div class="impl-card"><div class="impl-role">Team Lead</div><div class="impl-text">Pick one representative team workflow. Estimate (a) autonomous hours, (b) agent $/hr (today ~$8 Opus / ~$2 Sonnet, plus your supervision overhead), (c) loaded human hourly rate. Track that ratio quarterly &mdash; it&rsquo;s your displacement curve.</div></div>
+    <div class="impl-card"><div class="impl-role">Team Lead</div><div class="impl-text">Pick one representative team workflow. Estimate (a) autonomous hours, (b) agent $/hr (today ~$8 Opus / ~$5 Sonnet, plus your supervision overhead), (c) loaded human hourly rate. Track that ratio quarterly &mdash; it&rsquo;s your displacement curve.</div></div>
     <div class="impl-card"><div class="impl-role">CTO / VP Eng</div><div class="impl-text">Plan for inference-heavy workloads. Budget and architecture should assume agentic workflows with 10&ndash;100&times; more tokens per task, not chat.</div></div>
     <div class="impl-card"><div class="impl-role">Procurement</div><div class="impl-text">Vendor evaluation should include long-horizon task benchmarks and cost-per-hour, not just single-prompt scores. Ask for production reliability data, not just leaderboard positions.</div></div>
   </div>
@@ -1422,7 +1524,7 @@ p { margin-bottom: 1rem; }
   <p>The most useful artifact in this booklet is the trigger list under each current. Far more than the prose or the synthesis, the triggers are what tell you something has shifted. Decide now &mdash; before the headlines &mdash; what would update you. &ldquo;If frontier agent cost-per-hour drops below $40, I will pilot the displacement workflow.&rdquo; &ldquo;If GPU rental prices fall another 30%, I will renegotiate our vendor contract.&rdquo; The point is to short-circuit the response time between observing a signal and acting on it.</p>
 
   <h3>Review on a cadence</h3>
-  <p>Quarterly is probably right for most teams. Faster than that and you&rsquo;re reading noise; slower and you miss real shifts. Each review, walk through the trigger list and ask: <em>has any trigger fired? Has any disconfirming signal landed? What changed in our environment?</em> Update your stance accordingly. The output of the review is rarely &ldquo;we were wrong&rdquo; &mdash; more often it&rsquo;s &ldquo;we should weight this current heavier than we did last quarter.&rdquo;</p>
+  <p>Quarterly is probably right for most teams. Faster than that and you&rsquo;re reading noise; slower and you miss real shifts. Each review, walk through the trigger list and ask: <em>has any trigger fired? Has any disconfirming signal landed? What changed in our environment?</em> Update your stance accordingly. The output of the review is rarely &ldquo;we were wrong&rdquo; &mdash; more often it&rsquo;s &ldquo;we should weight this current heavier than we did last quarter.&rdquo; The green <strong>trigger-log</strong> panels in this edition are that review done in public: between the May and June editions alone, a capability trigger fired (Current 1), an IPO trigger went live (Current 3), a court date slipped (Current 5), and a doubling cadence was confirmed (Current 6). That is the cadence working &mdash; copy the format for your own currents.</p>
 
   <h3>Let currents go stale</h3>
   <p>If a current&rsquo;s triggers haven&rsquo;t fired in 18 months and its disconfirming evidence has been steadily accumulating, the current probably isn&rsquo;t live anymore. Retire it. Replace it with one that better describes the world you&rsquo;re actually living in. This booklet is a snapshot of mid-2026; by mid-2027 at least one of these currents will likely need replacing. That&rsquo;s the system working, not failing.</p>
@@ -1650,8 +1752,8 @@ document.addEventListener('DOMContentLoaded', function() {
       { year:2023, name:'GPT-4', detail:'GPT-4 \u00B7 Claude 2 \u00B7 Llama 2', sub:'~1.8T MoE (280B active)', params:1800, confidence:'Leaked' },
       { year:2024, name:'GPT-4o', detail:'GPT-4o \u00B7 Claude 3.5 \u00B7 Gemini 1.5', sub:'~1\u20132T MoE', params:1500, confidence:'Estimated' },
       { year:2025, name:'Opus 4', detail:'GPT-4.5 \u00B7 Grok 3 \u00B7 Claude Opus 4', sub:'~2\u20135T MoE', params:3500, confidence:'Estimated' },
-      { year:2026, name:'Opus 4.7 / Spud', detail:'GPT-6 (Spud) \u00B7 Opus 4.7 \u00B7 Gemini 3.5', sub:'~2\u20135T', params:3500, confidence:'Estimated' },
-      { year:2027, name:'Mythos?', detail:'Mythos \u00B7 next-gen frontier', sub:'~10\u201320T', params:15000, projected:true, confidence:'Projected' },
+      { year:2026, name:'Fable 5', detail:'Claude Fable 5 / Mythos 5 (Jun 9) \u00B7 GPT-6 (Spud) \u00B7 Gemini 3.5', sub:'Mythos-class \u00B7 first of the Claude 5 gen', params:3500, confidence:'Confirmed' },
+      { year:2027, name:'Next gen?', detail:'Fable successors \u00B7 GPT-6 public era', sub:'~10\u201320T (est.)', params:15000, projected:true, confidence:'Projected' },
       { year:2028, name:'From $700B', detail:'Models from $700B spend', sub:'~10\u201320T+ (est.)', params:15000, projected:true, confidence:'Projected' },
     ];
     var FRONTIERS = [
@@ -1662,7 +1764,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var CYCLES = [
       { start:2020, end:2022, label:'GPT-3 gen \u00B7 ~175B', color:'#ddd5c4' },
       { start:2023, end:2024, label:'GPT-4 gen \u00B7 ~1\u20132T', color:'#d5c4dd' },
-      { start:2025, end:2026, label:'Opus gen \u00B7 ~2\u20135T', color:'#c4ddd5' },
+      { start:2025, end:2026, label:'Opus \u2192 Fable 5 gen \u00B7 ~2\u20135T', color:'#c4ddd5' },
       { start:2027, end:2028, label:'Next gen \u00B7 ~10\u201320T?', color:'#c4d5dd' },
     ];
 
@@ -1872,7 +1974,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var botEvents = [
       { x:100, yr:'2022', label:'ChatGPT launches', detail:'ChatGPT reaches 100M users in 2 months. Hyperscaler capex: $140B.' },
       { x:260, yr:'2024', label:'Capex $251B (+62%)', detail:'Sequoia publishes "AI\'s $600B Question." Stability AI CEO resigns. Inflection acqui-hired.' },
-      { x:420, yr:'2025\u20132026', label:'IPOs \u00B7 $700B capex', detail:'OpenAI IPO expected Q4 at $1T+. Anthropic IPO possible Oct at $380B. Capex: $600\u2013640B.', peak:true, now:true },
+      { x:420, yr:'2025\u20132026', label:'IPOs \u00B7 $700B capex', detail:'Anthropic filed confidential S-1 June 1, 2026 (Series H: $965B). OpenAI expected to follow at $1T+. Big Four capex: ~$700B.', peak:true, now:true },
       { x:560, yr:'2027?', label:'???', detail:'If history rhymes: correction zone. Revenue gap of $500\u2013600B must close or capex must slow.', projected:true },
       { x:700, yr:'2028?', label:'???', detail:'Survivors emerge. Which AI companies had real revenue, real customers, and cash reserves?', projected:true },
       { x:900, yr:'2029+', label:'What survived?', detail:'The technology doesn\'t disappear. The funding does. Who is your vendor in this timeline?', projected:true },
