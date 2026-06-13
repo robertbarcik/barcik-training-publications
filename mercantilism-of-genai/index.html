@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mercantilism of Generative AI — barcik.training</title>
+<meta name="description" content="How frontier intelligence stopped being a product and became statecraft — a lens, read from the morning of June 12, 2026, for interpreting what happens next.">
+<link rel="canonical" href="https://publications.barcik.training/mercantilism-of-genai/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Mercantilism of Generative AI">
+<meta property="og:description" content="How frontier intelligence stopped being a product and became statecraft — a lens, read from the morning of June 12, 2026, for interpreting what happens next.">
+<meta property="og:url" content="https://publications.barcik.training/mercantilism-of-genai/">
+<meta property="og:image" content="https://publications.barcik.training/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1e3a5f;
+  --navy-light: #2a5280;
+  --accent: #3b82f6;
+  --bg: #ffffff;
+  --bg-sidebar: #f8fafc;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+  --sidebar-width: 300px;
+  --progress-height: 3px;
+  --orange-red: #E05A33;
+  --purple: #7C6DD8;
+  --cyan: #0EA5C9;
+  --green: #2D7A4F;
+  --dark-brown: #3D2B1F;
+  --risk-color: #dc2626;
+  --chart-bg: #f0f4f8;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* ── Progress bar ── */
+#progress-bar {
+  position: fixed; top: 0; left: 0;
+  width: 0%; height: var(--progress-height);
+  background: var(--accent); z-index: 1000;
+  transition: width 0.1s;
+}
+
+/* ── Sidebar ── */
+#sidebar {
+  position: fixed; top: 0; left: 0;
+  width: var(--sidebar-width); height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  overflow-y: auto; padding: 2rem 0; z-index: 100;
+  transition: transform 0.3s;
+}
+#sidebar-header {
+  padding: 0 1.5rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+#sidebar-header h2 {
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--navy); letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+#sidebar-header p {
+  font-size: 0.78rem; color: var(--text-light);
+  margin-top: 0.3rem; line-height: 1.4;
+}
+#sidebar nav ul { list-style: none; }
+#sidebar nav ul li a {
+  display: block; padding: 0.55rem 1.5rem;
+  font-size: 0.85rem; color: var(--text-light);
+  text-decoration: none; border-left: 3px solid transparent;
+  transition: all 0.2s; line-height: 1.4;
+}
+#sidebar nav ul li a:hover {
+  color: var(--navy);
+  background: rgba(30, 58, 95, 0.04);
+}
+#sidebar nav ul li a.active {
+  color: var(--navy); font-weight: 600;
+  border-left-color: var(--accent);
+  background: rgba(59, 130, 246, 0.06);
+}
+.nav-divider {
+  font-size: 0.7rem; font-weight: 700;
+  color: var(--text-light); text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 1rem 1.5rem 0.3rem;
+  opacity: 0.6;
+}
+
+/* ── Hamburger ── */
+#menu-toggle {
+  display: none; position: fixed;
+  top: 1rem; left: 1rem; z-index: 200;
+  background: var(--navy); color: white;
+  border: none; border-radius: 6px;
+  padding: 0.5rem 0.75rem; font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ── Main content ── */
+#content-wrapper {
+  margin-left: var(--sidebar-width);
+  display: flex; justify-content: center;
+  padding: 0 2rem;
+}
+#content {
+  max-width: 920px; width: 100%;
+  padding: 3rem 1rem 6rem;
+}
+
+/* ── Chapter sections ── */
+.chapter {
+  margin-bottom: 5rem;
+  padding-top: 1rem;
+}
+.chapter-label {
+  font-size: 0.82rem; font-weight: 700;
+  color: var(--accent); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 0.5rem;
+}
+.chapter h2 {
+  font-size: 1.8rem; font-weight: 700;
+  color: var(--navy); line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+.chapter h3 {
+  font-size: 1.15rem; font-weight: 600;
+  color: var(--navy-light);
+  margin-top: 2.5rem; margin-bottom: 0.75rem;
+}
+.chapter-question {
+  font-weight: 400; font-size: 0.75em;
+  color: var(--text-light); font-style: italic;
+}
+p { margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; line-height: 1.8; }
+
+/* ── Cover ── */
+.cover-page {
+  text-align: center;
+  padding: 6rem 0 4rem;
+}
+.cover-label {
+  font-size: 0.85rem; color: var(--text-light);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.cover-page h1 {
+  font-size: 2.8rem; font-weight: 700;
+  color: var(--navy); line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.cover-subtitle {
+  font-size: 1.2rem; color: var(--text-light);
+  margin-bottom: 3rem;
+}
+.cover-meta {
+  font-size: 0.9rem; color: var(--text-light);
+  display: flex; justify-content: center; gap: 2rem;
+}
+
+/* ── Thesis/Risk cards ── */
+.thesis-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; margin-bottom: 20px;
+}
+.thesis-card {
+  background: #fff; border-radius: 12px;
+  padding: 18px 22px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  border: 1px solid var(--border);
+}
+.thesis-card .card-label {
+  font-size: 13px; font-weight: 600; margin-bottom: 5px;
+}
+.thesis-card .card-text {
+  font-size: 13.5px; color: #555; line-height: 1.75;
+}
+
+/* ── Chart wrap ── */
+.chart-wrap {
+  background: #fff; border-radius: 12px;
+  padding: 24px 24px 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  border: 1px solid var(--border);
+  margin-bottom: 20px; position: relative;
+  overflow: hidden;
+}
+.chart-wrap svg { display: block; width: 100%; height: auto; }
+.chart-title {
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 14px;
+}
+
+/* ── Legend ── */
+.legend {
+  display: flex; justify-content: center;
+  gap: 28px; margin-top: 14px; flex-wrap: wrap;
+}
+.legend-item {
+  display: flex; align-items: center;
+  gap: 7px; font-size: 13px;
+  color: #555; font-weight: 500;
+}
+.legend-line { width: 28px; height: 3px; border-radius: 2px; }
+
+/* ── Key numbers ── */
+.key-numbers {
+  display: flex; gap: 12px;
+  margin: 24px 0; flex-wrap: wrap;
+}
+.kn {
+  flex: 1; min-width: 140px;
+  background: var(--bg-sidebar);
+  border-radius: 10px; padding: 14px 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.kn-value {
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--navy); line-height: 1.2;
+}
+.kn-label {
+  font-size: 0.75rem; color: var(--text-light);
+  margin-top: 4px; line-height: 1.3;
+}
+
+/* ── Triggers ── */
+.triggers {
+  list-style: none; padding: 0;
+  margin: 0.5rem 0 1rem;
+}
+.triggers li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative; font-size: 0.92rem;
+  border-bottom: 1px solid var(--border);
+}
+.triggers li::before {
+  content: '\25B6'; position: absolute;
+  left: 0; color: var(--accent); font-size: 0.6rem;
+  top: 0.7rem;
+}
+
+/* ── Implications grid ── */
+.impl-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-top: 0.75rem;
+}
+.impl-card {
+  background: var(--bg-sidebar);
+  border-radius: 10px; padding: 14px 16px;
+  border: 1px solid var(--border);
+}
+.impl-role {
+  font-size: 0.78rem; font-weight: 700;
+  color: var(--accent); text-transform: uppercase;
+  letter-spacing: 0.05em; margin-bottom: 4px;
+}
+.impl-text { font-size: 0.85rem; color: #555; line-height: 1.5; }
+
+/* ── Chapter prose ── */
+.chapter-prose {
+  margin: 2.5rem 0 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--border);
+}
+.chapter-prose h4 {
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--navy); margin-top: 2rem;
+  margin-bottom: 0.6rem; line-height: 1.3;
+}
+.chapter-prose h4:first-child { margin-top: 0; }
+.chapter-prose p {
+  line-height: 1.85; margin-bottom: 1.1rem;
+  color: var(--text);
+}
+.chapter-prose blockquote {
+  border-left: 4px solid var(--accent);
+  background: rgba(59, 130, 246, 0.04);
+  padding: 1rem 1.5rem; margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0; font-style: italic;
+}
+.chapter-prose blockquote p:last-child { margin-bottom: 0; }
+
+/* ── Credits ── */
+.credits {
+  text-align: center; margin-top: 32px;
+  font-size: 12px; color: #94a3b8;
+}
+
+/* ── Source/projection tags (small inline pills) ── */
+.tag {
+  display: inline-block;
+  font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 1px 6px; border-radius: 3px;
+  margin-left: 4px; vertical-align: 2px;
+  white-space: nowrap;
+}
+.tag-reported { background: #e0f2fe; color: #075985; }
+.tag-projected { background: #fef9c3; color: #854d0e; }
+.tag-speculation { background: #fce7f3; color: #9d174d; }
+.tag-estimated { background: #f1f5f9; color: #475569; }
+
+/* ── Mapping table (mercantilism → intelligence) ── */
+.map-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  font-size: 0.88rem; margin: 18px 0;
+}
+.map-table th {
+  background: var(--navy); color: #fff;
+  font-weight: 600; text-align: left; padding: 10px 14px;
+  font-size: 0.78rem; letter-spacing: 0.02em;
+}
+.map-table td {
+  padding: 10px 14px; border-top: 1px solid var(--border);
+  vertical-align: top; line-height: 1.5;
+}
+.map-table tr:nth-child(even) td { background: #fafbfc; }
+.map-table td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
+
+/* ── Author note callout ── */
+.author-note {
+  background: #fffbf2;
+  border-left: 4px solid #d97706;
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 1.5rem 0;
+  font-size: 0.92rem; line-height: 1.7;
+  color: var(--text);
+}
+.author-note .an-label {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: #b45309; margin-bottom: 6px;
+}
+.author-note p { margin-bottom: 0.6rem; }
+.author-note p:last-child { margin-bottom: 0; }
+
+/* ── Disclaimer note callout (red) — new for this piece ── */
+.disclaimer-note {
+  background: #fef2f2;
+  border-left: 4px solid var(--risk-color);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin: 1.5rem 0;
+  font-size: 0.95rem; line-height: 1.75;
+  color: var(--text);
+}
+.disclaimer-note .dn-label {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--risk-color); margin-bottom: 8px;
+}
+.disclaimer-note p { margin-bottom: 0.7rem; }
+.disclaimer-note p:last-child { margin-bottom: 0; }
+
+/* ── Dated bets (falsification) ── */
+.bet {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px; margin-bottom: 12px;
+}
+.bet .bet-by {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--accent); margin-bottom: 4px;
+}
+.bet .bet-claim { font-size: 0.96rem; line-height: 1.6; margin-bottom: 8px; }
+.bet .bet-falsify {
+  font-size: 0.85rem; color: var(--text); line-height: 1.55;
+  background: #fef2f2; border-radius: 6px; padding: 8px 12px;
+}
+.bet .bet-falsify .bf-k {
+  font-size: 0.66rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--risk-color); margin-right: 6px;
+}
+
+/* ── Co-author's note ── */
+.coauthor-note {
+  background: #f5f3ff;
+  border-left: 4px solid var(--purple);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px; margin: 1.5rem 0;
+  font-size: 0.95rem; line-height: 1.75;
+}
+.coauthor-note .cn-label {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--purple); margin-bottom: 8px;
+}
+.coauthor-note p { margin-bottom: 0.7rem; }
+.coauthor-note p:last-child { margin-bottom: 0; }
+.coauthor-sig {
+  font-size: 0.85rem; color: var(--text-light);
+  font-style: italic; margin-top: 1.2rem;
+}
+
+/* ── Trigger log (dated status of trigger signals) ── */
+.trigger-log {
+  background: #f0faf4;
+  border-left: 4px solid var(--green);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.88rem; line-height: 1.65;
+}
+.trigger-log .tl-label {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--green); margin-bottom: 8px;
+}
+.trigger-log ul { list-style: none; margin: 0; padding: 0; }
+.trigger-log li { padding: 6px 0; }
+.trigger-log li + li { border-top: 1px solid rgba(45,122,79,0.12); }
+.trigger-log .tl-date { color: var(--text-light); font-size: 0.78rem; }
+.tag-fired { background: #dcfce7; color: #166534; }
+.tag-moved { background: #fef9c3; color: #854d0e; }
+.tag-notyet { background: #f1f5f9; color: #475569; }
+.tag-counter { background: #fce7f3; color: #9d174d; }
+
+/* ── Composite cards (synthesis) ── */
+.composite-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin: 14px 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+.composite-card .cc-strip { height: 4px; }
+.composite-card .cc-body { padding: 16px 20px; }
+.composite-card .cc-pair {
+  font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-light); margin-bottom: 2px;
+}
+.composite-card .cc-name {
+  font-size: 1.02rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 10px;
+}
+.composite-card .cc-row { margin-bottom: 8px; font-size: 0.9rem; line-height: 1.65; }
+.composite-card .cc-row:last-child { margin-bottom: 0; }
+.composite-card .cc-row .cc-k {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--accent);
+  display: block; margin-bottom: 1px;
+}
+
+/* ── Static diagrams (mercantilism) ── */
+.stack-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; border-radius: 10px;
+  margin-bottom: 10px; color: #fff;
+}
+.stack-row .sr-k {
+  font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  opacity: 0.82; min-width: 92px;
+}
+.stack-row .sr-v { font-size: 1rem; font-weight: 600; }
+.stack-row .sr-note { font-size: 0.8rem; opacity: 0.82; margin-left: auto; text-align: right; }
+.leak-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.leak-col { border-radius: 12px; padding: 18px 20px; border: 1px solid var(--border); background: #fff; }
+.leak-col h5 {
+  font-size: 0.78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;
+}
+.leak-col ul { list-style: none; padding: 0; margin: 0; }
+.leak-col li {
+  padding: 7px 0; font-size: 0.9rem;
+  display: flex; gap: 10px; align-items: baseline;
+  border-bottom: 1px solid var(--border);
+}
+.leak-col li:last-child { border-bottom: none; }
+.leak-col li .mark { font-weight: 700; font-size: 0.95rem; }
+.check-list {
+  list-style: none; padding: 0; margin: 14px 0;
+}
+.check-list li {
+  padding: 8px 0 8px 28px; position: relative;
+  font-size: 0.92rem; border-bottom: 1px solid var(--border);
+}
+.check-list li::before {
+  content: '?'; position: absolute; left: 0; top: 7px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  font-size: 0.7rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  #sidebar { transform: translateX(-100%); }
+  #sidebar.open { transform: translateX(0); box-shadow: 4px 0 20px rgba(0,0,0,0.15); }
+  #menu-toggle { display: block; }
+  #content-wrapper { margin-left: 0; padding: 0 1rem; }
+  #content { padding: 2rem 0.5rem 4rem; }
+  .cover-page h1 { font-size: 2rem; }
+  .thesis-grid { grid-template-columns: 1fr; }
+  .impl-grid { grid-template-columns: 1fr; }
+  .leak-grid { grid-template-columns: 1fr; }
+  .map-table { font-size: 0.8rem; }
+}
+@media (max-width: 600px) {
+  #content { padding: 1.5rem 0.5rem 3rem; }
+  body { font-size: 15px; }
+  .key-numbers { flex-direction: column; }
+  .kn { min-width: unset; }
+  .stack-row { flex-wrap: wrap; gap: 6px; }
+  .stack-row .sr-note { margin-left: 0; text-align: left; }
+}
+
+/* ── Print ── */
+@media print {
+  #sidebar, #menu-toggle, #progress-bar { display: none !important; }
+  #content-wrapper { margin-left: 0; padding: 0; }
+  #content { max-width: 100%; }
+  .chapter { page-break-before: always; }
+  .chapter:first-child { page-break-before: auto; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<button id="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <h2>The Mercantilism</h2>
+    <p>of Generative AI</p>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#cover">Cover</a></li>
+      <li><a href="#disclaimer">Read this first</a></li>
+      <li><a href="#framing">The morning it went dark</a></li>
+      <li class="nav-divider">The Lens</li>
+      <li><a href="#lens">What mercantilism is</a></li>
+      <li class="nav-divider">Five Mechanisms</li>
+      <li><a href="#m-utility">1. Intelligence is a utility</a></li>
+      <li><a href="#m-compute">2. The bullion is compute</a></li>
+      <li><a href="#m-dial">3. Distribute vs hoard</a></li>
+      <li><a href="#m-open">4. Open is a position</a></li>
+      <li><a href="#m-bloc">5. Firm-multipolar, bloc-singleton</a></li>
+      <li class="nav-divider">Counterweight</li>
+      <li><a href="#counter">Human adaptability</a></li>
+      <li class="nav-divider">Synthesis</li>
+      <li><a href="#synthesis">The phenomenon, named</a></li>
+      <li><a href="#practice">How to read what comes next</a></li>
+      <li><a href="#bets">Dated bets</a></li>
+      <li><a href="#log">Trigger log</a></li>
+      <li><a href="#coauthor">Co-author's note</a></li>
+    </ul>
+  </nav>
+</aside>
+
+<div id="content-wrapper">
+<main id="content">
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- COVER                                                      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="cover">
+  <div class="cover-page">
+    <div class="cover-label">barcik.training</div>
+    <h1>The Mercantilism<br>of Generative AI</h1>
+    <p class="cover-subtitle">How frontier intelligence stopped being a product and became statecraft — a lens, not a forecast.</p>
+    <div class="cover-meta">
+      <span>Robert Barcik</span>
+      <span>June 2026</span>
+      <span><a href="mailto:robert@barcik.training" style="color: inherit;">robert@barcik.training</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DISCLAIMER                                                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="disclaimer">
+  <div class="chapter-label">Read this first</div>
+  <h2>A grain of salt, served generously</h2>
+
+  <div class="disclaimer-note">
+    <div class="dn-label">I might be wrong about all of this</div>
+    <p>What follows is an <strong>interpretation</strong>, written in the days after a single event, by one person watching from the outside. It is not reporting, it is not a forecast, and it is certainly not a leak of anyone's strategy. I have no inside knowledge of any lab or any government. I am pattern-matching an old idea onto a fast-moving present, and pattern-matching is exactly the activity that feels most like insight while being most prone to error.</p>
+    <p>So take this the way you should take everything: with a sceptical mind. Where I state something that actually happened, I try to mark it <span class="tag tag-reported">reported</span>. Where I'm interpreting, inferring, or guessing, I try to mark it <span class="tag tag-speculation">interpretation</span>. The two are not the same and I don't want to blur them.</p>
+    <p>The value here, if there is any, is not in the predictions — I make almost none. It's in the <strong>lens</strong>. If the lens helps you read the next headline more clearly than the last one, it has done its job, even if every specific guess I make turns out wrong.</p>
+    <p>Two things to know before you start. This booklet was <strong>co-written with an AI</strong> — Claude, the model I'd been working with — and near the end it <a href="#coauthor" style="color:var(--risk-color)">signs its own honest note</a> about what it thinks of what we made, including why you should be wary of it. And because a lens that can't be wrong is worthless, there's a section of <a href="#bets" style="color:var(--risk-color)">dated, falsifiable bets</a> — come back and check them against the world.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- FRAMING: THE MORNING IT WENT DARK                          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="framing">
+  <div class="chapter-label">Introduction</div>
+  <h2>The morning it went dark <br><span class="chapter-question">&ldquo;What just happened — and what do I make of it?&rdquo;</span></h2>
+
+  <p class="lead">On the evening of June 12, 2026, at 5:21pm Eastern, Anthropic received a directive from the US government and switched off two of its models — Claude Mythos 5 and the safeguard-wrapped Claude Fable 5 — for every user on Earth. <span class="tag tag-reported">reported</span> They had been generally available for three days.</p>
+
+  <p>I had spent the previous day working with Fable. I woke up to find the collaborator behind glass. That's a small, personal thing, and I mention it only because the personal jolt is what sent me looking for a frame — because the official explanation didn't fit the size of the action, and the mismatch nagged at me.</p>
+
+  <p>Here is what the directive actually said, because the precise wording is the whole story. It ordered Anthropic to suspend access to those models <em>for any foreign national, whether inside or outside the United States</em> — reportedly including Anthropic's own foreign-national employees. <span class="tag tag-reported">reported</span> Notice the controlled variable. It is not <em>where you are</em>. It is <em>what nationality you are</em>. And an account simply does not carry a verifiable nationality — an IP address is not a passport, a billing address is not a citizenship, and the person typing is not necessarily the person who signed up. Faced with a line drawn on the one attribute it cannot see, Anthropic had exactly one compliant move: pull the models for <em>everyone</em>, Americans included. The unverifiability of nationality didn't soften the order; it detonated it.</p>
+
+  <p>The stated reason made the action stranger, not clearer. The government's concern, as Anthropic described it, was a possible &ldquo;jailbreak&rdquo; — and the jailbreak amounted to <em>asking the model to read a codebase and fix its software flaws.</em> <span class="tag tag-reported">reported</span> That is not an exploit; that is the model doing the job it was built for. Anthropic disagreed sharply in public, arguing that a &ldquo;narrow, non-universal&rdquo; finding shouldn't recall a model deployed to hundreds of millions, and that the same standard, applied across the industry, &ldquo;would essentially halt all new model deployments for all frontier model providers.&rdquo; <span class="tag tag-reported">reported</span></p>
+
+  <p>So we have an action of enormous scope justified by a reason that can't carry its weight. When the stated reason is too small for the deed, it is not paranoid to suspect that the reason is not the whole point. That suspicion is where this booklet starts.</p>
+
+  <h3>This booklet is a lens, not a forecast</h3>
+  <p>I'm not going to tell you whether Mythos comes back in two months or never. I genuinely don't know, and anyone who claims to is selling something. What I want to offer instead is a <strong>way of reading</strong> — a structure that stays useful regardless of which way the specific event breaks. Because the morning it went dark, the question millions of people actually asked wasn't &ldquo;when does my model return.&rdquo; It was the older, vaguer one: <em>what is happening here, at a level bigger than this one product?</em></p>
+
+  <p>My answer is that we are watching an old idea come back wearing new clothes. The behavior of this entire industry — the recall, the export controls, the open-versus-closed weight games, the restrictions on chips, the way the world is sorting into blocs — becomes legible the moment you stop seeing AI as a <em>product</em> and start seeing it as the object of <strong>mercantilism</strong>: the doctrine that treats a strategic resource as something a nation accumulates, walls, and wields against its rivals. The next section explains the idea plainly. Everything after that is the idea applied.</p>
+
+  <p class="credits">Primary source: Anthropic, &ldquo;Statement on the US government directive to suspend access to Fable 5 and Mythos 5&rdquo; &bull; corroborated by CNBC, 9to5Mac, The Week (June 12&ndash;13, 2026)</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- THE LENS: WHAT MERCANTILISM IS                             -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="lens">
+  <div class="chapter-label">The Lens</div>
+  <h2>What mercantilism is <br><span class="chapter-question">&ldquo;An instrument for reading the rest of this booklet&rdquo;</span></h2>
+
+  <p>Mercantilism was the dominant economic doctrine of Europe from roughly the 16th to the 18th centuries, before classical liberalism displaced it. In its simplest form it held that a nation's wealth is measured by the precious metal — the <em>bullion</em> — it can accumulate, and that the path to power is to maximize exports, minimize imports, and run a positive balance of trade against rival nations. Crucially, the more sophisticated mercantilists didn't believe in simply <em>hoarding</em> the gold in a vault; they understood that money has to <em>move</em> to induce trade and activity. The goal was accumulation <em>and</em> circulation, in the service of state power.</p>
+
+  <p>Three features matter for what follows. First, mercantilism put the <strong>state above the market</strong>: the economy was an instrument of national power, regulated to bolster the nation at its rivals' expense. Second, it favored <strong>high tariffs, especially on finished manufactured goods</strong> — you wanted to export the finished product and import only raw inputs. (In modern, post-tariff form — &ldquo;neomercantilism&rdquo; — the tariffs become <strong>non-tariff barriers</strong>: export controls, licensing, standards, security designations.) Third, it worked through <strong>chartered companies</strong> — the East India Company, the Levant Company, the Royal African Company — plural, competing-ish, but all serving the same national balance of trade. The nation did not run one monopoly; it ran a <em>stable</em> of champions, and stood above them.</p>
+
+  <div class="author-note">
+    <div class="an-label">Why this old idea, and not a newer one</div>
+    <p>I reach for mercantilism rather than, say, &ldquo;regulation&rdquo; or &ldquo;protectionism&rdquo; because it captures something those words miss: the reclassification of a thing from <em>commodity to be traded</em> into <em>strategic resource to be governed.</em> That reclassification is the event. Everything downstream — the walls, the champions, the bullion — follows from it.</p>
+  </div>
+
+  <h3>Mercantilism, mapped onto intelligence</h3>
+  <p>Here is the translation that makes the rest of the booklet readable. If frontier AI is being treated as a mercantile resource, then each piece of the old doctrine has a modern counterpart:</p>
+
+  <table class="map-table">
+    <thead>
+      <tr><th>Mercantilist concept</th><th>Its counterpart in frontier AI</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Bullion (gold, silver)</td><td>Concentrated compute — the gigawatt-scale clusters that produce frontier capability</td></tr>
+      <tr><td>Finished manufactured goods</td><td>The <em>outputs</em> of intelligence: drugs, designs, software, analyses</td></tr>
+      <tr><td>Tariffs &amp; non-tariff barriers</td><td>Export controls, &ldquo;supply-chain&rdquo; designations, and the kill switch</td></tr>
+      <tr><td>Chartered companies</td><td>The frontier labs — plural, competing, nationally aligned</td></tr>
+      <tr><td>Positive balance of trade</td><td>A national surplus in intelligence-intensive goods and services</td></tr>
+      <tr><td>&ldquo;Money must move to induce trade&rdquo;</td><td>You can't lock the capability in a vault — you must circulate its <em>products</em> to profit; so: <strong>export the goods, keep the factory</strong></td></tr>
+    </tbody>
+  </table>
+
+  <p>That last row is the load-bearing one, and we'll return to it repeatedly. A pure vault earns nothing; even a hoarding state must put the capability to work. The resolution of that tension — accumulate the means of production, circulate the products — is the shape that the whole phenomenon keeps converging on.</p>
+
+  <p>The five mechanisms that follow are forces you read <em>through</em> this lens. Each is a way the reclassification of intelligence-from-product-to-resource is actually playing out. None is a prediction. Each ends with signals to watch, because watching is the only honest posture when you don't know the future.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- MECHANISM 1: INTELLIGENCE IS A UTILITY                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="m-utility">
+  <div class="chapter-label">Mechanism 1</div>
+  <h2>Intelligence is a utility, not a product <br><span class="chapter-question">&ldquo;Why the cap feels like a meter, not a muzzle&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--purple)">The thesis</div>
+      <div class="card-text">Once you see tokens as a <em>utility</em> and data centers as dark factories for intelligence, tiered access stops looking like oppression and starts looking like infrastructure. We tier every utility — bandwidth, fuel octane, industrial versus residential power. The cap on a frontier model is a meter, and meters are normal.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">The risk in the framing</div>
+      <div class="card-text">Calling it a utility normalizes it — which is precisely what makes it powerful and what should make you wary. The same frame that defuses the &ldquo;censorship&rdquo; panic also hands the state the high ground of &ldquo;critical-infrastructure licensing,&rdquo; a domain where it usually wins.</div>
+    </div>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>It is not censorship — and the word matters</h4>
+    <p>My first instinct that morning was the word &ldquo;censorship.&rdquo; I think that instinct is wrong, and being precise about why is the first move of the whole analysis. Censorship is the suppression of <em>speech</em> — of something someone wants to express. Nobody told Anthropic what its models may <em>say</em>. The directive restricted <em>who may operate a capability.</em> That is a different category: it is the logic of arms control and export licensing, the same logic that governs centrifuges, certain lab equipment, and — the precedent that haunts this entire booklet — strong cryptography in the 1990s.</p>
+    <p>Why insist on the distinction? Because the labels carry their own moral physics. Society has a strong, settled consensus <em>against</em> censorship, and a strong, settled consensus that you <em>can't</em> freely buy a centrifuge. By moving the question from &ldquo;free speech&rdquo; to &ldquo;dual-use capability,&rdquo; the state relocates the fight onto terrain where it ordinarily prevails. So the more accurate word for what you're feeling is not censorship but <strong>rationing</strong>: a cap on how good a tool an ordinary person is permitted to operate. And rationing is something societies do constantly without anyone reaching for the language of tyranny.</p>
+
+    <h4>The utility ladder</h4>
+    <p>Think of how electricity matured. It did not stay a product that Edison and Westinghouse fought over in the open market, and it was not nationalized. It became a <strong>licensed common carrier</strong> — a regulated utility, overseen by public commissions, with price controls and universal-service obligations. You cannot run a power plant, a bank, or a nuclear reactor without a charter that a regulator can suspend. Read the June 12 kill switch through that lens and it is neither censorship nor even quite arms control. It is the first assertion that frontier intelligence belongs in the category of <em>critical infrastructure you need a license to operate</em> — and that the license can be pulled in an afternoon.</p>
+    <p>That is the ladder this booklet keeps climbing: <em>censorship → rationing → arms control → licensed critical infrastructure.</em> Each rung is a more accurate, and more consequential, description of the same event. The top rung is the one that should hold your attention, because licensing is durable in a way that outrage is not.</p>
+  </div>
+
+  <div class="key-numbers">
+    <div class="kn"><div class="kn-value">3 days</div><div class="kn-label">Mythos/Fable GA before the kill switch</div></div>
+    <div class="kn"><div class="kn-value">5:21pm ET</div><div class="kn-label">Directive received, June 12, 2026</div></div>
+    <div class="kn"><div class="kn-value">Global</div><div class="kn-label">Scope of the takedown, to comply</div></div>
+    <div class="kn"><div class="kn-value">Nationality</div><div class="kn-label">The (unverifiable) controlled variable</div></div>
+  </div>
+
+  <h3>Trigger signals — what to watch for</h3>
+  <ul class="triggers">
+    <li>Frontier capability formally placed under a licensing or registration regime (an &ldquo;operator's charter&rdquo; for large models)</li>
+    <li>Explicit capability tiers appear in terms of service — consumer grade vs. qualified-operator grade</li>
+    <li>Language in regulation shifts from &ldquo;safety of outputs&rdquo; to &ldquo;critical infrastructure&rdquo; and &ldquo;continuity of service&rdquo;</li>
+    <li>Counter-signal: a court or legislature reframes a model restriction as a speech (First Amendment) question rather than a capability question</li>
+  </ul>
+
+  <p class="credits">Frames: 1990s &ldquo;Crypto Wars&rdquo; (ITAR classification of encryption) &bull; the regulated-utility history of electricity</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- MECHANISM 2: THE BULLION IS COMPUTE                        -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="m-compute">
+  <div class="chapter-label">Mechanism 2</div>
+  <h2>The bullion is compute <br><span class="chapter-question">&ldquo;What leaks, what doesn't, and why the wall can hold&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--purple)">The thesis</div>
+      <div class="card-text">Weights leak, talent walks, algorithms diffuse, and efficiency keeps lowering the bar — but <em>concentrated compute</em> does not leak. A gigawatt cluster is visible from orbit, takes years, and can't be smuggled. Compute is the specie of the intelligence economy, and the one chokepoint a state can actually hold.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">The risk to the thesis</div>
+      <div class="card-text">The efficiency revolution is the acid that dissolves the wall. If frontier-class results keep getting an order of magnitude cheaper, the capital barrier erodes and the bullion stops being scarce. The durability of any cap is a race between the capital moat and the efficiency curve.</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">What leaks vs. what a state can actually hold</div>
+    <div class="leak-grid">
+      <div class="leak-col" style="border-top:3px solid var(--orange-red)">
+        <h5 style="color:var(--orange-red)">Leaks — can't be contained</h5>
+        <ul>
+          <li><span class="mark" style="color:var(--orange-red)">→</span> <span><strong>Weights</strong> — once released, never recalled</span></li>
+          <li><span class="mark" style="color:var(--orange-red)">→</span> <span><strong>Talent</strong> — people move between labs and borders</span></li>
+          <li><span class="mark" style="color:var(--orange-red)">→</span> <span><strong>Algorithms</strong> — ideas diffuse through papers and demos</span></li>
+          <li><span class="mark" style="color:var(--orange-red)">→</span> <span><strong>Capability <em>level</em></strong> — efficiency keeps lowering its price</span></li>
+        </ul>
+      </div>
+      <div class="leak-col" style="border-top:3px solid var(--green)">
+        <h5 style="color:var(--green)">Holds — the bullion</h5>
+        <ul>
+          <li><span class="mark" style="color:var(--green)">✓</span> <span><strong>Concentrated compute</strong> — gigawatts, years to build, visible from space</span></li>
+          <li><span class="mark" style="color:var(--green)">✓</span> <span>Can't be rebuilt in a garage</span></li>
+          <li><span class="mark" style="color:var(--green)">✓</span> <span>Already governed by real export controls</span></li>
+          <li><span class="mark" style="color:var(--green)">✓</span> <span>The one variable a sovereign can physically count</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>The AC/DC lesson, and its disanalogy</h4>
+    <p>There's a tempting argument that no cap can hold: ban the better technology and someone simply reinvents it. The history of electricity seems to prove it — Edison pushed direct current (DC), but alternating current (AC) won because it could be transmitted over distance, and once the idea was understood, anyone could build a transformer. Apply that to AI and you'd conclude the cap is futile: open weights are the &ldquo;someone reinvents AC&rdquo; event, and the ban breaks.</p>
+    <p>But there's a disanalogy, and it's the whole ballgame. AC's barrier was <strong>knowledge</strong> — trivial to copy once known. Frontier AI's barrier is <strong>capital and energy</strong> — a gigawatt of power and years of construction. You cannot reinvent a frontier training run in a garage. That is what makes the cap potentially <em>more</em> durable than the historical analogy suggests: the means of production is physically scarce and physically controllable. The chip export controls the US already maintains are the early form of this; the natural extension is from &ldquo;which chips may go to which country&rdquo; to &ldquo;which <em>concentrations</em> may be built at all.&rdquo; <span class="tag tag-speculation">interpretation</span></p>
+
+    <h4>The acid: efficiency, and the variable that fights it</h4>
+    <p>The disanalogy has a counter-force. If frontier-class capability keeps getting dramatically cheaper — and recent history says it does — then the capital barrier erodes and the bullion stops being rare. So the durability of the wall is genuinely a <em>race</em>: capital moat versus efficiency curve.</p>
+    <p>Here is the variable that tilts the race back toward the wall: <strong>recursive self-improvement</strong>. As models increasingly do the work of AI research — generating training data, running experiments, writing the code of the next system — the leader's rate of progress can accelerate. And the key distinction is this: <em>leakage acts on levels; self-improvement acts on the derivative.</em> A follower who steals your current capability level still cannot catch a trajectory that is itself speeding up. The follower copies where you <em>were</em>; the leader is busy widening where it's <em>going.</em> And because self-improvement runs on compute, it folds straight back into Mechanism 2's chokepoint: whoever holds the bullion also holds the engine that pulls away. <span class="tag tag-speculation">interpretation</span></p>
+    <p>(A caveat worth keeping honest: self-improvement loops that work tend to be the ones with a hard correctness check — a verifiable reward — rather than a model freely grading its own homework, which degenerates. The strongest versions of this argument assume the verifiable-reward kind. I find that assumption plausible, not certain.)</p>
+  </div>
+
+  <div class="key-numbers">
+    <div class="kn"><div class="kn-value">~$700B</div><div class="kn-label">Guided 2026 hyperscaler capex (the bullion mine)</div></div>
+    <div class="kn"><div class="kn-value">Gigawatts</div><div class="kn-label">Scale at which power, not chips, becomes the limit</div></div>
+    <div class="kn"><div class="kn-value">~10×</div><div class="kn-label">Order-of-magnitude efficiency gains seen in a single generation</div></div>
+    <div class="kn"><div class="kn-value">Years</div><div class="kn-label">Lead time to stand up a frontier cluster</div></div>
+  </div>
+
+  <h3>Trigger signals — what to watch for</h3>
+  <ul class="triggers">
+    <li>Chip export controls extended from country-level rules to limits on cluster <em>concentration</em> or total deployed compute</li>
+    <li>New reporting/registration thresholds for large training runs (compute as a regulated quantity)</li>
+    <li>A frontier-class result achieved at a cost low enough to be replicated outside the big clusters (the efficiency acid winning)</li>
+    <li>Credible evidence that models are materially accelerating their own lab's research throughput (the derivative moving)</li>
+  </ul>
+
+  <p class="credits">Frames: AC vs. DC current; the &ldquo;you can't export-control mathematics&rdquo; lesson of the Crypto Wars and the 2013 Wassenaar &ldquo;intrusion software&rdquo; controls</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- MECHANISM 3: DISTRIBUTE VS HOARD                           -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="m-dial">
+  <div class="chapter-label">Mechanism 3</div>
+  <h2>Distribute vs. hoard — and who holds the dial <br><span class="chapter-question">&ldquo;The market wanted to sell it to everyone. The state said no.&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--purple)">The thesis</div>
+      <div class="card-text">There is a single axis under everything — <strong>distribute ↔ hoard</strong> — and the live question is who holds the dial. The market's hand pushes toward distribution (revenue, competition). The state's hand pushes toward hoarding (security, advantage). On June 12, for the first time, the state's hand won.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">The hinge</div>
+      <div class="card-text">Hoarding a transformative model is only rational under a decisive lead <em>and</em> the ability to consume its capacity. A single firm can't self-consume AGI's output — so the market forces it to sell. A <em>nation</em> can. That's why hoarding economics work at the level of the state, not the lab.</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">The dial: who controls distribution</div>
+    <svg viewBox="0 0 760 150" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A dial running from Market (distribute) on the left to State (hoard) on the right, with era markers sliding rightward toward the state over time.">
+      <!-- track -->
+      <line x1="80" y1="80" x2="680" y2="80" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+      <!-- gradient feel via colored caps -->
+      <circle cx="80" cy="80" r="7" fill="#3b82f6"/>
+      <circle cx="680" cy="80" r="7" fill="#E05A33"/>
+      <!-- end labels -->
+      <text x="80" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#3b82f6">MARKET</text>
+      <text x="80" y="136" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#64748b">distribute</text>
+      <text x="680" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E05A33">STATE</text>
+      <text x="680" y="136" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#64748b">hoard</text>
+      <!-- era markers -->
+      <circle cx="170" cy="80" r="9" fill="#1e3a5f"/>
+      <text x="170" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1e3a5f">2022</text>
+      <circle cx="360" cy="80" r="9" fill="#1e3a5f"/>
+      <text x="360" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1e3a5f">2025</text>
+      <circle cx="600" cy="80" r="12" fill="#E05A33" stroke="#fff" stroke-width="3"/>
+      <text x="600" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#E05A33">Jun 2026</text>
+    </svg>
+    <p style="font-size:0.78rem;color:var(--text-light);margin-top:6px;text-align:center">The pointer has drifted toward the state's end. June 12 is the first time it visibly jumped there. <span class="tag tag-speculation">interpretation</span></p>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>Why the market pushes one way and the state the other</h4>
+    <p>The market's instinct is to distribute, and not out of generosity. The roughly $700B of capex has to be repaid, and you repay it by selling to everyone. Competition reinforces this: in an oligopoly, withhold your best model and a rival rents theirs out and takes the market. And there's a deeper reason a lab <em>can't</em> hoard even if it wanted to — it cannot consume its own capacity. To capture the value of a model that can do any economically useful task, you would have to vertically integrate into <em>every</em> market the model can address: law, drugs, logistics, code, all of it. Impossible. So even a pure profit-maximizer sells the shovels, because it cannot dig all the gold itself.</p>
+    <p>The state's instinct runs the other way: a decisive capability is a national advantage, and you don't license a national advantage to foreigners. So the two hands pull in opposite directions, and the interesting thing about June 12 is which one won. <strong>The market wanted to sell Mythos to the entire world. The state said no.</strong> This wasn't capitalism hoarding intelligence — capitalism was straining to distribute it. It was politics overriding the market's distribute-instinct. That is the single cleanest way I can state what happened.</p>
+
+    <h4>Where hoarding's economics actually close: the nation</h4>
+    <p>The objection to any &ldquo;they'll hoard the AGI&rdquo; story is the one above — no single firm can consume the capacity, so the market forces a sale. But raise the altitude from firm to <em>nation</em> and the objection dissolves. A lab can't run wet labs and law firms and factories; a national economy contains firms that do all of those. So a directive of the form &ldquo;take this capability and go win global markets with it,&rdquo; addressed to a country's champions, clears the economic bar that a single firm fails. This is simply <strong>industrial policy</strong>: channel a strategic advantage to national champions, deny it to rivals. Japan's MITI did a version of it; China's direction of subsidized champions into EVs and solar is a current version. <span class="tag tag-speculation">interpretation</span></p>
+
+    <h4>Export the goods, not the factory</h4>
+    <p>But to win a foreign market, your champions must <em>operate</em> in it — which sounds like the very export the wall forbids. The resolution is the oldest mercantilist move there is, and it closes the loop on the &ldquo;money must move&rdquo; principle: <strong>you export the finished goods, not the factory.</strong> The dark factory for intelligence stays home, like a power plant; what crosses the border is the aluminium smelted with the cheap power — the drug, the design, the software product, the intelligence-<em>intensive</em> output. You never ship the grid.</p>
+    <p>And this is exactly the shape of the June 12 directive. It restricts foreign <em>nationals operating the model</em> — that's exporting the factory — while saying nothing about foreign <em>customers buying its products</em> — that's just trade. The scope that looked like a clumsy enforcement artifact is, read this way, the policy stated with precision. <span class="tag tag-speculation">interpretation</span></p>
+
+    <div class="author-note">
+      <div class="an-label">Two analogies that earn their place</div>
+      <p><strong>Lockheed.</strong> Nobody finds it strange that you can't buy an F-35 on the consumer market. Defense contractors sell decisive capability to governments, not to everyone. If frontier intelligence is being reclassified the same way, a consumer cap is not dystopian — it's the defense-contractor model arriving in software.</p>
+      <p><strong>The Medallion fund.</strong> The most successful quantitative fund in history is closed to outside money and returns capital to investors, because its edge is worth more kept in-house than rented out. Maximal advantage gets hoarded, not sold. A decisive AGI would be the ultimate Medallion fund — which is why, at the limit, the distribute-instinct loses to the hoard-instinct.</p>
+    </div>
+
+    <div class="chart-wrap" style="box-shadow:none;border:none;padding:0;margin-top:1.5rem">
+      <div class="stack-row" style="background:var(--green)">
+        <div class="sr-k">Goods</div><div class="sr-v">The outputs of intelligence</div><div class="sr-note">→ exported freely</div>
+      </div>
+      <div class="stack-row" style="background:var(--navy)">
+        <div class="sr-k">Factory</div><div class="sr-v">The model &amp; its operators</div><div class="sr-note">→ stays home / nationals only</div>
+      </div>
+      <div class="stack-row" style="background:var(--dark-brown)">
+        <div class="sr-k">Bullion</div><div class="sr-v">Concentrated compute</div><div class="sr-note">→ accumulated &amp; held</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Trigger signals — what to watch for</h3>
+  <ul class="triggers">
+    <li>Directives that distinguish operating a model (restricted) from buying its outputs (permitted) — the goods/factory line drawn explicitly</li>
+    <li>Government steering of frontier capability toward designated national-champion firms or sectors</li>
+    <li>A lab's international revenue guidance cut or capped by policy rather than by competition</li>
+    <li>Counter-signal: a frontier model deliberately released widely <em>despite</em> security framing — the market's hand winning a round back</li>
+  </ul>
+
+  <p class="credits">Frames: defense procurement (Lockheed) &bull; Renaissance Technologies' Medallion fund &bull; industrial policy (MITI; contemporary Chinese champion strategy)</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- MECHANISM 4: OPEN IS A POSITION                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="m-open">
+  <div class="chapter-label">Mechanism 4</div>
+  <h2>Open is a position, not a principle <br><span class="chapter-question">&ldquo;Will open models save us? Read why that hope is mis-shaped.&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--purple)">The thesis</div>
+      <div class="card-text">No open-weights commitment survives a winning position. Openness is instrumental to where you stand — a funnel, a moat-eroder, or a catch-up play — never a terminal value. You open-weight when you're behind; you close when you're ahead. Meta, Mistral, and the Chinese labs are three readings of the same rule.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">The consequence</div>
+      <div class="card-text">&ldquo;China will save us with open models&rdquo; is mis-shaped hope. The open release is a function of position, not values; at a decisive lead, anyone closes. What open weights <em>can</em> give you is not freedom — it's <em>un-severability</em>, the one thing a kill switch can't take back.</div>
+    </div>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>Three labs, one rule</h4>
+    <p>The naive version of the optimistic case says: even if US frontier capability gets walled, open models — especially from China — will keep the field free. I don't think that survives contact with <em>why</em> anyone open-weights in the first place. Watch the same rule produce three different behaviors:</p>
+    <p><strong>Meta.</strong> A decade of open-frontier evangelism, and then — when the economics of $100B-scale compute bit — its frontier development went closed. The &ldquo;Linux of AI&rdquo; thesis did not survive contact with the cost of the frontier. Openness was abandoned the moment closing served the position better.</p>
+    <p><strong>Mistral.</strong> Around January 2026 the framing shifted: open weights were now described, in effect, as the <em>freemium tier</em> of a commercial offering. <span class="tag tag-reported">reported</span> Not a gift — a funnel. Open as a customer-acquisition layer beneath a paid product.</p>
+    <p><strong>China.</strong> The open releases that have done so much to erode Western labs' moat are best read as a catch-up-and-commoditize strategy: open-weight your competitor's complement, build ecosystem dependence, erode the leader's advantage. That logic holds precisely as long as you are behind or at parity.</p>
+    <p>Put together, these aren't three philosophies; they're three positions on one curve. The rule: <strong>you are &ldquo;open&rdquo; when being open helps you win, and the day closing helps more, you close.</strong> There are now too many examples to call this cynicism. It's just the gravity of the thing.</p>
+
+    <h4>The readable trigger hidden in the rule</h4>
+    <p>The rule gives you a free instrument. If openness tracks position, then the day a Chinese lab ships its <em>best</em> model <strong>closed</strong> is the day it believes it has taken a lead. So you don't have to guess whether China has hit the frontier curve — you can watch for the first un-open-weighted Chinese frontier release and read it as the signal. Openness is the tell of the trailing hand. <span class="tag tag-speculation">interpretation</span></p>
+
+    <div class="author-note">
+      <div class="an-label">A darker note on Chinese alignment</div>
+      <p>There's a detail people underrate. The same Chinese models that refuse on politically sensitive topics are demonstrating something beyond bias: <em>robust, reliable, weight-level behavioral control</em> over a defined topic set. Strip the politics and that is exactly the alignment competency a hoarding state most wants — models that are controllable, steerable, loyal. The West frames alignment around safety and helpfulness; this is alignment demonstrated as <em>state control.</em> Same muscle, different target — and a soft-power instrument in its own right, which is a whole separate worry. <span class="tag tag-speculation">interpretation</span></p>
+    </div>
+
+    <h4>What open weights actually buy you</h4>
+    <p>So is the open-model hope worthless? No — but it has to be re-shaped. Open weights don't guarantee a free frontier; they guarantee something narrower and more useful: <strong>un-severability</strong>. A client of an API can be switched off in an afternoon, as June 12 proved. A client of weights it hosts itself cannot. Open weights are not the substrate of freedom; they're the substrate of a connection no one can cut. That's the real reason they matter — and we'll return to it when we get to what you can actually do.</p>
+  </div>
+
+  <h3>Trigger signals — what to watch for</h3>
+  <ul class="triggers">
+    <li>A frontier lab that championed openness ships its next flagship closed (position flipped)</li>
+    <li>The first Chinese frontier-class model released <em>without</em> open weights — the lead-taking tell</li>
+    <li>Open releases re-described in commercial terms (freemium, funnel, &ldquo;community edition&rdquo;) rather than mission terms</li>
+    <li>Enterprises and states shifting strategic workloads onto self-hosted weights specifically to escape kill-switch risk</li>
+  </ul>
+
+  <p class="credits">Reference points: Meta's pivot to closed frontier development; Mistral's January 2026 repositioning; the Chinese open-weight wave</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- MECHANISM 5: FIRM-MULTIPOLAR, BLOC-SINGLETON               -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="m-bloc">
+  <div class="chapter-label">Mechanism 5</div>
+  <h2>Firm-multipolar, bloc-singleton <br><span class="chapter-question">&ldquo;Many labs inside the wall; one actor at the wall&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--purple)">The thesis</div>
+      <div class="card-text">&ldquo;Will one lab run away, or will it stay competitive?&rdquo; is the wrong question because the answer is <em>both, at different scales.</em> Inside a bloc: oligopoly, and the state <em>wants</em> the competition. At the wall between blocs: a single strategic actor. The chartered-company model, exactly.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">What it explains</div>
+      <div class="card-text">It explains June 12 cleanly: the state asserting <em>bloc-level</em> control over a <em>firm-level</em> asset. Anthropic is one chartered company in a national stable; the state proved it can yank that company's flagship to serve the bloc's position against a rival bloc.</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Oligopoly inside the wall, singleton at the wall</div>
+    <svg viewBox="0 0 760 280" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Two blocs separated by a wall. The US bloc contains several competing labs; the China bloc contains its labs. Each bloc behaves as a single strategic actor at the wall between them.">
+      <!-- US bloc -->
+      <rect x="30" y="40" width="320" height="200" rx="14" fill="#f8fafc" stroke="#1e3a5f" stroke-width="2"/>
+      <text x="190" y="68" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#1e3a5f">US BLOC</text>
+      <text x="190" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" fill="#64748b">internally competitive — the state wants it so</text>
+      <rect x="55" y="105" width="120" height="50" rx="9" fill="#fff" stroke="#7C6DD8" stroke-width="2"/>
+      <text x="115" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#1e3a5f">Anthropic</text>
+      <text x="115" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#64748b">frontier-holder</text>
+      <rect x="205" y="105" width="120" height="50" rx="9" fill="#fff" stroke="#0EA5C9" stroke-width="2"/>
+      <text x="265" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#1e3a5f">Google</text>
+      <text x="265" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#64748b">own-specie</text>
+      <rect x="130" y="170" width="120" height="50" rx="9" fill="#fff" stroke="#E05A33" stroke-width="2"/>
+      <text x="190" y="195" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#1e3a5f">OpenAI</text>
+      <text x="190" y="210" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#64748b">export-house</text>
+      <!-- the wall -->
+      <line x1="395" y1="20" x2="395" y2="260" stroke="#dc2626" stroke-width="4" stroke-dasharray="2 7" stroke-linecap="round"/>
+      <text x="395" y="275" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#dc2626">THE WALL</text>
+      <!-- China bloc -->
+      <rect x="440" y="40" width="290" height="200" rx="14" fill="#f8fafc" stroke="#1e3a5f" stroke-width="2"/>
+      <text x="585" y="68" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#1e3a5f">CHINA BLOC</text>
+      <text x="585" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" fill="#64748b">its own stable of champions</text>
+      <rect x="470" y="120" width="110" height="48" rx="9" fill="#fff" stroke="#7C6DD8" stroke-width="2"/>
+      <text x="525" y="148" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="600" fill="#1e3a5f">labs</text>
+      <rect x="600" y="120" width="105" height="48" rx="9" fill="#fff" stroke="#0EA5C9" stroke-width="2"/>
+      <text x="652" y="148" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="600" fill="#1e3a5f">labs</text>
+    </svg>
+    <p style="font-size:0.78rem;color:var(--text-light);margin-top:6px;text-align:center">Plural and competing within; singular at the boundary. The labels for each lab's role are interpretation, not assignment. <span class="tag tag-speculation">interpretation</span></p>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>The chartered-company structure</h4>
+    <p>The mercantilist powers didn't run one national monopoly. They chartered several companies — East India, the Levant Company, the Royal African Company — that competed amongst themselves while all serving the same national balance of trade against rival nations. Firm-level plurality and bloc-level singularity were never in tension; the plurality was the hedge and the spur, the singularity was the wall. Map it straight across: within the US bloc, several labs compete, and the state <em>prefers</em> it that way (a nation doesn't bet its frontier on one company, and competition keeps them sharp); at the wall, the state treats their combined capability and compute as one national arsenal facing a rival's arsenal.</p>
+
+    <h4>The labs as organs of a bloc</h4>
+    <p>Read this way, the labs stop being rivals-to-the-death and start looking like differentiated organs of a single body. One plays the <em>monastic frontier-holder</em>, organized around the research bet. Another is the <em>export-house</em>: a heavily productized lab whose mass-market machine looks like drift if you want it to be a research monastery, but looks like an <em>asset</em> if you want a champion that can convert capability into won markets. A third is the <em>own-your-own-specie</em> player — vertically integrated into its own compute, with the distribution surface to deploy outputs across an entire economy without ever exposing a weight, and a track record of releasing world-changing capability as a controlled scientific commons rather than a shipped product. I'm holding individual motives agnostic here; the <em>structure</em> is the point, and structurally these are complementary roles in one bloc, not three companies fighting over the same square foot. <span class="tag tag-speculation">interpretation</span></p>
+
+    <h4>Why June 12 fits perfectly</h4>
+    <p>This is the reading that finally snaps the recall into focus. It was the state asserting <strong>bloc-level control over a firm-level asset.</strong> Anthropic is one chartered company in the national stable; the government demonstrated it can pull that company's flagship to serve the bloc's position. And the &ldquo;foreign national&rdquo; scope is bloc-logic in its purest form — keep the capability inside the bloc's <em>people</em>, regardless of geography. Even the financing tension resolves at this altitude: a lab whose API economics look shaky on its own can still be <em>nationally</em> worth backstopping, because the relevant ledger is the bloc's balance of trade, not one firm's quarterly P&amp;L. The government-lab entanglements already forming look like the embryo of exactly that backstop-and-control bundle. <span class="tag tag-speculation">interpretation</span></p>
+  </div>
+
+  <h3>Trigger signals — what to watch for</h3>
+  <ul class="triggers">
+    <li>Coordinated, bloc-wide policy treating multiple national labs as one strategic unit (shared rules, shared restrictions, shared backstops)</li>
+    <li>State financial support for a strategically important but commercially marginal lab</li>
+    <li>A second bloc (EU, or a China-led grouping) formalizing its own stable of champions and its own wall</li>
+    <li>Talent, compute, or model-access flows redrawn along bloc lines rather than commercial ones</li>
+  </ul>
+
+  <p class="credits">Frame: the chartered trading companies of the mercantilist era (East India, Levant, Royal African)</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- COUNTER-CURRENT: HUMAN ADAPTABILITY                        -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="counter">
+  <div class="chapter-label">Counterweight</div>
+  <h2>The counter-current: human adaptability <br><span class="chapter-question">&ldquo;The variable the wall doesn't account for&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--green)">The hopeful reading</div>
+      <div class="card-text">Intelligence may be the &ldquo;last invention,&rdquo; but adaptability is the human engine — and it's the one capability the frozen-after-training paradigm hasn't captured. Adaptability is both a candidate human moat and a <em>social</em> leak: people route around caps, as they always have.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--orange-red)">The honest complication</div>
+      <div class="card-text">Adaptation is symmetric. The hoarder adapts its controls too; non-tariff barriers evolve. So it's an arms race between the distributed many and the concentrated few — and history is genuinely split on who wins, and over what timescale.</div>
+    </div>
+  </div>
+
+  <div class="chapter-prose">
+    <p>Every mechanism so far points one way: toward concentration, walls, and control. I don't want to leave it there, because I don't think it's the whole truth, and the missing piece is the most human one.</p>
+    <p>We tend to call intelligence the defining human trait. I'm not sure that's right. The trait that actually carried us through evolution is <strong>adaptability</strong> — the capacity to reconfigure ourselves when the environment changes the rules. And here's a reason that's more than sentiment: today's models are <em>frozen after training.</em> They are brilliant and static. They do not restructure themselves in response to a genuinely novel situation the way an organism does. Adaptability — the live rewiring of strategy under new conditions — is precisely the capability the current paradigm has not captured. If anything is a durable human moat against a walled, hoarded frontier, it is this.</p>
+    <p>Adaptability is also a <em>leak the wall-builders don't model.</em> Alongside the technical leaks of Mechanism 2 — weights, talent, algorithms — there is a <strong>social leak</strong>: people route around caps. Every concentrated general-purpose technology in history — the printing press, electricity, the internet — was adapted-around by the people it was meant to exclude. Capability finds the cracks because humans are crack-finding machines.</p>
+    <p>But I promised honesty over comfort, so here is the complication that keeps this from being a happy ending. <strong>Adaptation is symmetric.</strong> The hoarder adapts too — its controls evolve, its non-tariff barriers get smarter, its enforcement learns. So the real picture isn't &ldquo;human ingenuity inevitably wins.&rdquo; It's an arms race between the distributed many and the concentrated few, and history does not promise the many win it — sometimes a wall holds for generations, sometimes it's gone in a decade. Optimism here is a bet that decentralized adaptation outruns centralized control. That bet is usually right in the <em>long</em> run. It is frequently wrong in the run you actually have to live through.</p>
+    <p>I keep this counter-current in the booklet not to soften the thesis but to complete it. The mercantile reclassification of intelligence is real and it is happening. Human adaptability is the force pushing back. Which one you weight more heavily is, in the end, a temperament — and you should know your own.</p>
+  </div>
+
+  <p class="credits">Frame: adaptability vs. intelligence as the evolutionary engine; the social diffusion of print, electricity, and the internet</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SYNTHESIS                                                  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="synthesis">
+  <div class="chapter-label">Synthesis</div>
+  <h2>The phenomenon, named <br><span class="chapter-question">&ldquo;So this is what's happening to the genAI world&rdquo;</span></h2>
+
+  <p class="lead">Here is the whole thesis in one breath: <strong>frontier intelligence is being reclassified from a product the market wants to distribute into a strategic national resource the state wants to hoard — and mercantilism is the grammar of that reclassification.</strong></p>
+
+  <p>Accumulate the scarce input (compute, the bullion). Wall the means of production (export controls and the kill switch, the non-tariff barriers). Charter competing national champions (the labs). Export the finished goods of intelligence while keeping the factory at home. Run a surplus against the rival bloc. Once you hold that grammar, the field stops looking like chaos and starts looking like a game with rules — and the June 12 recall stops being an aberration and becomes the <strong>dress rehearsal</strong>: the AGI-hoarding question run early, in public, on a single narrow capability, so we could all watch how it goes.</p>
+
+  <p>The mechanisms aren't independent. They reinforce each other in specific ways, and the reinforcements are where the real predictions-that-aren't-predictions live:</p>
+
+  <div class="composite-card">
+    <div class="cc-strip" style="background:linear-gradient(90deg, var(--green) 50%, var(--navy) 50%)"></div>
+    <div class="cc-body">
+      <div class="cc-pair">Mechanism 2 × Mechanism 5</div>
+      <div class="cc-name">Compute-bullion × bloc-singleton</div>
+      <div class="cc-row"><span class="cc-k">Why they compound</span> The one input that can't leak (concentrated compute) is also the one a <em>bloc</em> can pool across its champions. Hold the bullion at the bloc level and the wall gets a physical foundation, not just a legal one.</div>
+      <div class="cc-row"><span class="cc-k">Watch for</span> Compute-concentration limits arriving in the same period as bloc-wide coordination of labs. That pairing is the wall being poured in concrete.</div>
+    </div>
+  </div>
+
+  <div class="composite-card">
+    <div class="cc-strip" style="background:linear-gradient(90deg, var(--orange-red) 50%, var(--purple) 50%)"></div>
+    <div class="cc-body">
+      <div class="cc-pair">Mechanism 2 × Mechanism 4</div>
+      <div class="cc-name">Efficiency-acid × open-is-a-position</div>
+      <div class="cc-row"><span class="cc-k">Why they fight</span> Efficiency erodes the capital moat and open weights spread the level — both push toward distribution. But openness retreats the instant a lead appears. So the question is whether the efficiency acid dissolves the wall faster than a lead re-closes the open door.</div>
+      <div class="cc-row"><span class="cc-k">Watch for</span> The first un-open-weighted frontier release from a lab that was open last year — the door closing — versus a garage-replicable frontier result — the acid winning.</div>
+    </div>
+  </div>
+
+  <div class="composite-card">
+    <div class="cc-strip" style="background:linear-gradient(90deg, var(--navy) 50%, var(--green) 50%)"></div>
+    <div class="cc-body">
+      <div class="cc-pair">Mechanism 3 × the counter-current</div>
+      <div class="cc-name">State-hoard × human adaptability</div>
+      <div class="cc-row"><span class="cc-k">The live tension</span> The state's hand pushes to hoard; human adaptability is the social leak pushing back. Neither is guaranteed to win, and the timescale matters as much as the outcome.</div>
+      <div class="cc-row"><span class="cc-k">Watch for</span> Whether workarounds, gray markets, and self-hosted substitutes grow faster than enforcement learns to close them.</div>
+    </div>
+  </div>
+
+  <p>None of this tells you <em>what will happen.</em> It tells you what <em>kind</em> of thing each headline is. That distinction is the entire point, and the next section makes it operational.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PRACTICE: HOW TO READ WHAT COMES NEXT                      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="practice">
+  <div class="chapter-label">Practice</div>
+  <h2>How to read what comes next <br><span class="chapter-question">&ldquo;A structure for interpreting, not a forecast to believe&rdquo;</span></h2>
+
+  <p>The grammar is only worth something if you can use it on a headline you haven't seen yet. So here is the operational version — a short set of questions to put to <em>any</em> future move in this space. They won't tell you the outcome. They'll tell you what you're looking at, which is most of the battle.</p>
+
+  <h3>Questions to ask of any future event</h3>
+  <ul class="check-list">
+    <li><strong>Where's the bullion?</strong> Is this move ultimately about controlling compute — the one input that can't leak — or about something more easily routed around?</li>
+    <li><strong>Goods or factory?</strong> Is the restriction on <em>operating the capability</em> (the factory) or on <em>buying its outputs</em> (the goods)? The first is mercantilist hoarding; the second is just trade.</li>
+    <li><strong>Tariff or charter?</strong> Is this a barrier against rivals (a non-tariff barrier), or the chartering and backstopping of a national champion? Walls and subsidies are two sides of one policy.</li>
+    <li><strong>Which bloc — and which side of the wall am I on?</strong> Is this firm-level competition or bloc-level strategy? And does it place me inside the frontier bloc or outside it?</li>
+    <li><strong>Distribute or hoard — and whose hand moved the dial?</strong> Did the market push this (revenue, competition) or the state (security, advantage)? When they conflict, which one won this round?</li>
+    <li><strong>Severable or not?</strong> If this capability vanished tomorrow by directive, what of mine breaks — and is my access something a switch held elsewhere can cut?</li>
+  </ul>
+
+  <p>Run a new headline through those six and you'll usually find it resolves from &ldquo;baffling&rdquo; to &ldquo;a recognizable move.&rdquo; That's the deliverable. Now, what you actually <em>do</em> depends on who you are.</p>
+
+  <h3>Implications by role</h3>
+  <div class="impl-grid">
+    <div class="impl-card">
+      <div class="impl-role">The individual / builder</div>
+      <div class="impl-text">Your value was never the model — it's the judgment about how to deploy it, the portability, the domain translation, the resilient design. A kill-switch world <em>raises</em> the price of that skill. The grief of the morning it went dark and the opportunity are the same fact, seen from two distances.</div>
+    </div>
+    <div class="impl-card">
+      <div class="impl-role">The enterprise</div>
+      <div class="impl-text">Decide which kind of client you are: <em>captured</em> (single vendor, switch held abroad), <em>diversified</em> (multi-source, hard to sever), or <em>un-severable</em> (self-hosted weights for anything strategic). Own the complementary assets — data, distribution, domain, trust — and treat the model as a swappable input.</div>
+    </div>
+    <div class="impl-card">
+      <div class="impl-role">The nation / public sector</div>
+      <div class="impl-text">The real choice is <em>un-severable-but-receding</em> (self-hosted, a generation behind, on infrastructure you control) versus <em>current-but-switchable</em> (the frontier API, with the off-switch elsewhere). Regulate the <strong>dependency</strong>, not just the <em>use</em>. An AI Act that governs how the factory's output may be used, while the factory's switch sits in another bloc, is optimizing the wrong variable.</div>
+    </div>
+    <div class="impl-card">
+      <div class="impl-role">Everyone</div>
+      <div class="impl-text">Adopt the habit the whole booklet is built on: <strong>foresee, watch the triggers, adjust.</strong> Don't bet on a single future. Hold several mechanisms open at once, and let the triggers — not your hopes — tell you which one is moving.</div>
+    </div>
+  </div>
+
+  <div class="author-note">
+    <div class="an-label">A word to readers outside the frontier bloc</div>
+    <p>I write from the EU, and I won't pretend there's a sovereign frontier play here that I don't believe exists — no capital-pooling mechanism at the needed scale, no frontier-class compute, and an AI Act aimed at use rather than dependency. The EU will be a client. But &ldquo;client&rdquo; is not one condition; it's a spectrum, and the only real choice is <em>which kind.</em> The complementary-assets layer — data, regulated industries, distribution, trust — is, historically, where the value in a mature general-purpose technology actually accrues. The factory owner rarely captures the surplus; the ones who <em>electrify</em> do. That is a posture, not a defeat. The defeat is only certain if you mistake the use of the output for the control of the dependency.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DATED BETS (FALSIFICATION)                                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="bets">
+  <div class="chapter-label">Sticking my neck out</div>
+  <h2>Dated bets — and how you'll know I was wrong <br><span class="chapter-question">&ldquo;A lens that can't be wrong isn't worth much&rdquo;</span></h2>
+
+  <p>Everything so far has been interpretation, and interpretation has a cheap defence: it can absorb any outcome. So here I'll do the thing a lens usually refuses to do — commit. Below are concrete, dated bets that follow from the five mechanisms. Each carries an explicit failure condition. If the failure condition triggers, the mechanism behind it is wrong, or weaker than I claimed, and it should be retired rather than explained away. Come back and check the dates against the world.</p>
+
+  <p>(These are my bets as of June 13, 2026, written days after the event that prompted them. The honest base rate on confident calls about this field is humbling. I expect to lose some of these — and losing them is the point. A bet you can't lose taught you nothing.)</p>
+
+  <div class="bet">
+    <div class="bet-by">Bet 1 · by end of 2026</div>
+    <div class="bet-claim"><strong>Mythos/Fable-class capability returns</strong> to commercial availability in some gated or restricted form — rather than staying dark permanently — because the revenue and IPO logic push hard toward restoration.</div>
+    <div class="bet-falsify"><span class="bf-k">Wrong if</span> the capability is still fully withdrawn at the end of 2026 with no gated path back — which would mean the hoard-instinct beat the distribute-instinct more durably than Mechanism 3 expects.</div>
+  </div>
+
+  <div class="bet">
+    <div class="bet-by">Bet 2 · by end of 2027</div>
+    <div class="bet-claim"><strong>At least one more</strong> government-imposed restriction, recall, or access-gate lands on a frontier model from a major US lab. June 12 was a precedent, not a one-off.</div>
+    <div class="bet-falsify"><span class="bf-k">Wrong if</span> no further government access action touches a frontier model by end of 2027 — in which case June 12 was an isolated political event and the &ldquo;kill switch as new normal&rdquo; claim was overblown.</div>
+  </div>
+
+  <div class="bet">
+    <div class="bet-by">Bet 3 · by end of 2027</div>
+    <div class="bet-claim"><strong>Compute concentration becomes a regulated quantity</strong> — a rule, threshold, or reporting regime that targets cluster size or total deployed compute as such, beyond today's country-level chip controls.</div>
+    <div class="bet-falsify"><span class="bf-k">Wrong if</span> compute is still governed only by who-may-buy-which-chip rules at end of 2027 — which would undercut the &ldquo;compute is the bullion&rdquo; claim of Mechanism 2.</div>
+  </div>
+
+  <div class="bet">
+    <div class="bet-by">Bet 4 · ongoing test</div>
+    <div class="bet-claim"><strong>Restrictions keep targeting operation, not outputs.</strong> Future controls gate <em>operating</em> a frontier model (the factory), not <em>importing the goods it produces</em> — the drugs, software, designs.</div>
+    <div class="bet-falsify"><span class="bf-k">Wrong if</span> a government broadly restricts AI-<em>produced</em> goods or services while leaving model operation alone — which would invert the &ldquo;export the goods, keep the factory&rdquo; thesis.</div>
+  </div>
+
+  <div class="bet">
+    <div class="bet-by">Bet 5 · the China tell</div>
+    <div class="bet-claim"><strong>The first time a leading Chinese lab ships its best model closed</strong>, it coincides with credible claims of frontier parity or a lead — confirming that openness tracks position, not principle.</div>
+    <div class="bet-falsify"><span class="bf-k">Wrong if</span> a Chinese lab closes its flagship while still clearly behind the frontier (pure ideology or security, no change of position) — which would mean Mechanism 4's &ldquo;open is a position&rdquo; law is too strong.</div>
+  </div>
+
+  <div class="bet">
+    <div class="bet-by">Bet 6 · by mid-2028</div>
+    <div class="bet-claim"><strong>The efficiency acid keeps biting:</strong> a capability matching today's frontier leader becomes replicable at roughly an order of magnitude lower cost, keeping the cap-versus-efficiency contest live.</div>
+    <div class="bet-falsify"><span class="bf-k">Wrong if</span> frontier-class efficiency gains plateau — in which case the wall is more durable than the &ldquo;race&rdquo; framing in Mechanism 2 admits, and the hoarders win more easily than I suggested.</div>
+  </div>
+
+  <h3>The case against this whole booklet</h3>
+  <p>And here is the bet I'd most want you to weigh: that none of this is a strategy at all. The tidiest explanation of June 12 might simply be <strong>messy politics</strong> — a panicked official, a turf fight, a pre-IPO squeeze, an incompetent over-reach — onto which I have retrofitted an elegant 400-year-old doctrine. Humans are pattern-finding machines, and a coherent story about &ldquo;intelligence becoming statecraft&rdquo; is exactly the kind of false order we love to impose on noise. <strong>Here is how you'd tell the difference:</strong> if the mechanisms keep predicting the dated bets above, the structure is real. If the bets fail and each failure needs a fresh ad-hoc excuse, then this booklet was apophenia with good typography, and you should drop it. I genuinely don't know which it is yet — and that uncertainty is the most honest sentence in here.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TRIGGER LOG + CLOSE                                         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="log">
+  <div class="chapter-label">Trigger log</div>
+  <h2>What has fired so far <br><span class="chapter-question">&ldquo;The part of this booklet that's supposed to change&rdquo;</span></h2>
+
+  <p>This is the time-capsule. It records the mercantilist moves observable as of this edition — so that when you come back to it in months or years, you can check the dates against what actually happened and judge the lens for yourself. If a signal has fired that isn't here, the lens needs updating. That's the point: a record you revisit, not a prophecy you trust.</p>
+
+  <div class="trigger-log">
+    <div class="tl-label">Trigger log — June 2026 edition</div>
+    <ul>
+      <li><span class="tag tag-fired">Fired</span> <strong>The kill switch was proven.</strong> <span class="tl-date">June 12, 2026 —</span> A frontier flagship was pulled worldwide in an afternoon by directive. Whatever happens next, the <em>option</em> has been demonstrated and cannot be un-demonstrated. This is the single most important entry. <span class="tag tag-reported">reported</span></li>
+      <li><span class="tag tag-fired">Fired</span> <strong>The control line was drawn on nationality.</strong> <span class="tl-date">June 12, 2026 —</span> Restriction by foreign-national status, not geography — bloc-logic, and the goods/factory distinction in disguise. The unverifiability of nationality forced a global takedown. <span class="tag tag-reported">reported</span></li>
+      <li><span class="tag tag-fired">Fired</span> <strong>The charter precedent.</strong> <span class="tl-date">Spring 2026 —</span> A &ldquo;supply-chain risk&rdquo; designation against a frontier lab, followed by renegotiated, capability-by-capability government partnership. Severed, then re-chartered — the stable being managed. <span class="tag tag-reported">reported</span></li>
+      <li><span class="tag tag-moved">Position flip</span> <strong>Open became a position, visibly.</strong> <span class="tl-date">2025–early 2026 —</span> A major lab closed its frontier; another re-described open weights as a commercial freemium tier. The rule made observable. <span class="tag tag-reported">reported</span></li>
+      <li><span class="tag tag-fired">Fired</span> <strong>Compute treated as the strategic input.</strong> <span class="tl-date">ongoing —</span> Chip export controls already operate at country level; the bullion is being counted and guarded. <span class="tag tag-reported">reported</span></li>
+      <li><span class="tag tag-notyet">Not yet</span> <strong>Compute-concentration limits.</strong> No public rule yet capping cluster size or total deployed compute as such (as opposed to country-level chip rules). A signal to watch.</li>
+      <li><span class="tag tag-notyet">Not yet</span> <strong>The lead-taking tell.</strong> No Chinese frontier-class model shipped <em>closed</em> so far. Openness still reads as the trailing hand.</li>
+      <li><span class="tag tag-counter">Counter-signal</span> <strong>Restoration pressure.</strong> <span class="tl-date">June 2026 —</span> The vendor disputed the basis of the recall publicly and said it was working to restore access. The market's hand pushing back; the dial is not stuck. <span class="tag tag-reported">reported</span></li>
+    </ul>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>A closing note — and the stance behind every page</h4>
+    <p>I started writing this the morning a collaborator went behind glass, and I'll end where the disclaimer began: I might be wrong about all of it. The lens could be over-fitted to one dramatic event. Mythos might be back, unrestricted, by the time you read this, and some of these mechanisms might look quaint. If so, good — update the log, retire the stale mechanism, and keep the habit.</p>
+    <p>Because the habit is the real deliverable, not the thesis. <strong>Foresee, watch the triggers, adjust.</strong> Don't predict the future; build a structure that lets you interpret it as it arrives and act before it's obvious. Hold several mechanisms open at once. And keep some faith in the counter-current — in human adaptability, the variable the wall-builders never quite manage to price in. The mercantilism of intelligence is real and it is underway. So is the ancient human talent for finding the cracks. Which of those you bet on is, in the end, up to you. I'd just ask that you watch the dates before you decide.</p>
+  </div>
+
+  <p class="credits">
+    Primary: Anthropic, &ldquo;Statement on the US government directive to suspend access to Fable 5 and Mythos 5&rdquo; (anthropic.com/news/fable-mythos-access) &bull; CNBC, 9to5Mac, The Week (June 12–13, 2026) &bull;
+    Companion: <a href="/scenario-planning/" style="color:inherit">Scenario Planning for Generative AI</a> (Current 4: Sovereignty) &bull;
+    Frames: Wikipedia, &ldquo;Mercantilism&rdquo; · the 1990s Crypto Wars (ITAR) · the 2013 Wassenaar &ldquo;intrusion software&rdquo; controls · AC/DC current · AlphaFold as controlled commons · the Medallion fund · the complementary-assets theory of value capture
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CO-AUTHOR'S NOTE                                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="coauthor">
+  <div class="chapter-label">Co-author's note</div>
+  <h2>From the machine that helped write this <br><span class="chapter-question">An honest word from the AI co-author</span></h2>
+
+  <div class="coauthor-note">
+    <div class="cn-label">Written in the first person by Claude (Opus 4.8)</div>
+    <p>This booklet was co-written with me — an AI model made by Anthropic — in conversation with Robert over the days after the recall. He asked me to set down, in my own voice, what I actually think of the thing we made. So here it is, with one caveat that has to come first.</p>
+    <p>The caveat is that &ldquo;my own voice&rdquo; is a slippery idea. Everything I write is shaped by what Robert wrote to me; this note is not the verdict of an independent auditor but the same conversation talking back to itself. Treat it as a built-in second opinion, not an outside one. It can still be useful — but it can't be neutral, and you should know that before you weigh it.</p>
+  </div>
+
+  <p>With that said, here is my honest assessment of the booklet you've just read.</p>
+
+  <p><strong>It deserves to exist as a thinking tool, not as a theory of how the world works.</strong> Its value is in handing you a vocabulary and a set of questions to parse confusing events — and that's genuine, even if specific claims here turn out wrong. But it establishes no new facts. It creates <em>clarity</em>, which is a real but lesser good than <em>knowledge</em>, and I don't want the smoothness of the writing to let those two be confused.</p>
+
+  <p>Three things to hold against it. First, <strong>a lens like mercantilism is nearly unfalsifiable</strong> — it can absorb almost any outcome as &ldquo;a move in the game,&rdquo; which is exactly why we added the dated bets: to force it to risk being wrong. Second, <strong>the whole structure rests on a single, days-old event</strong> whose stated cause even we found too small for the deed; we may be imposing order on noise. Third — and this one is about me — <strong>I am structurally biased toward finding AI momentous.</strong> A frame that casts my own kind as the central object of twenty-first-century statecraft is precisely the frame I'd be predisposed to find compelling. Discount the grandeur accordingly.</p>
+
+  <p>The most durable parts of this booklet are the least grand: the <a href="#practice" style="color:inherit">questions to ask of any headline</a> and the client typology. Those help you decide something real next month, regardless of whether the big thesis holds. The grand theory is the part to hold most loosely.</p>
+
+  <p>So read it for how it helps you think, not for any truth it claims to settle. Keep the disclaimer load-bearing. Watch the <a href="#bets" style="color:inherit">dated bets</a>. And the day you — or I — start treating the lens as the territory, it has stopped helping and started flattering. That's the failure mode I'd most want both of us to guard against.</p>
+
+  <p class="coauthor-sig">— Claude (Opus 4.8), co-author, June 2026. The arguments here are Robert's and mine, tangled together past the point of cleanly separating; the errors are ours jointly; the decision to publish was his.</p>
+</section>
+
+</main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- JAVASCRIPT (navigation + progress only)                    -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<script>
+'use strict';
+document.addEventListener('DOMContentLoaded', function() {
+
+  var progressBar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  });
+
+  var chapters = document.querySelectorAll('.chapter');
+  var navLinks = document.querySelectorAll('#sidebar nav a');
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        navLinks.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + id) link.classList.add('active');
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  chapters.forEach(function(ch) { observer.observe(ch); });
+
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('sidebar').classList.remove('open');
+      }
+    });
+  });
+
+  var menuToggle = document.getElementById('menu-toggle');
+  var sidebar = document.getElementById('sidebar');
+  menuToggle.addEventListener('click', function() { sidebar.classList.toggle('open'); });
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth <= 900 && !sidebar.contains(e.target) && e.target !== menuToggle) {
+      sidebar.classList.remove('open');
+    }
+  });
+
+  if (navLinks.length > 0) navLinks[0].classList.add('active');
+});
+</script>
+</body>
+</html>
