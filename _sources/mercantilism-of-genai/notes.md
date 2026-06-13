@@ -20,9 +20,8 @@ Frontier intelligence is being reclassified — from a *product* the market want
 7. Mechanism 4 — Open is a position, not a principle (Meta / Mistral freemium / China; readable trigger = first closed Chinese frontier; alignment-as-state-control; open weights = un-severability, not freedom)
 8. Mechanism 5 — Firm-multipolar, bloc-singleton (bloc diagram; chartered companies; labs as organs: frontier-holder / export-house / own-specie; recall = bloc control of firm asset; bloc-level financing/backstop)
 9. Counter-current — Human adaptability (frozen-after-training models; social leak; but adaptation is symmetric — arms race, timescale matters)
-10. Synthesis — the phenomenon named; the grammar; three composite cards (compute×bloc, efficiency×open, hoard×adaptability)
-11. Practice — "questions to ask of any future event" checklist + implications by role (individual / enterprise / nation / everyone) + EU note
-12. Trigger log (June 2026 edition, time capsule) + closing note (foresee–watch–adjust)
+10. Synthesis — the phenomenon named; the grammar; mechanism-interactions woven in as fluent prose (rewritten from composite cards per reader feedback that they read too hard), hands off to the dated bets. NOTE: the standalone "Practice / How to read what comes next" section (questions checklist + implications-by-role + EU note) was removed as redundant; its practical content lives distributed across the mechanism trigger-signals, the armed-vs-targeted test in §m-dial, and the dated bets.
+11. Trigger log (June 2026 edition, time capsule) + closing note (foresee–watch–adjust)
 
 ## Static diagrams (CSS/SVG, non-interactive)
 
