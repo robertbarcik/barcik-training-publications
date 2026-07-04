@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open-Weight Models &mdash; Model Families &amp; Selection for On-Prem Inference</title>
+<title>Open-Weight Models &middot; Model Families &amp; Selection for On-Prem Inference</title>
 <meta name="description" content="A decision framework for on-prem inference with open-weight models: Llama, Gemma, Qwen, Mistral and Phi, hardware mapping, and a reusable checklist.">
 <link rel="canonical" href="https://publications.barcik.training/open-weight-models/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Open-Weight Models &mdash; Model Families &amp; Selection for On-Prem Inference">
+<meta property="og:title" content="Open-Weight Models &middot; Model Families &amp; Selection for On-Prem Inference">
 <meta property="og:description" content="A decision framework for on-prem inference with open-weight models: Llama, Gemma, Qwen, Mistral and Phi, hardware mapping, and a reusable checklist.">
 <meta property="og:url" content="https://publications.barcik.training/open-weight-models/">
 <meta property="og:image" content="https://publications.barcik.training/assets/og-card.png">
@@ -488,7 +488,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <h1>Open-Weight Model Families &amp; Model Selection</h1>
     <h2 style="color: var(--text-light); font-weight: 400; font-size: 1.2rem; margin-top: -0.5rem;">A Decision Framework for On-Prem Inference</h2>
     <hr>
-    <p><strong>April 2026</strong></p>
+    <p><strong>April 2026 &middot; first freshness reading July 2026</strong></p>
     <p><em>By Robert Barcik</em><br>
     <em>LearningDoe s.r.o.</em><br>
     <em>Contact: <a href="mailto:robert@barcik.training">robert@barcik.training</a></em></p>
@@ -497,8 +497,8 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <h3>About This Booklet</h3>
     <p>You have GPUs. You have a model running in production. It works. Tickets get resolved, code gets reviewed, documents get summarised. Then someone on your team opens HuggingFace, sees a new model with better benchmark scores, and asks: should we switch?</p>
     <p>You do not know. Not because you are uninformed, but because the question is unanswerable without context. Switch for which task? On which GPU? At what quantisation? Serving how many users? Under what license? The model is one variable in a system of constraints, and the leaderboard answers none of them.</p>
-    <p>This booklet does not tell you which model to pick today. By the time you read this, the rankings will have shifted. What it gives you is the machinery to answer the question yourself &mdash; this time and every time after. Part 1 maps the five major families: who builds them, why, and what that means for you. Part 2 connects the landscape to your actual hardware. Part 3 gives you a decision framework and four scenarios to stress-test it.</p>
-    <p>The numbers are current as of April 2026. The framework should outlast them.</p>
+    <p>This booklet does not tell you which model to pick today. By the time you read this, the rankings will have shifted. What it gives you is the machinery to answer the question yourself, this time and every time after. Part 1 maps the major families: who builds them, why, and what that means for you. Part 2 connects the landscape to your actual hardware. Part 3 gives you a decision framework and four scenarios to stress-test it.</p>
+    <p>The numbers are current as of April 2026. The framework should outlast them. A dated July 2026 reading at the end of Part 3 records what has already rotated, the same discipline our other booklets follow with their trigger logs.</p>
 
     <h3>Who This Is For</h3>
     <ul>
@@ -509,7 +509,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     </ul>
 
     <h3>How to Read</h3>
-    <p>Read in order for the full picture. If you already know the model families and just need the practical selection guidance, skip to Part 2. If you want the decision framework and exercise, jump to Part 3 &mdash; but you will get more from it having read Parts 1 and 2 first.</p>
+    <p>Read in order for the full picture. If you already know the model families and just need the practical selection guidance, skip to Part 2. If you want the decision framework and exercise, jump to Part 3, but you will get more from it having read Parts 1 and 2 first.</p>
 
     <hr>
     <h3>Table of Contents</h3>
@@ -544,12 +544,14 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
     <p>In December 2024, the safe recommendation was straightforward: Llama 3.3 70B, run it on an H100, done. Six months later, Qwen 3 had overtaken it on most benchmarks. Six months after that, Gemma 4 arrived with Apache 2.0 licensing and Mistral Small 4 rewrote what a 6B-active-parameter model could do. Anyone who built their strategy around a December 2024 comparison table spent 2025 on the wrong model.</p>
 
-    <p>The problem is not that comparison tables are wrong when published. The problem is that they are <strong>right for about eight weeks</strong>. The mean engagement duration for any model on HuggingFace is approximately six weeks before it is superseded. Building your model strategy around a snapshot is like choosing a server vendor based on last quarter&rsquo;s benchmark &mdash; the number was accurate, the decision was not.</p>
+    <p>Comparison tables are usually accurate when published. The trouble is that they stay accurate <strong>for about eight weeks</strong>. HuggingFace&rsquo;s own <a href="https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026">State of Open Source report</a> (Spring 2026) puts the mean engagement duration for a model at roughly six weeks before it is superseded. Building your model strategy around a snapshot is like choosing a server vendor based on last quarter&rsquo;s benchmark: the number was accurate, the decision was not.</p>
 
     <p>What does not change every eight weeks: your hardware constraints, your use case requirements, the licensing implications, and the inference cost structure. A team that understands these variables can read a model card on release day and reach a defensible decision by end of day. A team that waits for someone else&rsquo;s recommendation table is always two months behind.</p>
 
+    <p>One scoping note. This booklet assumes the decision to run on your own hardware is already made. Whether it <em>should</em> be, against the API route and its subsidised land-grab prices, is a cost question, and we work through that math in <a href="/token-economics/">The Token Economics</a>.</p>
+
     <blockquote>
-        <p><strong>The goal:</strong> When the next model drops, you evaluate it yourself &mdash; against your hardware, your constraints, your use cases &mdash; without waiting for someone else&rsquo;s table.</p>
+        <p><strong>The goal:</strong> When the next model drops, you evaluate it yourself, against your hardware, your constraints, and your use cases, without waiting for someone else&rsquo;s table.</p>
     </blockquote>
 </section>
 
@@ -560,12 +562,12 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="chapter-label">Part 1: Model Families</div>
     <h1>The Landscape in 2026</h1>
 
-    <p>Eighteen months ago, if someone asked you to run an LLM on your own hardware, the answer was some variant of Llama. Today, five organisations compete to be the default choice, and their models have converged on a licensing model that would have seemed unlikely in 2024: genuine permissive open licensing.</p>
+    <p>Eighteen months ago, if someone asked you to run an LLM on your own hardware, the answer was some variant of Llama. Today, a crowd of organisations competes to be the default choice, and their models have converged on a licensing model that would have seemed unlikely in 2024: genuine permissive open licensing.</p>
 
     <div class="stat-row">
         <div class="stat-card">
-            <div class="stat-number">5</div>
-            <div class="stat-label">Major model families</div>
+            <div class="stat-number">5&thinsp;+&thinsp;4</div>
+            <div class="stat-label">Core families + challenger tier</div>
         </div>
         <div class="stat-card">
             <div class="stat-number">Apache 2.0</div>
@@ -578,23 +580,25 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     </div>
 
     <h2>The Families</h2>
-    <p>Five families dominate the open-weight landscape: <strong>Llama</strong> (Meta), <strong>Gemma</strong> (Google DeepMind), <strong>Qwen</strong> (Alibaba Cloud), <strong>Mistral</strong> (Mistral AI, Paris), and <strong>Phi</strong> (Microsoft). Between them, they cover parameter counts from 600 million to 680 billion, every major modality, and nearly every viable on-prem deployment scenario.</p>
+    <p>Five families anchor the open-weight landscape: <strong>Llama</strong> (Meta), <strong>Gemma</strong> (Google DeepMind), <strong>Qwen</strong> (Alibaba Cloud), <strong>Mistral</strong> (Mistral AI, Paris), and <strong>Phi</strong> (Microsoft). Between them, they cover parameter counts from 600 million to 680 billion, every major modality, and nearly every viable on-prem deployment scenario.</p>
 
-    <p>These families are more stable reference points than specific model versions. A version (Llama 3.3, Qwen 3.5) might be superseded in months. The family behind it &mdash; its philosophy, its licensing approach, its community ecosystem, its preferred architecture &mdash; evolves more slowly and tells you more about where your investment will end up.</p>
+    <p>That was the April 2026 map, and it already needs an asterisk. A challenger tier now ships models that top the open-weight leaderboards outright: <strong>DeepSeek</strong>, Zhipu&rsquo;s <strong>GLM</strong>, Moonshot&rsquo;s <strong>Kimi</strong>, and OpenAI&rsquo;s <strong>GPT-OSS</strong>. They get their own profile at the end of the next chapter, added with the July 2026 reading.</p>
+
+    <p>These families are more stable reference points than specific model versions. A version (Llama 3.3, Qwen 3.5) might be superseded in months. The family behind it (its philosophy, its licensing approach, its community ecosystem, its preferred architecture) evolves more slowly and tells you more about where your investment will end up.</p>
 
     <h2>Two Architecture Eras</h2>
     <p>Understanding one distinction will help you make sense of everything that follows: <strong>dense versus Mixture of Experts (MoE)</strong>.</p>
 
     <p>A <strong>dense model</strong> activates all its parameters for every token. A 70B dense model does 70 billion computations per token and needs enough memory to hold all 70 billion parameters. Straightforward.</p>
 
-    <p>A <strong>MoE model</strong> has a large total parameter count but activates only a fraction per token. Mistral Small 4 has 119B total parameters but activates only ~6B per token. You get frontier-quality outputs at small-model inference cost &mdash; but you still need enough memory to <em>store</em> all 119B parameters. MoE trades memory for compute efficiency.</p>
+    <p>A <strong>MoE model</strong> has a large total parameter count but activates only a fraction per token. Mistral Small 4 has 119B total parameters but activates only ~6B per token. You get frontier-quality outputs at small-model inference cost, but you still need enough memory to <em>store</em> all 119B parameters. MoE trades memory for compute efficiency.</p>
 
     <p>Every frontier open-weight release since mid-2025 uses MoE: DeepSeek R1, Qwen 3.5, Mistral Large 3, Llama 4, Gemma 4&rsquo;s 26B variant. Dense models (27&ndash;32B) remain the sweet spot for single-GPU deployment, but the trend is clear.</p>
 
     <h2>The Licensing Convergence</h2>
-    <p>The biggest practical shift of the past year is not a model &mdash; it is a license. <strong>Apache 2.0 has become the default</strong> for new open-weight releases. Gemma 4, Qwen 3/3.5, Mistral&rsquo;s current lineup, and DeepSeek V3 all use it. Microsoft&rsquo;s Phi uses MIT (even more permissive). The only major holdout is Meta&rsquo;s Llama, which uses a custom community license with branding requirements, a 700M monthly-active-user cap, and &mdash; critically for EU-based teams &mdash; restrictions on multimodal models in the EU.</p>
+    <p>The biggest practical shift of the past year is a license, not a model. <strong>Apache 2.0 has become the default</strong> for new open-weight releases: Gemma 4, Qwen 3/3.5, Mistral&rsquo;s current lineup, and OpenAI&rsquo;s GPT-OSS all use it. DeepSeek publishes under MIT from R1 onward (the original V3 carried a custom restrictive license, worth knowing if you run older checkpoints), and Microsoft&rsquo;s Phi uses MIT too. The only major holdout is Meta&rsquo;s Llama, which uses a custom community license with branding requirements, a 700M monthly-active-user cap, and, critically for EU-based teams, restrictions on multimodal models in the EU.</p>
 
-    <p>For an IT services company, this means that four of the five families impose <strong>zero commercial restrictions</strong> on your use. You can deploy them for clients, embed them in products, fine-tune them, and redistribute derivatives without legal friction. That was not the case 18 months ago.</p>
+    <p>For an IT services company, this means that every major family except Llama imposes <strong>zero commercial restrictions</strong> on your use. You can deploy them for clients, embed them in products, fine-tune them, and redistribute derivatives without legal friction. That was not the case 18 months ago.</p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -604,28 +608,28 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="chapter-label">Part 1: Model Families</div>
     <h1>Family by Family</h1>
 
-    <p>Do not read this section as a catalog. Read it as context for decisions you will make in Part 3. For each family, the question that matters is: <strong>under what circumstances would I choose this one?</strong> The corporate strategy behind each is a single sentence &mdash; enough to understand their commitment to open weights. The rest is what you need for model selection.</p>
-    <p><em style="color: var(--text-light); font-size: 0.9rem;">Specific model versions (Llama 3.3, Gemma 4, Qwen 3.5) will be superseded. The families, their licensing philosophies, and the &ldquo;when to choose&rdquo; criteria are more stable &mdash; those are what to retain.</em></p>
+    <p>Do not read this section as a catalog. Read it as context for decisions you will make in Part 3. For each family, the question that matters is: <strong>under what circumstances would I choose this one?</strong> The corporate strategy behind each is a single sentence, enough to understand their commitment to open weights. The rest is what you need for model selection.</p>
+    <p><em style="color: var(--text-light); font-size: 0.9rem;">Specific model versions (Llama 3.3, Gemma 4, Qwen 3.5) will be superseded. The families, their licensing philosophies, and the &ldquo;when to choose&rdquo; criteria are more stable; those are what to retain.</em></p>
 
     <!-- ── LLAMA ── -->
     <div class="family-card">
-        <h3>Meta Llama &mdash; the incumbent you already know</h3>
+        <h3>Meta Llama &middot; the incumbent you already know</h3>
         <div class="family-meta">
             <span class="license-meta">Meta Community License</span>
             <span>US origin</span>
             <span>1.2B+ cumulative downloads</span>
         </div>
 
-        <p>If you are running open-weight models today, you are probably running Llama. That is its greatest strength &mdash; ecosystem depth, battle-tested tooling, the most derivative models on HuggingFace (~85K) &mdash; and increasingly its only differentiator, as competitors match or exceed its quality.</p>
+        <p>If you are running open-weight models today, you are probably running Llama. That is its greatest strength (ecosystem depth, battle-tested tooling, the most derivative models on HuggingFace at ~85K) and increasingly its only differentiator, as competitors match or exceed its quality.</p>
 
-        <p><strong>Llama 3.3 70B</strong> remains the practical workhorse: 405B-class quality through distillation, fits on a single H100 at FP8 (~70GB), runs with every inference engine. Llama 4 (April 2025) pivoted to multimodal MoE &mdash; Scout (109B total, 17B active, 10M context) fits on a single H100 at INT4, but the ecosystem around Llama 4 has been slower to mature than Llama 3.x.</p>
+        <p><strong>Llama 3.3 70B</strong> remains the practical workhorse: 405B-class quality through distillation, fits on a single H100 at FP8 (~70GB), runs with every inference engine. Llama 4 (April 2025) pivoted to multimodal MoE: Scout (109B total, 17B active, 10M context) fits on a single H100 at INT4, but the ecosystem around Llama 4 has been slower to mature than Llama 3.x.</p>
 
-        <p><strong>The risk:</strong> Meta released Muse Spark in April 2026 &mdash; their first <em>proprietary</em> model. The community reads this as a potential signal that future frontier releases may not be open. Meta open-weights to prevent platform lock-in by other AI providers; if that strategic calculus changes, so does Llama&rsquo;s future.</p>
+        <p><strong>The risk:</strong> Meta released Muse Spark in April 2026, their first <em>proprietary</em> frontier model since Llama 2, and as of July 2026 no open-weight release has followed it. Meta open-weights to prevent platform lock-in by other AI providers; if that strategic calculus changes, so does Llama&rsquo;s future. Openness is a position labs hold, not a principle; that argument is mapped in <a href="/mercantilism-of-genai/#m-open">The Mercantilism of Generative AI</a>.</p>
 
         <div class="key-points">
             <div class="kp-title">When to choose Llama</div>
             <ul>
-                <li><strong>You value ecosystem maturity</strong> over cutting-edge benchmarks &mdash; every tool, tutorial, and fine-tune assumes Llama compatibility</li>
+                <li><strong>You value ecosystem maturity</strong> over cutting-edge benchmarks: every tool, tutorial, and fine-tune assumes Llama compatibility</li>
                 <li><strong>License caveat:</strong> Not Apache 2.0. Requires &ldquo;Built with Llama&rdquo; branding. <strong>EU entities cannot use Llama 4 multimodal models</strong> (text-only fine)</li>
                 <li><strong>Fits on:</strong> Llama 3.3 70B on H100 at FP8. Llama 4 Scout at Q4 on H100 or DGX Spark</li>
             </ul>
@@ -634,22 +638,22 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
     <!-- ── GEMMA ── -->
     <div class="family-card">
-        <h3>Google Gemma &mdash; distilled Gemini, now with a real license</h3>
+        <h3>Google Gemma &middot; distilled Gemini, now with a real license</h3>
         <div class="family-meta">
             <span class="license-apache">Apache 2.0 (from Gemma 4)</span>
             <span>US origin</span>
             <span>400M+ downloads</span>
         </div>
 
-        <p>Gemma models are distilled from Google&rsquo;s closed Gemini research, which gives them outsized capability per parameter. The move to Apache 2.0 with Gemma 4 (April 2026) removed the licensing friction that had held back enterprise adoption of earlier versions &mdash; this was a direct competitive response to Qwen and Mistral.</p>
+        <p>Gemma models are distilled from Google&rsquo;s closed Gemini research, which gives them outsized capability per parameter. The move to Apache 2.0 with Gemma 4 (April 2026) removed the licensing friction that had held back enterprise adoption of earlier versions; a direct competitive response to Qwen and Mistral.</p>
 
-        <p>The <strong>26B MoE</strong> is the standout: it activates only 3.8B parameters per token yet delivers near-31B dense quality (#6 on Arena AI). The <strong>31B dense</strong> model ranks #3 on Arena AI among all open models. Specialised variants exist for medical, translation, security, and embeddings &mdash; Google is building a complete task-specific portfolio, which matters if you want models that work together.</p>
+        <p>The <strong>26B MoE</strong> is the standout: it activates only 3.8B parameters per token yet delivers near-31B dense quality (#6 on Arena AI). The <strong>31B dense</strong> model ranks #3 on Arena AI among all open models. Specialised variants exist for medical, translation, security, and embeddings: Google is building a complete task-specific portfolio, which matters if you want models that work together.</p>
 
         <div class="key-points">
             <div class="kp-title">When to choose Gemma</div>
             <ul>
                 <li><strong>You want the best quality at 27&ndash;31B</strong> with a clean Apache 2.0 license and no geopolitical complications</li>
-                <li><strong>Speed caveat:</strong> Inference is slower than competitors &mdash; the 26B MoE ran at ~11 tok/s where Qwen 3.5 hit 60+ on the same hardware. Community engine optimisations are catching up</li>
+                <li><strong>Speed caveat:</strong> Inference is slower than competitors: the 26B MoE ran at ~11 tok/s where Qwen 3.5 hit 60+ on the same hardware. Community engine optimisations are catching up</li>
                 <li><strong>License trap:</strong> Gemma 1&ndash;3 used a restrictive custom license. Verify you are using Gemma 4</li>
                 <li><strong>Fits on:</strong> 31B dense or 26B MoE on H100 or DGX Spark at Q4 (~18&ndash;20GB)</li>
             </ul>
@@ -658,22 +662,22 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
     <!-- ── QWEN ── -->
     <div class="family-card">
-        <h3>Alibaba Qwen &mdash; technically best, geopolitically complicated</h3>
+        <h3>Alibaba Qwen &middot; technically best, geopolitically complicated</h3>
         <div class="family-meta">
             <span class="license-apache">Apache 2.0 (from Qwen 3)</span>
             <span>Chinese origin</span>
             <span>700M+ downloads</span>
         </div>
 
-        <p>By the numbers, Qwen wins. Most-forked family on HuggingFace (180K+ derivatives). Widest size range (0.6B to 480B). 201+ languages versus Llama&rsquo;s ~8. Strongest reasoning model at the 32B tier (QwQ-32B). Most aggressive release cadence. Qwen 3.5 introduced Gated DeltaNet &mdash; linear attention with constant memory complexity, a genuine architectural step beyond standard transformers. Alibaba open-weights to drive cloud revenue; their AI business has grown at triple-digit rates for eight consecutive quarters.</p>
+        <p>By the numbers, Qwen wins. Most-forked family on HuggingFace (180K+ derivatives). Widest size range (0.6B to 480B). 201+ languages versus Llama&rsquo;s ~8. Strongest reasoning model at the 32B tier (QwQ-32B). Most aggressive release cadence. Qwen 3.5 builds on Gated DeltaNet, the linear-attention architecture Qwen3-Next introduced in late 2025: constant memory complexity, a genuine step beyond standard transformers. Alibaba open-weights to drive cloud revenue; by the May 2026 earnings, their AI business had grown at triple-digit rates for eleven consecutive quarters.</p>
 
-        <p>The complication is not technical. China&rsquo;s National Intelligence Law obligates all Chinese companies to cooperate with government intelligence operations. The EU AI Act requires training data transparency &mdash; Qwen provides none. <strong>For EU teams:</strong> always self-host on EU infrastructure (never Alibaba Cloud API for GDPR data), avoid high-risk AI Act categories without legal review, and treat Qwen as a strong default for non-sensitive workloads where its technical lead justifies the compliance conversation.</p>
+        <p>The complication is not technical. China&rsquo;s National Intelligence Law obligates all Chinese companies to cooperate with government intelligence operations. The EU AI Act requires training data transparency; Qwen provides none. <strong>For EU teams:</strong> always self-host on EU infrastructure (never Alibaba Cloud API for GDPR data), avoid high-risk AI Act categories without legal review, and treat Qwen as a strong default for non-sensitive workloads where its technical lead justifies the compliance conversation.</p>
 
         <div class="key-points">
             <div class="kp-title">When to choose Qwen</div>
             <ul>
                 <li><strong>You need multilingual, coding, or reasoning capability</strong> and the workload is not in a regulated/sensitive category</li>
-                <li><strong>You need a size the others do not offer</strong> &mdash; only Qwen covers 0.6B to 480B</li>
+                <li><strong>You need a size the others do not offer</strong>: only Qwen covers 0.6B to 480B</li>
                 <li><strong>Compliance overhead:</strong> Chinese origin means extra due diligence for EU regulated, defence, and public sector workloads</li>
                 <li><strong>Fits on:</strong> QwQ-32B or Qwen 3 8B/14B on DGX Spark. Qwen 3 235B MoE on two H200s at FP8</li>
             </ul>
@@ -682,7 +686,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
     <!-- ── MISTRAL ── -->
     <div class="family-card">
-        <h3>Mistral AI &mdash; the EU sovereignty option</h3>
+        <h3>Mistral AI &middot; the EU sovereignty option</h3>
         <div class="family-meta">
             <span class="license-apache">Apache 2.0 (current lineup)</span>
             <span>EU origin (Paris)</span>
@@ -691,12 +695,12 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
         <p>The only major AI lab headquartered in the EU. Full EU jurisdiction, no US CLOUD Act exposure. The French Ministry of Armed Forces signed a 2026&ndash;2030 deployment framework. France and Germany have established joint public administration AI frameworks using Mistral. If your client&rsquo;s procurement requires EU-origin software, Mistral may be the only choice that passes legal review.</p>
 
-        <p><strong>Mistral Small 4</strong> (March 2026) is architecturally clever: 119B total, ~6B active, with a configurable <code>reasoning_effort</code> parameter that lets one model serve as both a fast chatbot and a step-by-step reasoner. Ministral 3 covers the compact tier (3B/8B/14B). <strong>Licensing lesson:</strong> Mistral went from Apache 2.0 (original 7B) to non-commercial (Codestral) to research-only (Large 2) and back to Apache 2.0 after community backlash. Always check the license on the specific version, not the family reputation.</p>
+        <p><strong>Mistral Small 4</strong> (March 2026) is architecturally clever: 119B total, ~6B active, with a configurable <code>reasoning_effort</code> parameter that lets one model serve as both a fast chatbot and a step-by-step reasoner. Ministral 3 covers the compact tier (3B/8B/14B), and Mistral Large 3 (December 2025, 675B total, 41B active, Apache 2.0) holds the frontier tier. <strong>Licensing lesson:</strong> Mistral went from Apache 2.0 (original 7B) to non-commercial (Codestral) to research-only (Large 2) and back to Apache 2.0 after community backlash. Always check the license on the specific version, not the family reputation.</p>
 
         <div class="key-points">
             <div class="kp-title">When to choose Mistral</div>
             <ul>
-                <li><strong>EU data sovereignty is a hard requirement</strong> &mdash; regulated industries, public sector, defence</li>
+                <li><strong>EU data sovereignty is a hard requirement</strong>: regulated industries, public sector, defence</li>
                 <li><strong>You want a single model that flexes</strong> between fast chat and deep reasoning (Mistral Small 4&rsquo;s <code>reasoning_effort</code> parameter)</li>
                 <li><strong>HW requirement:</strong> Mistral Small 4 needs 2&times;H200 or 4&times;H100. Ministral 3 8B/14B fits anywhere</li>
                 <li><strong>Watch for:</strong> Mistral Compute (their own EU cloud, 18K Blackwell chips, launching 2026)</li>
@@ -706,14 +710,14 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
     <!-- ── PHI ── -->
     <div class="family-card">
-        <h3>Microsoft Phi &mdash; the specialist that ignores general knowledge</h3>
+        <h3>Microsoft Phi &middot; the specialist that ignores general knowledge</h3>
         <div class="family-meta">
             <span class="license-mit">MIT License</span>
             <span>US origin</span>
             <span>Small Language Models</span>
         </div>
 
-        <p>Phi is not trying to be a general-purpose assistant. It is a reasoning engine trained on synthetic &ldquo;textbook quality&rdquo; data that deliberately removes factual content to preserve reasoning capacity. The result: Phi-4-reasoning-plus (14B) outperforms DeepSeek-R1 (671B) on AIME math problems. Phi-4-multimodal (5.6B) tops the HuggingFace speech recognition leaderboard. Phi-4-mini (3.8B) runs on CPU. Microsoft open-weights Phi to drive ONNX Runtime adoption and serve as the developer on-ramp to Azure.</p>
+        <p>Phi is a reasoning engine, not a general-purpose assistant: trained on synthetic &ldquo;textbook quality&rdquo; data that deliberately removes factual content to preserve reasoning capacity. The result: Phi-4-reasoning-plus (14B) outperforms DeepSeek-R1 (671B) on AIME math problems. Phi-4-multimodal (5.6B) topped the HuggingFace speech-recognition leaderboard through 2025 (newer entrants contest it now). Phi-4-mini (3.8B) runs on CPU. Microsoft open-weights Phi to drive ONNX Runtime adoption and serve as the developer on-ramp to Azure.</p>
 
         <p>The trade-off is explicit. TriviaQA scores are low. The 16K context window on base Phi-4 rules out large-document tasks. Multilingual is weak (primarily English). Agentic capability is &ldquo;very limited.&rdquo; If you need Phi for knowledge-heavy work, pair it with RAG.</p>
 
@@ -722,8 +726,35 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
             <ul>
                 <li><strong>Your task is math, code, or scientific reasoning</strong> and you want the smallest model that handles it</li>
                 <li><strong>You need something that runs on CPU</strong> or minimal hardware (Phi-4-mini at 3.8B)</li>
-                <li><strong>License:</strong> MIT &mdash; zero restrictions of any kind. The cleanest legal option</li>
+                <li><strong>License:</strong> MIT, zero restrictions of any kind. The cleanest legal option</li>
                 <li><strong>Not for:</strong> General chat, multilingual, long-context, agentic workflows</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── CHALLENGERS (added with the July 2026 reading) ── -->
+    <div class="family-card">
+        <h3>The challengers &middot; DeepSeek, GLM, Kimi, GPT-OSS</h3>
+        <div class="family-meta">
+            <span>Added July 2026</span>
+            <span class="license-mit">MIT (DeepSeek, GLM) &middot; modified MIT (Kimi)</span>
+            <span class="license-apache">Apache 2.0 (GPT-OSS)</span>
+            <span>Chinese + US origin</span>
+        </div>
+
+        <p>The April edition of this booklet called it five families. Three months later that frame needs this card, which is the booklet&rsquo;s own thesis working against it: the durable question is never the list, it is the machinery for evaluating whoever joins the list.</p>
+
+        <p><strong>DeepSeek</strong> is the most-liked open model publisher on HuggingFace (R1), and its V4 preview (April 2026) shipped V4-Pro at 1.6T parameters and V4-Flash at 284B, both MIT, both with 1M context. <strong>GLM</strong> (Zhipu, Beijing) took the #1 open-weight spot on the quality indices with GLM-5.2 (June 2026, ~750B total, 40B active, MIT), beating closed frontier models on some coding benchmarks at a fraction of the price. <strong>Kimi</strong> (Moonshot, Beijing) trades places with it: K2.6 (April 2026, 1T total, 32B active, modified MIT with an attribution clause at scale) and the coding-focused K2.7. <strong>GPT-OSS</strong> (OpenAI, August 2025) is the odd one out: not new, not Chinese, and not huge in active terms (117B total, 5.1B active), it ships natively in MXFP4 so the 120B variant fits a single 80GB GPU, and it remains the reference efficient open reasoning model.</p>
+
+        <p>Note the sizes. Apart from GPT-OSS, these are 284B&ndash;1.6T MoE models: multi-GPU or big-unified-memory territory, not single-H100 deployments. And the three Chinese labs inherit the Qwen card&rsquo;s compliance conversation wholesale: self-host on EU infrastructure, expect no training-data transparency, and get legal review before high-risk AI Act categories.</p>
+
+        <div class="key-points">
+            <div class="kp-title">When to choose a challenger</div>
+            <ul>
+                <li><strong>You want the strongest open-weight quality available</strong> and have the hardware to hold a huge MoE (or can wait for distilled variants)</li>
+                <li><strong>GPT-OSS:</strong> single-GPU reasoning with a clean Apache 2.0 license and no geopolitical asterisk</li>
+                <li><strong>Compliance overhead:</strong> DeepSeek, GLM, and Kimi carry the same EU due-diligence burden as Qwen</li>
+                <li><strong>Ecosystem caveat:</strong> tooling and fine-tune depth still trail the five core families; check your inference framework&rsquo;s support before committing</li>
             </ul>
         </div>
     </div>
@@ -748,19 +779,37 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
             <td><strong>Mistral (current)</strong></td>
             <td>Apache 2.0</td>
             <td>Unrestricted</td>
-            <td>Devstral 2: $20M/month revenue gate</td>
+            <td>Devstral 2 is modified MIT with a $20M/month revenue gate</td>
         </tr>
         <tr>
             <td><strong>Gemma 4</strong></td>
             <td>Apache 2.0</td>
             <td>Unrestricted</td>
-            <td>Gemma 1&ndash;3 used restrictive license &mdash; check version</td>
+            <td>Gemma 1&ndash;3 used restrictive license; check version</td>
         </tr>
         <tr>
             <td><strong>Phi</strong></td>
             <td>MIT</td>
             <td>Unrestricted</td>
             <td>None</td>
+        </tr>
+        <tr>
+            <td><strong>DeepSeek (R1 onward)</strong></td>
+            <td>MIT</td>
+            <td>Unrestricted</td>
+            <td>Original V3 used a custom restrictive license; check the checkpoint</td>
+        </tr>
+        <tr>
+            <td><strong>GPT-OSS</strong></td>
+            <td>Apache 2.0</td>
+            <td>Unrestricted</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td><strong>GLM &middot; Kimi</strong></td>
+            <td>MIT / modified MIT</td>
+            <td>Unrestricted</td>
+            <td>Chinese origin &rarr; same compliance overhead as Qwen</td>
         </tr>
         <tr>
             <td><strong>Llama</strong></td>
@@ -779,7 +828,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="chapter-label">Part 1: Model Families</div>
     <h1>Beyond LLMs: When Smaller Models Win</h1>
 
-    <p>The default instinct &mdash; &ldquo;just use the LLM for everything&rdquo; &mdash; is one of the most expensive mistakes an operations team can make. An LLM is a generalist. For defined, repeatable tasks, a specialised small model will be faster, cheaper, and often more accurate.</p>
+    <p>The default instinct (&ldquo;just use the LLM for everything&rdquo;) is one of the most expensive mistakes an operations team can make. An LLM is a generalist. For defined, repeatable tasks, a specialised small model will be faster, cheaper, and often more accurate.</p>
 
     <p>Consider a ticket routing task. A fine-tuned DistilBERT (66M parameters) achieves 95%+ accuracy at 2&ndash;5ms latency. A 70B LLM achieves 85&ndash;92% accuracy at 500ms&ndash;5s latency. At a million classifications per month, the cost difference is roughly <strong>$50 versus $5,000&ndash;50,000</strong> in GPU infrastructure.</p>
 
@@ -788,11 +837,11 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="key-points">
         <div class="kp-title">Specialised models worth knowing</div>
         <ul>
-            <li><strong>Embedding models</strong> (BGE-M3, Qwen3-Embedding, Nomic Embed) &mdash; convert text to vectors for semantic search and RAG retrieval. 100&ndash;600M parameters. Essential for any RAG pipeline. e5-small (118M) achieved 100% Top-5 retrieval accuracy, outperforming an 8B embedding model at 16ms versus 195ms</li>
-            <li><strong>NER / entity extraction</strong> (GLiNER, 100&ndash;350M) &mdash; zero-shot Named Entity Recognition. Define entity types at runtime (server names, error codes, IPs) without retraining. Outperforms ChatGPT on NER benchmarks</li>
-            <li><strong>Classifiers</strong> (DistilBERT, 66M) &mdash; ticket routing, sentiment analysis, priority detection. 2&ndash;5ms latency</li>
-            <li><strong>Rerankers</strong> (BGE-reranker-v2-m3, 568M) &mdash; second-stage scoring after embedding retrieval. Improves RAG quality by up to 48%. Reranking 50 documents takes ~1.5 seconds</li>
-            <li><strong>Speech recognition</strong> (Whisper large-v3-turbo, 809M) &mdash; 5.4&times; faster than Whisper large-v3 with near-equivalent accuracy. Self-hostable on a single GPU</li>
+            <li><strong>Embedding models</strong> (BGE-M3, Qwen3-Embedding, Nomic Embed): convert text to vectors for semantic search and RAG retrieval. 100&ndash;600M parameters. Essential for any RAG pipeline. e5-small (118M) achieved 100% Top-5 retrieval accuracy, outperforming an 8B embedding model at 16ms versus 195ms</li>
+            <li><strong>NER / entity extraction</strong> (GLiNER, 100&ndash;350M): zero-shot Named Entity Recognition. Define entity types at runtime (server names, error codes, IPs) without retraining. Outperforms ChatGPT on NER benchmarks</li>
+            <li><strong>Classifiers</strong> (DistilBERT, 66M): ticket routing, sentiment analysis, priority detection. 2&ndash;5ms latency</li>
+            <li><strong>Rerankers</strong> (BGE-reranker-v2-m3, 568M): second-stage scoring after embedding retrieval. Improves RAG quality by up to 48%. Reranking 50 documents takes ~1.5 seconds</li>
+            <li><strong>Speech recognition</strong> (Whisper large-v3-turbo, 809M): 5.4&times; faster than Whisper large-v3 with near-equivalent accuracy. Self-hostable on a single GPU</li>
         </ul>
     </div>
 
@@ -860,14 +909,16 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="chapter-label">Part 2: Practical Selection</div>
     <h1>The Hardware Reality</h1>
 
-    <p>Before you pick a model, you need to know what your hardware can actually do. Not what the marketing says &mdash; what happens when you load a model and start generating tokens.</p>
+    <p>Before you pick a model, you need to know what your hardware can actually do. Not what the marketing says: what happens when you load a model and start generating tokens.</p>
+
+    <p>Three reference targets run through this part, the H100 and H200 in the datacenter and the DGX Spark on the desk, because they are what the teams this booklet grew out of actually run. If your hardware is different (an RTX 5090 workstation, Apple Silicon, cloud A100s), everything still applies: plug your own memory and bandwidth numbers into the same formulas.</p>
 
     <p>Two numbers determine your experience: <strong>memory capacity</strong> (can the model fit?) and <strong>memory bandwidth</strong> (how fast can it generate?). The second one is less intuitive but more important for user experience.</p>
 
     <div class="stat-row">
         <div class="stat-card">
             <div class="stat-number">80 GB</div>
-            <div class="stat-label">H100 HBM3<br>3.35 TB/s bandwidth</div>
+            <div class="stat-label">H100 SXM HBM3<br>3.35 TB/s bandwidth</div>
         </div>
         <div class="stat-card">
             <div class="stat-number">141 GB</div>
@@ -886,9 +937,9 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
         <p><strong>tokens/second &asymp; memory bandwidth &divide; model size in bytes</strong></p>
     </blockquote>
 
-    <p>This is why the DGX Spark, despite having 128GB of memory (more than an H100), generates tokens <strong>12&times; slower</strong> than the H100 for models that fit on both. The Spark&rsquo;s 273 GB/s bandwidth is just 8% of the H100&rsquo;s 3.35 TB/s. It can <em>load</em> enormous models. It cannot <em>run</em> them fast.</p>
+    <p>This is why the DGX Spark, despite having 128GB of memory (more than an H100), generates tokens <strong>12&times; slower</strong> than the H100 for models that fit on both. The Spark&rsquo;s 273 GB/s bandwidth is just 8% of the H100&rsquo;s 3.35 TB/s (the SXM variant; the PCIe card is nearer 2 TB/s). It can <em>load</em> enormous models. It cannot <em>run</em> them fast.</p>
 
-    <p>The practical threshold for interactive use is roughly <strong>&gt;10 tokens/second</strong>. Below 5 tok/s, users will find the experience frustrating. This directly constrains which models are viable for which hardware &mdash; not just whether they fit, but whether they are usable.</p>
+    <p>The practical threshold for interactive use is roughly <strong>&gt;10 tokens/second</strong>. Below 5 tok/s, users will find the experience frustrating. This directly constrains which models are viable for which hardware: not just whether they fit, but whether they are usable.</p>
 
     <h2>The VRAM Budget</h2>
     <p>A model&rsquo;s memory footprint is not just its weights. You also need room for the KV cache (which grows with context length and concurrent users) and framework overhead.</p>
@@ -908,7 +959,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
     <p>The base formula: <strong>weight memory = parameters &times; bytes per weight</strong>. At FP16 (2 bytes per parameter), a 70B model needs ~140GB just for weights. At Q4 (0.5 bytes), it drops to ~35GB. The 1.3&ndash;1.5&times; multiplier accounts for KV cache and overhead at moderate concurrency.</p>
 
-    <p>The KV cache deserves special attention. For Llama 3.1 70B at BF16, it consumes roughly <strong>0.31 MB per token per request</strong>. At 8K context with 4 concurrent users, that is ~10GB &mdash; manageable. At 128K context with 4 users, it is ~160GB &mdash; exceeding the model weights. Long context and high concurrency are the hidden VRAM killers.</p>
+    <p>The KV cache deserves special attention. For Llama 3.1 70B at BF16, it consumes roughly <strong>0.31 MB per token per request</strong>. At 8K context with 4 concurrent users, that is a manageable ~10GB. At 128K context with 4 users, it is ~160GB, more than the model weights themselves. Long context and high concurrency are the hidden VRAM killers.</p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -919,7 +970,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <h1>What Fits Where</h1>
 
     <p>Here is the table that matters. For each model size, it shows the VRAM required at different precision levels and whether it fits on your three hardware targets. &ldquo;Fits&rdquo; means loads with room for KV cache at moderate usage. &ldquo;Tight&rdquo; means it loads but leaves minimal headroom.</p>
-    <p><em style="color: var(--text-light); font-size: 0.9rem;">The VRAM column values are durable &mdash; they follow from the formula (params &times; bytes). The specific model names will rotate; the size tiers and memory math will not.</em></p>
+    <p><em style="color: var(--text-light); font-size: 0.9rem;">The VRAM column values are durable; they follow from the formula (params &times; bytes). The specific model names will rotate; the size tiers and memory math will not.</em></p>
 
     <div class="table-wrapper">
     <table>
@@ -1010,7 +1061,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <p><strong>The rule of thumb:</strong> multiply billion parameters by 2 to get GB at FP16. Divide by 2 for FP8, by 4 for Q4. Then multiply by 1.3&ndash;1.5&times; for practical deployment with KV cache headroom.</p>
 
     <blockquote>
-        <p><strong>Key insight:</strong> MoE models are the DGX Spark&rsquo;s best friend. A 120B MoE that activates only 20B parameters per token runs at 40&ndash;55 tok/s on the Spark &mdash; because the bandwidth bottleneck scales with <em>active</em> parameters, not total. A 70B dense model on the same hardware crawls at 4&ndash;8 tok/s. If you are deploying on the Spark, think MoE first.</p>
+        <p><strong>Key insight:</strong> MoE models are the DGX Spark&rsquo;s best friend. A 100B-plus MoE that activates only a few billion parameters per token runs at 40&ndash;55 tok/s on the Spark, because the bandwidth bottleneck scales with <em>active</em> parameters, not total. A 70B dense model on the same hardware crawls at 4&ndash;8 tok/s. If you are deploying on the Spark, think MoE first.</p>
     </blockquote>
 </section>
 
@@ -1027,31 +1078,31 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
     <div class="risk-cards">
         <div class="risk-card risk-low">
-            <div class="risk-label">FP16 / BF16 &mdash; Full Precision</div>
+            <div class="risk-label">FP16 / BF16 &middot; Full Precision</div>
             <div class="risk-desc">
                 Baseline quality. No loss. 2 bytes per parameter.<br>
                 <strong>Use when:</strong> You have the VRAM and need maximum quality (fine-tuning, quality-critical production).
             </div>
         </div>
         <div class="risk-card risk-low">
-            <div class="risk-label">FP8 / INT8 &mdash; Half Size</div>
+            <div class="risk-label">FP8 / INT8 &middot; Half Size</div>
             <div class="risk-desc">
                 ~99% quality retained. 1 byte per parameter. Doubles throughput on H100/H200.<br>
                 <strong>Use when:</strong> Production GPU serving. This is the default for H100/H200 deployments.
             </div>
         </div>
         <div class="risk-card risk-medium">
-            <div class="risk-label">Q4 / INT4 &mdash; Quarter Size</div>
+            <div class="risk-label">Q4 / INT4 &middot; Quarter Size</div>
             <div class="risk-desc">
                 ~95&ndash;97% quality retained. 0.5 bytes per parameter. 4&times; size reduction from FP16.<br>
                 <strong>Use when:</strong> You need a larger model to fit on limited hardware. The quality loss is imperceptible for most operational tasks.
             </div>
         </div>
         <div class="risk-card risk-high">
-            <div class="risk-label">Q3 / Q2 &mdash; Below 4-bit</div>
+            <div class="risk-label">Q3 / Q2 &middot; Below 4-bit</div>
             <div class="risk-desc">
                 Quality drops steeply and non-linearly. Q2_K showed 7.94% perplexity increase versus 0.51% for Q4_K_M.<br>
-                <strong>Use when:</strong> Emergency only &mdash; the model absolutely must fit and nothing else will work.
+                <strong>Use when:</strong> Emergency only: the model absolutely must fit and nothing else will work.
             </div>
         </div>
     </div>
@@ -1062,18 +1113,18 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="key-points">
         <div class="kp-title">Which format for which situation</div>
         <ul>
-            <li><strong>GGUF</strong> (Q4_K_M, Q5_K_M, etc.) &mdash; the universal format. Works on CPU, NVIDIA, AMD, Apple Silicon. Single self-contained file. <strong>Your default for Ollama and local deployment</strong></li>
-            <li><strong>AWQ</strong> &mdash; activation-aware 4-bit for GPU production serving. Excellent vLLM integration via Marlin kernels. <strong>Your default for GPU production with vLLM or SGLang</strong></li>
-            <li><strong>GPTQ</strong> &mdash; the only 4-bit format that supports LoRA adapters in vLLM. Use it when you need multi-LoRA production deployments</li>
-            <li><strong>NVFP4</strong> &mdash; NVIDIA&rsquo;s Blackwell-native FP4 format. Native Tensor Core execution on DGX Spark, no dequantisation step. <strong>Your default on DGX Spark via TensorRT-LLM</strong></li>
-            <li><strong>EXL2</strong> &mdash; mixed-precision, best quality-per-bit. NVIDIA-only, single-user. Use for personal development on RTX GPUs</li>
+            <li><strong>GGUF</strong> (Q4_K_M, Q5_K_M, etc.): the universal format. Works on CPU, NVIDIA, AMD, Apple Silicon. Single self-contained file. <strong>Your default for Ollama and local deployment</strong></li>
+            <li><strong>AWQ</strong>: activation-aware 4-bit for GPU production serving. Excellent vLLM integration via Marlin kernels. <strong>Your default for GPU production with vLLM or SGLang</strong></li>
+            <li><strong>GPTQ</strong>: the only 4-bit format that supports LoRA adapters in vLLM. Use it when you need multi-LoRA production deployments</li>
+            <li><strong>NVFP4</strong>: NVIDIA&rsquo;s Blackwell-native FP4 format. Native Tensor Core execution on DGX Spark, no dequantisation step. <strong>Your default on DGX Spark via TensorRT-LLM</strong></li>
+            <li><strong>EXL2</strong>: mixed-precision, best quality-per-bit. NVIDIA-only, single-user. Use for personal development on RTX GPUs</li>
         </ul>
     </div>
 
     <h2>Where to Get Pre-Quantised Models</h2>
     <p>You almost never need to quantise yourself. On HuggingFace, look for <strong>bartowski</strong> and <strong>Unsloth</strong> for GGUF models (every quant level, importance-matrix calibrated). Check the <strong>nvidia/</strong> namespace for NVFP4 models. Model publishers increasingly provide official AWQ/GPTQ variants.</p>
 
-    <p>When evaluating pre-quantised models: prefer K-quants (Q4_K_M) over legacy quants (Q4_0), check download counts for community validation, and verify the upload date &mdash; quantisation of a brand-new model may have bugs in the first week.</p>
+    <p>When evaluating pre-quantised models: prefer K-quants (Q4_K_M) over legacy quants (Q4_0), check download counts for community validation, and verify the upload date: quantisation of a brand-new model may have bugs in the first week.</p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -1092,11 +1143,11 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="key-points">
         <div class="kp-title">Framework comparison</div>
         <ul>
-            <li><strong>Ollama</strong> &mdash; the 30-second start. <code>ollama run llama3.3</code> and you are serving. Docker-style model management, OpenAI-compatible API. Pre-installed on DGX Spark. <strong>Limitation:</strong> no continuous batching. At 50 concurrent users, time-to-first-token climbs to 3,200ms versus 145ms on vLLM. Use for 1&ndash;5 users</li>
-            <li><strong>vLLM</strong> &mdash; the production workhorse. PagedAttention eliminates 60&ndash;80% of KV cache memory waste. Continuous batching handles concurrent requests efficiently. Prometheus metrics, health endpoints, Helm charts for Kubernetes. Powers production at Stripe, Meta, Mistral AI. Use for 5+ concurrent users</li>
-            <li><strong>SGLang</strong> &mdash; vLLM&rsquo;s newer challenger. RadixAttention automatically reuses shared prefixes across requests (75&ndash;90% cache hit rates for multi-turn chat). 29% higher throughput than vLLM on batch inference. Use when your workload is dominated by multi-turn conversations or RAG pipelines</li>
-            <li><strong>TensorRT-LLM</strong> &mdash; maximum NVIDIA performance. 15&ndash;30% above vLLM in matched benchmarks. Native NVFP4 support, EAGLE-3 speculative decoding. <strong>Cost:</strong> requires compiling a TensorRT engine per GPU architecture (~28 min for 70B). Use when maximum throughput on NVIDIA hardware justifies the setup investment</li>
-            <li><strong>llama.cpp</strong> &mdash; CPU and hybrid workloads. The C/C++ engine behind Ollama. Hybrid CPU+GPU offloading via <code>--n-gpu-layers N</code>. Use for edge, air-gapped, or always-on workloads where latency is not critical</li>
+            <li><strong>Ollama</strong>: the 30-second start. <code>ollama run llama3.3</code> and you are serving. Docker-style model management, OpenAI-compatible API. Pre-installed on DGX Spark. <strong>Limitation:</strong> no continuous batching. At 50 concurrent users, time-to-first-token climbs to 3,200ms versus 145ms on vLLM. Use for 1&ndash;5 users</li>
+            <li><strong>vLLM</strong>: the production workhorse. PagedAttention eliminates 60&ndash;80% of KV cache memory waste. Continuous batching handles concurrent requests efficiently. Prometheus metrics, health endpoints, Helm charts for Kubernetes. A PyTorch Foundation hosted project with Meta and IBM behind it. Use for 5+ concurrent users</li>
+            <li><strong>SGLang</strong>: vLLM&rsquo;s newer challenger. RadixAttention automatically reuses shared prefixes across requests (75&ndash;90% cache hit rates for multi-turn chat). How much faster it is than vLLM depends entirely on workload: near zero on unique-prompt batches, multiples (not percent) when requests share prefixes. Use when your workload is dominated by multi-turn conversations or RAG pipelines</li>
+            <li><strong>TensorRT-LLM</strong>: maximum NVIDIA performance on paper, workload and engine-tuning dependent in practice. Native NVFP4 support, EAGLE-3 speculative decoding. <strong>Cost:</strong> requires compiling a TensorRT engine per GPU architecture (~28 min for 70B). Use when maximum throughput on NVIDIA hardware justifies the setup investment</li>
+            <li><strong>llama.cpp</strong>: CPU and hybrid workloads. The C/C++ engine behind Ollama. Hybrid CPU+GPU offloading via <code>--n-gpu-layers N</code>. Use for edge, air-gapped, or always-on workloads where latency is not critical</li>
         </ul>
     </div>
 
@@ -1136,7 +1187,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
         <tr>
             <td>Maximum throughput (H100/H200)</td>
             <td><strong>SGLang</strong> or <strong>TensorRT-LLM</strong></td>
-            <td>29% (SGLang) to 30% (TRT-LLM) above vLLM</td>
+            <td>Best raw numbers; margin over vLLM is workload-dependent</td>
         </tr>
         <tr>
             <td>CPU-only or hybrid</td>
@@ -1151,7 +1202,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     </table>
     </div>
 
-    <p>One note on HuggingFace TGI: it entered maintenance mode in December 2025. HuggingFace now officially recommends vLLM or SGLang for new deployments. If you see TGI mentioned in tutorials, know that it is a legacy recommendation.</p>
+    <p>One note on HuggingFace TGI: it entered maintenance mode in December 2025 and the repository was archived (read-only) in March 2026. HuggingFace officially recommends vLLM or SGLang for new deployments. If you see TGI mentioned in tutorials, know that it is a legacy recommendation.</p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -1164,7 +1215,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <p>A model that &ldquo;fits&rdquo; is not the same as a model that &ldquo;performs.&rdquo; Here is what your hardware actually delivers at the token level.</p>
 
     <h2>Single-User Decode Speed</h2>
-    <p><em style="color: var(--text-light); font-size: 0.9rem;">Snapshot data &mdash; April 2026. These numbers change with firmware updates, framework versions, and new model architectures. The formula (bandwidth &divide; model size) is durable; the specific tok/s values are not. Re-benchmark when your stack changes.</em></p>
+    <p><em style="color: var(--text-light); font-size: 0.9rem;">Snapshot data, April 2026. These numbers change with firmware updates, framework versions, and new model architectures. The formula (bandwidth &divide; model size) is durable; the specific tok/s values are not. Re-benchmark when your stack changes.</em></p>
     <p>This is the number that determines whether a model feels interactive. Measured in tokens per second during generation:</p>
 
     <div class="table-wrapper">
@@ -1219,7 +1270,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
             <td>~2.7&ndash;4</td>
         </tr>
         <tr>
-            <td><strong>120B MoE</strong> (GPT-OSS, 20B active)</td>
+            <td><strong>120B MoE</strong> (GPT-OSS-120B, 5.1B active)</td>
             <td>MXFP4</td>
             <td>&mdash;</td>
             <td>&mdash;</td>
@@ -1230,17 +1281,17 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
     <p>The pattern is clear. On the DGX Spark:</p>
     <ul>
-        <li><strong>8B&ndash;14B dense models</strong> at 20&ndash;40 tok/s &mdash; comfortable for interactive use</li>
-        <li><strong>27&ndash;32B dense models</strong> at 9&ndash;11 tok/s &mdash; borderline interactive</li>
-        <li><strong>MoE models up to 120B</strong> at 40&ndash;55 tok/s &mdash; comfortable, because bandwidth scales with active parameters</li>
-        <li><strong>70B dense</strong> at 4&ndash;8 tok/s &mdash; not viable for interactive use</li>
+        <li><strong>8B&ndash;14B dense models</strong> at 20&ndash;40 tok/s: comfortable for interactive use</li>
+        <li><strong>27&ndash;32B dense models</strong> at 9&ndash;11 tok/s: borderline interactive</li>
+        <li><strong>MoE models up to 120B</strong> at 40&ndash;55 tok/s: comfortable, because bandwidth scales with active parameters</li>
+        <li><strong>70B dense</strong> at 4&ndash;8 tok/s: not viable for interactive use</li>
     </ul>
 
     <h2>The H200 Advantage</h2>
     <p>Moving from H100 to H200 gives you a consistent <strong>~1.4&times; speedup</strong> from the bandwidth increase (4.8 versus 3.35 TB/s). But the bigger win is capacity: Llama 70B at FP8 (~84GB with overhead) fits on <strong>one H200</strong> but needs <strong>two H100s</strong> with tensor parallelism. That eliminates inter-GPU communication overhead and effectively doubles your serving capacity per model.</p>
 
     <h2>Batching Changes Everything</h2>
-    <p>The single-user numbers above tell only half the story. Batched inference shifts the bottleneck from bandwidth to compute. Llama 3.1 8B on the DGX Spark at batch size 32 achieved <strong>368 tok/s total throughput</strong> via SGLang &mdash; an 18&times; increase over single-user. If your use case is a queue of requests rather than an interactive chat, smaller models batched efficiently can handle surprisingly high volumes.</p>
+    <p>The single-user numbers above tell only half the story. Batched inference shifts the bottleneck from bandwidth to compute. Llama 3.1 8B on the DGX Spark at batch size 32 achieved <strong>368 tok/s total throughput</strong> via SGLang, an 18&times; increase over single-user. If your use case is a queue of requests rather than an interactive chat, smaller models batched efficiently can handle surprisingly high volumes.</p>
 
     <blockquote>
         <p><strong>Practical guidance:</strong> An H100 will run circles around the DGX Spark for any model that fits in 80GB. The Spark&rsquo;s value is running models that do not fit on an H100 (120B MoE, prototyping 200B+) and serving as a quiet, desk-side development environment. When a model graduates from prototyping to production, move it to datacenter GPUs behind vLLM.</p>
@@ -1292,9 +1343,9 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <ul>
         <li>Your hardware changes (new GPUs, new memory capacity)</li>
         <li>Your use case requirements change (new language, higher concurrency, new modality)</li>
-        <li>A new model family appears (not a version update &mdash; a genuinely new player)</li>
+        <li>A new model family appears (not a version update, a genuinely new player)</li>
         <li>Your current model&rsquo;s family changes licensing (check release notes, not just headlines)</li>
-        <li>You see a &gt;20% improvement on your specific task in independent benchmarks (not leaderboard games &mdash; your actual evaluation set)</li>
+        <li>You see a &gt;20% improvement on your specific task in independent benchmarks (not leaderboard games, your actual evaluation set)</li>
     </ul>
 
     <p>Version updates within a family (Qwen 3 &rarr; Qwen 3.5) are worth a quick test on your evaluation set. They are not worth a full re-architecture.</p>
@@ -1309,7 +1360,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
     <p>Four scenarios. For each, use the decision framework to choose a model, quantisation level, and inference framework. Justify your choice. Then reveal the suggested approach and compare.</p>
 
-    <p>There is no single correct answer &mdash; the point is whether your reasoning follows the framework and whether you can defend your choice against the constraints.</p>
+    <p>There is no single correct answer; the point is whether your reasoning follows the framework and whether you can defend your choice against the constraints.</p>
 
     <!-- ── SCENARIO A ── -->
     <div class="exercise">
@@ -1326,9 +1377,9 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="toggle-panel" id="panel-a">
         <div class="toggle-panel-inner">
             <p><strong>Suggested model: Mistral Small 4 (119B MoE, ~6B active) at Q4</strong></p>
-            <p><strong>Why this model:</strong> The task is conversational helpdesk &mdash; it needs good instruction following, multilingual capability (English + German), and reasonable speed for 10 concurrent users. Mistral Small 4 activates only ~6B parameters per token despite 119B total, so on the DGX Spark it will deliver decent MoE throughput. At Q4, it needs ~60GB of the 128GB &mdash; leaving room for KV cache. Mistral&rsquo;s EU origin satisfies the data residency requirement cleanly.</p>
-            <p><strong>Why not alternatives:</strong> Qwen 3 14B would be faster on the Spark (~22 tok/s at NVFP4) but the Chinese origin creates unnecessary compliance friction given the EU residency requirement. Llama 3.3 70B at Q4 fits but at 4&ndash;8 tok/s single-user it is too slow for 10 concurrent users. Gemma 4 31B at Q4 (~18GB) would be lighter and fast enough at ~15 tok/s &mdash; a legitimate alternative, especially if Mistral Small 4&rsquo;s MoE throughput proves insufficient on the Spark.</p>
-            <p><strong>Framework: SGLang</strong> &mdash; the multi-turn chat workload benefits from RadixAttention prefix caching. Ollama would struggle at 10 concurrent users (no continuous batching). vLLM is also viable here.</p>
+            <p><strong>Why this model:</strong> The task is conversational helpdesk: it needs good instruction following, multilingual capability (English + German), and reasonable speed for 10 concurrent users. Mistral Small 4 activates only ~6B parameters per token despite 119B total, so on the DGX Spark it will deliver decent MoE throughput. At Q4, it needs ~60GB of the 128GB, leaving room for KV cache. Mistral&rsquo;s EU origin satisfies the data residency requirement cleanly.</p>
+            <p><strong>Why not alternatives:</strong> Qwen 3 14B would be faster on the Spark (~22 tok/s at NVFP4) but the Chinese origin creates unnecessary compliance friction given the EU residency requirement. Llama 3.3 70B at Q4 fits but at 4&ndash;8 tok/s single-user it is too slow for 10 concurrent users. Gemma 4 31B at Q4 (~18GB) would be lighter and fast enough at ~15 tok/s, a legitimate alternative, especially if Mistral Small 4&rsquo;s MoE throughput proves insufficient on the Spark.</p>
+            <p><strong>Framework: SGLang</strong>: the multi-turn chat workload benefits from RadixAttention prefix caching. Ollama would struggle at 10 concurrent users (no continuous batching). vLLM is also viable here.</p>
             <p><strong>Fallback:</strong> If Mistral Small 4 is too slow for 10 users on the Spark, drop to Gemma 4 31B dense at Q4 or Qwen 3 14B at FP8. Test both and measure actual throughput at target concurrency before committing.</p>
         </div>
     </div>
@@ -1339,7 +1390,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="exercise">
         <div class="exercise-title">Scenario B: The Code Review Assistant</div>
         <div class="exercise-body">
-            <p>Your development team wants an on-prem code review assistant. It should review pull requests, suggest improvements, and flag potential security issues. Single-user at a time is acceptable. The codebase is primarily <strong>Python and TypeScript</strong>. Some PRs are large &mdash; up to <strong>32K tokens of context</strong> needed.</p>
+            <p>Your development team wants an on-prem code review assistant. It should review pull requests, suggest improvements, and flag potential security issues. Single-user at a time is acceptable. The codebase is primarily <strong>Python and TypeScript</strong>. Some PRs are large: up to <strong>32K tokens of context</strong> needed.</p>
             <p><strong>Available hardware:</strong> H100 (80GB)</p>
             <p><strong>Your task:</strong> Choose a model, quantisation level, and inference framework. Justify each choice.</p>
         </div>
@@ -1350,10 +1401,10 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="toggle-panel" id="panel-b">
         <div class="toggle-panel-inner">
             <p><strong>Suggested model: Qwen 3 32B at FP8, or QwQ-32B at FP8</strong></p>
-            <p><strong>Why this model:</strong> Code review is a reasoning-heavy task that benefits from larger models. At FP8, a 32B model needs ~32GB + overhead &mdash; fits comfortably on the H100 with ~40GB free for KV cache at 32K context. Qwen 3 is the strongest coding family at this size range, and QwQ-32B adds chain-of-thought reasoning that helps with security analysis. Both support 128K+ context windows, more than enough for 32K token PRs.</p>
+            <p><strong>Why this model:</strong> Code review is a reasoning-heavy task that benefits from larger models. At FP8, a 32B model needs ~32GB + overhead, which fits comfortably on the H100 with ~40GB free for KV cache at 32K context. Qwen 3 is the strongest coding family at this size range, and QwQ-32B adds chain-of-thought reasoning that helps with security analysis. Both support 128K+ context windows, more than enough for 32K token PRs.</p>
             <p><strong>Why not alternatives:</strong> Llama 3.3 70B at FP8 (~70GB) would fit on the H100 but leaves only ~10GB for KV cache, which at 32K context might cause problems. Phi-4 14B excels at code but its 16K context window is too short. Devstral 2 (123B dense) is purpose-built for code but needs more than 80GB even at Q4.</p>
-            <p><strong>Framework: vLLM</strong> with FP8 &mdash; single-user so no batching pressure, but vLLM&rsquo;s PagedAttention efficiently manages the large KV cache at 32K context. Ollama would also work fine for single-user.</p>
-            <p><strong>Quantisation: FP8</strong> &mdash; with 80GB available and a 32B model, there is no reason to drop below FP8. You keep ~99% quality and have headroom for the context window.</p>
+            <p><strong>Framework: vLLM</strong> with FP8: single-user, so no batching pressure, but vLLM&rsquo;s PagedAttention efficiently manages the large KV cache at 32K context. Ollama would also work fine for single-user.</p>
+            <p><strong>Quantisation: FP8</strong>: with 80GB available and a 32B model, there is no reason to drop below FP8. You keep ~99% quality and have headroom for the context window.</p>
         </div>
     </div>
 
@@ -1363,9 +1414,9 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="exercise">
         <div class="exercise-title">Scenario C: The Document Processing Pipeline</div>
         <div class="exercise-body">
-            <p>A client needs to extract structured data from scanned invoices &mdash; vendor name, invoice number, line items, amounts, tax, and total. The documents are PDFs that have been OCR&rsquo;d. Processing happens <strong>overnight in batch</strong> &mdash; no real-time requirement. Volume: <strong>5,000 documents per night</strong>. The output must be structured JSON.</p>
+            <p>A client needs to extract structured data from scanned invoices: vendor name, invoice number, line items, amounts, tax, and total. The documents are PDFs that have been OCR&rsquo;d. Processing happens <strong>overnight in batch</strong>: no real-time requirement. Volume: <strong>5,000 documents per night</strong>. The output must be structured JSON.</p>
             <p><strong>Available hardware:</strong> DGX Spark (128GB unified memory)</p>
-            <p><strong>Your task:</strong> Choose the right approach. This one might not need an LLM at all &mdash; or it might.</p>
+            <p><strong>Your task:</strong> Choose the right approach. This one might not need an LLM at all. Or it might.</p>
         </div>
     </div>
     <button class="toggle-btn" id="toggle-c" onclick="togglePanel('panel-c', 'toggle-c')">
@@ -1374,9 +1425,9 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="toggle-panel" id="panel-c">
         <div class="toggle-panel-inner">
             <p><strong>Suggested approach: pipeline of specialised models, not a single LLM</strong></p>
-            <p><strong>Step 1 &mdash; NER extraction:</strong> Use GLiNER (100&ndash;350M) to extract entity types directly: vendor name, invoice number, amounts, dates. Define entity types at runtime. Runs on CPU at ~10ms per document. For 5,000 docs: ~50 seconds total.</p>
-            <p><strong>Step 2 &mdash; Structured output:</strong> For invoices where GLiNER&rsquo;s extraction is clean (likely 70&ndash;85% of documents), map directly to JSON. No LLM needed.</p>
-            <p><strong>Step 3 &mdash; LLM fallback:</strong> For the remaining 15&ndash;30% where extraction is ambiguous (multi-page invoices, unusual formats), use Qwen 3 8B at NVFP4 on the DGX Spark to parse the full text and produce structured JSON. At ~38 tok/s single-user and batch processing, you can process ~200 tokens per document &times; 1,500 documents in roughly 2 hours.</p>
+            <p><strong>Step 1 &middot; NER extraction:</strong> Use GLiNER (100&ndash;350M) to extract entity types directly: vendor name, invoice number, amounts, dates. Define entity types at runtime. Runs on CPU at ~10ms per document. For 5,000 docs: ~50 seconds total.</p>
+            <p><strong>Step 2 &middot; Structured output:</strong> For invoices where GLiNER&rsquo;s extraction is clean (likely 70&ndash;85% of documents), map directly to JSON. No LLM needed.</p>
+            <p><strong>Step 3 &middot; LLM fallback:</strong> For the remaining 15&ndash;30% where extraction is ambiguous (multi-page invoices, unusual formats), use Qwen 3 8B at NVFP4 on the DGX Spark to parse the full text and produce structured JSON. At ~38 tok/s single-user and batch processing, you can process ~200 tokens per document &times; 1,500 documents in roughly 2 hours.</p>
             <p><strong>Why not just use the LLM for everything:</strong> 5,000 documents &times; ~500 input tokens each &times; ~200 output tokens = ~3.5M tokens. At single-user speed on the Spark, that is ~25 hours for an 8B model. With the pipeline approach, 85% of documents finish in under a minute, and the LLM handles only the hard cases. Total processing time drops to ~2&ndash;3 hours.</p>
             <p><strong>Framework:</strong> GLiNER runs standalone (pip install, no GPU needed). For the LLM fallback, use Ollama for simplicity (batch queue, no concurrent users) or vLLM with batching for faster throughput.</p>
         </div>
@@ -1388,7 +1439,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <div class="exercise">
         <div class="exercise-title">Scenario D: The Emergency Migration</div>
         <div class="exercise-body">
-            <p>Your client was using a hosted API running Llama 3.3 70B for a customer-facing Q&amp;A system. The API provider just announced they are shutting down in <strong>one week</strong>. The client needs to self-host a replacement immediately. The system handles ~20 concurrent users during business hours. Responses must be in English. Quality cannot noticeably degrade &mdash; customers are used to the current output quality.</p>
+            <p>Your client was using a hosted API running Llama 3.3 70B for a customer-facing Q&amp;A system. The API provider just announced they are shutting down in <strong>one week</strong>. The client needs to self-host a replacement immediately. The system handles ~20 concurrent users during business hours. Responses must be in English. Quality cannot noticeably degrade: customers are used to the current output quality.</p>
             <p><strong>Available hardware:</strong> H100 (80GB)</p>
             <p><strong>Your task:</strong> What do you deploy, and what do you tell the client about the trade-offs?</p>
         </div>
@@ -1401,7 +1452,7 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
             <p><strong>Suggested model: Llama 3.3 70B at Q4 (GGUF Q4_K_M or AWQ 4-bit)</strong></p>
             <p><strong>Why the same model:</strong> The requirement is &ldquo;quality cannot noticeably degrade.&rdquo; The fastest way to guarantee that is to run the same model. Llama 3.3 70B at Q4 needs ~46GB total, fitting on the H100 with ~34GB headroom for KV cache and batching.</p>
             <p><strong>Why Q4 and not FP8:</strong> At FP8 (~84GB total with overhead), the model barely fits and leaves almost no room for the KV cache needed by 20 concurrent users. At Q4, you have the headroom. The ~3&ndash;5% quality loss from Q4 is less noticeable than the latency degradation from running out of KV cache space.</p>
-            <p><strong>Framework: vLLM</strong> with AWQ quantisation &mdash; this is not optional at 20 concurrent users. Ollama would queue requests and create unacceptable wait times. vLLM with continuous batching and PagedAttention can serve 20 users at ~60&ndash;96 tok/s system throughput at Q4. Enable FP8 KV cache (<code>kv_cache_dtype="fp8"</code>) to double your KV cache capacity.</p>
+            <p><strong>Framework: vLLM</strong> with AWQ quantisation, and this is not optional at 20 concurrent users. Ollama would queue requests and create unacceptable wait times. vLLM with continuous batching and PagedAttention can serve 20 users at ~60&ndash;96 tok/s system throughput at Q4. Enable FP8 KV cache (<code>kv_cache_dtype="fp8"</code>) to double your KV cache capacity.</p>
             <p><strong>What to tell the client:</strong></p>
             <ul>
                 <li>Output quality will be ~95&ndash;97% of what they had (Q4 quantisation). Most users will not notice</li>
@@ -1426,22 +1477,35 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
     <h2>Signals That Matter</h2>
     <ul>
         <li><strong>New model releases from the five families.</strong> Not every release requires action. Check: is it a new architecture or just a version bump? Does it target a size range you use? Does it change the licensing? A new Qwen 4 with a different license matters. A Qwen 3.5.1 patch does not</li>
-        <li><strong>Hardware changes.</strong> When new hardware arrives &mdash; H200s, next-gen Blackwell, a second DGX Spark &mdash; re-run the &ldquo;what fits&rdquo; analysis. Models that were too large or too slow may suddenly become viable. Two H200s (282GB combined) open up the 235B MoE tier</li>
+        <li><strong>Hardware changes.</strong> When new hardware arrives (H200s, next-gen Blackwell, a second DGX Spark), re-run the &ldquo;what fits&rdquo; analysis. Models that were too large or too slow may suddenly become viable. Two H200s (282GB combined) open up the 235B MoE tier</li>
         <li><strong>Quantisation breakthroughs.</strong> Recent advances in 2-bit quantisation (like QuIP# and AQLM) are narrowing the quality gap below Q4. If 2-bit reaches the Q4 quality level, it doubles the effective models you can fit on existing hardware</li>
         <li><strong>Inference framework updates.</strong> SGLang and vLLM release roughly monthly. Major features (better MoE support, new quantisation backends, speculative decoding improvements) can change throughput by 30&ndash;50%</li>
         <li><strong>Licensing changes.</strong> Track the specific model version&rsquo;s license, not the family&rsquo;s reputation. Mistral went from Apache 2.0 to restrictive and back. Gemma went from restrictive to Apache 2.0. The next shift could go either direction for any family</li>
         <li><strong>EU regulatory developments.</strong> The EU AI Act is now enforceable. Watch for guidance on training data transparency requirements (affects Qwen), high-risk AI system classifications, and any new restrictions on model deployment in regulated sectors</li>
     </ul>
 
+    <h2>A July 2026 Reading</h2>
+    <p>This booklet argued that the durable skill is re-evaluating on your own schedule, so it should demonstrate one. Three months after the April snapshot, here is what fired.</p>
+
+    <p><strong>The &ldquo;new family&rdquo; signal fired three times.</strong> DeepSeek&rsquo;s V4 preview (April), GLM-5.2 taking the #1 open-weight quality spot (June), and Kimi&rsquo;s K2.6/K2.7 releases each qualify as family-level events, not version bumps. That is why this edition added the challengers card in Part 1. The five core families still carry the ecosystem depth, but the quality frontier of open weights now lives in the challenger tier.</p>
+
+    <p><strong>The licensing signal fired twice, both times toward closed.</strong> Meta shipped Muse Spark proprietary in April and has released nothing open since; Alibaba kept its flagship Qwen 3.7-Max closed while the 3.6 line stayed Apache 2.0. Two of the five core families now keep their best model to themselves. The lesson from the Mistral licensing story generalises: openness is a posture that labs adjust, release by release. The strategic logic behind those adjustments is the subject of <a href="/mercantilism-of-genai/#m-open">The Mercantilism of Generative AI</a>.</p>
+
+    <p><strong>A signal the April list did not name: access to closed models became a jurisdiction question.</strong> In July, the most capable US closed models were re-released behind vetted-access gates, top tier for approved companies (primarily American), a costly moderated API below it. For everyone outside that circle, the open-weight tier just became more strategically important, not less: it is the part of the model landscape nobody can gate retroactively. How bloc-tiered access works is mapped in <a href="/mercantilism-of-genai/#m-bloc">the same booklet</a>.</p>
+
+    <p><strong>Hardware and framework housekeeping.</strong> NVIDIA announced the GB300-based DGX Station (up to 748GB of coherent memory, shipping late 2026): when it lands, re-run the what-fits analysis, because it moves the 235B-and-up MoE tier onto a single desk-side box. The RTX 5090 (32GB, ~1.8 TB/s) has settled in as the default prosumer local-inference card. And TGI&rsquo;s archiving completed the framework consolidation this booklet described.</p>
+
+    <p>Net reading: the specific names rotated exactly as fast as the introduction warned, and the framework absorbed the rotation without changing a single question in the checklist. Next reading due autumn 2026.</p>
+
     <h2>Where to Look</h2>
     <div class="key-points">
         <div class="kp-title">Monitoring sources</div>
         <ul>
-            <li><strong>Chatbot Arena (LMArena.ai)</strong> &mdash; the most reliable quality ranking. 6M+ blind human A/B votes. More trustworthy than any benchmark leaderboard</li>
-            <li><strong>HuggingFace model pages</strong> &mdash; check download counts, derivative models, and community discussions for practical deployment experience</li>
-            <li><strong>r/LocalLLaMA</strong> &mdash; the fastest signal for new model quality, quantisation issues, and inference framework bugs</li>
-            <li><strong>Model family blogs/release notes</strong> &mdash; Mistral blog, Google AI blog, Qwen GitHub, Meta Llama blog, Microsoft Research blog</li>
-            <li><strong>Your own evaluation set</strong> &mdash; the most important signal. Build a set of 50&ndash;100 representative prompts from your actual use cases and evaluate new models against it. No external benchmark replaces this</li>
+            <li><strong>Chatbot Arena (LMArena.ai)</strong>: the most reliable quality ranking. 6M+ blind human A/B votes. More trustworthy than any benchmark leaderboard</li>
+            <li><strong>HuggingFace model pages</strong>: check download counts, derivative models, and community discussions for practical deployment experience</li>
+            <li><strong>r/LocalLLaMA</strong>: the fastest signal for new model quality, quantisation issues, and inference framework bugs</li>
+            <li><strong>Model family blogs/release notes</strong>: Mistral blog, Google AI blog, Qwen GitHub, Meta Llama blog, Microsoft Research blog</li>
+            <li><strong>Your own evaluation set</strong>: the most important signal. Build a set of 50&ndash;100 representative prompts from your actual use cases and evaluate new models against it. No external benchmark replaces this</li>
         </ul>
     </div>
 
@@ -1449,14 +1513,14 @@ tr:nth-child(even) { background: var(--bg-sidebar); }
 
     <p>The open-weight landscape in April 2026 offers more options, better licensing, and more capable models than at any point in the history of accessible AI. Five families compete fiercely. Apache 2.0 is the norm. A single H100 runs models that would have required a data centre three years ago.</p>
 
-    <p>But the models are not the hard part. The hard part is matching the right model to the right task on the right hardware with the right trade-offs &mdash; and having the confidence to make that call yourself when the next release drops.</p>
+    <p>But the models are not the hard part. The hard part is matching the right model to the right task on the right hardware with the right trade-offs, and having the confidence to make that call yourself when the next release drops.</p>
 
     <p>That is what the framework is for. Use it.</p>
 
     <hr>
 
     <p style="text-align: center; color: var(--text-light); font-size: 0.9rem;">
-        <strong>Robert Barcik</strong> &middot; <a href="https://barcik.training" style="color: var(--accent);">barcik.training</a> &middot; LearningDoe s.r.o. &middot; <a href="mailto:robert@barcik.training" style="color: var(--accent);">robert@barcik.training</a> &middot; April 2026
+        <strong>Robert Barcik</strong> &middot; <a href="https://barcik.training" style="color: var(--accent);">barcik.training</a> &middot; LearningDoe s.r.o. &middot; <a href="mailto:robert@barcik.training" style="color: var(--accent);">robert@barcik.training</a> &middot; April 2026 &middot; first reading July 2026
     </p>
 </section>
 
