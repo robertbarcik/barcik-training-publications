@@ -1,0 +1,17 @@
+# The Agent Horizon — update log
+
+Working notes for the booklet at `/agent-horizon/`. Sources: `chapters/*.md`, built by `tools/build_html.py` (→ `output/booklet.html`, copied to `agent-horizon/index.html`). The booklet body remains the April 2026 snapshot by design; Chapter 10's indicator readings own the aging story (same instrument as the trigger logs in scenario-planning and mercantilism).
+
+## 2026-07-04 — July 2026 editorial pass (with Claude / Fable 5)
+
+Kept deliberately light per Robert's brief ("I like how short and fresh it feels"): voice sweep, factual corrections, one new section, sparse cross-links. Net addition ~700 words on ~16,000.
+
+- **Voice sweep, all 12 chapter files**: 158 em dashes rewritten (commas/parens/colons/semicolons; `·` in the decision-tree SVG title), zero "it is not X, it is Y" instances existed. Chapter 3's H1 de-dash keeps its anchor slug (`make_id` strips punctuation).
+- **Factual corrections (wrong even for April 2026)**: MCP donated to Linux Foundation December 2025 (not November), AAIF co-founded by Anthropic + Block + OpenAI (not just Block/OpenAI); A2A's rivals had already folded (IBM's ACP merged into A2A Sept 2025, A2A under the same AAIF umbrella, 150+ orgs / v1.2 signed agent cards at its April 2026 one-year mark); AP2 (Agent Payments Protocol) added to the A2A landscape; Microsoft product renamed throughout to **Azure AI Foundry Agent Service** with the Microsoft Agent Framework (AutoGen + Semantic Kernel, 1.0 April 2026) named as the open-source layer; AWS Strands reframed from "newest and most experimental" to production SDK inside Bedrock AgentCore, with experimental work fenced into Strands Labs; Claude Agent SDK gains one sentence on Agent Skills (open standard, early 2026).
+- **Klarna caveat (Ch6)**: honest asterisk on the "85M users / 80% resolution-time" LangGraph citation — Klarna's earlier OpenAI-built assistant was publicly walked back (rehiring humans since mid-2025); "read vendor case studies as marketing, not evidence."
+- **New section: Ch10 "A First Reading: July 2026"** — scores all six falsifiable indicators three months on (two moving as forecast, two open, one muddied, #5 leaning against in a way that strengthens the agnostic case), plus two unanticipated events (Gartner 40% agentic-project cancellation prediction; OpenAI Agent Builder deprecation). Frontmatter date line now "April 2026 · first indicator reading July 2026" and names the trigger-log kinship.
+- **July 2026 dated notes**: Ch3 (MCP 2026-07-28 spec: stateless core, OAuth/OIDC hardening, Apps + Tasks extensions); Ch9 (gated frontier re-release → jurisdiction-tiered access → routing pattern as the hedge, links `/mercantilism-of-genai/#m-bloc`).
+- **Cross-links added**: Ch7 → `/warden/` (LLM-as-judge under adversarial pressure) and `/token-economics/` (cost discipline); Ch9 → `/llm-human-interaction-patterns/` (human oversight patterns); Ch3 → github.com/robertbarcik/MCP-tutorial (hands-on companion); Ch10 + frontmatter → mercantilism and scenario-planning.
+- **Build script** (`build_html.py`): adopted the previously hand-patched deploy fixes so rebuilds no longer regress the live page — SEO/OG meta block, canonical + favicon, inter-chapter `href="NN_*.md"` → `#slug` anchor rewrite, `<title>` em dash → `&middot;`.
+
+Anchor slugs all preserved. April numbers (97M MCP downloads, 44k CrewAI stars) intentionally kept; the epilogue already declares them non-load-bearing.

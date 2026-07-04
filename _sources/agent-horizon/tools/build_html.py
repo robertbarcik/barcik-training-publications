@@ -443,6 +443,22 @@ def build():
         ch_id = make_id(title)
         chapters.append((title, ch_id, html_content))
 
+    # Rewrite inter-chapter markdown links (e.g. the "Next:" footers) to in-page anchors,
+    # since the deployed booklet is a single page and the .md files don't exist there.
+    file_to_id = {
+        os.path.basename(f): ch_id
+        for f, (_, ch_id, _) in zip(files, chapters)
+    }
+
+    def _md_href_to_anchor(m):
+        target = file_to_id.get(m.group(1))
+        return f'href="#{target}"' if target else m.group(0)
+
+    chapters = [
+        (title, ch_id, re.sub(r'href="([0-9]{2}_[A-Za-z0-9_]+\.md)"', _md_href_to_anchor, html_content))
+        for title, ch_id, html_content in chapters
+    ]
+
     # Build sidebar nav
     nav_items = []
     for i, (title, ch_id, _) in enumerate(chapters):
@@ -473,7 +489,16 @@ def build():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Agent Horizon — A Strategic Guide to the Enterprise Agent Development Stack</title>
+    <title>The Agent Horizon &middot; A Strategic Guide to the Enterprise Agent Development Stack</title>
+    <meta name="description" content="A strategic guide to the enterprise agent development stack: MCP, A2A, vendor SDKs, LangGraph and CrewAI, lock-in trade-offs, and the EU AI Act.">
+    <link rel="canonical" href="https://publications.barcik.training/agent-horizon/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Agent Horizon &middot; A Strategic Guide to the Enterprise Agent Development Stack">
+    <meta property="og:description" content="A strategic guide to the enterprise agent development stack: MCP, A2A, vendor SDKs, LangGraph and CrewAI, lock-in trade-offs, and the EU AI Act.">
+    <meta property="og:url" content="https://publications.barcik.training/agent-horizon/">
+    <meta property="og:image" content="https://publications.barcik.training/assets/og-card.png">
+    <meta name="twitter:card" content="summary_large_image">
     <style>{CSS}</style>
 </head>
 <body>

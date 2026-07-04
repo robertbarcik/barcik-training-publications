@@ -8,7 +8,7 @@ If you read technology press about agent development, you'll run into sentences 
 
 This isn't a pedantic complaint. It's the single most load-bearing clarification in the booklet. If you leave this chapter with one thing, let it be this: the agent stack has layers, and the pieces you hear debated in the press are not always on the same one. Framework decisions happen at one layer, protocol decisions at another, model decisions at a third. You don't "choose between" items from different layers. You choose one of each and combine them.
 
-The cloud-era equivalent would be asking "should we use AWS or HTTP?" AWS is a cloud provider; HTTP is a protocol. You use both. They aren't competing decisions — they're complementary decisions at different levels of the stack.
+The cloud-era equivalent would be asking "should we use AWS or HTTP?" AWS is a cloud provider; HTTP is a protocol. You use both. They aren't competing decisions; they're complementary decisions at different levels of the stack.
 
 ## The Layers
 
@@ -21,7 +21,7 @@ Read this picture top-down, from what the user experiences to what actually does
 │   under what guardrails, across how many agents?"   │
 │                                                     │
 │  ADK · LangGraph · CrewAI · OpenAI Agents SDK ·     │
-│  Claude Agent SDK · AWS Strands · Azure AI Agent    │
+│  Claude Agent SDK · AWS Strands · Azure AI Foundry  │
 ├─────────────────────────────────────────────────────┤
 │  LLM LAYER                                          │
 │  The reasoning engine that generates tool calls,    │
@@ -42,7 +42,7 @@ Read this picture top-down, from what the user experiences to what actually does
 
 Four layers. Each has a distinct role. You pick something from each layer, then compose them.
 
-**Orchestration layer.** The agent's "brain." Deciding which tool to call, in what order, what to do on failure, how to pass state step to step, when to stop. In a simple agent this might be a `while` loop that keeps calling the model until it says "done." In a complex agent it's a multi-step state machine with branches, retries, parallel execution, and handoffs to sub-agents. Google ADK, LangGraph, CrewAI, OpenAI Agents SDK, Claude Agent SDK, AWS Strands, Azure AI Agent Service — all live here. They disagree about whether the right abstraction is a graph, a team of agents with roles, a sequence of handoffs, or a tree of sub-agents. They're all solving the same fundamental problem.
+**Orchestration layer.** The agent's "brain." Deciding which tool to call, in what order, what to do on failure, how to pass state step to step, when to stop. In a simple agent this might be a `while` loop that keeps calling the model until it says "done." In a complex agent it's a multi-step state machine with branches, retries, parallel execution, and handoffs to sub-agents. Google ADK, LangGraph, CrewAI, OpenAI Agents SDK, Claude Agent SDK, AWS Strands, Azure AI Foundry Agent Service. All live here. They disagree about whether the right abstraction is a graph, a team of agents with roles, a sequence of handoffs, or a tree of sub-agents. They're all solving the same fundamental problem.
 
 **LLM layer.** The model that does the thinking. Gemini, Claude, GPT, Mistral, Llama. Framework decides *when* to call the model and *what to do* with the result; model decides *what to say* when called. Framework is the project manager; model is the specialist being asked for an opinion.
 
@@ -54,7 +54,7 @@ Four layers. Each has a distinct role. You pick something from each layer, then 
 
 With the layers in front of you, the question dissolves.
 
-ADK lives at the orchestration layer. It decides what an agent does. MCP lives at the access layer. It defines how an agent — built with ADK or anything else — reaches a tool. An ADK agent can be an MCP client: when ADK wants to call a tool and that tool happens to be exposed as an MCP server, ADK uses MCP to make the call. When the same tool is a plain Python function, ADK calls the function directly. MCP is one of several ways ADK reaches tools — not a competitor to ADK.
+ADK lives at the orchestration layer. It decides what an agent does. MCP lives at the access layer. It defines how an agent (built with ADK or anything else) reaches a tool. An ADK agent can be an MCP client: when ADK wants to call a tool and that tool happens to be exposed as an MCP server, ADK uses MCP to make the call. When the same tool is a plain Python function, ADK calls the function directly. MCP is one of several ways ADK reaches tools, not a competitor to ADK.
 
 Conversely, MCP doesn't care which framework is on the other end. An MCP server your data team ships doesn't know whether the agent talking to it was built with ADK, LangGraph, CrewAI, or a plain Python loop. It just sees a client speaking MCP.
 
@@ -64,8 +64,8 @@ The same logic applies to every apparent "framework vs protocol" debate: *Claude
 
 A useful discipline: when you read about a new agent technology, ask *what layer does this sit on?* before you form an opinion. If you can't answer, you don't understand it well enough yet. Most of the apparent complexity of the agent landscape evaporates once you can slot each piece into the layer it belongs on.
 
-> **What to take from this chapter:** The agent stack has four layers — orchestration, LLM, access (MCP + A2A), actual systems. Frameworks, models, and protocols are compositional, not competitive. The single most common mistake in agent-development discourse is treating a framework (ADK, LangGraph) as if it were competing with a protocol (MCP). It isn't. Everything in this booklet is an elaboration of that picture.
+> **What to take from this chapter:** The agent stack has four layers: orchestration, LLM, access (MCP + A2A), actual systems. Frameworks, models, and protocols are compositional, not competitive. The single most common mistake in agent-development discourse is treating a framework (ADK, LangGraph) as if it were competing with a protocol (MCP). It isn't. Everything in this booklet is an elaboration of that picture.
 
 ---
 
-*Next: [Chapter 3 — The Protocol Layer](03_protocol_layer.md)*
+*Next: [Chapter 3: The Protocol Layer](03_protocol_layer.md)*
