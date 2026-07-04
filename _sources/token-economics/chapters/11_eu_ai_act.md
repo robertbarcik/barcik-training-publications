@@ -2,16 +2,16 @@
 
 > **At a glance**
 >
-> - EU AI Act compliance is roughly 20% legal interpretation and 80% technical implementation. Lawyers define the obligations; someone has to build the systems — that someone is you.
-> - Most of your enterprise clients are "deployers" of high-risk AI systems: they need working human oversight, logging, monitoring, and incident reporting — not policies on paper.
+> - EU AI Act compliance is roughly 20% legal interpretation and 80% technical implementation. Lawyers define the obligations; someone has to build the systems, and that someone is you.
+> - Most of your enterprise clients are "deployers" of high-risk AI systems: they need working human oversight, logging, monitoring, and incident reporting, not policies on paper.
 > - Eight service lines, from AI inventory and classification (the natural entry point) to post-market monitoring (the natural retainer).
-> - Never sell "compliance" — sell AI deployment that is compliant from day one. Bundled compliance is value; unbundled compliance is a cost to be minimized.
+> - Never sell "compliance"; sell AI deployment that is compliant from day one. Bundled compliance is value; unbundled compliance is a cost to be minimized.
 >
-> **The number to remember:** August 2026 — when high-risk system obligations become enforceable. Your best sales tool, with a countdown attached.
+> **The number to remember:** August 2026, when high-risk system obligations become enforceable. Your best sales tool, with a countdown attached.
 
 Every technology regulation creates two groups: those who see it as a cost to be minimized, and those who see it as a service to be sold. The EU AI Act is the most significant piece of AI regulation in the world, and for EU-based IT services providers, it is firmly in the second category.
 
-This chapter is not a legal primer. You can hire a lawyer for that. What it is: a practical guide to the specific implementation work the Act demands, why that work is technical rather than legal, and how to position your firm as the one who does it.
+This chapter is a practical guide, not a legal primer; you can hire a lawyer for that. It covers the specific implementation work the Act demands, why that work is technical rather than legal, and how to position your firm as the one who does it.
 
 ---
 
@@ -20,19 +20,19 @@ This chapter is not a legal primer. You can hire a lawyer for that. What it is: 
 The EU AI Act entered into force on 1 August 2024. It follows a phased enforcement timeline:
 
 - **February 2025:** Prohibitions on unacceptable-risk AI systems take effect (social scoring, real-time biometric identification in public spaces with narrow exceptions, manipulation of vulnerable groups).
-- **August 2025:** Obligations for general-purpose AI (GPAI) model providers kick in — transparency, documentation, copyright compliance, and for models with systemic risk, additional safety evaluations.
+- **August 2025:** Obligations for general-purpose AI (GPAI) model providers kick in: transparency, documentation, copyright compliance, and for models with systemic risk, additional safety evaluations.
 - **August 2026:** The big one. Obligations for high-risk AI systems become enforceable. This is where most of the implementation work lives and where most of your clients' obligations begin.
 - **August 2027:** Extended deadline for high-risk AI systems that are safety components of products already regulated under existing EU sectoral legislation (medical devices, machinery, aviation, vehicles).
 
 The Act classifies AI systems into four risk tiers:
 
-**Unacceptable risk** — banned outright. Social scoring, manipulative AI targeting vulnerable groups, untargeted facial recognition databases, emotion recognition in workplaces and schools. Your clients should not be building these. If they are, the conversation is with legal, not with you.
+**Unacceptable risk:** banned outright. Social scoring, manipulative AI targeting vulnerable groups, untargeted facial recognition databases, emotion recognition in workplaces and schools. Your clients should not be building these. If they are, the conversation is with legal, not with you.
 
-**High risk** — heavily regulated. This is where the money is. High-risk systems include AI used in recruitment and hiring, credit scoring and financial assessments, law enforcement and border control, critical infrastructure management (energy, water, transport), education (exam scoring, student assessment), access to essential services, and migration/asylum processing. Any AI system used as a safety component in products covered by existing EU product safety legislation also falls here.
+**High risk:** heavily regulated. This is where the money is. High-risk systems include AI used in recruitment and hiring, credit scoring and financial assessments, law enforcement and border control, critical infrastructure management (energy, water, transport), education (exam scoring, student assessment), access to essential services, and migration/asylum processing. Any AI system used as a safety component in products covered by existing EU product safety legislation also falls here.
 
-**Limited risk** — transparency obligations. Chatbots must disclose they are AI. Deepfakes must be labelled. Emotion recognition systems must inform users. These are lighter requirements but still need implementation.
+**Limited risk:** transparency obligations. Chatbots must disclose they are AI. Deepfakes must be labelled. Emotion recognition systems must inform users. These are lighter requirements but still need implementation.
 
-**Minimal risk** — no specific obligations. Spam filters, AI in video games, most internal productivity tools. The vast majority of AI systems fall here.
+**Minimal risk:** no specific obligations. Spam filters, AI in video games, most internal productivity tools. The vast majority of AI systems fall here.
 
 ### Providers vs Deployers: The Distinction That Matters
 
@@ -48,31 +48,31 @@ Deployers of high-risk AI systems must:
 - Inform employees and their representatives that they are subject to AI systems
 - Ensure input data is relevant and representative
 
-These are not abstract policy requirements. They are operational obligations that need technical systems, processes, and infrastructure to fulfil. Someone has to build those systems. That someone should be you.
+These are not abstract policy requirements but operational obligations that need technical systems, processes, and infrastructure to fulfil. Someone has to build those systems. That someone should be you.
 
-> **Key takeaway:** Most of your enterprise clients will be "deployers" under the EU AI Act. By August 2026, they need functioning human oversight, monitoring, logging, incident reporting, and impact assessment processes — not just policies on paper, but working technical implementations.
+> **Key takeaway:** Most of your enterprise clients will be "deployers" under the EU AI Act. By August 2026, they need functioning human oversight, monitoring, logging, incident reporting, and impact assessment processes: not just policies on paper, but working technical implementations.
 
 ## Why This Is Implementation Work, Not Legal Work
 
 Here is the crucial insight that many providers miss: EU AI Act compliance is roughly 20% legal interpretation and 80% technical implementation. Lawyers will tell your clients what they need to do. You will build the systems that actually do it.
 
-Consider what a deployer of a high-risk AI system — say, a bank using AI for credit scoring — actually needs:
+Consider what a deployer of a high-risk AI system (say, a bank using AI for credit scoring) actually needs:
 
 **A risk management system.** Not a document titled "Risk Management Policy." An actual system that continuously identifies, evaluates, and mitigates risks throughout the AI system's lifecycle. This means monitoring pipelines, alerting infrastructure, risk scoring dashboards, and integration with the bank's existing risk management frameworks. This is engineering work.
 
-**Data governance.** The training and validation data used for any fine-tuning or customization needs documentation: provenance, preprocessing steps, bias analysis, representativeness assessment. If your client is fine-tuning models on their own data, they need a data governance pipeline — versioning, quality checks, bias testing, lineage tracking. This is data engineering work.
+**Data governance.** The training and validation data used for any fine-tuning or customization needs documentation: provenance, preprocessing steps, bias analysis, representativeness assessment. If your client is fine-tuning models on their own data, they need a data governance pipeline: versioning, quality checks, bias testing, lineage tracking. This is data engineering work.
 
 **Technical documentation and a technical file.** High-risk systems require detailed documentation of the system's purpose, design, development process, testing methodology, and performance metrics. For a deployer who has customized or integrated an AI system, this means documenting the full integration architecture, the prompt engineering decisions, the evaluation results, the failure modes. This is technical writing backed by engineering analysis.
 
 **Human oversight mechanisms.** The Act requires that high-risk AI systems can be effectively overseen by natural persons. In practice, this means building interfaces and workflows where human reviewers can inspect AI decisions, override them when necessary, and intervene in real-time for certain use cases. This is UX design and systems integration work.
 
-**Logging and monitoring infrastructure.** Systems must generate logs that allow traceability throughout the AI system's lifecycle. For production AI systems, this means structured logging of inputs, outputs, model versions, confidence scores, and human override decisions — stored securely, retained for the required period, and accessible for audit. This is infrastructure engineering.
+**Logging and monitoring infrastructure.** Systems must generate logs that allow traceability throughout the AI system's lifecycle. For production AI systems, this means structured logging of inputs, outputs, model versions, confidence scores, and human override decisions, stored securely, retained for the required period, and accessible for audit. This is infrastructure engineering.
 
 **Incident reporting.** Serious incidents must be reported to market surveillance authorities. This requires detection mechanisms (how do you know something went wrong?), classification logic (is it serious?), and reporting workflows integrated with the client's existing incident management. This is DevOps and process engineering.
 
-A law firm cannot build any of this. A management consultancy can write the policies but cannot implement the systems. The work sits squarely in the domain of technical services providers who understand both AI systems and enterprise infrastructure — which is exactly what you are.
+A law firm cannot build any of this. A management consultancy can write the policies but cannot implement the systems. The work sits squarely in the domain of technical services providers who understand both AI systems and enterprise infrastructure, which is exactly what you are.
 
-> **Key takeaway:** Compliance with the EU AI Act is primarily a technical implementation challenge, not a legal one. Lawyers define obligations; you build the systems that meet them. Risk management pipelines, logging infrastructure, human oversight interfaces, bias testing frameworks, incident detection — this is your domain.
+> **Key takeaway:** Compliance with the EU AI Act is primarily a technical implementation challenge, not a legal one. Lawyers define obligations; you build the systems that meet them. Risk management pipelines, logging infrastructure, human oversight interfaces, bias testing frameworks, incident detection. This is your domain.
 
 ## Eight Service Lines You Can Build Today
 
@@ -80,13 +80,13 @@ Here are the specific service opportunities, ordered roughly by how quickly you 
 
 ### 1. AI System Inventory and Classification
 
-Before a client can comply, they need to know what AI systems they are actually using. Many enterprises have no comprehensive inventory. Shadow AI — departments buying API access or using AI tools without IT's knowledge — is rampant. The first engagement is often a discovery exercise: what AI systems exist, who uses them, for what purpose, and which risk category they fall under.
+Before a client can comply, they need to know what AI systems they are actually using. Many enterprises have no comprehensive inventory. Shadow AI (departments buying API access or using AI tools without IT's knowledge) is rampant. The first engagement is often a discovery exercise: what AI systems exist, who uses them, for what purpose, and which risk category they fall under.
 
-This is low-cost, high-value work. It requires no deep AI expertise — just systematic assessment skills and knowledge of the Act's classification criteria. And it is a natural entry point for every other service on this list.
+This is low-cost, high-value work. It requires no deep AI expertise, just systematic assessment skills and knowledge of the Act's classification criteria. And it is a natural entry point for every other service on this list.
 
 ### 2. Risk Management System Implementation
 
-Building the continuous risk assessment infrastructure for high-risk AI deployments. This includes defining risk metrics, building monitoring dashboards, setting up alerting pipelines, and integrating with the client's existing risk and compliance frameworks. If you have experience with ISO 27001 or similar management systems, the structure is familiar — the content is just different.
+Building the continuous risk assessment infrastructure for high-risk AI deployments. This includes defining risk metrics, building monitoring dashboards, setting up alerting pipelines, and integrating with the client's existing risk and compliance frameworks. If you have experience with ISO 27001 or similar management systems, the structure is familiar; the content is just different.
 
 ### 3. Bias Testing and Fairness Evaluation
 
@@ -96,7 +96,7 @@ The technical work involves building evaluation datasets, running structured tes
 
 ### 4. Monitoring and Logging Infrastructure
 
-Production AI systems need structured, auditable logging that captures inputs, outputs, model versions, latency, confidence scores, and human intervention events. This is classic infrastructure work — the kind your operations team already knows how to build — applied to a new domain.
+Production AI systems need structured, auditable logging that captures inputs, outputs, model versions, latency, confidence scores, and human intervention events. This is classic infrastructure work, the kind your operations team already knows how to build, applied to a new domain.
 
 The key difference from traditional application logging: AI system logs need to support traceability of individual decisions, not just system health metrics. This means richer data capture, longer retention, and query capabilities that support after-the-fact analysis of specific outputs.
 
@@ -108,19 +108,19 @@ This is UX and systems integration work. It is also deeply specific to each clie
 
 ### 6. Technical Documentation and Conformity Assessment Preparation
 
-High-risk AI systems need a technical file that would make a medical device regulator feel at home. System architecture, design decisions, training data documentation, testing methodology, performance benchmarks, known limitations, deployment specifications. For providers, this also includes conformity assessment — either self-assessment or third-party assessment depending on the use case.
+High-risk AI systems need a technical file that would make a medical device regulator feel at home. System architecture, design decisions, training data documentation, testing methodology, performance benchmarks, known limitations, deployment specifications. For providers, this also includes conformity assessment: either self-assessment or third-party assessment depending on the use case.
 
 Most clients will need help preparing these materials. The work combines technical depth (you need to understand the system to document it) with regulatory awareness (you need to know what the documentation must cover). This is consulting at premium rates.
 
 ### 7. Data Governance for Training and Fine-Tuning
 
-If your client fine-tunes or adapts AI models on their own data, they need governance frameworks covering data provenance, quality assessment, bias analysis, consent management (where personal data is involved), and version control. This intersects heavily with existing GDPR data governance — another area where your EU presence is an advantage.
+If your client fine-tunes or adapts AI models on their own data, they need governance frameworks covering data provenance, quality assessment, bias analysis, consent management (where personal data is involved), and version control. This intersects heavily with existing GDPR data governance, another area where your EU presence is an advantage.
 
 ### 8. Post-Market Monitoring and Incident Reporting
 
-Once a high-risk AI system is in production, the obligations do not stop. Deployers must monitor performance, detect degradation or drift, identify serious incidents, and report them to authorities. Building the systems that do this — automated performance tracking, anomaly detection, incident classification, and reporting workflows — is ongoing infrastructure work with a natural retainer model.
+Once a high-risk AI system is in production, the obligations do not stop. Deployers must monitor performance, detect degradation or drift, identify serious incidents, and report them to authorities. Building the systems that do this (automated performance tracking, anomaly detection, incident classification, and reporting workflows) is ongoing infrastructure work with a natural retainer model.
 
-> **Key takeaway:** The EU AI Act creates at least eight distinct technical service lines, from initial inventory and classification through to post-market monitoring. Most of these are recurring engagements, not one-off projects. Start with AI system inventory — it is the lowest barrier to entry and the natural gateway to everything else.
+> **Key takeaway:** The EU AI Act creates at least eight distinct technical service lines, from initial inventory and classification through to post-market monitoring. Most of these are recurring engagements, not one-off projects. Start with AI system inventory: it is the lowest barrier to entry and the natural gateway to everything else.
 
 ## Data Sovereignty as a Premium Service
 
@@ -129,13 +129,15 @@ In Chapter 6, we discussed the privacy proxy model and its economics. The EU AI 
 Some clients do not just prefer to keep data in the EU. They are legally required to. The combination of GDPR data transfer restrictions, sector-specific regulations, and the EU AI Act's requirements around data governance and system monitoring creates scenarios where sending data to US-based AI providers is genuinely not an option:
 
 - **Banking and financial services** under ECB and national supervisory authority oversight, where outsourcing to non-EU processors triggers additional regulatory requirements that can exceed the cost savings.
-- **Healthcare** in jurisdictions with strict patient data localization requirements — Germany's health data infrastructure regulations are a prime example.
+- **Healthcare** in jurisdictions with strict patient data localization requirements; Germany's health data infrastructure regulations are a prime example.
 - **Defence and national security**, where data classification rules prohibit external processing entirely.
-- **Public sector** in specific member states with data sovereignty mandates — France's SecNumCloud qualification, Germany's IT-Grundschutz requirements, and similar frameworks.
+- **Public sector** in specific member states with data sovereignty mandates: France's SecNumCloud qualification, Germany's IT-Grundschutz requirements, and similar frameworks.
 
-For these clients, the economics we outlined in Chapters 3 and 4 — where self-hosting is 5-15x more expensive than API access — are irrelevant. The relevant comparison is not "self-hosted vs API." It is "self-hosted vs not using AI at all." And against that alternative, the self-hosting premium is easily justified.
+For these clients, the economics we outlined in Chapters 3 and 4, where self-hosting is 5-15x more expensive than API access, are irrelevant. The relevant comparison is not "self-hosted vs API" but "self-hosted vs not using AI at all." And against that alternative, the self-hosting premium is easily justified.
 
 This is the one scenario where the infrastructure business model from the old world transfers cleanly to GenAI. You host the models. You operate the infrastructure. You guarantee that data never leaves your EU-based facilities. And you charge a premium that reflects the regulatory constraint, not the commodity cost of compute.
+
+Between the US API and your own rack sits a middle path worth knowing: EU-hosted third-party inference. Mistral serves frontier-adjacent models from EU infrastructure under an EU legal entity, several member states are standing up sovereign-cloud offerings, and the hyperscalers sell EU data boundaries of varying credibility (a US parent remains a US parent for jurisdictional purposes, which is exactly what some regulators care about). For clients whose constraint is jurisdiction rather than physical control, this tier delivers most of the sovereignty argument at close to API economics, and you still own the integration, evaluation, and compliance overlay around it. Recommend it when on-prem is overkill and US APIs are ruled out; it makes you the advisor who right-sizes sovereignty instead of the vendor who oversells it.
 
 The market is real. But it is narrower than the marketing materials of most EU cloud providers suggest. Do not plan your entire business around data sovereignty clients. Plan a profitable service line for them, and build the rest of your AI practice around the broader compliance and integration opportunities.
 
@@ -143,7 +145,7 @@ The market is real. But it is narrower than the marketing materials of most EU c
 
 ## How to Position This
 
-The biggest mistake you can make is to sell "EU AI Act compliance" as a standalone product. Here is why: compliance is a cost in the client's mind. Nobody wakes up excited to buy compliance. It is a thing they have to do, and they will try to do it as cheaply as possible. If you sell compliance as a line item, you are inviting price competition from every consultancy, law firm, and freelancer who can read the regulation.
+The biggest mistake you can make is to sell "EU AI Act compliance" as a standalone product. Here is why: compliance is a cost in the client's mind. Nobody wakes up excited to buy compliance; it is a thing they have to do, and they will try to do it as cheaply as possible. If you sell compliance as a line item, you are inviting price competition from every consultancy, law firm, and freelancer who can read the regulation.
 
 Instead, integrate compliance into your AI deployment offering. The pitch is not:
 
@@ -151,23 +153,23 @@ Instead, integrate compliance into your AI deployment offering. The pitch is not
 
 The pitch is:
 
-*"We deploy AI in your organization — and every deployment we do is EU AI Act compliant from day one."*
+*"We deploy AI in your organization, and every deployment we do is EU AI Act compliant from day one."*
 
 The difference is profound. In the first pitch, you are a cost centre. In the second, you are an enabler who happens to remove a major risk. The compliance is bundled into the value, not sold as overhead.
 
 This positioning works especially well when combined with the capabilities from earlier chapters:
 
 - **Privacy proxy (Chapter 6) + EU AI Act compliance** = "We route your AI usage through EU infrastructure with full regulatory compliance built in."
-- **Local deployment (Chapter 7) + EU AI Act compliance** = "We deploy AI on your employees' devices — no data leaves your organization, and every deployment meets EU AI Act requirements."
+- **Local deployment (Chapter 7) + EU AI Act compliance** = "We deploy AI on your employees' devices: no data leaves your organization, and every deployment meets EU AI Act requirements."
 - **Testing and security (Chapter 8) + EU AI Act compliance** = "We test and monitor your AI systems for quality, security, and regulatory compliance as a single managed service."
 
 Each of these is a stronger proposition than any component sold alone. The compliance layer makes the technical offering more valuable, and the technical offering makes the compliance tangible rather than theoretical.
 
 ### Training Your Team
 
-This is the investment that pays off fastest. The EU AI Act is new enough that genuine expertise is scarce. If your team understands both the regulation's requirements and how to implement them technically, you have a real differentiator — one that will persist for at least 18-24 months as the market catches up.
+This is the investment that pays off fastest. The EU AI Act is new enough that genuine expertise is scarce. If your team understands both the regulation's requirements and how to implement them technically, you have a real differentiator, one that will persist for at least 18-24 months as the market catches up.
 
-The knowledge you need is not deep legal expertise. It is practical understanding of:
+The knowledge you need is not deep legal expertise but a practical understanding of:
 
 - Which systems fall into which risk categories
 - What deployers specifically need to do (and by when)
@@ -181,23 +183,23 @@ A team of three to five engineers who understand these requirements and can impl
 
 The enforcement timeline creates a specific strategic window. Most enterprises are in one of three states right now:
 
-**Unaware.** They use AI but have not connected it to the EU AI Act's obligations. They do not know they are deployers of potentially high-risk systems. A surprising number of companies fall here — particularly those that adopted AI tools informally, without a centralized procurement process.
+**Unaware.** They use AI but have not connected it to the EU AI Act's obligations. They do not know they are deployers of potentially high-risk systems. A surprising number of companies fall here, particularly those that adopted AI tools informally, without a centralized procurement process.
 
 **Aware but paralyzed.** They know the Act exists. They may have had a lawyer present an overview to the board. But they have no concrete implementation plan, no internal expertise, and no budget allocated. They are waiting for someone to tell them what to do in practical terms.
 
 **Actively preparing.** A small minority, mostly large enterprises and those in heavily regulated sectors. They have begun compliance programmes but are discovering that the implementation work exceeds their internal capacity.
 
-All three groups need help, but the middle group — aware but paralyzed — is the largest and the most receptive. They have the urgency (the August 2026 deadline for high-risk system obligations is not far away) but not the capability. A provider who can walk in with a clear assessment methodology, a concrete implementation roadmap, and demonstrated technical capability will win these engagements.
+All three groups need help, but the middle group, aware but paralyzed, is the largest and the most receptive. They have the urgency (the August 2026 deadline for high-risk system obligations is not far away) but not the capability. A provider who can walk in with a clear assessment methodology, a concrete implementation roadmap, and demonstrated technical capability will win these engagements.
 
-And here is the strategic upside: compliance partnerships are sticky. Once you have built a client's risk management system, documented their AI deployments, implemented their monitoring infrastructure, and set up their incident reporting workflows, switching to another provider is painful and expensive. The client would need to re-document everything, retrain staff on new tools, and rebuild trust with a new partner — all while the compliance clock keeps ticking.
+And here is the strategic upside: compliance partnerships are sticky. Once you have built a client's risk management system, documented their AI deployments, implemented their monitoring infrastructure, and set up their incident reporting workflows, switching to another provider is painful and expensive. The client would need to re-document everything, retrain staff on new tools, and rebuild trust with a new partner, all while the compliance clock keeps ticking.
 
 This is the kind of structural stickiness that infrastructure hosting used to provide. Except instead of being locked in by data gravity and migration costs, the client is retained by compliance continuity and institutional knowledge. It is a better form of lock-in because it is driven by value delivered, not by switching costs imposed.
 
-> **Key takeaway:** The enforcement timeline creates a narrow window — roughly now through August 2026 — where providers who build EU AI Act implementation expertise will establish themselves as trusted partners. Once embedded in a client's compliance infrastructure, these relationships are naturally sticky. The early movers will have a durable advantage.
+> **Key takeaway:** The enforcement timeline creates a narrow window (roughly now through August 2026) where providers who build EU AI Act implementation expertise will establish themselves as trusted partners. Once embedded in a client's compliance infrastructure, these relationships are naturally sticky. The early movers will have a durable advantage.
 
 ## The Public Sector Procurement Reality
 
-Many EU IT services providers derive 30-40% of their revenue from government and public sector contracts. If this describes your business, GenAI strategy is not just a technology question — it is a procurement question.
+Many EU IT services providers derive 30-40% of their revenue from government and public sector contracts. If this describes your business, GenAI strategy is not just a technology question; it is a procurement question.
 
 Public sector IT across the EU is typically procured through framework agreements and multi-year tenders. Adding "AI services" to an existing framework contract is rarely as simple as updating a service catalogue. In most jurisdictions, it requires a new procurement process, new evaluation criteria, and often new certifications from the provider.
 
@@ -209,23 +211,23 @@ Public sector IT across the EU is typically procured through framework agreement
 - **Security clearances and data classification.** Government AI deployments often involve classified or sensitive data. If your team already holds relevant security clearances, this is a significant barrier to entry that protects your position.
 - **The incumbent advantage is real.** A government client with an existing relationship is far more likely to extend your mandate to include AI services than to run a separate procurement for a new provider. Use this.
 
-**The EU AI Act amplifies the public sector opportunity.** Government bodies are themselves deployers of AI systems and must comply with the Act — often at the high-risk classification level (law enforcement, immigration, public benefits, critical infrastructure). They need implementation partners who understand both the technology and the regulatory requirements, and they strongly prefer working with providers they already trust.
+**The EU AI Act amplifies the public sector opportunity.** Government bodies are themselves deployers of AI systems and must comply with the Act, often at the high-risk classification level (law enforcement, immigration, public benefits, critical infrastructure). They need implementation partners who understand both the technology and the regulatory requirements, and they strongly prefer working with providers they already trust.
 
-> **Key takeaway:** If public sector represents a significant share of your revenue, start positioning AI services within existing procurement vehicles now. The procurement cycle means that opportunities missed today will not return for 12-18 months. Your incumbent status is an asset — use it before the next tender cycle lets in new competitors.
+> **Key takeaway:** If public sector represents a significant share of your revenue, start positioning AI services within existing procurement vehicles now. The procurement cycle means that opportunities missed today will not return for 12-18 months. Your incumbent status is an asset. Use it before the next tender cycle lets in new competitors.
 
 ## What This Chapter Means for Your Strategy
 
-The EU AI Act is not a burden to endure. It is a market to serve. The regulation creates mandatory demand for technical implementation work that sits squarely in the competency zone of IT services providers. It favours EU-based providers who share their clients' regulatory environment. It creates recurring revenue through ongoing monitoring and reporting obligations. And it provides natural stickiness that protects against the commoditization pressures we discussed in earlier chapters.
+The EU AI Act is a market to serve, not a burden to endure. The regulation creates mandatory demand for technical implementation work that sits squarely in the competency zone of IT services providers. It favours EU-based providers who share their clients' regulatory environment. It creates recurring revenue through ongoing monitoring and reporting obligations. And it provides natural stickiness that protects against the commoditization pressures we discussed in earlier chapters.
 
 The concrete moves:
 
-1. **Invest in training now.** Get three to five people fluent in the Act's practical requirements within the next quarter. This is not a six-month project — the core material can be absorbed in weeks by technical people with compliance experience.
+1. **Invest in training now.** Get three to five people fluent in the Act's practical requirements within the next quarter. This is not a six-month project: the core material can be absorbed in weeks by technical people with compliance experience.
 
 2. **Start with AI inventory engagements.** Offer existing clients a discovery exercise: what AI systems are you using, and which ones trigger EU AI Act obligations? This is low-risk, low-cost, and opens the door to everything else.
 
 3. **Bundle, do not unbundle.** Sell compliance as part of your AI deployment and management services, not as a standalone product. The margin is better and the positioning is stronger.
 
-4. **Build the data sovereignty service line for clients who need it.** Price it as a premium offering. Do not apologize for the markup — the client has no cheaper alternative.
+4. **Build the data sovereignty service line for clients who need it.** Price it as a premium offering. Do not apologize for the markup; the client has no cheaper alternative.
 
 5. **Target the August 2026 deadline.** Every high-risk AI system deployer needs functioning compliance infrastructure by then. That deadline is your best sales tool for the next several months.
 
@@ -236,12 +238,12 @@ The regulation is complex. The opportunity is straightforward.
 > The EU AI Act's statutory text is stable. The implementing landscape is not.
 >
 > - **Enforcement dates** (Feb 2025, Aug 2025, Aug 2026, Aug 2027) are fixed in the regulation. The **August 2026 high-risk-systems deadline** is the load-bearing date for most of this chapter's opportunity framing.
-> - **Implementing guidance, harmonised standards, and conformity-assessment procedures** are still being published — most notably by the AI Office, ENISA, and the European standardisation organisations. Expect meaningful new material through 2026-2027.
+> - **Implementing guidance, harmonised standards, and conformity-assessment procedures** are still being published, most notably by the AI Office, ENISA, and the European standardisation organisations. Expect meaningful new material through 2026-2027.
 > - **National transposition and competent-authority designations** vary by member state and are still being finalised in several jurisdictions. Public-sector procurement implications (Chapter's final section) are especially member-state-specific.
-> - **Service pricing** ($20-50K assessments, $3-10K/month monitoring) will compress as the market matures past the initial compliance crunch — likely 18-24 months after the August 2026 deadline bites.
+> - **Service pricing** ($20-50K assessments, $3-10K/month monitoring) will compress as the market matures past the initial compliance crunch, likely 18-24 months after the August 2026 deadline bites.
 >
 > Re-verify statutory references against the current consolidated text of Regulation (EU) 2024/1689 before quoting to clients.
 
 ---
 
-*Next: [Chapter 12 — Pricing Models and Packaging](12_pricing_models.md)*
+*Next: [Chapter 12: Pricing Models and Packaging](12_pricing_models.md)*

@@ -4,7 +4,7 @@
 
 ---
 
-**April 2026**
+**April 2026 &middot; log updated July 2026**
 
 *By Robert Barcik*
 
@@ -20,7 +20,7 @@ The generative AI revolution has created a strategic inflection point for IT ser
 
 This booklet examines that question through hard economics. We run the numbers on self-hosting large language models versus using commercial APIs. We explore which new business models work and which do not. We look at where EU-based providers have genuine advantages and where they face structural disadvantages. And we provide a practical roadmap for the next 18 months.
 
-The analysis is grounded in real hardware costs, current API pricing (as of April 2026), and the operational realities of running AI infrastructure. No hype, no hand-waving — just the math and what it means for your business.
+The analysis is grounded in real hardware costs, current API pricing (as of April 2026), and the operational realities of running AI infrastructure. No hype, no hand-waving, just the math and what it means for your business.
 
 ### Who This Booklet Is For
 
@@ -32,7 +32,9 @@ The analysis is grounded in real hardware costs, current API pricing (as of Apri
 
 ### How to Read This Booklet
 
-Chapters 1-4 build the economic foundation — read these in order. Chapter 5 covers the vendor ecosystem path most providers will take first. Chapters 6-8 explore three more independent business model pivots. Chapter 9 turns the lens inward on your own delivery model. Chapters 10-14 cover market dynamics, regulation, pricing, talent, and practical planning.
+Chapters 1-4 build the economic foundation; read these in order. Chapter 5 covers the vendor ecosystem path most providers will take first. Chapters 6-8 explore three more independent business model pivots. Chapter 9 turns the lens inward on your own delivery model. Chapters 10-14 cover market dynamics, regulation, pricing, talent, and practical planning.
+
+Every chapter closes with a **Freshness Watch**: the date its numbers were verified, an estimated half-life, and the specific claims to re-check before you quote them. It is the same instrument as the trigger logs in the companion booklets [Scenario Planning for Generative AI](/scenario-planning/) and [The Mercantilism of Generative AI](/mercantilism-of-genai/). This guide gives you the numbers; those two map the futures the numbers live in.
 
 ---
 
@@ -40,7 +42,7 @@ Chapters 1-4 build the economic foundation — read these in order. Chapter 5 co
 
 1. The GenAI Moment for IT Services Providers
 2. How Large Language Models Actually Run
-3. The Cost Equation: Self-Hosting vs API at Every Scale
+3. The Cost Equation: API, Rental, and On-Prem Economics at Every Scale
 4. Why Hyperscalers Win on Price
 5. The Vendor Ecosystem Play
 6. Business Model: The Privacy Proxy

@@ -2,16 +2,16 @@
 
 > **At a glance**
 >
-> - The model runs on the employee's laptop. No token ever leaves the device — the only architecture that can make a zero-data-exfiltration guarantee.
+> - The model runs on the employee's laptop. No token ever leaves the device: the only architecture that can make a zero-data-exfiltration guarantee.
 > - Your infrastructure cost is literally zero: the client owns the hardware, the models are open-source, your fee is margin minus labor. At 500+ users, gross margins reach 77%+.
-> - The quality gap versus frontier models is real today and closing fast — small models improve while every chip vendor races on NPU performance.
+> - The quality gap versus frontier models is real today and closing fast; small models improve while every chip vendor races on NPU performance.
 > - The smart deployment is hybrid: local model for the routine 80-90% of tokens, cloud fallback for the demanding peaks.
 >
-> **The number to remember:** $0 — your marginal compute cost per token, forever.
+> **The number to remember:** $0, your marginal compute cost per token, forever.
 
-Chapter 6 described the privacy proxy — a model with genuine value but structural fragility. Your business depends on a compliance gap between what AI providers offer natively and what clients require, and that gap is closing. The proxy adds a layer of trust. It does not eliminate the fundamental issue: your client's data still leaves the building.
+Chapter 6 described the privacy proxy, a model with genuine value but structural fragility. Your business depends on a compliance gap between what AI providers offer natively and what clients require, and that gap is closing. The proxy adds a layer of trust. It does not eliminate the fundamental issue: your client's data still leaves the building.
 
-This chapter describes a model where the data never leaves the device. Not "we promise not to store it." Not "we process it in the EU." Not "we offer zero data retention." The data literally never touches a network interface. The model runs on the employee's laptop, the prompt stays on the laptop, the response is generated on the laptop, and nothing — not a single token — is transmitted anywhere.
+This chapter describes a model where the data never leaves the device. Not "we promise not to store it." Not "we process it in the EU." Not "we offer zero data retention." The data literally never touches a network interface. The model runs on the employee's laptop, the prompt stays on the laptop, the response is generated on the laptop, and nothing, not a single token, is transmitted anywhere.
 
 This is the local deployment model. And of all the business model pivots described in this booklet, it is the one with the most compelling long-term trajectory.
 
@@ -19,15 +19,15 @@ This is the local deployment model. And of all the business model pivots describ
 
 ## The Concept
 
-The idea is straightforward. You take an open-source large language model — Llama, Mistral, Phi, Qwen, Gemma, or any of the dozens now available — quantize it to 4-bit precision (INT4), and deploy it to run natively on hardware the client already owns or can acquire at consumer pricing.
+The idea is straightforward. You take an open-source large language model (Llama, Mistral, Phi, Qwen, Gemma, or any of the dozens now available), quantize it to 4-bit precision (INT4), and deploy it to run natively on hardware the client already owns or can acquire at consumer pricing.
 
-The enabling technology stack has matured rapidly. On Apple Silicon Macs, llama.cpp and Apple's own MLX framework provide optimized inference that fully utilizes the unified memory architecture. On Windows and Linux machines with discrete GPUs, the same llama.cpp runtime with CUDA or Vulkan backends delivers comparable throughput on NVIDIA and AMD hardware. The tooling has reached a point where a competent engineer can have a quantized 8B model running on a MacBook in under an hour. The question is no longer whether this works. It is who packages, deploys, maintains, updates, and supports it across hundreds or thousands of employee devices.
+The enabling technology stack has matured rapidly. On Apple Silicon Macs, llama.cpp and Apple's own MLX framework provide optimized inference that fully utilizes the unified memory architecture. On Windows and Linux machines with discrete GPUs, the same llama.cpp runtime with CUDA or Vulkan backends delivers comparable throughput on NVIDIA and AMD hardware. The tooling has reached a point where a competent engineer can have a quantized 8B model running on a MacBook in under an hour. The question is no longer whether this works but who packages, deploys, maintains, updates, and supports it across hundreds or thousands of employee devices.
 
 That is where you come in.
 
-Your service is not "install Ollama and hand over the laptop." Your service is a managed local AI deployment: curated model selection for the client's use cases, quantization and optimization for their specific hardware fleet, a lightweight management layer for pushing model updates and configuration changes, guardrail configuration to prevent misuse, integration with the client's existing applications and workflows, and ongoing support when something breaks or a better model becomes available.
+Your service is a managed local AI deployment, not "install Ollama and hand over the laptop": curated model selection for the client's use cases, quantization and optimization for their specific hardware fleet, a lightweight management layer for pushing model updates and configuration changes, guardrail configuration to prevent misuse, integration with the client's existing applications and workflows, and ongoing support when something breaks or a better model becomes available.
 
-This is, fundamentally, endpoint management — the business many IT services providers have been running for years. You are adding an AI layer to a service delivery model you already understand.
+This is, fundamentally, endpoint management: the business many IT services providers have been running for years. You are adding an AI layer to a service delivery model you already understand.
 
 ## The Economics
 
@@ -45,7 +45,7 @@ The hardware requirements are modest and getting more modest every year.
 | Windows laptop + RTX 4060 (8GB VRAM) | 8 GB VRAM | 7-8B models at INT4 | ~$1,200-1,500 |
 | Windows workstation + RTX 4090 (24GB VRAM) | 24 GB VRAM | 8-13B models at INT4 | ~$2,500-3,500 |
 
-Many of your clients' employees already have 16GB or 24GB MacBooks — the standard corporate procurement spec for knowledge workers has been trending upward for years. For those who need an upgrade, a 24GB MacBook Pro at approximately $2,000-2,500 is a normal laptop refresh cost, not a special AI hardware investment. The client's procurement team barely blinks.
+Many of your clients' employees already have 16GB or 24GB MacBooks; the standard corporate procurement spec for knowledge workers has been trending upward for years. For those who need an upgrade, a 24GB MacBook Pro at approximately $2,000-2,500 is a normal laptop refresh cost, not a special AI hardware investment. The client's procurement team barely blinks.
 
 ### Your Revenue Model
 
@@ -64,7 +64,7 @@ Read that infrastructure line again. Zero. You are not hosting anything. You are
 
 Here is where the economics become genuinely compelling.
 
-Consider a knowledge worker who uses AI heavily — a consultant, analyst, developer, or content creator. Not a casual user asking one question per day, but someone who has integrated AI into their workflow and runs dozens of sessions daily.
+Consider a knowledge worker who uses AI heavily: a consultant, analyst, developer, or content creator. Not a casual user asking one question per day, but someone who has integrated AI into their workflow and runs dozens of sessions daily.
 
 | Usage Level | Daily Tokens | API Cost (GPT-4.1 class) | API Cost (Claude Sonnet class) | Annual API Cost |
 |---|---|---|---|---|
@@ -73,7 +73,7 @@ Consider a knowledge worker who uses AI heavily — a consultant, analyst, devel
 | Heavy user | ~5M tokens | $15-25/day | $12-22/day | $4,400-9,000/year |
 | Power user | ~10M+ tokens | $30-50/day | $25-45/day | $9,000-18,000/year |
 
-A MacBook Pro at $2,500, serving three to four years of daily use, has an annualized hardware cost of $625-835. Add your $30/month managed service fee — $360 annually — and the total annual cost is approximately $1,000-1,200. For a heavy user who would otherwise spend $4,400-9,000 per year on API calls, the local deployment saves $3,200-7,800 annually. The hardware pays for itself in months, not years.
+A MacBook Pro at $2,500, serving three to four years of daily use, has an annualized hardware cost of $625-835. Add your $30/month managed service fee ($360 annually) and the total annual cost is approximately $1,000-1,200. For a heavy user who would otherwise spend $4,400-9,000 per year on API calls, the local deployment saves $3,200-7,800 annually. The hardware pays for itself in months, not years.
 
 And this is the key economic insight: **there is zero marginal cost per token**. Once the model is loaded into memory, the user can generate a million tokens or ten million tokens and your cost does not change. Their cost does not change. There is no meter running. No bill shock at the end of the month. No procurement approval needed when the team's usage exceeds the forecasted API budget.
 
@@ -87,7 +87,7 @@ And this is the key economic insight: **there is zero marginal cost per token**.
 | 1,000 | $35,000 | $5,500 | $29,500 | 84% |
 | 2,000 | $70,000 | $8,000 | $62,000 | 89% |
 
-The margin structure improves dramatically with scale because adding user 101 or user 1,001 costs you almost nothing in compute. Your costs are engineering headcount (platform development, model testing, update preparation) and support staff. These grow sub-linearly with the user base. At 500+ users, you are operating at 77%+ gross margins — comparable to a SaaS business, but without the hosting bill.
+The margin structure improves dramatically with scale because adding user 101 or user 1,001 costs you almost nothing in compute. Your costs are engineering headcount (platform development, model testing, update preparation) and support staff. These grow sub-linearly with the user base. At 500+ users, you are operating at 77%+ gross margins, comparable to a SaaS business but without the hosting bill.
 
 > **Key economics:** Local deployment is the only AI business model in this booklet where your compute cost is literally zero. The client owns the hardware. The models are open-source. Your entire fee is margin minus engineering and support labor. At scale, this delivers 70-85% gross margins with no infrastructure risk.
 
@@ -95,11 +95,11 @@ The margin structure improves dramatically with scale because adding user 101 or
 
 Every business model needs a moat. Local deployment has several, and they reinforce each other.
 
-### Zero Data Exfiltration — The Only True Guarantee
+### Zero Data Exfiltration: The Only True Guarantee
 
 This is the strongest selling point, and it deserves emphasis. The privacy proxy in Chapter 6 anonymizes data before sending it to an API. That is good. But the data still travels over a network, still reaches a third-party server in some form, and still requires trust that the anonymization was complete and the provider honored their data handling commitments.
 
-Local deployment eliminates the entire chain. The data does not leave the device. There is no network call to intercept. There is no third-party server to trust. There is no data processing agreement to negotiate because no data is being processed by anyone other than the employee's own machine. For industries where data sensitivity is not a preference but a legal requirement — defense contractors, intelligence agencies, law firms handling privileged communications, healthcare providers with patient data, financial institutions with trading strategies — this is not a nice-to-have. It is the only architecture that satisfies the requirement.
+Local deployment eliminates the entire chain. The data does not leave the device. There is no network call to intercept. There is no third-party server to trust. There is no data processing agreement to negotiate because no data is being processed by anyone other than the employee's own machine. For industries where data sensitivity is not a preference but a legal requirement (defense contractors, intelligence agencies, law firms handling privileged communications, healthcare providers with patient data, financial institutions with trading strategies), this is not a nice-to-have but the only architecture that satisfies the requirement.
 
 No other deployment model can make this claim. Not the privacy proxy. Not Azure's EU data boundary. Not Anthropic's regional processing. Only local.
 
@@ -113,11 +113,11 @@ Adding a new user means deploying the model to one more laptop. There is no back
 
 ### Works Offline
 
-Employees on airplanes, at client sites without reliable WiFi, in secure facilities that prohibit external network connections, in regions with poor connectivity — they all have full AI capability. For consulting firms whose people spend half their time at client sites, for field engineers, for traveling executives, this is a practical advantage that cloud-based AI cannot match.
+Employees on airplanes, at client sites without reliable WiFi, in secure facilities that prohibit external network connections, in regions with poor connectivity: they all have full AI capability. For consulting firms whose people spend half their time at client sites, for field engineers, for traveling executives, this is a practical advantage that cloud-based AI cannot match.
 
 ### Natural Extension of Your Existing Business
 
-If you manage endpoints today — deploy software, push updates, enforce security policies, maintain configurations across a fleet of corporate devices — then local AI deployment is a natural extension of that capability. You already have the MDM (Mobile Device Management) infrastructure, the deployment pipelines, the support processes, and the client relationships. Adding a managed AI layer to your existing endpoint management service is an upsell, not a pivot.
+If you manage endpoints today (deploy software, push updates, enforce security policies, maintain configurations across a fleet of corporate devices), then local AI deployment is a natural extension of that capability. You already have the MDM (Mobile Device Management) infrastructure, the deployment pipelines, the support processes, and the client relationships. Adding a managed AI layer to your existing endpoint management service is an upsell, not a pivot.
 
 ## The Trajectory Argument
 
@@ -127,15 +127,17 @@ That is true today. A quantized 8B model running on a MacBook is noticeably less
 
 But consider the trajectory.
 
-The best 8-13B models available in early 2026 — Llama 3.1 8B, Phi-4, Qwen 2.5, and the current crop of small Mistral models — are already substantially better than GPT-3.5 was when it launched ChatGPT and ignited the entire generative AI revolution. GPT-3.5 was good enough to onboard 100 million users in two months. Today's local models exceed that capability, running entirely on a laptop, with no internet connection required.
+The best 8-13B models available in early 2026 (Llama 3.1 8B, Phi-4, Qwen 2.5, and the current crop of small Mistral models) are already substantially better than GPT-3.5 was when it launched ChatGPT and ignited the entire generative AI revolution. GPT-3.5 was good enough to onboard 100 million users in two months. Today's local models exceed that capability, running entirely on a laptop, with no internet connection required.
 
 And the trajectory is accelerating from both sides: models are getting better at smaller sizes, and hardware is getting more powerful.
 
 ### The Model Side
 
-Every major AI lab is investing heavily in efficient small models. The techniques that make this possible — knowledge distillation from larger models, more efficient training data curation, architectural improvements like mixture-of-experts at smaller scales, improved quantization methods that reduce precision loss — are advancing rapidly. The gap between a 10B parameter model and a 100B parameter model in 2026 is meaningfully smaller than the same gap was in 2024.
+Every major AI lab is investing heavily in efficient small models. The techniques that make this possible (knowledge distillation from larger models, more efficient training data curation, architectural improvements like mixture-of-experts at smaller scales, improved quantization methods that reduce precision loss) are advancing rapidly. The gap between a 10B parameter model and a 100B parameter model in 2026 is meaningfully smaller than the same gap was in 2024.
 
-In two to three years, a 30-40B model will fit comfortably in the 32-48GB of unified memory that mid-range Apple Silicon laptops will ship with. A 30-40B model in 2028, trained with the techniques of 2028, will be competitive with the frontier models of 2026 for the vast majority of business tasks. Not for cutting-edge research. Not for the hardest reasoning benchmarks. But for drafting emails, summarizing documents, analyzing spreadsheets, generating reports, writing code, answering questions about internal documentation — the tasks that constitute 90% of enterprise AI usage.
+In two to three years, a 30-40B model will fit comfortably in the 32-48GB of unified memory that mid-range Apple Silicon laptops will ship with. A 30-40B model in 2028, trained with the techniques of 2028, will be competitive with the frontier models of 2026 for the vast majority of business tasks. Not for cutting-edge research. Not for the hardest reasoning benchmarks. But for drafting emails, summarizing documents, analyzing spreadsheets, generating reports, writing code, answering questions about internal documentation: the tasks that constitute 90% of enterprise AI usage.
+
+One honest caveat on this trajectory: it assumes open-weight releases keep tracking the frontier. That is a publishing choice made by a handful of labs, not a law of nature, and labs revisit the choice as their strategic position changes (the July 2026 gating of the most capable US models is the sharpest recent case of openness repricing overnight). The argument that open is a position, not a principle, is made in the companion booklet [The Mercantilism of Generative AI](/mercantilism-of-genai/#m-open). If it is right, the local-deployment business still holds, but which lab's models you deploy will shift with whoever's position favours openness at the time, which is one more reason to keep the whole stack model-agnostic.
 
 ### The Hardware Side
 
@@ -145,9 +147,9 @@ The trend is unmistakable: every chip vendor is optimizing for on-device AI infe
 
 ### The Strategic Implication
 
-Building local deployment muscle now — the tooling, the expertise, the deployment processes, the client relationships, the model evaluation methodology — gives you a massive head start. When 30-40B models run smoothly on standard corporate laptops in two to three years, the providers who have been deploying and managing local AI since 2026 will have years of operational experience, established client relationships, refined update processes, and a reputation for making this work. The providers who waited will be starting from scratch in a market where the early movers have already locked up the most sophisticated clients.
+Building local deployment muscle now (the tooling, the expertise, the deployment processes, the client relationships, the model evaluation methodology) gives you a massive head start. When 30-40B models run smoothly on standard corporate laptops in two to three years, the providers who have been deploying and managing local AI since 2026 will have years of operational experience, established client relationships, refined update processes, and a reputation for making this work. The providers who waited will be starting from scratch in a market where the early movers have already locked up the most sophisticated clients.
 
-> **Key takeaway:** The intelligence gap between local and cloud models is real today and closing fast. Building local deployment capability now is not about what 8B models can do today — it is about being the established provider when 30-40B models run on every laptop in two to three years. The providers who start now will own this market. The providers who wait will be competing on price against incumbents with years of operational advantage.
+> **Key takeaway:** The intelligence gap between local and cloud models is real today and closing fast. Building local deployment capability now is about being the established provider when 30-40B models run on every laptop in two to three years, not about what 8B models can do today. The providers who start now will own this market. The providers who wait will be competing on price against incumbents with years of operational advantage.
 
 ## The Honest Problems
 
@@ -155,19 +157,19 @@ The trajectory is encouraging. The present has real limitations. Your sales team
 
 ### Quality Gap Is Noticeable
 
-A user who has experienced Claude Sonnet or GPT-4.1 will notice the difference when using a local 8B model. Complex multi-step reasoning degrades. Nuanced coding tasks produce more errors. Long-context analysis — the kind where a user pastes a 50-page contract and asks for a summary — may exceed the local model's effective context window or produce less accurate results. Creative writing lacks the polish of frontier models.
+A user who has experienced Claude Sonnet or GPT-4.1 will notice the difference when using a local 8B model. Complex multi-step reasoning degrades. Nuanced coding tasks produce more errors. Long-context analysis, the kind where a user pastes a 50-page contract and asks for a summary, may exceed the local model's effective context window or produce less accurate results. Creative writing lacks the polish of frontier models.
 
 This is not a subtle difference. Users will compare, and the comparison will not always favor the local model. Your positioning must be honest about what the local model excels at (fast responses, data privacy, offline availability, unlimited usage) and where users should expect to use a cloud model for demanding tasks.
 
 ### Users Will Compare to ChatGPT
 
-This is the consumer expectations problem. Your client's employees use ChatGPT or Claude at home. They know what frontier models feel like. When you give them a local model that stumbles on a complex query, their instinct is not "this is a reasonable trade-off for data privacy." Their instinct is "this is worse." Managing that expectation requires proactive communication, honest capability documentation, and — critically — the hybrid approach described below.
+This is the consumer expectations problem. Your client's employees use ChatGPT or Claude at home. They know what frontier models feel like. When you give them a local model that stumbles on a complex query, their instinct is "this is worse," not "this is a reasonable trade-off for data privacy." Managing that expectation requires proactive communication, honest capability documentation, and, critically, the hybrid approach described below.
 
 ### Model Update and Guardrail Management
 
-When a better model becomes available — and this happens every few months — who tests it, validates it against the client's use cases, ensures the guardrails still work, and pushes it to 500 laptops without disrupting anyone's workflow? This is an MDM-like challenge, and it is genuinely hard. Models are not operating system patches. A model update can change the behavior of every AI interaction the employee has. Testing and validation before deployment is essential, and the tooling for this is still immature.
+When a better model becomes available (and this happens every few months), who tests it, validates it against the client's use cases, ensures the guardrails still work, and pushes it to 500 laptops without disrupting anyone's workflow? This is an MDM-like challenge, and it is genuinely hard. Models are not operating system patches. A model update can change the behavior of every AI interaction the employee has. Testing and validation before deployment is essential, and the tooling for this is still immature.
 
-You also need guardrails without a server. Content filtering, usage policies, and output restrictions typically rely on a server-side layer that inspects requests and responses. In a local deployment, that layer must run locally as well, consuming additional resources and adding complexity to the deployment. Getting this right — especially in regulated industries where guardrail failures have compliance implications — requires real engineering effort.
+You also need guardrails without a server. Content filtering, usage policies, and output restrictions typically rely on a server-side layer that inspects requests and responses. In a local deployment, that layer must run locally as well, consuming additional resources and adding complexity to the deployment. Getting this right, especially in regulated industries where guardrail failures have compliance implications, requires real engineering effort.
 
 ### Windows Fragmentation
 
@@ -177,13 +179,21 @@ Windows is a different story. Some corporate laptops have discrete NVIDIA GPUs w
 
 For clients with a homogeneous Mac fleet, local deployment is clean. For clients with heterogeneous Windows hardware, expect fragmentation headaches and plan your support costs accordingly.
 
+### The OS Vendors Are Coming for This Too
+
+Chapter 6 was honest that the privacy proxy lives on a gap the vendors are actively closing. The same honesty is owed here, because this model has its own version of that fragility: the operating system vendors are shipping local AI themselves.
+
+Microsoft is building small models into Windows and the Office suite, with Copilot+ PCs specified around NPU performance. Apple ships on-device foundation models integrated with the operating system and exposed to every app on the machine. Each OS release moves more of "a model running locally on the laptop" from something you install into something that was already there when the laptop arrived. The day a client asks "why do we pay you to deploy a local model when Windows ships one?", the naive version of this business is over.
+
+What survives the question is everything except the installation. OS-integrated models are generic by design: the vendor picks the model, the update schedule, the guardrails, and the telemetry, and none of those choices answer to your client's compliance team. The managed service described in this chapter (curated model selection, auditable guardrails, controlled update cycles, fleet-wide validation, integration with the client's own systems) is exactly what the OS default does not provide. Position the built-in AI as the entry-level tier you manage around, not as competition to pretend away, and fold it into the hybrid routing below where it earns its place.
+
 ## The Hybrid Approach: Best of Both Worlds
 
-The smartest deployment is not pure local. It is local-first with cloud fallback.
+The smartest deployment is local-first with cloud fallback, not pure local.
 
-The architecture works like this: the local model handles everyday tasks — email drafting, document summarization, quick code generation, Q&A against internal knowledge bases, meeting note processing, routine analysis. These represent 80-90% of a typical knowledge worker's AI interactions, and a good 8-13B model handles them well.
+The architecture works like this: the local model handles everyday tasks: email drafting, document summarization, quick code generation, Q&A against internal knowledge bases, meeting note processing, routine analysis. These represent 80-90% of a typical knowledge worker's AI interactions, and a good 8-13B model handles them well.
 
-When the user encounters a task that requires frontier model capability — complex multi-step reasoning, long-document analysis, sophisticated code refactoring, nuanced creative work — the system routes that request to a cloud API. The user experiences a seamless transition. The local model handles the volume. The cloud model handles the peaks.
+When the user encounters a task that requires frontier model capability (complex multi-step reasoning, long-document analysis, sophisticated code refactoring, nuanced creative work), the system routes that request to a cloud API. The user experiences a seamless transition. The local model handles the volume. The cloud model handles the peaks.
 
 This hybrid approach offers three advantages:
 
@@ -191,7 +201,7 @@ This hybrid approach offers three advantages:
 2. **Quality management.** Users get frontier model quality when they need it, without the "this is worse than ChatGPT" frustration. The system intelligently routes based on task complexity, or the user can explicitly request cloud processing for important tasks.
 3. **Graceful degradation.** When the user is offline, the local model handles everything. The experience degrades gracefully rather than failing entirely. For employees who travel or work in low-connectivity environments, this is the difference between having AI and not having it.
 
-Your managed service includes configuring the routing logic, managing the API integration for cloud fallback, and optimizing the split between local and cloud based on the client's usage patterns and budget. This routing optimization itself becomes a recurring advisory engagement — reviewing monthly usage data, adjusting thresholds, recommending model upgrades, and ensuring the client gets maximum value from both tiers.
+Your managed service includes configuring the routing logic, managing the API integration for cloud fallback, and optimizing the split between local and cloud based on the client's usage patterns and budget. This routing optimization itself becomes a recurring advisory engagement: reviewing monthly usage data, adjusting thresholds, recommending model upgrades, and ensuring the client gets maximum value from both tiers.
 
 ## The Model Lifecycle: Your Recurring Revenue Engine
 
@@ -199,9 +209,9 @@ Open-source models are superseded every few months. Llama 3 replaced Llama 2. Mi
 
 For an individual user running Ollama on their personal laptop, a model update is a download and a restart. For an enterprise with 500 employees relying on local AI for daily work, a model update is a project.
 
-Someone needs to evaluate the new model against the client's specific use cases. Someone needs to test the guardrails with the new model's behavior characteristics. Someone needs to validate that the quantized version maintains acceptable quality. Someone needs to plan the rollout — all 500 devices at once, or a phased deployment with a canary group? Someone needs to handle the exceptions — the devices that fail to update, the users who report regressions, the edge cases where the new model behaves differently on a task the old model handled well.
+Someone needs to evaluate the new model against the client's specific use cases. Someone needs to test the guardrails with the new model's behavior characteristics. Someone needs to validate that the quantized version maintains acceptable quality. Someone needs to plan the rollout: all 500 devices at once, or a phased deployment with a canary group? Someone needs to handle the exceptions: the devices that fail to update, the users who report regressions, the edge cases where the new model behaves differently on a task the old model handled well.
 
-That someone is you. And that lifecycle management is recurring revenue that renews every time a meaningful new model is released — which, at the current pace of open-source AI development, means quarterly at minimum.
+That someone is you. And that lifecycle management is recurring revenue that renews every time a meaningful new model is released, which, at the current pace of open-source AI development, means quarterly at minimum.
 
 The revenue streams compound:
 
@@ -211,13 +221,13 @@ The revenue streams compound:
 - **Guardrail reconfiguration:** Each new model may require updated content filtering rules, output formatting adjustments, and compliance validation. Ongoing maintenance revenue.
 - **Performance optimization:** Tuning inference parameters, adjusting quantization settings, optimizing memory usage for the specific hardware fleet. Technical services revenue.
 
-This lifecycle creates a durable, recurring revenue relationship that deepens over time. The longer you manage a client's local AI deployment, the more institutional knowledge you accumulate about their use cases, their hardware fleet, their users' preferences, and their compliance requirements. Switching to another provider means losing all of that accumulated context — a meaningful switching cost that protects your revenue without contractual lock-in.
+This lifecycle creates a durable, recurring revenue relationship that deepens over time. The longer you manage a client's local AI deployment, the more institutional knowledge you accumulate about their use cases, their hardware fleet, their users' preferences, and their compliance requirements. Switching to another provider means losing all of that accumulated context, a meaningful switching cost that protects your revenue without contractual lock-in.
 
-> **Key takeaway:** The model lifecycle is not a burden — it is your business model. Every new open-source release creates a managed upgrade engagement. Every fine-tuning investment creates transfer work. Every guardrail update requires validation. The pace of open-source AI development is not a threat to your business. It is the engine that drives recurring revenue.
+> **Key takeaway:** The model lifecycle is your business model, not a burden. Every new open-source release creates a managed upgrade engagement. Every fine-tuning investment creates transfer work. Every guardrail update requires validation. The pace of open-source AI development is the engine that drives recurring revenue, not a threat to your business.
 
 ## The Recommendation
 
-Build local deployment capability now. Do not wait for the models to get better — they will, and when they do, you want to be the established provider with operational experience, not the newcomer trying to catch up.
+Build local deployment capability now. Do not wait for the models to get better; they will, and when they do, you want to be the established provider with operational experience, not the newcomer trying to catch up.
 
 Start with your clients who have the clearest need: those with strict data sovereignty requirements, those with homogeneous Apple Silicon fleets, those whose employees already use AI heavily and are generating large API bills, and those in regulated industries where the "zero data exfiltration" guarantee has immediate compliance value.
 
@@ -228,9 +238,9 @@ Your initial offering should include:
 - **Managed service** (monthly per-user fee): ongoing model updates, performance monitoring, support, and quarterly model lifecycle reviews.
 - **Hybrid integration** (optional add-on): cloud API fallback configuration, routing optimization, and cost management for the local+cloud tier.
 
-The pricing — $20-50 per user per month for the managed service — positions you well below per-user API costs for moderate to heavy users while delivering margins that improve dramatically with scale. At 500 users paying an average of $35/month, you are generating $210,000 in annual recurring revenue at 77% gross margins. That is a real business built on open-source software, commodity hardware, and operational expertise.
+The pricing, $20-50 per user per month for the managed service, positions you well below per-user API costs for moderate to heavy users while delivering margins that improve dramatically with scale. At 500 users paying an average of $35/month, you are generating $210,000 in annual recurring revenue at 77% gross margins. That is a real business built on open-source software, commodity hardware, and operational expertise.
 
-This is the good news chapter. Of all the business model pivots available to EU IT services providers, local deployment is the one where your existing skills — endpoint management, device fleet support, software deployment, security configuration — translate most directly. The economics are favorable. The trajectory is in your favor. The defensibility is structural. And the competitive landscape is wide open because most providers have not yet realized that managing AI on a laptop is fundamentally the same business as managing everything else on that laptop.
+This is the good news chapter. Of all the business model pivots available to EU IT services providers, local deployment is the one where your existing skills (endpoint management, device fleet support, software deployment, security configuration) translate most directly. The economics are favorable. The trajectory is in your favor. The defensibility is structural. And the competitive landscape is wide open because most providers have not yet realized that managing AI on a laptop is fundamentally the same business as managing everything else on that laptop.
 
 > **Key takeaway:** Local deployment is the most naturally defensible AI business model for IT services providers. Zero data exfiltration, zero compute cost, strong margins at scale, and a trajectory that turns today's adequate local models into tomorrow's good-enough-for-everything models. Start building this capability now. The providers who establish local deployment expertise in 2026 will own the market when on-device AI becomes the default enterprise deployment model in 2028 and beyond.
 
@@ -240,11 +250,11 @@ This is the good news chapter. Of all the business model pivots available to EU 
 >
 > Local deployment is where the model/hardware trajectory moves fastest. Re-verify:
 >
-> - **Named open-source models** (Llama 3.1 8B, Phi-4, Qwen 2.5, small Mistral models) — new releases ship roughly quarterly and supersede prior generations. The specific versions quoted here will be outdated within 3-4 months; the *class* of capability (competitive 8-13B models running on a laptop) is the durable claim.
-> - **Hardware viability thresholds** — the "24GB MacBook runs an 8-13B model" boundary will expand as quantisation improves and unified memory grows. Expect 36-48GB machines to become mainstream corporate specs and 30-40B models to become viable on them within 24 months, not the 2-3 years cited.
+> - **Named open-source models** (Llama 3.1 8B, Phi-4, Qwen 2.5, small Mistral models): new releases ship roughly quarterly and supersede prior generations. The specific versions quoted here will be outdated within 3-4 months; the *class* of capability (competitive 8-13B models running on a laptop) is the durable claim.
+> - **Hardware viability thresholds**: the "24GB MacBook runs an 8-13B model" boundary will expand as quantisation improves and unified memory grows. Expect 36-48GB machines to become mainstream corporate specs and 30-40B models to become viable on them within 24 months, not the 2-3 years cited.
 > - **Daily heavy-usage API costs** ($9,000-$18,000/year for power users) track API pricing, which is trending down. The break-even calculation for local hardware stays favourable but the specific numbers move.
-> - **Runtime state-of-the-art** — llama.cpp, MLX, Ollama, LM Studio, and commercial equivalents evolve continuously. Re-evaluate the stack before committing to tooling choices.
+> - **Runtime state-of-the-art**: llama.cpp, MLX, Ollama, LM Studio, and commercial equivalents evolve continuously. Re-evaluate the stack before committing to tooling choices.
 
 ---
 
-*Chapter 8 examines the third independent business model: providing the testing, security, and agentic infrastructure that every organization deploying AI — whether in the cloud or locally — needs but almost none have built.*
+*Chapter 8 examines the third independent business model: providing the testing, security, and agentic infrastructure that every organization deploying AI, whether in the cloud or locally, needs but almost none have built.*

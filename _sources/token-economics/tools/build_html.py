@@ -290,7 +290,7 @@ blockquote p:last-child {
     margin-bottom: 0;
 }
 
-/* Freshness Watch — amber aside flagging time-sensitive claims */
+/* Freshness Watch: amber aside flagging time-sensitive claims */
 .freshness-watch {
     border-left: 4px solid #d97706;
     background: rgba(217, 119, 6, 0.06);
@@ -327,7 +327,7 @@ blockquote p:last-child {
     margin-bottom: 0;
 }
 
-/* At a glance — navy chapter-opening panel with presenter talking points */
+/* At a glance: navy chapter-opening panel with presenter talking points */
 .at-a-glance {
     border: 1px solid rgba(30, 58, 95, 0.18);
     border-left: 4px solid var(--navy);
@@ -365,7 +365,7 @@ blockquote p:last-child {
     color: var(--navy);
 }
 
-/* Table captions — numbered labels above tables */
+/* Table captions: numbered labels above tables */
 .table-caption {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 0.8rem;
@@ -582,6 +582,19 @@ def build():
         ch_id = make_id(title)
         chapters.append((title, ch_id, html_content))
 
+    # Rewrite inter-chapter links (href="NN_chapter_file.md") to in-page
+    # anchors so the single-page build has no broken .md links.
+    file_to_id = {os.path.basename(f): ch_id for f, (_, ch_id, _) in zip(files, chapters)}
+
+    def _md_href_to_anchor(m):
+        target = file_to_id.get(m.group(1))
+        return f'href="#{target}"' if target else m.group(0)
+
+    chapters = [
+        (title, ch_id, re.sub(r'href="([0-9]{2}_[A-Za-z0-9_]+\.md)"', _md_href_to_anchor, html_content))
+        for (title, ch_id, html_content) in chapters
+    ]
+
     # Build sidebar nav
     nav_items = []
     for i, (title, ch_id, _) in enumerate(chapters):
@@ -612,12 +625,12 @@ def build():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Token Economics — A Strategic Guide for EU IT Services Providers</title>
+    <title>The Token Economics &middot; A Strategic Guide for EU IT Services Providers</title>
     <meta name="description" content="A strategic guide for EU IT services providers navigating GenAI: self-hosting vs APIs, business model pivots, EU AI Act compliance, and an 18-month roadmap.">
     <link rel="canonical" href="https://publications.barcik.training/token-economics/">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="The Token Economics — A Strategic Guide for EU IT Services Providers">
+    <meta property="og:title" content="The Token Economics &middot; A Strategic Guide for EU IT Services Providers">
     <meta property="og:description" content="A strategic guide for EU IT services providers navigating GenAI: self-hosting vs APIs, business model pivots, EU AI Act compliance, and an 18-month roadmap.">
     <meta property="og:url" content="https://publications.barcik.training/token-economics/">
     <meta property="og:image" content="https://publications.barcik.training/assets/og-card.png">
