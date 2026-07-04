@@ -46,3 +46,21 @@ Frontier intelligence is being reclassified — from a *product* the market want
 ## Origin
 
 Written by Robert Barcik in conversation with Claude (Opus 4.8), June 2026, in the days after the recall — itself a sequel to *Scenario Planning for Generative AI*, co-written with Fable the day before the recall.
+
+## Update log
+
+### July 4, 2026 — the gated return (trigger log updated)
+
+Status Robert reported (July 2–4): the recall's restoration settled into a gated shape.
+
+- **Mythos**: available only to a small set of vetted companies, primarily American.
+- **Fable**: available to anyone, but API-credits-only, expensive, behind a heavy classifier/moderation layer.
+- **The frontier has one occupant**: no vendor outside Anthropic offers Mythos/Fable-class capability as of this update (tagged `estimated` in the log, with the honest caveat that a single firm's lead is also just a lead).
+
+Changes made in `index.html` (booklet body kept as June time-capsule; only the parts designed to change were touched):
+- Cover meta: "June 2026 · log updated July 2026".
+- Trigger log: three new entries — "The gated return" (fired; notes the control line moved from person-nationality to firm-nationality, i.e. redrawn where it can be enforced), "Tiers arrived without a statute" (fired; Mechanism 1's tiering signal, via access policy not law), "The frontier has one occupant" (watching).
+- Bet 1: green "Scored · July 2026" strip — won months early, in the gated form it named.
+- Mechanism 1 trigger list: capability-tiers signal marked fired (via access policy), pointing to the log.
+
+Cross-booklet consistency: scenario-planning C4 log already records the same gated restoration.
