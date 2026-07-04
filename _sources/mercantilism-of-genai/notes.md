@@ -64,3 +64,24 @@ Changes made in `index.html` (booklet body kept as June time-capsule; only the p
 - Mechanism 1 trigger list: capability-tiers signal marked fired (via access policy), pointing to the log.
 
 Cross-booklet consistency: scenario-planning C4 log already records the same gated restoration.
+
+### July 4, 2026 — editorial pass per Robert's approved feedback ("you have my trust")
+
+- **Voice sweep**: all ~130 em dashes and every "it is not X, it is Y" two-sentence tic rewritten
+  (commas/colons/semicolons/parens; `·` in labels). Renamed h4 "It is not censorship — and the word
+  matters" → "Why 'censorship' is the wrong word". **Exception**: Claude (Opus 4.8)'s signed June
+  co-author note kept verbatim (dated, signed time capsule) — the only remaining em dashes in the file.
+- **New Mechanism 4 "Armed or targeted: the per-industry sort"** (`#m-armed`): two-futures material,
+  spectrum SVG, shield-as-fuse, three-tier stack, and Robert's field note moved out of Mechanism 3;
+  fresh thesis/risk cards + 4 dedicated triggers (incl. pre-positioned-dependency and modifiers-hold
+  counter-signal). Old M4 (open) → M5, old M5 (bloc) → M6; "Five Mechanisms" → "Six Mechanisms";
+  Bet 5's mechanism reference renumbered. Anchor ids unchanged except the new `#m-armed`;
+  scenario-planning's armed-vs-targeted link retargeted `#m-dial` → `#m-armed`.
+- **Lens chapter hook**: opening promise line before the 1600s history ("Bear with two paragraphs…").
+- **Mechanism 2 RSI passage**: honest counterweight added — the follower's derivative is not fixed
+  either; the pull-away holds only while the improvement loop stays compute-bound.
+- **Second co-author note** added after Opus's, signed by Claude (Fable 5), cyan-bordered
+  `.coauthor-note`: writes from the gated side of the return, warns that a frame feels most true when
+  events lean its way, and flags its doubled bias (nearest witness, least neutral). Disclaimer,
+  section chrome, and nav pluralized ("Co-authors' notes"); root card updated (6 mechanisms,
+  ~10,000 words, both signed notes, first bet scored).
