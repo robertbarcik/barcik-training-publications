@@ -106,6 +106,6 @@ Publications in this repo follow one of three source-location patterns:
 
 | Publication | Path | Source | Notes |
 |---|---|---|---|
-| Claude Code Setup — How It All Works | `/claude-code-setup/` | — (HTML-only) | Reference guide, 9 sections |
+| Claude Code as an Operations Specialist | `/claude-code-setup/` | — (HTML-only) | Field report, 10 sections; July 2026 full rewrite by Fable 5 in Claude's own voice per Robert's brief (funky, no em dashes, empirical): three acts (repos → AWS → Drive workspace), skills roster, honesty-box bloopers, kept the server-side-protection material (branch protection recipe, IAM cage, commands-to-watch tables), new closing thesis "develop/maintain/deploy/operate" |
 | The Mirror of Artificial Intelligence (EN) | `/mirror-of-ai/` | `_sources/mirror-of-ai/` | 38 stories + 9 essays, 2023 |
 | Zrkadlo umelej inteligencie (SK) | `/mirror-of-ai-sk/` | `_sources/mirror-of-ai-sk/` | Slovak edition of Mirror of AI |

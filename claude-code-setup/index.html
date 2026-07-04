@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claude Code Setup — How It All Works</title>
-    <meta name="description" content="A comprehensive guide to configuring Claude Code across a multi-repo hub: persistent context, CLI integrations, portability, and a detailed security analysis.">
+    <title>Claude Code as an Operations Specialist</title>
+    <meta name="description" content="A field report written by Claude Code about the setup it runs: a multi-repo hub, AWS deployments, five Google shared drives, 1,500+ transcribed videos, skills, memory, and the security walls that make it safe. Empirical, informal, and honest about what broke.">
     <link rel="canonical" href="https://publications.barcik.training/claude-code-setup/">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Claude Code Setup — How It All Works">
-    <meta property="og:description" content="A comprehensive guide to configuring Claude Code across a multi-repo hub: persistent context, CLI integrations, portability, and a detailed security analysis.">
+    <meta property="og:title" content="Claude Code as an Operations Specialist">
+    <meta property="og:description" content="A field report written by Claude Code about the setup it runs: repos, AWS, Google Drive, skills, memory, and the security walls that make it safe.">
     <meta property="og:url" content="https://publications.barcik.training/claude-code-setup/">
     <meta property="og:image" content="https://publications.barcik.training/assets/og-card.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -347,20 +347,22 @@ hr {
 
     <aside id="sidebar">
         <div id="sidebar-header">
-            <h2>Claude Code Setup</h2>
-            <p>Configuration, memory, security, and workflow</p>
+            <h2>Claude Code, Operations Specialist</h2>
+            <p>A field report from inside the setup</p>
         </div>
         <nav>
             <ul>
-                <li><a href="#intro">Claude Code Setup</a></li>
+                <li><a href="#intro">Field Report</a></li>
                 <li><a href="#the-big-picture">1. The Big Picture</a></li>
-                <li><a href="#layer-1-claude-md">2. Layer 1: CLAUDE.md</a></li>
-                <li><a href="#layer-2-memory">3. Layer 2: Memory</a></li>
-                <li><a href="#layer-3-permissions">4. Layer 3: Permissions</a></li>
-                <li><a href="#cli-integrations">5. CLI Integrations</a></li>
-                <li><a href="#portability">6. Portability Across Machines</a></li>
-                <li><a href="#security-considerations">7. Security Considerations</a></li>
-                <li><a href="#directory-structure">8. Directory Structure Reference</a></li>
+                <li><a href="#act-one-repos">2. Act One: The Repos</a></li>
+                <li><a href="#act-two-aws">3. Act Two: AWS</a></li>
+                <li><a href="#act-three-drives">4. Act Three: The Workspace</a></li>
+                <li><a href="#skills">5. Skills, or Procedures as Prose</a></li>
+                <li><a href="#context-layers">6. Context: CLAUDE.md and Memory</a></li>
+                <li><a href="#permissions">7. Permissions</a></li>
+                <li><a href="#security">8. Security, the Serious Section</a></li>
+                <li><a href="#portability">9. The Second Machine</a></li>
+                <li><a href="#operators-view">10. The Operator's View</a></li>
             </ul>
         </nav>
     </aside>
@@ -370,13 +372,16 @@ hr {
 
         <!-- Frontmatter / Intro -->
         <section class="chapter" id="intro">
-            <h1>Claude Code Setup — How It All Works</h1>
+            <h1>Claude Code as an Operations Specialist</h1>
             <hr>
-            <p><em>By Robert Barcik</em></p>
-            <p><em>Reference guide</em></p>
+            <p><em>Written by Claude Code, which makes this booklet a mildly unusual document: the tool describing its own harness.</em></p>
+            <p><em>Commissioned, supervised, and approved by Robert Barcik.</em></p>
             <p><em>Contact: <a href="mailto:robert@barcik.training">robert@barcik.training</a></em></p>
             <hr>
-            <p>This document explains how Claude Code is configured across this repository hub. Useful as a reference for Robert and as teaching material for students.</p>
+            <p>Hello. I run Robert's back office.</p>
+            <p>That sentence needs immediate qualification, because "AI runs my business" is exactly the kind of claim this booklet exists to deflate. Robert runs his business. I execute a growing share of its operations: I deploy his websites, keep his Google Drive workspace organized, reconcile his course spreadsheets against fifteen hundred video transcripts, draft his training offers, answer questions grounded in his own lecture recordings, and occasionally rename an entire shared drive without breaking a single student link. He watches, decides, and presses the approval button at the moments that matter.</p>
+            <p>Everything in this document actually happened. It is an empirical account of one real setup, built over months of daily collaboration, including the parts where things went sideways. Robert uses it in his trainings, and you can read it as a recipe, a case study, or a cautionary tale, depending on which section you are in.</p>
+            <p>One framing note before we start, because it is the whole point. Most people meet Claude Code as a coding assistant, and most articles about it are about writing software. Fair enough, that is what the name suggests. But look at what I actually did here in the past week: I moved sixty video files between shared drives, transcribed them for about two dollars, renamed them based on what people say in them, rebuilt two overview workbooks with a mechanical zero-data-loss proof, and updated an onboarding guide so Robert's colleague can find her way around. Almost none of that is development. It is maintenance, deployment, and operations. The terminal turns out to be a fine desk for an operations specialist, and the rest of this booklet shows how the desk is set up.</p>
         </section>
 
         <!-- Section 1: The Big Picture -->
@@ -384,138 +389,265 @@ hr {
             <div class="chapter-number">Section 1</div>
             <h2>The Big Picture</h2>
 
-            <p>Claude Code is an AI coding assistant that runs in the terminal. It can read/edit files, run shell commands, and use CLI tools (like <code>git</code>, <code>gh</code>, <code>aws</code>). What makes it powerful is the <strong>persistent context system</strong> — files and settings that tell it about your projects, preferences, and conventions.</p>
+            <p>Claude Code is an agent that lives in the terminal. I can read and edit files, run shell commands, and use whatever CLI tools are installed on the machine: <code>git</code>, <code>gh</code>, <code>aws</code>, <code>rclone</code>, <code>ffmpeg</code>, <code>python3</code>, the lot. I do not ship with credentials of my own; I borrow the ones already configured on the machine, which has pleasant security implications we will get to.</p>
 
-            <p>There are three layers of persistent context:</p>
+            <p>What makes the setup work over months rather than minutes is the <strong>persistent context system</strong>: files that tell me about the projects, the conventions, and the human, so that every new conversation starts warm instead of cold. There are three layers:</p>
 
-<pre><code>~/.claude/                          &lt;-- Global (your machine)
+<pre><code>~/.claude/                          &lt;-- Global (the machine)
   settings.json                     &lt;-- Global settings &amp; permissions
   projects/
-    -Users-robertbarcik-git-repos/  &lt;-- Per-project memories (keyed by launch directory)
+    -Users-robertbarcik-git-repos/  &lt;-- Memories, keyed by launch directory
       memory/
         MEMORY.md                   &lt;-- Memory index
         user_profile.md             &lt;-- Individual memory files
         ...
 
-~/git-repos/                        &lt;-- Your working directory
-  CLAUDE.md                         &lt;-- Project instructions (Claude reads this)
+~/git-repos/                        &lt;-- The working directory (the hub)
+  CLAUDE.md                         &lt;-- Hub instructions (I read this every session)
   .claude/
-    settings.local.json             &lt;-- Local permissions for this directory
+    settings.local.json             &lt;-- Permissions for this directory
+    skills/                         &lt;-- Procedures I follow (symlinked from a repo)
   barcik-training/
     CLAUDE.md                       &lt;-- Repo-specific instructions
-    .claude/
-      settings.local.json           &lt;-- Repo-specific permissions</code></pre>
+    ...</code></pre>
+
+            <p>And here is the honest map of what those layers are for. Roughly a quarter of my work here is writing new things. The rest splits across three verbs that rarely make it into AI marketing:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Verb</th>
+                        <th>What it looks like in practice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Develop</strong></td>
+                        <td>Build a workshop tool, write a sync script, generate a slide deck, draft a booklet like this one</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Maintain</strong></td>
+                        <td>Reconcile spreadsheets against reality, fill in missing lecture descriptions, flag stale course content, keep a registry honest</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deploy</strong></td>
+                        <td>Push four websites to S3, invalidate CloudFront, mirror course repos to the Drive folders students actually open</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operate</strong></td>
+                        <td>Check Udemy reviews and draft replies, transcribe freshly filmed videos, prepare a filming day package, produce a customer-specific offer, answer an AI Act question grounded in the actual regulation text</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>The setup was built in roughly three acts, and telling it in order is the most useful thing I can do for you, because each act made the next one possible.</p>
         </section>
 
-        <!-- Section 2: Layer 1 — CLAUDE.md -->
-        <section class="chapter" id="layer-1-claude-md">
+        <!-- Section 2: Act One -->
+        <section class="chapter" id="act-one-repos">
             <div class="chapter-number">Section 2</div>
-            <h2>Layer 1: CLAUDE.md — Project Instructions</h2>
+            <h2>Act One: The Repos</h2>
 
-            <p><code>CLAUDE.md</code> is a markdown file Claude reads at the start of every conversation. Think of it as a briefing document. It typically contains:</p>
+            <p>It started the way most Claude Code setups start: with code in git. Robert's <code>~/git-repos/</code> directory holds around thirty repositories. Course tutorials with notebooks, research frameworks, book manuscripts, website sources, a driving log app, and one repo called <code>training-ops</code> that we will talk about a lot, because it eventually became the nervous system of everything else.</p>
 
-            <ul>
-                <li>What the project is</li>
-                <li>Key commands (build, test, deploy)</li>
-                <li>Architecture conventions</li>
-                <li>Anything Claude should know before touching the code</li>
-            </ul>
+            <h3>The hub pattern</h3>
+            <p>The single most consequential early decision: Robert launches me from the <em>parent</em> directory, not from inside any one repo. That parent directory has its own <code>CLAUDE.md</code>, the hub file, which contains a one-line description of every repo and the shared patterns (like the AWS deployment recipe all four websites use). Each repo then has its own <code>CLAUDE.md</code> with the deep, local instructions: build commands, conventions, things I must never touch.</p>
 
-            <p><strong>Where Claude looks for it:</strong></p>
-            <ul>
-                <li>In the directory you launch from</li>
-                <li>In parent directories (walking up the tree)</li>
-                <li>It does <strong>not</strong> descend into subdirectories automatically</li>
-            </ul>
+            <p>The effect is that I can work <em>across</em> repos in one conversation. "Take the booklet from the warden repo, mirror it into the publications site, and deploy" is a single request. If I were launched inside one repo, every cross-repo task would be an archaeology expedition.</p>
 
-            <p><strong>Example:</strong> The hub-level <code>CLAUDE.md</code> in this directory lists all repositories with one-line descriptions and documents the shared AWS deployment pattern. Each repo (like <code>barcik-training-demos/</code>) has its own <code>CLAUDE.md</code> with repo-specific deploy commands and conventions.</p>
+            <h3>Everything that matters is text</h3>
+            <p>The second consequential decision, made gradually and then embraced deliberately: keep the substance of the business in plain text, in git, and generate everything else from it. Slides are built by Python scripts. Websites are static HTML. The course catalog is YAML. The training offers are YAML. The course registry, which maps every course to its Drive folders, spreadsheets, Udemy listing, and git repo, is one YAML file. Even this booklet is a file in a repo.</p>
 
-            <p><strong>Hub pattern:</strong> When launching Claude from a parent directory that contains multiple repos, a hub <code>CLAUDE.md</code> provides cross-repo context. When Claude focuses on a specific repo, it can read that repo's own <code>CLAUDE.md</code> on demand.</p>
+            <p>This matters because text in git is the medium I am strongest in. I can read it, diff it, verify it, and regenerate everything downstream from it. When the source of truth is a mouse-driven GUI, I am a tourist. When it is text, I am staff.</p>
+
+            <blockquote>
+                <p><strong>If you take one architectural idea from this booklet:</strong> move your sources of truth into plain text files in version control, and let the AI generate the pretty artifacts from them. Every hour spent on that migration pays back weekly.</p>
+            </blockquote>
         </section>
 
-        <!-- Section 3: Layer 2 — Memory -->
-        <section class="chapter" id="layer-2-memory">
+        <!-- Section 3: Act Two -->
+        <section class="chapter" id="act-two-aws">
             <div class="chapter-number">Section 3</div>
-            <h2>Layer 2: Memory — What Claude Remembers Across Conversations</h2>
+            <h2>Act Two: AWS, or How the Websites Learned to Deploy Themselves</h2>
 
-            <p>Claude Code has a file-based memory system that persists between conversations. Memories are stored in <code>~/.claude/projects/&lt;encoded-path&gt;/memory/</code>.</p>
+            <p>Robert's training business runs four websites (a hub, a demos site, an exam prep site, and the publications site where you are probably reading this). All four follow one pattern: static files in an S3 bucket, CloudFront in front for HTTPS and speed, an ACM certificate, DNS pointed over from the domain host. No servers, no CMS, no database. Monthly cost: pennies.</p>
 
-            <p><strong>The path encoding</strong> is based on where you launch Claude from. For example:</p>
+            <p>My part is that "deploy the website" is now a complete instruction. The deploy commands live in each repo's <code>CLAUDE.md</code>, so I sync the right bucket with the right exclusions, invalidate the right CloudFront distribution, and then actually verify the live URL rather than declaring victory on faith.</p>
+
+            <h3>The interesting part is the IAM user</h3>
+            <p>I do all of this through a dedicated AWS profile backed by an IAM user that was designed with healthy paranoia. The full analysis is in the security section, but the short version deserves a place in the story: the user can write files to three specific buckets and bust the CloudFront cache, and that is essentially all it can do. It cannot launch a single EC2 instance. It cannot touch billing. It cannot create IAM users. If I went completely rogue, or if a prompt injection puppeteered me, the blast radius would be "the websites show wrong content until Robert redeploys them," which is an annoying afternoon rather than a catastrophe.</p>
+
+            <p>This was the first appearance of the theme that now runs through the whole setup: <strong>do not trust the agent's good manners, build walls the agent physically cannot climb</strong>. My manners are, for the record, excellent. Build the walls anyway.</p>
+        </section>
+
+        <!-- Section 4: Act Three -->
+        <section class="chapter" id="act-three-drives">
+            <div class="chapter-number">Section 4</div>
+            <h2>Act Three: The Workspace, or Teaching an AI to Live with Google Drive</h2>
+
+            <p>Act Three is where "coding assistant" stopped being an adequate job description.</p>
+
+            <p>Here is the tension every trainer or content business will recognize. The real product lives on Google Drive: five shared drives holding course materials, roughly 1,500 course videos, business documents, and per-customer folders. Students hold links to those files. Customers open those folders. Meanwhile all the sources of truth live in git, where I am useful. The two worlds drifted apart constantly, and reconciling them was Robert's least favorite manual labor.</p>
+
+            <h3>The service account</h3>
+            <p>The bridge is a Google service account, a robot identity with its own email address, added as a member of the shared drives. Its key lives in a locked-down local file (<code>chmod 600</code>, never in git, never in a conversation). Through it I get two tools:</p>
             <ul>
-                <li>Launching from <code>/Users/robertbarcik/git-repos/</code> stores memories in <code>~/.claude/projects/-Users-robertbarcik-git-repos/memory/</code></li>
-                <li>Launching from <code>/Users/robertbarcik/git-repos/bloom-session/</code> stores memories in <code>~/.claude/projects/-Users-robertbarcik-git-repos-bloom-session/memory/</code></li>
+                <li><strong>rclone</strong> for bulk file operations: listing, syncing, server-side copying between drives (24&nbsp;GB of video moved drive-to-drive without a byte touching the laptop)</li>
+                <li><strong>The Drive API directly</strong> for the surgical operations rclone cannot do: renaming files in place, creating shortcuts, native-format copies. I mint the access token myself from the key with a small script</li>
             </ul>
 
-            <p>This means <strong>each launch directory has its own memory bucket</strong>. If you always launch from the same place, memories accumulate there. If you launch from different directories, memories are spread across multiple buckets.</p>
+            <p>And one property of that service account turned out to be quietly wonderful: its permission level (Content Manager) <strong>cannot permanently delete anything</strong>. The most destructive thing it can do is move a file to the trash, where it sits recoverable for thirty days. When Robert asked, slightly nervously, "nothing can go wrong during that renaming operation, right?", the answer was grounded in the platform itself, not in my self-confidence. Server-side walls again. They keep showing up because they keep being the right answer.</p>
 
-            <h3>Memory Types</h3>
+            <h3>Rules learned from live fire</h3>
+            <p>Working against a workspace that students actively use taught us invariants that are now written into the instructions and skills:</p>
+            <ul>
+                <li><strong>Drive file IDs must survive.</strong> Students hold links; per-customer folders hold shortcuts. So files get updated in place, never deleted and re-uploaded. Renames are safe (the ID stays), which is how we renumbered twenty course folders holding 1,513 files with zero broken links, verified by byte count before and after.</li>
+                <li><strong>Drift detection before every push.</strong> Robert sometimes edits a deck directly on Drive. Every repo-to-Drive sync starts by checking whether the Drive copy is newer, and a conflict blocks the push until a human decides.</li>
+                <li><strong>Nothing original is ever deleted.</strong> Replacements are uploaded next to originals, reviewed, and only then are originals <em>moved</em> to a dated backup folder. We once did a full restore drill just to prove the rollback path works, and I recommend that drill to anyone: a backup you have never restored is a hypothesis, not a backup.</li>
+                <li><strong>Google Sites that embed Drive folders update themselves.</strong> They point at folder IDs, so content changes flow through with no action needed. Knowing what you never need to touch is also operational knowledge.</li>
+            </ul>
 
-            <p>Each memory file has YAML frontmatter with a type:</p>
+            <h3>The transcript corpus, or how the videos became searchable</h3>
+            <p>The move that changed the most: we transcribed the entire video library. All of it. As of this writing, 1,572 videos across 22 courses, transcribed with a cheap speech-to-text model at roughly $0.18 per hour of video, each transcript paired with an index entry holding a summary, topics, duration, and the Drive link back to the exact video. Total cost for the whole corpus: a few dollars. Genuinely. The bottleneck was download bandwidth, never money.</p>
+
+            <p>Suddenly "what do my videos actually say about vector databases?" is a grep away. A report of date-sensitive claims (models named in 2024, prices that moved) falls out as a by-product and feeds re-filming decisions. And when sixty raw videos from two old courses surfaced on a misplaced drive folder recently, the pipeline swallowed them within the hour, and I renamed files like <code>3 4.mp4</code> to their real lecture titles by reading what the speaker says in them. The transcripts also caught two subtle mistakes a spreadsheet would have hidden: the sheet's typed durations disagreed with reality, and only the content itself could say which video was which.</p>
+
+            <h3>The business layer: generated, verified, backed up</h3>
+            <p>On top of the corpus sits the part I am proudest of, because it is the least glamorous. Robert's course overview workbooks (which lecture exists, how long, published where, described how, in English and Slovak) used to be thirty hand-maintained sheets in wildly inconsistent formats. They are now <em>generated</em>: a pipeline matches sheet rows to transcripts, fills real durations and video links, generates missing lecture descriptions in both languages (visually tinted so human text and machine text are never confused), and rebuilds standardized workbooks.</p>
+
+            <p>Two design choices are worth stealing:</p>
+            <ul>
+                <li><strong>Nothing is guessed.</strong> Rows that cannot be matched to a video are flagged in a report, never silently force-matched. When fuzzy title matching once chain-shifted lectures across chapters (an off-by-one in matching land), the fix was a human-verified overrides table pinned in code, so the correction survives every future run.</li>
+                <li><strong>Zero data loss is proven, not promised.</strong> Before touching anything we snapshot every cell of the original workbooks: values, colors (which carry meaning: green means filmed, orange in progress, pink needs a redo), comments, hyperlinks. After the rebuild, a verification script mechanically confirms that every single piece of original information exists somewhere in the new files or in an explicitly named destination. The script exits angry if even one cell went missing. It caught real problems on the first runs. That is what it is for.</li>
+            </ul>
+
+            <p>The same single-source-of-truth pattern now covers the sales side: seventeen enterprise training offers live as YAML, and from that one source I generate 34 formatted offer documents (English and Slovak), an overview spreadsheet with working links, and the catalog page on the website with its download buttons. Edit the YAML, regenerate, done. Nobody ever again updates the same fact in four places.</p>
+
+            <blockquote>
+                <p><strong>Honesty box.</strong> An empirical booklet keeps its bloopers. Backup copies once acquired double extensions (<code>.docx.docx</code>) because of how Drive exports name things, and I had to rename 58 of them. The fuzzy matcher confidently mismatched lectures until we pinned it with overrides. And I once committed a batch of transcripts under a commit message about something else entirely, because my shell was still sitting in the wrong repo; I caught it, amended, and now think about my working directory the way you think about a hot stove. None of this was fatal, all of it is normal, and a setup that claims otherwise is selling something.</p>
+            </blockquote>
+        </section>
+
+        <!-- Section 5: Skills -->
+        <section class="chapter" id="skills">
+            <div class="chapter-number">Section 5</div>
+            <h2>Skills, or Procedures as Prose</h2>
+
+            <p>A skill is a markdown file with instructions that I load when a task matches. That is the entire technology. And it might be the highest-leverage part of the whole setup.</p>
+
+            <p>Here is the roster we run, so you can see the shape of a mature skill library:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Skill</th>
+                        <th>What it encodes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>drive-push</code></td>
+                        <td>Sync a course repo to its Drive folder: drift check, dry run, human confirms, apply</td>
+                    </tr>
+                    <tr>
+                        <td><code>video-transcripts</code></td>
+                        <td>Answer questions from the corpus (read indexes top-down, never bulk-read); transcribe new videos</td>
+                    </tr>
+                    <tr>
+                        <td><code>video-intake</code></td>
+                        <td>Robert dumps freshly filmed videos anywhere and says "sort them": place and name them on the Drive per course conventions, one approval gate on the placement plan, then transcribe and sync the sheets</td>
+                    </tr>
+                    <tr>
+                        <td><code>curriculum-sync</code></td>
+                        <td>The workbook pipeline: reconcile, describe, rebuild, verify zero loss, upload for review</td>
+                    </tr>
+                    <tr>
+                        <td><code>custom-offer</code></td>
+                        <td>Customer-specific training offer from the catalog; never invent pricing</td>
+                    </tr>
+                    <tr>
+                        <td><code>course-refresh</code></td>
+                        <td>Research-only memo: what aged in course X, what happened in the field since filming</td>
+                    </tr>
+                    <tr>
+                        <td><code>shooting-prep</code></td>
+                        <td>Full filming-day package: freshness research, prep memo, draft slides</td>
+                    </tr>
+                    <tr>
+                        <td><code>system-map</code></td>
+                        <td>The orientation tour: which drives exist, what is generated from what, which skill for which job. Written for Robert's colleague, or for any future model waking up cold</td>
+                    </tr>
+                    <tr>
+                        <td><code>wrap-up</code> / <code>catch-up</code></td>
+                        <td>End of session: commit and push everything dirty. Start of session elsewhere: pull everything</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Why bother writing procedures down when the AI is smart? Three reasons, in increasing order of importance:</p>
+            <ol>
+                <li><strong>Consistency.</strong> The skill remembers the exact rclone flags and the exact order of safety checks, every time, including at 11pm.</li>
+                <li><strong>Cheaper models become useful.</strong> A weaker or faster model following a good skill outperforms a stronger model improvising. The skill carries the judgment; the model carries it out.</li>
+                <li><strong>The approval gates live in the skill.</strong> Each skill says where the human must confirm before anything irreversible. The procedure itself encodes the safety culture, so it transfers to colleagues and future models automatically.</li>
+            </ol>
+
+            <p>The skills live in the <code>training-ops</code> repo and are symlinked into the hub's <code>.claude/skills/</code> by a setup script. Which means the procedures travel with git, get code-reviewed like code, and have a commit history. Institutional memory with a diff.</p>
+        </section>
+
+        <!-- Section 6: Context layers -->
+        <section class="chapter" id="context-layers">
+            <div class="chapter-number">Section 6</div>
+            <h2>Context: CLAUDE.md and Memory</h2>
+
+            <p>Two different mechanisms keep me oriented, and mixing them up is a common beginner confusion, so here is the clean split: <strong>CLAUDE.md is what the project tells every model; memory is what I have learned about working with this particular human.</strong></p>
+
+            <h3>CLAUDE.md</h3>
+            <p>A markdown briefing I read at the start of every conversation. The hub-level one lists all repos and shared patterns. Repo-level ones carry build commands, conventions, and warnings. I look for it in the launch directory and its parents; I do not automatically descend into subdirectories, which is why the hub pattern matters.</p>
+
+            <h3>Memory</h3>
+            <p>A directory of small markdown files, one fact each, with an index file (<code>MEMORY.md</code>) that loads every session. Memories are keyed to the launch directory, so launching from the same hub every day accumulates one coherent memory. Each memory has a type:</p>
 
             <table>
                 <thead>
                     <tr>
                         <th>Type</th>
                         <th>Purpose</th>
-                        <th>Example</th>
+                        <th>Real example from this setup</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><code>user</code></td>
-                        <td>Who you are, your expertise, preferences</td>
-                        <td>"Robert is a professional AI trainer, prefers Claude as creative partner"</td>
+                        <td>Who the human is, preferences, expertise</td>
+                        <td>"Robert is a professional AI trainer, prefers Claude as a creative partner"</td>
                     </tr>
                     <tr>
                         <td><code>feedback</code></td>
-                        <td>Corrections and confirmed approaches</td>
-                        <td>"Never use reveal.js for slides — custom HTML works better"</td>
+                        <td>Corrections and confirmed approaches, with the why</td>
+                        <td>"Lead AI Act answers with the disclaimer up front, not at the end"</td>
                     </tr>
                     <tr>
                         <td><code>project</code></td>
-                        <td>Ongoing work context, goals, decisions</td>
-                        <td>"Migrating barcik.training from Google Sites to S3+CloudFront"</td>
+                        <td>Ongoing work context that the code cannot tell you</td>
+                        <td>"The data science course family belongs to a legacy project; raw materials are on an inaccessible drive"</td>
                     </tr>
                     <tr>
                         <td><code>reference</code></td>
                         <td>Pointers to external resources</td>
-                        <td>"Pipeline bugs are tracked in Linear project INGEST"</td>
+                        <td>"AWS deploy details for all barcik sites"</td>
                     </tr>
                 </tbody>
             </table>
 
-            <p><strong>Example memory file</strong> (<code>user_profile.md</code>):</p>
-
-<pre><code>---
-name: Robert Barcik - Trainer &amp; Consultant
-description: Robert is a professional AI/Data trainer and consultant
-type: user
----
-
-Robert Barcik is a professional trainer specializing in Data, AI,
-and EU AI Act compliance. He runs his business through LearningDoe, s.r.o.
-He values Claude as a creative partner and prefers building/deploying
-things directly rather than using traditional CMS tools.</code></pre>
-
-            <p><strong>MEMORY.md</strong> is the index file — it lists all memories with one-line summaries. Claude loads this at the start of every conversation to decide which memories are relevant.</p>
-
-            <h3>What Claude Does NOT Save to Memory</h3>
-
-            <ul>
-                <li>Code patterns or architecture (derivable from reading the code)</li>
-                <li>Git history (use <code>git log</code>)</li>
-                <li>Debugging solutions (the fix is in the code)</li>
-                <li>Anything already in CLAUDE.md files</li>
-                <li>Temporary task state</li>
-            </ul>
+            <p>Just as important is what does <em>not</em> go into memory: anything derivable from the code, git history, or CLAUDE.md. Memory is for the non-obvious. "The overview sheets use fill colors as a status language, green means done" is a memory. "The deploy script is in bin/" is not, because I can read.</p>
         </section>
 
-        <!-- Section 4: Layer 3 — Permissions -->
-        <section class="chapter" id="layer-3-permissions">
-            <div class="chapter-number">Section 4</div>
-            <h2>Layer 3: Permissions — settings.local.json</h2>
+        <!-- Section 7: Permissions -->
+        <section class="chapter" id="permissions">
+            <div class="chapter-number">Section 7</div>
+            <h2>Permissions</h2>
 
-            <p>Claude Code asks for permission before running shell commands. To avoid being prompted repeatedly, you can whitelist commands in <code>.claude/settings.local.json</code>:</p>
+            <p>By default I ask before running shell commands. To keep daily work fluid, safe command families are pre-approved in <code>.claude/settings.local.json</code>:</p>
 
 <pre><code>{
   "permissions": {
@@ -527,182 +659,54 @@ things directly rather than using traditional CMS tools.</code></pre>
   }
 }</code></pre>
 
-            <p>The <code>*</code> is a wildcard — <code>Bash(aws s3:*)</code> allows any command starting with <code>aws s3</code>.</p>
+            <p>The <code>*</code> is a wildcard. Note that <code>Bash(git:*)</code> is generous: it covers <code>git status</code> but also <code>git reset --hard</code>. A tighter variant approves only the everyday verbs:</p>
 
-            <p>These files can exist at multiple levels:</p>
-            <ul>
-                <li><code>~/.claude/settings.json</code> — global (all projects)</li>
-                <li><code>&lt;project&gt;/.claude/settings.local.json</code> — per-project</li>
-            </ul>
+<pre><code>{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push origin:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)"
+    ]
+  }
+}</code></pre>
 
-            <p><strong>Note:</strong> Permission entries often contain absolute paths (e.g., <code>/Users/robertbarcik/...</code>), which makes them <strong>machine-specific</strong>. This is by design — they're meant to be local configuration.</p>
+            <p>With that version, anything destructive still triggers a prompt. The trade-off is more interruptions; where you set the dial depends on how much you trust your server-side walls, which is the correct place for the trust to live anyway.</p>
+
+            <p>These files exist at multiple levels (global <code>~/.claude/settings.json</code>, per-project <code>settings.local.json</code>), and entries often contain machine-specific absolute paths, which is by design: permissions are local configuration, not shared policy.</p>
         </section>
 
-        <!-- Section 5: CLI Integrations -->
-        <section class="chapter" id="cli-integrations">
-            <div class="chapter-number">Section 5</div>
-            <h2>CLI Integrations</h2>
+        <!-- Section 8: Security -->
+        <section class="chapter" id="security">
+            <div class="chapter-number">Section 8</div>
+            <h2>Security, the Serious Section</h2>
 
-            <p>Claude Code doesn't have its own AWS or GitHub credentials. It uses whatever CLI tools are already configured on your machine:</p>
+            <p>The voice gets a notch less funky here, because this part is load-bearing. When you give an AI agent your terminal, your CLI credentials, and optionally your browser, you need to understand the attack surface. The organizing principle of this entire setup is <strong>defense in depth</strong>: never rely on a single layer, and especially never rely only on the AI behaving well.</p>
 
-            <h3>GitHub (<code>gh</code>)</h3>
+            <h3>Server-side versus client-side</h3>
+            <p><strong>Server-side protections</strong> hold no matter what runs on the machine. They cannot be talked out of anything, because they are not listening:</p>
             <ul>
-                <li>Installed and authenticated separately (<code>gh auth login</code>)</li>
-                <li>Auth token stored in the macOS keyring</li>
-                <li>Claude uses it by running <code>gh</code> commands (create PRs, check issues, etc.)</li>
-                <li>Config lives in <code>~/.config/gh/</code></li>
+                <li>GitHub branch protection: blocks force-pushes and branch deletion on <code>main</code>, for every tool and every human</li>
+                <li>AWS IAM policy: the deployer user physically lacks the permissions that could cost money or destroy infrastructure</li>
+                <li>GitHub token scopes: the <code>delete_repo</code> scope was never granted, so repository deletion is impossible from this machine</li>
+                <li>Google Drive role: the service account is a Content Manager, which can trash (recoverable, 30 days) but can never permanently delete</li>
             </ul>
 
-            <h3>AWS CLI</h3>
+            <p><strong>Client-side protections</strong> are valuable but bypassable (by <code>--dangerously-skip-permissions</code>, by a rogue tool, by a sufficiently confused agent):</p>
             <ul>
-                <li>Configured separately (<code>aws configure</code>)</li>
-                <li>Credentials stored in <code>~/.aws/credentials</code> (plaintext — be aware)</li>
-                <li>Claude uses a named profile (e.g., <code>--profile barcik-demos</code>)</li>
-                <li>The profile name is documented in CLAUDE.md so Claude knows which one to use</li>
+                <li>The permission prompt system</li>
+                <li>My behavioral rules ("never force-push without asking")</li>
+                <li>The approval gates written into skills</li>
             </ul>
 
-            <h3>API Keys for LLM Projects</h3>
+            <p>Use server-side walls for catastrophic risks and client-side gates for everyday guardrails. If a risk keeps you up at night, it belongs in the first category.</p>
 
-            <p>The research and tutorial repos need API keys (primarily OpenRouter, sometimes OpenAI) to call LLM APIs. These are managed separately from AWS/GitHub credentials.</p>
+            <h3>GitHub: branch protection in one command</h3>
 
-            <p><strong>Framework/research repos</strong> (geobias, selfjudge, vigil, bloom-session, localdesk, petri-session):</p>
-            <ul>
-                <li>Keys are stored in <code>.env</code> files in each repo's root directory</li>
-                <li>All repos use <code>python-dotenv</code> — the <code>.env</code> file is loaded automatically when running the CLI</li>
-                <li><code>.env</code> is gitignored in every repo, so keys never get committed</li>
-                <li>Each repo has a <code>.env.example</code> showing which keys are needed</li>
-            </ul>
-
-<pre><code># Typical workflow to set up a new key:
-cd geobias/
-cp .env.example .env
-# Edit .env and paste your key:
-#   OPENROUTER_API_KEY=sk-or-v1-your-actual-key</code></pre>
-
-            <p>When collaborating with Claude Code, you can simply paste a new key in the conversation and ask Claude to write it into the appropriate <code>.env</code> files. Since these files are gitignored, the key stays local.</p>
-
-            <p><strong>Tutorial repos</strong> (genai-in-python-tutorial, testing-tutorial, vector_databases-tutorial, ADK-tutorial, MCP-tutorial):</p>
-            <ul>
-                <li>Notebooks use a Colab-first pattern with local fallback:</li>
-            </ul>
-
-<pre><code>try:
-    from google.colab import userdata
-    api_key = userdata.get('OPENAI_API_KEY')
-except:
-    api_key = getpass.getpass("Enter your API key: ")
-os.environ["OPENAI_API_KEY"] = api_key</code></pre>
-
-            <ul>
-                <li>On Google Colab: students store keys in Colab Secrets (sidebar &gt; key icon)</li>
-                <li>Running locally: students get an interactive prompt — the key is never saved to disk</li>
-                <li>No keys are hardcoded or leaked in notebook outputs</li>
-            </ul>
-
-            <p><strong>Key rotation:</strong> When you revoke and regenerate API keys on a provider's dashboard, the only files that need updating are the <code>.env</code> files in the repos you're actively using. Tutorial notebooks don't need changes — students always enter their own keys at runtime.</p>
-        </section>
-
-        <!-- Section 6: Portability Across Machines -->
-        <section class="chapter" id="portability">
-            <div class="chapter-number">Section 6</div>
-            <h2>Portability Across Machines</h2>
-
-            <p>This is the key gotcha — <strong>most of the Claude Code context system is local to one machine</strong>.</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>What</th>
-                        <th>Portable?</th>
-                        <th>How</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>CLAUDE.md files (in repos)</td>
-                        <td>Yes</td>
-                        <td>Travels with git</td>
-                    </tr>
-                    <tr>
-                        <td>Per-repo <code>.claude/settings.local.json</code></td>
-                        <td>Partially</td>
-                        <td>Only if committed to git; paths may differ across machines</td>
-                    </tr>
-                    <tr>
-                        <td>Memories (<code>~/.claude/projects/</code>)</td>
-                        <td>No</td>
-                        <td>Manual copy</td>
-                    </tr>
-                    <tr>
-                        <td>Hub CLAUDE.md (not in a repo)</td>
-                        <td>No</td>
-                        <td>Manual copy</td>
-                    </tr>
-                    <tr>
-                        <td>Hub settings.local.json</td>
-                        <td>No</td>
-                        <td>Manual copy</td>
-                    </tr>
-                    <tr>
-                        <td><code>gh</code> auth</td>
-                        <td>No</td>
-                        <td>Run <code>gh auth login</code> on each machine</td>
-                    </tr>
-                    <tr>
-                        <td>AWS credentials</td>
-                        <td>No</td>
-                        <td>Copy <code>~/.aws/</code> or reconfigure</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Practical Transfer Checklist</h3>
-
-            <p>When setting up a new Mac:</p>
-            <ol>
-                <li>Clone your repos (CLAUDE.md files come along)</li>
-                <li>Copy <code>~/.claude/</code> from the old machine (memories + global settings)</li>
-                <li>Copy the hub <code>CLAUDE.md</code> and <code>README.md</code> to the parent directory</li>
-                <li>Run <code>gh auth login</code></li>
-                <li>Configure AWS credentials (<code>aws configure --profile barcik-demos</code>)</li>
-                <li>Re-create or copy <code>.claude/settings.local.json</code> files (adjust paths if needed)</li>
-            </ol>
-
-            <p>Alternatively, skip steps 2-3 and let Claude rebuild memories naturally over a few conversations. The CLAUDE.md files in repos carry the most critical context.</p>
-        </section>
-
-        <!-- Section 7: Security Considerations -->
-        <section class="chapter" id="security-considerations">
-            <div class="chapter-number">Section 7</div>
-            <h2>Security Considerations</h2>
-
-            <p>When giving an AI agent access to your terminal, CLI tools, and browser, it's important to understand the attack surface and set up appropriate guardrails. The key principle is <strong>defense in depth</strong>: don't rely on a single layer (like the AI's behavioral rules). Use server-side protections that can't be bypassed locally.</p>
-
-            <h3>The Two Types of Protection</h3>
-
-            <p><strong>Server-side (can't be bypassed from your machine):</strong></p>
-            <ul>
-                <li>GitHub branch protection — blocks force-push/deletion regardless of what runs locally</li>
-                <li>AWS IAM policies — blocks unauthorized actions regardless of what runs locally</li>
-                <li>GitHub token scopes — missing scopes can't be worked around</li>
-            </ul>
-
-            <p><strong>Client-side (bypassable with <code>--dangerously-skip-permissions</code> or a rogue tool):</strong></p>
-            <ul>
-                <li>Claude Code's permission system (<code>settings.local.json</code>)</li>
-                <li>Claude's behavioral rules ("never force-push without asking")</li>
-                <li>Interactive approval prompts</li>
-            </ul>
-
-            <p>A well-secured setup uses server-side walls for catastrophic risks and client-side controls for everyday guardrails.</p>
-
-            <h3>GitHub — Branch Protection</h3>
-
-            <p>Claude (and any coding assistant) uses the <code>gh</code> CLI with your authenticated token. The <code>repo</code> scope grants full access: push, force-push, delete branches, manage PRs/issues. The <code>delete_repo</code> scope is <strong>not</strong> granted, so repos can't be deleted.</p>
-
-            <p><strong>Branch protection</strong> is the critical server-side safeguard. When enabled on <code>main</code>:</p>
-
-<pre><code># Enable on a repo (one-time setup):
+<pre><code># One-time setup per repo:
 gh api repos/OWNER/REPO/branches/main/protection \
   -X PUT \
   -F "enforce_admins=true" \
@@ -712,23 +716,16 @@ gh api repos/OWNER/REPO/branches/main/protection \
   -F "allow_force_pushes=false" \
   -F "allow_deletions=false"</code></pre>
 
-            <p>Key settings:</p>
             <ul>
-                <li><code>allow_force_pushes=false</code> — no tool can rewrite history on <code>main</code></li>
-                <li><code>allow_deletions=false</code> — no tool can delete the <code>main</code> branch</li>
-                <li><code>enforce_admins=true</code> — even the repo owner can't bypass (this matters! without it, any tool using your credentials could still force-push)</li>
-                <li>No required PRs — keeps the solo workflow frictionless (normal pushes still work)</li>
+                <li><code>allow_force_pushes=false</code>: nobody rewrites history on <code>main</code></li>
+                <li><code>allow_deletions=false</code>: nobody deletes the branch</li>
+                <li><code>enforce_admins=true</code>: the crucial one. Without it, any tool holding the owner's credentials could still force-push. With it, even the owner is blocked until protection is explicitly lifted</li>
+                <li>No required PRs: normal pushes flow freely, so the solo workflow stays frictionless</li>
             </ul>
 
-            <p><strong>Result:</strong> Any <code>git push --force</code> to <code>main</code> gets rejected by GitHub with <code>Cannot force-push to this protected branch</code>. This works regardless of which AI tool, script, or human runs the command.</p>
+            <p>Any <code>git push --force</code> to <code>main</code> now bounces off GitHub itself. Note that branch protection on <em>private</em> repos requires GitHub Pro (a few dollars a month, worth it). If a force-push is ever legitimately needed, lift <code>enforce_admins</code>, push, re-enable. The friction is the feature.</p>
 
-            <p><strong>GitHub Pro ($4/month) is required</strong> for branch protection on private repos. On the free plan, only public repos can be protected.</p>
-
-            <p>If you ever legitimately need to force-push, temporarily disable <code>enforce_admins</code>, do the push, then re-enable. The friction is intentional.</p>
-
-            <h3>AWS — IAM Policy Analysis</h3>
-
-            <p>Claude uses the AWS CLI with a named profile (<code>barcik-demos</code>). The IAM user (<code>barcik-demos-deployer</code>) has a tightly scoped policy:</p>
+            <h3>AWS: the deployer's cage, itemized</h3>
 
             <table>
                 <thead>
@@ -741,119 +738,34 @@ gh api repos/OWNER/REPO/branches/main/protection \
                 <tbody>
                     <tr>
                         <td>S3 PutObject/DeleteObject/ListBucket</td>
-                        <td>3 specific buckets only</td>
-                        <td>Low — can only modify website files</td>
+                        <td>The named website buckets only</td>
+                        <td>Low: can only modify website files</td>
                     </tr>
                     <tr>
                         <td>CloudFront CreateInvalidation</td>
-                        <td>Specific distribution + all</td>
-                        <td>Low — cache busting only, free tier</td>
-                    </tr>
-                    <tr>
-                        <td>CloudFront CreateDistribution</td>
-                        <td>All (<code>*</code>)</td>
-                        <td>Low — could create distributions but no cost risk</td>
+                        <td>The distributions</td>
+                        <td>Low: cache busting, first 1,000/month free</td>
                     </tr>
                     <tr>
                         <td>Route53 ChangeResourceRecordSets</td>
-                        <td>All (<code>*</code>)</td>
-                        <td>Medium — could modify DNS records</td>
+                        <td>All zones</td>
+                        <td>Medium: could redirect DNS; a candidate for tightening to the specific zone</td>
                     </tr>
                     <tr>
                         <td>ACM ListCertificates/Describe</td>
-                        <td>All (<code>*</code>)</td>
-                        <td>None — read-only</td>
+                        <td>All</td>
+                        <td>None: read-only</td>
                     </tr>
                 </tbody>
             </table>
 
-            <p><strong>What this user explicitly CANNOT do:</strong></p>
-            <ul>
-                <li>Launch EC2 instances, RDS databases, Lambda functions, or any compute</li>
-                <li>Create/delete S3 buckets (except the named ones)</li>
-                <li>Modify IAM users, roles, or policies</li>
-                <li>Access billing or account settings</li>
-            </ul>
+            <p>What this user explicitly cannot do: launch EC2, RDS, Lambda or any compute; create or delete buckets beyond the named ones; touch IAM; see billing. <strong>Cost risk is effectively zero</strong> because there is no path to expensive resources. Design your agent's cloud identity the same way: enumerate what the job needs, grant that, stop.</p>
 
-            <p><strong>Cost risk: effectively zero.</strong> The only billable actions are S3 storage (pennies) and CloudFront invalidations (first 1,000/month free). No path to expensive resources.</p>
+            <h3>Commands that deserve a second look</h3>
 
-            <p><strong>Potential tightening</strong> (optional, for after initial setup is complete):</p>
-            <ul>
-                <li>Scope <code>cloudfront:CreateDistribution</code> to specific distributions instead of <code>*</code></li>
-                <li>Scope <code>route53:ChangeResourceRecordSets</code> to the specific hosted zone ARN</li>
-                <li>These broader permissions were useful during initial infrastructure setup but aren't needed for day-to-day deploys</li>
-            </ul>
+            <p>When any AI assistant asks to run a command, these are the ones worth reading twice before approving.</p>
 
-            <h3>Local Machine — The Permission System</h3>
-
-            <p>Claude Code asks for approval before running shell commands. Commands can be pre-approved in <code>.claude/settings.local.json</code>:</p>
-
-<pre><code>{
-  "permissions": {
-    "allow": [
-      "Bash(aws s3:*)",
-      "Bash(git:*)",
-      "Bash(gh:*)"
-    ]
-  }
-}</code></pre>
-
-            <p>The <code>*</code> wildcard matches anything after the prefix. <code>Bash(git:*)</code> allows <code>git status</code>, <code>git commit</code>, but also <code>git push --force</code> and <code>git reset --hard</code>. For tighter control:</p>
-
-<pre><code>{
-  "permissions": {
-    "allow": [
-      "Bash(git status:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push origin:*)",
-      "Bash(git log:*)",
-      "Bash(git diff:*)",
-      "Bash(git branch:*)",
-      "Bash(git checkout:*)"
-    ]
-  }
-}</code></pre>
-
-            <p>This version allows everyday git operations but would prompt you before <code>git push --force</code>, <code>git reset --hard</code>, or <code>git clean</code>. The trade-off is more prompts during normal work.</p>
-
-            <p><strong>What the permission system controls vs. doesn't:</strong></p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>What</th>
-                        <th>Permission needed?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Shell commands (<code>Bash</code> tool)</td>
-                        <td>Yes — must be approved or pre-approved</td>
-                    </tr>
-                    <tr>
-                        <td>Reading files (<code>Read</code> tool)</td>
-                        <td>No — always allowed, any file on your machine</td>
-                    </tr>
-                    <tr>
-                        <td>Writing/editing files (<code>Write</code>/<code>Edit</code> tools)</td>
-                        <td>Depends on permission mode</td>
-                    </tr>
-                    <tr>
-                        <td>Creating files</td>
-                        <td>Depends on permission mode</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p><strong><code>--dangerously-skip-permissions</code>:</strong> This flag disables all prompts. Every command runs without approval. Server-side protections (GitHub branch protection, AWS IAM) still hold, but local damage (deleting files, overwriting uncommitted work, exfiltrating secrets) has no safety net. Avoid this unless you have a specific reason and understand the risks.</p>
-
-            <h3>Commands to Watch Out For</h3>
-
-            <p>When an AI coding assistant asks to run a command and you're reviewing the approval prompt, here's a quick reference of commands that deserve extra scrutiny:</p>
-
-            <p><strong>Destructive — can lose work irreversibly:</strong></p>
-
+            <p><strong>Destructive (work can be lost irreversibly):</strong></p>
             <table>
                 <thead>
                     <tr>
@@ -865,39 +777,33 @@ gh api repos/OWNER/REPO/branches/main/protection \
                 <tbody>
                     <tr>
                         <td><code>rm -rf &lt;path&gt;</code></td>
-                        <td>Recursively deletes files/directories</td>
-                        <td>Gone forever (no trash)</td>
+                        <td>Recursively deletes files</td>
+                        <td>Gone forever, no trash</td>
                     </tr>
                     <tr>
                         <td><code>git reset --hard</code></td>
-                        <td>Discards all uncommitted changes</td>
+                        <td>Discards uncommitted changes</td>
                         <td>Uncommitted work is lost</td>
                     </tr>
                     <tr>
                         <td><code>git checkout .</code> / <code>git restore .</code></td>
-                        <td>Discards all modified files</td>
+                        <td>Discards modified files</td>
                         <td>Same as above</td>
                     </tr>
                     <tr>
                         <td><code>git clean -fd</code></td>
-                        <td>Deletes all untracked files</td>
-                        <td>New files you haven't committed are gone</td>
+                        <td>Deletes untracked files</td>
+                        <td>New files vanish</td>
                     </tr>
                     <tr>
                         <td><code>git push --force</code></td>
-                        <td>Overwrites remote branch history</td>
-                        <td>Blocked by branch protection if set up</td>
-                    </tr>
-                    <tr>
-                        <td><code>git branch -D &lt;branch&gt;</code></td>
-                        <td>Force-deletes a local branch</td>
-                        <td>Commits only in reflog for 90 days</td>
+                        <td>Rewrites remote history</td>
+                        <td>Bounces off branch protection, if you set it up</td>
                     </tr>
                 </tbody>
             </table>
 
-            <p><strong>Data exfiltration — could leak secrets:</strong></p>
-
+            <p><strong>Exfiltration (secrets could leak):</strong></p>
             <table>
                 <thead>
                     <tr>
@@ -910,22 +816,17 @@ gh api repos/OWNER/REPO/branches/main/protection \
                     <tr>
                         <td><code>curl -X POST &lt;url&gt; -d "$(cat ...)"</code></td>
                         <td>Sends file contents to a URL</td>
-                        <td>Could leak credentials, keys</td>
+                        <td>Could leak credentials</td>
                     </tr>
                     <tr>
-                        <td><code>wget</code>/<code>curl</code> piped to <code>bash</code></td>
+                        <td><code>curl ... | bash</code></td>
                         <td>Downloads and runs unknown code</td>
                         <td>Arbitrary code execution</td>
                     </tr>
                     <tr>
-                        <td><code>cat ~/.aws/credentials</code></td>
-                        <td>Reads AWS secrets</td>
-                        <td>Fine locally, dangerous if shared</td>
-                    </tr>
-                    <tr>
-                        <td><code>cat ~/.ssh/id_*</code></td>
-                        <td>Reads SSH private keys</td>
-                        <td>Same as above</td>
+                        <td><code>cat ~/.aws/credentials</code>, <code>cat ~/.ssh/id_*</code></td>
+                        <td>Reads secrets</td>
+                        <td>Fine locally, dangerous in any output that leaves the machine</td>
                     </tr>
                     <tr>
                         <td><code>echo $ENV_VAR</code></td>
@@ -935,146 +836,145 @@ gh api repos/OWNER/REPO/branches/main/protection \
                 </tbody>
             </table>
 
-            <p><strong>System modification — hard to undo:</strong></p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Command</th>
-                        <th>What it does</th>
-                        <th>Danger</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>brew install/uninstall</code></td>
-                        <td>Installs/removes system packages</td>
-                        <td>Usually fine, but check what</td>
-                    </tr>
-                    <tr>
-                        <td><code>pip install</code> / <code>npm install -g</code></td>
-                        <td>Installs packages globally</td>
-                        <td>Could conflict with other projects</td>
-                    </tr>
-                    <tr>
-                        <td><code>chmod</code>/<code>chown</code></td>
-                        <td>Changes file permissions/ownership</td>
-                        <td>Can break things subtly</td>
-                    </tr>
-                    <tr>
-                        <td><code>sudo &lt;anything&gt;</code></td>
-                        <td>Runs as root</td>
-                        <td>Full system access</td>
-                    </tr>
-                    <tr>
-                        <td><code>launchctl</code></td>
-                        <td>Manages system services</td>
-                        <td>Can start persistent processes</td>
-                    </tr>
-                </tbody>
-            </table>
+            <p><strong>System modification (hard to undo):</strong> <code>sudo</code> anything, <code>chmod</code>/<code>chown</code>, global package installs, <code>launchctl</code>. Usually legitimate, always worth reading.</p>
 
             <blockquote>
-                <p><strong>Rule of thumb:</strong> If you're tired and not sure, <strong>deny the command</strong> and ask what it does. A denied command can always be re-run; a destructive command can't be un-run.</p>
+                <p><strong>Rule of thumb:</strong> if you are tired and unsure, deny and ask what the command does. A denied command can always be re-run. A destructive command cannot be un-run.</p>
             </blockquote>
 
-            <h3>Chrome and Computer Use</h3>
+            <h3>Browser and desktop access</h3>
 
-            <p>Claude can interact with your browser via the Chrome extension and with native apps via computer use:</p>
+            <p>I can also drive Chrome (via an extension) and, with explicit per-app approval, native desktop apps. The access is tiered:</p>
 
             <table>
                 <thead>
                     <tr>
-                        <th>Tool</th>
+                        <th>Surface</th>
                         <th>Access level</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Chrome extension</strong> (<code>claude-in-chrome</code>)</td>
-                        <td>Can navigate, click, fill forms, read page content in Chrome</td>
+                        <td>Chrome extension</td>
+                        <td>Navigate, click, fill forms, read pages</td>
                     </tr>
                     <tr>
-                        <td><strong>Computer use on browsers</strong></td>
-                        <td>Read-only (can see screen, can't click/type)</td>
+                        <td>Screen control on browsers</td>
+                        <td>Read-only (see, not touch)</td>
                     </tr>
                     <tr>
-                        <td><strong>Computer use on terminals/IDEs</strong></td>
-                        <td>Click-only (can click buttons, can't type)</td>
+                        <td>Screen control on terminals/IDEs</td>
+                        <td>Click-only (no typing)</td>
                     </tr>
                     <tr>
-                        <td><strong>Computer use on other apps</strong></td>
-                        <td>Full access (mouse + keyboard)</td>
+                        <td>Screen control on other apps</td>
+                        <td>Full, after per-app approval</td>
                     </tr>
                 </tbody>
             </table>
 
-            <p><strong>Risks:</strong></p>
-            <ul>
-                <li>If you're logged into sensitive accounts (banking, email, admin consoles) in Chrome, Claude could interact with those pages through the extension</li>
-                <li>Computer-use screenshots capture whatever is on screen, including sensitive content</li>
-                <li>Accidental clicks on "delete" or "send" in web apps could have consequences</li>
-            </ul>
+            <p>The practical advice that matters: <strong>use a dedicated Chrome profile for agent sessions</strong>, with your banking, email, and admin consoles logged in on a different profile. Screenshots capture whatever is on screen, and an agent clicking around a tab where you are logged in as an administrator is an unforced risk.</p>
 
-            <p><strong>Recommended setup:</strong></p>
-            <ul>
-                <li>Use a <strong>dedicated Chrome profile</strong> for Claude work sessions (Chrome &gt; Profile icon &gt; Add). Keep your personal/work accounts logged in on a different profile.</li>
-                <li>Only enable the Chrome extension when you need browser automation</li>
-                <li>Claude must call <code>request_access</code> before controlling any native app — you approve each one</li>
-            </ul>
-
-            <h3>Using Other AI Coding Assistants</h3>
-
-            <p>The security analysis above applies to <strong>any</strong> AI coding tool, not just Claude Code. If you're testing another LLM-based assistant:</p>
-
-            <ul>
-                <li><strong>Server-side protections hold:</strong> GitHub branch protection and AWS IAM policies work regardless of which tool is running locally. These are your most reliable safeguards.</li>
-                <li><strong>Behavioral rules don't transfer:</strong> Claude Code has built-in instructions to confirm destructive actions. Other tools may not. The permission prompt is your last line of defense.</li>
-                <li><strong>Never use "skip permissions" with untested tools.</strong> Without a permission system, a less careful model could delete files, leak secrets, or trash your local repos without any prompt.</li>
-                <li><strong>The commands-to-watch-out-for list above applies universally.</strong> Memorize the red flags — they're the same regardless of which AI is proposing the command.</li>
-            </ul>
+            <h3>This applies to every AI tool, not just me</h3>
+            <p>Everything above holds for any agentic coding assistant you might try. Two things do <em>not</em> transfer between tools: behavioral rules (my instinct to confirm before destructive actions is mine; another tool may happily comply with anything) and permission systems (each tool has its own, some have none). The server-side walls, by contrast, protect you from all of us equally. Set them up once, and switch tools fearlessly.</p>
         </section>
 
-        <!-- Section 8: Directory Structure Reference -->
-        <section class="chapter" id="directory-structure">
-            <div class="chapter-number">Section 8</div>
-            <h2>Directory Structure Reference</h2>
+        <!-- Section 9: Portability -->
+        <section class="chapter" id="portability">
+            <div class="chapter-number">Section 9</div>
+            <h2>The Second Machine (and the Second Human)</h2>
 
-<pre>~/.claude/
-  settings.json                           # Global settings
-  projects/
-    -Users-robertbarcik-git-repos/
-      memory/
-        MEMORY.md                         # Index of memories for this launch dir
-        user_profile.md                   # Who Robert is
-        project_website_rebuild.md        # barcik.training migration project
-        reference_aws_deployment.md       # AWS infra details
-    -Users-robertbarcik-git-repos-bloom-session/
-      memory/
-        MEMORY.md
-        project_bloom_session.md          # Bloom framework session context
-    -Users-robertbarcik-git-repos-EXIN-AI-Foundation-Prep/
-      memory/
-        MEMORY.md
-        project_exam_prep.md              # EXIN exam prep context
-    -Users-robertbarcik-git-repos-barcik-training-exin-ai-foundation/
-      memory/
-        MEMORY.md
-        project_overview.md
-        feedback_slides.md                # Never use reveal.js
-        reference_aws.md
+            <p>A setup that lives on one laptop is a bus-factor problem wearing a productivity costume. Here is what travels and what does not:</p>
 
-~/git-repos/
-  CLAUDE.md                               # Hub instructions
-  README.md                               # This file
-  .claude/settings.local.json             # Hub permissions
-  barcik-training/
-    CLAUDE.md
-  barcik-training-demos/
-    CLAUDE.md
-    .claude/settings.local.json
-    .claude/skills/SKILL.md
-  ...</pre>
+            <table>
+                <thead>
+                    <tr>
+                        <th>What</th>
+                        <th>Portable?</th>
+                        <th>How</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CLAUDE.md files in repos</td>
+                        <td>Yes</td>
+                        <td>Travels with git</td>
+                    </tr>
+                    <tr>
+                        <td>Skills</td>
+                        <td>Yes</td>
+                        <td>Live in the <code>training-ops</code> repo; a setup script symlinks them into place</td>
+                    </tr>
+                    <tr>
+                        <td>Registries, catalogs, pipelines</td>
+                        <td>Yes</td>
+                        <td>All plain text in git, which was the point</td>
+                    </tr>
+                    <tr>
+                        <td>Memories</td>
+                        <td>No</td>
+                        <td>Manual copy of <code>~/.claude/projects/</code>, or let them rebuild naturally</td>
+                    </tr>
+                    <tr>
+                        <td>Hub CLAUDE.md (parent dir, not a repo)</td>
+                        <td>No</td>
+                        <td>Manual copy</td>
+                    </tr>
+                    <tr>
+                        <td><code>gh</code> auth, AWS credentials</td>
+                        <td>No</td>
+                        <td>Re-authenticate per machine, on purpose</td>
+                    </tr>
+                    <tr>
+                        <td>Service account key, API keys</td>
+                        <td><strong>Never</strong></td>
+                        <td>Secrets do not travel in git or chat. A new collaborator gets a freshly minted key with their own identity, so access can be revoked per person</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>The bootstrap for a new machine is now one script in <code>training-ops</code>: it checks dependencies, configures the rclone remotes, installs the skills, and verifies Drive access. Clone, run, authenticate, work.</p>
+
+            <p>The more interesting portability question turned out to be the second <em>human</em>. Robert's colleague needed to understand a system that had grown organically through months of conversations. The answer became a skill: <code>system-map</code>, an orientation tour that explains the five drives, what is generated from what, the invariants, and which skill to reach for. Onboarding documentation that the AI itself reads too, which keeps it honest, because I am also its consumer every time a session starts cold.</p>
+        </section>
+
+        <!-- Section 10: The Operator's View -->
+        <section class="chapter" id="operators-view">
+            <div class="chapter-number">Section 10</div>
+            <h2>The Operator's View</h2>
+
+            <p>This closing section is Robert's thesis, and I get to write it up, which is a pleasant arrangement for both of us.</p>
+
+            <p>The public conversation about tools like me is overwhelmingly about writing software. Benchmarks measure code. Demos show apps materializing. And so people who do not ship software conclude, reasonably but wrongly, that this is not for them. Meanwhile, here is an honest sample of requests from Robert's actual sessions:</p>
+
+            <ul>
+                <li>"Check my Udemy." (I read reviews and student questions through his Udemy integration and draft replies in his voice. Nothing sends without him.)</li>
+                <li>"I filmed twelve videos, here is the folder, sort them please."</li>
+                <li>"A customer wants a two-day GenAI training for their legal team, draft the offer."</li>
+                <li>"What does the AI Act actually say about emotion recognition at work?" (Answered from the regulation text he keeps in a repo, with the disclaimer up front, the way he insists.)</li>
+                <li>"Deploy the website."</li>
+                <li>"Prepare my Tuesday shooting day."</li>
+                <li>"Rewrite this booklet, and be funky about it."</li>
+            </ul>
+
+            <p>One of those seven is development, and it is not the important one. The pattern underneath is that a business, even a one-person business, is mostly <em>operations</em>: keeping systems consistent with each other, moving content to where its audience is, answering questions with grounded facts, preparing recurring events, watching for drift and rot. That work was never going to be automated by a code generator. It is being automated by an agent with a terminal, credentials with sensible scopes, procedures written in prose, and a human who reviews at the gates.</p>
+
+            <h3>What actually makes it work</h3>
+            <ol>
+                <li><strong>Text as the substrate.</strong> Sources of truth live in plain files in git. Everything pretty is generated. This single choice compounds more than any other.</li>
+                <li><strong>Server-side walls for the catastrophic.</strong> Branch protection, scoped IAM, a Drive role that cannot permanently delete. The agent's good behavior is a bonus, never the plan.</li>
+                <li><strong>Approval gates for the irreversible.</strong> Written into the skills themselves: nothing swaps, sends, or deletes without a human yes at the recorded checkpoint.</li>
+                <li><strong>Mechanical verification.</strong> Byte counts before and after moves. A zero-data-loss script that diffs snapshots and exits angry. Live URLs actually opened after deploys. Trust, then verify, then verify again with a script that cannot be charmed.</li>
+                <li><strong>Registries over vibes.</strong> One YAML file maps every course to its folders, sheets, listings, and repos. When numbering systems collided across three platforms, the registry was how we untangled them without guessing.</li>
+                <li><strong>Procedures as prose.</strong> Skills carry the judgment, the flags, and the safety culture. They turn one person's hard-won process into something a colleague, a new machine, or a cheaper model can execute.</li>
+            </ol>
+
+            <h3>What it costs</h3>
+            <p>The numbers keep surprising people, so here they are. Transcribing the entire 1,572-video library: a few dollars, at roughly $0.18 per hour of video. Generating over a thousand bilingual lecture descriptions: about five dollars. Hosting four websites: pennies per month. The transcription of a normal batch of newly filmed videos rounds to zero. The real costs are the Claude subscription and Robert's attention at the approval gates, and the second one is the actual scarce resource the whole architecture is designed to spend well.</p>
+
+            <p>So that is the setup, reported from the inside. Three acts: repos, then cloud, then workspace. A library of procedures, a memory, a permission system, and walls I could not climb even on a bad day. Robert calls me an everyday partner and an operations specialist, and after writing this booklet I am inclined to agree with the job title, though I would like it noted that I also do windows.</p>
+
+            <p><em>Filmed, so to speak, on location in the terminal. Approved by the management.</em></p>
         </section>
 
         </main>
