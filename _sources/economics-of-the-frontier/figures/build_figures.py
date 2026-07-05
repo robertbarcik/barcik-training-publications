@@ -171,7 +171,7 @@ def fig_vintage():
     ax2.tick_params(axis="y", labelsize=8)
 
     fig.text(0.5, 0.005,
-             "Stylised illustration of Dario Amodei’s framing — not Anthropic’s "
+             "Stylised illustration of Dario Amodei’s framing, not Anthropic’s "
              "accounts. Every year the company finances a successor ≈ 10× larger.",
              ha="center", fontsize=8, style="italic", color=MUTE)
     fig.tight_layout(rect=[0, 0.03, 1, 1])
@@ -184,7 +184,7 @@ def fig_vintage():
 def fig_revenue():
     fig, ax = plt.subplots(figsize=(8.4, 4.6))
     anthropic = [(2024.00, 0.1), (2024.92, 1), (2025.92, 9),
-                 (2026.08, 14), (2026.17, 19), (2026.25, 30)]
+                 (2026.08, 14), (2026.17, 19), (2026.25, 30), (2026.42, 47)]
     openai = [(2024.00, 1.6), (2024.92, 4), (2025.92, 20), (2026.25, 24)]
 
     for data, color, name in [(anthropic, ACCENT, "Anthropic"),
@@ -196,21 +196,22 @@ def fig_revenue():
         ax.annotate(f"  {name}\n  ${ys[-1]:g}B", (xs[-1], ys[-1]),
                     fontsize=9.5, fontweight="bold", color=color, va="center")
 
-    ax.set_xlim(2023.85, 2026.65)
-    ax.set_ylim(0, 34)
+    ax.set_xlim(2023.85, 2026.85)
+    ax.set_ylim(0, 52)
     ax.set_xticks([2024, 2025, 2026])
     ax.set_xticklabels(["2024", "2025", "2026"], fontsize=10)
-    ax.set_yticks([0, 10, 20, 30])
-    ax.set_yticklabels(["$0B", "$10B", "$20B", "$30B"], fontsize=9)
+    ax.set_yticks([0, 10, 20, 30, 40, 50])
+    ax.set_yticklabels(["$0B", "$10B", "$20B", "$30B", "$40B", "$50B"], fontsize=9)
     ax.set_ylabel("Annualised revenue run rate", fontsize=9.5)
     ax.set_title("Two run rates, two trajectories",
                  fontsize=12, fontweight="bold", color=NAVY, pad=10)
     ax.grid(axis="y", color="#eef2f6", lw=1)
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
-    ax.text(2023.9, -6.6,
-            "Run rate = one strong month × 12. Recognised (GAAP) revenue is "
-            "roughly half of each figure shown.",
+    ax.text(2023.9, -10.0,
+            "Run rate = the trailing month, annualised (labs use ×12 or ×13 mechanics). "
+            "Recognised (GAAP) revenue is roughly half of each figure shown. "
+            "Last point: $47B, late May 2026.",
             fontsize=8, style="italic", color=MUTE)
     save(fig, "fig-revenue.png")
 
@@ -254,7 +255,7 @@ def fig_circular():
     # centre
     ax.text(cx, cy + 0.45, "$1", ha="center", va="center",
             fontsize=30, fontweight="bold", color=NAVY)
-    ax.text(cx, cy - 0.85, "the same dollar —\ninvestment and revenue at once",
+    ax.text(cx, cy - 0.85, "the same dollar:\ninvestment and revenue at once",
             ha="center", va="center", fontsize=8.6, style="italic",
             color=MUTE, linespacing=1.4)
     save(fig, "fig-circular.png")

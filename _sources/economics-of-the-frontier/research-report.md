@@ -4,6 +4,15 @@
 > `economics-of-the-frontier/index.html` is built from. All figures are as of
 > the dates noted. Treat run-rate figures as ~12× a single month, not GAAP.
 
+> **July 2026 corrections (see `notes.md` for the full revision log):**
+> three items below were wrong or misdated and are corrected in the deployed booklet:
+> (1) Nvidia's "up to $100B" OpenAI investment was a non-binding LOI, never finalised;
+> what closed (Mar 2026) was **$30B** inside the $122B round.
+> (2) Zhipu/MiniMax HK IPO-day valuations were **~$7.1B / ~$6.5B** (Jan 8, 2026), not ~$56B/~$33B;
+> those larger numbers only appeared after the June 2026 rally (Zhipu ~$63B peak, MiniMax ~$16B).
+> (3) The WSJ $74B-loss/2028 reporting dates to **Nov 2025**, not May 2026.
+> Also superseded: $30B run rate → $47B (late May); Series G $380B → Series H $65B at $965B + confidential S-1 (Jun 1).
+
 ## TL;DR
 
 - Anthropic's per-model profitability framing is largely supported by the math, but the

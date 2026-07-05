@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Economics of the Frontier — barcik.training</title>
-<meta name="description" content="How frontier AI labs — Anthropic, OpenAI, Mistral, the Chinese labs — actually make and lose money. Seven ledgers, one method for reading the numbers. Snapshot: May 2026.">
+<title>The Economics of the Frontier &middot; barcik.training</title>
+<meta name="description" content="How frontier AI labs (Anthropic, OpenAI, Mistral, the Chinese labs) actually make and lose money. Eight ledgers, one method for reading the numbers. May 2026, revised July 2026.">
 <link rel="canonical" href="https://publications.barcik.training/economics-of-the-frontier/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Economics of the Frontier">
-<meta property="og:description" content="How frontier AI labs — Anthropic, OpenAI, Mistral, the Chinese labs — actually make and lose money. Seven ledgers, one method for reading the numbers. Snapshot: May 2026.">
+<meta property="og:description" content="How frontier AI labs (Anthropic, OpenAI, Mistral, the Chinese labs) actually make and lose money. Eight ledgers, one method for reading the numbers. May 2026, revised July 2026.">
 <meta property="og:url" content="https://publications.barcik.training/economics-of-the-frontier/">
 <meta property="og:image" content="https://publications.barcik.training/assets/og-card.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -321,6 +321,46 @@ p { margin-bottom: 1rem; }
 .author-note p { margin-bottom: 0.6rem; }
 .author-note p:last-child { margin-bottom: 0; }
 
+/* ── Field note (first-person aside) ── */
+.field-note {
+  background: #f8fafc;
+  border-left: 4px solid var(--navy);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 1.5rem 0;
+  font-size: 0.92rem; line-height: 1.7;
+  color: var(--text);
+}
+.field-note .fn-label {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--navy); margin-bottom: 6px;
+}
+.field-note p { margin-bottom: 0.6rem; }
+.field-note p:last-child { margin-bottom: 0; }
+
+/* ── Bets (author probabilities; shared design with Scenario Planning) ── */
+.bet {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px; margin-bottom: 12px;
+}
+.bet .bet-by {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--accent); margin-bottom: 4px;
+}
+.bet .bet-claim { font-size: 0.96rem; line-height: 1.6; margin-bottom: 8px; }
+.bet .bet-falsify {
+  font-size: 0.85rem; color: var(--text); line-height: 1.55;
+  background: #fef2f2; border-radius: 6px; padding: 8px 12px;
+}
+.bet .bet-falsify .bf-k {
+  font-size: 0.66rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--risk-color); margin-right: 6px;
+}
+
 /* ── Translate callout (the recurring "make the number human" device) ── */
 .translate {
   background: #f0fdfa;
@@ -424,13 +464,13 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
 <aside id="sidebar">
   <div id="sidebar-header">
     <h2>The Economics of the Frontier</h2>
-    <p>How the AI labs make &mdash; and lose &mdash; money</p>
+    <p>How the AI labs make and lose money</p>
   </div>
   <nav>
     <ul>
       <li><a href="#cover">Cover</a></li>
       <li><a href="#premise">The Premise</a></li>
-      <li class="nav-divider">The Seven Ledgers</li>
+      <li class="nav-divider">The Eight Ledgers</li>
       <li><a href="#ledger-1">1. How a Lab Works</a></li>
       <li><a href="#ledger-2">2. Reading the Books</a></li>
       <li><a href="#ledger-3">3. The Vintage Problem</a></li>
@@ -438,6 +478,7 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
       <li><a href="#ledger-5">5. The Dark Factory</a></li>
       <li><a href="#ledger-6">6. The Money Goes in a Circle</a></li>
       <li><a href="#ledger-7">7. The Rest of the World</a></li>
+      <li><a href="#ledger-8">8. Reading the Bears</a></li>
       <li class="nav-divider">Reference</li>
       <li><a href="#sources">Sources &amp; Notes</a></li>
     </ul>
@@ -450,12 +491,12 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
 <!-- ═══════════════════════════════════════════════ COVER ═══ -->
 <section class="chapter" id="cover">
   <div class="cover-page">
-    <div class="cover-label">barcik.training &mdash; Publications</div>
+    <div class="cover-label">barcik.training &middot; Publications</div>
     <h1>The Economics<br>of the Frontier</h1>
-    <p class="cover-subtitle">Seven ledgers on the business of the AI frontier &mdash;<br>and one habit for reading its numbers.</p>
+    <p class="cover-subtitle">Eight ledgers on the business of the AI frontier,<br>and one habit for reading its numbers.</p>
     <div class="cover-meta">
       <span>Robert Barcik</span>
-      <span>Snapshot: May 2026</span>
+      <span>May 2026 &middot; revised July 2026</span>
       <span><a href="mailto:robert@barcik.training" style="color: inherit;">robert@barcik.training</a></span>
     </div>
   </div>
@@ -468,29 +509,55 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
 
   <p class="lead">In a single week in 2026, you could read that the same AI lab was a &ldquo;$30&nbsp;billion business,&rdquo; a &ldquo;$14&nbsp;billion business,&rdquo; and a business losing money on every customer it served. All three were published by serious outlets. None of them were wrong.</p>
 
-  <p>They were using three different rulers. One measured the best recent month and multiplied by twelve. One measured revenue an accountant would actually recognise. One measured what it costs to serve a customer against what that customer pays. The numbers disagree because the <em>units</em> disagree &mdash; and almost nobody tells you which unit they are holding.</p>
+  <p>They were using three different rulers. One measured the best recent weeks and multiplied them out to a year. One measured revenue an accountant would actually recognise. One measured what it costs to serve a customer against what that customer pays. The numbers disagree because the <em>units</em> disagree, and almost nobody tells you which unit they are holding.</p>
 
-  <p>This is the real problem with the economics of frontier AI. It is not that the numbers are secret. It is that they are enormous, fast-moving, and quoted in whichever form flatters the moment &mdash; and the human mind is not built to hold a $700&nbsp;billion figure steady long enough to ask whether it means anything. Coverage of this industry drowns you in magnitudes. It rarely hands you a way to think with them.</p>
+  <div class="field-note">
+    <div class="fn-label">Field note</div>
+    <p>This booklet exists because of a question I kept failing to answer in one breath. In my trainings it arrives reliably, usually right after the coffee break: <em>&ldquo;But are these companies actually profitable? Or is this all a bubble?&rdquo;</em> For a long time my honest answers were shapeless: it depends, define profitable, which company, whose numbers. Eventually I sat down to build the answer I wished I could hand out. This is it. The short version fits in the four boxes below; the long version is eight ledgers.</p>
+  </div>
 
-  <p>This booklet is that way to think. It is organised as <strong>seven ledgers</strong> &mdash; seven separate accounts of how money actually moves at the frontier. A ledger is a record, not a forecast: each one shows you a different mechanism, and together they let a practitioner or an executive read any headline about Anthropic, OpenAI, Mistral, or the Chinese labs and know what they are looking at.</p>
+  <h3>So, are they profitable? The short honest answer</h3>
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--green)">Per token served: yes, since 2025</div>
+      <div class="card-text">Frontier inference now sells for materially more than it costs to serve. Gross margins on serving moved from roughly <strong>minus 94%</strong> in 2024 to <strong>above 70%</strong> in 2026. &ldquo;Selling dollars for cents&rdquo; was real, and it ended. (Ledger&nbsp;3)</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--teal)">Per model: arguably</div>
+      <div class="card-text">On the labs&rsquo; own framing, each model earns roughly <strong>twice its training cost</strong> over its serving life. That claim is coherent, load-bearing, and rests on assumptions worth interrogating. (Ledger&nbsp;3)</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--risk-color)">As companies: no, by choice</div>
+      <div class="card-text">Every year they finance a successor model roughly ten times bigger, so the annual accounts show deepening losses. The losses are the cost of a choice, and the choice must be won every round. (Ledgers&nbsp;3, 5)</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--navy)">Depends which lab: increasingly</div>
+      <div class="card-text">Anthropic brushed an operating profit in 2026 and projects profitable years from 2028; OpenAI projects widening losses to the decade&rsquo;s end, on purpose. They are running different races. (Ledger&nbsp;4)</div>
+    </div>
+  </div>
+  <p>Everything after this point is the justification for those four boxes, the method behind them, and the caveats they deserve.</p>
 
-  <p>The seven ledgers are: <strong>How a Lab Works</strong> (the basic machine &mdash; what a model costs to build and how it is sold), <strong>Reading the Books</strong> (the toolkit &mdash; how headline numbers are constructed), <strong>The Vintage Problem</strong> (why a lab can profit on every model it sells and still lose billions), <strong>A Tale of Two Labs</strong> (why Anthropic and OpenAI are no longer the same kind of company), <strong>The Dark Factory</strong> (the race to become the utility company of intelligence), <strong>The Money Goes in a Circle</strong> (how investor dollars become revenue dollars), and <strong>The Rest of the World</strong> (Mistral, the Chinese labs, and the commodity tier).</p>
+  <p>The real problem with the economics of frontier AI is not secrecy. The numbers are public; they are also enormous, fast-moving, and quoted in whichever form flatters the moment, and the human mind is not built to hold a $700&nbsp;billion figure steady long enough to ask whether it means anything. Coverage of this industry drowns you in magnitudes. It rarely hands you a way to think with them.</p>
+
+  <p>This booklet is that way to think. It is organised as <strong>eight ledgers</strong>: eight separate accounts of how money actually moves at the frontier. A ledger is a record, not a forecast: each one shows you a different mechanism, and together they let a practitioner or an executive read any headline about Anthropic, OpenAI, Mistral, or the Chinese labs and know what they are looking at.</p>
+
+  <p>The eight ledgers are: <strong>How a Lab Works</strong> (the basic machine: what a model costs to build and how it is sold), <strong>Reading the Books</strong> (the toolkit: how headline numbers are constructed), <strong>The Vintage Problem</strong> (why a lab can profit on every model it sells and still lose billions), <strong>A Tale of Two Labs</strong> (why Anthropic and OpenAI are no longer the same kind of company), <strong>The Dark Factory</strong> (the race to become the utility company of intelligence), <strong>The Money Goes in a Circle</strong> (how investor dollars become revenue dollars), <strong>The Rest of the World</strong> (Mistral, the Chinese labs, and the commodity tier), and <strong>Reading the Bears</strong> (how to read the loudest critics with the same discipline you apply to the press releases).</p>
 
   <h3>The seller&rsquo;s side</h3>
-  <p>A companion booklet in this series, <em>The Token Economics</em>, looks at AI cost from the <em>buyer&rsquo;s</em> side &mdash; what an organisation pays per token, and when self-hosting beats an API. This booklet is deliberately the mirror image: the <em>seller&rsquo;s</em> side. Not &ldquo;what does AI cost you,&rdquo; but &ldquo;how do the companies selling it make &mdash; or lose &mdash; money, and how sturdy is that business.&rdquo; If you build on these labs, depend on them, or answer to someone who is writing them large cheques, that is the question underneath the question.</p>
+  <p>A companion booklet in this series, <a href="../token-economics/"><em>The Token Economics</em></a>, looks at AI cost from the <em>buyer&rsquo;s</em> side: what an organisation pays per token, and when self-hosting beats an API. This booklet is deliberately the mirror image, the <em>seller&rsquo;s</em> side. Not &ldquo;what does AI cost you,&rdquo; but &ldquo;how do the companies selling it make, or lose, money, and how sturdy is that business.&rdquo; If you build on these labs, depend on them, or answer to someone who is writing them large cheques, that is the question underneath the question.</p>
 
   <h3>One recurring habit</h3>
-  <p>Throughout, you will meet a small green box labelled <strong>Translate</strong>. Each one takes a number too big to feel and restates it as one you can &mdash; a yearly loss as a daily burn rate, an aggregate spend as a figure per person, a capital commitment as something physical. The boxes are not decoration. They are the single habit this booklet is trying to install: <em>never repeat a frontier number you have not first converted into something a person can picture.</em></p>
+  <p>Throughout, you will meet a small green box labelled <strong>Translate</strong>. Each one takes a number too big to feel and restates it as one you can: a yearly loss as a daily burn rate, an aggregate spend as a figure per person, a capital commitment as something physical. The boxes are not decoration but the one habit this booklet is trying to install: <em>never repeat a frontier number you have not first converted into something a person can picture.</em></p>
 
   <div class="translate">
     <div class="tr-label">Translate</div>
-    <p>Anthropic reported a <strong>$30&nbsp;billion revenue run rate</strong> in April 2026.<span class="en" id="ref-1"><a class="en-link" href="#src-1">1</a></span> &ldquo;Run rate&rdquo; means: take the best recent month, multiply by twelve. So the underlying claim is really &ldquo;we earned about <strong>$2.5&nbsp;billion in our best month.</strong>&rdquo; That is still extraordinary &mdash; but it is a different, smaller, more honest sentence than the headline, and you can hold it in your head.</p>
+    <p>Anthropic reported a <strong>$30&nbsp;billion revenue run rate</strong> in April 2026.<span class="en" id="ref-1"><a class="en-link" href="#src-1">1</a></span> &ldquo;Run rate&rdquo; means, near enough: take the best recent month, multiply by twelve (Ledger&nbsp;2 shows the exact mechanic). So the underlying claim is really &ldquo;we earned about <strong>$2.5&nbsp;billion in our best month.</strong>&rdquo; That is still extraordinary, but it is a different, smaller, more honest sentence than the headline, and you can hold it in your head.</p>
   </div>
 
   <div class="author-note">
-    <div class="an-label">A note on what this booklet is &mdash; and isn&rsquo;t</div>
-    <p>Every figure here is a <strong>snapshot dated May 2026</strong>. The dollar amounts will age within months; the industry reprices itself constantly. That is deliberate: the durable product of this booklet is the <em>method</em>, not the magnitudes. If a number is stale by the time you read it, the way of reading it still holds.</p>
-    <p>Two more honesties. First, the public record is uneven &mdash; OpenAI is more heavily reported on than Anthropic, and some of the most-quoted Anthropic figures come from the company itself or from sympathetic sources. Where that matters, the text says so, and every figure carries a small tag &mdash; <span class="tag tag-reported">reported</span> <span class="tag tag-projected">projected</span> <span class="tag tag-estimated">estimated</span> &mdash; telling you how solid it is. Second, the goal is comprehension, not a verdict. This is not a case that the frontier is a bubble, nor that it isn&rsquo;t. It is a set of instruments for reading the gauges yourself.</p>
+    <div class="an-label">A note on what this booklet is, and isn&rsquo;t</div>
+    <p>Every figure here was gathered for a <strong>May 2026 snapshot</strong> and refreshed in a <strong>July 2026 revision</strong>; dated notes mark where the world moved in between, and it moved a lot in six weeks. The dollar amounts will age again within months; the industry reprices itself constantly. That is deliberate: the durable product of this booklet is the <em>method</em>, not the magnitudes. If a number is stale by the time you read it, the way of reading it still holds.</p>
+    <p>Two more honesties. First, the public record is uneven: OpenAI is more heavily reported on than Anthropic, and some of the most-quoted Anthropic figures come from the company itself or from sympathetic sources. Where that matters, the text says so, and every figure carries a small tag (<span class="tag tag-reported">reported</span> <span class="tag tag-projected">projected</span> <span class="tag tag-estimated">estimated</span>) telling you how solid it is. Second, the goal is comprehension, not a verdict: not a case that the frontier is a bubble, nor that it isn&rsquo;t, but a set of instruments for reading the gauges yourself.</p>
   </div>
 </section>
 
@@ -502,59 +569,64 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
   <div class="thesis-grid">
     <div class="thesis-card">
       <div class="card-label" style="color:var(--navy)">The build</div>
-      <div class="card-text">A model is built once, like a factory or a film: a research team and one long training run produce a single finished artefact. That is a large, one-time cost &mdash; paid in full before the model has earned a cent.</div>
+      <div class="card-text">A model is built once, like a factory or a film: a research team and one long training run produce a single finished artefact. That is a large, one-time cost, paid in full before the model has earned a cent.</div>
     </div>
     <div class="thesis-card">
       <div class="card-label" style="color:var(--teal)">The sale</div>
-      <div class="card-text">Then it is sold three ways &mdash; metered API, monthly subscriptions, enterprise bundles &mdash; while every answer it gives costs a little compute to serve. Build cost, serving cost, and a clock: that is the whole machine.</div>
+      <div class="card-text">Then it is sold three ways (metered API, monthly subscriptions, enterprise bundles) while every answer it gives costs a little compute to serve. Build cost, serving cost, and a clock: that is the whole machine.</div>
     </div>
   </div>
 
-  <p>Before the billions, a small machine. Every later ledger is a consequence of how a single AI lab turns money into a model and a model back into money &mdash; so it is worth walking that circuit once, slowly, with an imaginary lab we will call <strong>Frontier Labs, Inc.</strong></p>
+  <p>Before the billions, a small machine. Every later ledger is a consequence of how a single AI lab turns money into a model and a model back into money, so it is worth walking that circuit once, slowly, with an imaginary lab we will call <strong>Frontier Labs, Inc.</strong></p>
 
   <div class="figure">
     <img src="figures/fig-lab-economics.png" alt="Diagram: a research team and compute produce one model, a one-time build cost, which is then sold through a metered API, monthly subscriptions, and enterprise bundles.">
-    <div class="figure-caption">The machine in one picture: a large one-time cost to build a model, then three ways to sell access to it &mdash; while every answer it gives also costs a little compute.</div>
+    <div class="figure-caption">The machine in one picture: a large one-time cost to build a model, then three ways to sell access to it, while every answer it gives also costs a little compute.</div>
   </div>
 
   <div class="chapter-prose">
     <h4>Cost one: building the model</h4>
-    <p>Frontier Labs sets out to build a model. Two things go in. The first is <strong>people</strong> &mdash; a few hundred researchers and engineers, paid serious salaries, for many months. The second is <strong>compute</strong> &mdash; an enormous cluster of specialised chips, rented or owned, running one long, uninterrupted <em>training run</em> in which the model learns from a vast amount of text and code.</p>
+    <p>Frontier Labs sets out to build a model. Two things go in. The first is <strong>people</strong>: a few hundred researchers and engineers, paid serious salaries, for many months. The second is <strong>compute</strong>: an enormous cluster of specialised chips, rented or owned, running one long, uninterrupted <em>training run</em> in which the model learns from a vast amount of text and code.</p>
 
-    <p>At the end of that run you have exactly one thing: a single trained model &mdash; a large file of numbers that can answer questions. Everything spent getting there was a <strong>one-time cost.</strong> It is much closer to building a factory, or shooting a film, than to a monthly bill. You pay it all up front, before the model has earned a single cent. Real frontier training runs have been described as costing anywhere from roughly $100&nbsp;million to well over $1&nbsp;billion, depending on the model&rsquo;s size and generation.<span class="en" id="ref-2"><a class="en-link" href="#src-2">2</a></span> For Frontier Labs, say the all-in build cost &mdash; team plus the training run &mdash; comes to <strong>$1&nbsp;billion.</strong></p>
+    <p>At the end of that run you have exactly one thing: a single trained model: a large file of numbers that can answer questions. Everything spent getting there was a <strong>one-time cost.</strong> It is much closer to building a factory, or shooting a film, than to a monthly bill. You pay it all up front, before the model has earned a single cent. Real frontier training runs have been described as costing anywhere from roughly $100&nbsp;million to well over $1&nbsp;billion, depending on the model&rsquo;s size and generation.<span class="en" id="ref-2"><a class="en-link" href="#src-2">2</a></span> The best-documented single figure of the current generation is an estimated $490&nbsp;million for one 2025 frontier run, and Dario Amodei has repeatedly said he expects $10&nbsp;billion runs by 2027 or 2028; treat the first as an estimate and the second as a forecast.<span class="en" id="ref-40"><a class="en-link" href="#src-40">40</a></span> For Frontier Labs, say the all-in build cost (team plus the training run) comes to <strong>$1&nbsp;billion.</strong></p>
 
     <h4>Cost two: running the model</h4>
-    <p>Here is the part newcomers miss. Building the model was not the end of the spending. Every time a customer asks the finished model a question, the model has to <em>think</em> &mdash; and that thinking runs on chips that draw power and cost money. This running cost is called <strong>inference</strong>, and unlike the build cost it never stops. It is a small charge, paid again and again, on every answer the model ever gives. A lab therefore carries two quite different costs: one huge bill to <em>build</em>, and a stream of little bills to <em>run</em>.</p>
+    <p>Here is the part newcomers miss. Building the model was not the end of the spending. Every time a customer asks the finished model a question, the model has to <em>think</em>, and that thinking runs on chips that draw power and cost money. This running cost is called <strong>inference</strong>, and unlike the build cost it never stops. It is a small charge, paid again and again, on every answer the model ever gives. A lab therefore carries two quite different costs: one huge bill to <em>build</em>, and a stream of little bills to <em>run</em>.</p>
 
     <div class="translate">
       <div class="tr-label">Translate</div>
-      <p>Labs talk about selling &ldquo;tokens.&rdquo; A token is about three-quarters of a word. The cleanest way to picture it is a <strong>water meter</strong>: the customer pays for the words that flow through the model, in and out, and the meter clicks over a million tokens &mdash; roughly 750,000 words, about a fat novel&rsquo;s worth &mdash; at a time. Selling intelligence, in this business, looks a lot like selling a metered utility.</p>
+      <p>Labs talk about selling &ldquo;tokens.&rdquo; A token is about three-quarters of a word. The cleanest way to picture it is a <strong>water meter</strong>: the customer pays for the words that flow through the model, in and out, and the meter clicks over a million tokens (roughly 750,000 words, about a fat novel&rsquo;s worth) at a time. Selling intelligence, in this business, looks a lot like selling a metered utility.</p>
     </div>
 
     <h4>Three ways to sell it</h4>
     <p>Now Frontier Labs has a model that works and costs a little to run. It opens three doors to revenue.</p>
-    <p><strong>The metered API.</strong> Other companies&rsquo; developers connect their software directly to the model and are billed per token, exactly like that water meter &mdash; so much per million words in, more per million words out. Pure pay-as-you-go.</p>
-    <p><strong>Subscriptions.</strong> Individual people pay a flat monthly fee &mdash; a $20-a-month plan, a heavier $200-a-month plan &mdash; for generous but capped access through an app. The lab is making a bet: that the <em>average</em> subscriber will cost less to serve than they pay, even though the heaviest ones cost far more.</p>
-    <p><strong>Enterprise bundles.</strong> Large organisations negotiate packages &mdash; blocks of seats for their staff, higher usage limits, security features, committed-use contracts at a discount. These deals are bigger, stickier, and slower to sign than the other two.</p>
+    <p><strong>The metered API.</strong> Other companies&rsquo; developers connect their software directly to the model and are billed per token, exactly like that water meter: so much per million words in, more per million words out. Pure pay-as-you-go.</p>
+    <p><strong>Subscriptions.</strong> Individual people pay a flat monthly fee (a $20-a-month plan, a heavier $200-a-month plan) for generous but capped access through an app. The lab is making a bet: that the <em>average</em> subscriber will cost less to serve than they pay, even though the heaviest ones cost far more.</p>
+    <p><strong>Enterprise bundles.</strong> Large organisations negotiate packages: blocks of seats for their staff, higher usage limits, security features, committed-use contracts at a discount. These deals are bigger, stickier, and slower to sign than the other two.</p>
 
     <h4>The shape of the whole business</h4>
-    <p>Walk Frontier Labs&rsquo; one model from cradle to grave and the shape appears. It cost $1&nbsp;billion to build. Over the roughly two years before a better model replaces it, suppose it earns $2&nbsp;billion across those three doors &mdash; while the compute to serve all those answers costs, say, $0.6&nbsp;billion. The model, on its own, cleared its build cost and then some.</p>
+    <p>Walk Frontier Labs&rsquo; one model from cradle to grave and the shape appears. It cost $1&nbsp;billion to build. Over the roughly two years before a better model replaces it, suppose it earns $2&nbsp;billion across those three doors, while the compute to serve all those answers costs, say, $0.6&nbsp;billion. The model, on its own, cleared its build cost and then some.</p>
 
     <table class="s2-table">
-      <tr><th>Frontier Labs, Inc. &mdash; the life of one model</th><th>Illustrative figure</th></tr>
-      <tr><td>Build it &mdash; research team + one training run (one-time)</td><td class="rowhead">&minus;$1.0B</td></tr>
-      <tr><td>Run it &mdash; compute to answer every request, over ~2 years</td><td class="rowhead">&minus;$0.6B</td></tr>
-      <tr><td>Sell it &mdash; API + subscriptions + enterprise, over its life</td><td class="rowhead">+$2.0B</td></tr>
+      <tr><th>Frontier Labs, Inc. &middot; the life of one model</th><th>Illustrative figure</th></tr>
+      <tr><td>Build it: research team + one training run (one-time)</td><td class="rowhead">&minus;$1.0B</td></tr>
+      <tr><td>Run it: compute to answer every request, over ~2 years</td><td class="rowhead">&minus;$0.6B</td></tr>
+      <tr><td>Sell it: API + subscriptions + enterprise, over its life</td><td class="rowhead">+$2.0B</td></tr>
       <tr><td>What the model leaves behind</td><td class="rowhead">+$0.4B</td></tr>
     </table>
-    <p class="s2-table-caption">Illustrative numbers for an imaginary lab. The pattern that matters &mdash; lifetime revenue of roughly twice the build cost &mdash; is the one Ledger&nbsp;3 examines in detail.</p>
+    <p class="s2-table-caption">Illustrative numbers for an imaginary lab. The pattern that matters (lifetime revenue of roughly twice the build cost) is the one Ledger&nbsp;3 examines in detail.</p>
 
-    <p>So the machine has three parts: a <strong>large fixed cost</strong> to build, a <strong>metered margin</strong> on every answer sold, and a <strong>clock</strong> &mdash; because a better model, yours or a rival&rsquo;s, will make this one obsolete. The whole game is to earn back the build, at the metered margin, before the clock runs out.</p>
+    <p>So the machine has three parts: a <strong>large fixed cost</strong> to build, a <strong>metered margin</strong> on every answer sold, and a <strong>clock</strong>, because a better model, yours or a rival&rsquo;s, will make this one obsolete. The whole game is to earn back the build, at the metered margin, before the clock runs out.</p>
 
-    <p>That is the entire business in one paragraph. Everything that follows is a consequence of it. Ledger&nbsp;2 shows how labs <em>report</em> these costs and revenues &mdash; and how the reporting can mislead. Ledger&nbsp;3 takes this exact shape and asks what happens when you run it not once but every year, each time building a model ten times larger. The rest of the booklet follows the same machine outward, into the strange economics it produces at scale.</p>
+    <h4>Where the compute actually goes</h4>
+    <p>One more gauge on the machine, because it anchors a rule of thumb you will want later. A lab&rsquo;s compute bill does not split neatly into &ldquo;build&rdquo; and &ldquo;run.&rdquo; It splits three ways: the <strong>final training runs</strong> that produce released models; the <strong>research</strong> around them (experiments, small-scale trials, failed runs, synthetic data); and <strong>inference</strong>, the serving of customers. The proportions are not what most newcomers guess. The best public accounting, by the research group Epoch AI, found that of OpenAI&rsquo;s roughly $5&nbsp;billion of research-and-development compute in 2024, only about a tenth went into the final training runs of released models; the rest fed the experimental machine around them. Similar shares, 10 to 23 per cent, show up at the labs that publish enough to check.<span class="en" id="ref-25"><a class="en-link" href="#src-25">25</a></span> The famous training run is the <em>smallest</em> slice of the build side, not the biggest.</p>
+    <p>Dario Amodei has compressed the same shape into a deliberately simple heuristic: <em>&ldquo;Let&rsquo;s say half of your compute is for training, and half of your compute is for inference. And the inference has some gross margin that&rsquo;s like more than 50%&rdquo;</em>; and, of the whole machine, <em>&ldquo;spending 50% of your compute on research, roughly, plus a gross margin that&rsquo;s higher than 50%, and correct demand prediction leads to profit.&rdquo;</em><span class="en"><a class="en-link" href="#src-5">5</a></span> He flags it as a toy model, and it is one, but it is the closest thing to the labs&rsquo; own operating arithmetic in the public record. As a one-sentence rule of thumb: <strong>roughly half the compute feeds the research machine (of which the famous final run is perhaps a tenth), half serves customers, and the serving half must clear a margin above 50 per cent.</strong></p>
+    <p>One trend bends the rule over time: the serving half is growing. Industry estimates put inference at roughly a third of all AI compute in 2023, about half in 2025, and around two-thirds in 2026, as deployed usage compounds and reasoning-style models spend extra compute on every answer.<span class="en" id="ref-26"><a class="en-link" href="#src-26">26</a></span> A young lab is mostly a research machine with a serving desk attached; a mature one is the reverse. Keep that drift in mind whenever this booklet mentions a compute bill: the bills rise even in a year when training budgets do not.</p>
+
+    <p>That is the entire business on one page: build, serve, allocate, beat the clock. Everything that follows is a consequence of it. Ledger&nbsp;2 shows how labs <em>report</em> these costs and revenues, and how the reporting can mislead. Ledger&nbsp;3 takes this exact shape and asks what happens when you run it not once but every year, each time building a model ten times larger. The rest of the booklet follows the same machine outward, into the strange economics it produces at scale.</p>
   </div>
 
-  <p class="credits">Sources: Dwarkesh Patel interview with Dario Amodei &middot; DeepSeek technical report &middot; The Register &mdash; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
+  <p class="credits">Sources: Dwarkesh Patel interview with Dario Amodei &middot; DeepSeek technical report &middot; The Register &middot; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════ LEDGER 2 ═══ -->
@@ -569,12 +641,12 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
     </div>
     <div class="thesis-card">
       <div class="card-label" style="color:var(--green)">The toolkit</div>
-      <div class="card-text">Four questions defuse almost every misleading figure: Is this <em>run rate</em> or recognised revenue? Is it <em>gross</em> or net of the channel? Is this capital <em>committed</em> or spent? And whose money is it &mdash; a customer&rsquo;s, or an investor&rsquo;s?</div>
+      <div class="card-text">Four questions defuse almost every misleading figure: Is this <em>run rate</em> or recognised revenue? Is it <em>gross</em> or net of the channel? Is this capital <em>committed</em> or spent? And whose money is it: a customer&rsquo;s, or an investor&rsquo;s?</div>
     </div>
   </div>
 
   <div class="key-numbers">
-    <div class="kn"><div class="kn-value">&times;12</div><div class="kn-label">A &ldquo;run rate&rdquo; is one good month, annualised</div></div>
+    <div class="kn"><div class="kn-value">&times;13</div><div class="kn-label">A &ldquo;run rate&rdquo;: the trailing four weeks, annualised</div></div>
     <div class="kn"><div class="kn-value">&asymp;&frac12;</div><div class="kn-label">Recognised (GAAP) revenue vs the run-rate headline</div></div>
     <div class="kn"><div class="kn-value">~$8B</div><div class="kn-label">Disputed gap between gross and net revenue at one lab<span class="en" id="ref-3"><a class="en-link" href="#src-3">3</a></span></div></div>
     <div class="kn"><div class="kn-value">5 yrs</div><div class="kn-label">Typical span a &ldquo;$300B deal&rdquo; is spread across</div></div>
@@ -582,31 +654,49 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
 
   <div class="chapter-prose">
     <h4>The headline number is a costume</h4>
-    <p>Start with the most quoted figure in the industry: the <em>run rate</em>. When a lab says it has reached a &ldquo;$30 billion run rate,&rdquo; it has not earned $30 billion. It has taken its strongest recent month and multiplied by twelve. Run rate is a forecast wearing the costume of a result. It is not an accounting standard, it has no auditor, and in an industry growing this fast it always flatters &mdash; because the month it annualises is, by selection, the best one so far.</p>
+    <p>Start with the most quoted figure in the industry: the <em>run rate</em>. When a lab says it has reached a &ldquo;$30 billion run rate,&rdquo; it has not earned $30 billion. It has taken its most recent strong stretch and annualised it. The documented mechanic at both leading labs is precise: the trailing four weeks of revenue, multiplied by thirteen, with monthly subscription revenue taken times twelve.<span class="en" id="ref-22"><a class="en-link" href="#src-22">22</a></span> Run rate is a forecast wearing the costume of a result. It is not an accounting standard, it has no auditor, no regulator defines it, and in an industry growing this fast it always flatters, because the weeks it annualises are, by selection, the best ones so far.</p>
 
-    <p>Set run rate next to the number an accountant would actually sign: <em>recognised revenue</em>, the GAAP figure, the money genuinely booked over a real trailing year. The two diverge sharply. OpenAI exited 2025 describing a $20&nbsp;billion run rate; the revenue recognised on its books for that year was roughly $13&nbsp;billion.<span class="en" id="ref-4"><a class="en-link" href="#src-4">4</a></span> As a rule of thumb for a company compounding this fast, recognised revenue runs near <strong>half</strong> the run-rate headline. Neither number is a lie. But they answer different questions &mdash; &ldquo;how fast is the last month?&rdquo; versus &ldquo;what did a year actually produce?&rdquo; &mdash; and the gap between them is the first thing a careful reader restores.</p>
+    <p>Set run rate next to the number an accountant would actually sign: <em>recognised revenue</em>, the GAAP figure, the money genuinely booked over a real trailing year. The two diverge sharply. OpenAI exited 2025 describing a $20&nbsp;billion run rate; the revenue recognised on its books for that year was roughly $13&nbsp;billion.<span class="en" id="ref-4"><a class="en-link" href="#src-4">4</a></span> As a rule of thumb for a company compounding this fast, recognised revenue runs near <strong>half</strong> the run-rate headline. Neither number is a lie. But they answer different questions, &ldquo;how fast is the last month?&rdquo; versus &ldquo;what did a year actually produce?&rdquo;, and the gap between them is the first thing a careful reader restores.</p>
+
+    <p>The July 2026 revision of this booklet can make that abstraction brutally concrete, because in mid-June OpenAI&rsquo;s 2025 financials leaked to the press.<span class="en" id="ref-23"><a class="en-link" href="#src-23">23</a></span> Here is one company, one year, four true numbers:</p>
+
+    <table class="s2-table">
+      <tr><th>OpenAI, 2025 &middot; four true numbers</th><th>Figure</th><th>The question it answers</th></tr>
+      <tr><td>Annualised run rate, as announced</td><td class="rowhead">$20B+</td><td>How fast were the best recent weeks?</td></tr>
+      <tr><td>Revenue recognised for the year (leaked)</td><td class="rowhead">~$13.1B</td><td>What did the year actually produce?</td></tr>
+      <tr><td>Operating loss (leaked)</td><td class="rowhead">~$21B</td><td>What did running the business cost?</td></tr>
+      <tr><td>Headline GAAP net loss (leaked)</td><td class="rowhead">~$38.5B</td><td>What lands once one-time accounting events are counted?</td></tr>
+    </table>
+    <p class="s2-table-caption">Per OpenAI&rsquo;s leaked 2025 financials, reported June 16, 2026 <span class="tag tag-reported">reported</span>. A one-time, non-cash charge tied to the company&rsquo;s corporate conversion accounts for most of the gap between the operating and headline losses. Every row is true; every row answers a different question.</p>
+
+    <p>Read the table twice. A commentator quoting the $38.5&nbsp;billion loss is not lying, and neither is the executive quoting the $20&nbsp;billion revenue. But a sentence like &ldquo;OpenAI lost nearly three times its revenue&rdquo; mixes rulers: a GAAP loss swollen by a one-time accounting event, set against a memory of a run-rate headline. Sentences like that were everywhere in June 2026. This table is the whole discipline of the ledger in miniature.</p>
+
+    <h4>The affidavit and the run rate</h4>
+    <p>One more real case, because it shows the rulers being used as weapons. In March 2026, Anthropic&rsquo;s chief financial officer stated in a sworn court declaration that the company&rsquo;s lifetime revenue &ldquo;exceeded $5&nbsp;billion.&rdquo; Days earlier, the press had carried a $19&nbsp;billion annualised run rate.<span class="en" id="ref-24"><a class="en-link" href="#src-24">24</a></span> Critics ran the two numbers side by side as a gotcha: surely one of them must be false. Neither is. &ldquo;Lifetime revenue&rdquo; is money actually recognised since founding, a conservative, backward-looking, legally sworn ruler; a run rate is the latest four weeks multiplied out to a year, a flattering, forward-looking, unaudited one. A company growing many times over within a year will always show a startling gap between the two, and the gap is evidence of the growth, not of a lie. The lesson cuts both ways: the same pair of true numbers can be arranged to say &ldquo;fraud&rdquo; or to say &ldquo;rocket ship.&rdquo; Whoever arranged them for you had a reason.</p>
 
     <h4>Gross, net, and the $8 billion argument</h4>
-    <p>The second ruler is <em>gross versus net</em>. Frontier models are sold not only direct but through hyperscaler marketplaces &mdash; Amazon Bedrock, Google Vertex, Azure. When a customer buys Claude through Amazon, a cut stays with Amazon. Book the whole sale and your revenue is <em>gross</em>; book only your share and it is <em>net</em>. The choice can swing a top line by 20 to 40 per cent.</p>
+    <p>The second ruler is <em>gross versus net</em>. Frontier models are sold not only direct but through hyperscaler marketplaces: Amazon Bedrock, Google Vertex, Azure. When a customer buys Claude through Amazon, a cut stays with Amazon. Book the whole sale and your revenue is <em>gross</em>; book only your share and it is <em>net</em>. The choice can swing a top line by 20 to 40 per cent.</p>
 
-    <p>This is not abstract. In April 2026 a leaked internal memo from an OpenAI executive argued that Anthropic&rsquo;s revenue figure was overstated by roughly $8&nbsp;billion precisely because Anthropic books reseller sales gross while OpenAI&rsquo;s comparison was net.<span class="en"><a class="en-link" href="#src-3">3</a></span> Sort that out and the two companies&rsquo; 2026 revenues land far closer together than the duelling press releases suggest. The lesson is not that one side cheated. It is that two true numbers are not comparable until you know each one&rsquo;s ruler &mdash; and that you, the reader, must do that work because the headline will not.</p>
+    <p>This is not abstract. In April 2026 a leaked internal memo from an OpenAI executive argued that Anthropic&rsquo;s revenue figure was overstated by roughly $8&nbsp;billion precisely because Anthropic books reseller sales gross while OpenAI&rsquo;s comparison was net.<span class="en"><a class="en-link" href="#src-3">3</a></span> Sort that out and the two companies&rsquo; 2026 revenues land far closer together than the duelling press releases suggest. The lesson is that two true numbers are not comparable until you know each one&rsquo;s ruler, and that you, the reader, must do that work, because the headline will not. Nobody cheated; the rulers differed.</p>
 
     <h4>Committed is not spent</h4>
-    <p>The third ruler separates a <em>commitment</em> from a <em>cost</em>. The frontier deals in numbers like &ldquo;a $300 billion compute deal&rdquo; or &ldquo;$700 billion of capital expenditure.&rdquo; Almost always these are multi-year commitments &mdash; a $300 billion cloud contract is spread across five years, so it is nearer $60 billion a year, and even that arrives only if the buyer keeps consuming. A pledge to <em>build</em> capacity is not cash that has left the building. When a headline collapses a five-year commitment into a single staggering figure, your job is to divide it back out and ask what is contractually firm versus contingent on milestones nobody has hit yet.</p>
+    <p>The third ruler separates a <em>commitment</em> from a <em>cost</em>. The frontier deals in numbers like &ldquo;a $300 billion compute deal&rdquo; or &ldquo;$700 billion of capital expenditure.&rdquo; Almost always these are multi-year commitments &middot; a $300 billion cloud contract is spread across five years, so it is nearer $60 billion a year, and even that arrives only if the buyer keeps consuming. A pledge to <em>build</em> capacity is not cash that has left the building. When a headline collapses a five-year commitment into a single staggering figure, your job is to divide it back out and ask what is contractually firm versus contingent on milestones nobody has hit yet.</p>
 
     <div class="translate">
       <div class="tr-label">Translate</div>
-      <p>&ldquo;A $300&nbsp;billion deal&rdquo; sounds like a number from national accounts. Spread it across its real five-year term and it is about <strong>$60&nbsp;billion a year</strong> &mdash; and that only if every year is consumed in full. The same arithmetic shrinks &ldquo;$700&nbsp;billion of AI capex&rdquo; from an incomprehensible total into an annual run of build-out you can at least compare, year on year, against the revenue it is supposed to earn.</p>
+      <p>&ldquo;A $300&nbsp;billion deal&rdquo; sounds like a number from national accounts. Spread it across its real five-year term and it is about <strong>$60&nbsp;billion a year</strong>, and that only if every year is consumed in full. The same arithmetic shrinks &ldquo;$700&nbsp;billion of AI capex&rdquo; from an incomprehensible total into an annual run of build-out you can at least compare, year on year, against the revenue it is supposed to earn.</p>
     </div>
 
+    <p>A corollary ruler: <strong>announced is not signed.</strong> In September 2025 the biggest headline in the industry was Nvidia investing &ldquo;up to $100&nbsp;billion&rdquo; in OpenAI. The number lived in the discourse for half a year. What it actually was, the companies later confirmed, was a non-binding letter of intent; what eventually closed, in March 2026, was a $30&nbsp;billion investment inside an ordinary funding round.<span class="en" id="ref-29"><a class="en-link" href="#src-29">29</a></span> Nothing improper occurred; ambitions were renegotiated, as ambitions are. But every analysis that had added $100&nbsp;billion to a total was off by seventy, and few were ever corrected. Before a staggering figure enters your model of the world, ask which document it lives in: a signed contract, a term sheet, or a press release.</p>
+
     <h4>Whose dollar is it?</h4>
-    <p>The fourth ruler is the subtlest, and Ledger&nbsp;6 is devoted to it, so here only the flag. A dollar of revenue is supposed to come from a <em>customer</em> &mdash; external demand, someone choosing to pay for a service. But at the frontier some revenue dollars began life as <em>investment</em> dollars: a hyperscaler buys equity in a lab, the lab spends that money on the hyperscaler&rsquo;s cloud, and it returns as the hyperscaler&rsquo;s revenue. The dollar is real. Whether it represents real external demand is a different question &mdash; and one worth holding open every time you see a growth chart.</p>
+    <p>The fourth ruler is the subtlest, and Ledger&nbsp;6 is devoted to it, so here only the flag. A dollar of revenue is supposed to come from a <em>customer</em>: external demand, someone choosing to pay for a service. But at the frontier some revenue dollars began life as <em>investment</em> dollars: a hyperscaler buys equity in a lab, the lab spends that money on the hyperscaler&rsquo;s cloud, and it returns as the hyperscaler&rsquo;s revenue. The dollar is real. Whether it represents real external demand is a different question &middot; and one worth holding open every time you see a growth chart.</p>
 
     <h4>Why this is not cynicism</h4>
-    <p>None of this means the frontier labs are running a confidence trick. Run rate is a normal way for fast-growing software companies to talk; gross-versus-net is an ordinary accounting judgement; multi-year commitments are how infrastructure has always been financed. The problem is not deception &mdash; it is <em>scale and speed</em>. The numbers are large enough to switch off intuition and they move fast enough that the flattering version is always close at hand. So the discipline of this booklet is small and repeatable: before you repeat any frontier figure, ask which of the four rulers it is on, and convert it into something a human can picture. Do that, and the remaining five ledgers become legible. Skip it, and you are just moving very large numbers around.</p>
+    <p>None of this means the frontier labs are running a confidence trick. Run rate is a normal way for fast-growing software companies to talk; gross-versus-net is an ordinary accounting judgement; multi-year commitments are how infrastructure has always been financed. The problem is not deception but <em>scale and speed</em>. The numbers are large enough to switch off intuition and they move fast enough that the flattering version is always close at hand. So the discipline of this booklet is small and repeatable: before you repeat any frontier figure, ask which of the four rulers it is on, and convert it into something a human can picture. Do that, and the remaining five ledgers become legible. Skip it, and you are just moving very large numbers around.</p>
   </div>
 
-  <p class="credits">Sources: VentureBeat &middot; Sacra &middot; CNBC &middot; Om Malik (on Microsoft&rsquo;s 10-Q) &middot; The Information &mdash; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
+  <p class="credits">Sources: VentureBeat &middot; Sacra &middot; CNBC &middot; The Information &middot; Fortune &middot; Where&rsquo;s Your Ed At &middot; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════ LEDGER 3 ═══ -->
@@ -617,7 +707,7 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
   <div class="thesis-grid">
     <div class="thesis-card">
       <div class="card-label" style="color:var(--green)">The framing</div>
-      <div class="card-text">Look at a single model as its own product &mdash; a <em>vintage</em>. Over its serving life each model earns roughly twice what it cost to train. On that view, the product is a good business. The company loses money only because it keeps choosing to finance a far bigger successor.</div>
+      <div class="card-text">Look at a single model as its own product, a <em>vintage</em>. Over its serving life each model earns roughly twice what it cost to train. On that view, the product is a good business. The company loses money only because it keeps choosing to finance a far bigger successor.</div>
     </div>
     <div class="thesis-card">
       <div class="card-label" style="color:var(--risk-color)">The interrogation</div>
@@ -627,24 +717,24 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
 
   <div class="figure">
     <img src="figures/fig-vintage.png" alt="Two charts: the top shows each model's training cost beside its roughly doubled lifetime revenue; the bottom shows the company's annual result going steeply negative across the same years.">
-    <div class="figure-caption">The same money, two views. Per model (top): lifetime revenue runs about twice the training cost. Company-wide and year by year (bottom): an accelerating loss, because each year a successor roughly 10&times; larger is being financed. A stylised illustration of the framing &mdash; not Anthropic&rsquo;s accounts.</div>
+    <div class="figure-caption">The same money, two views. Per model (top): lifetime revenue runs about twice the training cost. Company-wide and year by year (bottom): an accelerating loss, because each year a successor roughly 10&times; larger is being financed. A stylised illustration of the framing, not Anthropic&rsquo;s accounts.</div>
   </div>
 
   <div class="chapter-prose">
     <h4>A vineyard that bleeds cash</h4>
-    <p>Picture a vineyard. Every vintage it bottles sells out at a healthy profit. And every year it loses money &mdash; because every year it plants a new field ten times the size of the last. The books show widening losses. The wine is not the problem. The expansion is.</p>
+    <p>Picture a vineyard. Every vintage it bottles sells out at a healthy profit. And every year it loses money, because every year it plants a new field ten times the size of the last. The books show widening losses. The wine is not the problem. The expansion is.</p>
 
-    <p>This is, near enough, the argument Anthropic&rsquo;s chief executive Dario Amodei has made for why his company can be deeply unprofitable and a sound business at the same time.<span class="en" id="ref-5"><a class="en-link" href="#src-5">5</a></span> Stop looking at the company&rsquo;s annual profit-and-loss statement, he says, and look instead at a single model as a product with its own lifetime accounts &mdash; its own <em>vintage</em>. His toy version runs like this. A model that cost about $100&nbsp;million to train in 2023 goes on to earn roughly $200&nbsp;million serving customers. The 2024 model costs around $1&nbsp;billion and earns about $2&nbsp;billion. Each vintage, taken alone, returns about <strong>twice its training cost</strong> &mdash; exactly the shape of the single model in Ledger&nbsp;1.</p>
+    <p>This is, near enough, the argument Anthropic&rsquo;s chief executive Dario Amodei has made for why his company can be deeply unprofitable and a sound business at the same time.<span class="en" id="ref-5"><a class="en-link" href="#src-5">5</a></span> Stop looking at the company&rsquo;s annual profit-and-loss statement, he says, and look instead at a single model as a product with its own lifetime accounts, its own <em>vintage</em>. His toy version runs like this. A model that cost about $100&nbsp;million to train in 2023 goes on to earn roughly $200&nbsp;million serving customers. The 2024 model costs around $1&nbsp;billion and earns about $2&nbsp;billion. Each vintage, taken alone, returns about <strong>twice its training cost</strong> &middot; exactly the shape of the single model in Ledger&nbsp;1.</p>
 
-    <p>Yet in any given year the company is also paying to train the <em>next</em> model &mdash; and that one costs roughly ten times more. So while the 2024 vintage is happily earning its $2&nbsp;billion, the company is spending $10&nbsp;billion training the 2025 model. The annual profit-and-loss statement nets these against each other and shows an accelerating loss: small, then large, then alarming. The conventional reading &mdash; &ldquo;this company loses more money every year&rdquo; &mdash; is arithmetically true and, Amodei argues, completely misleading. The losses are not a failing product. They are the visible cost of a <em>choice</em> to keep planting bigger fields.</p>
+    <p>Yet in any given year the company is also paying to train the <em>next</em> model, and that one costs roughly ten times more. So while the 2024 vintage is happily earning its $2&nbsp;billion, the company is spending $10&nbsp;billion training the 2025 model. The annual profit-and-loss statement nets these against each other and shows an accelerating loss: small, then large, then alarming. The conventional reading (&ldquo;this company loses more money every year&rdquo;) is arithmetically true and, Amodei argues, completely misleading. The losses are not a failing product but the visible cost of a <em>choice</em> to keep planting bigger fields.</p>
 
     <h4>The number under the framing: two costs, not one</h4>
     <p>That story only works if a vintage really does earn back its build, and to see whether it can you have to separate the two costs from Ledger&nbsp;1 and keep them apart.</p>
-    <p>The <strong>training cost</strong> is the one-time bill to build the model &mdash; the $1&nbsp;billion in our example. It is fixed: it does not change whether the model then serves ten customers or ten million.</p>
-    <p>The <strong>serving cost</strong> is what it takes to run the model for one customer&rsquo;s request &mdash; a sliver of compute, paid every time. Whether a vintage ever earns back that fixed training bill depends entirely on the <em>gap</em> between what the lab charges for a request and what the request costs it to serve. That gap is the <strong>inference gross margin</strong>, and it is the number the whole vintage framing quietly rests on.</p>
+    <p>The <strong>training cost</strong> is the one-time bill to build the model (the $1&nbsp;billion in our example). It is fixed: it does not change whether the model then serves ten customers or ten million.</p>
+    <p>The <strong>serving cost</strong> is what it takes to run the model for one customer&rsquo;s request: a sliver of compute, paid every time. Whether a vintage ever earns back that fixed training bill depends entirely on the <em>gap</em> between what the lab charges for a request and what the request costs it to serve. That gap is the <strong>inference gross margin</strong>, and it is the number the whole vintage framing quietly rests on.</p>
 
     <h4>Working the margin</h4>
-    <p>So work it. Take a million tokens of output from a frontier model &mdash; the meter from Ledger&nbsp;1, clicked over once. The customer is billed on the order of $25. Producing those tokens &mdash; the GPU time, the electricity &mdash; costs the lab perhaps $6. The lab keeps the difference.</p>
+    <p>So work it. Take a million tokens of output from a frontier model, the meter from Ledger&nbsp;1 clicked over once. The customer is billed on the order of $25. Producing those tokens (the GPU time, the electricity) costs the lab perhaps $6. The lab keeps the difference.</p>
 
     <table class="s2-table">
       <tr><th>One million output tokens, a frontier model</th><th>Illustrative</th></tr>
@@ -655,31 +745,33 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
     </table>
     <p class="s2-table-caption">Illustrative, and consistent with the research firm SemiAnalysis, which puts gross margins on frontier models north of 70%.<span class="en" id="ref-6"><a class="en-link" href="#src-6">6</a></span></p>
 
-    <p>A margin near 75 per cent is what makes the vintage arithmetic possible. The training cost is fixed and paid once; the serving margin is collected on every token, forever. Serve enough tokens at 75 cents of profit on the dollar and the cumulative serving profit climbs past the $1&nbsp;billion training bill &mdash; and then past twice it. The famous &ldquo;2&times;&rdquo; is not magic. It is a high-margin meter, running long enough.</p>
+    <p>A margin near 75 per cent is what makes the vintage arithmetic possible. The training cost is fixed and paid once; the serving margin is collected on every token, forever. Serve enough tokens at 75 cents of profit on the dollar and the cumulative serving profit climbs past the $1&nbsp;billion training bill, and then past twice it. The famous &ldquo;2&times;&rdquo; is no trick of framing, just a high-margin meter running long enough.</p>
 
-    <h4>Why 2024 broke the framing &mdash; and 2026 mended it</h4>
-    <p>The framing is only available in 2026 because that margin recently flipped. In 2024, Anthropic&rsquo;s gross margin on paying customers was reported at roughly <em>minus</em> 94 per cent &mdash; it spent nearly two dollars serving every dollar it billed.<span class="en" id="ref-7"><a class="en-link" href="#src-7">7</a></span> With a negative margin, no amount of volume rescues you: every additional token served deepens the loss, and the fixed training bill can never be earned back. That was the &ldquo;selling dollars for cents&rdquo; the industry&rsquo;s critics described, and in 2024 they were right.</p>
-    <p>Then, through 2025 and into 2026, cheaper hardware and far better serving software pushed that margin from deeply negative to comfortably positive &mdash; on SemiAnalysis&rsquo;s reading, Anthropic&rsquo;s inference margin moved from the high-30s to above 70 per cent inside a year. Only once a vintage clears a healthy profit on every token does &ldquo;each model earns twice its cost&rdquo; stop being a hope and start being arithmetic. The vintage framing did not prove itself. A margin flipped, and the framing became <em>possible.</em></p>
+    <h4>Why 2024 broke the framing, and 2026 mended it</h4>
+    <p>The framing is only available in 2026 because that margin recently flipped. In 2024, Anthropic&rsquo;s gross margin on paying customers was reported at roughly <em>minus</em> 94 per cent: it spent nearly two dollars serving every dollar it billed.<span class="en" id="ref-7"><a class="en-link" href="#src-7">7</a></span> With a negative margin, no amount of volume rescues you: every additional token served deepens the loss, and the fixed training bill can never be earned back. That was the &ldquo;selling dollars for cents&rdquo; the industry&rsquo;s critics described, and in 2024 they were right.</p>
+    <p>Then, through 2025 and into 2026, cheaper hardware and far better serving software pushed that margin from deeply negative to comfortably positive; on SemiAnalysis&rsquo;s reading, Anthropic&rsquo;s inference margin moved from the high-30s to above 70 per cent inside a year. Only once a vintage clears a healthy profit on every token does &ldquo;each model earns twice its cost&rdquo; stop being a hope and start being arithmetic. The vintage framing did not prove itself. A margin flipped, and the framing became <em>possible.</em></p>
+
+    <p>A contrast worth carrying: the leaked figures that anchored Ledger&nbsp;2 imply OpenAI&rsquo;s company-wide gross margin for 2025 landed somewhere in the 30s to low 40s per cent, positive and improving, but far below Anthropic&rsquo;s serving margin.<span class="en" id="ref-35"><a class="en-link" href="#src-35">35</a></span> Note that the two numbers sit on slightly different rulers (a margin on inference alone versus a margin on the whole company&rsquo;s revenue), which is, by now, exactly the kind of thing you check before comparing them. The margin inflection is industry-wide; its steepness is not.</p>
 
     <div class="translate">
       <div class="tr-label">Translate</div>
-      <p>OpenAI&rsquo;s internal financials, reviewed by the press, project an operating loss in the region of <strong>$74&nbsp;billion for 2028.</strong><span class="en" id="ref-8"><a class="en-link" href="#src-8">8</a></span> A yearly figure that size is just noise to the mind. Divide it down: it is roughly <strong>$200&nbsp;million a day</strong>, every day, for a year. The vintage framing asks you to believe that daily burn is the cost of planting next year&rsquo;s field &mdash; not the sound of a business falling apart. Whether you believe it is the rest of this ledger.</p>
+      <p>OpenAI&rsquo;s internal financials, reviewed by the press in late 2025, project an operating loss in the region of <strong>$74&nbsp;billion for 2028.</strong><span class="en" id="ref-8"><a class="en-link" href="#src-8">8</a></span> A yearly figure that size is just noise to the mind. Divide it down: it is roughly <strong>$200&nbsp;million a day</strong>, every day, for a year. The vintage framing asks you to believe that daily burn is the cost of planting next year&rsquo;s field, not the sound of a business falling apart. Whether you believe it is the rest of this ledger. (A dated note, July 2026: the loss that actually landed for 2025, per the June leak, was about $21&nbsp;billion of operating loss on $13&nbsp;billion of revenue, or roughly $57&nbsp;million a day.<span class="en"><a class="en-link" href="#src-23">23</a></span> The projection above is for 2028, and it remains a projection.)</p>
     </div>
 
     <h4>The interrogation: three ways the framing breaks</h4>
     <p>The vintage story is elegant, internally consistent, and the most attractive idea in this booklet. That is exactly why it deserves pressure rather than applause. It rests on three assumptions, and each one is contestable.</p>
 
-    <p><strong>One: the vintage must get its full earning life.</strong> &ldquo;Earns twice its cost&rdquo; assumes the model serves customers long enough to collect that revenue. But frontier models are made obsolete fast &mdash; sometimes by a competitor, sometimes by the lab&rsquo;s own successor. If a vintage is retired in months rather than years, it never earns out, and the training cost is stranded. The hidden variable is depreciation: how quickly the expensive asset loses its value. The vintage framing tends to assume a generous earning life. The market has not been generous.</p>
+    <p><strong>One: the vintage must get its full earning life.</strong> &ldquo;Earns twice its cost&rdquo; assumes the model serves customers long enough to collect that revenue. But frontier models are made obsolete fast, sometimes by a competitor, sometimes by the lab&rsquo;s own successor. If a vintage is retired in months rather than years, it never earns out, and the training cost is stranded. The hidden variable is depreciation: how quickly the expensive asset loses its value. The vintage framing tends to assume a generous earning life. The market has not been generous.</p>
 
-    <p><strong>Two: each 10&times;-bigger model must still earn its keep.</strong> The cascade only works if a model that costs ten times more can be sold for enough to justify it. That held while each generation delivered a clear capability jump. The critic Gary Marcus, among others, argues the jumps are shrinking &mdash; that scaling has entered diminishing returns, and Amodei&rsquo;s own remark that the field is &ldquo;near the end of the exponential&rdquo; concedes the direction of travel. If a $100&nbsp;billion model is only modestly better than a $10&nbsp;billion one, customers will not pay ten times more, and the cascade quietly inverts from a growth engine into a trap.</p>
+    <p><strong>Two: each 10&times;-bigger model must still earn its keep.</strong> The cascade only works if a model that costs ten times more can be sold for enough to justify it. That held while each generation delivered a clear capability jump. The critic Gary Marcus, among others, argues the jumps are shrinking: that scaling has entered diminishing returns, and Amodei&rsquo;s own remark that the field is &ldquo;near the end of the exponential&rdquo; concedes the direction of travel. If a $100&nbsp;billion model is only modestly better than a $10&nbsp;billion one, customers will not pay ten times more, and the cascade quietly inverts from a growth engine into a trap.</p>
 
-    <p><strong>Three: it is a bet that must be won every single round.</strong> Amodei is candid that the whole structure depends on forecasting demand correctly &mdash; spend the right share of compute on research, keep a serving margin above 50 per cent, predict demand, and you print money; misjudge demand and the result &ldquo;could swing wildly.&rdquo; The critic Ed Zitron puts the bear case more bluntly: the losses are not an investment phase, they <em>are</em> the business model, and a business that must raise ever-larger sums to cover ever-larger losses is one bad forecast from a cliff. Sequoia&rsquo;s David Cahn framed the same worry at the level of the whole industry as the &ldquo;$600&nbsp;billion question&rdquo;<span class="en" id="ref-9"><a class="en-link" href="#src-9">9</a></span> &mdash; the gap between what the sector has spent on infrastructure and the revenue that spending must eventually justify. The vintage framing is the most coherent answer anyone has given to that question. It is not the same thing as a settled one.</p>
+    <p><strong>Three: it is a bet that must be won every single round.</strong> Amodei is candid that the whole structure depends on forecasting demand correctly: spend the right share of compute on research, keep a serving margin above 50 per cent, predict demand, and you print money; misjudge demand and the result &ldquo;could swing wildly.&rdquo; The critic Ed Zitron puts the bear case more bluntly: the losses are not an investment phase, they <em>are</em> the business model, and a business that must raise ever-larger sums to cover ever-larger losses is one bad forecast from a cliff. Sequoia&rsquo;s David Cahn framed the same worry at the level of the whole industry as the &ldquo;$600&nbsp;billion question&rdquo;<span class="en" id="ref-9"><a class="en-link" href="#src-9">9</a></span>: the gap between what the sector has spent on infrastructure and the revenue that spending must eventually justify. The vintage framing is the most coherent answer anyone has given to that question. A coherent answer is not the same thing as a settled one, and the people who say it is wrong get a full ledger of their own at the end of this booklet (Ledger&nbsp;8).</p>
 
     <h4>A quiet caveat: the framing depends on a choice</h4>
-    <p>One last thing to carry into Ledger&nbsp;4. &ldquo;Each vintage earns twice its cost&rdquo; is not a fact read off a meter; it depends on how you spread &mdash; <em>amortise</em> &mdash; a training cost across the years a model earns. Stretch the schedule and the vintage looks profitable sooner; compress it and the same model looks like a loss. OpenAI and Anthropic do not make that choice identically, which is one reason their numbers resist clean comparison. The vintage framing is a genuine insight <em>and</em> an accounting lens &mdash; and a lens can be adjusted.</p>
+    <p>One last thing to carry into Ledger&nbsp;4. &ldquo;Each vintage earns twice its cost&rdquo; is not a fact read off a meter; it depends on how you spread (<em>amortise</em>) a training cost across the years a model earns. Stretch the schedule and the vintage looks profitable sooner; compress it and the same model looks like a loss. OpenAI and Anthropic do not make that choice identically, which is one reason their numbers resist clean comparison. The vintage framing is a genuine insight <em>and</em> an accounting lens, and a lens can be adjusted. Both labs confidentially filed for public listings in June 2026 (Ledger&nbsp;4); prospectuses, when they become public, will force these choices into the open for the first time.</p>
   </div>
 
-  <p class="credits">Sources: Dwarkesh Patel interview with Dario Amodei &middot; SemiAnalysis &middot; The Information &middot; The Wall Street Journal &middot; Sequoia Capital (&ldquo;AI&rsquo;s $600B Question&rdquo;) &middot; Where&rsquo;s Your Ed At &mdash; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
+  <p class="credits">Sources: Dwarkesh Patel interview with Dario Amodei &middot; SemiAnalysis &middot; The Information &middot; The Wall Street Journal &middot; Sequoia Capital (&ldquo;AI&rsquo;s $600B Question&rdquo;) &middot; Where&rsquo;s Your Ed At &middot; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════ LEDGER 4 ═══ -->
@@ -690,7 +782,7 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
   <div class="thesis-grid">
     <div class="thesis-card">
       <div class="card-label" style="color:var(--accent)">Anthropic</div>
-      <div class="card-text">Converging on an <em>enterprise-software</em> company: high revenue per user, ~80% of revenue from business customers, and a first taste of operating profit. Value it like a B2B software firm &mdash; on margins, retention, and seat growth.</div>
+      <div class="card-text">Converging on an <em>enterprise-software</em> company: high revenue per user, ~80% of revenue from business customers, and a first taste of operating profit. Value it like a B2B software firm: on margins, retention, and seat growth.</div>
     </div>
     <div class="thesis-card">
       <div class="card-label" style="color:var(--orange-red)">OpenAI</div>
@@ -699,36 +791,38 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
   </div>
 
   <div class="figure">
-    <img src="figures/fig-revenue.png" alt="Line chart of Anthropic and OpenAI annualised revenue run rate from 2024 to 2026, with Anthropic crossing above OpenAI in early 2026 to reach about $30B against OpenAI's $24B.">
-    <div class="figure-caption">Annualised run rate (one strong month &times; 12 &mdash; see Ledger 2). Recognised revenue is roughly half of each figure shown. The lines cross in early 2026: Anthropic overtakes on run-rate revenue even as OpenAI&rsquo;s ambitions point elsewhere.</div>
+    <img src="figures/fig-revenue.png" alt="Line chart of Anthropic and OpenAI annualised revenue run rate from 2024 to 2026, with Anthropic crossing above OpenAI in early 2026 and reaching $47B by May 2026 against OpenAI's $24B.">
+    <div class="figure-caption">Annualised run rate (the trailing month, annualised; see Ledger 2 for the exact mechanic). Recognised revenue is roughly half of each figure shown. The lines cross in early 2026: Anthropic overtakes on run-rate revenue even as OpenAI&rsquo;s ambitions point elsewhere. The July revision adds the $47B reading Anthropic reported in late May 2026.<span class="en" id="ref-27"><a class="en-link" href="#src-27">27</a></span></div>
   </div>
 
   <div class="chapter-prose">
     <h4>Same costume, different company</h4>
-    <p>Two companies are called frontier AI labs. Both are valued in the hundreds of billions. Both train models near the edge of what is possible. And it has become the most common mistake in the room to price them the same way &mdash; because they are, increasingly, two different <em>kinds</em> of company wearing one job title.</p>
+    <p>Two companies are called frontier AI labs. Both are valued in the hundreds of billions. Both train models near the edge of what is possible. And it has become the most common mistake in the room to price them the same way, because they are, increasingly, two different <em>kinds</em> of company wearing one job title.</p>
 
-    <p>Anthropic is turning into an enterprise-software business. Around 80 per cent of its revenue comes from companies, not consumers. The number of customers paying it more than a million dollars a year roughly doubled, to over a thousand, in a single eight-week stretch of 2026. The revenue is concentrated, contracted, and sticky &mdash; the texture of a company that sells software to other companies.</p>
+    <p>Anthropic is turning into an enterprise-software business. Around 80 per cent of its revenue comes from companies, not consumers. The number of customers paying it more than a million dollars a year roughly doubled, to over a thousand, in a single eight-week stretch of 2026. The revenue is concentrated, contracted, and sticky: the texture of a company that sells software to other companies.</p>
 
-    <p>OpenAI is turning into something else. It has the most famous consumer product in technology &mdash; ChatGPT, with hundreds of millions of weekly users &mdash; but it has also pushed outward into video generation with Sora, into a web browser, into a custom-chip programme, and into Stargate, a data-centre build-out measured in gigawatts and hundreds of billions of dollars. Those are not the moves of a company optimising a software margin. They are the moves of a company trying to own infrastructure and consumer distribution. For a business like that, the per-product gross margin is almost a rounding error next to the size and timing of the capital bet.</p>
+    <p>OpenAI is turning into something else. It has the most famous consumer product in technology (ChatGPT, with roughly 900&nbsp;million weekly users, and an app that crossed a billion monthly users in June 2026, faster than any app in history<span class="en"><a class="en-link" href="#src-39">39</a></span>), but it has also pushed outward into video generation with Sora, into a web browser, into a custom-chip programme, and into Stargate, a data-centre build-out measured in gigawatts and hundreds of billions of dollars. Those are the moves not of a company optimising a software margin but of one trying to own infrastructure and consumer distribution. For a business like that, the per-product gross margin is almost a rounding error next to the size and timing of the capital bet.</p>
 
     <h4>The eight-times gap</h4>
-    <p>The clearest single number separating the two is revenue per user. Anthropic earns on the order of $211 from each of its (far fewer, mostly business) monthly users. OpenAI earns something closer to $25 per weekly user, the great majority of whom pay nothing at all.<span class="en" id="ref-10"><a class="en-link" href="#src-10">10</a></span> That is an eight-fold difference in how hard each user is monetised, and it is the whole bifurcation in miniature: one company has a smaller number of users it monetises intensely; the other has a vast number of users it monetises lightly and is betting it can convert attention and scale into something valuable later.</p>
+    <p>The clearest single number separating the two is revenue per user. Anthropic earns on the order of $211 from each of its (far fewer, mostly business) monthly users. OpenAI earns something closer to $25 per weekly user, the great majority of whom pay nothing at all.<span class="en" id="ref-10"><a class="en-link" href="#src-10">10</a></span> That is an eight-fold difference in how hard each user is monetised, and it is the whole bifurcation in miniature: one company has a smaller number of users it monetises intensely; the other has a vast number of users it monetises lightly and is betting it can convert attention and scale into something valuable later. (One honesty tag: per-user revenue for private companies is soft arithmetic, and a rival analyst firm gets a much smaller gap with a different method.<span class="en" id="ref-39"><a class="en-link" href="#src-39">39</a></span> Trust the direction here, not the multiple.)</p>
 
     <div class="translate">
       <div class="tr-label">Translate</div>
-      <p>&ldquo;900&nbsp;million weekly users&rdquo; sounds like the win condition. Put it on the per-user ruler instead: at roughly $25 a user against Anthropic&rsquo;s $211, OpenAI&rsquo;s audience is about <strong>35 times larger</strong> but each user is worth about <strong>one-eighth</strong> as much. Reach and revenue are not the same gauge &mdash; and reading one as the other is how the two labs get mistakenly priced alike.</p>
+      <p>&ldquo;900&nbsp;million weekly users&rdquo; sounds like the win condition. Put it on the per-user ruler instead: at roughly $25 a user against Anthropic&rsquo;s $211, OpenAI&rsquo;s audience is about <strong>35 times larger</strong> but each user is worth about <strong>one-eighth</strong> as much. Reach and revenue are not the same gauge, and reading one as the other is how the two labs get mistakenly priced alike.</p>
     </div>
 
     <h4>The profitable quarter that proves the point</h4>
-    <p>In May 2026 Anthropic told investors it expected its first-ever operating profit &mdash; around $559&nbsp;million on roughly $10.9&nbsp;billion of quarterly revenue &mdash; in the second quarter of the year.<span class="en" id="ref-11"><a class="en-link" href="#src-11">11</a></span> It is a real milestone. It is also, by the company&rsquo;s own admission, a <em>blip</em>: scheduled compute costs in the back half of 2026 are expected to push it back into loss, and Anthropic does not expect a full profitable <em>year</em> before 2028. Ledger&nbsp;3 already explained why a single green quarter is perfectly consistent with structural loss &mdash; it is one vintage maturing in the gap before the next big training bill lands. The profitable quarter does not refute the vintage problem. It illustrates it.</p>
+    <p>In May 2026 Anthropic told investors it expected its first-ever operating profit (around $559&nbsp;million on roughly $10.9&nbsp;billion of quarterly revenue) in the second quarter of the year.<span class="en" id="ref-11"><a class="en-link" href="#src-11">11</a></span> It is a real milestone. It is also, by the company&rsquo;s own admission, a <em>blip</em>: scheduled compute costs in the back half of 2026 are expected to push it back into loss, and Anthropic does not expect a full profitable <em>year</em> before 2028. Ledger&nbsp;3 already explained why a single green quarter is perfectly consistent with structural loss: it is one vintage maturing in the gap before the next big training bill lands. The profitable quarter does not refute the vintage problem. It illustrates it.</p>
 
-    <p>OpenAI&rsquo;s trajectory is not a blip in either direction. Its internal projections, shared with investors, describe losses that widen for years &mdash; and that is consistent with the strategy, not a contradiction of it. If you are building infrastructure and consumer distribution at continental scale, sustained loss is the entry fee. The mistake would be to read OpenAI&rsquo;s losses as the same <em>kind</em> of fact as Anthropic&rsquo;s.</p>
+    <p>Two honest footnotes belong on the milestone, added in July. First, it was a <em>projection</em> in investor materials. The quarter has since ended, and Anthropic, still a private company, has published no actuals; treat &ldquo;first profitable quarter&rdquo; as projected until a filing says otherwise.<span class="en"><a class="en-link" href="#src-11">11</a></span> Second, the sharpest critics noticed that the projected quarter happens to coincide with the discounted opening months of Anthropic&rsquo;s enormous compute lease on a rival&rsquo;s Memphis cluster (Ledger&nbsp;5 has the lease): book the ramp-up discount, the argument goes, and you can book a quarter of profit.<span class="en" id="ref-31"><a class="en-link" href="#src-31">31</a></span> That reading may be uncharitable. It is also precisely the kind of question this booklet wants you to ask reflexively, so it stays.</p>
+
+    <p>OpenAI&rsquo;s trajectory is not a blip in either direction. Its internal projections, shared with investors, describe losses that widen for years, and that is consistent with the strategy, not a contradiction of it. If you are building infrastructure and consumer distribution at continental scale, sustained loss is the entry fee. The mistake would be to read OpenAI&rsquo;s losses as the same <em>kind</em> of fact as Anthropic&rsquo;s.</p>
 
     <h4>Reading the two ledgers side by side</h4>
     <table class="s2-table">
       <tr><th>&nbsp;</th><th>Anthropic</th><th>OpenAI</th></tr>
       <tr><td class="rowhead">Becoming</td><td>An enterprise-software company</td><td>An infrastructure &amp; consumer-platform company</td></tr>
-      <tr><td class="rowhead">Run-rate revenue</td><td>~$30B (Apr 2026) <span class="tag tag-reported">reported</span></td><td>~$24B (Apr 2026) <span class="tag tag-reported">reported</span></td></tr>
+      <tr><td class="rowhead">Run-rate revenue</td><td>~$47B (May 2026) <span class="tag tag-reported">reported</span></td><td>~$24B (Apr 2026) <span class="tag tag-reported">reported</span></td></tr>
       <tr><td class="rowhead">Revenue mix</td><td>~80% enterprise</td><td>Consumer-led; enterprise approaching ~40%</td></tr>
       <tr><td class="rowhead">Revenue per user</td><td>~$211 / monthly user <span class="tag tag-estimated">estimated</span></td><td>~$25 / weekly user <span class="tag tag-estimated">estimated</span></td></tr>
       <tr><td class="rowhead">Really selling</td><td>Reliable models inside business workflows</td><td>Reach, a platform, and owned compute</td></tr>
@@ -736,13 +830,17 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
       <tr><td class="rowhead">Key risk</td><td>Capacity limits; a narrower revenue base</td><td>Sustained cash burn; capital-market appetite</td></tr>
       <tr><td class="rowhead">Basis of reporting</td><td>Leans on company disclosure &amp; friendly sources</td><td>More independent reporting &amp; filings exist</td></tr>
     </table>
-    <p class="s2-table-caption">These columns are not strictly like-for-like: the two companies recognise revenue and count users differently, and &mdash; as the last row notes &mdash; the public record is thinner on Anthropic. Read the table as two profiles, not a scoreboard.</p>
+    <p class="s2-table-caption">These columns are not strictly like-for-like: the two companies recognise revenue and count users differently, and, as the last row notes, the public record is thinner on Anthropic. Read the table as two profiles, not a scoreboard.</p>
+
+    <h4>A dated note: the IPO turn (June 2026)</h4>
+    <p>Six weeks after this booklet&rsquo;s first snapshot, the ground shifted. In late May 2026 Anthropic closed a $65&nbsp;billion round at a $965&nbsp;billion post-money valuation, overtaking OpenAI&rsquo;s $852&nbsp;billion to become the most valuable private AI company, and reported a run rate of $47&nbsp;billion.<span class="en"><a class="en-link" href="#src-27">27</a></span> On June&nbsp;1 it confidentially filed a draft prospectus with the SEC. OpenAI filed its own days later, with subsequent reporting suggesting its listing may slip into 2027.<span class="en" id="ref-28"><a class="en-link" href="#src-28">28</a></span></p>
+    <p>For this booklet, the filings matter for one reason above all the others: <strong>prospectuses are audited.</strong> Everything Ledger&nbsp;2 taught you to demand (recognised revenue rather than run rates, gross versus net booking, amortisation schedules, related-party revenue from the investors of Ledger&nbsp;6) has to be printed in a public S-1. The era in which the frontier&rsquo;s finances were a contest of leaks and annualised headlines now has an expiry date. When the documents surface, read them with this booklet open.</p>
 
     <h4>Why this booklet does not crown a winner</h4>
-    <p>It is tempting to end a comparison with a verdict. This one does not, and the refusal is deliberate. &ldquo;Which lab is winning?&rdquo; assumes they are running the same race. They are not. One is trying to become the next great enterprise-software company; the other is trying to become something closer to a utility with a consumer brand attached. Each could succeed or fail on its own terms. The useful question is not which is ahead &mdash; it is <em>which kind of company is each, and which kind do you want as a supplier, a partner, or an investment.</em> That question you can actually answer. A winner you cannot, and anyone who offers you one is selling a ruler they have not shown you.</p>
+    <p>It is tempting to end a comparison with a verdict. This one does not, and the refusal is deliberate. &ldquo;Which lab is winning?&rdquo; assumes they are running the same race. They are not. One is trying to become the next great enterprise-software company; the other is trying to become something closer to a utility with a consumer brand attached. Each could succeed or fail on its own terms. The useful question is not which is ahead but <em>which kind of company is each, and which kind do you want as a supplier, a partner, or an investment.</em> That question you can actually answer. A winner you cannot, and anyone who offers you one is selling a ruler they have not shown you.</p>
   </div>
 
-  <p class="credits">Sources: TechCrunch &middot; CNBC &middot; Bloomberg &middot; Sacra &middot; SemiAnalysis &middot; The Wall Street Journal &mdash; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
+  <p class="credits">Sources: TechCrunch &middot; CNBC &middot; Bloomberg &middot; Sacra &middot; SemiAnalysis &middot; The Wall Street Journal &middot; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════ LEDGER 5 ═══ -->
@@ -753,43 +851,45 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
   <div class="thesis-grid">
     <div class="thesis-card">
       <div class="card-label" style="color:var(--purple)">The prize</div>
-      <div class="card-text">If intelligence becomes a metered utility &mdash; tokens as the electricity of the future &mdash; then being its utility company is one of the largest prizes in business history. Every lab and hyperscaler is racing for it, and a race like that cannot pause.</div>
+      <div class="card-text">If intelligence becomes a metered utility (tokens as the electricity of the future) then being its utility company is one of the largest prizes in business history. Every lab and hyperscaler is racing for it, and a race like that cannot pause.</div>
     </div>
     <div class="thesis-card">
       <div class="card-label" style="color:var(--orange-red)">The toll</div>
-      <div class="card-text">The race costs far more than the foundational business throws off. So labs seize lucrative verticals &mdash; augmented coding first &mdash; both to prove the technology works and to help pay their way to the prize.</div>
+      <div class="card-text">The race costs far more than the foundational business throws off. So labs seize lucrative verticals (augmented coding first) both to prove the technology works and to help pay their way to the prize.</div>
     </div>
   </div>
 
   <div class="chapter-prose">
     <h4>Tokens as the electricity of the future</h4>
-    <p>Step back from any single lab and ask what the whole industry is actually racing toward. The clearest answer: intelligence is on its way to becoming a <em>metered utility</em>. Ledger&nbsp;1 already showed the shape &mdash; tokens sold through a meter, like water, like power. Carry that forward. Once electricity became a utility, you stopped caring which generator produced the current in your wall; you simply paid per kilowatt-hour and built your life on the assumption it would be there. Tokens are heading the same way: a metered unit of cognitive work, always on, drawn on without a thought.</p>
+    <p>Step back from any single lab and ask what the whole industry is actually racing toward. The clearest answer: intelligence is on its way to becoming a <em>metered utility</em>. Ledger&nbsp;1 already showed the shape: tokens sold through a meter, like water, like power. Carry that forward. Once electricity became a utility, you stopped caring which generator produced the current in your wall; you simply paid per kilowatt-hour and built your life on the assumption it would be there. Tokens are heading the same way: a metered unit of cognitive work, always on, drawn on without a thought.</p>
 
-    <p>If that is the destination, then the frontier labs are not, in the end, software companies. They are <strong>utilities in the making</strong> &mdash; and the contest between them is a contest to become the utility company of intelligence, the master vendor of the electricity of the future.</p>
+    <p>If that is the destination, then the frontier labs are not, in the end, software companies at all but <strong>utilities in the making</strong>, and the contest between them is a contest to become the utility company of intelligence, the master vendor of the electricity of the future.</p>
 
     <h4>The datacenter is a dark factory</h4>
-    <p>Where is this utility generated? In a building that deserves its industrial name. A &ldquo;dark factory&rdquo; is a real term from manufacturing: a plant so fully automated that the lights can be switched off, because no human needs to be on the floor. A modern AI datacenter is exactly that &mdash; a vast hall of humming machines, drawing the power of a small city, with almost nobody inside. The difference is only in the product. A dark factory in the old economy stamped out car parts. This one manufactures intelligence itself, by the trillion tokens, and ships it down a wire.</p>
+    <p>Where is this utility generated? In a building that deserves its industrial name. A &ldquo;dark factory&rdquo; is a real term from manufacturing: a plant so fully automated that the lights can be switched off, because no human needs to be on the floor. A modern AI datacenter is exactly that: a vast hall of humming machines, drawing the power of a small city, with almost nobody inside. The difference is only in the product. A dark factory in the old economy stamped out car parts. This one manufactures intelligence itself, by the trillion tokens, and ships it down a wire.</p>
 
     <div class="translate">
       <div class="tr-label">Translate</div>
-      <p>Industry capital-expenditure estimates for 2026 land around <strong>$700&nbsp;billion</strong><span class="en" id="ref-12"><a class="en-link" href="#src-12">12</a></span> <span class="tag tag-estimated">estimated</span>. Divide it by the world&rsquo;s population and it is roughly <strong>$86 for every person alive</strong> &mdash; spent, in a single year, building dark factories whose only product is machine thought, whether or not that person ever uses one. Said that way, the scale of the bet on this one idea becomes hard to look away from.</p>
+      <p>Industry capital-expenditure estimates for 2026 land around <strong>$700&nbsp;billion</strong>, with 2027 forecasts pointing toward $900&nbsp;billion<span class="en" id="ref-12"><a class="en-link" href="#src-12">12</a></span> <span class="tag tag-estimated">estimated</span>. Divide the 2026 figure by the world&rsquo;s population and it is roughly <strong>$86 for every person alive</strong>, spent in a single year building dark factories whose only product is machine thought, whether or not that person ever uses one. Said that way, the scale of the bet on this one idea becomes hard to look away from. (A companion booklet, <a href="../scenario-planning/#decoder">Scenario Planning for Generative AI</a>, runs a full decoder on exactly this capex gauge; if you want the build-out unpacked instrument by instrument, start there.)</p>
     </div>
 
     <h4>Why nobody can stop spending</h4>
-    <p>This reframes the enormous, relentless capital spending the other ledgers keep brushing against. If the prize is to be <em>the</em> utility &mdash; not <em>a</em> utility &mdash; then second place is worth a small fraction of first. A land grab for the foundational layer cannot be conducted at half speed: pause, and a rival lays claim to the ground. That is why capex does not respond to losses the way an ordinary company&rsquo;s would; why the vintage treadmill of Ledger&nbsp;3 keeps accelerating; why &ldquo;we could be profitable if we stopped&rdquo; is technically true and strategically irrelevant. The labs are not behaving like businesses optimising a quarter. They are behaving like contenders in a once-only race to own an entire layer of the future economy.</p>
+    <p>This reframes the enormous, relentless capital spending the other ledgers keep brushing against. If the prize is to be <em>the</em> utility, not <em>a</em> utility, then second place is worth a small fraction of first. A land grab for the foundational layer cannot be conducted at half speed: pause, and a rival lays claim to the ground. That is why capex does not respond to losses the way an ordinary company&rsquo;s would; why the vintage treadmill of Ledger&nbsp;3 keeps accelerating; why &ldquo;we could be profitable if we stopped&rdquo; is technically true and strategically irrelevant. The labs are behaving not like businesses optimising a quarter but like contenders in a once-only race to own an entire layer of the future economy.</p>
+
+    <p>The clearest exhibit of the compulsion arrived in May 2026. Anthropic, out of serving capacity, leased the <em>entirety</em> of a direct rival&rsquo;s flagship data centre (xAI&rsquo;s Colossus&nbsp;1 in Memphis, some 220,000 GPUs drawing over 300 megawatts) for a reported $1.25&nbsp;billion a month, to serve inference for its subscription tiers.<span class="en"><a class="en-link" href="#src-31">31</a></span> When you are renting your competitor&rsquo;s factory for fifteen billion dollars a year because your own factories are full, you have stopped optimising quarters and started refusing to lose a race.</p>
 
     <h4>Chasing verticals to fund the race</h4>
-    <p>And here is the consequence that explains so much of the labs&rsquo; restless behaviour. The race to be the utility costs more than the utility business itself yet earns. No lab can fund the journey on raw token sales alone. So whenever a <em>vertical</em> forms &mdash; a specific, high-value use of the models that throws off serious cash &mdash; the labs go after it, hard and fast.</p>
+    <p>And here is the consequence that explains so much of the labs&rsquo; restless behaviour. The race to be the utility costs more than the utility business itself yet earns. No lab can fund the journey on raw token sales alone. So whenever a <em>vertical</em> forms (a specific, high-value use of the models that throws off serious cash) the labs go after it, hard and fast.</p>
 
-    <p>The clearest example so far is <strong>augmented coding</strong>. Anthropic&rsquo;s Claude Code went from public launch to a $1&nbsp;billion revenue run rate in six months, and past $2.5&nbsp;billion within a year; OpenAI&rsquo;s rival, Codex, climbed to several million weekly users in the same window.<span class="en" id="ref-13"><a class="en-link" href="#src-13">13</a></span> Coding is doing double duty for the labs: it is <em>proof</em> that the technology produces real economic value, and it is an <em>engine</em> &mdash; a vertical lucrative enough to help finance the dark factories. Expect the pattern to repeat wherever a vertical&rsquo;s economics are good enough &mdash; customer support, legal work, search, scientific research. When the labs see &ldquo;ridiculous revenues&rdquo; forming in a vertical, they will move, because the race needs the fuel.</p>
+    <p>The clearest example so far is <strong>augmented coding</strong>. Anthropic&rsquo;s Claude Code went from public launch to a $1&nbsp;billion revenue run rate in six months, and past $2.5&nbsp;billion within a year; OpenAI&rsquo;s rival, Codex, climbed to five million weekly users by the end of May 2026.<span class="en" id="ref-13"><a class="en-link" href="#src-13">13</a></span> Coding is doing double duty for the labs: it is <em>proof</em> that the technology produces real economic value, and it is an <em>engine</em>: a vertical lucrative enough to help finance the dark factories. Expect the pattern to repeat wherever a vertical&rsquo;s economics are good enough: customer support, legal work, search, scientific research. When the labs see &ldquo;ridiculous revenues&rdquo; forming in a vertical, they will move, because the race needs the fuel.</p>
 
     <h4>Utility and product at once</h4>
-    <p>This resolves a contradiction that otherwise makes the labs look incoherent. Are they horizontal infrastructure &mdash; utilities selling raw intelligence to everyone &mdash; or vertical product companies, building coding tools and browsers and apps? The honest answer is that the hypercompetition forces them to be <em>both, at the same time, by necessity.</em> The utility is the destination. The verticals are the fuel that pays for the trip. A lab that sold only raw tokens could not afford the race; a lab that sold only coding tools would be a feature, not a foundation. So they sprint in two directions at once &mdash; and that is why &ldquo;what is an AI lab, exactly?&rdquo; is a question that refuses to sit still.</p>
+    <p>This resolves a contradiction that otherwise makes the labs look incoherent. Are they horizontal infrastructure (utilities selling raw intelligence to everyone) or vertical product companies, building coding tools and browsers and apps? The honest answer is that the hypercompetition forces them to be <em>both, at the same time, by necessity.</em> The utility is the destination. The verticals are the fuel that pays for the trip. A lab that sold only raw tokens could not afford the race; a lab that sold only coding tools would be a feature, not a foundation. So they sprint in two directions at once, and that is why &ldquo;what is an AI lab, exactly?&rdquo; is a question that refuses to sit still. (Who gets access to the finished utility, and on whose political terms, is the seller-side story this booklet leaves to its companion, <a href="../mercantilism-of-genai/#m-utility"><em>The Mercantilism of Generative AI</em></a>.)</p>
 
-    <p>Verticals are one source of fuel for the race. They are not the only one. The next ledger follows the other &mdash; the capital that arrives not from customers at all, but from the labs&rsquo; own investors, moving in a circle.</p>
+    <p>Verticals are one source of fuel for the race. They are not the only one. The next ledger follows the other: the capital that arrives not from customers at all, but from the labs&rsquo; own investors, moving in a circle.</p>
   </div>
 
-  <p class="credits">Sources: Anthropic &middot; Neowin &middot; Futurum &middot; SemiAnalysis &mdash; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
+  <p class="credits">Sources: Anthropic &middot; Neowin &middot; Futurum &middot; SemiAnalysis &middot; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════ LEDGER 6 ═══ -->
@@ -800,68 +900,78 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
   <div class="thesis-grid">
     <div class="thesis-card">
       <div class="card-label" style="color:var(--purple)">The loop</div>
-      <div class="card-text">A hyperscaler invests equity in a lab. The lab spends that money on the hyperscaler&rsquo;s cloud. The spend is booked as the hyperscaler&rsquo;s revenue. The same dollar now appears in two companies&rsquo; growth stories &mdash; as investment <em>and</em> as revenue.</div>
+      <div class="card-text">A hyperscaler invests equity in a lab. The lab spends that money on the hyperscaler&rsquo;s cloud. The spend is booked as the hyperscaler&rsquo;s revenue. The same dollar now appears in two companies&rsquo; growth stories: as investment <em>and</em> as revenue.</div>
     </div>
     <div class="thesis-card">
       <div class="card-label" style="color:var(--green)">Not a scandal</div>
-      <div class="card-text">This is mostly how strategic investors have always built customers &mdash; not fraud. But it means some growth is funded by the counterparty rather than the open market, and it can re-rate the valuations of everyone in the loop at once.</div>
+      <div class="card-text">This is mostly how strategic investors have always built customers, not fraud. But it means some growth is funded by the counterparty rather than the open market, and it can re-rate the valuations of everyone in the loop at once.</div>
     </div>
   </div>
 
   <div class="figure">
     <img src="figures/fig-circular.png" alt="A four-step ring: a hyperscaler invests equity in a lab; the lab holds the cash; the lab spends it on the hyperscaler's compute; the hyperscaler books it as revenue; and the loop closes.">
-    <div class="figure-caption">The loop in its simplest form. The same dollar travels the ring &mdash; counted as an investment on the way in and as revenue on the way round. The specific deals that fill this ring are in the table below.</div>
+    <div class="figure-caption">The loop in its simplest form. The same dollar travels the ring, counted as an investment on the way in and as revenue on the way round. The specific deals that fill this ring are in the table below.</div>
   </div>
 
   <div class="chapter-prose">
     <h4>Follow one dollar</h4>
-    <p>Amazon wires a dollar of equity investment to Anthropic. Anthropic wires that dollar to Amazon Web Services to pay for computing power. AWS books it as cloud revenue. The dollar has not vanished and nothing improper has happened &mdash; but it is now doing double duty: it is counted as Amazon&rsquo;s investment <em>and</em> as Amazon&rsquo;s revenue, and it is propping up two growth stories at once. It is the same dollar.</p>
+    <p>Amazon wires a dollar of equity investment to Anthropic. Anthropic wires that dollar to Amazon Web Services to pay for computing power. AWS books it as cloud revenue. The dollar has not vanished and nothing improper has happened, but it is now doing double duty: it is counted as Amazon&rsquo;s investment <em>and</em> as Amazon&rsquo;s revenue, and it is propping up two growth stories at once. It is the same dollar.</p>
 
-    <p>That little circuit, repeated at enormous scale, is the most misunderstood feature of frontier-AI finance. The honest question is not &ldquo;is this a scandal&rdquo; &mdash; mostly it is not &mdash; but &ldquo;how much of the growth I am looking at is the open market choosing to pay, and how much is an investor&rsquo;s own money making a lap?&rdquo;</p>
+    <p>That little circuit, repeated at enormous scale, is the most misunderstood feature of frontier-AI finance. The honest question is not &ldquo;is this a scandal&rdquo; (mostly it is not) but &ldquo;how much of the growth I am looking at is the open market choosing to pay, and how much is an investor&rsquo;s own money making a lap?&rdquo;</p>
 
     <h4>The deals that fill the ring</h4>
-    <p>Five partnerships fill the loop. In each, an equity investment flows toward a lab and a far larger compute commitment flows back &mdash; the round trip the diagram above describes.</p>
+    <p>Six partnerships fill the loop. In most, an equity investment flows toward a lab and a far larger compute commitment flows back: the round trip the diagram above describes.</p>
 
     <table class="s2-table">
       <tr><th>Partner &rarr; Lab</th><th>Equity invested / held</th><th>Compute committed back</th></tr>
       <tr><td class="rowhead">Amazon &rarr; Anthropic<span class="en" id="ref-14"><a class="en-link" href="#src-14">14</a></span></td><td>~$13B, up to ~$33B with milestones</td><td>$100B+ on AWS, over ~10 years</td></tr>
       <tr><td class="rowhead">Google &rarr; Anthropic<span class="en" id="ref-15"><a class="en-link" href="#src-15">15</a></span></td><td>up to $40B (cash + compute)</td><td>~$200B to Google Cloud, over 5 years</td></tr>
       <tr><td class="rowhead">Microsoft &rarr; OpenAI<span class="en" id="ref-16"><a class="en-link" href="#src-16">16</a></span></td><td>~$135B stake (~27%)</td><td>~$250B of Azure purchases</td></tr>
-      <tr><td class="rowhead">Nvidia &rarr; OpenAI<span class="en" id="ref-17"><a class="en-link" href="#src-17">17</a></span></td><td>up to $100B, released in stages</td><td>returns largely as GPU orders</td></tr>
+      <tr><td class="rowhead">Amazon &rarr; OpenAI<span class="en"><a class="en-link" href="#src-29">29</a></span></td><td>$50B (March 2026 round)</td><td>~$38B of AWS compute, over ~7 years</td></tr>
+      <tr><td class="rowhead">Nvidia &rarr; OpenAI<span class="en" id="ref-17"><a class="en-link" href="#src-17">17</a></span></td><td>$30B closed, Mar 2026 (an earlier &ldquo;up to $100B&rdquo; letter of intent was never finalised)</td><td>returns largely as GPU orders</td></tr>
       <tr><td class="rowhead">Oracle &rarr; OpenAI<span class="en" id="ref-18"><a class="en-link" href="#src-18">18</a></span></td><td>(compute partner, not equity)</td><td>~$300B Stargate deal, over 5 years</td></tr>
     </table>
-    <p class="s2-table-caption">Figures as reported, May 2026 &mdash; see notes 14&ndash;18. Equity flows one way; a much larger compute commitment flows back.</p>
+    <p class="s2-table-caption">Figures as reported, July 2026 &middot; see notes 14&ndash;18 and 29. Equity flows one way; a much larger compute commitment flows back. And note the fourth row: the same investor can now sit on both labs&rsquo; cap tables at once.</p>
 
     <p>Two of these deserve a closer look, because they are where the loop tightens hardest.</p>
 
-    <p><strong>Nvidia and OpenAI.</strong> Nvidia announced an investment of up to $100&nbsp;billion in OpenAI, disbursed in stages as data-centre capacity comes online &mdash; capacity OpenAI builds substantially by buying Nvidia&rsquo;s own chips.<span class="en"><a class="en-link" href="#src-17">17</a></span> The chip vendor funds the customer to buy the vendor&rsquo;s chips. <strong>Oracle and OpenAI.</strong> Oracle is not an equity investor, but it sits on the same circle: its reported five-year, roughly $300&nbsp;billion Stargate compute deal with OpenAI<span class="en"><a class="en-link" href="#src-18">18</a></span> is a commitment large enough to reshape Oracle&rsquo;s own financial statements.</p>
+    <p><strong>Nvidia and OpenAI.</strong> In September 2025 Nvidia announced an intent to invest &ldquo;up to $100&nbsp;billion&rdquo; in OpenAI, to be disbursed as data-centre capacity came online; capacity OpenAI would build substantially by buying Nvidia&rsquo;s own chips.<span class="en"><a class="en-link" href="#src-17">17</a></span> That announcement was a letter of intent, and it was never finalised: what closed, in March 2026, was $30&nbsp;billion inside OpenAI&rsquo;s funding round, Ledger&nbsp;2&rsquo;s &ldquo;announced is not signed&rdquo; in the wild.<span class="en"><a class="en-link" href="#src-29">29</a></span> The mechanism survives at the smaller scale: the chip vendor funds the customer to buy the vendor&rsquo;s chips. <strong>Oracle and OpenAI.</strong> Oracle is not an equity investor, but it sits on the same circle: its reported five-year, roughly $300&nbsp;billion Stargate compute deal with OpenAI<span class="en"><a class="en-link" href="#src-18">18</a></span> is a commitment large enough to reshape Oracle&rsquo;s own financial statements.</p>
 
     <div class="translate">
       <div class="tr-label">Translate</div>
-      <p>Nvidia&rsquo;s &ldquo;$100&nbsp;billion investment&rdquo; is not a cheque in a drawer. It is released gradually, and most of it is expected to return to Nvidia as chip purchases. Strip it to the mechanism and it reads: <strong>Nvidia lends OpenAI the means to become Nvidia&rsquo;s largest customer.</strong> That can be a perfectly rational way to seed demand &mdash; but &ldquo;investment&rdquo; and &ldquo;pre-paid future order&rdquo; are different things, and only one of them tells you the open market wants the product.</p>
+      <p>Nvidia&rsquo;s &ldquo;up to $100&nbsp;billion investment&rdquo; made headlines for half a year; what closed was $30&nbsp;billion. Even at the real size, strip the arrangement to its mechanism and it reads: <strong>Nvidia lends OpenAI the means to become Nvidia&rsquo;s largest customer.</strong> That can be a perfectly rational way to seed demand, but &ldquo;investment&rdquo; and &ldquo;pre-paid future order&rdquo; are different things, and only one of them tells you the open market wants the product.</p>
     </div>
 
     <h4>How the loop inflates valuations</h4>
-    <p>The circle does more than move cash. It moves <em>valuations</em>. When Nvidia commits capital to OpenAI and OpenAI orders Nvidia chips, Nvidia&rsquo;s revenue and order backlog swell &mdash; and a company with a swelling backlog is worth more, so its market value rises. When Oracle signs the Stargate deal, its contracted backlog leaps; by its own disclosures, Oracle&rsquo;s remaining performance obligations jumped past half a trillion dollars, and its share price moved with the news. Each deal, in other words, re-rates the worth of more than one company on the circle at the same time.</p>
+    <p>The circle does more than move cash. It moves <em>valuations</em>. When Nvidia commits capital to OpenAI and OpenAI orders Nvidia chips, Nvidia&rsquo;s revenue and order backlog swell, and a company with a swelling backlog is worth more, so its market value rises. When Oracle signs the Stargate deal, its contracted backlog leaps; by its own disclosures, Oracle&rsquo;s remaining performance obligations jumped past half a trillion dollars, and its share price moved with the news. Each deal, in other words, re-rates the worth of more than one company on the circle at the same time.</p>
 
-    <p>Stack enough of these and an effect appears that no single deal intends: the whole sector looks larger, busier, and more certain than independently verifiable end-customer demand alone would justify. Valuations lift each other. The capital, the revenue, and the market value all swell together &mdash; partly on real demand, and partly because the same money has been counted, in good faith, at several stops around the ring.</p>
+    <p>Stack enough of these and an effect appears that no single deal intends: the whole sector looks larger, busier, and more certain than independently verifiable end-customer demand alone would justify. Valuations lift each other. The capital, the revenue, and the market value all swell together: partly on real demand, and partly because the same money has been counted, in good faith, at several stops around the ring.</p>
+
+    <h4>The old script: vendor financing</h4>
+    <p>This movie has played before, and the bears of Ledger&nbsp;8 name the rerun openly. In the late 1990s the telecom-equipment makers Lucent and Nortel lent their customers billions with which to buy Lucent and Nortel gear. The loans were booked as sales, the sales inflated the stocks, and when the borrowing customers died in the 2001 crash, the receivables died with them. The practice has a name, <strong>vendor financing</strong>, and the short-seller Jim Chanos calls today&rsquo;s version &ldquo;Lucent 2.0&rdquo;: putting money into money-losing companies so that those companies can order your chips. Analysts have run the comparison quantitatively; on one much-cited reading, Nvidia&rsquo;s committed investments and debt backstops amount to roughly two-thirds of a year&rsquo;s revenue, a ratio in Lucent&rsquo;s historical territory.<span class="en" id="ref-32"><a class="en-link" href="#src-32">32</a></span></p>
+    <p>The rebuttal is also quantitative, and it is fair. Lucent&rsquo;s borrowers were leveraged startups burning cash; Nvidia&rsquo;s four largest customers generated over $450&nbsp;billion of operating cash flow in 2024, Nvidia itself sits on tens of billions of net cash, and the company answered its critics with a formal memo to analysts: customers pay in around 53 days, and there are no off-balance-sheet vehicles.<span class="en"><a class="en-link" href="#src-32">32</a></span> Jensen Huang&rsquo;s sharpest point is utilisation: the dot-com bubble laid fibre that stayed dark for a decade, whereas today almost every GPU that exists is lit and busy.</p>
+    <p>Then hold the uncomfortable middle case: <strong>Cisco</strong>. No fraud, real profits, genuine dominance of a genuinely transformative technology, and its stock still fell roughly 87 per cent when the buildout paused, on valuation compression alone. It did not reclaim its March 2000 peak until December 2025, a quarter of a century later.<span class="en"><a class="en-link" href="#src-32">32</a></span> Circularity does not need wrongdoing to be dangerous. It only needs a pause.</p>
+
+    <h4>The depreciation argument</h4>
+    <p>The quietest big number in the whole system is an accounting schedule: <em>how many years does a chip earn?</em> Spread a GPU&rsquo;s cost across six years and your reported profit is billions higher than if you spread it across three. Between 2022 and 2025, Microsoft, Alphabet, Meta and Oracle all <em>extended</em> their server depreciation schedules, each extension lifting reported profits by billions; The Economist estimated that re-depreciating the big clouds&rsquo; AI fleets over three years would cut roughly 8 per cent from their pre-tax profits, and called the question a four-trillion-dollar accounting puzzle.<span class="en" id="ref-33"><a class="en-link" href="#src-33">33</a></span> The investor Michael Burry, of <em>The Big Short</em> fame, put disclosed short positions behind the bear reading and called understated depreciation &ldquo;one of the more common frauds of the modern era&rdquo;; Nvidia took the charge seriously enough to rebut it in a formal memo.<span class="en"><a class="en-link" href="#src-33">33</a></span></p>
+    <p>The record then offers a genuinely instructive split. In January 2025 <strong>Amazon went the other way</strong>, shortening its server schedule from six years to five and citing the pace at which AI hardware becomes obsolete. One hyperscaler&rsquo;s accountants are lengthening the earning life of the machines while another&rsquo;s shorten it, and the fleets run the same chips.<span class="en"><a class="en-link" href="#src-33">33</a></span> The defenders have real evidence too: old accelerators stay busy (Google reports seven-year-old TPUs at full utilisation; analysts note five-year-old A100s still earning healthy margins), and much of the new capacity is pre-sold under long contracts that shift obsolescence risk onto the customer. But notice what this argument <em>is</em>. It is Ledger&nbsp;3&rsquo;s vintage problem one layer down the stack: whether hyperscaler AI profits are real depends on how long the expensive asset keeps earning, and nobody yet knows. When the schedules move again, in either direction, that is a gauge worth reading.</p>
 
     <h4>The fair rebuttal</h4>
-    <p>Before the caveats, the case <em>for</em> all this, stated properly. A strategic investor seeding a company that will become a major customer is ordinary capitalism, not a trick &mdash; telecoms, airlines, and the early cloud were all built this way. The Azure compute OpenAI buys is genuine: real models run for real users on those servers. Microsoft is not paying itself; it is selling a service a willing buyer would want regardless. And there is a sturdier point: the labs are not <em>only</em> spending investor money. A great deal of their revenue is now ordinary customers &mdash; enterprises and consumers with no equity stake &mdash; paying for a product they chose. The loop is real, but it is not the whole circuit.</p>
+    <p>Before the caveats, the case <em>for</em> all this, stated properly. A strategic investor seeding a company that will become a major customer is ordinary capitalism, not a trick: telecoms, airlines, and the early cloud were all built this way. The Azure compute OpenAI buys is genuine: real models run for real users on those servers. Microsoft is not paying itself; it is selling a service a willing buyer would want regardless (and since an April 2026 renegotiation OpenAI is free to buy from rival clouds too, which makes the Azure dollars more market-tested, not less<span class="en" id="ref-30"><a class="en-link" href="#src-30">30</a></span>). And there is a sturdier point: the labs are not <em>only</em> spending investor money. A great deal of their revenue is now ordinary customers &middot; enterprises and consumers with no equity stake &middot; paying for a product they chose. The loop is real, but it is not the whole circuit.</p>
 
     <h4>Three caveats to carry out of this ledger</h4>
     <p>So describe the loop soberly and land on three things, no more.</p>
-    <p><strong>One &mdash; endogenous growth.</strong> When a portion of a lab&rsquo;s revenue traces back to its own investors&rsquo; capital, the growth curve is partly <em>endogenous</em>: funded from inside the arrangement rather than won in the open market. It is not fake. It is just not the same evidence of demand as a dollar from an unrelated customer, and a revenue chart cannot tell you the mix on its own.</p>
-    <p><strong>Two &mdash; concentration.</strong> The loop binds a handful of firms tightly together. If one major lab falters, the damage does not stay contained &mdash; it lands on a hyperscaler&rsquo;s investment line, its revenue line, and its contracted backlog at once. The circle that amplifies growth on the way up amplifies stress on the way down.</p>
-    <p><strong>Three &mdash; opacity.</strong> Because of the gross-versus-net problem from Ledger&nbsp;2, an outside reader cannot reliably size the loop. You can see that it exists and that it is large. You cannot, from the public record, say precisely how much of any headline number it accounts for. Honesty about that limit is part of reading the books well.</p>
+    <p><strong>One: endogenous growth.</strong> When a portion of a lab&rsquo;s revenue traces back to its own investors&rsquo; capital, the growth curve is partly <em>endogenous</em>: funded from inside the arrangement rather than won in the open market. It is not fake, just not the same evidence of demand as a dollar from an unrelated customer, and a revenue chart cannot tell you the mix on its own.</p>
+    <p><strong>Two: concentration.</strong> The loop binds a handful of firms tightly together. If one major lab falters, the damage does not stay contained: it lands on a hyperscaler&rsquo;s investment line, its revenue line, and its contracted backlog at once. The circle that amplifies growth on the way up amplifies stress on the way down.</p>
+    <p><strong>Three: opacity.</strong> Because of the gross-versus-net problem from Ledger&nbsp;2, an outside reader cannot reliably size the loop. You can see that it exists and that it is large. You cannot, from the public record, say precisely how much of any headline number it accounts for. Honesty about that limit is part of reading the books well.</p>
 
     <div class="author-note">
       <div class="an-label">On the spirit of this ledger</div>
-      <p>Circular financing is being <strong>described here, not condemned</strong>. There is no allegation of wrongdoing &mdash; these arrangements are disclosed, and most have sound commercial logic. The goal is only to let you <em>see</em> the loop and gauge its risk, so that a growth chart shaped partly by an investor&rsquo;s own capital is not mistaken for one shaped purely by open-market demand. Seeing clearly is not the same as disapproving.</p>
+      <p>Circular financing is being <strong>described here, not condemned</strong>. There is no allegation of wrongdoing: these arrangements are disclosed, and most have sound commercial logic. The goal is only to let you <em>see</em> the loop and gauge its risk, so that a growth chart shaped partly by an investor&rsquo;s own capital is not mistaken for one shaped purely by open-market demand. Seeing clearly is not the same as disapproving.</p>
     </div>
   </div>
 
-  <p class="credits">Sources: CNBC &middot; Bloomberg &middot; TechCrunch &middot; Amazon &middot; Nvidia &middot; Data Center Dynamics &middot; AI Magazine &mdash; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
+  <p class="credits">Sources: CNBC &middot; Bloomberg &middot; TechCrunch &middot; Amazon &middot; Nvidia &middot; Data Center Dynamics &middot; The Economist &middot; Yahoo Finance &middot; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════ LEDGER 7 ═══ -->
@@ -871,12 +981,12 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
 
   <div class="thesis-grid">
     <div class="thesis-card">
-      <div class="card-label" style="color:var(--accent)">Mistral &mdash; the structural also-ran</div>
-      <div class="card-text">Europe&rsquo;s frontier hope is technically credible and roughly 75&times; smaller than Anthropic &mdash; with the gap widening. The binding constraint is not engineering talent. It is access to capital and compute at the scale the frontier now demands.</div>
+      <div class="card-label" style="color:var(--accent)">Mistral &middot; the structural also-ran</div>
+      <div class="card-text">Europe&rsquo;s frontier hope is technically credible and roughly 75&times; smaller than Anthropic, with the gap widening. The binding constraint is not engineering talent but access to capital and compute at the scale the frontier now demands.</div>
     </div>
     <div class="thesis-card">
-      <div class="card-label" style="color:var(--orange-red)">China &mdash; a different game</div>
-      <div class="card-text">The leading Chinese labs are not losing the API-margin race. They mostly aren&rsquo;t running it. Their model economics are subordinate to traffic, ecosystems, and attention &mdash; which makes &ldquo;they can&rsquo;t profit on inference&rdquo; a category error.</div>
+      <div class="card-label" style="color:var(--orange-red)">China &middot; a different game</div>
+      <div class="card-text">The leading Chinese labs are not losing the API-margin race. They mostly aren&rsquo;t running it. Their model economics are subordinate to traffic, ecosystems, and attention &middot; which makes &ldquo;they can&rsquo;t profit on inference&rdquo; a category error.</div>
     </div>
   </div>
 
@@ -889,37 +999,129 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
 
   <div class="chapter-prose">
     <h4>If you only watch the two leaders, you mistake the game</h4>
-    <p>Ledgers 3 to 6 examined the American duopoly. But the most instructive economics at the frontier are happening at its edges &mdash; where a well-run European lab is losing the race anyway, and where another set of labs has decided that the race the Americans are running was never the point.</p>
+    <p>Ledgers 3 to 6 examined the American duopoly. But the most instructive economics at the frontier are happening at its edges: where a well-run European lab is losing the race anyway, and where another set of labs has decided that the race the Americans are running was never the point.</p>
 
     <h4>Mistral: credible, and structurally behind</h4>
-    <p>Mistral is France&rsquo;s entrant and Europe&rsquo;s best one. Its revenue grew impressively in relative terms &mdash; from roughly $16&nbsp;million at the end of 2024 to an estimated $400&nbsp;million annualised a year later. Set that beside Anthropic&rsquo;s $30&nbsp;billion and the relative success disappears: Mistral is on the order of <strong>75 times smaller</strong>, and because the leaders are growing faster from a vastly larger base, the gap is widening, not closing.</p>
+    <p>Mistral is France&rsquo;s entrant and Europe&rsquo;s best one. Its revenue grew impressively in relative terms, from roughly $16&nbsp;million at the end of 2024 to an estimated $400&nbsp;million annualised a year later. Set that beside Anthropic&rsquo;s $30&nbsp;billion and the relative success disappears: Mistral is on the order of <strong>75 times smaller</strong>, and because the leaders are growing faster from a vastly larger base, the gap is widening, not closing.</p>
 
-    <p>This is not a talent problem. Mistral ships genuinely good models. It is a <em>capital</em> problem. Its September 2025 Series C raised &euro;1.7&nbsp;billion, led by the Dutch chip-equipment maker ASML, which became its largest shareholder; in early 2026 it arranged an $830&nbsp;million debt facility to buy some 13,800 Nvidia chips for a data centre near Paris.<span class="en" id="ref-19"><a class="en-link" href="#src-19">19</a></span> Those are serious European numbers. They are also roughly two orders of magnitude below the compute commitments Ledger&nbsp;6 described on the American side. Frontier-tier monetisation is gated by frontier-tier compute, and frontier-tier compute is gated by capital Mistral cannot raise at American scale.</p>
+    <p>Mistral ships genuinely good models; talent is not the constraint. The constraint is <em>capital</em>. Its September 2025 Series C raised &euro;1.7&nbsp;billion, led by the Dutch chip-equipment maker ASML, which became its largest shareholder; in early 2026 it arranged an $830&nbsp;million debt facility to buy some 13,800 Nvidia chips for a data centre near Paris.<span class="en" id="ref-19"><a class="en-link" href="#src-19">19</a></span> Those are serious European numbers. They are also roughly two orders of magnitude below the compute commitments Ledger&nbsp;6 described on the American side. Frontier-tier monetisation is gated by frontier-tier compute, and frontier-tier compute is gated by capital Mistral cannot raise at American scale. Mistral&rsquo;s own public revenue target for 2026 is $1&nbsp;billion: a serious number, and roughly a fiftieth of where Anthropic&rsquo;s run rate already stood by May.<span class="en"><a class="en-link" href="#src-19">19</a></span></p>
 
     <div class="translate">
       <div class="tr-label">Translate</div>
-      <p>&ldquo;75 times smaller&rdquo; is easy to wave past. Make it concrete: if Anthropic were a large national airline with a global network, Mistral would be a competent regional carrier. The regional carrier can be well run and worth flying &mdash; but it is not going to out-fly the network by trying harder. Different fleet, different capital base, different game.</p>
+      <p>&ldquo;75 times smaller&rdquo; is easy to wave past. Make it concrete: if Anthropic were a large national airline with a global network, Mistral would be a competent regional carrier. The regional carrier can be well run and worth flying, but it is not going to out-fly the network by trying harder. Different fleet, different capital base, different game.</p>
     </div>
 
     <p>Mistral&rsquo;s response is to stop competing on the duopoly&rsquo;s terms: less pure model-API rivalry, more sovereign and on-premise offerings, vertical models for regulated European industries, and the pitch that a European customer may want a European supplier for reasons that are not only technical. That is a sane strategy. It is also, plainly, the strategy of a company that has accepted it will not win the raw-scale race.</p>
 
     <h4>China: the model is the bait, the ecosystem is the business</h4>
-    <p>The Chinese labs invite a Western misreading. DeepSeek reported training its V3 model for a marginal cost near $5.6&nbsp;million &mdash; a figure that, taken alone, made the American spend look absurd.<span class="en" id="ref-20"><a class="en-link" href="#src-20">20</a></span> The honest accounting is less dramatic: that number excludes prior research, failed runs, and the cost of the hardware itself, and the all-in figure is many times higher. But chasing the exact training cost misses the larger point &mdash; which is that for the leading Chinese players, <em>the model was never the product.</em></p>
+    <p>The Chinese labs invite a Western misreading. DeepSeek reported training its V3 model for a marginal cost near $5.6&nbsp;million, a figure that, taken alone, made the American spend look absurd.<span class="en" id="ref-20"><a class="en-link" href="#src-20">20</a></span> The honest accounting is less dramatic: that number excludes prior research, failed runs, and the cost of the hardware itself, and the all-in figure is many times higher. But chasing the exact training cost misses the larger point, which is that for the leading Chinese players, <em>the model was never the product.</em></p>
 
-    <p>So what is? The product is the <strong>ecosystem</strong>, and the ecosystem makes money the way it always has. Alibaba&rsquo;s Qwen models feed Taobao and its cloud: the money is made on a <em>cut of every commerce transaction</em> and on cloud contracts. ByteDance&rsquo;s models feed its apps: the money is made on <em>advertising sold against attention.</em> Across the sector the pattern repeats &mdash; super-app engagement, payment fees, subscriptions to services that have nothing to do with an API meter. In that design a frontier-grade model given away near-free is not a failed business; it is a <strong>customer-acquisition cost</strong> for a far larger one. The model is the bait. The ecosystem is the hook, and the hook is where the revenue has always been.</p>
+    <p>So what is? The product is the <strong>ecosystem</strong>, and the ecosystem makes money the way it always has. Alibaba&rsquo;s Qwen models feed Taobao and its cloud: the money is made on a <em>cut of every commerce transaction</em> and on cloud contracts. ByteDance&rsquo;s models feed its apps: the money is made on <em>advertising sold against attention.</em> Across the sector the pattern repeats: super-app engagement, payment fees, subscriptions to services that have nothing to do with an API meter. In that design a frontier-grade model given away near-free is not a failed business; it is a <strong>customer-acquisition cost</strong> for a far larger one. The model is the bait. The ecosystem is the hook, and the hook is where the revenue has always been.</p>
 
-    <p>Two of these companies, Zhipu and MiniMax, listed in Hong Kong in January 2026 and saw their valuations multiply within weeks.<span class="en" id="ref-21"><a class="en-link" href="#src-21">21</a></span> The public market is funding the strategy &mdash; and profitability on inference is simply not the case being made to those investors. &ldquo;Chinese labs can&rsquo;t make money selling tokens&rdquo; is true and almost irrelevant: selling tokens was never the plan.</p>
+    <p>Two of these companies, Zhipu and MiniMax, listed in Hong Kong on the same January 2026 day, at valuations modest by frontier standards: roughly $7&nbsp;billion and $6.5&nbsp;billion respectively.<span class="en" id="ref-21"><a class="en-link" href="#src-21">21</a></span> What happened next is the instructive part. By mid-June 2026 Zhipu&rsquo;s market value had multiplied roughly twenty-fold from its debut, to around $63&nbsp;billion, with MiniMax reaching about $16&nbsp;billion; a rally fed by analyst upgrades, a fully open-source frontier-grade release, and, not least, an American own goal (the dated note below).<span class="en" id="ref-38"><a class="en-link" href="#src-38">38</a></span> The public market is funding the strategy, and profitability on inference is simply not the case being made to those investors. &ldquo;Chinese labs can&rsquo;t make money selling tokens&rdquo; is true and almost irrelevant: selling tokens was never the plan.</p>
+
+    <div class="author-note">
+      <div class="an-label">A dated note: the gated week (June 2026)</div>
+      <p>In mid-June 2026, days after launching its newest frontier models, Anthropic was ordered by the US Commerce Department to suspend foreign access to them over an alleged security flaw; access was restored in stages over the following weeks, partially and for vetted organisations first.<span class="en"><a class="en-link" href="#src-38">38</a></span> In the same week, Zhipu shipped a frontier-grade model fully open-source, and its Hong Kong shares surged by roughly a third in a single day. The seller-side arithmetic is blunt: every hour the paid frontier is gated, the free tier underneath it is the substitute, and a gated frontier is a subsidy to the ungated. The sovereignty politics of that episode belong to this booklet&rsquo;s companion, <a href="../mercantilism-of-genai/#m-bloc"><em>The Mercantilism of Generative AI</em></a>; the arithmetic belongs here.</p>
+    </div>
 
     <h4>The commodity tier eats the floor</h4>
-    <p>There is a third force, and it presses on everyone. Below the frontier sits a fast-improving commodity tier &mdash; cheap open-weight models, many of them Chinese, and discount API offerings. For tasks that do not need frontier capability, these are nearly free. SemiAnalysis&rsquo;s reading is stark: margins on frontier models sit north of 70 per cent, while margins on trailing models exposed to open-source competition fall below 20.</p>
+    <p>There is a third force, and it presses on everyone. Below the frontier sits a fast-improving commodity tier: cheap open-weight models, many of them Chinese, and discount API offerings. For tasks that do not need frontier capability, these are nearly free. SemiAnalysis&rsquo;s reading is stark: margins on frontier models sit north of 70 per cent, while trailing models exposed to open-weight competition are squeezed toward the floor, commonly put below 20 per cent (the precise floor is contested; the direction is not).</p>
 
-    <p>From the buyer&rsquo;s side &mdash; the subject of the companion booklet, <em>The Token Economics</em> &mdash; this is simply good news: cheaper tokens. From the <em>seller&rsquo;s</em> side, the one this booklet is about, it is a slow squeeze. Every routine workload that drains from a premium API to a near-free open-weight model erodes the pricing power the whole vintage cascade of Ledger&nbsp;3 depends on. The frontier labs are protected only at the genuine frontier &mdash; and only for as long as the frontier stays far enough ahead of the commodity tier to be worth paying for.</p>
+    <p>From the buyer&rsquo;s side, the subject of the companion booklet <em>The Token Economics</em>, this is simply good news: cheaper tokens. From the <em>seller&rsquo;s</em> side, the one this booklet is about, it is a slow squeeze. Every routine workload that drains from a premium API to a near-free open-weight model erodes the pricing power the whole vintage cascade of Ledger&nbsp;3 depends on. The frontier labs are protected only at the genuine frontier, and only for as long as the frontier stays far enough ahead of the commodity tier to be worth paying for.</p>
 
-    <h4>Closing the books</h4>
-    <p>Seven ledgers, and a single habit holding them together. A frontier number means nothing until you know which ruler it is on, whose dollar it really is, and what kind of company &mdash; or country, or business model &mdash; produced it. The figures in this booklet will be stale within months; the way of reading them will not. When the next staggering headline arrives, do what every ledger here has done: find the unit, translate it into something a person can picture, and ask what kind of bet it really represents. That habit, not any number, is what this booklet was for.</p>
+    <h4>The last account</h4>
+    <p>Seven ledgers so far, and through every one of them a chorus has been audible offstage: the critics who say that all of it, the margins, the vintages, the loop, is a bubble waiting for its pin. They have documents, track records, and in some cases real short positions. They deserve better than a dismissive paragraph, and their claims deserve exactly the same instruments this booklet has been aiming at the labs&rsquo; press releases. The last ledger reads the bears.</p>
   </div>
 
-  <p class="credits">Sources: CNBC &middot; Mistral AI &middot; Sacra &middot; The Register &middot; DeepSeek technical report &middot; SCMP &middot; SemiAnalysis &mdash; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
+  <p class="credits">Sources: CNBC &middot; Mistral AI &middot; Sacra &middot; The Register &middot; DeepSeek technical report &middot; SCMP &middot; Bloomberg &middot; Axios &middot; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
+</section>
+
+<!-- ═══════════════════════════════════════════ LEDGER 8 ═══ -->
+<section class="chapter" id="ledger-8">
+  <div class="chapter-label">Ledger 8 &middot; new in the July 2026 revision</div>
+  <h2>Reading the Bears <br><span class="chapter-question">&ldquo;How to read the people who say it is all a bubble&rdquo;</span></h2>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--risk-color)">Why you need them</div>
+      <div class="card-text">The bears have been right about real things: the negative margins of 2024, the circular deals, the run-rate theatre. Some of the most important documents in this booklet exist because a critic dug them up. A reading diet of press releases alone is malnutrition.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="card-label" style="color:var(--green)">Why you must read them carefully</div>
+      <div class="card-text">A loud bear case is also a business, with an audience that grows on alarm, selective rulers, and a scoreboard rarely revisited. The four questions of Ledger&nbsp;2 apply to a newsletter exactly as they apply to a press release.</div>
+    </div>
+  </div>
+
+  <div class="key-numbers">
+    <div class="kn"><div class="kn-value">&asymp;3&times;</div><div class="kn-label">OpenAI&rsquo;s headline 2025 net loss vs its recognised revenue, per the leak a bear broke first</div></div>
+    <div class="kn"><div class="kn-value">1 of 5</div><div class="kn-label">Bubble indicators flashing red in the best bull-side framework</div></div>
+    <div class="kn"><div class="kn-value">$912M</div><div class="kn-label">Notional value of Michael Burry&rsquo;s disclosed Palantir puts (SEC filing)</div></div>
+    <div class="kn"><div class="kn-value">&minus;5.9%</div><div class="kn-label">Nvidia, in one day of the June 2026 &ldquo;AI bubble&rdquo; selloff</div></div>
+  </div>
+
+  <div class="chapter-prose">
+    <h4>The bench</h4>
+    <p>&ldquo;The bears&rdquo; is not one argument but at least six, made by different people, on different rulers, with different things at stake. Before you quote any of them, know which one you are holding.</p>
+
+    <table class="s2-table">
+      <tr><th>Critic</th><th>The claim, in one line</th><th>What to check before repeating it</th></tr>
+      <tr><td class="rowhead">Ed Zitron</td><td>The cash math never closes: the products lose money at scale and the revenue announcements never reconcile with audited reality.</td><td>Whether the specific numbers are from documents or his own modelling; his burn projections have varied several-fold between essays.<span class="en" id="ref-34"><a class="en-link" href="#src-34">34</a></span></td></tr>
+      <tr><td class="rowhead">Gary Marcus</td><td>Scaling has hit diminishing returns, so the 10&times;-bigger-model bet (Ledger&nbsp;3) stops paying.</td><td>A capability claim, not a financial one; test it against model releases, not income statements.</td></tr>
+      <tr><td class="rowhead">Jim Covello (Goldman)</td><td>&ldquo;At some point, you&rsquo;ve got to make money&rdquo;: the sector needs trillions of cumulative investment justified by revenue that is not arriving fast enough.<span class="en" id="ref-37"><a class="en-link" href="#src-37">37</a></span></td><td>His own bank simultaneously publishes bullish capex research; institutions contain multitudes.</td></tr>
+      <tr><td class="rowhead">Jim Chanos &amp; Michael Burry</td><td>The accounting: vendor financing (&ldquo;Lucent 2.0&rdquo;) and understated depreciation flatter the whole stack&rsquo;s profits.<span class="en"><a class="en-link" href="#src-33">33</a></span></td><td>Both hold disclosed short positions; a short is a timed bet, and in that business &ldquo;early&rdquo; and &ldquo;wrong&rdquo; feel identical.</td></tr>
+      <tr><td class="rowhead">Paul Kedrosky</td><td>The macro: AI capex at roughly 2% of GDP is eating the rest of the economy&rsquo;s investment.</td><td>A statement about the economy, not about any lab&rsquo;s viability; both can be true.</td></tr>
+      <tr><td class="rowhead">David Cahn (Sequoia)</td><td>The sympathetic insider&rsquo;s version: a widening gap between infrastructure spend and the revenue that must eventually justify it.</td><td>He has notably <em>not</em> updated his famous &ldquo;$600B question&rdquo; with a bigger number; larger figures attributed to him since are journalist gloss.</td></tr>
+    </table>
+    <p class="s2-table-caption">Six bears, four different rulers: cash flow, capability, accounting, and macroeconomics. They are routinely quoted as if interchangeable. They are not.</p>
+
+    <h4>The Zitron file</h4>
+    <p>Ed Zitron is the loudest and most-read of the bears, which makes him the best case study in symmetric reading. Start with what he gets right. He does real document work: it was his newsletter that first published OpenAI&rsquo;s leaked 2025 financials, the $13&nbsp;billion-revenue, $38.5&nbsp;billion-headline-loss numbers that anchored Ledger&nbsp;2, a day ahead of the mainstream press.<span class="en"><a class="en-link" href="#src-34">34</a></span> The &ldquo;selling dollars for cents&rdquo; era he described in 2024 was real; the affidavit-versus-run-rate catch in Ledger&nbsp;2 was his; and his insistence that subscription pricing is subsidised by investor capital is a fair description of how growth-stage software has always worked, stated with unusual bluntness.</p>
+    <p>Now the other column of the ledger. He has predicted OpenAI&rsquo;s imminent financial collapse more or less continuously since August 2024; since then the company has closed the largest private funding round in history and confidentially filed for an IPO. His own numbers sometimes disagree between essays written weeks apart. And in June 2026 came the most instructive twist of all: a writer named Garrison Lovely took the very financials Zitron had surfaced and showed that they contradict his central claim, because the gross margins in them are positive and improving, roughly 28 per cent in 2024 rising into the 40s in 2025.<span class="en"><a class="en-link" href="#src-35">35</a></span> The best documents in the bear case, read carefully, undercut the loudest conclusion drawn from them.</p>
+    <p>The lesson is not &ldquo;ignore Zitron&rdquo; but to separate the <em>reporter</em> from the <em>analyst</em>: treasure the documents he surfaces, and redo the arithmetic yourself. He is also, honestly read, a professional critic whose audience grows with alarm, exactly as a lab&rsquo;s audience grows with hype. Neither incentive makes its owner wrong. Both make them quotable, and Ledger&nbsp;2 taught you what to do with quotable.</p>
+
+    <h4>The best of the bulls</h4>
+    <p>Symmetry requires reading the other direction&rsquo;s best, not its worst. Three stand out as of mid-2026. The analyst Azeem Azhar built the most falsifiable bull case: five empirical bubble indicators drawn from three centuries of investment manias, scored openly, with exactly one of the five (industry strain) flashing red as of June 2026 and revenue momentum green.<span class="en" id="ref-36"><a class="en-link" href="#src-36">36</a></span> You can disagree with the scoring, which is the point: it is a framework you can check, not a vibe. Ben Thompson made the strategist&rsquo;s case that agents change what the revenue can become, and marked his own reversal with the most honest sentence in the genre: &ldquo;I don&rsquo;t think we&rsquo;re in a bubble (which, paradoxically, maybe is the truest evidence we are).&rdquo; And JPMorgan published, from one research house, both the bullish reading (hyperscaler operating cash flow heading past $900&nbsp;billion by 2027) and the bear-adjacent one (roughly $650&nbsp;billion of new annual revenue needed to justify the buildout at a 10 per cent return).<span class="en"><a class="en-link" href="#src-36">36</a></span> When one institution hands you both rulers, use both.</p>
+
+    <h4>A dated note: the first flinch (June 2026)</h4>
+    <p>The revision window for this booklet happened to include the market&rsquo;s first genuine AI scare. Across three weeks in June 2026, AI-heavy stocks sold off hard: Nvidia dropped 5.9 per cent and Broadcom 7.5 per cent in a single session, South Korea&rsquo;s chip-heavy Kospi hit a circuit breaker, and the Nasdaq bled through most of the month, with commentary blaming exactly the themes of this booklet: circular deals, promotional token pricing, and revenue that is annualised rather than audited.<span class="en"><a class="en-link" href="#src-37">37</a></span> Gary Marcus declared it &ldquo;AI&rsquo;s Black Friday.&rdquo; Whether it was the top of a bubble or a tremor inside a boom is not knowable from inside the moment, and this booklet will not pretend otherwise. Log it, date it, and watch what the next such episode does to the gauges you now know how to read.</p>
+
+    <h4>How to read a bear</h4>
+    <p>The method of this ledger, compressed to four questions. They are Ledger&nbsp;2&rsquo;s questions, pointed the other way.</p>
+    <p><strong>One: which ruler is the critic holding?</strong> A GAAP loss quoted against a run-rate revenue is two rulers in one sentence, and it is the single most common construction in bearish commentary. You know how to take it apart now.</p>
+    <p><strong>Two: is the number a document&rsquo;s or the critic&rsquo;s?</strong> Leaked financials, sworn affidavits and SEC filings are gold, whoever surfaces them. Projections of future burn are modelling, whoever publishes them, and deserve the same <span class="tag tag-projected">projected</span> tag a lab&rsquo;s investor deck gets.</p>
+    <p><strong>Three: what is the scoreboard?</strong> A dated, falsifiable bear claim is analysis; ask what the same critic said a year ago and whether they ever scored it. A critic who is never wrong by their own accounting is running a run rate of their own.</p>
+    <p><strong>Four: what would change their mind?</strong> A bear who can name the evidence that would flip them is an analyst. One who cannot is a genre. The same test applies, word for word, to the bulls.</p>
+
+    <div class="field-note">
+      <div class="fn-label">Field note</div>
+      <p>I enjoy reading Zitron more than almost anything else written about this industry, which is exactly why I make myself redo his arithmetic. The exercise I recommend to my training groups: take one bear essay and one lab press release from the same week, and find the ruler mismatch in each. There is almost always one in each. It cured me of repeating headlines from either direction, and it is the closest thing to a final exam this booklet has.</p>
+    </div>
+
+    <h4>Where I&rsquo;d put my chips</h4>
+    <p>A booklet that teaches you to demand falsifiable claims should end by making some. These are my personal probabilities as of July 2026, in the same spirit as the chips section of the <a href="../scenario-planning/">Scenario Planning</a> booklet: not investment advice, just the author putting his own reading on the record where it can be scored.</p>
+
+    <div class="bet">
+      <div class="bet-by">Robert&rsquo;s chips &middot; July 2026 &middot; ~85%</div>
+      <div class="bet-claim">The vintage claim survives the prospectus: when the first frontier-lab S-1 becomes public, its audited figures show a clearly positive gross margin on serving, even alongside large net losses.</div>
+      <div class="bet-falsify"><span class="bf-k">How it scores</span>Scored against the first public S-1 from Anthropic or OpenAI. Falsified if the audited gross margin is negative or negligible; the bears&rsquo; strongest 2024-era claim would then still be alive.</div>
+    </div>
+    <div class="bet">
+      <div class="bet-by">Robert&rsquo;s chips &middot; July 2026 &middot; ~70%</div>
+      <div class="bet-claim">Both leading labs are publicly traded companies by the end of 2027, and the leak-and-run-rate era this booklet&rsquo;s Ledger&nbsp;2 documents is over.</div>
+      <div class="bet-falsify"><span class="bf-k">How it scores</span>Two completed listings by 2027-12-31. A withdrawn or indefinitely delayed IPO at either lab falsifies it, and would itself be a signal worth a fresh reading of every ledger here.</div>
+    </div>
+    <div class="bet">
+      <div class="bet-by">Robert&rsquo;s chips &middot; July 2026 &middot; ~55%</div>
+      <div class="bet-claim">The depreciation gauge moves toward the bears: by the end of 2027, at least one more major hyperscaler shortens (rather than extends) its AI-hardware depreciation schedule, following Amazon&rsquo;s 2025 reversal.</div>
+      <div class="bet-falsify"><span class="bf-k">How it scores</span>Scored on annual-report disclosures through FY2027. If schedules keep lengthening industry-wide, the defenders were right and I lose the chips.</div>
+    </div>
+
+    <h4>Closing the books</h4>
+    <p>Eight ledgers, and a single habit holding them together. A frontier number means nothing until you know which ruler it is on, whose dollar it really is, and what kind of company, or country, or business model, or <em>critic</em>, produced it. The figures in this booklet will be stale within months; the way of reading them will not. When the next staggering headline arrives, from a lab or from a bear, do what every ledger here has done: find the unit, check the document it lives in, translate it into something a person can picture, and ask what kind of bet it really represents. That habit, not any number, is what this booklet was for.</p>
+  </div>
+
+  <p class="credits">Sources: Where&rsquo;s Your Ed At &middot; obsolete.pub &middot; Exponential View &middot; Stratechery &middot; Fortune &middot; NPR &middot; Yahoo Finance &middot; see <a href="#sources" style="color:inherit;">Sources &amp; Notes</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════ SOURCES ═══ -->
@@ -927,83 +1129,108 @@ li.src-flash { background: rgba(59,130,246,0.10); border-radius: 6px; }
   <div class="chapter-label">Reference</div>
   <h2>Sources &amp; Notes</h2>
 
-  <p class="sources-intro">Numbered notes for the load-bearing and contestable figures in this booklet. All links were retrieved in <strong>May 2026</strong>; figures are a snapshot of that date. Inline tags &mdash; <span class="tag tag-reported">reported</span> (confirmed by a company or filing), <span class="tag tag-projected">projected</span> (a forward estimate, often investor-facing), <span class="tag tag-estimated">estimated</span> (a third-party calculation) &mdash; indicate how solid each figure is. A few sources are paywalled or were originally leaked; these are cited by outlet without a stable free link.</p>
+  <p class="sources-intro">Numbered notes for the load-bearing and contestable figures in this booklet. Notes 1&ndash;21 were gathered for the <strong>May 2026</strong> edition; notes 22&ndash;40 were added in the <strong>July 2026</strong> revision, which also corrected three of the original entries (8, 17 and 21; each says so in place). Inline tags, <span class="tag tag-reported">reported</span> (confirmed by a company or filing), <span class="tag tag-projected">projected</span> (a forward estimate, often investor-facing), <span class="tag tag-estimated">estimated</span> (a third-party calculation), indicate how solid each figure is. A few sources are paywalled or were originally leaked; these are cited by outlet without a stable free link.</p>
 
   <div class="sources-group">
     <h4>Premise</h4>
-    <ol class="sources-list" start="1">
-      <li id="src-1">Anthropic&rsquo;s ~$30B revenue run rate (April 2026) and the &ldquo;80&times;&rdquo; growth remark &mdash; VentureBeat, &ldquo;Anthropic says it hit a $30 billion revenue run rate&rdquo;: <a href="https://venturebeat.com/technology/anthropic-says-it-hit-a-30-billion-revenue-run-rate-after-crazy-80x-growth" target="_blank" rel="noopener">venturebeat.com</a>. Revenue history compiled by Sacra: <a href="https://sacra.com/c/anthropic/" target="_blank" rel="noopener">sacra.com/c/anthropic</a>. <a class="src-back" href="#ref-1">&#8617;</a></li>
+    <ol class="sources-list" start="1" style="counter-reset: src 0;">
+      <li id="src-1">Anthropic&rsquo;s ~$30B revenue run rate (April 2026) and the &ldquo;80&times;&rdquo; growth remark &middot; VentureBeat, &ldquo;Anthropic says it hit a $30 billion revenue run rate&rdquo;: <a href="https://venturebeat.com/technology/anthropic-says-it-hit-a-30-billion-revenue-run-rate-after-crazy-80x-growth" target="_blank" rel="noopener">venturebeat.com</a>. Revenue history compiled by Sacra: <a href="https://sacra.com/c/anthropic/" target="_blank" rel="noopener">sacra.com/c/anthropic</a>. <a class="src-back" href="#ref-1">&#8617;</a></li>
     </ol>
   </div>
 
   <div class="sources-group">
-    <h4>Ledger 1 &mdash; How a Lab Works</h4>
-    <ol class="sources-list" start="2">
-      <li id="src-2">Order-of-magnitude training-run costs ($100M&ndash;$1B+) draw on Dario Amodei&rsquo;s public framing in the Dwarkesh Patel interview: <a href="https://www.dwarkesh.com/p/dario-amodei-2" target="_blank" rel="noopener">dwarkesh.com</a>; a cheaper-tier counterpoint is DeepSeek&rsquo;s reported V3 figure &mdash; DeepSeek-V3 technical report: <a href="https://arxiv.org/html/2412.19437v1" target="_blank" rel="noopener">arxiv.org</a>. The Frontier Labs, Inc. numbers are an explicit illustration, not a real company. <a class="src-back" href="#ref-2">&#8617;</a></li>
+    <h4>Ledger 1 &middot; How a Lab Works</h4>
+    <ol class="sources-list" start="2" style="counter-reset: src 1;">
+      <li id="src-2">Order-of-magnitude training-run costs ($100M&ndash;$1B+) draw on Dario Amodei&rsquo;s public framing in the Dwarkesh Patel interview: <a href="https://www.dwarkesh.com/p/dario-amodei-2" target="_blank" rel="noopener">dwarkesh.com</a>; a cheaper-tier counterpoint is DeepSeek&rsquo;s reported V3 figure &middot; DeepSeek-V3 technical report: <a href="https://arxiv.org/html/2412.19437v1" target="_blank" rel="noopener">arxiv.org</a>. The Frontier Labs, Inc. numbers are an explicit illustration, not a real company. <a class="src-back" href="#ref-2">&#8617;</a></li>
     </ol>
   </div>
 
   <div class="sources-group">
-    <h4>Ledger 2 &mdash; Reading the Books</h4>
-    <ol class="sources-list" start="3">
+    <h4>Ledger 2 &middot; Reading the Books</h4>
+    <ol class="sources-list" start="3" style="counter-reset: src 2;">
       <li id="src-3">The disputed ~$8B gross-vs-net gap traces to a leaked April 2026 internal memo from OpenAI&rsquo;s CRO Denise Dresser, arguing Anthropic books reseller revenue on a gross basis; <span class="src-tag">reported</span> by multiple outlets and summarised by Sacra: <a href="https://sacra.com/c/anthropic/" target="_blank" rel="noopener">sacra.com/c/anthropic</a>. <a class="src-back" href="#ref-3">&#8617;</a></li>
-      <li id="src-4">OpenAI&rsquo;s ~$20B run rate vs ~$13B recognised 2025 revenue, and the run-rate&ndash;to&ndash;GAAP relationship &mdash; CNBC on the $852B round and revenue: <a href="https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html" target="_blank" rel="noopener">cnbc.com</a>; Microsoft&rsquo;s 10-Q as a window into OpenAI&rsquo;s losses, Om Malik: <a href="https://om.co/2026/05/01/what-microsofts-10-q-says-about-openai/" target="_blank" rel="noopener">om.co</a>. <a class="src-back" href="#ref-4">&#8617;</a></li>
+      <li id="src-4">OpenAI&rsquo;s ~$20B run rate vs ~$13B recognised 2025 revenue, and the run-rate-to-GAAP relationship &middot; CNBC on the $852B round and revenue: <a href="https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html" target="_blank" rel="noopener">cnbc.com</a>; Microsoft&rsquo;s 10-Q as a window into OpenAI&rsquo;s losses, Om Malik: <a href="https://om.co/2026/05/01/what-microsofts-10-q-says-about-openai/" target="_blank" rel="noopener">om.co</a>. <a class="src-back" href="#ref-4">&#8617;</a></li>
     </ol>
   </div>
 
   <div class="sources-group">
-    <h4>Ledger 3 &mdash; The Vintage Problem</h4>
-    <ol class="sources-list" start="5">
-      <li id="src-5">Dario Amodei&rsquo;s per-model (&ldquo;vintage&rdquo;) framing, the ~2&times;-return toy model, the 50%-compute-on-research heuristic, and &ldquo;near the end of the exponential&rdquo; &mdash; Dwarkesh Patel interview, February 2026: <a href="https://www.dwarkesh.com/p/dario-amodei-2" target="_blank" rel="noopener">dwarkesh.com</a>. <a class="src-back" href="#ref-5">&#8617;</a></li>
-      <li id="src-6">Inference gross margins &mdash; frontier models north of 70%, trailing models below 20%, and Anthropic&rsquo;s shift from ~38% to &gt;70% inside a year &mdash; SemiAnalysis, &ldquo;AI Value Capture&rdquo;: <a href="https://newsletter.semianalysis.com/p/ai-value-capture-the-shift-to-model" target="_blank" rel="noopener">newsletter.semianalysis.com</a>. The per-token worked example is illustrative and consistent with this range. <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-6">&#8617;</a></li>
-      <li id="src-7">Anthropic&rsquo;s 2024 gross margin of roughly &minus;94% on paying customers (&minus;109% all-in) &mdash; The Information, November 2025 reporting (subscription). <a class="src-back" href="#ref-7">&#8617;</a></li>
-      <li id="src-8">OpenAI&rsquo;s projected ~$74B operating loss for 2028 and breakeven pushed to 2029&ndash;2030 &mdash; The Wall Street Journal, reporting on confidential investor financials, May 2026 (subscription). <span class="src-tag">projected</span>. <a class="src-back" href="#ref-8">&#8617;</a></li>
-      <li id="src-9">&ldquo;AI&rsquo;s $600B Question&rdquo; &mdash; David Cahn, Sequoia Capital: <a href="https://www.sequoiacap.com/article/ais-600b-question/" target="_blank" rel="noopener">sequoiacap.com</a>. The bear case on losses-as-business-model is associated with Ed Zitron&rsquo;s &ldquo;Where&rsquo;s Your Ed At&rdquo; newsletter. <a class="src-back" href="#ref-9">&#8617;</a></li>
+    <h4>Ledger 3 &middot; The Vintage Problem</h4>
+    <ol class="sources-list" start="5" style="counter-reset: src 4;">
+      <li id="src-5">Dario Amodei&rsquo;s per-model (&ldquo;vintage&rdquo;) framing, the ~2&times;-return toy model, the 50%-compute-on-research heuristic, and &ldquo;near the end of the exponential&rdquo; &middot; Dwarkesh Patel interview, February 2026: <a href="https://www.dwarkesh.com/p/dario-amodei-2" target="_blank" rel="noopener">dwarkesh.com</a>. <a class="src-back" href="#ref-5">&#8617;</a></li>
+      <li id="src-6">Inference gross margins &middot; frontier models north of 70%, trailing models below 20%, and Anthropic&rsquo;s shift from ~38% to &gt;70% inside a year &middot; SemiAnalysis, &ldquo;AI Value Capture&rdquo;: <a href="https://newsletter.semianalysis.com/p/ai-value-capture-the-shift-to-model" target="_blank" rel="noopener">newsletter.semianalysis.com</a>. The per-token worked example is illustrative and consistent with this range. <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-6">&#8617;</a></li>
+      <li id="src-7">Anthropic&rsquo;s 2024 gross margin of roughly &minus;94% on paying customers (&minus;109% all-in) &middot; The Information, November 2025 reporting (subscription). <a class="src-back" href="#ref-7">&#8617;</a></li>
+      <li id="src-8">OpenAI&rsquo;s projected ~$74B operating loss for 2028, $115B cumulative burn through 2029, and breakeven pushed to 2029&ndash;2030 &middot; The Wall Street Journal, reporting on documents shared with investors, <strong>November 2025</strong> (subscription; the May edition of this booklet misdated this reporting to May 2026, corrected in the July revision). <span class="src-tag">projected</span>. <a class="src-back" href="#ref-8">&#8617;</a></li>
+      <li id="src-9">&ldquo;AI&rsquo;s $600B Question&rdquo; &middot; David Cahn, Sequoia Capital: <a href="https://www.sequoiacap.com/article/ais-600b-question/" target="_blank" rel="noopener">sequoiacap.com</a>. The bear case on losses-as-business-model is associated with Ed Zitron&rsquo;s &ldquo;Where&rsquo;s Your Ed At&rdquo; newsletter. <a class="src-back" href="#ref-9">&#8617;</a></li>
     </ol>
   </div>
 
   <div class="sources-group">
-    <h4>Ledger 4 &mdash; A Tale of Two Labs</h4>
-    <ol class="sources-list" start="10">
-      <li id="src-10">Revenue-per-user estimates (~$211 for Anthropic, ~$25 for OpenAI) and the enterprise revenue mix &mdash; Sacra: <a href="https://sacra.com/c/anthropic/" target="_blank" rel="noopener">sacra.com/c/anthropic</a>. <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-10">&#8617;</a></li>
-      <li id="src-11">Anthropic&rsquo;s projected first operating profit (~$559M on ~$10.9B revenue, Q2 2026) and the caveat that profitability may not hold through the year &mdash; TechCrunch: <a href="https://techcrunch.com/2026/05/20/anthropic-says-its-about-to-have-its-first-profitable-quarter/" target="_blank" rel="noopener">techcrunch.com</a>; figures originate in WSJ reporting on investor materials. <span class="src-tag">projected</span>. <a class="src-back" href="#ref-11">&#8617;</a></li>
+    <h4>Ledger 4 &middot; A Tale of Two Labs</h4>
+    <ol class="sources-list" start="10" style="counter-reset: src 9;">
+      <li id="src-10">Revenue-per-user estimates (~$211 for Anthropic, ~$25 for OpenAI) and the enterprise revenue mix &middot; Sacra: <a href="https://sacra.com/c/anthropic/" target="_blank" rel="noopener">sacra.com/c/anthropic</a>. <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-10">&#8617;</a></li>
+      <li id="src-11">Anthropic&rsquo;s projected first operating profit (~$559M on ~$10.9B revenue, Q2 2026) and the caveat that profitability may not hold through the year &middot; TechCrunch: <a href="https://techcrunch.com/2026/05/20/anthropic-says-its-about-to-have-its-first-profitable-quarter/" target="_blank" rel="noopener">techcrunch.com</a>; figures originate in WSJ reporting on investor materials. <span class="src-tag">projected</span>. <a class="src-back" href="#ref-11">&#8617;</a></li>
     </ol>
   </div>
 
   <div class="sources-group">
-    <h4>Ledger 5 &mdash; The Dark Factory</h4>
-    <ol class="sources-list" start="12">
-      <li id="src-12">2026 hyperscaler / AI capital-expenditure estimates &mdash; widely reported in the $660&ndash;700B+ range; Futurum, &ldquo;AI Capex 2026&rdquo;: <a href="https://futurumgroup.com/insights/ai-capex-2026-the-690b-infrastructure-sprint/" target="_blank" rel="noopener">futurumgroup.com</a>. <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-12">&#8617;</a></li>
-      <li id="src-13">Claude Code &mdash; $1B run rate in six months, past $2.5B within a year &mdash; Anthropic: <a href="https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone" target="_blank" rel="noopener">anthropic.com</a>. OpenAI&rsquo;s Codex reaching several million weekly users &mdash; Neowin: <a href="https://www.neowin.net/news/openais-codex-hits-4-million-weekly-active-users-adding-1-million-in-just-two-weeks/" target="_blank" rel="noopener">neowin.net</a>. <a class="src-back" href="#ref-13">&#8617;</a></li>
+    <h4>Ledger 5 &middot; The Dark Factory</h4>
+    <ol class="sources-list" start="12" style="counter-reset: src 11;">
+      <li id="src-12">2026 hyperscaler / AI capital-expenditure estimates &middot; widely reported in the $660&ndash;700B+ range; Futurum, &ldquo;AI Capex 2026&rdquo;: <a href="https://futurumgroup.com/insights/ai-capex-2026-the-690b-infrastructure-sprint/" target="_blank" rel="noopener">futurumgroup.com</a>. <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-12">&#8617;</a></li>
+      <li id="src-13">Claude Code &middot; $1B run rate in six months, past $2.5B within a year &middot; Anthropic: <a href="https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone" target="_blank" rel="noopener">anthropic.com</a>. OpenAI&rsquo;s Codex reaching 4 million weekly users in April 2026 &middot; Neowin: <a href="https://www.neowin.net/news/openais-codex-hits-4-million-weekly-active-users-adding-1-million-in-just-two-weeks/" target="_blank" rel="noopener">neowin.net</a> &middot; and 5 million by May 31, 2026 (see also note 39). <a class="src-back" href="#ref-13">&#8617;</a></li>
     </ol>
   </div>
 
   <div class="sources-group">
-    <h4>Ledger 6 &mdash; The Money Goes in a Circle</h4>
-    <ol class="sources-list" start="14">
-      <li id="src-14">Amazon&rsquo;s ~$13B cumulative investment in Anthropic (up to ~$33B with milestones) and Anthropic&rsquo;s $100B+ AWS commitment &mdash; Amazon: <a href="https://www.aboutamazon.com/news/company-news/amazon-invests-additional-5-billion-anthropic-ai" target="_blank" rel="noopener">aboutamazon.com</a>; Project Rainier: <a href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster" target="_blank" rel="noopener">aboutamazon.com</a>. <a class="src-back" href="#ref-14">&#8617;</a></li>
-      <li id="src-15">Google&rsquo;s up-to-$40B Anthropic investment (cash + compute) and Anthropic&rsquo;s ~$200B, 5GW Google Cloud / TPU commitment &mdash; TechCrunch: <a href="https://techcrunch.com/2026/04/24/google-to-invest-up-to-40b-in-anthropic-in-cash-and-compute/" target="_blank" rel="noopener">techcrunch.com</a>. <a class="src-back" href="#ref-15">&#8617;</a></li>
-      <li id="src-16">Microsoft&rsquo;s post-restructuring stake (~27% / ~$135B), the 20% revenue share capped at $38B, and OpenAI&rsquo;s ~$250B Azure commitment &mdash; CNBC: <a href="https://www.cnbc.com/2025/10/28/open-ai-for-profit-microsoft.html" target="_blank" rel="noopener">cnbc.com</a>; cap detail, AI Magazine: <a href="https://aimagazine.com/news/openai-caps-microsoft-revenue-share-at-us-38bn-in-new-deal" target="_blank" rel="noopener">aimagazine.com</a>. <a class="src-back" href="#ref-16">&#8617;</a></li>
-      <li id="src-17">Nvidia&rsquo;s up-to-$100B investment in OpenAI, disbursed progressively as ~10GW of capacity is deployed &mdash; CNBC: <a href="https://www.cnbc.com/2025/09/22/nvidia-openai-data-center.html" target="_blank" rel="noopener">cnbc.com</a>; Nvidia newsroom: <a href="https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems" target="_blank" rel="noopener">nvidianews.nvidia.com</a>. <a class="src-back" href="#ref-17">&#8617;</a></li>
-      <li id="src-18">The reported ~$300B / 4.5GW five-year Oracle&ndash;OpenAI Stargate deal and Oracle&rsquo;s backlog (remaining performance obligations) swelling past $500B &mdash; Data Center Dynamics: <a href="https://www.datacenterdynamics.com/en/news/openai-signs-300bn-cloud-deal-with-oracle-report/" target="_blank" rel="noopener">datacenterdynamics.com</a>; Data Center Frontier: <a href="https://www.datacenterfrontier.com/machine-learning/article/55316610/openai-and-oracles-300b-stargate-deal-building-ais-national-scale-infrastructure" target="_blank" rel="noopener">datacenterfrontier.com</a>. <a class="src-back" href="#ref-18">&#8617;</a></li>
+    <h4>Ledger 6 &middot; The Money Goes in a Circle</h4>
+    <ol class="sources-list" start="14" style="counter-reset: src 13;">
+      <li id="src-14">Amazon&rsquo;s ~$13B cumulative investment in Anthropic (up to ~$33B with milestones) and Anthropic&rsquo;s $100B+ AWS commitment &middot; Amazon: <a href="https://www.aboutamazon.com/news/company-news/amazon-invests-additional-5-billion-anthropic-ai" target="_blank" rel="noopener">aboutamazon.com</a>; Project Rainier: <a href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster" target="_blank" rel="noopener">aboutamazon.com</a>. <a class="src-back" href="#ref-14">&#8617;</a></li>
+      <li id="src-15">Google&rsquo;s up-to-$40B Anthropic investment (cash + compute) and Anthropic&rsquo;s ~$200B, 5GW Google Cloud / TPU commitment &middot; TechCrunch: <a href="https://techcrunch.com/2026/04/24/google-to-invest-up-to-40b-in-anthropic-in-cash-and-compute/" target="_blank" rel="noopener">techcrunch.com</a>. <a class="src-back" href="#ref-15">&#8617;</a></li>
+      <li id="src-16">Microsoft&rsquo;s post-restructuring stake (~27% / ~$135B), the 20% revenue share capped at $38B, and OpenAI&rsquo;s ~$250B Azure commitment &middot; CNBC: <a href="https://www.cnbc.com/2025/10/28/open-ai-for-profit-microsoft.html" target="_blank" rel="noopener">cnbc.com</a>; cap detail, AI Magazine: <a href="https://aimagazine.com/news/openai-caps-microsoft-revenue-share-at-us-38bn-in-new-deal" target="_blank" rel="noopener">aimagazine.com</a>. <a class="src-back" href="#ref-16">&#8617;</a></li>
+      <li id="src-17">Nvidia&rsquo;s <em>announced</em> up-to-$100B investment in OpenAI, tied to ~10GW of capacity (September 2025) &middot; CNBC: <a href="https://www.cnbc.com/2025/09/22/nvidia-openai-data-center.html" target="_blank" rel="noopener">cnbc.com</a>; Nvidia newsroom: <a href="https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems" target="_blank" rel="noopener">nvidianews.nvidia.com</a>. The letter of intent was never finalised; the May edition of this booklet carried it as live, corrected in the July revision &middot; see note 29 for what actually closed. <a class="src-back" href="#ref-17">&#8617;</a></li>
+      <li id="src-18">The reported ~$300B / 4.5GW five-year Oracle&ndash;OpenAI Stargate deal and Oracle&rsquo;s backlog (remaining performance obligations) swelling past $500B &middot; Data Center Dynamics: <a href="https://www.datacenterdynamics.com/en/news/openai-signs-300bn-cloud-deal-with-oracle-report/" target="_blank" rel="noopener">datacenterdynamics.com</a>; Data Center Frontier: <a href="https://www.datacenterfrontier.com/machine-learning/article/55316610/openai-and-oracles-300b-stargate-deal-building-ais-national-scale-infrastructure" target="_blank" rel="noopener">datacenterfrontier.com</a>. <a class="src-back" href="#ref-18">&#8617;</a></li>
     </ol>
   </div>
 
   <div class="sources-group">
-    <h4>Ledger 7 &mdash; The Rest of the World</h4>
-    <ol class="sources-list" start="19">
-      <li id="src-19">Mistral&rsquo;s &euro;1.7B Series C led by ASML (largest shareholder, ~11%) at an &euro;11.7B valuation &mdash; CNBC: <a href="https://www.cnbc.com/2025/09/09/ai-firm-mistral-valued-at-14-billion-as-asml-takes-major-stake.html" target="_blank" rel="noopener">cnbc.com</a>; Mistral: <a href="https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai" target="_blank" rel="noopener">mistral.ai</a>. Mistral revenue (~$400M ARR) per Sacra. <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-19">&#8617;</a></li>
-      <li id="src-20">DeepSeek V3&rsquo;s reported ~$5.58M marginal training cost &mdash; DeepSeek-V3 technical report: <a href="https://arxiv.org/html/2412.19437v1" target="_blank" rel="noopener">arxiv.org</a>; the case that true all-in cost is far higher &mdash; The Register: <a href="https://www.theregister.com/2025/09/19/deepseek_cost_train/" target="_blank" rel="noopener">theregister.com</a>. <a class="src-back" href="#ref-20">&#8617;</a></li>
-      <li id="src-21">The Hong Kong IPOs of Zhipu and MiniMax (January 2026) and their subsequent valuation surges &mdash; CNBC: <a href="https://www.cnbc.com/2026/01/09/minimax-hong-kong-ipo-ai-tigers-zhipu.html" target="_blank" rel="noopener">cnbc.com</a>; SCMP: <a href="https://www.scmp.com/tech/tech-trends/article/3339301/minimax-and-zhipus-stellar-hong-kong-ipos-supercharge-chinas-ai-ambitions" target="_blank" rel="noopener">scmp.com</a>. <a class="src-back" href="#ref-21">&#8617;</a></li>
+    <h4>Ledger 7 &middot; The Rest of the World</h4>
+    <ol class="sources-list" start="19" style="counter-reset: src 18;">
+      <li id="src-19">Mistral&rsquo;s &euro;1.7B Series C led by ASML (largest shareholder, ~11%) at an &euro;11.7B valuation &middot; CNBC: <a href="https://www.cnbc.com/2025/09/09/ai-firm-mistral-valued-at-14-billion-as-asml-takes-major-stake.html" target="_blank" rel="noopener">cnbc.com</a>; Mistral: <a href="https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai" target="_blank" rel="noopener">mistral.ai</a>. Mistral revenue (~$400M ARR) per Sacra. <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-19">&#8617;</a></li>
+      <li id="src-20">DeepSeek V3&rsquo;s reported ~$5.58M marginal training cost &middot; DeepSeek-V3 technical report: <a href="https://arxiv.org/html/2412.19437v1" target="_blank" rel="noopener">arxiv.org</a>; the case that true all-in cost is far higher &middot; The Register: <a href="https://www.theregister.com/2025/09/19/deepseek_cost_train/" target="_blank" rel="noopener">theregister.com</a>. <a class="src-back" href="#ref-20">&#8617;</a></li>
+      <li id="src-21">The Hong Kong IPOs of Zhipu and MiniMax (January 8, 2026) &middot; CNBC: <a href="https://www.cnbc.com/2026/01/09/minimax-hong-kong-ipo-ai-tigers-zhipu.html" target="_blank" rel="noopener">cnbc.com</a>; SCMP: <a href="https://www.scmp.com/tech/tech-trends/article/3339301/minimax-and-zhipus-stellar-hong-kong-ipos-supercharge-chinas-ai-ambitions" target="_blank" rel="noopener">scmp.com</a>. The May edition overstated the IPO-day valuations by several multiples; corrected figures, and the June 2026 rally, are in note 38. <a class="src-back" href="#ref-21">&#8617;</a></li>
+    </ol>
+  </div>
+
+  <div class="sources-group">
+    <h4>Added in the July 2026 revision (Ledgers 1&ndash;8)</h4>
+    <ol class="sources-list" start="22" style="counter-reset: src 21;">
+      <li id="src-22">The documented run-rate mechanic (trailing four weeks &times;13; monthly subscriptions &times;12) &middot; The Information, March 2026 (subscription). On the absence of audit standards or SEC definitions for &ldquo;ARR,&rdquo; Stanford&rsquo;s Chuck Eesley via PYMNTS, April 2026. <a class="src-back" href="#ref-22">&#8617;</a></li>
+      <li id="src-23">OpenAI&rsquo;s leaked 2025 financials (~$13.1B recognised revenue, ~$21B operating loss, ~$38.5B headline GAAP net loss including a one-time non-cash conversion charge) &middot; Fortune, June 16, 2026: <a href="https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/" target="_blank" rel="noopener">fortune.com</a>; first published by Ed Zitron, June 15, 2026: <a href="https://www.wheresyoured.at/" target="_blank" rel="noopener">wheresyoured.at</a>. <span class="src-tag">reported</span> (leaked, not company-confirmed; loss definitions vary between accounts). <a class="src-back" href="#ref-23">&#8617;</a></li>
+      <li id="src-24">Anthropic&rsquo;s CFO&rsquo;s sworn court declaration (lifetime revenue &ldquo;exceeding $5&nbsp;billion,&rdquo; March 2026) set against the $19B run-rate headline of the same week &middot; Ed Zitron, &ldquo;Anthropic&rsquo;s &lsquo;Profitability&rsquo; Swindle,&rdquo; May 21, 2026: <a href="https://www.wheresyoured.at/anthropics-profitability-swindle/" target="_blank" rel="noopener">wheresyoured.at</a>. The juxtaposition is his; the resolution offered in Ledger&nbsp;2 is this booklet&rsquo;s. <a class="src-back" href="#ref-24">&#8617;</a></li>
+      <li id="src-25">Compute allocation: final training runs as ~10% of OpenAI&rsquo;s 2024 R&amp;D compute (~$5B R&amp;D vs ~$2B inference), and 10&ndash;23% shares across labs that publish enough to check &middot; Epoch AI: <a href="https://epoch.ai/data-insights/openai-compute-spend" target="_blank" rel="noopener">epoch.ai/data-insights</a> and <a href="https://epoch.ai/gradient-updates/r-and-d-vs-training-compute" target="_blank" rel="noopener">epoch.ai/gradient-updates</a>. <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-25">&#8617;</a></li>
+      <li id="src-26">Inference&rsquo;s rising share of AI compute (roughly one-third in 2023, half in 2025, two-thirds projected for 2026) &middot; Deloitte, November 2025, &ldquo;Why AI&rsquo;s next phase will likely demand more computational power, not less&rdquo;; Nvidia&rsquo;s Jensen Huang on the &ldquo;inference inflection,&rdquo; GTC keynote, March 2026. <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-26">&#8617;</a></li>
+      <li id="src-27">Anthropic&rsquo;s $47B run rate and $65B Series H at a $965B post-money valuation (late May 2026) &middot; TechCrunch: <a href="https://techcrunch.com/2026/05/28/anthropic-raises-65-billion-nears-1t-valuation-ahead-of-ipo/" target="_blank" rel="noopener">techcrunch.com</a>; the confidential draft S-1 filed June 1, 2026 &middot; Fortune: <a href="https://fortune.com/2026/06/01/anthropic-confidentially-files-ipo-965-billion-valuation/" target="_blank" rel="noopener">fortune.com</a>. <span class="src-tag">reported</span>. <a class="src-back" href="#ref-27">&#8617;</a></li>
+      <li id="src-28">OpenAI&rsquo;s confidential S-1 (announced June 8&ndash;9, 2026) and later reports of a possible slip to 2027 &middot; Fortune: <a href="https://fortune.com/2026/06/09/openai-files-confidential-s-1-sec-ipo/" target="_blank" rel="noopener">fortune.com</a>; CBS News, June 2026. <a class="src-back" href="#ref-28">&#8617;</a></li>
+      <li id="src-29">Nvidia&ndash;OpenAI: the September 2025 &ldquo;up to $100B&rdquo; letter of intent was never finalised; what closed was $30B inside the March 2026 round (whose largest participants were Amazon $50B, Nvidia $30B, SoftBank $30B) &middot; Gizmodo: <a href="https://gizmodo.com/the-100-billion-openai-nvidia-deal-is-not-happening-2000729749" target="_blank" rel="noopener">gizmodo.com</a>; OpenAI&rsquo;s round announcement: <a href="https://openai.com/index/accelerating-the-next-phase-ai/" target="_blank" rel="noopener">openai.com</a>. The Amazon&ndash;OpenAI ~$38B, ~7-year AWS compute deal (November 2025) was widely reported at signing. <a class="src-back" href="#ref-29">&#8617;</a></li>
+      <li id="src-30">Microsoft&ndash;OpenAI renegotiation (April 2026): revenue share capped at $38B through 2030 and Azure exclusivity ended &middot; CNBC: <a href="https://www.cnbc.com/2026/04/27/openai-microsoft-partnership-revenue-cap.html" target="_blank" rel="noopener">cnbc.com</a>. <a class="src-back" href="#ref-30">&#8617;</a></li>
+      <li id="src-31">Anthropic&rsquo;s lease of xAI&rsquo;s Colossus&nbsp;1 (220,000+ GPUs, 300MW, ~$1.25B/month through May 2029, with a discounted opening ramp; terms surfaced via SpaceX&rsquo;s IPO filing) &middot; TechCrunch: <a href="https://techcrunch.com/2026/05/20/anthropic-will-pay-xai-1-25-billion-per-month-for-compute/" target="_blank" rel="noopener">techcrunch.com</a>; Data Center Dynamics, May 2026. The critique tying the ramp discount to the projected Q2 profit &middot; Ed Zitron, note 24. <a class="src-back" href="#ref-31">&#8617;</a></li>
+      <li id="src-32">Vendor financing and the dot-com parallel: Jim Chanos&rsquo;s &ldquo;Lucent 2.0&rdquo; framing &middot; Yahoo Finance, December 1, 2025, and conference remarks, June 17, 2026; the quantitative Nvidia-vs-Lucent comparison &middot; Tomasz Tunguz, October 3, 2025: <a href="https://tomtunguz.com/" target="_blank" rel="noopener">tomtunguz.com</a>; Nvidia&rsquo;s rebuttal memo to analysts (November 25, 2025; ~53-day payment terms, no off-balance-sheet vehicles) and Jensen Huang&rsquo;s utilisation argument (FT roundtable, November 2025); Cisco regaining its March 2000 peak on December 10, 2025, widely reported. <a class="src-back" href="#ref-32">&#8617;</a></li>
+      <li id="src-33">The depreciation debate: Michael Burry&rsquo;s SEC-disclosed puts (~$912M notional Palantir, ~$187M Nvidia; 13F filed November 3, 2025) and his understated-depreciation estimate (~$176B across 2026&ndash;28); The Economist, &ldquo;The $4trn accounting puzzle at the heart of the AI cloud,&rdquo; September 18, 2025; depreciation-schedule changes at Microsoft, Alphabet, Meta and Oracle (extensions) and Amazon (reversal to five years, January 2025), per company filings; defences from Microsoft&rsquo;s Amy Hood, Nvidia&rsquo;s Colette Kress, Google&rsquo;s Amin Vahdat (seven-year-old TPUs at full utilisation) and Bernstein&rsquo;s Stacy Rasgon (five-year-old A100s at ~70% contribution margin). <a class="src-back" href="#ref-33">&#8617;</a></li>
+      <li id="src-34">Ed Zitron&rsquo;s bear corpus &middot; &ldquo;Where&rsquo;s Your Ed At&rdquo;: <a href="https://www.wheresyoured.at/" target="_blank" rel="noopener">wheresyoured.at</a>, including the OpenAI-financials scoop (June 15, 2026), &ldquo;The Hater&rsquo;s Guide to the AI Bubble 3.0&rdquo; (June 5, 2026) and &ldquo;The Subprime AI Crisis&rdquo; (March 31, 2026). The internal inconsistencies noted in the text (burn projections varying several-fold) are visible across his 2026 essays. <a class="src-back" href="#ref-34">&#8617;</a></li>
+      <li id="src-35">Garrison Lovely&rsquo;s rebuttal computing positive, improving gross margins (~28% in 2024 rising into the 40s in 2025) from the leaked OpenAI figures &middot; obsolete.pub, June 17, 2026; see also Kelsey Piper, &ldquo;AI&rsquo;s biggest critic has lost the plot,&rdquo; The Argument, April 28, 2026. <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-35">&#8617;</a></li>
+      <li id="src-36">The bull side: Azeem Azhar &amp; Nathan Warren, &ldquo;Still No Bubble&rdquo; (five-indicator framework) &middot; Exponential View, June 1, 2026; Ben Thompson, &ldquo;Agents Over Bubbles&rdquo; &middot; Stratechery, March 16, 2026; JPMorgan&rsquo;s dual readings (hyperscaler operating cash flow past ~$900B by 2027; ~$650B of new annual revenue needed for a 10% return) via Fortune, June 25, 2026. <a class="src-back" href="#ref-36">&#8617;</a></li>
+      <li id="src-37">The June 2026 selloff &middot; NPR, June 23, 2026: <a href="https://www.npr.org/2026/06/23/nx-s1-5867633/ai-selloff-tech-stocks-bubble-nasdaq" target="_blank" rel="noopener">npr.org</a>; Fortune, June 8, 2026. Gary Marcus, &ldquo;AI&rsquo;s Black Friday,&rdquo; June 6, 2026. Jim Covello&rsquo;s 2026 remarks &middot; Goldman Sachs Exchanges podcast and Fortune, June 5, 2026. <a class="src-back" href="#ref-37">&#8617;</a></li>
+      <li id="src-38">Corrected Zhipu/MiniMax IPO-day valuations (~$7.1B and ~$6.5B, January 8, 2026) and the June 15, 2026 rally (Zhipu to ~HK$489B &asymp; $63B, roughly twenty times its debut; MiniMax to ~HK$124B &asymp; $16B) &middot; CNBC: <a href="https://www.cnbc.com/2026/06/15/china-ai-zhipu-minimax-artificial-intelligence-race-washington-trump-anthropic.html" target="_blank" rel="noopener">cnbc.com</a>; Bloomberg, June 15, 2026. The US export-control episode against Anthropic&rsquo;s newest models (suspension ordered mid-June 2026; access restored in stages, fully by July 1) &middot; Axios, June 12, 2026: <a href="https://www.axios.com/2026/06/12/anthropic-trump-mythos-fable-national-security" target="_blank" rel="noopener">axios.com</a>; CNBC, June 30, 2026. <a class="src-back" href="#ref-38">&#8617;</a></li>
+      <li id="src-39">ChatGPT crossing one billion monthly active users (June 2026, Sensor Tower via Reuters); Codex at 5 million weekly users (May 31, 2026); the divergent per-user revenue estimates (Sacra&rsquo;s $211 vs $25, note 10, against Counterpoint Research&rsquo;s much smaller gap on a different method, 2026). <span class="src-tag">estimated</span>. <a class="src-back" href="#ref-39">&#8617;</a></li>
+      <li id="src-40">Training-cost trajectory: Epoch AI on frontier training costs (growing ~2.4&times; per year; the largest runs projected past $1B by 2027): <a href="https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models" target="_blank" rel="noopener">epoch.ai</a>; the ~$490M estimate for one 2025 frontier run (Grok 4): <a href="https://epoch.ai/data-insights/grok-4-training-resources" target="_blank" rel="noopener">epoch.ai/data-insights</a>; Dario Amodei&rsquo;s repeated expectation of $10B training runs by 2027&ndash;28 (2024 interviews, restated since). <span class="src-tag">estimated</span> / <span class="src-tag">projected</span>. <a class="src-back" href="#ref-40">&#8617;</a></li>
     </ol>
   </div>
 
   <div class="sources-group">
     <h4>Also drawn on</h4>
-    <p class="sources-intro" style="margin-bottom:0;">Sam Altman&rsquo;s &ldquo;profitable on inference&rdquo; remark &mdash; Axios, 14 August 2025. SemiAnalysis (notes 6 and elsewhere) is a paid research firm; its margin breakdowns are the most-cited public estimates but are not independently audited. Run-rate figures throughout are 12&times; a single month and are not GAAP-recognised revenue &mdash; see Ledger 2.</p>
+    <p class="sources-intro" style="margin-bottom:0;">Sam Altman&rsquo;s &ldquo;profitable on inference&rdquo; remark &middot; Axios, 14 August 2025. SemiAnalysis (notes 6 and elsewhere) is a paid research firm; its margin breakdowns are the most-cited public estimates but are not independently audited. Run-rate figures throughout are annualised from a trailing month (&times;12 or &times;13 mechanics; see Ledger 2) and are not GAAP-recognised revenue.</p>
   </div>
 
-  <p class="credits">The Economics of the Frontier &mdash; barcik.training Publications &middot; Snapshot May 2026 &middot; A companion to <a href="../token-economics/" style="color:inherit;">The Token Economics</a></p>
+  <p class="credits">The Economics of the Frontier &middot; barcik.training Publications &middot; May 2026, revised July 2026 &middot; A companion to <a href="../token-economics/" style="color:inherit;">The Token Economics</a></p>
 </section>
 
 </main>

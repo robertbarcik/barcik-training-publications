@@ -1,7 +1,7 @@
 # References — The Economics of the Frontier
 
-Source URLs gathered via web search, May 2026. Used to build the booklet's
-"Sources & Notes" endnote section. Grouped roughly by Ledger.
+Source URLs gathered via web search, May 2026; July 2026 additions at the bottom.
+Used to build the booklet's "Sources & Notes" endnote section. Grouped roughly by Ledger.
 
 ## Ledger 1 — Reading the Books
 - Anthropic $30B run-rate / 80x growth — VentureBeat: https://venturebeat.com/technology/anthropic-says-it-hit-a-30-billion-revenue-run-rate-after-crazy-80x-growth
@@ -42,8 +42,35 @@ Source URLs gathered via web search, May 2026. Used to build the booklet's
 
 ## Cited by outlet (paywalled / no stable free URL)
 - Anthropic 2024 gross margin −94% / −109% — The Information, Nov 2025.
-- OpenAI confidential financials ($74B+ 2028 operating loss; breakeven 2029-30) — The Wall Street Journal, May 2026.
+- OpenAI confidential financials ($74B+ 2028 operating loss; breakeven 2029-30) — The Wall Street Journal, **Nov 2025** (May edition misdated this to May 2026; corrected).
 - Altman "profitable on inference" — Axios, 14 Aug 2025.
 - Denise Dresser internal memo (Anthropic gross-vs-net ~$8B) — leaked, reported Apr 2026.
 - Ed Zitron's cash-flow analysis — "Where's Your Ed At" newsletter, 2025-26.
 - David Cahn, "AI's $600B Question" — Sequoia Capital, 2024.
+- The Information — run-rate mechanics (trailing 4 weeks ×13; subs ×12), Mar 2026.
+
+## Added in the July 2026 revision (booklet notes 22–40)
+- OpenAI leaked 2025 financials — Fortune: https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/ (first: Zitron, Jun 15)
+- Anthropic $47B run-rate / Series H $965B — TechCrunch: https://techcrunch.com/2026/05/28/anthropic-raises-65-billion-nears-1t-valuation-ahead-of-ipo/
+- Anthropic confidential S-1 (Jun 1) — Fortune: https://fortune.com/2026/06/01/anthropic-confidentially-files-ipo-965-billion-valuation/
+- OpenAI confidential S-1 (Jun 8-9) — Fortune: https://fortune.com/2026/06/09/openai-files-confidential-s-1-sec-ipo/
+- Nvidia $100B LOI dead, $30B closed — Gizmodo: https://gizmodo.com/the-100-billion-openai-nvidia-deal-is-not-happening-2000729749
+- Microsoft-OpenAI $38B cap / exclusivity end — CNBC: https://www.cnbc.com/2026/04/27/openai-microsoft-partnership-revenue-cap.html
+- xAI Colossus 1 lease ($1.25B/mo) — TechCrunch: https://techcrunch.com/2026/05/20/anthropic-will-pay-xai-1-25-billion-per-month-for-compute/
+- Zitron "Anthropic's 'Profitability' Swindle" (affidavit vs ARR; ramp-discount critique) — https://www.wheresyoured.at/anthropics-profitability-swindle/
+- Zitron corpus — https://www.wheresyoured.at/
+- Garrison Lovely rebuttal (margins positive/improving from Zitron's own leak) — obsolete.pub, Jun 17, 2026
+- Kelsey Piper, "AI's biggest critic has lost the plot" — The Argument, Apr 28, 2026
+- Azhar & Warren, "Still No Bubble" — Exponential View, Jun 1, 2026
+- Ben Thompson, "Agents Over Bubbles" — Stratechery, Mar 16, 2026
+- Tunguz Nvidia-vs-Lucent comparison — https://tomtunguz.com/ (Oct 3, 2025)
+- Chanos "Lucent 2.0" — Yahoo Finance, Dec 1, 2025; conf remarks Jun 17, 2026
+- Burry 13F puts + depreciation claim — SEC 13F Nov 3, 2025; X, Nov 10, 2025; Nvidia rebuttal memo Nov 25, 2025
+- The Economist, "The $4trn accounting puzzle at the heart of the AI cloud" — Sep 18, 2025
+- June 2026 selloff — NPR: https://www.npr.org/2026/06/23/nx-s1-5867633/ai-selloff-tech-stocks-bubble-nasdaq
+- Zhipu/MiniMax corrected IPO + June rally — CNBC: https://www.cnbc.com/2026/06/15/china-ai-zhipu-minimax-artificial-intelligence-race-washington-trump-anthropic.html
+- Export-control episode — Axios: https://www.axios.com/2026/06/12/anthropic-trump-mythos-fable-national-security ; CNBC Jun 30, 2026
+- Epoch AI compute allocation — https://epoch.ai/data-insights/openai-compute-spend ; https://epoch.ai/gradient-updates/r-and-d-vs-training-compute
+- Epoch AI training costs / Grok 4 — https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models ; https://epoch.ai/data-insights/grok-4-training-resources
+- Deloitte inference-share trajectory — Nov 2025 report ("Why AI's next phase will likely demand more computational power, not less")
+- Amodei 50/50 + >50%-margin heuristic (verbatim) — Dwarkesh: https://www.dwarkesh.com/p/dario-amodei-2
