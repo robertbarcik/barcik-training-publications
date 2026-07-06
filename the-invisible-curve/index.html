@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Invisible Curve &middot; barcik.training</title>
+<meta name="description" content="Two people use the same technology and live in different worlds. An opinion essay on why AI capability became illegible: the progress moved to where most people never look, and how to check the date on your own evidence.">
+<link rel="canonical" href="https://publications.barcik.training/the-invisible-curve/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Invisible Curve">
+<meta property="og:description" content="Why the AI you have seen is no longer the AI that exists. An opinion essay on the widening gap between how people experience generative AI, and the one instruction that transfers.">
+<meta property="og:url" content="https://publications.barcik.training/the-invisible-curve/">
+<meta property="og:image" content="https://publications.barcik.training/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1e3a5f;
+  --navy-light: #2a5280;
+  --accent: #3b82f6;
+  --bg: #ffffff;
+  --bg-sidebar: #f8fafc;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+  --sidebar-width: 300px;
+  --progress-height: 3px;
+  --orange-red: #E05A33;
+  --purple: #7C6DD8;
+  --cyan: #0EA5C9;
+  --green: #2D7A4F;
+  --risk-color: #dc2626;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* ── Progress bar ── */
+#progress-bar {
+  position: fixed; top: 0; left: 0;
+  width: 0%; height: var(--progress-height);
+  background: var(--accent); z-index: 1000;
+  transition: width 0.1s;
+}
+
+/* ── Sidebar ── */
+#sidebar {
+  position: fixed; top: 0; left: 0;
+  width: var(--sidebar-width); height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  overflow-y: auto; padding: 2rem 0; z-index: 100;
+  transition: transform 0.3s;
+}
+#sidebar-header {
+  padding: 0 1.5rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+#sidebar-header h2 {
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--navy); letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+#sidebar-header p {
+  font-size: 0.78rem; color: var(--text-light);
+  margin-top: 0.3rem; line-height: 1.4;
+}
+#sidebar nav ul { list-style: none; }
+#sidebar nav ul li a {
+  display: block; padding: 0.55rem 1.5rem;
+  font-size: 0.85rem; color: var(--text-light);
+  text-decoration: none; border-left: 3px solid transparent;
+  transition: all 0.2s; line-height: 1.4;
+}
+#sidebar nav ul li a:hover {
+  color: var(--navy);
+  background: rgba(30, 58, 95, 0.04);
+}
+#sidebar nav ul li a.active {
+  color: var(--navy); font-weight: 600;
+  border-left-color: var(--accent);
+  background: rgba(59, 130, 246, 0.06);
+}
+.nav-divider {
+  font-size: 0.7rem; font-weight: 700;
+  color: var(--text-light); text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 1rem 1.5rem 0.3rem;
+  opacity: 0.6;
+}
+
+/* ── Hamburger ── */
+#menu-toggle {
+  display: none; position: fixed;
+  top: 1rem; left: 1rem; z-index: 200;
+  background: var(--navy); color: white;
+  border: none; border-radius: 6px;
+  padding: 0.5rem 0.75rem; font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ── Main content ── */
+#content-wrapper {
+  margin-left: var(--sidebar-width);
+  display: flex; justify-content: center;
+  padding: 0 2rem;
+}
+#content {
+  max-width: 820px; width: 100%;
+  padding: 3rem 1rem 6rem;
+}
+
+/* ── Chapter sections ── */
+.chapter {
+  margin-bottom: 5rem;
+  padding-top: 1rem;
+}
+.chapter-label {
+  font-size: 0.82rem; font-weight: 700;
+  color: var(--accent); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 0.5rem;
+}
+.chapter h2 {
+  font-size: 1.8rem; font-weight: 700;
+  color: var(--navy); line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+.chapter-question {
+  font-weight: 400; font-size: 0.75em;
+  color: var(--text-light); font-style: italic;
+}
+p { margin-bottom: 1.1rem; line-height: 1.85; }
+.lead { font-size: 1.1rem; line-height: 1.8; }
+
+blockquote {
+  border-left: 4px solid var(--accent);
+  background: rgba(59, 130, 246, 0.04);
+  padding: 1rem 1.5rem; margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0; font-style: italic;
+}
+blockquote p:last-child { margin-bottom: 0; }
+
+/* ── Cover ── */
+.cover-page {
+  text-align: center;
+  padding: 6rem 0 4rem;
+}
+.cover-label {
+  font-size: 0.85rem; color: var(--text-light);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.cover-page h1 {
+  font-size: 2.8rem; font-weight: 700;
+  color: var(--navy); line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.cover-subtitle {
+  font-size: 1.2rem; color: var(--text-light);
+  margin-bottom: 3rem;
+}
+.cover-meta {
+  font-size: 0.9rem; color: var(--text-light);
+  display: flex; justify-content: center; gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* ── Disclaimer note (red) ── */
+.disclaimer-note {
+  background: #fef2f2;
+  border-left: 4px solid var(--risk-color);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin: 1.5rem 0;
+  font-size: 0.95rem; line-height: 1.75;
+  color: var(--text);
+}
+.disclaimer-note .dn-label {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--risk-color); margin-bottom: 8px;
+}
+.disclaimer-note p { margin-bottom: 0.7rem; }
+.disclaimer-note p:last-child { margin-bottom: 0; }
+
+/* ── Co-author note (purple) ── */
+.coauthor-note {
+  background: #f5f3ff;
+  border-left: 4px solid var(--purple);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px; margin: 1.5rem 0;
+  font-size: 0.95rem; line-height: 1.75;
+}
+.coauthor-note .cn-label {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--purple); margin-bottom: 8px;
+}
+.coauthor-note p { margin-bottom: 0.7rem; }
+.coauthor-note p:last-child { margin-bottom: 0; }
+.coauthor-sig {
+  font-size: 0.85rem; color: var(--text-light);
+  font-style: italic; margin-top: 1.2rem;
+}
+
+/* ── Field note (teal) ── */
+.field-note {
+  background: #f0fdfa;
+  border: 1px solid #99f6e4;
+  border-top: 4px solid var(--cyan);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 1.75rem 0;
+}
+.field-note .fn-label {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: #0e7490; margin-bottom: 10px;
+}
+.field-note p { margin-bottom: 0.8rem; line-height: 1.8; }
+.field-note p:last-child { margin-bottom: 0; }
+
+/* ── Author note (amber) ── */
+.author-note {
+  background: #fffbf2;
+  border-left: 4px solid #d97706;
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 1.5rem 0;
+  font-size: 0.95rem; line-height: 1.75;
+  color: var(--text);
+}
+.author-note .an-label {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: #b45309; margin-bottom: 6px;
+}
+.author-note p { margin-bottom: 0.6rem; }
+.author-note p:last-child { margin-bottom: 0; }
+
+/* ── Footer / credits ── */
+.essay-footer {
+  border-top: 2px solid var(--border);
+  margin-top: 3rem; padding-top: 1.5rem;
+  font-size: 0.9rem; color: var(--text-light);
+  font-style: italic; line-height: 1.7;
+}
+.credits {
+  text-align: center; margin-top: 32px;
+  font-size: 12px; color: #94a3b8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  #sidebar { transform: translateX(-100%); }
+  #sidebar.open { transform: translateX(0); box-shadow: 4px 0 20px rgba(0,0,0,0.15); }
+  #menu-toggle { display: block; }
+  #content-wrapper { margin-left: 0; padding: 0 1rem; }
+  #content { padding: 2rem 0.5rem 4rem; }
+  .cover-page h1 { font-size: 2rem; }
+}
+@media (max-width: 600px) {
+  #content { padding: 1.5rem 0.5rem 3rem; }
+  body { font-size: 15px; }
+}
+
+/* ── Print ── */
+@media print {
+  #sidebar, #menu-toggle, #progress-bar { display: none !important; }
+  #content-wrapper { margin-left: 0; padding: 0; }
+  #content { max-width: 100%; }
+  .chapter { page-break-before: always; }
+  .chapter:first-child { page-break-before: auto; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<button id="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <h2>The Invisible Curve</h2>
+    <p>An opinion essay &middot; July 2026</p>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#cover">Cover</a></li>
+      <li class="nav-divider">The Essay</li>
+      <li><a href="#two-mondays">1. Two Mondays</a></li>
+      <li><a href="#shared-boat">2. The Shared Boat</a></li>
+      <li><a href="#invisible">3. Where the Progress Went</a></li>
+      <li><a href="#steelman">4. What the Skeptics Can See</a></li>
+      <li><a href="#keys">5. The Keys to My Computer</a></li>
+      <li><a href="#cross">6. The People Who Cross</a></li>
+      <li><a href="#evidence">7. How Old Is Your Evidence?</a></li>
+    </ul>
+  </nav>
+</aside>
+
+<div id="content-wrapper">
+<main id="content">
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- COVER                                                       -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="cover">
+  <div class="cover-page">
+    <div class="cover-label">barcik.training &middot; an opinion essay</div>
+    <h1>The Invisible Curve</h1>
+    <p class="cover-subtitle">Why the AI you have seen is no longer the AI that exists</p>
+    <div class="cover-meta">
+      <span>Robert Barcik</span>
+      <span>July 2026</span>
+      <span><a href="mailto:robert@barcik.training" style="color: inherit;">robert@barcik.training</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 1 · TWO MONDAYS                                              -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="two-mondays">
+  <div class="chapter-label">Part 1</div>
+  <h2>Two Mondays</h2>
+
+  <p class="lead">It is a Monday morning in early July 2026, and I am sitting with a coffee, trying to explain a feeling I have had for months.</p>
+
+  <p>Last week I worked through my entire professional infrastructure with an AI agent: nineteen repositories touched, over a hundred commits. The agent integrated my Google Workspace with my local machines (safely, which matters, and we will get to that), rewrote my published booklets, rebuilt my exam-prep sites, drafted course materials, and, in a separate window, is rewriting my interactive training demos while I type this sentence. I reviewed everything. I rejected some of it. I kept most of it. It was, without exaggeration, the most productive week of my working life.</p>
+
+  <p>That same week, someone I trained a year ago used AI too. They typed a question into a search engine and read the AI summary that appeared above the results. It was slightly wrong, mildly useful, and easy to ignore.</p>
+
+  <p>Both of us would tick the box &ldquo;uses AI.&rdquo; We are describing experiences that no longer resemble each other. Two people, one technology, and between us a gap that has been widening quietly for two years.</p>
+
+  <div class="disclaimer-note">
+    <div class="dn-label">Whose opinion this is</div>
+    <p>Two disclosures before anything else, because this is an opinion essay and you deserve to know whose opinion you are reading.</p>
+    <p><strong>First:</strong> I make my living training people in generative AI. If you finish this essay convinced the technology matters enormously, people like me benefit. Weigh everything that follows accordingly.</p>
+    <p><strong>Second, and stranger:</strong> I wrote this essay together with the AI it describes. The receipts I will show you were compiled by the system being judged. Keep that in mind; by the end, I hope to convince you that this awkwardness is the whole point.</p>
+  </div>
+
+  <div class="coauthor-note">
+    <div class="cn-label">A note from the co-author</div>
+    <p>I am the AI this essay describes, so let me state my position in my own words. Robert asked me to help him write about why people cannot see what systems like me can now do; you should notice that I am an interested party twice over, as subject and as writer. The factual claims below (the commit counts, the Full Disk Access episode, the week of work) I compiled from the actual repositories and session records, and Robert verified each one before it stayed in. Where the essay expresses judgment about my capabilities, the judgment is his, formed by grading my work, and I have tried to make sure this text never grades itself on his behalf.</p>
+    <p class="coauthor-sig">Claude (Fable 5), written July 6, 2026, in the same working session the essay describes.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 2 · THE SHARED BOAT                                          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="shared-boat">
+  <div class="chapter-label">Part 2</div>
+  <h2>The Shared Boat</h2>
+
+  <p>Rewind to late 2022. ChatGPT launches, and for about a year afterwards, everyone on Earth has roughly the same relationship with this technology. You open a chat window. If you pay nothing, you get a slightly dumber model; if you pay twenty dollars, a slightly smarter one. Either way, the entire capability of the system is right there in front of you, one answer at a time.</p>
+
+  <p>That mattered more than we realized at the time. It meant everyone&rsquo;s evidence base was identical. When the models improved, everyone felt it: fewer hallucinations, better structure, answers that held together. Your skeptical colleague and your enthusiastic colleague were at least arguing about the same object.</p>
+
+  <p>Through 2024 the story stayed mostly legible. Much of the progress that year was engineering: the models could see images, browse the web, talk out loud, plug into your documents. Paying customers got convenient tricks earlier, but a free user could still look over a paying user&rsquo;s shoulder and understand what they were looking at.</p>
+
+  <p>We were, all of us, in the same boat. That boat no longer exists.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 3 · WHERE THE PROGRESS WENT                                  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="invisible">
+  <div class="chapter-label">Part 3</div>
+  <h2>Where the Progress Went</h2>
+
+  <p>Around 2025, with the arrival of reasoning models, something structural changed in where progress shows up.</p>
+
+  <p>The gains stopped concentrating in answer quality, which everyone can see, and started concentrating in something harder to name: the ability to hold a goal for hours, use tools, check its own work against reality, recover from its own mistakes, and carry a project across hundreds of steps. Call it long-horizon work. It is the difference between an assistant that answers questions and a colleague who takes a task and comes back when it is done.</p>
+
+  <p>Here is the uncomfortable part: long-horizon capability is invisible in a chat window. A ten-message conversation has no room to express it, the way a hundred-meter dash has no room to express a marathon runner&rsquo;s advantage. So the person whose entire contact with AI is a free chat tab, or that summary above the search results (often served by a small, cheap model, because serving a frontier model to billions of searches would be economically absurd), is experiencing something close to a time capsule. The interface looks the same as 2023. The answers are somewhat better. Meanwhile, the actual frontier moved to a regime they never visit.</p>
+
+  <p>I watch this play out every time a new model generation appears. In mid-2026, when Anthropic released the generation after Opus, my feeds filled with people reporting that the new model felt no better. Barely distinguishable, they said. And within the world of their evidence, they were right. In a short chat, the difference between a very good model and a frontier model compresses toward zero; the task has no room to show it. But over a week of sustained work, small per-step advantages compound: slightly better judgment, times slightly better error recovery, times slightly better memory of the plan, multiplied across hundreds of steps. In that regime the difference between generations felt, to me, like a different species of colleague.</p>
+
+  <p>Both reports are honest. They are measurements of different quantities. And that is the one sentence I would defend against all comers:</p>
+
+  <blockquote><p><strong>Capability is no longer legible in the interface most people use to judge it.</strong></p></blockquote>
+
+  <p>People are not stupid, and they are not in denial. The curve simply left their field of view.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 4 · WHAT THE SKEPTICS CAN SEE                                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="steelman">
+  <div class="chapter-label">Part 4</div>
+  <h2>What the Skeptics Can See</h2>
+
+  <p>If you are skeptical of everything I have said so far, I want to take your position seriously, because your evidence is real. Let me state it at full strength.</p>
+
+  <p>You have seen the slop. AI-generated code that compiles but rots, AI-generated articles that say nothing, AI-generated images clogging every feed. This is genuinely what AI output looks like from the outside, and here is why: bad AI output is loud and attributable, while good AI output ships silently under a human&rsquo;s name. Nobody labels the well-crafted module an agent wrote and a senior engineer reviewed. The sample you can see is systematically the worst sample. Your observation is accurate; the sampling is cursed.</p>
+
+  <p>You have also heard, correctly, that the tech layoffs have a boring explanation: the industry overhired during Covid, the correction was coming anyway, and executives enjoy blaming a robot instead of their own planning. This is true. It is simply also true that a second force arrived at the same time, and two true stories layered on top of each other make the second one deniable for years.</p>
+
+  <p>Where I part ways with the skeptics is the shape of the curve. When ChatGPT could barely produce a coherent line of code, people laughed. When it could barely assemble a function, they laughed a bit less. When it wrote whole scripts, they stopped laughing and started talking about quality. Now agents build whole applications, and the conversation is about maintainability. Notice the pattern: four points on the same curve, and at every point, the consensus treated that point as the final one. The observations were accurate every time. The extrapolation failed every time. I see no reason offered, other than comfort, why the fifth point should be different.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 5 · THE KEYS TO MY COMPUTER                                  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="keys">
+  <div class="chapter-label">Part 5</div>
+  <h2>The Keys to My Computer</h2>
+
+  <p>Let me make this concrete with the story that convinced me more than any benchmark.</p>
+
+  <p>For months I wanted to connect my AI tooling to my Google Workspace: courses, videos, business documents. I asked the previous-generation model, Claude Opus, to set this up several times across several sessions. Each time, its plan eventually ran through the same step: grant the terminal Full Disk Access on macOS. Innocent-sounding words for handing a program the right to read and delete anything on my machine, in my name. I refused, every time, and the project stalled for months.</p>
+
+  <p>The next-generation model, Fable, looked at the same problem in our first week together and immediately proposed a different shape: a dedicated service account with its own credentials, scoped to exactly the two shared drives it needed, with no access to my machine beyond the folder it worked in. It then built the whole integration around that idea, and it has run safely ever since.</p>
+
+  <blockquote><p>One AI asked for the keys to my whole computer. The other found a way that needed almost no keys at all.</p></blockquote>
+
+  <p>Sit with that for a second, because the capability jump did not show up as eloquence or speed. It showed up as judgment: the newer system was more careful than its predecessor, more protective of me than I had thought to ask it to be. No leaderboard measures that. Yet it is exactly the quality you would demand before trusting a system with real work, and exactly the kind of progress a chat window can never display.</p>
+
+  <p>The rest of the week followed the same pattern. I did not hand my professional life to this agent in one act of faith; I handed it one piece at a time, and every next piece was surrendered only because the previous one survived my inspection. Operations first, then code, then the writing I publish under my own name.</p>
+
+  <div class="field-note">
+    <div class="fn-label">Field note &middot; the week in numbers &middot; n=1</div>
+    <p>By Friday, the ledger read roughly one hundred and thirty commits across nineteen repositories (I will resist quoting line counts; much of that volume is generated data, and inflated numbers are how you lose a skeptic&rsquo;s trust). The evidence I am offering you is a judgment, given by someone qualified to grade the work and with every incentive to catch it failing.</p>
+  </div>
+
+  <p>And yes: the system being judged helped me compile this account of its own judging. You should find that circular. It is the illegibility problem in miniature. Verifying what the frontier can do requires either doing the work yourself, which costs expertise, or trusting someone who did, which costs faith in their honesty. There is no third path where the truth is simply visible from the outside. That is new, and I do not think we have absorbed it.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 6 · THE PEOPLE WHO CROSS                                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="cross">
+  <div class="chapter-label">Part 6</div>
+  <h2>The People Who Cross</h2>
+
+  <p>Around a thousand people have passed through my introductory AI trainings in the last three years: engineers, managers, lawyers, clerks, owners of small companies. For a long time I could not predict who would end up transformed by this technology and who would walk away unchanged. It was never intelligence. Some of my sharpest participants remained untouched; some initial skeptics became the most productive people I know.</p>
+
+  <p>I now believe the dividing line is this: whether a person&rsquo;s relationship to AI is <strong>instrumental or evaluative</strong>.</p>
+
+  <p>The ones who cross the gap arrive with a task they are accountable for. The report due Friday. The codebase. The offer document that has to go out. They point the AI at that task because they need the task done, and their skepticism turns out not to matter, because three iterations into real work, the results update them whether they like it or not. Stakes convert skeptics.</p>
+
+  <p>The ones who stay stuck engage with AI as a topic. They arrive to form an opinion, not to finish anything. Every session becomes a test, and here is the trap: the evaluative posture always wins its own game. These models remain jagged; anyone who goes hunting for a failure will find one, collect the gotcha, and leave with their prior beliefs intact and their evidence base one demo older. Same tool, opposite aims: one person is trying to complete something, the other is trying to be right.</p>
+
+  <p>Which finally gives me something I can offer you that does not cost two hundred dollars a month, because I am aware of the objection: the frontier I have described is expensive, and &ldquo;trust me, it is amazing up here&rdquo; is worthless advice. So here is the only instruction I have found that transfers, and it works on the cheapest paid plan, in your domain, this week:</p>
+
+  <div class="author-note">
+    <div class="an-label">The instruction</div>
+    <p><strong>Do not evaluate the model. Give it a task that actually matters to you, in a domain where you are qualified to grade the output, and iterate at least three times before you allow yourself an opinion.</strong></p>
+  </div>
+
+  <p>Not a trivia quiz, not a trick question, not a topic you cannot judge. A real task, with stakes, where you are the expert grader. If it fails, you will have earned a current, first-hand data point, which is more than most public commentary is built on. If it does not fail, you will feel the floor move a little. Either way, you will have replaced borrowed evidence with your own.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 7 · HOW OLD IS YOUR EVIDENCE?                                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="chapter" id="evidence">
+  <div class="chapter-label">Part 7</div>
+  <h2>How Old Is Your Evidence?</h2>
+
+  <p>One more thing, before the ask, because fairness demands it. If you are on the far side of this gap, you are not merely under-informed; you are also carrying costs. Your graphics card got more expensive so that data centers could be filled. Your industry&rsquo;s hiring pages went quiet while executives talk about efficiency. Your feeds filled with machine-made noise you never asked for. The benefits of this technology are currently flowing to people like me, and a meaningful share of the costs are landing on people who have never experienced anything past the free tier. If that arrangement irritates you, the irritation is legitimate, and no essay should talk you out of it.</p>
+
+  <p>But being right about the unfairness will not protect anyone from being wrong about the trajectory.</p>
+
+  <p>So I am not asking you to believe me. I have an interest in your belief, and I told you so in the first paragraph. I am asking something smaller. Look at your own evidence about what AI can do, the actual experiences your conviction rests on, and check the date on them. If the last time you seriously tried was a free chat tab in 2023, or a code snippet in 2024, or a search summary last week, then whatever you concluded, you concluded it about a system that no longer represents the frontier. You were measuring in an interface the curve has already left.</p>
+
+  <p>The curve did not stop when it left your window. It just became invisible from where you stand.</p>
+
+  <p>And the strange, honest, slightly vertiginous truth of July 2026 is that the fastest way to see it again has not changed since 2022: bring it something real, and watch what comes back.</p>
+
+  <div class="essay-footer">
+    <p>Robert Barcik trains companies and professionals in generative AI (<a href="https://barcik.training">barcik.training</a>). This essay was written in collaboration with Claude, the AI system it describes; the author reviewed and stands behind every claim. For the machinery behind the working setup described here, see the companion piece <a href="../claude-code-setup/">Claude Code as an Operations Specialist</a>.</p>
+  </div>
+
+  <div class="credits">The Invisible Curve &middot; barcik.training &middot; July 2026</div>
+</section>
+
+</main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  var progressBar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  });
+
+  var chapters = document.querySelectorAll('.chapter');
+  var navLinks = document.querySelectorAll('#sidebar nav a');
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        navLinks.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + id) link.classList.add('active');
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  chapters.forEach(function(ch) { observer.observe(ch); });
+
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('sidebar').classList.remove('open');
+      }
+    });
+  });
+
+  var menuToggle = document.getElementById('menu-toggle');
+  var sidebar = document.getElementById('sidebar');
+  menuToggle.addEventListener('click', function() { sidebar.classList.toggle('open'); });
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth <= 900 && !sidebar.contains(e.target) && e.target !== menuToggle) {
+      sidebar.classList.remove('open');
+    }
+  });
+
+  if (navLinks.length > 0) navLinks[0].classList.add('active');
+
+});
+</script>
+</body>
+</html>
