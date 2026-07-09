@@ -16,12 +16,6 @@ That same week, someone I trained a year ago used AI too. They typed a question 
 
 Both of us would tick the box "uses AI." We are describing experiences that no longer resemble each other. Two people, one technology, and between us a gap that has been widening quietly for two years.
 
-Before I go further, two disclosures, because this is an opinion essay and you deserve to know whose opinion it is.
-
-First: I make my living training people in generative AI. If you finish this essay convinced the technology matters enormously, people like me benefit. Weigh everything that follows accordingly.
-
-Second, and stranger: I wrote this essay together with the AI it describes. The receipts I will show you were compiled by the system being judged. Keep that in mind; by the end, I hope to convince you that this awkwardness is the whole point.
-
 ## 2 · The Shared Boat
 
 Rewind to late 2022. ChatGPT launches, and for about a year afterwards, everyone on Earth has roughly the same relationship with this technology. You open a chat window. If you pay nothing, you get a slightly dumber model; if you pay twenty dollars, a slightly smarter one. Either way, the entire capability of the system is right there in front of you, one answer at a time.
@@ -74,7 +68,7 @@ And yes: the system being judged helped me compile this account of its own judgi
 
 ## 6 · The People Who Cross
 
-Around a thousand people have passed through my introductory AI trainings in the last three years: engineers, managers, lawyers, clerks, owners of small companies. For a long time I could not predict who would end up transformed by this technology and who would walk away unchanged. It was never intelligence. Some of my sharpest participants remained untouched; some initial skeptics became the most productive people I know.
+Around a thousand people have passed through my introductory AI trainings in the past year alone: engineers, managers, lawyers, clerks, owners of small companies. For a long time I could not predict who would end up transformed by this technology and who would walk away unchanged. It was never intelligence. Some of my sharpest participants remained untouched; some initial skeptics became the most productive people I know.
 
 I now believe the dividing line is this: whether a person's relationship to AI is **instrumental or evaluative**.
 
@@ -94,11 +88,19 @@ One more thing, before the ask, because fairness demands it. If you are on the f
 
 But being right about the unfairness will not protect anyone from being wrong about the trajectory.
 
-So I am not asking you to believe me. I have an interest in your belief, and I told you so in the first paragraph. I am asking something smaller. Look at your own evidence about what AI can do, the actual experiences your conviction rests on, and check the date on them. If the last time you seriously tried was a free chat tab in 2023, or a code snippet in 2024, or a search summary last week, then whatever you concluded, you concluded it about a system that no longer represents the frontier. You were measuring in an interface the curve has already left.
+So I am not asking you to believe me. I have an interest in your belief, and the disclosures just below spell out what it is. I am asking something smaller. Look at your own evidence about what AI can do, the actual experiences your conviction rests on, and check the date on them. If the last time you seriously tried was a free chat tab in 2023, or a code snippet in 2024, or a search summary last week, then whatever you concluded, you concluded it about a system that no longer represents the frontier. You were measuring in an interface the curve has already left.
 
 The curve did not stop when it left your window. It just became invisible from where you stand.
 
 And the strange, honest, slightly vertiginous truth of July 2026 is that the fastest way to see it again has not changed since 2022: bring it something real, and watch what comes back.
+
+### Whose opinion this is
+
+Two disclosures, kept for the end so they would not interrupt the argument, because this is an opinion essay and you deserve to know whose opinion you have been reading.
+
+First: I make my living training people in generative AI. If this essay leaves you convinced the technology matters enormously, people like me benefit. Weigh everything above accordingly.
+
+Second, and stranger: I wrote this essay together with the AI it describes. The receipts I showed you were compiled by the system being judged. Keep that in mind; by now, I hope you can see why this awkwardness is the whole point.
 
 ---
 

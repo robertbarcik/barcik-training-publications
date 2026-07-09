@@ -40,3 +40,11 @@ the two in sync or treat the HTML as canonical after first deploy.
 - **2026-07-06** — v1 written (Fable 5 with Robert, same session the essay describes). Draft
   verified: 0 em dashes, 0 banned constructions, ~2,450 words prose + co-author note. Hub card
   added (booklets count 8 → 9), sitemap entry added. Awaiting Robert's review before deploy.
+- **2026-07-09** — Robert's review pass. (1) Both end-matter notes moved from Part 1 to the end
+  of Part 7 (before the essay footer): the `.disclaimer-note` and `.coauthor-note` interrupted
+  the reading flow up front. Deixis adjusted for the new position ("will show you" → "showed
+  you", "that follows" → "above", co-author note's "claims below" → "claims above" — the one
+  departure from the keep-verbatim convention, needed for coherence; signature untouched).
+  Part 7's "I told you so in the first paragraph" → "the disclosures just below spell out what
+  it is". (2) Trainee stat corrected per Robert: ~1,000 trainees is the **past year alone**,
+  not the last three years (Part 6). draft.md updated to match.

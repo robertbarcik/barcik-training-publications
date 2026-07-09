@@ -29,9 +29,11 @@
             --booklets: #3b82f6;      /* blue — strategic guides */
             --reports: #8b5cf6;       /* violet — empirical research */
             --guides: #d97706;        /* amber — reference & legacy */
+            --aiact: #0d9488;         /* teal — AI Act textbooks */
             --booklets-bg: #eff6ff;
             --reports-bg: #f5f3ff;
             --guides-bg: #fffbeb;
+            --aiact-bg: #f0fdfa;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -118,6 +120,7 @@
         .cat-booklets { color: #93c5fd; border-color: #3b82f6; }
         .cat-reports { color: #c4b5fd; border-color: #8b5cf6; }
         .cat-guides { color: #fcd34d; border-color: #d97706; }
+        .cat-aiact { color: #5eead4; border-color: #0d9488; }
         .header-contact {
             font-size: 0.88rem;
             color: rgba(255,255,255,0.72);
@@ -144,9 +147,10 @@
             right: 0;
             height: 4px;
             background: linear-gradient(to right,
-                #3b82f6 0%, #3b82f6 33.33%,
-                #8b5cf6 33.33%, #8b5cf6 66.66%,
-                #d97706 66.66%, #d97706 100%);
+                #3b82f6 0%, #3b82f6 25%,
+                #0d9488 25%, #0d9488 50%,
+                #8b5cf6 50%, #8b5cf6 75%,
+                #d97706 75%, #d97706 100%);
         }
         .container {
             max-width: 900px;
@@ -168,6 +172,7 @@
         .section-label.booklets { color: var(--booklets); }
         .section-label.reports { color: var(--reports); }
         .section-label.guides { color: var(--guides); }
+        .section-label.aiact { color: var(--aiact); }
         .section-label .section-note {
             font-size: 0.75rem;
             font-weight: 400;
@@ -191,9 +196,12 @@
         .pub-card.section-booklets { border-left-color: var(--booklets); background: var(--booklets-bg); }
         .pub-card.section-reports { border-left-color: var(--reports); background: var(--reports-bg); }
         .pub-card.section-guides { border-left-color: var(--guides); background: var(--guides-bg); }
+        .pub-card.section-aiact { border-left-color: var(--aiact); background: var(--aiact-bg); }
         .pub-card.section-booklets .read-link { color: var(--booklets); }
         .pub-card.section-reports .read-link { color: var(--reports); }
         .pub-card.section-guides .read-link { color: var(--guides); }
+        .pub-card.section-aiact .read-link { color: var(--aiact); }
+        .read-link + .read-link { margin-left: 1.4rem; }
         .pub-card h2 {
             font-size: 1.4rem;
             color: var(--navy);
@@ -257,6 +265,7 @@
         .pub-card.section-booklets .new-badge { background: var(--booklets); }
         .pub-card.section-reports .new-badge { background: var(--reports); }
         .pub-card.section-guides .new-badge { background: var(--guides); }
+        .pub-card.section-aiact .new-badge { background: var(--aiact); }
         .section-label .count {
             font-weight: 400;
             opacity: 0.5;
@@ -299,6 +308,7 @@
             <p class="header-tagline">Long-form strategic guides, research reports, and reference material on generative AI &mdash; written for European enterprises and IT services teams.</p>
             <div class="header-categories">
                 <a href="#booklets-section" class="cat cat-booklets">Booklets</a>
+                <a href="#aiact-section" class="cat cat-aiact">AI Act</a>
                 <a href="#reports-section" class="cat cat-reports">Research Reports</a>
                 <a href="#guides-section" class="cat cat-guides">Guides &amp; Legacy</a>
             </div>
@@ -463,6 +473,36 @@
                 <span class="tag">Self-Hosting vs API</span>
             </div>
             <a class="read-link" href="token-economics/">Read the booklet &rarr;</a>
+        </div>
+
+        <div id="aiact-section" class="section-label aiact">AI Act <span class="count">(2)</span> <span class="section-note">Companion textbooks to the EU AI Act courses</span></div>
+
+        <div class="pub-card section-aiact">
+            <h2><a href="/ai-act-intro/">The EU AI Act: An Introduction</a><span class="new-badge">New</span></h2>
+            <div class="pub-meta">13 chapters &middot; ~38,000 words &middot; July 2026 &middot; Textbook</div>
+            <p class="pub-companion">Companion textbook to the online course <em>EU AI Act Compliance Introduction</em>.</p>
+            <p class="pub-description">A plain-language guided tour of Europe's AI regulation, written to be read with morning coffee rather than decoded like a statute: what counts as AI, the eight prohibited practices, how a system becomes high-risk and what that demands, transparency duties, general-purpose AI, and what to actually do on Monday. Post-Omnibus dates throughout, a quiz after every chapter, and honest hedges where the law is still unsettled.</p>
+            <div class="pub-tags">
+                <span class="tag">EU AI Act</span>
+                <span class="tag">Compliance</span>
+                <span class="tag">Plain language</span>
+                <span class="tag">Quizzes</span>
+            </div>
+            <a class="read-link" href="/ai-act-intro/">Read online &rarr;</a><a class="read-link" href="/ai-act-intro/eu-ai-act-intro.pdf">Download PDF &darr;</a>
+        </div>
+
+        <div class="pub-card section-aiact">
+            <h2><a href="/ai-act-developers/">EU AI Act for Developers</a><span class="new-badge">New</span></h2>
+            <div class="pub-meta">11 chapters &middot; ~44,000 words &middot; July 2026 &middot; Textbook</div>
+            <p class="pub-companion">Companion textbook to the video course <em>EU AI Act for Developers: Compliance Engineering in Python</em>.</p>
+            <p class="pub-description">The AI Act read as a requirements document. Classification, data governance, accuracy and robustness, security, logging, human oversight and technical documentation, each translated from legal prose into practices and Python you can run. Three fictional systems carry through every chapter, and each chapter ends in a worksheet that becomes part of your audit-ready evidence pack.</p>
+            <div class="pub-tags">
+                <span class="tag">EU AI Act</span>
+                <span class="tag">Engineering</span>
+                <span class="tag">Python</span>
+                <span class="tag">Evidence pack</span>
+            </div>
+            <a class="read-link" href="/ai-act-developers/">Read online &rarr;</a><a class="read-link" href="/ai-act-developers/eu-ai-act-for-developers.pdf">Download PDF &darr;</a>
         </div>
 
         <div id="reports-section" class="section-label reports">Research Reports <span class="count">(4)</span> <span class="section-note">Evaluation studies and empirical research</span></div>
