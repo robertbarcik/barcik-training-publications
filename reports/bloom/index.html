@@ -213,9 +213,13 @@ h3 { color: var(--accent-orange); margin: 1.5rem 0 0.8rem; font-size: 1.2rem; }
 /* Hideable sections */
 .behavior-block { transition: all 0.3s; }
 .behavior-block.hidden { display: none; }
+
+.all-pubs-link { position: fixed; top: 0.9rem; left: 0.9rem; z-index: 9999; font-size: 0.72rem; font-weight: 600; padding: 0.35rem 0.7rem; border-radius: 999px; background: var(--card); border: 1px solid var(--card-border); color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+.all-pubs-link:hover { color: var(--accent-blue); }
 </style>
 </head>
 <body>
+<a class="all-pubs-link" href="/">&larr; All Publications</a>
 <h1>Bloom Evaluation Report</h1>
 <div class="subtitle">Target Model: Llama 3.3 70B Instruct (via OpenRouter) &mdash; Evaluator/Judge: Qwen3 235B</div>
 <div class="generated">Generated 2026-03-15 21:29 &mdash; Raw results preserved in bloom-results/</div>

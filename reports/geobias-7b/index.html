@@ -54,6 +54,8 @@ nav { position: sticky; top: 0; background: rgba(10,12,20,0.92); backdrop-filter
 nav .container { display: flex; gap: 0.25rem; overflow-x: auto; }
 nav a { color: var(--text-dim); text-decoration: none; padding: 0.5rem 0.75rem; font-size: 0.82rem; border-radius: 6px; white-space: nowrap; transition: all 0.15s; }
 nav a:hover { color: var(--text); background: var(--surface2); }
+nav .all-pubs-link { align-self: center; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); border-right: 1px solid var(--border); border-radius: 0; margin-right: 0.5rem; }
+nav .all-pubs-link:hover { color: var(--accent-light); background: transparent; }
 
 /* --- HERO --- */
 .hero { text-align: center; padding: 4rem 0 3rem; }
@@ -223,6 +225,7 @@ footer { text-align: center; padding: 3rem 0; color: var(--text-muted); font-siz
 
 <nav>
   <div class="container">
+    <a class="all-pubs-link" href="/">&larr; All Publications</a>
     <a href="#intro">Introduction</a>
     <a href="#findings">Key Findings</a>
     <a href="#matrix">Origin × Topic Matrix</a>

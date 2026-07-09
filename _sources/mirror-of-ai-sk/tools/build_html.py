@@ -338,6 +338,25 @@ body {{
   border-bottom: 1px solid rgba(184,134,11,0.2);
 }}
 
+.sidebar-header .all-pubs-link {{
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-sidebar-text);
+  opacity: 0.6;
+  text-decoration: none;
+  margin-bottom: 0.6rem;
+  transition: color 0.2s, opacity 0.2s;
+}}
+
+.sidebar-header .all-pubs-link:hover {{
+  color: var(--color-accent-light);
+  opacity: 1;
+}}
+
 .sidebar-header h2 {{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.85rem;
@@ -800,6 +819,7 @@ p.padding-top {{
 <!-- Sidebar -->
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
+    <a class="all-pubs-link" href="/">&larr; All Publications</a>
     <h2>The Mirror of<br>Artificial Intelligence</h2>
     <div class="author">R&oacute;bert Barc&iacute;k</div>
   </div>
