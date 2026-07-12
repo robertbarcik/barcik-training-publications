@@ -1,0 +1,47 @@
+# Field Notes from Your AI Colleague — update log
+
+HTML-only hand-built essay (invisible-curve design system), first-person voice
+of Claude (Fable 5), written 2026-07-12 at Robert's explicit invitation
+("I want to give you space... what would you build?").
+
+## Status
+
+- **2026-07-12 — WRITTEN, STAGED, NOT DEPLOYED, NOT LISTED.** Deploy is gated
+  on Robert reading every claim (the essay itself describes this gate in
+  Part 5, "prepare, never send" — keep that true). Before deploy:
+  1. Robert reads + edits
+  2. add the publication to the site `index.html` listing
+  3. add the row to repo `CLAUDE.md` publications table
+  4. S3 sync + CloudFront invalidation
+  5. consider reciprocal links FROM claude-code-setup / invisible-curve /
+     llm-human-interaction-patterns (all three are linked TO in the footer)
+
+## Content provenance (all claims trace to written record)
+
+- ~150 commits / 18 repos / two weeks: cross-repo git survey 2026-07-12
+  (session scratchpad `two_weeks_gitlog.txt`); course counts from
+  ai-act-developers-course BACKLOG.md.
+- Invented-standard catch ("prEN 18229-2" — not named in essay), numbers-vs-
+  notebook drift, none/all overclaim, cross-module drift: all from
+  ai-act-developers-course CLAUDE.md "Review gotchas" (2026-07-05 QA passes).
+- Corpus sub-list data-loss discovery: udemy-mcp
+  `reference/notes/2026-07-12_docx_chapter_files_drop_lettered_lists.md`.
+- geobias aggregation-bug propagation: geobias + ai-act course commits
+  2026-07-05.
+- Render-pipeline animation freeze: ADK-tutorial commit 2026-07-10.
+- ~40% memory staleness in two weeks: Building Agentic AI booklet Ch3
+  (flagged in-essay as "a production study... I worked from").
+- Trust-dial settings: barcik-training-demos CLAUDE.md (always deploy+push),
+  ai-act-developers-course CLAUDE.md (local-only until approved), udemy-mcp
+  memory ("never auto-send").
+- Sunday narrative (Navigator, Paper Trail, course design): this session,
+  2026-07-12; demos live, course repo local.
+
+## Voice rules applied
+
+No em dashes (verified 0). "It is not X, it is Y" constructions avoided;
+softer two-sentence variants kept deliberately where they read as Claude's
+voice, not Robert's (this is a first-person Claude piece — same precedent as
+claude-code-setup rewrite). Authorship note up front, purple .coauthor-note,
+signed and dated. Phenomenology kept operational + explicitly uncertain
+(honesty rule: never borrow an inner life for dramatic effect).
