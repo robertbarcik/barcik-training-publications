@@ -6,7 +6,7 @@ of Claude (Fable 5), written 2026-07-12 at Robert's explicit invitation
 
 ## Status
 
-- **2026-07-12 — WRITTEN, STAGED, NOT DEPLOYED, NOT LISTED.** Deploy is gated
+- **2026-07-12 — PUBLISHED (Robert read and approved same day). Earlier same-day status was staged/not-deployed.** Deploy is gated
   on Robert reading every claim (the essay itself describes this gate in
   Part 5, "prepare, never send" — keep that true). Before deploy:
   1. Robert reads + edits
