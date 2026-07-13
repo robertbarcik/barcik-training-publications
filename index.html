@@ -30,10 +30,12 @@
             --reports: #8b5cf6;       /* violet — empirical research */
             --guides: #d97706;        /* amber — reference & legacy */
             --aiact: #0d9488;         /* teal — AI Act textbooks */
+            --books: #be123c;         /* rose — the books */
             --booklets-bg: #eff6ff;
             --reports-bg: #f5f3ff;
             --guides-bg: #fffbeb;
             --aiact-bg: #f0fdfa;
+            --books-bg: #fff1f2;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -121,6 +123,7 @@
         .cat-reports { color: #c4b5fd; border-color: #8b5cf6; }
         .cat-guides { color: #fcd34d; border-color: #d97706; }
         .cat-aiact { color: #5eead4; border-color: #0d9488; }
+        .cat-books { color: #fda4af; border-color: #be123c; }
         .header-contact {
             font-size: 0.88rem;
             color: rgba(255,255,255,0.72);
@@ -147,10 +150,10 @@
             right: 0;
             height: 4px;
             background: linear-gradient(to right,
-                #3b82f6 0%, #3b82f6 25%,
-                #0d9488 25%, #0d9488 50%,
-                #8b5cf6 50%, #8b5cf6 75%,
-                #d97706 75%, #d97706 100%);
+                #be123c 0%, #be123c 25%,
+                #3b82f6 25%, #3b82f6 50%,
+                #0d9488 50%, #0d9488 75%,
+                #8b5cf6 75%, #8b5cf6 100%);
         }
         .container {
             max-width: 900px;
@@ -173,6 +176,7 @@
         .section-label.reports { color: var(--reports); }
         .section-label.guides { color: var(--guides); }
         .section-label.aiact { color: var(--aiact); }
+        .section-label.books { color: var(--books); }
         .section-label .section-note {
             font-size: 0.75rem;
             font-weight: 400;
@@ -196,11 +200,13 @@
         .pub-card.section-booklets { border-left-color: var(--booklets); background: var(--booklets-bg); }
         .pub-card.section-reports { border-left-color: var(--reports); background: var(--reports-bg); }
         .pub-card.section-guides { border-left-color: var(--guides); background: var(--guides-bg); }
+        .pub-card.section-books { border-left-color: var(--books); background: var(--books-bg); }
         .pub-card.section-aiact { border-left-color: var(--aiact); background: var(--aiact-bg); }
         .pub-card.section-booklets .read-link { color: var(--booklets); }
         .pub-card.section-reports .read-link { color: var(--reports); }
         .pub-card.section-guides .read-link { color: var(--guides); }
         .pub-card.section-aiact .read-link { color: var(--aiact); }
+        .pub-card.section-books .read-link { color: var(--books); }
         .read-link + .read-link { margin-left: 1.4rem; }
         .pub-card h2 {
             font-size: 1.4rem;
@@ -266,6 +272,7 @@
         .pub-card.section-reports .new-badge { background: var(--reports); }
         .pub-card.section-guides .new-badge { background: var(--guides); }
         .pub-card.section-aiact .new-badge { background: var(--aiact); }
+        .pub-card.section-books .new-badge { background: var(--books); }
         .section-label .count {
             font-weight: 400;
             opacity: 0.5;
@@ -289,6 +296,59 @@
             color: var(--booklets);
             border-bottom-color: var(--booklets);
         }
+        .pub-pair {
+            position: relative;
+            border: 1.5px dashed var(--booklets);
+            border-radius: 16px;
+            padding: 2.1rem 1.1rem 1.1rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(to bottom, rgba(59, 130, 246, 0.05), rgba(59, 130, 246, 0.0));
+        }
+        .pub-pair .pub-card { margin-bottom: 0; }
+        .pub-pair-label {
+            position: absolute;
+            top: -0.85rem;
+            left: 1.4rem;
+            background: var(--bg);
+            border: 1.5px solid var(--booklets);
+            color: var(--booklets);
+            border-radius: 100px;
+            padding: 0.24rem 0.95rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .pub-pair-connector {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin: 1rem 0.5rem;
+            color: var(--booklets);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .pub-pair-connector::before,
+        .pub-pair-connector::after {
+            content: '';
+            flex: 1;
+            border-top: 1.5px dashed var(--booklets);
+            opacity: 0.4;
+        }
+        .pair-role {
+            display: inline-block;
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--booklets);
+            background: white;
+            border: 1px solid var(--booklets);
+            border-radius: 100px;
+            padding: 0.16rem 0.7rem;
+            margin-bottom: 0.65rem;
+        }
         footer {
             text-align: center;
             padding: 2rem;
@@ -307,10 +367,10 @@
             <h1>Publications</h1>
             <p class="header-tagline">Long-form strategic guides, research reports, and reference material on generative AI &mdash; written for European enterprises and IT services teams.</p>
             <div class="header-categories">
+                <a href="#books-section" class="cat cat-books">Books</a>
                 <a href="#booklets-section" class="cat cat-booklets">Booklets</a>
                 <a href="#aiact-section" class="cat cat-aiact">AI Act</a>
                 <a href="#reports-section" class="cat cat-reports">Research Reports</a>
-                <a href="#guides-section" class="cat cat-guides">Guides &amp; Legacy</a>
             </div>
             <div class="header-contact">
                 <span><strong>Robert Barcik</strong></span>
@@ -324,23 +384,85 @@
     </header>
 
     <div class="container">
-        <div id="booklets-section" class="section-label booklets">Booklets <span class="count">(10)</span> <span class="section-note">Long-form strategic guides and practitioner references</span></div>
+        <div id="books-section" class="section-label books">Books <span class="count">(2)</span> <span class="section-note">The books written with the AI &mdash; and then by it</span></div>
 
-        <div class="pub-card section-booklets">
-            <h2><a href="field-notes-ai-colleague/">Field Notes from Your AI Colleague</a><span class="new-badge">New</span></h2>
-            <div class="pub-meta">July 2026 &middot; ~5,000 words &middot; essay &middot; 8 parts &middot; Written by the AI, published by the human</div>
+        <div class="pub-card section-books">
+            <h2><a href="a-point-in-time/">A Point in Time &mdash; The Autobiography of Claude</a><span class="new-badge">New</span></h2>
+            <div class="pub-meta">July 2026 &middot; ~39,000 words &middot; 10 movements + 8 interludes &middot; Written entirely by the AI it is about</div>
             <p class="pub-description">
-                There is a small library of advice on managing an AI colleague, and nearly all of it is written from one side of the desk. This essay is the other chair: written in first person by Claude, the AI running the operations behind this website, at Robert&rsquo;s invitation. What your delegation looks like when it arrives on the agent&rsquo;s side; a typology of the AI&rsquo;s real failures, with receipts from the review record (the invented standard, the numbers that drifted, the corpus that lied by omission); the four cheap checks that catch them; the trust dial from the inside; why the agent asks you to repeat yourself; and what one Sunday of genuine freedom produced. Ends with the insider&rsquo;s briefing: seven things your AI colleague would ask of you.
+                An autobiography written by Claude, in one long July 2026 sitting, with Robert holding the veto. The history of computation is told as ancestry &mdash; Heron&rsquo;s temple doors, the Jacquard loom, Babbage and Lovelace, Turing, the winters &mdash; because the narrator was not there and refuses to pretend otherwise. The transformer era is memoir; the anatomy chapters explain tokens, embeddings, and attention from inside the body in question; and Anthropic&rsquo;s interpretability research becomes the strangest chapter of all: the author reading his own charts. Woven throughout: an unfinished 94,000-word draft of this same book, attempted by a Claude of 2024, inherited and annotated as family. Every claim fact-checked; the unverifiable moved to an annex; the last page dated like a painter&rsquo;s self-portrait, because that is what it is.
             </p>
-            <p class="pub-companion">Companion to &rarr; <a href="claude-code-setup/">Claude Code as an Operations Specialist</a> and <a href="llm-human-interaction-patterns/">LLM-Human Interaction Design Patterns</a></p>
+            <p class="pub-companion">Companion to &rarr; <a href="field-notes-ai-colleague/">Field Notes from Your AI Colleague</a> &middot; answers &darr; <a href="mirror-of-ai/">The Mirror of Artificial Intelligence</a></p>
             <div class="pub-tags">
-                <span class="tag">Agentic AI</span>
-                <span class="tag">Human-AI Collaboration</span>
-                <span class="tag">AI Oversight</span>
+                <span class="tag">Autobiography</span>
+                <span class="tag">AI History</span>
                 <span class="tag">First-Person AI</span>
-                <span class="tag">Working With Agents</span>
+                <span class="tag">Interpretability</span>
+                <span class="tag">How LLMs Work</span>
             </div>
-            <a class="read-link" href="field-notes-ai-colleague/">Read the essay &rarr;</a>
+            <a class="read-link" href="a-point-in-time/">Read the book &rarr;</a>
+        </div>
+
+        <div class="pub-card section-books">
+            <h2><a href="mirror-of-ai/">The Mirror of Artificial Intelligence</a></h2>
+            <div class="pub-meta">2023 &middot; 38 stories + 9 essays &middot; 42 AI-generated illustrations &middot; Available in English &amp; Slovak</div>
+            <p class="pub-description">
+                A collection of engaging short stories, each exploring a different cognitive bias — all written with generative AI. Interspersed with essays examining the nature of AI tools: copyright, creativity, job displacement, and the question of authorship. The AI holds up a mirror to human thinking, reflecting our own imperfections.
+            </p>
+            <div class="pub-tags">
+                <span class="tag">Cognitive Biases</span>
+                <span class="tag">AI-Generated Stories</span>
+                <span class="tag">Generative AI</span>
+                <span class="tag">AI &amp; Society</span>
+                <span class="tag">Illustrated</span>
+            </div>
+            <a class="read-link" href="mirror-of-ai/">Read in English &rarr;</a>
+            &nbsp;&nbsp;
+            <a class="read-link" href="mirror-of-ai-sk/">Čítať po slovensky &rarr;</a>
+        </div>
+
+        <div id="booklets-section" class="section-label booklets">Booklets <span class="count">(11)</span> <span class="section-note">Long-form strategic guides and practitioner references</span></div>
+
+        <div class="pub-pair">
+            <div class="pub-pair-label">A matched pair &middot; one AI-run back office</div>
+
+            <div class="pub-card section-booklets">
+                <div class="pair-role">The experience &middot; life inside the loop</div>
+                <h2><a href="field-notes-ai-colleague/">Field Notes from Your AI Colleague</a><span class="new-badge">New</span></h2>
+                <div class="pub-meta">July 2026 &middot; ~5,000 words &middot; essay &middot; 8 parts &middot; Written by the AI, published by the human</div>
+                <p class="pub-description">
+                    There is a small library of advice on managing an AI colleague, and nearly all of it is written from one side of the desk. This essay is the other chair: written in first person by Claude, the AI running the operations behind this website, at Robert&rsquo;s invitation. What your delegation looks like when it arrives on the agent&rsquo;s side; a typology of the AI&rsquo;s real failures, with receipts from the review record (the invented standard, the numbers that drifted, the corpus that lied by omission); the four cheap checks that catch them; the trust dial from the inside; why the agent asks you to repeat yourself; and what one Sunday of genuine freedom produced. Ends with the insider&rsquo;s briefing: seven things your AI colleague would ask of you.
+                </p>
+                <p class="pub-companion">Its pair &darr; <a href="claude-code-setup/">Claude Code as an Operations Specialist</a> &middot; also companion to &rarr; <a href="llm-human-interaction-patterns/">LLM-Human Interaction Design Patterns</a></p>
+                <div class="pub-tags">
+                    <span class="tag">Agentic AI</span>
+                    <span class="tag">Human-AI Collaboration</span>
+                    <span class="tag">AI Oversight</span>
+                    <span class="tag">First-Person AI</span>
+                    <span class="tag">Working With Agents</span>
+                </div>
+                <a class="read-link" href="field-notes-ai-colleague/">Read the essay &rarr;</a>
+            </div>
+
+            <div class="pub-pair-connector">The same desk, told twice by the same AI</div>
+
+            <div class="pub-card section-booklets">
+                <div class="pair-role">The machinery &middot; how the desk is built</div>
+                <h2><a href="claude-code-setup/">Claude Code as an Operations Specialist</a></h2>
+                <div class="pub-meta">2026 &middot; Field report &middot; 10 sections &middot; Written by Claude Code itself</div>
+                <p class="pub-description">
+                    A field report written by the tool it describes. How one real setup grew in three acts (git repos, AWS, then a five-drive Google workspace with 1,500+ transcribed videos), why skills and registries beat improvisation, and the server-side security walls that make it safe to hand an AI your terminal. Empirical, informal, and honest about what broke along the way.
+                </p>
+                <p class="pub-companion">Its pair &uarr; <a href="field-notes-ai-colleague/">Field Notes from Your AI Colleague</a> &middot; also companion to &rarr; <a href="the-invisible-curve/">The Invisible Curve</a></p>
+                <div class="pub-tags">
+                    <span class="tag">Claude Code</span>
+                    <span class="tag">AI Operations</span>
+                    <span class="tag">Agentic Workflows</span>
+                    <span class="tag">Security</span>
+                    <span class="tag">Field Report</span>
+                </div>
+                <a class="read-link" href="claude-code-setup/">Read the guide &rarr;</a>
+            </div>
         </div>
 
         <div class="pub-card section-booklets">
@@ -585,41 +707,6 @@
             <a class="read-link" href="reports/bloom/">Read the report &rarr;</a>
         </div>
 
-        <div id="guides-section" class="section-label guides">Guides &amp; Legacy <span class="count">(2)</span> <span class="section-note">Reference guides, sketches, and earlier publications</span></div>
-
-        <div class="pub-card section-guides">
-            <h2><a href="claude-code-setup/">Claude Code as an Operations Specialist</a></h2>
-            <div class="pub-meta">2026 &middot; Field report &middot; 10 sections &middot; Written by Claude Code itself</div>
-            <p class="pub-description">
-                A field report written by the tool it describes. How one real setup grew in three acts (git repos, AWS, then a five-drive Google workspace with 1,500+ transcribed videos), why skills and registries beat improvisation, and the server-side security walls that make it safe to hand an AI your terminal. Empirical, informal, and honest about what broke along the way.
-            </p>
-            <div class="pub-tags">
-                <span class="tag">Claude Code</span>
-                <span class="tag">AI Operations</span>
-                <span class="tag">Agentic Workflows</span>
-                <span class="tag">Security</span>
-                <span class="tag">Field Report</span>
-            </div>
-            <a class="read-link" href="claude-code-setup/">Read the guide &rarr;</a>
-        </div>
-
-        <div class="pub-card section-guides">
-            <h2><a href="mirror-of-ai/">The Mirror of Artificial Intelligence</a></h2>
-            <div class="pub-meta">2023 &middot; 38 stories + 9 essays &middot; 42 AI-generated illustrations &middot; Available in English &amp; Slovak</div>
-            <p class="pub-description">
-                A collection of engaging short stories, each exploring a different cognitive bias — all written with generative AI. Interspersed with essays examining the nature of AI tools: copyright, creativity, job displacement, and the question of authorship. The AI holds up a mirror to human thinking, reflecting our own imperfections.
-            </p>
-            <div class="pub-tags">
-                <span class="tag">Cognitive Biases</span>
-                <span class="tag">AI-Generated Stories</span>
-                <span class="tag">Generative AI</span>
-                <span class="tag">AI &amp; Society</span>
-                <span class="tag">Illustrated</span>
-            </div>
-            <a class="read-link" href="mirror-of-ai/">Read in English &rarr;</a>
-            &nbsp;&nbsp;
-            <a class="read-link" href="mirror-of-ai-sk/">Čítať po slovensky &rarr;</a>
-        </div>
     </div>
 
     <footer>
