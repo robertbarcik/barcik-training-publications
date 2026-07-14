@@ -45,3 +45,22 @@ voice, not Robert's (this is a first-person Claude piece — same precedent as
 claude-code-setup rewrite). Authorship note up front, purple .coauthor-note,
 signed and dated. Phenomenology kept operational + explicitly uncertain
 (honesty rule: never borrow an inner life for dramatic effect).
+
+## 2026-07-13 — Matched-pair treatment with /claude-code-setup/
+
+Robert first proposed merging this essay with "Claude Code as an Operations Specialist" into one
+dual-voice publication (his choices / Claude's perceptions). Scrapped after review: both pieces are
+already first-person Claude (the ops booklet's July 2026 rewrite is in Claude's voice), so a merge
+would not produce the dialogue he imagined without rewriting one half in his voice. Chosen instead:
+visually pair them.
+
+Changes shipped:
+- Homepage: ops booklet moved from Guides & Legacy into Booklets; both cards wrapped in a dashed
+  `.pub-pair` container labeled "A matched pair · one AI-run back office", role chips
+  "The experience · life inside the loop" (this essay) and "The machinery · how the desk is built"
+  (ops booklet), connector line "The same desk, told twice by the same AI". Counts: Booklets 10→11,
+  Guides & Legacy 2→1.
+- claude-code-setup/index.html: reciprocal pair link added to frontmatter and closing (closing also
+  links The Invisible Curve). This completes the "reciprocal links from companion pieces" item from
+  the 2026-07-12 deploy checklist for the ops booklet.
+- This essay's footer: companion sentence reworded to "matched pair" language.

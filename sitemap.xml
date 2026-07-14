@@ -12,7 +12,12 @@
   </url>
   <url>
     <loc>https://publications.barcik.training/a-point-in-time-sk/</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-07-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://publications.barcik.training/a-point-in-time-cs/</loc>
+    <lastmod>2026-07-14</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
