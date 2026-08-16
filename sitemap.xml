@@ -86,13 +86,38 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://publications.barcik.training/llm-human-interaction-patterns-sk/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://publications.barcik.training/mercantilism-of-genai/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://publications.barcik.training/mercantilism-of-genai-sk/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://publications.barcik.training/scenario-planning/</loc>
     <lastmod>2026-06-12</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://publications.barcik.training/scenario-planning-sk/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://publications.barcik.training/token-economics/</loc>
     <lastmod>2026-06-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://publications.barcik.training/token-economics-sk/</loc>
+    <lastmod>2026-08-16</lastmod>
     <priority>0.8</priority>
   </url>
   <url>

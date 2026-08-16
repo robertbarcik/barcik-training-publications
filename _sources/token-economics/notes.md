@@ -16,3 +16,17 @@ Full editorial pass following Robert's review request; decisions: staff augmenta
 - Root `index.html` card and repo `CLAUDE.md` row updated. Word count ~49,000.
 
 Anchor slugs all preserved (Chapter 3's title de-dash keeps the same slug because punctuation is stripped by `make_id`).
+
+## 2026-08-16 — Slovak edition (Ekonomika tokenov) at `/token-economics-sk/`
+
+All 15 source files translated by Fable 5 into `chapters_sk/` (meaning-first; prices and figures
+kept in original currencies/dates; SK money format "5,40 $", "700 mld. $", ranges " – ").
+`tools/build_html.py --lang sk` builds `output/booklet_sk.html` → `token-economics-sk/index.html`:
+`T` dict for title/meta/sidebar, SK panel markers ("V skratke", "Strážca čerstvosti",
+"Tabuľka N.M ·", "Číslo, ktoré si zapamätať", "Čo si z tejto kapitoly odniesť") recognised
+alongside the EN ones, section ids derived from the **English** chapter titles so `#chapter-N-…`
+anchors are shared by both editions, SK colophon via `training-ops/web/ai_transparency_label.py`.
+Cross-links point to the SK Scenario Planning / Mercantilism / LLM-Human editions. Structural
+check: identical tag/class/id/table counts to EN (only the translator's note differs). EN rebuilt
+with hreflang + "Čítať po slovensky" sidebar link. Official-Regulation terms used where the text
+touches the AI Act (poskytovateľ / nasadzujúci subjekt, posudzovanie zhody, orgány dohľadu nad trhom).

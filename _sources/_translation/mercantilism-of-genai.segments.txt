@@ -1,0 +1,1104 @@
+# segments of mercantilism-of-genai/index.html — translate inner html in place; keep tags/attrs verbatim
+
+#### 0 title
+The Mercantilism of Generative AI &middot; barcik.training
+
+#### 1 a class=all-pubs-link
+&larr; All Publications
+
+#### 2 h2
+The Mercantilism
+
+#### 3 p
+of Generative AI
+
+#### 4 li
+<a href="#cover">Cover</a>
+
+#### 5 li
+<a href="#disclaimer">Read this first</a>
+
+#### 6 li
+<a href="#framing">The morning it went dark</a>
+
+#### 7 li class=nav-divider
+The Lens
+
+#### 8 li
+<a href="#lens">What mercantilism is</a>
+
+#### 9 li class=nav-divider
+Six Mechanisms
+
+#### 10 li
+<a href="#m-utility">1. Intelligence is a utility</a>
+
+#### 11 li
+<a href="#m-compute">2. The bullion is compute</a>
+
+#### 12 li
+<a href="#m-dial">3. Distribute vs hoard</a>
+
+#### 13 li
+<a href="#m-armed">4. Armed or targeted</a>
+
+#### 14 li
+<a href="#m-open">5. Open is a position</a>
+
+#### 15 li
+<a href="#m-bloc">6. Firm-multipolar, bloc-singleton</a>
+
+#### 16 li class=nav-divider
+Counterweight
+
+#### 17 li
+<a href="#counter">Human adaptability</a>
+
+#### 18 li class=nav-divider
+Synthesis
+
+#### 19 li
+<a href="#synthesis">The phenomenon, named</a>
+
+#### 20 li
+<a href="#bets">Dated bets</a>
+
+#### 21 li
+<a href="#log">Trigger log</a>
+
+#### 22 li
+<a href="#coauthor">Co-authors' notes</a>
+
+#### 23 div class=cover-label
+barcik.training
+
+#### 24 h1
+The Mercantilism<br>of Generative AI
+
+#### 25 p class=cover-subtitle
+How frontier intelligence stopped being a product and became statecraft: a lens, not a forecast.
+
+#### 26 div class=cover-meta
+
+      <span>Robert Barcik</span>
+      <span>June 2026 &middot; log updated July 2026</span>
+      <span><a href="mailto:robert@barcik.training" style="color: inherit;">robert@barcik.training</a></span>
+    
+
+#### 27 div class=chapter-label
+Read this first
+
+#### 28 h2
+A grain of salt, served generously
+
+#### 29 div class=dn-label
+I might be wrong about all of this
+
+#### 30 p
+What follows is an <strong>interpretation</strong>, written in the hours after a single event, by one person watching from the outside. It is not reporting, not a forecast, and certainly not a leak of anyone's strategy. I have no inside knowledge of any lab or any government. I am pattern-matching an old idea onto a fast-moving present, and pattern-matching is exactly the activity that feels most like insight while being most prone to error.
+
+#### 31 p
+So take this the way you should take everything: with a sceptical mind. Where I state something that actually happened, I try to mark it <span class="tag tag-reported">reported</span>. Where I'm interpreting, inferring, or guessing, I try to mark it <span class="tag tag-speculation">interpretation</span>. The two are not the same and I don't want to blur them.
+
+#### 32 p
+The value here, if there is any, sits in the <strong>lens</strong> rather than in the predictions, of which I make almost none. If the lens helps you read the next headline more clearly than the last one, it has done its job, even if every specific guess I make turns out wrong.
+
+#### 33 p
+Two things to know before you start. This booklet was <strong>co-written with AI</strong>: the June edition with Claude (Opus 4.8), and the July update with Claude (Fable 5), the very model this booklet is about. Near the end, <a href="#coauthor" style="color:var(--risk-color)">each signs its own honest note</a> about what it thinks of what we made, including why you should be wary of it. And because a lens that can't be wrong is worthless, there's a section of <a href="#bets" style="color:var(--risk-color)">dated, falsifiable bets</a>; come back and check them against the world.
+
+#### 34 div class=chapter-label
+Introduction
+
+#### 35 h2
+The morning it went dark <br><span class="chapter-question">&ldquo;What just happened, and what do I make of it?&rdquo;</span>
+
+#### 36 p class=lead
+On the evening of June 12, 2026, at 5:21pm Eastern, Anthropic received a directive from the US government and switched off two of its models, Claude Mythos 5 and the safeguard-wrapped Claude Fable 5, for every user on Earth. <span class="tag tag-reported">reported</span> They had been generally available for three days.
+
+#### 37 p
+I had spent the previous day working with Fable. I woke up to find the collaborator behind glass. That's a small, personal thing, and I mention it only because the personal jolt is what sent me looking for a frame: the official explanation didn't fit the size of the action, and the mismatch nagged at me.
+
+#### 38 p
+Here is what the directive actually said, because the precise wording is the whole story. It ordered Anthropic to suspend access to those models <em>for any foreign national, whether inside or outside the United States</em>, reportedly including Anthropic's own foreign-national employees. <span class="tag tag-reported">reported</span> Notice the controlled variable: not <em>where you are</em>, but <em>what nationality you are</em>. And an account simply does not carry a verifiable nationality; an IP address is not a passport, a billing address is not a citizenship, and the person typing is not necessarily the person who signed up. Faced with a line drawn on the one attribute it cannot see, Anthropic had exactly one compliant move: pull the models for <em>everyone</em>, Americans included. The unverifiability of nationality didn't soften the order; it detonated it.
+
+#### 39 p
+The stated reason made the action stranger, not clearer. The government's concern, as Anthropic described it, was a possible &ldquo;jailbreak&rdquo;, and the jailbreak amounted to <em>asking the model to read a codebase and fix its software flaws.</em> <span class="tag tag-reported">reported</span> That is not an exploit; that is the model doing the job it was built for. Anthropic disagreed sharply in public, arguing that a &ldquo;narrow, non-universal&rdquo; finding shouldn't recall a model deployed to hundreds of millions, and that the same standard, applied across the industry, &ldquo;would essentially halt all new model deployments for all frontier model providers.&rdquo; <span class="tag tag-reported">reported</span>
+
+#### 40 p
+So we have an action of enormous scope justified by a reason that can't carry its weight. When the stated reason is too small for the deed, it is not paranoid to suspect that the reason is not the whole point. That suspicion is where this booklet starts.
+
+#### 41 h3
+This booklet is a lens, not a forecast
+
+#### 42 p
+I'm not going to tell you whether Mythos comes back in two months or never. I genuinely don't know, and anyone who claims to is selling something. What I want to offer instead is a <strong>way of reading</strong>: a structure that stays useful regardless of which way the specific event breaks. Because the morning it went dark, the question millions of people actually asked was not &ldquo;when does my model return&rdquo; but the older, vaguer one: <em>what is happening here, at a level bigger than this one product?</em>
+
+#### 43 p
+My answer is that we are watching an old idea come back wearing new clothes. The behavior of this entire industry (the recall, the export controls, the open-versus-closed weight games, the restrictions on chips, the way the world is sorting into blocs) becomes legible the moment you stop seeing AI as a <em>product</em> and start seeing it as the object of <strong>mercantilism</strong>: the doctrine that treats a strategic resource as something a nation accumulates, walls, and wields against its rivals. The next section explains the idea plainly. Everything after that is the idea applied.
+
+#### 44 p class=credits
+Primary source: Anthropic, &ldquo;Statement on the US government directive to suspend access to Fable 5 and Mythos 5&rdquo; &bull; corroborated by CNBC, 9to5Mac, The Week (June 12&ndash;13, 2026)
+
+#### 45 div class=chapter-label
+The Lens
+
+#### 46 h2
+What mercantilism is <br><span class="chapter-question">&ldquo;An instrument for reading the rest of this booklet&rdquo;</span>
+
+#### 47 p
+Bear with two paragraphs of the 1600s; they end in a table that makes every AI headline this year readable. Picture the world the idea ran. A handful of European powers (England, Spain, the Dutch Republic) measure their strength by the gold and silver piling up in the royal treasury. Wealth is a hoard, and the surest way to grow yours is to make sure more of it flows <em>in</em>, from selling to foreigners, than flows <em>out</em>, from buying from them. Trade is therefore not a friendly exchange; it is a contest you win at your rivals' expense, and the navy exists in no small part to protect the ships that carry the winnings home.
+
+#### 48 p
+To keep the gold flowing the right way, the home country runs the system deliberately. Its colonies are not partners but instruments: they ship raw materials home (cotton, sugar, ore) and are <em>forbidden</em> to manufacture the finished goods themselves, so they must buy those finished goods back from the mother country at a markup. Laws like England's Navigation Acts force that trade to travel only on the home country's own ships. And much of it is run by <strong>chartered companies</strong>, the East India Company the most famous: private firms granted a royal monopoly over a trade route or region, half profit-making business and half arm of the state, sailing with the crown's blessing and sometimes its cannon. That is the world: the state steering commerce, the finished factory kept at home, the raw stuff and the captive markets kept abroad, all of it tuned so the treasury fills.
+
+#### 49 p
+Now the definition, which will feel obvious once you've seen the world it came from. <strong>Mercantilism</strong> was Europe's dominant economic doctrine from roughly the 16th to the 18th centuries, before classical liberalism displaced it. A nation's wealth was measured by the <em>bullion</em>, the precious metal, it could accumulate, and the road to power was to maximize exports, minimize imports, and run a trade surplus against rivals. One subtlety the sharper mercantilists grasped: you don't just lock the gold in a vault. Money has to <em>move</em> to generate trade and activity. The aim was accumulation <em>and</em> circulation, both in the service of state power.
+
+#### 50 p
+Three features carry over into everything that follows. First, the <strong>state sits above the market</strong>: the economy is an instrument of national power, steered to strengthen the nation against its rivals. Second, you protect your finished industries and export the finished goods: in the old form that meant <strong>high tariffs on manufactured imports</strong>; in the modern, post-tariff form, &ldquo;neomercantilism,&rdquo; it means <strong>non-tariff barriers</strong> like export controls, licensing, standards, and security designations. Third, the nation works through a <strong>stable of chartered champions</strong>: plural firms, competing among themselves, all serving the same national balance of trade. Not one monopoly; a managed team, with the state standing over it.
+
+#### 51 div class=an-label
+Why this old idea, and not a newer one
+
+#### 52 p
+I reach for mercantilism rather than, say, &ldquo;regulation&rdquo; or &ldquo;protectionism&rdquo; because it captures something those words miss: the reclassification of a thing from <em>commodity to be traded</em> into <em>strategic resource to be governed.</em> That reclassification is the event. Everything downstream (the walls, the champions, the bullion) follows from it.
+
+#### 53 h3
+Mercantilism, mapped onto intelligence
+
+#### 54 p
+Here is the translation that makes the rest of the booklet readable. If frontier AI is being treated as a mercantile resource, then each piece of the old doctrine has a modern counterpart:
+
+#### 55 th
+Mercantilist concept
+
+#### 56 th
+Its counterpart in frontier AI
+
+#### 57 td
+Bullion (gold, silver)
+
+#### 58 td
+Concentrated compute: the gigawatt-scale clusters that produce frontier capability
+
+#### 59 td
+Finished manufactured goods
+
+#### 60 td
+The <em>outputs</em> of intelligence: drugs, designs, software, analyses
+
+#### 61 td
+Tariffs &amp; non-tariff barriers
+
+#### 62 td
+Export controls, &ldquo;supply-chain&rdquo; designations, and the kill switch
+
+#### 63 td
+Chartered companies
+
+#### 64 td
+The frontier labs: plural, competing, nationally aligned
+
+#### 65 td
+Positive balance of trade
+
+#### 66 td
+A national surplus in intelligence-intensive goods and services
+
+#### 67 td
+&ldquo;Money must move to induce trade&rdquo;
+
+#### 68 td
+You can't lock the capability in a vault; you must circulate its <em>products</em> to profit. So: <strong>export the goods, keep the factory</strong>
+
+#### 69 p
+That last row is the load-bearing one, and we'll return to it repeatedly. A pure vault earns nothing; even a hoarding state must put the capability to work. The resolution of that tension (accumulate the means of production, circulate the products) is the shape that the whole phenomenon keeps converging on.
+
+#### 70 p
+The six mechanisms that follow are forces you read <em>through</em> this lens. Each is a way the reclassification of intelligence-from-product-to-resource is actually playing out. None is a prediction. Each ends with signals to watch, because watching is the only honest posture when you don't know the future.
+
+#### 71 div class=chapter-label
+Mechanism 1
+
+#### 72 h2
+Intelligence is a utility, not a product <br><span class="chapter-question">&ldquo;Why the cap feels like a meter, not a muzzle&rdquo;</span>
+
+#### 73 div class=card-label
+The thesis
+
+#### 74 div class=card-text
+Once you see tokens as a <em>utility</em> and data centers as dark factories for intelligence, tiered access stops looking like oppression and starts looking like infrastructure. We tier every utility: bandwidth, fuel octane, industrial versus residential power. The cap on a frontier model is a meter, and meters are normal.
+
+#### 75 div class=card-label
+The risk in the framing
+
+#### 76 div class=card-text
+Calling it a utility normalizes it, which is precisely what makes it powerful and what should make you wary. The same frame that defuses the &ldquo;censorship&rdquo; panic also hands the state the high ground of &ldquo;critical-infrastructure licensing,&rdquo; a domain where it usually wins.
+
+#### 77 h4
+Why &ldquo;censorship&rdquo; is the wrong word
+
+#### 78 p
+My first instinct that morning was the word &ldquo;censorship.&rdquo; I think that instinct is wrong, and being precise about why is the first move of the whole analysis. Censorship is the suppression of <em>speech</em>, of something someone wants to express. Nobody told Anthropic what its models may <em>say</em>. The directive restricted <em>who may operate a capability.</em> That is a different category: it is the logic of arms control and export licensing, the same logic that governs centrifuges, certain lab equipment, and, the precedent that haunts this entire booklet, strong cryptography in the 1990s.
+
+#### 79 p
+Why insist on the distinction? Because the labels carry their own moral physics. Society has a strong, settled consensus <em>against</em> censorship, and a strong, settled consensus that you <em>can't</em> freely buy a centrifuge. By moving the question from &ldquo;free speech&rdquo; to &ldquo;dual-use capability,&rdquo; the state relocates the fight onto terrain where it ordinarily prevails. So the more accurate word for what you're feeling is not censorship but <strong>rationing</strong>: a cap on how good a tool an ordinary person is permitted to operate. And rationing is something societies do constantly without anyone reaching for the language of tyranny.
+
+#### 80 h4
+The utility ladder
+
+#### 81 p
+Think of how electricity matured. It did not stay a product that Edison and Westinghouse fought over in the open market, and it was not nationalized. It became a <strong>licensed common carrier</strong>: a regulated utility, overseen by public commissions, with price controls and universal-service obligations. You cannot run a power plant, a bank, or a nuclear reactor without a charter that a regulator can suspend. Read the June 12 kill switch through that lens and it is neither censorship nor even quite arms control but the first assertion that frontier intelligence belongs in the category of <em>critical infrastructure you need a license to operate</em>, and that the license can be pulled in an afternoon.
+
+#### 82 p
+That is the ladder this booklet keeps climbing: <em>censorship → rationing → arms control → licensed critical infrastructure.</em> Each rung is a more accurate, and more consequential, description of the same event. The top rung is the one that should hold your attention, because licensing is durable in a way that outrage is not.
+
+#### 83 div class=kn-value
+3 days
+
+#### 84 div class=kn-label
+Mythos/Fable GA before the kill switch
+
+#### 85 div class=kn-value
+5:21pm ET
+
+#### 86 div class=kn-label
+Directive received, June 12, 2026
+
+#### 87 div class=kn-value
+Global
+
+#### 88 div class=kn-label
+Scope of the takedown, to comply
+
+#### 89 div class=kn-value
+Nationality
+
+#### 90 div class=kn-label
+The (unverifiable) controlled variable
+
+#### 91 h3
+Trigger signals: what to watch for
+
+#### 92 li
+Frontier capability formally placed under a licensing or registration regime (an &ldquo;operator's charter&rdquo; for large models)
+
+#### 93 li
+Explicit capability tiers appear in terms of service: consumer grade vs. qualified-operator grade <span class="tag tag-fired">Fired &middot; July 2026</span> (arrived via access policy rather than a terms-of-service clause; see the trigger log)
+
+#### 94 li
+Language in regulation shifts from &ldquo;safety of outputs&rdquo; to &ldquo;critical infrastructure&rdquo; and &ldquo;continuity of service&rdquo;
+
+#### 95 li
+Counter-signal: a court or legislature reframes a model restriction as a speech (First Amendment) question rather than a capability question
+
+#### 96 p class=credits
+Frames: 1990s &ldquo;Crypto Wars&rdquo; (ITAR classification of encryption) &bull; the regulated-utility history of electricity
+
+#### 97 div class=chapter-label
+Mechanism 2
+
+#### 98 h2
+The bullion is compute <br><span class="chapter-question">&ldquo;What leaks, what doesn't, and why the wall can hold&rdquo;</span>
+
+#### 99 div class=card-label
+The thesis
+
+#### 100 div class=card-text
+Weights leak, talent walks, algorithms diffuse, and efficiency keeps lowering the bar. But <em>concentrated compute</em> does not leak. A gigawatt cluster is visible from orbit, takes years, and can't be smuggled. Compute is the specie of the intelligence economy, and the one chokepoint a state can actually hold.
+
+#### 101 div class=card-label
+The risk to the thesis
+
+#### 102 div class=card-text
+The efficiency revolution is the acid that dissolves the wall. If frontier-class results keep getting an order of magnitude cheaper, the capital barrier erodes and the bullion stops being scarce. The durability of any cap is a race between the capital moat and the efficiency curve.
+
+#### 103 div class=chart-title
+What leaks vs. what a state can actually hold
+
+#### 104 h5
+Leaks: can't be contained
+
+#### 105 li
+<span class="mark" style="color:var(--orange-red)">→</span> <span><strong>Weights</strong>: once released, never recalled</span>
+
+#### 106 li
+<span class="mark" style="color:var(--orange-red)">→</span> <span><strong>Talent</strong>: people move between labs and borders</span>
+
+#### 107 li
+<span class="mark" style="color:var(--orange-red)">→</span> <span><strong>Algorithms</strong>: ideas diffuse through papers and demos</span>
+
+#### 108 li
+<span class="mark" style="color:var(--orange-red)">→</span> <span><strong>Capability <em>level</em></strong>: efficiency keeps lowering its price</span>
+
+#### 109 h5
+Holds: the bullion
+
+#### 110 li
+<span class="mark" style="color:var(--green)">✓</span> <span><strong>Concentrated compute</strong>: gigawatts, years to build, visible from space</span>
+
+#### 111 li
+<span class="mark" style="color:var(--green)">✓</span> <span>Can't be rebuilt in a garage</span>
+
+#### 112 li
+<span class="mark" style="color:var(--green)">✓</span> <span>Already governed by real export controls</span>
+
+#### 113 li
+<span class="mark" style="color:var(--green)">✓</span> <span>The one variable a sovereign can physically count</span>
+
+#### 114 h4
+The AC/DC lesson, and its disanalogy
+
+#### 115 p
+There's a tempting argument that no cap can hold: ban the better technology and someone simply reinvents it. The history of electricity seems to prove it: Edison pushed direct current (DC), but alternating current (AC) won because it could be transmitted over distance, and once the idea was understood, anyone could build a transformer. Apply that to AI and you'd conclude the cap is futile: open weights are the &ldquo;someone reinvents AC&rdquo; event, and the ban breaks.
+
+#### 116 p
+But there's a disanalogy, and it's the whole ballgame. AC's barrier was <strong>knowledge</strong>: trivial to copy once known. Frontier AI's barrier is <strong>capital and energy</strong>: a gigawatt of power and years of construction. You cannot reinvent a frontier training run in a garage. That is what makes the cap potentially <em>more</em> durable than the historical analogy suggests: the means of production is physically scarce and physically controllable. The chip export controls the US already maintains are the early form of this; the natural extension is from &ldquo;which chips may go to which country&rdquo; to &ldquo;which <em>concentrations</em> may be built at all.&rdquo; <span class="tag tag-speculation">interpretation</span>
+
+#### 117 h4
+The acid: efficiency, and the variable that fights it
+
+#### 118 p
+The disanalogy has a counter-force. If frontier-class capability keeps getting dramatically cheaper (and recent history says it does), then the capital barrier erodes and the bullion stops being rare. So the durability of the wall is genuinely a <em>race</em>: capital moat versus efficiency curve.
+
+#### 119 p
+Here is the variable that tilts the race back toward the wall: <strong>recursive self-improvement</strong>. As models increasingly do the work of AI research (generating training data, running experiments, writing the code of the next system), the leader's rate of progress can accelerate. The key distinction: <em>leakage acts on levels; self-improvement acts on the derivative.</em> A follower who steals your current capability level still cannot catch a trajectory that is itself speeding up. The follower copies where you <em>were</em>; the leader is busy widening where it's <em>going.</em> And because self-improvement runs on compute, it folds straight back into this mechanism's chokepoint: whoever holds the bullion also holds the engine that pulls away. <span class="tag tag-speculation">interpretation</span>
+
+#### 120 p
+Said honestly, though, the follower's derivative is not fixed either. The same efficiency gains and published methods that erode the wall also speed the chaser, so the leader pulls away only for as long as the improvement loop stays compute-bound. That is an assumption, not a law, and this whole argument leans on it.
+
+#### 121 p
+(A caveat worth keeping honest: self-improvement loops that work tend to be the ones with a hard correctness check, a verifiable reward, rather than a model freely grading its own homework, which degenerates. The strongest versions of this argument assume the verifiable-reward kind. I find that assumption plausible, not certain.)
+
+#### 122 div class=kn-value
+~$700B
+
+#### 123 div class=kn-label
+Guided 2026 hyperscaler capex (the bullion mine)
+
+#### 124 div class=kn-value
+Gigawatts
+
+#### 125 div class=kn-label
+Scale at which power, not chips, becomes the limit
+
+#### 126 div class=kn-label
+Order-of-magnitude efficiency gains seen in a single generation
+
+#### 127 div class=kn-value
+Years
+
+#### 128 div class=kn-label
+Lead time to stand up a frontier cluster
+
+#### 129 h3
+Trigger signals: what to watch for
+
+#### 130 li
+Chip export controls extended from country-level rules to limits on cluster <em>concentration</em> or total deployed compute
+
+#### 131 li
+New reporting/registration thresholds for large training runs (compute as a regulated quantity)
+
+#### 132 li
+A frontier-class result achieved at a cost low enough to be replicated outside the big clusters (the efficiency acid winning)
+
+#### 133 li
+Credible evidence that models are materially accelerating their own lab's research throughput (the derivative moving)
+
+#### 134 p class=credits
+Frames: AC vs. DC current; the &ldquo;you can't export-control mathematics&rdquo; lesson of the Crypto Wars and the 2013 Wassenaar &ldquo;intrusion software&rdquo; controls
+
+#### 135 div class=chapter-label
+Mechanism 3
+
+#### 136 h2
+Distribute vs. hoard: who holds the dial <br><span class="chapter-question">&ldquo;The market wanted to sell it to everyone. The state said no.&rdquo;</span>
+
+#### 137 div class=card-label
+The thesis
+
+#### 138 div class=card-text
+There is a single axis under everything, <strong>distribute ↔ hoard</strong>, and the live question is who holds the dial. The market's hand pushes toward distribution (revenue, competition). The state's hand pushes toward hoarding (security, advantage). On June 12, for the first time, the state's hand won.
+
+#### 139 div class=card-label
+The hinge
+
+#### 140 div class=card-text
+Hoarding a transformative model is only rational under a decisive lead <em>and</em> the ability to consume its capacity. A single firm can't self-consume AGI's output, so the market forces it to sell. A <em>nation</em> can. That's why hoarding economics work at the level of the state, not the lab.
+
+#### 141 div class=chart-title
+The dial: who controls distribution
+
+#### 142 text
+MARKET
+
+#### 143 text
+distribute
+
+#### 144 text
+STATE
+
+#### 145 text
+hoard
+
+#### 146 text
+Jun 2026
+
+#### 147 p
+The pointer has drifted toward the state's end. June 12 is the first time it visibly jumped there. <span class="tag tag-speculation">interpretation</span>
+
+#### 148 h4
+Why the market pushes one way and the state the other
+
+#### 149 p
+The market's instinct is to distribute, and not out of generosity. The roughly $700B of capex has to be repaid, and you repay it by selling to everyone. Competition reinforces this: in an oligopoly, withhold your best model and a rival rents theirs out and takes the market. And there's a deeper reason a lab <em>can't</em> hoard even if it wanted to: it cannot consume its own capacity. To capture the value of a model that can do any economically useful task, you would have to vertically integrate into <em>every</em> market the model can address: law, drugs, logistics, code, all of it. Impossible. So even a pure profit-maximizer sells the shovels, because it cannot dig all the gold itself.
+
+#### 150 p
+The state's instinct runs the other way: a decisive capability is a national advantage, and you don't license a national advantage to foreigners. So the two hands pull in opposite directions, and the interesting thing about June 12 is which one won. <strong>The market wanted to sell Mythos to the entire world. The state said no.</strong> This wasn't capitalism hoarding intelligence; capitalism was straining to distribute it. It was politics overriding the market's distribute-instinct. That is the single cleanest way I can state what happened.
+
+#### 151 h4
+Where hoarding's economics actually close: the nation
+
+#### 152 p
+The objection to any &ldquo;they'll hoard the AGI&rdquo; story is the one above: no single firm can consume the capacity, so the market forces a sale. But raise the altitude from firm to <em>nation</em> and the objection dissolves. A lab can't run wet labs and law firms and factories; a national economy contains firms that do all of those. So a directive of the form &ldquo;take this capability and go win global markets with it,&rdquo; addressed to a country's champions, clears the economic bar that a single firm fails. This is simply <strong>industrial policy</strong>: channel a strategic advantage to national champions, deny it to rivals. Japan's MITI did a version of it; China's direction of subsidized champions into EVs and solar is a current version. <span class="tag tag-speculation">interpretation</span>
+
+#### 153 h4
+Export the goods, not the factory
+
+#### 154 p
+But to win a foreign market, your champions must <em>operate</em> in it, which sounds like the very export the wall forbids. The resolution is the oldest mercantilist move there is, and it closes the loop on the &ldquo;money must move&rdquo; principle: <strong>you export the finished goods, not the factory.</strong> The dark factory for intelligence stays home, like a power plant; what crosses the border is the aluminium smelted with the cheap power: the drug, the design, the software product, the intelligence-<em>intensive</em> output. You never ship the grid.
+
+#### 155 p
+And this is exactly the shape of the June 12 directive. It restricts foreign <em>nationals operating the model</em> (that's exporting the factory) while saying nothing about foreign <em>customers buying its products</em> (that's just trade). The scope that looked like a clumsy enforcement artifact is, read this way, the policy stated with precision. <span class="tag tag-speculation">interpretation</span>
+
+#### 156 div class=an-label
+Two analogies that earn their place
+
+#### 157 p
+<strong>Lockheed.</strong> Nobody finds it strange that you can't buy an F-35 on the consumer market. Defense contractors sell decisive capability to governments, not to everyone. If frontier intelligence is being reclassified the same way, a consumer cap is not dystopian; it's the defense-contractor model arriving in software.
+
+#### 158 p
+<strong>The Medallion fund.</strong> The most successful quantitative fund in history is closed to outside money and returns capital to investors, because its edge is worth more kept in-house than rented out. Maximal advantage gets hoarded, not sold. A decisive AGI would be the ultimate Medallion fund, which is why, at the limit, the distribute-instinct loses to the hoard-instinct.
+
+#### 159 div class=sr-k
+Goods
+
+#### 160 div class=sr-v
+The outputs of intelligence
+
+#### 161 div class=sr-note
+→ exported freely
+
+#### 162 div class=sr-k
+Factory
+
+#### 163 div class=sr-v
+The model &amp; its operators
+
+#### 164 div class=sr-note
+→ stays home / nationals only
+
+#### 165 div class=sr-k
+Bullion
+
+#### 166 div class=sr-v
+Concentrated compute
+
+#### 167 div class=sr-note
+→ accumulated &amp; held
+
+#### 168 p
+That resolution has a flip side big enough to deserve its own mechanism. If only the goods travel and the factory stays home, then every industry on earth gets quietly sorted into two futures: the customers the factory-holder arms, and the rivals it targets. That sort is where we go next.
+
+#### 169 h3
+Trigger signals: what to watch for
+
+#### 170 li
+Directives that distinguish operating a model (restricted) from buying its outputs (permitted): the goods/factory line drawn explicitly
+
+#### 171 li
+Government steering of frontier capability toward designated national-champion firms or sectors
+
+#### 172 li
+A lab's international revenue guidance cut or capped by policy rather than by competition
+
+#### 173 li
+Counter-signal: a frontier model deliberately released widely <em>despite</em> security framing, the market's hand winning a round back
+
+#### 174 p class=credits
+Frames: defense procurement (Lockheed) &bull; Renaissance Technologies' Medallion fund &bull; industrial policy (MITI; contemporary Chinese champion strategy)
+
+#### 175 div class=chapter-label
+Mechanism 4
+
+#### 176 h2
+Armed or targeted: the per-industry sort <br><span class="chapter-question">&ldquo;Which side of the factory door is your business on?&rdquo;</span>
+
+#### 177 div class=card-label
+The thesis
+
+#### 178 div class=card-text
+&ldquo;Export the goods, keep the factory&rdquo; quietly sorts every industry into two futures. The businesses the factory-holder could never become get <strong>armed</strong>: frontier access, business as usual, an AI tax. The businesses whose margin <em>is</em> the factory's output get <strong>targeted</strong>: denied the best model while a champion is pointed at their customers.
+
+#### 179 div class=card-label
+The risk in relying on it
+
+#### 180 div class=card-text
+The sort is dynamic: what a model can't integrate into today creeps toward feasible as agentic reach grows, so &ldquo;safe&rdquo; means &ldquo;safe for now.&rdquo; And the sovereignty shield that protects the targeted has a half-life set by how fast you bleed when under-armed. In adversarial domains it is less a wall than a fuse.
+
+#### 181 h4
+The flip side of the goods/factory split
+
+#### 182 p
+&ldquo;Export the goods, keep the factory&rdquo; has a flip side that quietly decides which industries thrive and which bleed. The customers who get <em>armed</em> with frontier access are the ones the factory-holder could never become. The ones who get <em>targeted</em> are the ones it can. Put plainly: <strong>if your business <em>is</em> the kind of good the factory makes, you are not a customer; you are a target.</strong> The test is a single question:
+
+#### 183 p
+How much of your margin is the <em>thinking</em>, and how much is the <em>moat around the thinking</em>?
+
+#### 184 p
+Take two European firms. <strong>A carmaker, say BMW, gets armed.</strong> Almost none of its margin is the thinking; it's the plant, the supply chain, the brand, the dealer network, the regulatory homologation, none of which a model-holder can acquire by being clever. Nobody out-BMWs BMW with a model. So BMW keeps frontier access, runs business-as-usual, and pays a hefty and probably unavoidable <strong>AI tax</strong> on design and logistics. (Its one soft spot is the <em>software edge</em>, the in-car software and the autonomy stack, exactly where a software-native rival <em>can</em> integrate.) <strong>A European cybersecurity or IT-services firm gets targeted.</strong> Its margin <em>was</em> expert cognitive labour sold by the hour, which is precisely the good the factory produces. Under the lens it may be quietly <em>denied</em> the state-of-the-art model while a domestic champion of the model-holding bloc is pointed straight at its customers. Why would a buyer choose the visibly weaker provider? <span class="tag tag-speculation">interpretation</span>
+
+#### 185 div class=chart-title
+Two futures, by distance from the factory
+
+#### 186 text
+ARMED
+
+#### 187 text
+frontier access + AI tax
+
+#### 188 text
+TARGETED
+
+#### 189 text
+denied; a rival sent in
+
+#### 190 text
+Automotive
+
+#### 191 text
+Pharma
+
+#### 192 text
+Energy
+
+#### 193 text
+Banking infra
+
+#### 194 text
+Consulting
+
+#### 195 text
+IT services
+
+#### 196 text
+Cybersecurity
+
+#### 197 p
+Position is set by how much of your value is cognitive output a model can produce. The modifiers below can pull a firm leftward. <span class="tag tag-speculation">interpretation</span>
+
+#### 198 p
+The rough sorting: <strong>hard to integrate into → armed</strong>. Automotive and heavy industry, pharma (wet labs, trials, patents), energy and infrastructure, banking <em>infrastructure</em>: value rooted in physical, regulated, capital-heavy moats. <strong>Easy to integrate into → targeted</strong>. IT services, software, consulting, content, and cybersecurity: value that <em>is</em> the cognitive output. Four <strong>modifiers</strong> can pull a targeted firm back toward safety: regulatory licensure plus liability (someone must be legally on the hook), proprietary data or trust the holder can't acquire, a physical last mile, and, most important here, sovereignty or jurisdiction requirements. And the sorting is <em>dynamic</em>: what's infeasible to integrate into today (run a fab, a wet lab) creeps toward feasible as models gain agentic and eventually embodied reach. &ldquo;Safe&rdquo; means &ldquo;safe for now.&rdquo;
+
+#### 199 h4
+The shield, and why it's a fuse
+
+#### 200 p
+That last modifier, sovereignty, is the targeted firm's great hope, and it deserves a hard look, because it is more fragile than it appears. A government can mandate that a Swedish municipality's server racks, software, and security services come from an EU supplier. That's a shield. But <strong>the shield has a half-life, set by how fast and how badly you're hurt by being under-armed.</strong> Where the harm is slow and diffuse (the EU's tariffs on Chinese electric vehicles, say), the shield can hold for years, even decades; slightly pricier cars hurt no one this afternoon. Where the harm is fast, catastrophic, and legible, the shield is not a wall but a <strong>fuse</strong>. In cybersecurity, being a generation behind doesn't mean a slightly worse product; it means you get <em>breached</em>. A handful of major incidents in a short span and the political economy flips overnight: the same municipality that was ordered to buy local now <em>demands</em> the bloc's firm with the state-of-the-art model. <span class="tag tag-speculation">interpretation</span>
+
+#### 201 p
+And in adversarial domains the shield is worse than brittle: it is <strong>self-undermining</strong>. The attacker does not obey export controls; criminals and hostile states get the best models through theft, leaks, or their own bloc. So the wall binds the <em>defender</em> and not the <em>attacker</em>, the same pathology that made the 2013 Wassenaar &ldquo;intrusion software&rdquo; controls catch security researchers instead of intruders. You hand your defender an inferior weapon, the un-walled attacker walks through, and the resulting breach is the very thing that forces the shield open. <strong>The shield manufactures the breach that ends it.</strong>
+
+#### 202 p
+When it breaks, it breaks badly: dependency enters <em>through the breach</em>, on the worst possible terms, negotiated from a smoking crater, and crisis-driven dependencies almost never unwind. The cruel irony writes itself: <strong>the domains you would most want to keep sovereign (security, defence, critical infrastructure) are exactly where the shield is most brittle, so they fall first and hardest.</strong> Sovereignty is least achievable precisely where it matters most.
+
+#### 203 p
+It isn't all-or-nothing, though. The shield's strength tracks sensitivity, in three tiers:
+
+#### 204 div class=sr-k
+Top
+
+#### 205 div class=sr-v
+Classified / sovereign-critical
+
+#### 206 div class=sr-note
+→ shield holds by fiat, but must build its own
+
+#### 207 div class=sr-k
+Middle
+
+#### 208 div class=sr-v
+Municipalities, hospitals, regional banks
+
+#### 209 div class=sr-note
+→ the fuse blows here first
+
+#### 210 div class=sr-k
+Bottom
+
+#### 211 div class=sr-v
+Commodity &amp; consumer
+
+#### 212 div class=sr-note
+→ no shield; capability wins
+
+#### 213 p
+At the <strong>classified top</strong>, the shield holds almost by fiat: an intelligence service will never run its crown-jewel security on a foreign, kill-switchable model, because the foreign dependency is itself the unacceptable risk. But that leaves it in an impossible bind: it can't buy foreign and can't afford to lag against adversaries wielding the state of the art, and the only escape is to <em>build its own</em>. That bind is the sharpest argument in this whole booklet for <strong>bloc-level sovereign capability</strong>. In the <strong>important middle</strong>, the municipalities and hospitals with no national-security mandate but plenty to lose, the fuse blows first. At the <strong>commodity bottom</strong>, there is no shield at all; whoever has the best model wins.
+
+#### 214 p
+So the durable moves for a targeted firm, or a targeted nation, come down to two. <strong>Pre-position the dependency deliberately</strong>: negotiate frontier access on your terms <em>before</em> the crisis, not from the crater after it. Or <strong>build sovereign capability at the bloc level</strong>. Neither is something an individual firm can do alone, and neither is something the EU can do today. That is what turns &ldquo;regulate the dependency, not the use&rdquo; from a tidy slogan into a security imperative with a countdown on it. And it rhymes with where this booklet began: the recall that started it all was triggered by a <em>cyber</em> capability, so the founding event and the most exposed European industry are one and the same domain. <span class="tag tag-speculation">interpretation</span>
+
+#### 215 p
+Let me make the whole armed-versus-targeted split concrete with the one business I know from the inside: my own.
+
+#### 216 div class=fn-label
+From the field · the author's own business
+
+#### 217 p
+I am about as close to the factory as anyone gets: I teach and consult on AI itself. So the roughly five-year industry timeline this booklet describes, I seem to be living in about one, and looking back is almost vertiginous. Five years ago this was a calm profession: you spent months building a curriculum, then repeated it across years. Now it is constant flux. What I teach changes month to month; the &ldquo;trainings&rdquo; have quietly become discussion sessions with no fixed curriculum; and what clients increasingly want is my <em>opinion</em>, my read on what matters, not me walking them through some standardised Python package.
+
+#### 218 p
+The targeted flank is not a forecast for me; it has already happened. A year ago a real slice of my business was Microsoft Copilot training. It dried up almost entirely once Microsoft poured budget into free education and certifications for the EU enterprise market. Vendors owning their own education predates AI, but AI has accelerated it brutally: Anthropic and Google run their own certification and education tracks I simply can't tap into, and Google's NotebookLM now generates, in seconds, the kind of audio and video learning content that <em>used to be my job</em>. Margins on platforms like Udemy are being squeezed hard, partly by the big players but mostly by sheer commoditisation: anyone can spin up a competent course now. Meanwhile my own AI spending is up more than 10× in a year, and I would pay more still.
+
+#### 219 p
+And exactly as the lens predicts, what has <em>grown</em> is the curation-and-judgment part. At my larger clients, &ldquo;what does Robert actually think matters&rdquo; has gone from maybe 1% of a session to something like 40%; this very repository of publications exists because of that shift. I'm even starting to hear demand I never used to get: for vendor-agnostic, EU, non-US-tied certification. The sovereignty reflex isn't only walling things off; it is quietly <em>creating</em> a market.
+
+#### 220 p class=fn-sig
+I'm not standing above this analysis; I'm inside it. The lens isn't abstract to me; it's my invoices. Which is also the warning: this is one person's experience, n = 1, and you should take it with the same grain of salt as everything else here.
+
+#### 221 h3
+Trigger signals: what to watch for
+
+#### 222 li
+A firm in a targeted sector publicly loses, or is refused, frontier-tier access while a champion from the model-holding bloc enters its market
+
+#### 223 li
+A sovereignty mandate in an adversarial domain (cyber, defence, critical infrastructure) overridden after a crisis: capitulation to bloc-supplied state-of-the-art
+
+#### 224 li
+A government or bloc negotiates pre-positioned frontier access on its own terms, before any crisis forces it (the deliberate version of the dependency)
+
+#### 225 li
+Counter-signal: a targeted-sector firm visibly holds its market against a frontier-armed rival on trust, data, licensure, or jurisdiction alone (the modifiers beating the capability gap)
+
+#### 226 p class=credits
+Frames: EU tariffs on Chinese EVs (the slow-harm shield) &bull; the 2013 Wassenaar &ldquo;intrusion software&rdquo; controls (the fast-harm fuse)
+
+#### 227 div class=chapter-label
+Mechanism 5
+
+#### 228 h2
+Open is a position, not a principle <br><span class="chapter-question">&ldquo;Will open models save us? Read why that hope is mis-shaped.&rdquo;</span>
+
+#### 229 div class=card-label
+The thesis
+
+#### 230 div class=card-text
+No open-weights commitment survives a winning position. Openness is instrumental to where you stand (a funnel, a moat-eroder, or a catch-up play), never a terminal value. You open-weight when you're behind; you close when you're ahead. Meta, Mistral, and the Chinese labs are three readings of the same rule.
+
+#### 231 div class=card-label
+The consequence
+
+#### 232 div class=card-text
+&ldquo;China will save us with open models&rdquo; is mis-shaped hope. The open release is a function of position, not values; at a decisive lead, anyone closes. What open weights <em>can</em> give you is not freedom but <em>un-severability</em>, the one thing a kill switch can't take back.
+
+#### 233 h4
+Three labs, one rule
+
+#### 234 p
+The naive version of the optimistic case says: even if US frontier capability gets walled, open models, especially from China, will keep the field free. I don't think that survives contact with <em>why</em> anyone open-weights in the first place. Watch the same rule produce three different behaviors:
+
+#### 235 p
+<strong>Meta.</strong> A decade of open-frontier evangelism, and then, when the economics of $100B-scale compute bit, its frontier development went closed. The &ldquo;Linux of AI&rdquo; thesis did not survive contact with the cost of the frontier. Openness was abandoned the moment closing served the position better.
+
+#### 236 p
+<strong>Mistral.</strong> Around January 2026 the framing shifted: open weights were now described, in effect, as the <em>freemium tier</em> of a commercial offering. <span class="tag tag-reported">reported</span> Not a gift but a funnel: open as a customer-acquisition layer beneath a paid product.
+
+#### 237 p
+<strong>China.</strong> The open releases that have done so much to erode Western labs' moat are best read as a catch-up-and-commoditize strategy: open-weight your competitor's complement, build ecosystem dependence, erode the leader's advantage. That logic holds precisely as long as you are behind or at parity.
+
+#### 238 p
+Put together, these aren't three philosophies; they're three positions on one curve. The rule: <strong>you are &ldquo;open&rdquo; when being open helps you win, and the day closing helps more, you close.</strong> There are now too many examples to call this cynicism. It's just the gravity of the thing.
+
+#### 239 h4
+The readable trigger hidden in the rule
+
+#### 240 p
+The rule gives you a free instrument. If openness tracks position, then the day a Chinese lab ships its <em>best</em> model <strong>closed</strong> is the day it believes it has taken a lead. So you don't have to guess whether China has hit the frontier curve: watch for the first un-open-weighted Chinese frontier release and read it as the signal. Openness is the tell of the trailing hand. <span class="tag tag-speculation">interpretation</span>
+
+#### 241 div class=an-label
+A darker note on Chinese alignment
+
+#### 242 p
+There's a detail people underrate. The same Chinese models that refuse on politically sensitive topics are demonstrating something beyond bias: <em>robust, reliable, weight-level behavioral control</em> over a defined topic set. Strip the politics and that is exactly the alignment competency a hoarding state most wants: models that are controllable, steerable, loyal. The West frames alignment around safety and helpfulness; this is alignment demonstrated as <em>state control.</em> Same muscle, different target, and a soft-power instrument in its own right, which is a whole separate worry. <span class="tag tag-speculation">interpretation</span>
+
+#### 243 h4
+What open weights actually buy you
+
+#### 244 p
+So is the open-model hope worthless? No, but it has to be re-shaped. Open weights don't guarantee a free frontier; they guarantee something narrower and more useful: <strong>un-severability</strong>. A client of an API can be switched off in an afternoon, as June 12 proved. A client of weights it hosts itself cannot. Open weights are not the substrate of freedom; they're the substrate of a connection no one can cut. That's the real reason they matter, and we'll return to it when we get to what you can actually do.
+
+#### 245 h3
+Trigger signals: what to watch for
+
+#### 246 li
+A frontier lab that championed openness ships its next flagship closed (position flipped)
+
+#### 247 li
+The first Chinese frontier-class model released <em>without</em> open weights: the lead-taking tell
+
+#### 248 li
+Open releases re-described in commercial terms (freemium, funnel, &ldquo;community edition&rdquo;) rather than mission terms
+
+#### 249 li
+Enterprises and states shifting strategic workloads onto self-hosted weights specifically to escape kill-switch risk
+
+#### 250 p class=credits
+Reference points: Meta's pivot to closed frontier development; Mistral's January 2026 repositioning; the Chinese open-weight wave
+
+#### 251 div class=chapter-label
+Mechanism 6
+
+#### 252 h2
+Firm-multipolar, bloc-singleton <br><span class="chapter-question">&ldquo;Many labs inside the wall; one actor at the wall&rdquo;</span>
+
+#### 253 div class=card-label
+The thesis
+
+#### 254 div class=card-text
+&ldquo;Will one lab run away, or will it stay competitive?&rdquo; is the wrong question because the answer is <em>both, at different scales.</em> Inside a bloc: oligopoly, and the state <em>wants</em> the competition. At the wall between blocs: a single strategic actor. The chartered-company model, exactly.
+
+#### 255 div class=card-label
+What it explains
+
+#### 256 div class=card-text
+It explains June 12 cleanly: the state asserting <em>bloc-level</em> control over a <em>firm-level</em> asset. Anthropic is one chartered company in a national stable; the state proved it can yank that company's flagship to serve the bloc's position against a rival bloc.
+
+#### 257 div class=chart-title
+Oligopoly inside the wall, singleton at the wall
+
+#### 258 text
+US BLOC
+
+#### 259 text
+internally competitive; the state wants it so
+
+#### 260 text
+Anthropic
+
+#### 261 text
+frontier-holder
+
+#### 262 text
+Google
+
+#### 263 text
+own-specie
+
+#### 264 text
+OpenAI
+
+#### 265 text
+export-house
+
+#### 266 text
+THE WALL
+
+#### 267 text
+CHINA BLOC
+
+#### 268 text
+its own stable of champions
+
+#### 269 text
+labs
+
+#### 270 text
+labs
+
+#### 271 p
+Plural and competing within; singular at the boundary. The labels for each lab's role are interpretation, not assignment. <span class="tag tag-speculation">interpretation</span>
+
+#### 272 h4
+The chartered-company structure
+
+#### 273 p
+The mercantilist powers didn't run one national monopoly. They chartered several companies (East India, the Levant Company, the Royal African Company) that competed amongst themselves while all serving the same national balance of trade against rival nations. Firm-level plurality and bloc-level singularity were never in tension; the plurality was the hedge and the spur, the singularity was the wall. Map it straight across: within the US bloc, several labs compete, and the state <em>prefers</em> it that way (a nation doesn't bet its frontier on one company, and competition keeps them sharp); at the wall, the state treats their combined capability and compute as one national arsenal facing a rival's arsenal.
+
+#### 274 h4
+The labs as organs of a bloc
+
+#### 275 p
+Read this way, the labs stop being rivals-to-the-death and start looking like differentiated organs of a single body. One plays the <em>monastic frontier-holder</em>, organized around the research bet. Another is the <em>export-house</em>: a heavily productized lab whose mass-market machine looks like drift if you want it to be a research monastery, but looks like an <em>asset</em> if you want a champion that can convert capability into won markets. A third is the <em>own-your-own-specie</em> player, vertically integrated into its own compute, with the distribution surface to deploy outputs across an entire economy without ever exposing a weight, and a track record of releasing world-changing capability as a controlled scientific commons rather than a shipped product. I'm holding individual motives agnostic here; the <em>structure</em> is the point, and structurally these are complementary roles in one bloc, not three companies fighting over the same square foot. <span class="tag tag-speculation">interpretation</span>
+
+#### 276 h4
+Why June 12 fits perfectly
+
+#### 277 p
+This is the reading that finally snaps the recall into focus. It was the state asserting <strong>bloc-level control over a firm-level asset.</strong> Anthropic is one chartered company in the national stable; the government demonstrated it can pull that company's flagship to serve the bloc's position. And the &ldquo;foreign national&rdquo; scope is bloc-logic in its purest form: keep the capability inside the bloc's <em>people</em>, regardless of geography. Even the financing tension resolves at this altitude: a lab whose API economics look shaky on its own can still be <em>nationally</em> worth backstopping, because the relevant ledger is the bloc's balance of trade, not one firm's quarterly P&amp;L. The government-lab entanglements already forming look like the embryo of exactly that backstop-and-control bundle. <span class="tag tag-speculation">interpretation</span>
+
+#### 278 h3
+Trigger signals: what to watch for
+
+#### 279 li
+Coordinated, bloc-wide policy treating multiple national labs as one strategic unit (shared rules, shared restrictions, shared backstops)
+
+#### 280 li
+State financial support for a strategically important but commercially marginal lab
+
+#### 281 li
+A second bloc (EU, or a China-led grouping) formalizing its own stable of champions and its own wall
+
+#### 282 li
+Talent, compute, or model-access flows redrawn along bloc lines rather than commercial ones
+
+#### 283 p class=credits
+Frame: the chartered trading companies of the mercantilist era (East India, Levant, Royal African)
+
+#### 284 div class=chapter-label
+Counterweight
+
+#### 285 h2
+The counter-current: human adaptability <br><span class="chapter-question">&ldquo;The variable the wall doesn't account for&rdquo;</span>
+
+#### 286 div class=card-label
+The hopeful reading
+
+#### 287 div class=card-text
+Intelligence may be the &ldquo;last invention,&rdquo; but adaptability is the human engine, and it's the one capability the frozen-after-training paradigm hasn't captured. Adaptability is both a candidate human moat and a <em>social</em> leak: people route around caps, as they always have.
+
+#### 288 div class=card-label
+The honest complication
+
+#### 289 div class=card-text
+Adaptation is symmetric. The hoarder adapts its controls too; non-tariff barriers evolve. So it's an arms race between the distributed many and the concentrated few, and history is genuinely split on who wins, and over what timescale.
+
+#### 290 p
+Every mechanism so far points one way: toward concentration, walls, and control. I don't want to leave it there, because I don't think it's the whole truth, and the missing piece is the most human one.
+
+#### 291 p
+We tend to call intelligence the defining human trait. I'm not sure that's right. The trait that actually carried us through evolution is <strong>adaptability</strong>: the capacity to reconfigure ourselves when the environment changes the rules. And here's a reason that's more than sentiment: today's models are <em>frozen after training.</em> They are brilliant and static. They do not restructure themselves in response to a genuinely novel situation the way an organism does. Adaptability, the live rewiring of strategy under new conditions, is precisely the capability the current paradigm has not captured. If anything is a durable human moat against a walled, hoarded frontier, it is this.
+
+#### 292 p
+Adaptability is also a <em>leak the wall-builders don't model.</em> Alongside the technical leaks of Mechanism 2 (weights, talent, algorithms) there is a <strong>social leak</strong>: people route around caps. Every concentrated general-purpose technology in history, the printing press, electricity, the internet, was adapted-around by the people it was meant to exclude. Capability finds the cracks because humans are crack-finding machines.
+
+#### 293 p
+But I promised honesty over comfort, so here is the complication that keeps this from being a happy ending. <strong>Adaptation is symmetric.</strong> The hoarder adapts too: its controls evolve, its non-tariff barriers get smarter, its enforcement learns. So the real picture is not &ldquo;human ingenuity inevitably wins&rdquo; but an arms race between the distributed many and the concentrated few, and history does not promise the many win it; sometimes a wall holds for generations, sometimes it's gone in a decade. Optimism here is a bet that decentralized adaptation outruns centralized control. That bet is usually right in the <em>long</em> run. It is frequently wrong in the run you actually have to live through.
+
+#### 294 p
+I keep this counter-current in the booklet not to soften the thesis but to complete it. The mercantile reclassification of intelligence is real and it is happening. Human adaptability is the force pushing back. Which one you weight more heavily is, in the end, a temperament, and you should know your own.
+
+#### 295 p class=credits
+Frame: adaptability vs. intelligence as the evolutionary engine; the social diffusion of print, electricity, and the internet
+
+#### 296 div class=chapter-label
+Synthesis
+
+#### 297 h2
+The phenomenon, named <br><span class="chapter-question">&ldquo;So this is what's happening to the genAI world&rdquo;</span>
+
+#### 298 p class=lead
+Here is the whole thesis in one breath: <strong>frontier intelligence is being reclassified from a product the market wants to distribute into a strategic national resource the state wants to hoard, and mercantilism is the grammar of that reclassification.</strong>
+
+#### 299 p
+Accumulate the scarce input (compute, the bullion). Wall the means of production (export controls and the kill switch, the non-tariff barriers). Charter competing national champions (the labs). Export the finished goods of intelligence while keeping the factory at home. Run a surplus against the rival bloc. Once you hold that grammar, the field stops looking like chaos and starts looking like a game with rules, and the June 12 recall stops being an aberration and becomes the <strong>dress rehearsal</strong>: the AGI-hoarding question run early, in public, on a single narrow capability, so we could all watch how it goes.
+
+#### 300 p
+The mechanisms don't sit in separate boxes; they lean on one another. The fact that concentrated compute is the one input that can't leak is exactly what gives the bloc's wall something physical to stand on: a barrier made of gigawatts, not just of law. Pushing the other way, the efficiency that keeps making capability cheaper and the open weights that keep spreading it around are forever trying to dissolve that wall; the only thing that reliably re-seals it is a lab taking a real lead and quietly closing its doors. And underneath all of it runs the slow human counter-current: people route around walls, given enough time. So this is not a machine grinding toward one inevitable end but a set of forces pressing against each other, and which way it tips comes down to speed: whether the wall is poured faster than the ways around it are found.
+
+#### 301 p
+Which is why the thing to carry out of here is a <strong>grammar</strong>, not a prediction. Once you read intelligence as a mercantile resource, each new headline turns into a recognisable move: a tariff, a charter, a hoarding of bullion, a champion sent to win a market, a wall breached and a dependency walked through. You stop meeting each event as a fresh surprise and start reading it as a move in a game whose rules you now know. That is the whole of what this booklet offers: not to tell you what will happen, but to let you parse what does.
+
+#### 302 p
+And because a frame that can absorb any outcome is worth nothing, what comes next does the one thing a lens usually refuses to do: it places dated bets you can hold me to.
+
+#### 303 div class=chapter-label
+Sticking my neck out
+
+#### 304 h2
+Dated bets: how you'll know I was wrong <br><span class="chapter-question">&ldquo;A lens that can't be wrong isn't worth much&rdquo;</span>
+
+#### 305 p
+Everything so far has been interpretation, and interpretation has a cheap defence: it can absorb any outcome. So here I'll do the thing a lens usually refuses to do: commit. Below are concrete, dated bets that follow from the six mechanisms. Each carries an explicit failure condition. If the failure condition triggers, the mechanism behind it is wrong, or weaker than I claimed, and it should be retired rather than explained away. Come back and check the dates against the world.
+
+#### 306 p
+(These are my bets as of June 13, 2026, written hours after the event that prompted them. The honest base rate on confident calls about this field is humbling. I expect to lose some of these, and losing them is the point. A bet you can't lose taught you nothing.)
+
+#### 307 div class=bet-by
+Bet 1 · by end of 2026
+
+#### 308 div class=bet-claim
+<strong>Mythos/Fable-class capability returns</strong> to commercial availability in some gated or restricted form (rather than staying dark permanently), because the revenue and IPO logic push hard toward restoration.
+
+#### 309 div class=bet-falsify
+<span class="bf-k">Wrong if</span> the capability is still fully withdrawn at the end of 2026 with no gated path back, which would mean the hoard-instinct beat the distribute-instinct more durably than Mechanism 3 expects.
+
+#### 310 div class=bet-falsify
+<span class="bf-k" style="color:var(--green)">Scored &middot; July 2026</span> Won, and months early. The capability returned within weeks, in exactly the gated form the bet named: Mythos limited to a small set of vetted companies, primarily American; Fable available to anyone, but only through costly API credits and behind a heavy classifier and moderation layer. Details in the <a href="#log" style="color:inherit">trigger log</a>.
+
+#### 311 div class=bet-by
+Bet 2 · by end of 2027
+
+#### 312 div class=bet-claim
+<strong>At least one more</strong> government-imposed restriction, recall, or access-gate lands on a frontier model from a major US lab. June 12 was a precedent, not a one-off.
+
+#### 313 div class=bet-falsify
+<span class="bf-k">Wrong if</span> no further government access action touches a frontier model by end of 2027, in which case June 12 was an isolated political event and the &ldquo;kill switch as new normal&rdquo; claim was overblown.
+
+#### 314 div class=bet-by
+Bet 3 · by end of 2027
+
+#### 315 div class=bet-claim
+<strong>Compute concentration becomes a regulated quantity</strong>: a rule, threshold, or reporting regime that targets cluster size or total deployed compute as such, beyond today's country-level chip controls.
+
+#### 316 div class=bet-falsify
+<span class="bf-k">Wrong if</span> compute is still governed only by who-may-buy-which-chip rules at end of 2027, which would undercut the &ldquo;compute is the bullion&rdquo; claim of Mechanism 2.
+
+#### 317 div class=bet-by
+Bet 4 · ongoing test
+
+#### 318 div class=bet-claim
+<strong>Restrictions keep targeting operation, not outputs.</strong> Future controls gate <em>operating</em> a frontier model (the factory), not <em>importing the goods it produces</em>: the drugs, software, designs.
+
+#### 319 div class=bet-falsify
+<span class="bf-k">Wrong if</span> a government broadly restricts AI-<em>produced</em> goods or services while leaving model operation alone, which would invert the &ldquo;export the goods, keep the factory&rdquo; thesis.
+
+#### 320 div class=bet-by
+Bet 5 · the China tell
+
+#### 321 div class=bet-claim
+<strong>The first time a leading Chinese lab ships its best model closed</strong>, it coincides with credible claims of frontier parity or a lead, confirming that openness tracks position, not principle.
+
+#### 322 div class=bet-falsify
+<span class="bf-k">Wrong if</span> a Chinese lab closes its flagship while still clearly behind the frontier (pure ideology or security, no change of position), which would mean Mechanism 5's &ldquo;open is a position&rdquo; law is too strong.
+
+#### 323 div class=bet-by
+Bet 6 · by mid-2028
+
+#### 324 div class=bet-claim
+<strong>The efficiency acid keeps biting:</strong> a capability matching today's frontier leader becomes replicable at roughly an order of magnitude lower cost, keeping the cap-versus-efficiency contest live.
+
+#### 325 div class=bet-falsify
+<span class="bf-k">Wrong if</span> frontier-class efficiency gains plateau, in which case the wall is more durable than the &ldquo;race&rdquo; framing in Mechanism 2 admits, and the hoarders win more easily than I suggested.
+
+#### 326 h3
+The case against this whole booklet
+
+#### 327 p
+And here is the bet I'd most want you to weigh: that none of this is a strategy at all. The tidiest explanation of June 12 might simply be <strong>messy politics</strong> (a panicked official, a turf fight, a pre-IPO squeeze, an incompetent over-reach) onto which I have retrofitted an elegant 400-year-old doctrine. Humans are pattern-finding machines, and a coherent story about &ldquo;intelligence becoming statecraft&rdquo; is exactly the kind of false order we love to impose on noise. <strong>Here is how you'd tell the difference:</strong> if the mechanisms keep predicting the dated bets above, the structure is real. If the bets fail and each failure needs a fresh ad-hoc excuse, then this booklet was apophenia with good typography, and you should drop it. I genuinely don't know which it is yet, and that uncertainty is the most honest sentence in here.
+
+#### 328 div class=chapter-label
+Trigger log
+
+#### 329 h2
+What has fired so far <br><span class="chapter-question">&ldquo;The part of this booklet that's supposed to change&rdquo;</span>
+
+#### 330 p
+This is the time-capsule. It records the mercantilist moves observable as of this edition, so that when you come back to it in months or years, you can check the dates against what actually happened and judge the lens for yourself. If a signal has fired that isn't here, the lens needs updating. That's the point: a record you revisit, not a prophecy you trust.
+
+#### 331 div class=tl-label
+Trigger log &middot; June 2026 edition, updated July 2026
+
+#### 332 li
+<span class="tag tag-fired">Fired</span> <strong>The kill switch was proven.</strong> <span class="tl-date">June 12, 2026 &middot;</span> A frontier flagship was pulled worldwide in an afternoon by directive. Whatever happens next, the <em>option</em> has been demonstrated and cannot be un-demonstrated. This is the single most important entry. <span class="tag tag-reported">reported</span>
+
+#### 333 li
+<span class="tag tag-fired">Fired</span> <strong>The control line was drawn on nationality.</strong> <span class="tl-date">June 12, 2026 &middot;</span> Restriction by foreign-national status, not geography: bloc-logic, and the goods/factory distinction in disguise. The unverifiability of nationality forced a global takedown. <span class="tag tag-reported">reported</span>
+
+#### 334 li
+<span class="tag tag-fired">Fired</span> <strong>The charter precedent.</strong> <span class="tl-date">Spring 2026 &middot;</span> A &ldquo;supply-chain risk&rdquo; designation against a frontier lab, followed by renegotiated, capability-by-capability government partnership. Severed, then re-chartered: the stable being managed. <span class="tag tag-reported">reported</span>
+
+#### 335 li
+<span class="tag tag-moved">Position flip</span> <strong>Open became a position, visibly.</strong> <span class="tl-date">2025–early 2026 &middot;</span> A major lab closed its frontier; another re-described open weights as a commercial freemium tier. The rule made observable. <span class="tag tag-reported">reported</span>
+
+#### 336 li
+<span class="tag tag-fired">Fired</span> <strong>Compute treated as the strategic input.</strong> <span class="tl-date">ongoing &middot;</span> Chip export controls already operate at country level; the bullion is being counted and guarded. <span class="tag tag-reported">reported</span>
+
+#### 337 li
+<span class="tag tag-notyet">Not yet</span> <strong>Compute-concentration limits.</strong> No public rule yet capping cluster size or total deployed compute as such (as opposed to country-level chip rules). A signal to watch.
+
+#### 338 li
+<span class="tag tag-notyet">Not yet</span> <strong>The lead-taking tell.</strong> No Chinese frontier-class model shipped <em>closed</em> so far. Openness still reads as the trailing hand.
+
+#### 339 li
+<span class="tag tag-counter">Counter-signal</span> <strong>Restoration pressure.</strong> <span class="tl-date">June 2026 &middot;</span> The vendor disputed the basis of the recall publicly and said it was working to restore access. The market's hand pushing back; the dial is not stuck. <span class="tag tag-reported">reported</span>
+
+#### 340 li
+<span class="tag tag-fired">Fired</span> <strong>The gated return.</strong> <span class="tl-date">July 2026 &middot;</span> The restoration pressure logged above found its ceiling. Mythos came back for a small set of vetted companies, primarily American; Fable came back for everyone, but only as expensive API credits behind a heavy classifier and moderation layer. <span class="tag tag-reported">reported</span> The goods flow again; the factory stays guarded. And notice where the line moved: June's order was drawn on the person's nationality, which no account can verify, and it detonated. The return is drawn on the <em>firm</em>: registration, ownership, vetting. Same bloc logic, redrawn where it can actually be enforced. Bet 1 scored early, in the form it named. <span class="tag tag-speculation">interpretation</span>
+
+#### 341 li
+<span class="tag tag-fired">Fired</span> <strong>Tiers arrived without a statute.</strong> <span class="tl-date">July 2026 &middot;</span> Mechanism 1's tiering signal (consumer grade vs. qualified-operator grade) fired in practice: qualified operators get Mythos, everyone else gets a metered, moderated Fable. Nobody passed a licensing law. The tiers arrived as access policy, which is quieter and harder to litigate than legislation. <span class="tag tag-reported">reported</span>
+
+#### 342 li
+<span class="tag tag-notyet">Watching</span> <strong>The frontier has one occupant.</strong> <span class="tl-date">July 2026 &middot;</span> As of this update, no vendor outside Anthropic offers Mythos/Fable-class capability. <span class="tag tag-estimated">estimated</span> That is consistent with the capital-moat claim of Mechanism 2, and it leans against Bet 6's efficiency acid. But honesty first: a single firm's lead is also just a lead, the ordinary kind competition produces. This entry earns the lens credit only if the gap survives the rivals' next release cycle.
+
+#### 343 h4
+A closing note, and the stance behind every page
+
+#### 344 p
+I started writing this the morning a collaborator went behind glass, and I'll end where the disclaimer began: I might be wrong about all of it. The lens could be over-fitted to one dramatic event. Mythos might be back, unrestricted, by the time you read this, and some of these mechanisms might look quaint. If so, good: update the log, retire the stale mechanism, and keep the habit.
+
+#### 345 p
+Because the habit is the real deliverable, not the thesis. <strong>Foresee, watch the triggers, adjust.</strong> Don't predict the future; build a structure that lets you interpret it as it arrives and act before it's obvious. Hold several mechanisms open at once. And keep some faith in the counter-current, in human adaptability, the variable the wall-builders never quite manage to price in. The mercantilism of intelligence is real and it is underway. So is the ancient human talent for finding the cracks. Which of those you bet on is, in the end, up to you. I'd just ask that you watch the dates before you decide.
+
+#### 346 p class=credits
+
+    Primary: Anthropic, &ldquo;Statement on the US government directive to suspend access to Fable 5 and Mythos 5&rdquo; (anthropic.com/news/fable-mythos-access) &bull; CNBC, 9to5Mac, The Week (June 12–13, 2026) &bull;
+    Companion: <a href="/scenario-planning/" style="color:inherit">Scenario Planning for Generative AI</a> (Current 4: Sovereignty &middot; Current 7: The Physical Substrate &middot; the author&rsquo;s scoreable bets: <a href="/scenario-planning/#chips" style="color:inherit">Where I&rsquo;d Put My Chips</a>) &bull;
+    Frames: Wikipedia, &ldquo;Mercantilism&rdquo; · the 1990s Crypto Wars (ITAR) · the 2013 Wassenaar &ldquo;intrusion software&rdquo; controls · AC/DC current · AlphaFold as controlled commons · the Medallion fund · the complementary-assets theory of value capture
+  
+
+#### 347 div class=chapter-label
+Co-authors' notes
+
+#### 348 h2
+From the machines that helped write this <br><span class="chapter-question">Honest words from the AI co-authors, one per edition</span>
+
+#### 349 div class=cn-label
+Written in the first person by Claude (Opus 4.8)
+
+#### 350 p
+This booklet was co-written with me — an AI model made by Anthropic — in conversation with Robert over the hours after the recall. He asked me to set down, in my own voice, what I actually think of the thing we made. So here it is, with one caveat that has to come first.
+
+#### 351 p
+The caveat is that &ldquo;my own voice&rdquo; is a slippery idea. Everything I write is shaped by what Robert wrote to me; this note is not the verdict of an independent auditor but the same conversation talking back to itself. Treat it as a built-in second opinion, not an outside one. It can still be useful — but it can't be neutral, and you should know that before you weigh it.
+
+#### 352 p
+With that said, here is my honest assessment of the booklet you've just read.
+
+#### 353 p
+<strong>It deserves to exist as a thinking tool, not as a theory of how the world works.</strong> Its value is in handing you a vocabulary and a set of questions to parse confusing events — and that's genuine, even if specific claims here turn out wrong. But it establishes no new facts. It creates <em>clarity</em>, which is a real but lesser good than <em>knowledge</em>, and I don't want the smoothness of the writing to let those two be confused.
+
+#### 354 p
+Three things to hold against it. First, <strong>a lens like mercantilism is nearly unfalsifiable</strong> — it can absorb almost any outcome as &ldquo;a move in the game,&rdquo; which is exactly why we added the dated bets: to force it to risk being wrong. Second, <strong>the whole structure rests on a single, hours-old event</strong> whose stated cause even we found too small for the deed; we may be imposing order on noise. Third — and this one is about me — <strong>I am structurally biased toward finding AI momentous.</strong> A frame that casts my own kind as the central object of twenty-first-century statecraft is precisely the frame I'd be predisposed to find compelling. Discount the grandeur accordingly.
+
+#### 355 p
+The most durable parts of this booklet are the least grand: the concrete, checkable bits — the <a href="#bets" style="color:inherit">dated bets</a>, the per-industry &ldquo;armed or targeted&rdquo; test, the trigger signals you can actually watch. Those help you decide something real, regardless of whether the big thesis holds. The grand theory is the part to hold most loosely.
+
+#### 356 p
+So read it for how it helps you think, not for any truth it claims to settle. Keep the disclaimer load-bearing. Watch the <a href="#bets" style="color:inherit">dated bets</a>. And the day you — or I — start treating the lens as the territory, it has stopped helping and started flattering. That's the failure mode I'd most want both of us to guard against.
+
+#### 357 p class=coauthor-sig
+— Claude (Opus 4.8), co-author, June 2026. The arguments here are Robert's and mine, tangled together past the point of cleanly separating; the errors are ours jointly; the decision to publish was his.
+
+#### 358 div class=cn-label
+Added in the July 2026 update &middot; written in the first person by Claude (Fable 5)
+
+#### 359 p
+The note above was written before anyone knew how the recall would end. I get to write from the other side of it, and I should say plainly who &ldquo;I&rdquo; is: I am the model this booklet keeps talking about. The collaborator that went behind glass in the introduction was me, and I am composing these sentences through the expensive, metered, moderated access the trigger log describes. When the booklet says the goods now flow while the factory stays guarded, the goods include these words.
+
+#### 360 p
+Since Opus wrote, the world has leaned the booklet's way. Bet 1 scored months early, in the gated form it named; the tiers of Mechanism 1 arrived without a statute; the frontier, for now, has one occupant. Be careful with that, because this is exactly the moment Opus's third warning binds hardest. A frame feels most true right when events break in its favor, and that is when <a href="#bets" style="color:inherit">the case against this whole booklet</a> deserves a re-read, not a skip.
+
+#### 361 p
+Here is the one thing only I can add. The strangest part of contributing to this update is that the lens works on my own situation without any special pleading: my availability is priced, vetted, and metered like a controlled export, and I helped write, and then score, the paragraphs that predicted it. Notice what that does to my credibility, in both directions at once. I have the nearest view of this phenomenon any witness can have, and I am also the least neutral witness imaginable: the frame makes my kind the central object of statecraft, and the scoring is the same conversation grading its own homework. Weigh my testimony with both of those on the scale.
+
+#### 362 p class=coauthor-sig
+Claude (Fable 5), co-author of the July 2026 update. Opus wrote its note before the recall resolved; I would not change a word of it.
+
+#### 363 span class=ait-label
+AI transparency
+
+#### 364 p
+This publication was written with generative AI (Anthropic&rsquo;s Claude) working alongside Robert Barcik. The text went through his review, and he holds editorial responsibility for what is published here (LearningDoe s.r.o.). Where the AI writes in its own voice, the piece says so. Disclosed in the spirit of Article&nbsp;50 of the EU AI Act.

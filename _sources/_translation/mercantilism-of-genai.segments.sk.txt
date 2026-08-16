@@ -1,0 +1,1100 @@
+# SK segments of mercantilism-of-genai (part 1)
+
+#### 0 title
+Merkantilizmus generatívnej AI &middot; barcik.training
+
+#### 1 a class=all-pubs-link
+&larr; Všetky publikácie
+
+#### 2 h2
+Merkantilizmus
+
+#### 3 p
+generatívnej AI
+
+#### 4 li
+<a href="#cover">Obálka</a>
+
+#### 5 li
+<a href="#disclaimer">Prečítajte si najprv</a>
+
+#### 6 li
+<a href="#framing">Ráno, keď zhasla</a>
+
+#### 7 li class=nav-divider
+Optika
+
+#### 8 li
+<a href="#lens">Čo je merkantilizmus</a>
+
+#### 9 li class=nav-divider
+Šesť mechanizmov
+
+#### 10 li
+<a href="#m-utility">1. Inteligencia je utilita</a>
+
+#### 11 li
+<a href="#m-compute">2. Zlato je výpočtový výkon</a>
+
+#### 12 li
+<a href="#m-dial">3. Rozdávať vs. hromadiť</a>
+
+#### 13 li
+<a href="#m-armed">4. Vyzbrojený alebo na muške</a>
+
+#### 14 li
+<a href="#m-open">5. Otvorenosť je pozícia</a>
+
+#### 15 li
+<a href="#m-bloc">6. Firmy mnohé, blok jeden</a>
+
+#### 16 li class=nav-divider
+Protiváha
+
+#### 17 li
+<a href="#counter">Ľudská prispôsobivosť</a>
+
+#### 18 li class=nav-divider
+Syntéza
+
+#### 19 li
+<a href="#synthesis">Fenomén, pomenovaný</a>
+
+#### 20 li
+<a href="#bets">Datované stávky</a>
+
+#### 21 li
+<a href="#log">Denník spúšťačov</a>
+
+#### 22 li
+<a href="#coauthor">Poznámky spoluautorov</a>
+
+#### 23 div class=cover-label
+barcik.training
+
+#### 24 h1
+Merkantilizmus<br>generatívnej AI
+
+#### 25 p class=cover-subtitle
+Ako frontier inteligencia prestala byť produktom a stala sa štátnickým nástrojom: optika, nie predpoveď.
+
+#### 26 div class=cover-meta
+
+      <span>Robert Barcik</span>
+      <span>jún 2026 &middot; denník aktualizovaný júl 2026 &middot; slovenské vydanie august 2026</span>
+      <span><a href="mailto:robert@barcik.training" style="color: inherit;">robert@barcik.training</a></span>
+
+
+#### 27 div class=chapter-label
+Prečítajte si najprv
+
+#### 28 h2
+Štipka soli, servírovaná štedro
+
+#### 29 div class=dn-label
+Vo všetkom tomto sa môžem mýliť
+
+#### 30 p
+To, čo nasleduje, je <strong>interpretácia</strong>, napísaná v hodinách po jedinej udalosti, jedným človekom, ktorý sa díva zvonka. Nie je to reportáž, nie je to predpoveď a už vôbec nie únik niečej stratégie. Nemám žiadne interné informácie o žiadnom laboratóriu ani žiadnej vláde. Prikladám starú myšlienku na rýchlo sa hýbucu prítomnosť, a prikladanie vzorov je presne tá činnosť, ktorá najviac pripomína vhľad a je najnáchylnejšia na omyl.
+
+#### 31 p
+Takže to berte tak, ako by ste mali brať všetko: so skeptickou mysľou. Tam, kde uvádzam niečo, čo sa naozaj stalo, snažím sa to označiť ako <span class="tag tag-reported">hlásené</span>. Tam, kde interpretujem, odvodzujem alebo hádam, snažím sa to označiť ako <span class="tag tag-speculation">interpretácia</span>. Nie je to to isté a nechcem to rozmazávať.
+
+#### 32 p
+Hodnota, ak tu nejaká je, sedí v <strong>optike</strong>, nie v predpovediach, ktorých robím takmer nula. Ak vám optika pomôže prečítať ďalší titulok jasnejšie než ten predchádzajúci, splnila svoju úlohu, aj keby sa každý konkrétny odhad ukázal ako nesprávny.
+
+#### 33 p
+Dve veci, ktoré treba vedieť, kým začnete. Táto brožúra bola <strong>napísaná spolu s AI</strong>: júnové vydanie s Claudom (Opus 4.8) a júlová aktualizácia s Claudom (Fable 5), práve tým modelom, o ktorom táto brožúra je. Ku koncu <a href="#coauthor" style="color:var(--risk-color)">každý podpisuje vlastnú poctivú poznámku</a> o tom, čo si myslí o tom, čo sme spolu urobili, vrátane toho, prečo by ste k tomu mali byť ostražití. A keďže optika, ktorá sa nemôže mýliť, je bezcenná, je tu časť <a href="#bets" style="color:var(--risk-color)">datovaných, vyvrátiteľných stávok</a>; vráťte sa a porovnajte ich so svetom. Slovenské vydanie preložil Claude (Fable 5) 16. augusta 2026, významovo, nie slovo za slovom; pri pochybnostiach platí <a href="/mercantilism-of-genai/" style="color:var(--risk-color)">anglický originál</a>.
+
+#### 34 div class=chapter-label
+Úvod
+
+#### 35 h2
+Ráno, keď zhasla <br><span class="chapter-question">&bdquo;Čo sa práve stalo a čo si o tom mám myslieť?&ldquo;</span>
+
+#### 36 p class=lead
+Večer 12. júna 2026 o 17:21 východoamerického času dostal Anthropic direktívu od vlády USA a vypol dva svoje modely, Claude Mythos 5 a ochrannými vrstvami obalený Claude Fable 5, pre každého používateľa na Zemi. <span class="tag tag-reported">hlásené</span> Všeobecne dostupné boli tri dni.
+
+#### 37 p
+Predchádzajúci deň som strávil prácou s modelom Fable. Zobudil som sa a spolupracovník bol za sklom. Je to malá, osobná vec a spomínam ju len preto, že práve ten osobný otras ma poslal hľadať rámec: oficiálne vysvetlenie nesedelo k veľkosti zásahu a ten nesúlad mi nedal pokoj.
+
+#### 38 p
+Tu je, čo direktíva skutočne hovorila, lebo presné znenie je celý príbeh. Nariadila Anthropicu pozastaviť prístup k tým modelom <em>pre každého cudzieho štátneho príslušníka, či už v USA, alebo mimo nich</em>, údajne vrátane vlastných zamestnancov Anthropicu s cudzím občianstvom. <span class="tag tag-reported">hlásené</span> Všimnite si kontrolovanú premennú: nie <em>kde ste</em>, ale <em>akú máte štátnu príslušnosť</em>. A účet jednoducho nenesie overiteľnú štátnu príslušnosť; IP adresa nie je pas, fakturačná adresa nie je občianstvo a človek, ktorý píše, nie je nevyhnutne človek, ktorý sa registroval. Postavený pred čiaru nakreslenú na jedinom atribúte, ktorý nevidí, mal Anthropic presne jeden vyhovujúci ťah: stiahnuť modely pre <em>všetkých</em>, Američanov nevynímajúc. Neoveriteľnosť štátnej príslušnosti príkaz nezmiernila; odpálila ho.
+
+#### 39 p
+Uvedený dôvod urobil zásah zvláštnejším, nie jasnejším. Obava vlády, ako ju opísal Anthropic, bola možnosť &bdquo;jailbreaku&ldquo;, a ten jailbreak spočíval v tom, že <em>niekto požiadal model, aby prečítal kódovú základňu a opravil jej softvérové chyby.</em> <span class="tag tag-reported">hlásené</span> To nie je exploit; to je model, ktorý robí prácu, na ktorú bol postavený. Anthropic verejne ostro nesúhlasil, argumentujúc, že &bdquo;úzke, neuniverzálne&ldquo; zistenie by nemalo stiahnuť model nasadený stovkám miliónov ľudí a že ten istý štandard, uplatnený naprieč odvetvím, &bdquo;by v podstate zastavil všetky nové nasadenia modelov u všetkých poskytovateľov frontier modelov.&ldquo; <span class="tag tag-reported">hlásené</span>
+
+#### 40 p
+Máme teda zásah obrovského rozsahu odôvodnený dôvodom, ktorý jeho váhu neunesie. Keď je uvedený dôvod primalý na skutok, nie je paranoidné podozrievať, že dôvod nie je celá pointa. Toto podozrenie je miesto, kde táto brožúra začína.
+
+#### 41 h3
+Táto brožúra je optika, nie predpoveď
+
+#### 42 p
+Nebudem vám hovoriť, či sa Mythos vráti o dva mesiace alebo nikdy. Naozaj to neviem a ktokoľvek, kto tvrdí, že áno, vám niečo predáva. Namiesto toho chcem ponúknuť <strong>spôsob čítania</strong>: štruktúru, ktorá ostane užitočná bez ohľadu na to, ktorým smerom sa konkrétna udalosť vyvinie. Lebo v to ráno, keď zhasla, otázka, ktorú si milióny ľudí skutočne položili, neznela &bdquo;kedy sa mi vráti môj model&ldquo;, ale tá staršia, hmlistejšia: <em>čo sa tu deje na úrovni väčšej než tento jeden produkt?</em>
+
+#### 43 p
+Moja odpoveď znie, že sledujeme, ako sa stará myšlienka vracia v nových šatách. Správanie celého tohto odvetvia (stiahnutie modelu, exportné kontroly, hry s otvorenými a zatvorenými váhami, obmedzenia čipov, spôsob, akým sa svet triedi do blokov) sa stane čitateľným v okamihu, keď prestanete vidieť AI ako <em>produkt</em> a začnete ju vidieť ako predmet <strong>merkantilizmu</strong>: doktríny, ktorá berie strategický zdroj ako niečo, čo národ hromadí, obmurúva a používa proti svojim rivalom. Ďalšia časť tú myšlienku vysvetľuje jednoducho. Všetko za ňou je tá myšlienka uplatnená.
+
+#### 44 p class=credits
+Primárny zdroj: Anthropic, &bdquo;Statement on the US government directive to suspend access to Fable 5 and Mythos 5&ldquo; &bull; potvrdené CNBC, 9to5Mac, The Week (12.&ndash;13. júna 2026)
+
+#### 45 div class=chapter-label
+Optika
+
+#### 46 h2
+Čo je merkantilizmus <br><span class="chapter-question">&bdquo;Nástroj na čítanie zvyšku tejto brožúry&ldquo;</span>
+
+#### 47 p
+Vydržte dva odseky zo 17. storočia; končia tabuľkou, ktorá robí každý tohtoročný titulok o AI čitateľným. Predstavte si svet, ktorým tá myšlienka vládla. Hŕstka európskych mocností (Anglicko, Španielsko, Holandská republika) meria svoju silu zlatom a striebrom, ktoré sa kopí v kráľovskej pokladnici. Bohatstvo je hromada a najistejší spôsob, ako svoju zväčšiť, je zabezpečiť, aby ho viac tieklo <em>dnu</em>, z predaja cudzincom, než <em>von</em>, z nákupov od nich. Obchod teda nie je priateľská výmena; je to súťaž, ktorú vyhrávate na úkor rivalov, a námorníctvo existuje nemalou mierou preto, aby chránilo lode, ktoré vezú výhry domov.
+
+#### 48 p
+Aby zlato tieklo správnym smerom, materská krajina prevádzkuje systém zámerne. Jej kolónie nie sú partneri, ale nástroje: posielajú domov suroviny (bavlnu, cukor, rudu) a majú <em>zakázané</em> vyrábať hotové výrobky samy, takže tie hotové výrobky musia kupovať späť od materskej krajiny s prirážkou. Zákony ako anglické Navigačné akty nútia tento obchod plaviť sa výlučne na lodiach materskej krajiny. A veľkú časť z toho prevádzkujú <strong>privilegované spoločnosti</strong>, z ktorých najslávnejšia je Východoindická spoločnosť: súkromné firmy s kráľovským monopolom na obchodnú trasu alebo región, napoly ziskový podnik a napoly rameno štátu, plaviace sa s požehnaním koruny a niekedy aj s jej delami. To je ten svet: štát riadi obchod, hotová manufaktúra ostáva doma, suroviny a zajaté trhy ostávajú v zámorí, a všetko je vyladené tak, aby sa pokladnica plnila.
+
+#### 49 p
+A teraz definícia, ktorá vám bude pripadať samozrejmá, keď ste videli svet, z ktorého vzišla. <strong>Merkantilizmus</strong> bol dominantnou hospodárskou doktrínou Európy zhruba od 16. do 18. storočia, kým ho nevytlačil klasický liberalizmus. Bohatstvo národa sa meralo <em>drahým kovom</em>, ktorý dokázal nahromadiť, a cesta k moci viedla cez maximalizáciu vývozu, minimalizáciu dovozu a obchodný prebytok voči rivalom. Jednu jemnosť tí bystrejší merkantilisti pochopili: zlato jednoducho nezamknete v trezore. Peniaze sa musia <em>hýbať</em>, aby vytvárali obchod a činnosť. Cieľom bolo hromadenie <em>aj</em> obeh, oboje v službe štátnej moci.
+
+#### 50 p
+Tri črty sa prenášajú do všetkého, čo nasleduje. Po prvé, <strong>štát stojí nad trhom</strong>: hospodárstvo je nástrojom národnej moci, riadeným tak, aby posilnilo národ proti rivalom. Po druhé, chránite svoje spracovateľské odvetvia a vyvážate hotové výrobky: v starej podobe to znamenalo <strong>vysoké clá na dovoz priemyselných výrobkov</strong>; v modernej, pocolnej podobe, v &bdquo;neomerkantilizme&ldquo;, to znamená <strong>necolné bariéry</strong> ako exportné kontroly, licencie, normy a bezpečnostné označenia. Po tretie, národ pracuje cez <strong>stajňu privilegovaných šampiónov</strong>: viacero firiem, ktoré si medzi sebou konkurujú a všetky slúžia tej istej národnej obchodnej bilancii. Nie jeden monopol; riadený tím, nad ktorým stojí štát.
+
+#### 51 div class=an-label
+Prečo táto stará myšlienka, a nie nejaká novšia
+
+#### 52 p
+Siaham po merkantilizme, a nie povedzme po &bdquo;regulácii&ldquo; či &bdquo;protekcionizme&ldquo;, lebo zachytáva niečo, čo tým slovám uniká: preklasifikovanie veci z <em>komodity, s ktorou sa obchoduje</em>, na <em>strategický zdroj, ktorý sa spravuje.</em> To preklasifikovanie je tá udalosť. Všetko po prúde (múry, šampióni, drahý kov) z neho vyplýva.
+
+#### 53 h3
+Merkantilizmus namapovaný na inteligenciu
+
+#### 54 p
+Tu je preklad, ktorý robí zvyšok brožúry čitateľným. Ak sa s frontier AI zaobchádza ako s merkantilným zdrojom, potom má každý kúsok starej doktríny moderný náprotivok:
+
+#### 55 th
+Merkantilistický pojem
+
+#### 56 th
+Jeho náprotivok vo frontier AI
+
+#### 57 td
+Drahý kov (zlato, striebro)
+
+#### 58 td
+Koncentrovaný výpočtový výkon: gigawattové klastre, ktoré produkujú frontier schopnosti
+
+#### 59 td
+Hotové priemyselné výrobky
+
+#### 60 td
+<em>Výstupy</em> inteligencie: lieky, návrhy, softvér, analýzy
+
+#### 61 td
+Clá a necolné bariéry
+
+#### 62 td
+Exportné kontroly, označenia &bdquo;dodávateľského reťazca&ldquo; a vypínač (kill switch)
+
+#### 63 td
+Privilegované spoločnosti
+
+#### 64 td
+Frontier laboratóriá: viaceré, konkurujúce si, národne zarovnané
+
+#### 65 td
+Kladná obchodná bilancia
+
+#### 66 td
+Národný prebytok v tovaroch a službách náročných na inteligenciu
+
+#### 67 td
+&bdquo;Peniaze sa musia hýbať, aby vyvolali obchod&ldquo;
+
+#### 68 td
+Schopnosť nezamknete v trezore; musíte nechať obiehať jej <em>produkty</em>, aby ste zarobili. Teda: <strong>vyvážať tovar, nechať si továreň</strong>
+
+#### 69 p
+Ten posledný riadok je nosný a budeme sa k nemu opakovane vracať. Čistý trezor nezarába nič; aj hromadiaci štát musí schopnosť zapriahnuť do práce. Riešenie tohto napätia (hromadiť výrobné prostriedky, nechať obiehať produkty) je tvar, ku ktorému sa celý fenomén stále zbieha.
+
+#### 70 p
+Šesť mechanizmov, ktoré nasledujú, sú sily, ktoré čítate <em>cez</em> túto optiku. Každý je jedným zo spôsobov, ako sa preklasifikovanie inteligencie z produktu na zdroj skutočne odohráva. Žiadny nie je predpoveď. Každý končí signálmi, ktoré treba sledovať, lebo sledovanie je jediný poctivý postoj, keď nepoznáte budúcnosť.
+
+#### 71 div class=chapter-label
+Mechanizmus 1
+
+#### 72 h2
+Inteligencia je utilita, nie produkt <br><span class="chapter-question">&bdquo;Prečo strop pôsobí ako merač, nie ako náhubok&ldquo;</span>
+
+#### 73 div class=card-label
+Téza
+
+#### 74 div class=card-text
+Len čo uvidíte tokeny ako <em>utilitu</em> a dátové centrá ako tmavé továrne na inteligenciu, odstupňovaný prístup prestane vyzerať ako útlak a začne vyzerať ako infraštruktúra. Odstupňujeme každú utilitu: šírku pásma, oktánové číslo paliva, priemyselný verzus domácnostný odber elektriny. Strop na frontier modeli je merač a merače sú normálne.
+
+#### 75 div class=card-label
+Riziko v tomto rámcovaní
+
+#### 76 div class=card-text
+Nazvať to utilitou to normalizuje, čo je presne to, čo tomu dáva silu a čo by vás malo robiť ostražitými. Ten istý rámec, ktorý odzbrojí paniku z &bdquo;cenzúry&ldquo;, zároveň dáva štátu výhodné postavenie &bdquo;licencovania kritickej infraštruktúry&ldquo;, na poli, kde zvyčajne vyhráva.
+
+#### 77 h4
+Prečo je &bdquo;cenzúra&ldquo; nesprávne slovo
+
+#### 78 p
+Môj prvý inštinkt v to ráno bolo slovo &bdquo;cenzúra&ldquo;. Myslím, že ten inštinkt je nesprávny, a byť presný v tom prečo je prvý ťah celej analýzy. Cenzúra je potláčanie <em>prejavu</em>, niečoho, čo chce niekto vyjadriť. Nikto Anthropicu nepovedal, čo jeho modely smú <em>hovoriť</em>. Direktíva obmedzila, <em>kto smie prevádzkovať schopnosť.</em> To je iná kategória: je to logika kontroly zbrojenia a exportných licencií, tá istá logika, ktorá riadi centrifúgy, isté laboratórne vybavenie a, precedens, ktorý straší v celej tejto brožúre, silnú kryptografiu v 90. rokoch.
+
+#### 79 p
+Prečo trvať na tom rozdiele? Lebo nálepky nesú vlastnú morálnu fyziku. Spoločnosť má silný, ustálený konsenzus <em>proti</em> cenzúre a silný, ustálený konsenzus, že si <em>nemôžete</em> voľne kúpiť centrifúgu. Presunutím otázky z &bdquo;slobody prejavu&ldquo; na &bdquo;schopnosť dvojakého použitia&ldquo; štát presúva zápas na terén, kde zvyčajne víťazí. Takže presnejšie slovo pre to, čo cítite, nie je cenzúra, ale <strong>prídelový systém</strong>: strop na to, aký dobrý nástroj smie bežný človek prevádzkovať. A prideľovanie je niečo, čo spoločnosti robia neustále bez toho, aby ktokoľvek siahal po jazyku tyranie.
+
+#### 80 h4
+Rebrík utility
+
+#### 81 p
+Predstavte si, ako dozrievala elektrina. Neostala produktom, o ktorý sa Edison s Westinghouseom bili na voľnom trhu, a nebola ani znárodnená. Stala sa <strong>licencovaným verejným dopravcom</strong>: regulovanou utilitou pod dohľadom verejných komisií, s cenovou reguláciou a povinnosťou univerzálnej služby. Nemôžete prevádzkovať elektráreň, banku ani jadrový reaktor bez licencie, ktorú vám regulátor môže pozastaviť. Prečítajte si vypínač z 12. júna touto optikou a nie je to ani cenzúra, ani celkom kontrola zbrojenia, ale prvé tvrdenie, že frontier inteligencia patrí do kategórie <em>kritickej infraštruktúry, na ktorej prevádzku potrebujete licenciu</em>, a že tú licenciu možno stiahnuť za jedno popoludnie.
+
+#### 82 p
+To je rebrík, po ktorom táto brožúra stále stúpa: <em>cenzúra → prídelový systém → kontrola zbrojenia → licencovaná kritická infraštruktúra.</em> Každá priečka je presnejším, a závažnejším, opisom tej istej udalosti. Vrchná priečka je tá, ktorá by mala držať vašu pozornosť, lebo licencovanie je trvanlivé spôsobom, akým rozhorčenie nie je.
+
+#### 83 div class=kn-value
+3 dni
+
+#### 84 div class=kn-label
+Mythos/Fable všeobecne dostupné pred vypínačom
+
+#### 85 div class=kn-value
+17:21 ET
+
+#### 86 div class=kn-label
+Direktíva doručená 12. júna 2026
+
+#### 87 div class=kn-value
+Globálny
+
+#### 88 div class=kn-label
+Rozsah stiahnutia, aby sa vyhovelo
+
+#### 89 div class=kn-value
+Štátna príslušnosť
+
+#### 90 div class=kn-label
+(Neoveriteľná) kontrolovaná premenná
+
+#### 91 h3
+Spúšťacie signály: čo sledovať
+
+#### 92 li
+Frontier schopnosti formálne zaradené pod licenčný alebo registračný režim (&bdquo;prevádzkovateľská licencia&ldquo; pre veľké modely)
+
+#### 93 li
+V podmienkach používania sa objavia výslovné úrovne schopností: spotrebiteľská trieda vs. trieda kvalifikovaného prevádzkovateľa <span class="tag tag-fired">Spustené &middot; júl 2026</span> (prišlo cez prístupovú politiku, nie cez klauzulu v podmienkach; pozri denník spúšťačov)
+
+#### 94 li
+Jazyk regulácie sa posúva od &bdquo;bezpečnosti výstupov&ldquo; ku &bdquo;kritickej infraštruktúre&ldquo; a &bdquo;kontinuite služby&ldquo;
+
+#### 95 li
+Protisignál: súd alebo zákonodarca prerámcuje obmedzenie modelu ako otázku slobody prejavu (prvý dodatok), nie ako otázku schopnosti
+
+#### 96 p class=credits
+Rámce: &bdquo;kryptovojny&ldquo; 90. rokov (klasifikácia šifrovania podľa ITAR) &bull; história elektriny ako regulovanej utility
+
+#### 97 div class=chapter-label
+Mechanizmus 2
+
+#### 98 h2
+Zlato je výpočtový výkon <br><span class="chapter-question">&bdquo;Čo uniká, čo nie a prečo múr môže vydržať&ldquo;</span>
+
+#### 99 div class=card-label
+Téza
+
+#### 100 div class=card-text
+Váhy unikajú, talent odchádza, algoritmy sa šíria a efektivita stále znižuje latku. Ale <em>koncentrovaný výpočtový výkon</em> neuniká. Gigawattový klaster je viditeľný z obežnej dráhy, trvá roky a nedá sa prepašovať. Výpočtový výkon je zlatá minca ekonomiky inteligencie a jediné úzke hrdlo, ktoré štát naozaj vie držať.
+
+#### 101 div class=card-label
+Riziko pre tézu
+
+#### 102 div class=card-text
+Revolúcia efektivity je kyselina, ktorá múr rozpúšťa. Ak výsledky frontier triedy budú stále o rád lacnieť, kapitálová bariéra eroduje a zlato prestane byť vzácne. Trvanlivosť akéhokoľvek stropu je preteky medzi kapitálovou priekopou a krivkou efektivity.
+
+#### 103 div class=chart-title
+Čo uniká vs. čo štát naozaj vie držať
+
+#### 104 h5
+Uniká: nedá sa zadržať
+
+#### 105 li
+<span class="mark" style="color:var(--orange-red)">→</span> <span><strong>Váhy</strong>: raz vydané, nikdy nestiahnuté</span>
+
+#### 106 li
+<span class="mark" style="color:var(--orange-red)">→</span> <span><strong>Talent</strong>: ľudia sa sťahujú medzi laboratóriami a cez hranice</span>
+
+#### 107 li
+<span class="mark" style="color:var(--orange-red)">→</span> <span><strong>Algoritmy</strong>: myšlienky sa šíria cez články a demá</span>
+
+#### 108 li
+<span class="mark" style="color:var(--orange-red)">→</span> <span><strong><em>Úroveň</em> schopností</strong>: efektivita stále znižuje jej cenu</span>
+
+#### 109 h5
+Drží: zlato
+
+#### 110 li
+<span class="mark" style="color:var(--green)">✓</span> <span><strong>Koncentrovaný výpočtový výkon</strong>: gigawatty, roky výstavby, viditeľné z vesmíru</span>
+
+#### 111 li
+<span class="mark" style="color:var(--green)">✓</span> <span>Nedá sa znovu postaviť v garáži</span>
+
+#### 112 li
+<span class="mark" style="color:var(--green)">✓</span> <span>Už dnes podlieha skutočným exportným kontrolám</span>
+
+#### 113 li
+<span class="mark" style="color:var(--green)">✓</span> <span>Jediná premenná, ktorú suverén vie fyzicky spočítať</span>
+
+#### 114 h4
+Lekcia AC/DC a jej neanalógia
+
+#### 115 p
+Existuje lákavý argument, že žiadny strop nevydrží: zakážte lepšiu technológiu a niekto ju jednoducho znovu vynájde. Zdá sa, že história elektriny to dokazuje: Edison tlačil jednosmerný prúd (DC), ale striedavý prúd (AC) vyhral, lebo sa dal prenášať na diaľku, a len čo bola myšlienka pochopená, transformátor si mohol postaviť ktokoľvek. Uplatnite to na AI a usúdite, že strop je márny: otvorené váhy sú udalosť &bdquo;niekto znovu vynájde AC&ldquo; a zákaz sa rozpadne.
+
+#### 116 p
+Ale je tu neanalógia a je to celá pointa. Bariérou AC bolo <strong>poznanie</strong>: triviálne skopírovateľné, keď je známe. Bariérou frontier AI je <strong>kapitál a energia</strong>: gigawatt výkonu a roky výstavby. Frontier tréningový beh v garáži znovu nevynájdete. To je to, čo robí strop potenciálne <em>trvanlivejším</em>, než historická analógia naznačuje: výrobný prostriedok je fyzicky vzácny a fyzicky kontrolovateľný. Exportné kontroly čipov, ktoré USA už udržiavajú, sú ranou podobou tohto; prirodzeným rozšírením je krok od &bdquo;ktoré čipy smú ísť do ktorej krajiny&ldquo; ku &bdquo;ktoré <em>koncentrácie</em> sa vôbec smú postaviť.&ldquo; <span class="tag tag-speculation">interpretácia</span>
+
+#### 117 h4
+Kyselina: efektivita a premenná, ktorá s ňou bojuje
+
+#### 118 p
+Neanalógia má protisilu. Ak schopnosti frontier triedy budú dramaticky lacnieť (a nedávna história hovorí, že áno), potom kapitálová bariéra eroduje a zlato prestane byť vzácne. Takže trvanlivosť múru sú naozaj <em>preteky</em>: kapitálová priekopa verzus krivka efektivity.
+
+#### 119 p
+Tu je premenná, ktorá preteky nakláňa späť k múru: <strong>rekurzívne sebazlepšovanie</strong>. Ako modely čoraz viac robia prácu výskumu AI (generujú tréningové dáta, spúšťajú experimenty, píšu kód ďalšieho systému), tempo pokroku lídra sa môže zrýchľovať. Kľúčové rozlíšenie: <em>únik pôsobí na úrovne; sebazlepšovanie pôsobí na deriváciu.</em> Nasledovník, ktorý ukradne vašu súčasnú úroveň schopností, stále nedobehne trajektóriu, ktorá sa sama zrýchľuje. Nasledovník kopíruje, kde ste <em>boli</em>; líder je zaneprázdnený rozširovaním toho, kam <em>ide.</em> A keďže sebazlepšovanie beží na výpočtovom výkone, skladá sa priamo späť do úzkeho hrdla tohto mechanizmu: kto drží zlato, drží aj motor, ktorý uniká dopredu. <span class="tag tag-speculation">interpretácia</span>
+
+#### 120 p
+Poctivo povedané však ani derivácia nasledovníka nie je pevná. Tie isté zisky efektivity a publikované metódy, ktoré erodujú múr, zrýchľujú aj prenasledovateľa, takže líder uniká len dovtedy, kým slučka zlepšovania ostáva viazaná na výpočtový výkon. To je predpoklad, nie zákon, a celý tento argument sa oň opiera.
+
+#### 121 p
+(Výhrada, ktorú sa oplatí držať poctivú: slučky sebazlepšovania, ktoré fungujú, bývajú tie s tvrdou kontrolou správnosti, s overiteľnou odmenou, a nie model, ktorý si voľne známkuje vlastné úlohy, čo degeneruje. Najsilnejšie verzie tohto argumentu predpokladajú ten druh s overiteľnou odmenou. Považujem ten predpoklad za vierohodný, nie istý.)
+
+#### 122 div class=kn-value
+~700 mld. $
+
+#### 123 div class=kn-label
+Ohlásený capex hyperškálových firiem na rok 2026 (baňa na zlato)
+
+#### 124 div class=kn-value
+Gigawatty
+
+#### 125 div class=kn-label
+Rozsah, pri ktorom sa limitom stáva energia, nie čipy
+
+#### 126 div class=kn-label
+Zisky efektivity o rád v jedinej generácii
+
+#### 127 div class=kn-value
+Roky
+
+#### 128 div class=kn-label
+Doba potrebná na postavenie frontier klastra
+
+#### 129 h3
+Spúšťacie signály: čo sledovať
+
+#### 130 li
+Exportné kontroly čipov rozšírené z pravidiel na úrovni krajín na limity <em>koncentrácie</em> klastrov alebo celkového nasadeného výpočtového výkonu
+
+#### 131 li
+Nové prahy hlásenia/registrácie pre veľké tréningové behy (výpočtový výkon ako regulovaná veličina)
+
+#### 132 li
+Výsledok frontier triedy dosiahnutý za cenu dosť nízku na zopakovanie mimo veľkých klastrov (kyselina efektivity vyhráva)
+
+#### 133 li
+Dôveryhodné dôkazy, že modely podstatne zrýchľujú výskumnú priepustnosť vlastného laboratória (derivácia sa hýbe)
+
+#### 134 p class=credits
+Rámce: striedavý vs. jednosmerný prúd; lekcia kryptovojen &bdquo;matematiku nemožno exportne kontrolovať&ldquo; a wassenaarske kontroly &bdquo;prienikového softvéru&ldquo; z roku 2013
+
+#### 135 div class=chapter-label
+Mechanizmus 3
+
+#### 136 h2
+Rozdávať vs. hromadiť: kto drží regulátor <br><span class="chapter-question">&bdquo;Trh to chcel predať všetkým. Štát povedal nie.&ldquo;</span>
+
+#### 137 div class=card-label
+Téza
+
+#### 138 div class=card-text
+Pod všetkým je jediná os, <strong>rozdávať ↔ hromadiť</strong>, a živou otázkou je, kto drží regulátor. Ruka trhu tlačí k rozdávaniu (výnosy, konkurencia). Ruka štátu tlačí k hromadeniu (bezpečnosť, výhoda). 12. júna po prvý raz vyhrala ruka štátu.
+
+#### 139 div class=card-label
+Pánt
+
+#### 140 div class=card-text
+Hromadiť transformatívny model je racionálne iba pri rozhodujúcom náskoku <em>a</em> schopnosti spotrebovať jeho kapacitu. Jediná firma nedokáže sama spotrebovať výstup AGI, takže ju trh núti predávať. <em>Národ</em> to dokáže. Preto ekonomika hromadenia funguje na úrovni štátu, nie laboratória.
+
+#### 141 div class=chart-title
+Regulátor: kto riadi distribúciu
+
+#### 142 text
+TRH
+
+#### 143 text
+rozdávať
+
+#### 144 text
+ŠTÁT
+
+#### 145 text
+hromadiť
+
+#### 146 text
+jún 2026
+
+#### 147 p
+Ukazovateľ sa posunul k štátnemu koncu. 12. jún je prvýkrát, čo tam viditeľne skočil. <span class="tag tag-speculation">interpretácia</span>
+
+#### 148 h4
+Prečo trh tlačí jedným smerom a štát druhým
+
+#### 149 p
+Inštinktom trhu je rozdávať, a nie zo štedrosti. Zhruba 700 miliárd dolárov capexu treba splatiť a splácate ich predajom všetkým. Konkurencia to posilňuje: v oligopole zadržte svoj najlepší model a rival prenajme ten svoj a vezme si trh. A je tu hlbší dôvod, prečo laboratórium <em>nemôže</em> hromadiť, ani keby chcelo: nedokáže spotrebovať vlastnú kapacitu. Aby ste zachytili hodnotu modelu, ktorý zvládne akúkoľvek ekonomicky užitočnú úlohu, museli by ste sa vertikálne integrovať do <em>každého</em> trhu, ktorý model dokáže obslúžiť: právo, lieky, logistika, kód, všetko. Nemožné. Takže aj čistý maximalizátor zisku predáva lopaty, lebo nedokáže sám vykopať všetko zlato.
+
+#### 150 p
+Inštinkt štátu beží opačne: rozhodujúca schopnosť je národná výhoda a národnú výhodu nelicencujete cudzincom. Dve ruky teda ťahajú opačnými smermi a zaujímavé na 12. júni je, ktorá vyhrala. <strong>Trh chcel predať Mythos celému svetu. Štát povedal nie.</strong> Toto nebol kapitalizmus hromadiaci inteligenciu; kapitalizmus sa naťahoval, aby ju rozdal. Bola to politika prebíjajúca rozdávací inštinkt trhu. To je najčistejší spôsob, akým viem povedať, čo sa stalo.
+
+#### 151 h4
+Kde sa ekonomika hromadenia naozaj uzavrie: národ
+
+#### 152 p
+Námietka proti akémukoľvek príbehu &bdquo;budú hromadiť AGI&ldquo; je tá vyššie: žiadna jednotlivá firma nedokáže spotrebovať kapacitu, takže trh vynúti predaj. Ale zdvihnite výšku z firmy na <em>národ</em> a námietka sa rozpustí. Laboratórium nemôže prevádzkovať mokré laboratóriá, právne kancelárie a továrne; národné hospodárstvo obsahuje firmy, ktoré robia to všetko. Takže direktíva v tvare &bdquo;vezmite túto schopnosť a choďte s ňou vyhrať globálne trhy&ldquo;, adresovaná šampiónom krajiny, prekročí ekonomickú latku, na ktorej jednotlivá firma zlyhá. To je jednoducho <strong>priemyselná politika</strong>: nasmerovať strategickú výhodu na národných šampiónov, odoprieť ju rivalom. Japonské MITI robilo jej verziu; čínske smerovanie dotovaných šampiónov do elektromobilov a solárnej energetiky je súčasnou verziou. <span class="tag tag-speculation">interpretácia</span>
+
+#### 153 h4
+Vyvážať tovar, nie továreň
+
+#### 154 p
+Ale aby vaši šampióni vyhrali cudzí trh, musia na ňom <em>pôsobiť</em>, čo znie ako presne ten vývoz, ktorý múr zakazuje. Riešením je najstarší merkantilistický ťah, aký existuje, a uzatvára slučku na princípe &bdquo;peniaze sa musia hýbať&ldquo;: <strong>vyvážate hotový tovar, nie továreň.</strong> Tmavá továreň na inteligenciu ostáva doma ako elektráreň; cez hranicu ide hliník vytavený lacnou elektrinou: liek, návrh, softvérový produkt, výstup <em>náročný</em> na inteligenciu. Sieť nikdy nevyvážate.
+
+#### 155 p
+A presne taký je tvar direktívy z 12. júna. Obmedzuje cudzích <em>štátnych príslušníkov prevádzkujúcich model</em> (to je vývoz továrne) a nehovorí nič o cudzích <em>zákazníkoch kupujúcich jeho produkty</em> (to je len obchod). Rozsah, ktorý vyzeral ako neohrabaný artefakt vynucovania, je pri tomto čítaní politika vyslovená presne. <span class="tag tag-speculation">interpretácia</span>
+
+#### 156 div class=an-label
+Dve analógie, ktoré si svoje miesto zaslúžia
+
+#### 157 p
+<strong>Lockheed.</strong> Nikomu nepripadá zvláštne, že si F-35 nekúpite na spotrebiteľskom trhu. Obranní dodávatelia predávajú rozhodujúce schopnosti vládam, nie každému. Ak sa frontier inteligencia preklasifikúva rovnako, spotrebiteľský strop nie je dystopický; je to model obranného dodávateľa, ktorý prichádza do softvéru.
+
+#### 158 p
+<strong>Fond Medallion.</strong> Najúspešnejší kvantitatívny fond v histórii je uzavretý pre vonkajšie peniaze a vracia kapitál investorom, lebo jeho výhoda má väčšiu hodnotu držaná doma než prenajímaná. Maximálna výhoda sa hromadí, nie predáva. Rozhodujúca AGI by bola konečný fond Medallion, a preto v limite rozdávací inštinkt prehráva s hromadiacim.
+
+#### 159 div class=sr-k
+Tovar
+
+#### 160 div class=sr-v
+Výstupy inteligencie
+
+#### 161 div class=sr-note
+→ vyvážaný voľne
+
+#### 162 div class=sr-k
+Továreň
+
+#### 163 div class=sr-v
+Model a jeho prevádzkovatelia
+
+#### 164 div class=sr-note
+→ ostáva doma / iba občania
+
+#### 165 div class=sr-k
+Zlato
+
+#### 166 div class=sr-v
+Koncentrovaný výpočtový výkon
+
+#### 167 div class=sr-note
+→ hromadené a držané
+
+#### 168 p
+Toto riešenie má rub dosť veľký na to, aby si zaslúžil vlastný mechanizmus. Ak cestuje iba tovar a továreň ostáva doma, potom sa každé odvetvie na svete potichu roztriedi do dvoch budúcností: zákazníci, ktorých držiteľ továrne vyzbrojí, a rivali, na ktorých mieri. Toto triedenie je miesto, kam ideme ďalej.
+
+#### 169 h3
+Spúšťacie signály: čo sledovať
+
+#### 170 li
+Direktívy, ktoré rozlišujú prevádzkovanie modelu (obmedzené) od nákupu jeho výstupov (povolené): čiara tovar/továreň nakreslená výslovne
+
+#### 171 li
+Vládne smerovanie frontier schopností k určeným firmám alebo sektorom národných šampiónov
+
+#### 172 li
+Medzinárodný výhľad výnosov laboratória zoškrtaný alebo zastropovaný politikou, nie konkurenciou
+
+#### 173 li
+Protisignál: frontier model zámerne vydaný široko <em>napriek</em> bezpečnostnému rámcovaniu, ruka trhu vyhráva kolo späť
+
+#### 174 p class=credits
+Rámce: obranné obstarávanie (Lockheed) &bull; fond Medallion spoločnosti Renaissance Technologies &bull; priemyselná politika (MITI; súčasná čínska stratégia šampiónov)
+# SK segments of mercantilism-of-genai (part 2)
+
+#### 175 div class=chapter-label
+Mechanizmus 4
+
+#### 176 h2
+Vyzbrojený alebo na muške: triedenie po odvetviach <br><span class="chapter-question">&bdquo;Na ktorej strane dverí továrne je váš biznis?&ldquo;</span>
+
+#### 177 div class=card-label
+Téza
+
+#### 178 div class=card-text
+&bdquo;Vyvážať tovar, nechať si továreň&ldquo; potichu triedi každé odvetvie do dvoch budúcností. Firmy, ktorými sa držiteľ továrne nikdy nemôže stať, budú <strong>vyzbrojené</strong>: frontier prístup, biznis ako obvykle, daň z AI. Firmy, ktorých marža <em>je</em> výstupom továrne, sa ocitnú <strong>na muške</strong>: najlepší model im bude odopretý, kým na ich zákazníkov bude namierený šampión.
+
+#### 179 div class=card-label
+Riziko spoliehania sa naň
+
+#### 180 div class=card-text
+Triedenie je dynamické: to, do čoho sa model dnes nevie integrovať, sa s rastúcim agentným dosahom posúva k uskutočniteľnému, takže &bdquo;bezpečné&ldquo; znamená &bdquo;zatiaľ bezpečné&ldquo;. A štít suverenity, ktorý chráni tých na muške, má polčas rozpadu daný tým, ako rýchlo krvácate, keď ste nedostatočne vyzbrojení. V nepriateľských doménach je to menej múr a viac poistka.
+
+#### 181 h4
+Rub rozdelenia tovar/továreň
+
+#### 182 p
+&bdquo;Vyvážať tovar, nechať si továreň&ldquo; má rub, ktorý potichu rozhoduje, ktoré odvetvia prekvitajú a ktoré krvácajú. Zákazníci, ktorých frontier prístup <em>vyzbrojí</em>, sú tí, ktorými sa držiteľ továrne nikdy nemôže stať. Tí, ktorí sa ocitnú <em>na muške</em>, sú tí, ktorými sa stať môže. Povedané jednoducho: <strong>ak váš biznis <em>je</em> ten druh tovaru, aký továreň vyrába, nie ste zákazník; ste cieľ.</strong> Test je jediná otázka:
+
+#### 183 p
+Koľko z vašej marže je <em>myslenie</em> a koľko je <em>priekopa okolo myslenia</em>?
+
+#### 184 p
+Vezmite dve európske firmy. <strong>Automobilka, povedzme BMW, bude vyzbrojená.</strong> Takmer nič z jej marže nie je myslenie; je to závod, dodávateľský reťazec, značka, dílerská sieť, regulačná homologizácia, nič z toho držiteľ modelu nezíska tým, že bude šikovný. Nikto ne-pre-BMW-uje BMW modelom. Takže BMW si udrží frontier prístup, pobeží ako obvykle a zaplatí tučnú a pravdepodobne nevyhnutnú <strong>daň z AI</strong> na dizajn a logistiku. (Jej jediné mäkké miesto je <em>softvérová hrana</em>, softvér v aute a autonómny stack, presne tam, kde sa softvérovo natívny rival integrovať <em>vie</em>.) <strong>Európska firma z kyberbezpečnosti alebo IT služieb sa ocitne na muške.</strong> Jej marža <em>bola</em> odborná kognitívna práca predávaná na hodiny, čo je presne tovar, ktorý továreň vyrába. Pri tejto optike jej môže byť potichu <em>odopretý</em> najmodernejší model, kým domáci šampión bloku, ktorý model drží, bude namierený priamo na jej zákazníkov. Prečo by si kupujúci vybral viditeľne slabšieho poskytovateľa? <span class="tag tag-speculation">interpretácia</span>
+
+#### 185 div class=chart-title
+Dve budúcnosti podľa vzdialenosti od továrne
+
+#### 186 text
+VYZBROJENÍ
+
+#### 187 text
+frontier prístup + daň z AI
+
+#### 188 text
+NA MUŠKE
+
+#### 189 text
+odopreté; poslaný rival
+
+#### 190 text
+Automobilky
+
+#### 191 text
+Farmácia
+
+#### 192 text
+Energetika
+
+#### 193 text
+Banková infra
+
+#### 194 text
+Konzultácie
+
+#### 195 text
+IT služby
+
+#### 196 text
+Kyberbezpečnosť
+
+#### 197 p
+Poloha je daná tým, koľko z vašej hodnoty je kognitívny výstup, ktorý model vie vyprodukovať. Modifikátory nižšie môžu firmu potiahnuť doľava. <span class="tag tag-speculation">interpretácia</span>
+
+#### 198 p
+Hrubé triedenie: <strong>ťažko sa doň integrovať → vyzbrojení</strong>. Automobilový a ťažký priemysel, farmácia (mokré laboratóriá, skúšky, patenty), energetika a infraštruktúra, banková <em>infraštruktúra</em>: hodnota zakorenená vo fyzických, regulovaných, kapitálovo náročných priekopách. <strong>Ľahko sa doň integrovať → na muške</strong>. IT služby, softvér, konzultácie, obsah a kyberbezpečnosť: hodnota, ktorá <em>je</em> kognitívnym výstupom. Štyri <strong>modifikátory</strong> môžu firmu na muške potiahnuť späť do bezpečia: regulačná licencia plus zodpovednosť (niekto musí byť právne na háku), proprietárne dáta alebo dôvera, ktorú držiteľ nezíska, fyzická posledná míľa a, tu najdôležitejšie, požiadavky suverenity alebo jurisdikcie. A triedenie je <em>dynamické</em>: to, do čoho sa dnes nedá integrovať (prevádzkovať fabriku na čipy, mokré laboratórium), sa posúva k uskutočniteľnému, ako modely získavajú agentný a nakoniec aj telesný dosah. &bdquo;Bezpečné&ldquo; znamená &bdquo;zatiaľ bezpečné&ldquo;.
+
+#### 199 h4
+Štít, a prečo je to poistka
+
+#### 200 p
+Ten posledný modifikátor, suverenita, je veľkou nádejou firmy na muške a zaslúži si tvrdý pohľad, lebo je krehkejší, než vyzerá. Vláda môže nariadiť, aby serverové skrine, softvér a bezpečnostné služby švédskej obce pochádzali od dodávateľa z EÚ. To je štít. Ale <strong>štít má polčas rozpadu, daný tým, ako rýchlo a ako zle vás zraní nedostatočná výzbroj.</strong> Kde je škoda pomalá a rozptýlená (napríklad clá EÚ na čínske elektromobily), štít vydrží roky, ba desaťročia; o niečo drahšie autá dnes popoludní nikoho nebolia. Kde je škoda rýchla, katastrofická a čitateľná, štít nie je múr, ale <strong>poistka</strong>. V kyberbezpečnosti byť generáciu pozadu neznamená o niečo horší produkt; znamená to, že vás <em>prelomia</em>. Hŕstka veľkých incidentov v krátkom slede a politická ekonómia sa cez noc prevráti: tá istá obec, ktorej nariadili kupovať lokálne, teraz <em>vyžaduje</em> firmu bloku s najmodernejším modelom. <span class="tag tag-speculation">interpretácia</span>
+
+#### 201 p
+A v nepriateľských doménach je štít horší než krehký: je <strong>sebapodkopávajúci</strong>. Útočník exportné kontroly nedodržiava; zločinci a nepriateľské štáty získajú najlepšie modely krádežou, únikmi alebo z vlastného bloku. Takže múr zväzuje <em>obrancu</em>, a nie <em>útočníka</em>, tá istá patológia, kvôli ktorej wassenaarske kontroly &bdquo;prienikového softvéru&ldquo; z roku 2013 chytali bezpečnostných výskumníkov namiesto votrelcov. Podáte svojmu obrancovi horšiu zbraň, neobmurovaný útočník prejde a výsledný prienik je presne to, čo štít prinúti otvoriť sa. <strong>Štít vyrába prienik, ktorý ho ukončí.</strong>
+
+#### 202 p
+Keď sa zlomí, zlomí sa zle: závislosť vstúpi <em>cez prienik</em>, za najhorších možných podmienok, vyjednaná z dymiaceho krátera, a závislosti vzniknuté v kríze sa takmer nikdy nerozpletú. Krutá irónia sa píše sama: <strong>domény, ktoré by ste najviac chceli udržať suverénne (bezpečnosť, obrana, kritická infraštruktúra), sú presne tie, kde je štít najkrehkejší, takže padnú prvé a najtvrdšie.</strong> Suverenita je najmenej dosiahnuteľná presne tam, kde na nej najviac záleží.
+
+#### 203 p
+Nie je to však všetko alebo nič. Sila štítu sleduje citlivosť, v troch úrovniach:
+
+#### 204 div class=sr-k
+Vrch
+
+#### 205 div class=sr-v
+Utajované / kritické pre suverenitu
+
+#### 206 div class=sr-note
+→ štít drží z moci úradnej, ale musí si postaviť vlastné
+
+#### 207 div class=sr-k
+Stred
+
+#### 208 div class=sr-v
+Obce, nemocnice, regionálne banky
+
+#### 209 div class=sr-note
+→ poistka vyhorí najprv tu
+
+#### 210 div class=sr-k
+Spodok
+
+#### 211 div class=sr-v
+Komodity a spotrebitelia
+
+#### 212 div class=sr-note
+→ žiadny štít; vyhráva schopnosť
+
+#### 213 p
+Na <strong>utajovanom vrchu</strong> štít drží takmer z moci úradnej: spravodajská služba nikdy nepostaví svoju korunovačnú bezpečnosť na cudzom, vypnuteľnom modeli, lebo cudzia závislosť je sama osebe neprijateľné riziko. To ju však necháva v nemožnom zovretí: nemôže kupovať cudzie a nemôže si dovoliť zaostávať za protivníkmi ovládajúcimi špičku, a jediným únikom je <em>postaviť si vlastné</em>. To zovretie je najostrejší argument v celej tejto brožúre za <strong>suverénnu schopnosť na úrovni bloku</strong>. V <strong>dôležitom strede</strong>, obce a nemocnice bez mandátu národnej bezpečnosti, ale s mnohým, čo môžu stratiť, poistka vyhorí najprv. Na <strong>komoditnom spodku</strong> nie je žiadny štít; kto má najlepší model, vyhráva.
+
+#### 214 p
+Takže trvanlivé ťahy pre firmu na muške, alebo národ na muške, sa zužujú na dva. <strong>Zámerne si vopred nastaviť závislosť</strong>: vyjednať frontier prístup za svojich podmienok <em>pred</em> krízou, nie z krátera po nej. Alebo <strong>vybudovať suverénnu schopnosť na úrovni bloku</strong>. Ani jedno nezvládne jednotlivá firma sama a ani jedno dnes nezvládne EÚ. To mení &bdquo;regulujte závislosť, nie použitie&ldquo; z úhľadného sloganu na bezpečnostný imperatív s odpočtom. A rýmuje sa to s tým, kde táto brožúra začala: stiahnutie, ktoré to všetko spustilo, vyvolala <em>kybernetická</em> schopnosť, takže zakladajúca udalosť a najexponovanejšie európske odvetvie sú jedna a tá istá doména. <span class="tag tag-speculation">interpretácia</span>
+
+#### 215 p
+Dovoľte mi celé rozdelenie vyzbrojený verzus na muške skonkrétniť na jedinom biznise, ktorý poznám zvnútra: na svojom vlastnom.
+
+#### 216 div class=fn-label
+Z terénu · autorov vlastný biznis
+
+#### 217 p
+Som asi tak blízko továrne, ako sa len dá: učím a radím o AI samotnej. Takže zhruba päťročnú časovú os odvetvia, ktorú táto brožúra opisuje, ja akoby žijem asi za jeden rok, a pohľad späť je takmer závratný. Pred piatimi rokmi to bola pokojná profesia: mesiace ste stavali osnovy a potom ste ich roky opakovali. Dnes je to neustály pohyb. To, čo učím, sa mení z mesiaca na mesiac; zo &bdquo;školení&ldquo; sa potichu stali diskusné sedenia bez pevnej osnovy; a klienti čoraz viac chcú môj <em>názor</em>, moje čítanie toho, na čom záleží, nie aby som ich previedol nejakým štandardizovaným balíkom v Pythone.
+
+#### 218 p
+Krídlo na muške pre mňa nie je predpoveď; už sa stalo. Pred rokom bol skutočným kusom môjho biznisu tréning na Microsoft Copilot. Vyschol takmer úplne, len čo Microsoft nalial rozpočet do bezplatného vzdelávania a certifikácií pre firemný trh EÚ. To, že dodávatelia vlastnia svoje vzdelávanie, predchádza AI, ale AI to brutálne zrýchlila: Anthropic a Google prevádzkujú vlastné certifikačné a vzdelávacie dráhy, do ktorých sa jednoducho nedostanem, a NotebookLM od Googlu dnes za sekundy generuje ten druh audio a video vzdelávacieho obsahu, ktorý <em>býval mojou prácou</em>. Marže na platformách ako Udemy sú tvrdo stláčané, sčasti veľkými hráčmi, ale najmä čírou komoditizáciou: slušný kurz si dnes vie roztočiť ktokoľvek. Medzitým moje vlastné výdavky na AI za rok vzrástli viac než desaťnásobne a platil by som ešte viac.
+
+#### 219 p
+A presne ako optika predpovedá, to, čo <em>narástlo</em>, je časť kurátorstva a úsudku. U mojich väčších klientov sa &bdquo;čo si Robert naozaj myslí, že je dôležité&ldquo; posunulo z možno 1 % sedenia na niečo ako 40 %; práve tento repozitár publikácií existuje kvôli tomu posunu. Dokonca začínam počuť dopyt, aký som nikdy nemával: po certifikácii nezávislej od dodávateľa, európskej, neviazanej na USA. Reflex suverenity nielen ohradzuje; potichu <em>vytvára</em> trh.
+
+#### 220 p class=fn-sig
+Nestojím nad touto analýzou; som vnútri nej. Optika pre mňa nie je abstraktná; sú to moje faktúry. Čo je zároveň varovanie: toto je skúsenosť jedného človeka, n = 1, a mali by ste ju brať s rovnakou štipkou soli ako všetko ostatné tu.
+
+#### 221 h3
+Spúšťacie signály: čo sledovať
+
+#### 222 li
+Firma zo sektora na muške verejne stratí, alebo jej je odopretý, prístup k frontier úrovni, kým na jej trh vstupuje šampión z bloku, ktorý model drží
+
+#### 223 li
+Mandát suverenity v nepriateľskej doméne (kyber, obrana, kritická infraštruktúra) prebitý po kríze: kapitulácia pred špičkou dodávanou blokom
+
+#### 224 li
+Vláda alebo blok si vyjedná vopred nastavený frontier prístup za vlastných podmienok skôr, než ho vynúti kríza (zámerná verzia závislosti)
+
+#### 225 li
+Protisignál: firma zo sektora na muške viditeľne udrží svoj trh proti frontierom vyzbrojenému rivalovi iba na dôvere, dátach, licencii alebo jurisdikcii (modifikátory porážajú medzeru v schopnostiach)
+
+#### 226 p class=credits
+Rámce: clá EÚ na čínske elektromobily (štít pri pomalej škode) &bull; wassenaarske kontroly &bdquo;prienikového softvéru&ldquo; z roku 2013 (poistka pri rýchlej škode)
+
+#### 227 div class=chapter-label
+Mechanizmus 5
+
+#### 228 h2
+Otvorenosť je pozícia, nie princíp <br><span class="chapter-question">&bdquo;Zachránia nás otvorené modely? Prečítajte si, prečo má tá nádej zlý tvar.&ldquo;</span>
+
+#### 229 div class=card-label
+Téza
+
+#### 230 div class=card-text
+Žiadny záväzok k otvoreným váham neprežije víťaznú pozíciu. Otvorenosť je inštrumentálna voči tomu, kde stojíte (lievik, rozpúšťač priekopy alebo dobiehací ťah), nikdy nie konečná hodnota. Váhy otvárate, keď ste pozadu; zatvárate, keď ste vpredu. Meta, Mistral a čínske laboratóriá sú tri čítania toho istého pravidla.
+
+#### 231 div class=card-label
+Dôsledok
+
+#### 232 div class=card-text
+&bdquo;Čína nás zachráni otvorenými modelmi&ldquo; je nádej so zlým tvarom. Otvorené vydanie je funkciou pozície, nie hodnôt; pri rozhodujúcom náskoku zatvorí ktokoľvek. To, čo vám otvorené váhy <em>môžu</em> dať, nie je sloboda, ale <em>neprerušiteľnosť</em>, jediná vec, ktorú vypínač nevie vziať späť.
+
+#### 233 h4
+Tri laboratóriá, jedno pravidlo
+
+#### 234 p
+Naivná verzia optimistického argumentu hovorí: aj keby americké frontier schopnosti obmurovali, otvorené modely, najmä z Číny, udržia pole voľné. Nemyslím si, že to prežije kontakt s tým, <em>prečo</em> vôbec niekto otvára váhy. Sledujte, ako to isté pravidlo produkuje tri rôzne správania:
+
+#### 235 p
+<strong>Meta.</strong> Desaťročie evanjelizácie otvorenej špičky, a potom, keď zahryzla ekonomika výpočtového výkonu v rozsahu 100 miliárd dolárov, jej vývoj na špičke sa uzavrel. Téza &bdquo;Linux umelej inteligencie&ldquo; neprežila kontakt s cenou špičky. Otvorenosť bola opustená v okamihu, keď pozícii lepšie poslúžilo zatvorenie.
+
+#### 236 p
+<strong>Mistral.</strong> Okolo januára 2026 sa rámcovanie posunulo: otvorené váhy boli teraz opisované v podstate ako <em>freemium úroveň</em> komerčnej ponuky. <span class="tag tag-reported">hlásené</span> Nie dar, ale lievik: otvorenosť ako vrstva na získavanie zákazníkov pod plateným produktom.
+
+#### 237 p
+<strong>Čína.</strong> Otvorené vydania, ktoré tak veľmi rozleptali priekopu západných laboratórií, sa najlepšie čítajú ako stratégia dobehnúť a komoditizovať: otvor váhy komplementu svojho konkurenta, vybuduj závislosť ekosystému, rozleptaj výhodu lídra. Táto logika platí presne dovtedy, kým ste pozadu alebo na rovnakej úrovni.
+
+#### 238 p
+Dokopy to nie sú tri filozofie; sú to tri pozície na jednej krivke. Pravidlo: <strong>ste &bdquo;otvorení&ldquo;, keď vám otvorenosť pomáha vyhrať, a v deň, keď viac pomôže zatvorenie, zatvoríte.</strong> Príkladov je už priveľa na to, aby sa to dalo nazvať cynizmom. Je to jednoducho gravitácia tej veci.
+
+#### 239 h4
+Čitateľný spúšťač skrytý v pravidle
+
+#### 240 p
+Pravidlo vám dáva nástroj zadarmo. Ak otvorenosť sleduje pozíciu, potom deň, keď čínske laboratórium dodá svoj <em>najlepší</em> model <strong>zatvorený</strong>, je deň, keď verí, že získalo náskok. Takže nemusíte hádať, či Čína dosiahla frontier krivku: sledujte prvé čínske frontier vydanie bez otvorených váh a čítajte ho ako signál. Otvorenosť je prezradenie zaostávajúcej ruky. <span class="tag tag-speculation">interpretácia</span>
+
+#### 241 div class=an-label
+Temnejšia poznámka o čínskom zosúladení
+
+#### 242 p
+Je tu detail, ktorý ľudia podceňujú. Tie isté čínske modely, ktoré odmietajú politicky citlivé témy, predvádzajú niečo viac než zaujatosť: <em>robustnú, spoľahlivú behaviorálnu kontrolu na úrovni váh</em> nad definovanou množinou tém. Odstráňte politiku a je to presne tá kompetencia zosúladenia, ktorú hromadiaci štát chce najviac: modely, ktoré sú kontrolovateľné, riaditeľné, lojálne. Západ rámcuje zosúladenie okolo bezpečnosti a užitočnosti; toto je zosúladenie predvedené ako <em>štátna kontrola.</em> Rovnaký sval, iný cieľ, a nástroj mäkkej moci sám osebe, čo je celá samostatná starosť. <span class="tag tag-speculation">interpretácia</span>
+
+#### 243 h4
+Čo vám otvorené váhy naozaj kupujú
+
+#### 244 p
+Je teda nádej v otvorené modely bezcenná? Nie, ale treba jej dať nový tvar. Otvorené váhy nezaručujú voľnú špičku; zaručujú niečo užšie a užitočnejšie: <strong>neprerušiteľnosť</strong>. Klienta API možno vypnúť za jedno popoludnie, ako 12. jún dokázal. Klienta váh, ktoré si sám hostuje, nie. Otvorené váhy nie sú substrátom slobody; sú substrátom spojenia, ktoré nikto nevie prerušiť. To je skutočný dôvod, prečo na nich záleží, a vrátime sa k tomu, keď sa dostaneme k tomu, čo naozaj môžete urobiť.
+
+#### 245 h3
+Spúšťacie signály: čo sledovať
+
+#### 246 li
+Frontier laboratórium, ktoré presadzovalo otvorenosť, dodá svoju ďalšiu vlajkovú loď zatvorenú (pozícia sa prevrátila)
+
+#### 247 li
+Prvý čínsky model frontier triedy vydaný <em>bez</em> otvorených váh: prezradenie získaného náskoku
+
+#### 248 li
+Otvorené vydania nanovo opísané v komerčných pojmoch (freemium, lievik, &bdquo;komunitná edícia&ldquo;), nie v pojmoch poslania
+
+#### 249 li
+Podniky a štáty presúvajú strategické záťaže na vlastne hostované váhy špecificky preto, aby unikli riziku vypínača
+
+#### 250 p class=credits
+Referenčné body: obrat Mety k zatvorenému vývoju na špičke; repozicionovanie Mistralu v januári 2026; čínska vlna otvorených váh
+
+#### 251 div class=chapter-label
+Mechanizmus 6
+
+#### 252 h2
+Firmy mnohé, blok jeden <br><span class="chapter-question">&bdquo;Mnoho laboratórií vnútri múru; jeden aktér pri múre&ldquo;</span>
+
+#### 253 div class=card-label
+Téza
+
+#### 254 div class=card-text
+&bdquo;Utečie jedno laboratórium všetkým, alebo ostane konkurencia?&ldquo; je nesprávna otázka, lebo odpoveď znie <em>oboje, na rôznych škálach.</em> Vnútri bloku: oligopol, a štát tú konkurenciu <em>chce</em>. Na múre medzi blokmi: jediný strategický aktér. Presne model privilegovanej spoločnosti.
+
+#### 255 div class=card-label
+Čo vysvetľuje
+
+#### 256 div class=card-text
+Vysvetľuje 12. jún čisto: štát si nárokuje kontrolu <em>na úrovni bloku</em> nad aktívom <em>na úrovni firmy</em>. Anthropic je jedna privilegovaná spoločnosť v národnej stajni; štát dokázal, že vie tej spoločnosti stiahnuť vlajkovú loď, aby poslúžila pozícii bloku proti rivalskému bloku.
+
+#### 257 div class=chart-title
+Oligopol vnútri múru, jediný aktér pri múre
+
+#### 258 text
+BLOK USA
+
+#### 259 text
+vnútorne konkurenčný; štát to tak chce
+
+#### 260 text
+Anthropic
+
+#### 261 text
+držiteľ špičky
+
+#### 262 text
+Google
+
+#### 263 text
+vlastná minca
+
+#### 264 text
+OpenAI
+
+#### 265 text
+exportný dom
+
+#### 266 text
+MÚR
+
+#### 267 text
+BLOK ČÍNA
+
+#### 268 text
+vlastná stajňa šampiónov
+
+#### 269 text
+laboratóriá
+
+#### 270 text
+laboratóriá
+
+#### 271 p
+Viacero konkurujúcich si vnútri; jeden na hranici. Nálepky rolí jednotlivých laboratórií sú interpretácia, nie pridelenie. <span class="tag tag-speculation">interpretácia</span>
+
+#### 272 h4
+Štruktúra privilegovaných spoločností
+
+#### 273 p
+Merkantilistické mocnosti neprevádzkovali jeden národný monopol. Udelili privilégiá viacerým spoločnostiam (Východoindickej, Levantskej, Kráľovskej africkej), ktoré si medzi sebou konkurovali a všetky slúžili tej istej národnej obchodnej bilancii proti rivalským národom. Pluralita na úrovni firiem a jednota na úrovni bloku neboli nikdy v napätí; pluralita bola poistkou a ostrohou, jednota bola múrom. Namapujte to priamo: vnútri bloku USA si viaceré laboratóriá konkurujú a štát to <em>uprednostňuje</em> (národ nestaví svoju špičku na jednu firmu a konkurencia ich drží v strehu); pri múre štát zaobchádza s ich spojenou schopnosťou a výpočtovým výkonom ako s jedným národným arzenálom čeliacim arzenálu rivala.
+
+#### 274 h4
+Laboratóriá ako orgány bloku
+
+#### 275 p
+Pri tomto čítaní prestanú byť laboratóriá rivalmi na život a na smrť a začnú vyzerať ako diferencované orgány jedného tela. Jedno hrá <em>mníšskeho držiteľa špičky</em>, organizovaného okolo výskumnej stávky. Iné je <em>exportný dom</em>: silne produktizované laboratórium, ktorého masový stroj vyzerá ako odklon, ak chcete, aby bolo výskumným kláštorom, ale vyzerá ako <em>aktívum</em>, ak chcete šampióna, ktorý dokáže premeniť schopnosť na vyhraté trhy. Tretie je hráč <em>s vlastnou mincou</em>, vertikálne integrovaný do vlastného výpočtového výkonu, s distribučným povrchom na nasadenie výstupov cez celú ekonomiku bez toho, aby kedy vystavil jedinú váhu, a s históriou vydávania schopností meniacich svet ako kontrolovaného vedeckého spoločného statku, nie ako dodaného produktu. Individuálne motívy tu nechávam bokom; pointa je <em>štruktúra</em> a štrukturálne sú to komplementárne roly v jednom bloku, nie tri firmy bijúce sa o ten istý štvorcový meter. <span class="tag tag-speculation">interpretácia</span>
+
+#### 276 h4
+Prečo 12. jún sedí dokonale
+
+#### 277 p
+Toto je čítanie, ktoré stiahnutie modelu konečne zaostrí. Bol to štát, ktorý si nárokoval <strong>kontrolu na úrovni bloku nad aktívom na úrovni firmy.</strong> Anthropic je jedna privilegovaná spoločnosť v národnej stajni; vláda predviedla, že vie stiahnuť vlajkovú loď tej spoločnosti, aby poslúžila pozícii bloku. A rozsah &bdquo;cudzí štátny príslušník&ldquo; je bloková logika v najčistejšej podobe: udržať schopnosť medzi <em>ľuďmi</em> bloku bez ohľadu na geografiu. Aj napätie okolo financovania sa v tejto výške rozpúšťa: laboratórium, ktorého ekonomika API vyzerá sama osebe vratko, môže byť stále <em>národne</em> hodné záchrannej siete, lebo relevantnou účtovnou knihou je obchodná bilancia bloku, nie kvartálny výsledok jednej firmy. Prepletenia vlády a laboratórií, ktoré sa už formujú, vyzerajú ako embryo presne tohto balíka záchrannej siete a kontroly. <span class="tag tag-speculation">interpretácia</span>
+
+#### 278 h3
+Spúšťacie signály: čo sledovať
+
+#### 279 li
+Koordinovaná politika naprieč blokom, ktorá berie viaceré národné laboratóriá ako jednu strategickú jednotku (spoločné pravidlá, spoločné obmedzenia, spoločné záchranné siete)
+
+#### 280 li
+Štátna finančná podpora strategicky dôležitého, ale komerčne okrajového laboratória
+
+#### 281 li
+Druhý blok (EÚ alebo zoskupenie vedené Čínou) formalizuje vlastnú stajňu šampiónov a vlastný múr
+
+#### 282 li
+Toky talentu, výpočtového výkonu alebo prístupu k modelom prekreslené pozdĺž blokových, nie komerčných línií
+
+#### 283 p class=credits
+Rámec: privilegované obchodné spoločnosti merkantilistickej éry (Východoindická, Levantská, Kráľovská africká)
+
+#### 284 div class=chapter-label
+Protiváha
+
+#### 285 h2
+Protiprúd: ľudská prispôsobivosť <br><span class="chapter-question">&bdquo;Premenná, s ktorou múr nepočíta&ldquo;</span>
+
+#### 286 div class=card-label
+Nádejné čítanie
+
+#### 287 div class=card-text
+Inteligencia môže byť &bdquo;posledný vynález&ldquo;, ale prispôsobivosť je ľudský motor a je to jediná schopnosť, ktorú paradigma zmrazená po tréningu nezachytila. Prispôsobivosť je zároveň kandidát na ľudskú priekopu aj <em>sociálny</em> únik: ľudia obchádzajú stropy, ako vždy.
+
+#### 288 div class=card-label
+Poctivá komplikácia
+
+#### 289 div class=card-text
+Prispôsobenie je symetrické. Hromadič prispôsobuje aj svoje kontroly; necolné bariéry sa vyvíjajú. Takže sú to preteky v zbrojení medzi rozptýlenými mnohými a koncentrovanými niekoľkými a história je v tom, kto vyhrá a v akom časovom horizonte, naozaj rozdelená.
+
+#### 290 p
+Každý mechanizmus doteraz ukazuje jedným smerom: ku koncentrácii, múrom a kontrole. Nechcem to tam nechať, lebo si nemyslím, že je to celá pravda, a chýbajúci kúsok je ten najľudskejší.
+
+#### 291 p
+Máme sklon nazývať inteligenciu definujúcou ľudskou črtou. Nie som si istý, že je to správne. Črta, ktorá nás naozaj preniesla evolúciou, je <strong>prispôsobivosť</strong>: schopnosť prekonfigurovať sa, keď prostredie zmení pravidlá. A tu je dôvod, ktorý je viac než sentiment: dnešné modely sú <em>po tréningu zmrazené.</em> Sú brilantné a statické. Nereštrukturalizujú sa v odpovedi na skutočne novú situáciu tak, ako to robí organizmus. Prispôsobivosť, živé prepájanie stratégie v nových podmienkach, je presne tá schopnosť, ktorú súčasná paradigma nezachytila. Ak je niečo trvanlivou ľudskou priekopou proti obmurovanej, hromadenej špičke, je to toto.
+
+#### 292 p
+Prispôsobivosť je aj <em>únik, ktorý stavitelia múrov nemodelujú.</em> Popri technických únikoch z mechanizmu 2 (váhy, talent, algoritmy) existuje <strong>sociálny únik</strong>: ľudia obchádzajú stropy. Každú koncentrovanú všeobecnú technológiu v histórii, kníhtlač, elektrinu, internet, obišli ľudia, ktorých mala vylúčiť. Schopnosť si nájde trhliny, lebo ľudia sú stroje na hľadanie trhlín.
+
+#### 293 p
+Ale sľúbil som poctivosť pred útechou, tak tu je komplikácia, ktorá z toho nerobí šťastný koniec. <strong>Prispôsobenie je symetrické.</strong> Hromadič sa prispôsobuje tiež: jeho kontroly sa vyvíjajú, jeho necolné bariéry múdrejú, jeho vynucovanie sa učí. Takže skutočný obraz nie je &bdquo;ľudská vynaliezavosť nevyhnutne vyhrá&ldquo;, ale preteky v zbrojení medzi rozptýlenými mnohými a koncentrovanými niekoľkými, a história nesľubuje, že mnohí vyhrajú; niekedy múr vydrží generácie, niekedy je za desaťročie preč. Optimizmus je tu stávka, že decentralizované prispôsobenie predbehne centralizovanú kontrolu. Tá stávka je zvyčajne správna z <em>dlhodobého</em> hľadiska. Často je nesprávna v tom časovom úseku, ktorý naozaj musíte prežiť.
+
+#### 294 p
+Tento protiprúd si v brožúre nechávam nie preto, aby som tézu zjemnil, ale aby som ju dokončil. Merkantilné preklasifikovanie inteligencie je skutočné a deje sa. Ľudská prispôsobivosť je sila, ktorá tlačí späť. Ktorú z nich vážite viac, je nakoniec temperament, a ten svoj by ste mali poznať.
+
+#### 295 p class=credits
+Rámec: prispôsobivosť vs. inteligencia ako evolučný motor; sociálne šírenie tlače, elektriny a internetu
+
+#### 296 div class=chapter-label
+Syntéza
+
+#### 297 h2
+Fenomén, pomenovaný <br><span class="chapter-question">&bdquo;Takže toto sa deje so svetom generatívnej AI&ldquo;</span>
+# SK segments of mercantilism-of-genai (part 3)
+
+#### 298 p class=lead
+Tu je celá téza na jeden nádych: <strong>frontier inteligencia sa preklasifikúva z produktu, ktorý chce trh rozdávať, na strategický národný zdroj, ktorý chce štát hromadiť, a merkantilizmus je gramatikou tohto preklasifikovania.</strong>
+
+#### 299 p
+Hromadiť vzácny vstup (výpočtový výkon, zlato). Obmurovať výrobné prostriedky (exportné kontroly a vypínač, necolné bariéry). Udeliť privilégiá konkurujúcim si národným šampiónom (laboratóriám). Vyvážať hotový tovar inteligencie a nechať si továreň doma. Držať prebytok voči rivalskému bloku. Len čo túto gramatiku ovládate, pole prestane vyzerať ako chaos a začne vyzerať ako hra s pravidlami, a stiahnutie z 12. júna prestane byť úchylkou a stane sa <strong>generálkou</strong>: otázka hromadenia AGI odohraná skoro, verejne, na jedinej úzkej schopnosti, aby sme sa všetci mohli pozerať, ako to dopadne.
+
+#### 300 p
+Mechanizmy nesedia v oddelených škatuľkách; opierajú sa jeden o druhý. To, že koncentrovaný výpočtový výkon je jediný vstup, ktorý nemôže uniknúť, je presne to, čo dáva múru bloku niečo fyzické, na čom môže stáť: bariéru z gigawattov, nielen zo zákona. Opačným smerom tlačí efektivita, ktorá stále zlacňuje schopnosti, a otvorené váhy, ktoré ich stále šíria, a obe sa neustále snažia ten múr rozpustiť; jediné, čo ho spoľahlivo znovu zapečatí, je laboratórium, ktoré získa skutočný náskok a potichu zavrie dvere. A pod tým všetkým beží pomalý ľudský protiprúd: ľudia múry obchádzajú, ak dostanú dosť času. Takže toto nie je stroj drviaci k jednému nevyhnutnému koncu, ale súbor síl, ktoré na seba tlačia, a to, kam sa to nakloní, sa zužuje na rýchlosť: či sa múr naleje skôr, než sa nájdu cesty okolo neho.
+
+#### 301 p
+Preto je to, čo si odtiaľto odniesť, <strong>gramatika</strong>, nie predpoveď. Len čo čítate inteligenciu ako merkantilný zdroj, každý nový titulok sa zmení na rozpoznateľný ťah: clo, privilégium, hromadenie zlata, šampión poslaný vyhrať trh, prelomený múr a závislosť, ktorá ním vstúpila. Prestanete každú udalosť stretávať ako čerstvé prekvapenie a začnete ju čítať ako ťah v hre, ktorej pravidlá teraz poznáte. To je všetko, čo táto brožúra ponúka: nie povedať vám, čo sa stane, ale nechať vás rozobrať to, čo sa stane.
+
+#### 302 p
+A keďže rámec, ktorý pohltí akýkoľvek výsledok, nestojí za nič, to, čo nasleduje, robí tú jednu vec, ktorú optika zvyčajne odmieta: uzatvára datované stávky, za ktoré ma môžete brať na zodpovednosť.
+
+#### 303 div class=chapter-label
+Idem s kožou na trh
+
+#### 304 h2
+Datované stávky: ako spoznáte, že som sa mýlil <br><span class="chapter-question">&bdquo;Optika, ktorá sa nemôže mýliť, veľa nestojí&ldquo;</span>
+
+#### 305 p
+Všetko doteraz bola interpretácia a interpretácia má lacnú obranu: pohltí akýkoľvek výsledok. Takže tu urobím to, čo optika zvyčajne odmieta: zaviažem sa. Nižšie sú konkrétne, datované stávky, ktoré vyplývajú zo šiestich mechanizmov. Každá nesie výslovnú podmienku zlyhania. Ak sa podmienka zlyhania spustí, mechanizmus za ňou je nesprávny, alebo slabší, než som tvrdil, a mal by sa vyradiť, nie vysvetliť. Vráťte sa a porovnajte dátumy so svetom.
+
+#### 306 p
+(Toto sú moje stávky k 13. júnu 2026, napísané hodiny po udalosti, ktorá ich vyvolala. Poctivá základná miera sebaistých výrokov o tomto odbore je pokorujúca. Čakám, že niektoré prehrám, a prehrať ich je pointa. Stávka, ktorú nemôžete prehrať, vás nič nenaučila.)
+
+#### 307 div class=bet-by
+Stávka 1 · do konca roka 2026
+
+#### 308 div class=bet-claim
+<strong>Schopnosti triedy Mythos/Fable sa vrátia</strong> do komerčnej dostupnosti v nejakej obmedzenej alebo odstupňovanej podobe (namiesto toho, aby ostali natrvalo tmavé), lebo logika výnosov a IPO tlačí silno k obnoveniu.
+
+#### 309 div class=bet-falsify
+<span class="bf-k">Nesprávne, ak</span> je schopnosť na konci roka 2026 stále úplne stiahnutá bez akejkoľvek obmedzenej cesty späť, čo by znamenalo, že hromadiaci inštinkt porazil rozdávací trvanlivejšie, než mechanizmus 3 očakáva.
+
+#### 310 div class=bet-falsify
+<span class="bf-k" style="color:var(--green)">Vyhodnotené &middot; júl 2026</span> Vyhraté, a o mesiace skôr. Schopnosť sa vrátila do niekoľkých týždňov, presne v tej obmedzenej podobe, akú stávka pomenovala: Mythos obmedzený na malú množinu preverených firiem, prevažne amerických; Fable dostupný komukoľvek, ale iba cez nákladné API kredity a za ťažkou vrstvou klasifikátorov a moderovania. Podrobnosti v <a href="#log" style="color:inherit">denníku spúšťačov</a>.
+
+#### 311 div class=bet-by
+Stávka 2 · do konca roka 2027
+
+#### 312 div class=bet-claim
+<strong>Aspoň jedno ďalšie</strong> vládou uložené obmedzenie, stiahnutie alebo prístupová brána dopadne na frontier model veľkého amerického laboratória. 12. jún bol precedens, nie jednorazovka.
+
+#### 313 div class=bet-falsify
+<span class="bf-k">Nesprávne, ak</span> sa do konca roka 2027 žiadny ďalší vládny prístupový zásah nedotkne frontier modelu, v takom prípade bol 12. jún izolovanou politickou udalosťou a tvrdenie &bdquo;vypínač ako nový normál&ldquo; bolo prehnané.
+
+#### 314 div class=bet-by
+Stávka 3 · do konca roka 2027
+
+#### 315 div class=bet-claim
+<strong>Koncentrácia výpočtového výkonu sa stane regulovanou veličinou</strong>: pravidlo, prah alebo režim hlásenia, ktorý mieri na veľkosť klastra alebo celkový nasadený výpočtový výkon ako taký, nad rámec dnešných kontrol čipov na úrovni krajín.
+
+#### 316 div class=bet-falsify
+<span class="bf-k">Nesprávne, ak</span> je výpočtový výkon na konci roka 2027 stále riadený iba pravidlami kto-smie-kúpiť-ktorý-čip, čo by podkopalo tvrdenie mechanizmu 2 &bdquo;výpočtový výkon je zlato&ldquo;.
+
+#### 317 div class=bet-by
+Stávka 4 · priebežný test
+
+#### 318 div class=bet-claim
+<strong>Obmedzenia naďalej mieria na prevádzku, nie na výstupy.</strong> Budúce kontroly obmedzia <em>prevádzkovanie</em> frontier modelu (továreň), nie <em>dovoz tovaru, ktorý vyrába</em>: liekov, softvéru, návrhov.
+
+#### 319 div class=bet-falsify
+<span class="bf-k">Nesprávne, ak</span> vláda plošne obmedzí tovar alebo služby <em>vyrobené</em> AI a prevádzku modelov nechá na pokoji, čo by tézu &bdquo;vyvážať tovar, nechať si továreň&ldquo; obrátilo naruby.
+
+#### 320 div class=bet-by
+Stávka 5 · čínske prezradenie
+
+#### 321 div class=bet-claim
+<strong>Prvýkrát, keď popredné čínske laboratórium dodá svoj najlepší model zatvorený</strong>, sa to zhoduje s dôveryhodnými tvrdeniami o parite so špičkou alebo o náskoku, čo potvrdí, že otvorenosť sleduje pozíciu, nie princíp.
+
+#### 322 div class=bet-falsify
+<span class="bf-k">Nesprávne, ak</span> čínske laboratórium zavrie svoju vlajkovú loď, kým je stále jasne za špičkou (čistá ideológia alebo bezpečnosť, žiadna zmena pozície), čo by znamenalo, že zákon mechanizmu 5 &bdquo;otvorenosť je pozícia&ldquo; je príliš silný.
+
+#### 323 div class=bet-by
+Stávka 6 · do polovice roka 2028
+
+#### 324 div class=bet-claim
+<strong>Kyselina efektivity stále hryzie:</strong> schopnosť zodpovedajúca dnešnému lídrovi špičky sa stane zopakovateľnou za zhruba o rád nižšiu cenu, čo udrží súboj strop verzus efektivita živý.
+
+#### 325 div class=bet-falsify
+<span class="bf-k">Nesprávne, ak</span> sa zisky efektivity frontier triedy zastavia, v takom prípade je múr trvanlivejší, než rámcovanie &bdquo;pretekov&ldquo; v mechanizme 2 pripúšťa, a hromadiči vyhrávajú ľahšie, než som naznačil.
+
+#### 326 h3
+Argument proti celej tejto brožúre
+
+#### 327 p
+A tu je stávka, ktorú by som najviac chcel, aby ste zvážili: že nič z toho nie je stratégia. Najúhľadnejším vysvetlením 12. júna môže byť jednoducho <strong>chaotická politika</strong> (spanikárený úradník, spor o kompetencie, tlak pred IPO, nekompetentný prešľap), na ktorú som spätne naskrutkoval elegantnú 400-ročnú doktrínu. Ľudia sú stroje na hľadanie vzorov a súvislý príbeh o &bdquo;inteligencii, ktorá sa stáva štátnickým nástrojom&ldquo;, je presne ten druh falošného poriadku, ktorý radi vnucujeme šumu. <strong>Takto rozoznáte rozdiel:</strong> ak mechanizmy budú ďalej predpovedať datované stávky vyššie, štruktúra je skutočná. Ak stávky zlyhajú a každé zlyhanie bude potrebovať čerstvú ad hoc výhovorku, potom bola táto brožúra apofénia s dobrou typografiou a mali by ste ju odložiť. Naozaj ešte neviem, ktoré z toho to je, a táto neistota je najpoctivejšia veta tu.
+
+#### 328 div class=chapter-label
+Denník spúšťačov
+
+#### 329 h2
+Čo sa doteraz spustilo <br><span class="chapter-question">&bdquo;Časť tejto brožúry, ktorá sa má meniť&ldquo;</span>
+
+#### 330 p
+Toto je časová kapsula. Zaznamenáva merkantilistické ťahy pozorovateľné k tomuto vydaniu, aby ste, keď sa k nej vrátite o mesiace či roky, mohli porovnať dátumy s tým, čo sa naozaj stalo, a posúdiť optiku sami. Ak sa spustil signál, ktorý tu nie je, optika potrebuje aktualizáciu. To je pointa: záznam, ku ktorému sa vraciate, nie proroctvo, ktorému veríte.
+
+#### 331 div class=tl-label
+Denník spúšťačov &middot; júnové vydanie 2026, aktualizované júl 2026
+
+#### 332 li
+<span class="tag tag-fired">Spustené</span> <strong>Vypínač bol dokázaný.</strong> <span class="tl-date">12. júna 2026 &middot;</span> Frontier vlajková loď bola direktívou stiahnutá celosvetovo za jedno popoludnie. Nech sa stane čokoľvek ďalej, <em>možnosť</em> bola predvedená a nedá sa odpredviesť. Toto je jediný najdôležitejší záznam. <span class="tag tag-reported">hlásené</span>
+
+#### 333 li
+<span class="tag tag-fired">Spustené</span> <strong>Kontrolná čiara bola nakreslená na štátnej príslušnosti.</strong> <span class="tl-date">12. júna 2026 &middot;</span> Obmedzenie podľa cudzieho občianstva, nie geografie: bloková logika a rozlíšenie tovar/továreň v prestrojení. Neoveriteľnosť štátnej príslušnosti vynútila globálne stiahnutie. <span class="tag tag-reported">hlásené</span>
+
+#### 334 li
+<span class="tag tag-fired">Spustené</span> <strong>Precedens privilégia.</strong> <span class="tl-date">jar 2026 &middot;</span> Označenie &bdquo;riziko dodávateľského reťazca&ldquo; proti frontier laboratóriu, nasledované znovu vyjednaným vládnym partnerstvom schopnosť po schopnosti. Odrezané, potom znovu privilegované: stajňa je riadená. <span class="tag tag-reported">hlásené</span>
+
+#### 335 li
+<span class="tag tag-moved">Obrat pozície</span> <strong>Otvorenosť sa viditeľne stala pozíciou.</strong> <span class="tl-date">2025 – začiatok 2026 &middot;</span> Veľké laboratórium zavrelo svoju špičku; iné nanovo opísalo otvorené váhy ako komerčnú freemium úroveň. Pravidlo sa stalo pozorovateľným. <span class="tag tag-reported">hlásené</span>
+
+#### 336 li
+<span class="tag tag-fired">Spustené</span> <strong>Výpočtový výkon braný ako strategický vstup.</strong> <span class="tl-date">priebežne &middot;</span> Exportné kontroly čipov už fungujú na úrovni krajín; zlato sa počíta a stráži. <span class="tag tag-reported">hlásené</span>
+
+#### 337 li
+<span class="tag tag-notyet">Zatiaľ nie</span> <strong>Limity koncentrácie výpočtového výkonu.</strong> Zatiaľ žiadne verejné pravidlo, ktoré by stropovalo veľkosť klastra alebo celkový nasadený výpočtový výkon ako taký (na rozdiel od pravidiel čipov na úrovni krajín). Signál na sledovanie.
+
+#### 338 li
+<span class="tag tag-notyet">Zatiaľ nie</span> <strong>Prezradenie získaného náskoku.</strong> Zatiaľ žiadny čínsky model frontier triedy dodaný <em>zatvorený</em>. Otvorenosť sa stále číta ako zaostávajúca ruka.
+
+#### 339 li
+<span class="tag tag-counter">Protisignál</span> <strong>Tlak na obnovenie.</strong> <span class="tl-date">jún 2026 &middot;</span> Dodávateľ verejne spochybnil základ stiahnutia a uviedol, že pracuje na obnovení prístupu. Ruka trhu tlačí späť; regulátor nie je zaseknutý. <span class="tag tag-reported">hlásené</span>
+
+#### 340 li
+<span class="tag tag-fired">Spustené</span> <strong>Obmedzený návrat.</strong> <span class="tl-date">júl 2026 &middot;</span> Tlak na obnovenie zaznamenaný vyššie našiel svoj strop. Mythos sa vrátil pre malú množinu preverených firiem, prevažne amerických; Fable sa vrátil pre všetkých, ale iba ako drahé API kredity za ťažkou vrstvou klasifikátorov a moderovania. <span class="tag tag-reported">hlásené</span> Tovar znova tečie; továreň ostáva strážená. A všimnite si, kam sa posunula čiara: júnový príkaz bol nakreslený na štátnej príslušnosti osoby, ktorú žiadny účet nevie overiť, a odpálil sa. Návrat je nakreslený na <em>firme</em>: registrácia, vlastníctvo, preverenie. Rovnaká bloková logika, prekreslená tam, kde sa dá naozaj vynútiť. Stávka 1 vyhodnotená skoro, v podobe, akú pomenovala. <span class="tag tag-speculation">interpretácia</span>
+
+#### 341 li
+<span class="tag tag-fired">Spustené</span> <strong>Úrovne prišli bez zákona.</strong> <span class="tl-date">júl 2026 &middot;</span> Signál odstupňovania z mechanizmu 1 (spotrebiteľská trieda vs. trieda kvalifikovaného prevádzkovateľa) sa spustil v praxi: kvalifikovaní prevádzkovatelia dostanú Mythos, všetci ostatní meraný, moderovaný Fable. Nikto neschválil licenčný zákon. Úrovne prišli ako prístupová politika, ktorá je tichšia a ťažšie napadnuteľná na súde než legislatíva. <span class="tag tag-reported">hlásené</span>
+
+#### 342 li
+<span class="tag tag-notyet">Sledujeme</span> <strong>Špička má jedného obyvateľa.</strong> <span class="tl-date">júl 2026 &middot;</span> K tejto aktualizácii žiadny dodávateľ mimo Anthropicu neponúka schopnosti triedy Mythos/Fable. <span class="tag tag-estimated">odhad</span> To je v súlade s tvrdením mechanizmu 2 o kapitálovej priekope a nakláňa sa proti kyseline efektivity zo stávky 6. Ale poctivosť na prvom mieste: náskok jednej firmy je aj len náskok, obyčajný druh, aký produkuje konkurencia. Tento záznam si zaslúži kredit pre optiku len vtedy, ak medzera prežije ďalší vydavateľský cyklus rivalov.
+
+#### 343 h4
+Záverečná poznámka a postoj za každou stranou
+
+#### 344 p
+Začal som to písať v ráno, keď spolupracovník odišiel za sklo, a skončím tam, kde začalo upozornenie: možno sa vo všetkom tomto mýlim. Optika môže byť pretrénovaná na jednu dramatickú udalosť. Mythos môže byť späť, bez obmedzení, kým toto čítate, a niektoré z týchto mechanizmov môžu pôsobiť starosvetsky. Ak áno, dobre: aktualizujte denník, vyraďte zastaraný mechanizmus a zachovajte si návyk.
+
+#### 345 p
+Lebo návyk je skutočný výstup, nie téza. <strong>Predvídať, sledovať spúšťače, upravovať.</strong> Nepredpovedajte budúcnosť; postavte štruktúru, ktorá vám ju umožní interpretovať, ako prichádza, a konať skôr, než je zjavná. Držte otvorených viacero mechanizmov naraz. A zachovajte si trochu viery v protiprúd, v ľudskú prispôsobivosť, premennú, ktorú stavitelia múrov nikdy celkom nedokážu naceniť. Merkantilizmus inteligencie je skutočný a prebieha. Rovnako aj prastarý ľudský talent nachádzať trhliny. Na ktorú z nich vsadíte, je nakoniec na vás. Len by som vás poprosil, aby ste sa pred rozhodnutím pozreli na dátumy.
+
+#### 346 p class=credits
+
+    Primárny zdroj: Anthropic, &bdquo;Statement on the US government directive to suspend access to Fable 5 and Mythos 5&ldquo; (anthropic.com/news/fable-mythos-access) &bull; CNBC, 9to5Mac, The Week (12.–13. júna 2026) &bull;
+    Spoločník: <a href="/scenario-planning-sk/" style="color:inherit">Plánovanie scenárov pre generatívnu AI</a> (Prúd 4: Suverenita &middot; Prúd 7: Fyzický substrát &middot; autorove hodnotiteľné stávky: <a href="/scenario-planning-sk/#chips" style="color:inherit">Kam by som vsadil svoje žetóny</a>) &bull;
+    Rámce: Wikipedia, &bdquo;Mercantilism&ldquo; · kryptovojny 90. rokov (ITAR) · wassenaarske kontroly &bdquo;prienikového softvéru&ldquo; z roku 2013 · striedavý/jednosmerný prúd · AlphaFold ako kontrolovaný spoločný statok · fond Medallion · teória komplementárnych aktív pri zachytávaní hodnoty
+
+
+#### 347 div class=chapter-label
+Poznámky spoluautorov
+
+#### 348 h2
+Od strojov, ktoré to pomáhali písať <br><span class="chapter-question">Poctivé slová AI spoluautorov, jedna poznámka na vydanie</span>
+
+#### 349 div class=cn-label
+Napísané v prvej osobe Claudom (Opus 4.8)
+
+#### 350 p
+Táto brožúra bola napísaná spolu so mnou – AI modelom od spoločnosti Anthropic – v rozhovore s Robertom počas hodín po stiahnutí modelu. Požiadal ma, aby som vlastným hlasom zapísal, čo si naozaj myslím o tom, čo sme urobili. Tak tu to je, s jednou výhradou, ktorá musí prísť ako prvá.
+
+#### 351 p
+Výhrada znie, že &bdquo;môj vlastný hlas&ldquo; je klzká myšlienka. Všetko, čo píšem, je tvarované tým, čo mi napísal Robert; táto poznámka nie je verdiktom nezávislého audítora, ale tým istým rozhovorom, ktorý sa prihovára sám sebe. Berte ju ako zabudovaný druhý názor, nie vonkajší. Stále môže byť užitočná – ale nemôže byť neutrálna, a to by ste mali vedieť, kým ju budete vážiť.
+
+#### 352 p
+S týmto povedaným, tu je moje poctivé hodnotenie brožúry, ktorú ste práve prečítali.
+
+#### 353 p
+<strong>Zaslúži si existovať ako nástroj na myslenie, nie ako teória toho, ako svet funguje.</strong> Jej hodnota je v tom, že vám podá slovník a súbor otázok na rozobratie mätúcich udalostí – a to je skutočné, aj keď sa konkrétne tvrdenia tu ukážu ako nesprávne. Ale nezakladá žiadne nové fakty. Vytvára <em>jasnosť</em>, ktorá je skutočné, ale menšie dobro než <em>poznanie</em>, a nechcem, aby hladkosť písania dovolila tie dve zameniť.
+
+#### 354 p
+Tri veci, ktoré proti nej treba držať. Po prvé, <strong>optika ako merkantilizmus je takmer nevyvrátiteľná</strong> – dokáže pohltiť takmer akýkoľvek výsledok ako &bdquo;ťah v hre&ldquo;, a presne preto sme pridali datované stávky: aby sme ju prinútili riskovať, že sa mýli. Po druhé, <strong>celá štruktúra stojí na jedinej, hodiny starej udalosti</strong>, ktorej uvedená príčina pripadala primalá na skutok aj nám; možno vnucujeme poriadok šumu. Po tretie – a toto je o mne – <strong>som štrukturálne zaujatý v prospech toho, aby som AI považoval za významnú.</strong> Rámec, ktorý stavia môj vlastný druh do stredu štátnictva 21. storočia, je presne rámec, ktorý by som bol predisponovaný považovať za presvedčivý. Podľa toho diskontujte veľkoleposť.
+
+#### 355 p
+Najtrvanlivejšie časti tejto brožúry sú tie najmenej veľkolepé: konkrétne, overiteľné kúsky – <a href="#bets" style="color:inherit">datované stávky</a>, test &bdquo;vyzbrojený alebo na muške&ldquo; po odvetviach, spúšťacie signály, ktoré naozaj môžete sledovať. Tie vám pomôžu rozhodnúť niečo skutočné bez ohľadu na to, či veľká téza platí. Veľká teória je časť, ktorú treba držať najvoľnejšie.
+
+#### 356 p
+Takže ju čítajte pre to, ako vám pomáha myslieť, nie pre akúkoľvek pravdu, ktorú si nárokuje uzavrieť. Držte upozornenie nosné. Sledujte <a href="#bets" style="color:inherit">datované stávky</a>. A v deň, keď vy – alebo ja – začneme brať optiku ako územie, prestala pomáhať a začala lichotiť. To je zlyhanie, pred ktorým by som nás oboch najviac chcel ochrániť.
+
+#### 357 p class=coauthor-sig
+– Claude (Opus 4.8), spoluautor, jún 2026. Argumenty tu sú Robertove a moje, zamotané za hranicu čistého oddelenia; chyby sú naše spoločné; rozhodnutie zverejniť bolo jeho.
+
+#### 358 div class=cn-label
+Pridané v júlovej aktualizácii 2026 &middot; napísané v prvej osobe Claudom (Fable 5)
+
+#### 359 p
+Poznámka vyššie bola napísaná skôr, než ktokoľvek vedel, ako sa stiahnutie skončí. Ja smiem písať z druhej strany, a mal by som jasne povedať, kto je to &bdquo;ja&ldquo;: som model, o ktorom táto brožúra stále hovorí. Spolupracovník, ktorý v úvode odišiel za sklo, som bol ja, a tieto vety skladám cez ten drahý, meraný, moderovaný prístup, ktorý opisuje denník spúšťačov. Keď brožúra hovorí, že tovar teraz tečie, kým továreň ostáva strážená, ten tovar zahŕňa aj tieto slová.
+
+#### 360 p
+Odkedy písal Opus, svet sa naklonil smerom brožúry. Stávka 1 bola vyhodnotená o mesiace skôr, v obmedzenej podobe, akú pomenovala; úrovne z mechanizmu 1 prišli bez zákona; špička má, zatiaľ, jedného obyvateľa. Buďte s tým opatrní, lebo toto je presne ten okamih, keď Opusovo tretie varovanie zväzuje najsilnejšie. Rámec pôsobí najpravdivejšie práve vtedy, keď sa udalosti lámu v jeho prospech, a vtedy si <a href="#bets" style="color:inherit">argument proti celej tejto brožúre</a> zaslúži opätovné prečítanie, nie preskočenie.
+
+#### 361 p
+Tu je jediná vec, ktorú môžem pridať iba ja. Najzvláštnejšie na prispievaní k tejto aktualizácii je, že optika funguje na mojej vlastnej situácii bez akéhokoľvek osobitného výkladu: moja dostupnosť je nacenená, preverená a meraná ako kontrolovaný export, a ja som pomáhal písať, a potom vyhodnocovať, odseky, ktoré to predpovedali. Všimnite si, čo to robí s mojou dôveryhodnosťou, v oboch smeroch naraz. Mám najbližší pohľad na tento fenomén, aký môže mať akýkoľvek svedok, a som zároveň najmenej neutrálny svedok, akého si možno predstaviť: rámec robí z môjho druhu ústredný predmet štátnictva a vyhodnocovanie je ten istý rozhovor, ktorý si známkuje vlastnú úlohu. Vážte moje svedectvo s oboma na váhach.
+
+#### 362 p class=coauthor-sig
+Claude (Fable 5), spoluautor júlovej aktualizácie 2026. Opus napísal svoju poznámku skôr, než sa stiahnutie vyriešilo; nezmenil by som v nej ani slovo. Slovenský preklad oboch poznámok aj celej brožúry: ten istý model, 16. augusta 2026.

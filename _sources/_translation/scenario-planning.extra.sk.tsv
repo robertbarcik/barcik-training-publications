@@ -1,0 +1,50 @@
+# literal replacements (old<TAB>new) applied after segment injection — JS strings and legend labels
+Inference capacity &middot; ~2 yr</div>	Inferenčná kapacita &middot; ~2 roky</div>
+Training runs &middot; ~3 yr</div>	Tréningové behy &middot; ~3 roky</div>
+Research frontier &middot; ~4+ yr</div>	Výskumná špička &middot; ~4+ rokov</div>
+infra:'Colossus: 100K GPUs deployed in 122 days'	infra:'Colossus: 100K GPU nasadených za 122 dní'
+infra:'Rainier 500K · Abilene 450K GPUs'	infra:'Rainier 500K · Abilene 450K GPU'
+infra:'TMI restart · multi-GW sites'	infra:'reštart TMI · multi-GW lokality'
+detail:'ChatGPT / GPT-3.5', sub:'~175B dense', params:175, confidence:'Confirmed'	detail:'ChatGPT / GPT-3.5', sub:'~175B hustý', params:175, confidence:'Potvrdené'
+sub:'~1.8T MoE (280B active)', params:1800, confidence:'Leaked'	sub:'~1,8T MoE (280B aktívnych)', params:1800, confidence:'Uniknuté'
+sub:'~1–2T MoE', params:1500, confidence:'Estimated'	sub:'~1–2T MoE', params:1500, confidence:'Odhad'
+sub:'~2–5T MoE', params:3500, confidence:'Estimated'	sub:'~2–5T MoE', params:3500, confidence:'Odhad'
+detail:'Claude Fable 5* (early Mythos-class variant, Jun 9) · Opus 4.7 · Gemini 3.5', sub:'params N/A · outlier · see note below chart', confidence:'Confirmed'	detail:'Claude Fable 5* (raný variant triedy Mythos, 9. jún) · Opus 4.7 · Gemini 3.5', sub:'parametre neznáme · odľahlý bod · pozri poznámku pod grafom', confidence:'Potvrdené'
+detail:'Claude Mythos (full deployment) · GPT-6 (Spud) · next-gen frontier', sub:'~10–20T', params:15000, projected:true, confidence:'Projected'	detail:'Claude Mythos (plné nasadenie) · GPT-6 (Spud) · špička ďalšej generácie', sub:'~10–20T', params:15000, projected:true, confidence:'Projekcia'
+name:'From $700B', detail:'Models from $700B spend', sub:'~10–20T+ (est.)', params:15000, projected:true, confidence:'Projected'	name:'Z 700 mld. $', detail:'Modely z výdavkov 700 mld. $', sub:'~10–20T+ (odhad)', params:15000, projected:true, confidence:'Projekcia'
+name:'2029 gen', detail:'The generation the 2026–27 capex buys: the author’s chips bet (see “Where I’d Put My Chips”)', sub:'size unknown · dated bet, not an estimate', projected:true, authorBet:true, confidence:'Author bet · Jul 2026'	name:'gen. 2029', detail:'Generácia, ktorú kupuje capex 2026–27: autorova stávka na žetóny (pozri „Kam by som vsadil svoje žetóny“)', sub:'veľkosť neznáma · datovaná stávka, nie odhad', projected:true, authorBet:true, confidence:'Stávka autora · júl 2026'
+offset:2, label:'Inference' }	offset:2, label:'Inferencia' }
+offset:3, label:'Training' }	offset:3, label:'Tréning' }
+offset:4, label:'Research' }	offset:4, label:'Výskum' }
+label:'GPT-3 gen · ~175B'	label:'gen. GPT-3 · ~175B'
+label:'GPT-4 gen · ~1–2T'	label:'gen. GPT-4 · ~1–2T'
+label:'Opus gen · ~2–5T'	label:'gen. Opus · ~2–5T'
+label:'Mythos / Spud gen · ~10–20T?'	label:'gen. Mythos / Spud · ~10–20T?'
+label:'2029 gen · the chips bet'	label:'gen. 2029 · stávka na žetóny'
+' invested in '+year+(capex.projected?' (est.)':'')	' investovaných v roku '+year+(capex.projected?' (odhad)':'')
+<div class="info-lock">🔒 Locked · click dot or background to release</div>	<div class="info-lock">🔒 Uzamknuté · kliknite na bod alebo pozadie na uvoľnenie</div>
+:'Models in '+ty+'+'	:'Modely v roku '+ty+'+'
+<span class="info-hint">Hover or click any green investment dot to explore where the money goes. Dot size on the model timeline = estimated SOTA model size.</span>	<span class="info-hint">Prejdite myšou alebo kliknite na ktorýkoľvek zelený investičný bod a sledujte, kam idú peniaze. Veľkosť bodu na časovej osi modelov = odhadovaná veľkosť najlepšieho modelu.</span>
+[{label:'Inference from',year:m.year-2,color:'#E05A33'},{label:'Trained on',year:m.year-3,color:'#7C6DD8'},{label:'Research from',year:m.year-4,color:'#0EA5C9'}]	[{label:'Inferencia z',year:m.year-2,color:'#E05A33'},{label:'Trénované na',year:m.year-3,color:'#7C6DD8'},{label:'Výskum z',year:m.year-4,color:'#0EA5C9'}]
+'AI ERA (2022–202?)'	'ÉRA AI (2022–202?)'
+'DOT-COM ERA (1997–2005)'	'ÉRA DOT-COM (1997–2005)'
+label:'VC surges to $15B', detail:'Internet companies begin attracting serious venture capital'	label:'VC stúpa na 15 mld. $', detail:'Internetové firmy začínajú priťahovať vážny rizikový kapitál'
+label:'VC $54B · Pets.com $300M', detail:'Venture investment peaks. Speculative companies raise hundreds of millions.'	label:'VC 54 mld. $ · Pets.com 300 mil. $', detail:'Rizikové investície vrcholia. Špekulatívne firmy získavajú stovky miliónov.'
+yr:'Mar 2000', label:'Nasdaq peaks: 5,048', detail:'Nasdaq Composite reaches all-time high of 5,048.62 on March 10, 2000.'	yr:'mar 2000', label:'Nasdaq vrcholí: 5 048', detail:'Nasdaq Composite dosahuje historické maximum 5 048,62 dňa 10. marca 2000.'
+label:'Amazon − 94%', detail:'Amazon stock falls from $106 to $5.51. Revenue: $3.12B and growing. Pets.com dead after 268 days.'	label:'Amazon − 94 %', detail:'Akcie Amazonu padajú zo 106 $ na 5,51 $. Tržby: 3,12 mld. $ a rastú. Pets.com mŕtvy po 268 dňoch.'
+yr:'Oct 2002', label:'Nasdaq trough: 1,114', detail:'Nasdaq falls 78% from peak. $5T+ in market value destroyed. Recovery takes 15 years.'	yr:'okt 2002', label:'Dno Nasdaqu: 1 114', detail:'Nasdaq padá o 78 % z vrcholu. Zničených vyše 5 bil. $ trhovej hodnoty. Zotavenie trvá 15 rokov.'
+label:'Amazon profitable', detail:'Amazon first profitable year: $35M on $5.26B revenue. Revenue never stopped growing.'	label:'Amazon ziskový', detail:'Prvý ziskový rok Amazonu: 35 mil. $ pri tržbách 5,26 mld. $. Tržby nikdy neprestali rásť.'
+label:'ChatGPT launches', detail:'ChatGPT reaches 100M users in 2 months. Hyperscaler capex: $140B.'	label:'Štart ChatGPT', detail:'ChatGPT dosahuje 100 mil. používateľov za 2 mesiace. Capex hyperškálových firiem: 140 mld. $.'
+label:'Capex $251B (+62%)', detail:'Sequoia publishes "AI\'s $600B Question." Stability AI CEO resigns. Inflection acqui-hired.'	label:'Capex 251 mld. $ (+62 %)', detail:'Sequoia publikuje „AI\'s $600B Question“. Šéf Stability AI odstupuje. Inflection kúpený pre ľudí.'
+label:'IPOs · $700B capex', detail:'Anthropic filed confidential S-1 June 1, 2026 (Series H: $965B). OpenAI expected to follow at $1T+. Big Four capex: ~$700B.'	label:'IPO · capex 700 mld. $', detail:'Anthropic podal dôverný S-1 1. júna 2026 (séria H: 965 mld. $). Očakáva sa, že OpenAI bude nasledovať pri 1 bil. $+. Capex Veľkej štvorky: ~700 mld. $.'
+detail:'If history rhymes: correction zone. Revenue gap of $500–600B must close or capex must slow.'	detail:'Ak sa história rýmuje: zóna korekcie. Medzera v tržbách 500–600 mld. $ sa musí uzavrieť, alebo capex musí spomaliť.'
+detail:'Survivors emerge. Which AI companies had real revenue, real customers, and cash reserves?'	detail:'Vynárajú sa preživší. Ktoré AI firmy mali skutočné tržby, skutočných zákazníkov a hotovostné rezervy?'
+label:'What survived?', detail:'The technology doesn\'t disappear. The funding does. Who is your vendor in this timeline?'	label:'Čo prežilo?', detail:'Technológia nezmizne. Zmizne financovanie. Kto je váš dodávateľ na tejto časovej osi?'
+{x:100,w:220,label:'Surge'},{x:320,w:200,label:'Peak'},{x:520,w:200,label:'Correction'},{x:720,w:280,label:'Recovery / ???'}	{x:100,w:220,label:'Vzostup'},{x:320,w:200,label:'Vrchol'},{x:520,w:200,label:'Korekcia'},{x:720,w:280,label:'Zotavenie / ???'}
+<span class="info-hint">Hover over timeline events to explore the parallel · Click cards below to flip</span>	<span class="info-hint">Prejdite myšou po udalostiach na časovej osi a preskúmajte paralelu · Kliknutím na karty nižšie ich otočíte</span>
+'Projected →'	'Projekcia →'
+'NOW'	'TERAZ'
+'Capability'	'Schopnosť'
+'Capex'	'Capex'
+'Models'	'Modely'
+'Big 5'	'Veľká 5'

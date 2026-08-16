@@ -85,3 +85,12 @@ Cross-booklet consistency: scenario-planning C4 log already records the same gat
   events lean its way, and flags its doubled bias (nearest witness, least neutral). Disclaimer,
   section chrome, and nav pluralized ("Co-authors' notes"); root card updated (6 mechanisms,
   ~10,000 words, both signed notes, first bet scored).
+
+## 2026-08-16 — Slovak edition (Merkantilizmus generatívnej AI) at `/mercantilism-of-genai-sk/`
+
+Translated entirely by Fable 5, meaning-first, via `_sources/_translation/segments.py`
+(`mercantilism-of-genai.segments.txt` = EN leaf segments, `.segments.sk.txt` = SK; `inject` rewrites
+the spans in place and swaps head/lang/canonical/hreflang, sidebar lang link, SK colophon).
+Both co-author notes translated verbatim in position; the six mechanism anchors (`#m-utility`,
+`#m-open`, `#m-bloc` …) unchanged, so cross-links from the SK Token Economics / Scenario Planning
+editions resolve. EN page gained hreflang + "Čítať po slovensky" link.

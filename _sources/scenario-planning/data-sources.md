@@ -89,3 +89,14 @@ Companion publication: The Mercantilism of Generative AI (`/mercantilism-of-gena
 ## Retired framings (changelog)
 - "Scenario 4: Plateau + Regulation" → rebuilt as Current 5: From Lab to Production (May 2026); plateau sources (MMLU curves, Sutskever quotes, data-exhaustion projections) kept here for the record
 - "Agentic Acceleration" → rebuilt as Current 6: Hours and Dollars (May 2026)
+
+## 2026-08-16 — Slovak edition (Plánovanie scenárov pre generatívnu AI) at `/scenario-planning-sk/`
+
+Translated entirely by Fable 5, meaning-first, via `_sources/_translation/segments.py`
+(`scenario-planning.segments.txt` / `.segments.sk.txt` for the 720+ leaf segments plus
+`scenario-planning.extra.sk.tsv` for the 49 JS/SVG string literals: legend labels, capex/model
+data labels, dot-com timeline events, phase labels, "NOW" → "TERAZ", info-hint strings; the TSV
+matcher also resolves `\uXXXX` escapes). Section ids and the decoder/current anchors unchanged;
+JS verified with `node -e new Function(...)`. Terminology fixed in `GLOSSARY_SK.md` (prúdy,
+Dekodér capexu, Denník spúšťačov, Spúšťacie signály, "Kam by som vsadil svoje žetóny", tag set
+Spustené/Zatiaľ nie/Protisignál/Nabité/Potvrdené/Posunuté/Zvrat/Aktualizácia).

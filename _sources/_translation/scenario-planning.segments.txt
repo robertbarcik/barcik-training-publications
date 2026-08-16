@@ -1,0 +1,2200 @@
+# segments of scenario-planning/index.html — translate inner html in place; keep tags/attrs verbatim
+
+#### 0 title
+Scenario Planning for Generative AI &middot; barcik.training
+
+#### 1 a class=all-pubs-link
+&larr; All Publications
+
+#### 2 h2
+Scenario Planning
+
+#### 3 p
+for Generative AI
+
+#### 4 li
+<a href="#cover">Cover</a>
+
+#### 5 li
+<a href="#framing">The Question</a>
+
+#### 6 li class=nav-divider
+The Method
+
+#### 7 li
+<a href="#decoder">The Capex Decoder</a>
+
+#### 8 li class=nav-divider
+Currents
+
+#### 9 li
+<a href="#scenario-1">1. Continued Scaling</a>
+
+#### 10 li
+<a href="#scenario-2">2. Efficiency Revolution</a>
+
+#### 11 li
+<a href="#scenario-3">3. Financial Correction</a>
+
+#### 12 li
+<a href="#scenario-4">4. Sovereignty</a>
+
+#### 13 li
+<a href="#scenario-5">5. From Lab to Production</a>
+
+#### 14 li
+<a href="#scenario-6">6. Hours and Dollars</a>
+
+#### 15 li
+<a href="#scenario-7">7. The Physical Substrate</a>
+
+#### 16 li
+<a href="#scenario-8">8. Political Economy of Displacement</a>
+
+#### 17 li class=nav-divider
+Synthesis
+
+#### 18 li
+<a href="#synthesis">How the Currents Interact</a>
+
+#### 19 li
+<a href="#practice">How to Use This</a>
+
+#### 20 li
+<a href="#chips">Where I&rsquo;d Put My Chips</a>
+
+#### 21 div class=cover-label
+barcik.training
+
+#### 22 h1
+Scenario Planning<br>for Generative AI
+
+#### 23 p class=cover-subtitle
+Eight currents. One habit. Your strategy.
+
+#### 24 div class=cover-meta
+
+      <span>Robert Barcik</span>
+      <span>July 2026</span>
+      <span><a href="mailto:robert@barcik.training" style="color: inherit;">robert@barcik.training</a></span>
+    
+
+#### 25 div class=chapter-label
+Introduction
+
+#### 26 h2
+The Question
+
+#### 27 p class=lead
+After almost every training session I run, the same three questions arrive, in the same order. First, curious: <em>where is this actually going?</em> Then, quieter: <em>will it take our jobs?</em> And finally, from whoever owns a budget: <em>so what should we bet on?</em>
+
+#### 28 p
+This booklet is my working answer to all three. It starts from a fact most of the debate skips: a large part of the future being asked about is already paid for. The four biggest hyperscalers have guided roughly <strong>$700&nbsp;billion</strong> of capital expenditure for 2026 alone. That money is already flowing into data centers, GPU clusters, and training runs, and it will produce outcomes whether or not anyone is ready for them. You don&rsquo;t have to guess what the labs believe about the future. You can read it off their balance sheets.
+
+#### 29 p
+That reading skill is where we begin. The next section, <strong>the capex decoder</strong>, shows how every dollar of hyperscaler capex carries a date stamp: inference capacity arriving in roughly two years, training runs in three, research breakthroughs in four or more. Ten minutes with it and AI headlines start sorting themselves by which year&rsquo;s money produced them.
+
+#### 30 p
+After the decoder come <strong>eight currents</strong>: the forces actively moving the field over the next two to three years, from continued scaling and the efficiency race to sovereignty, displacement economics, and the politics of both power grids and job losses. Each current has its own data, its own thesis, and its own trigger signals to watch, and each closes with a dated <strong>trigger log</strong> recording which signals actually fired since the previous edition. The log is the part of this booklet that is supposed to change every time you open it.
+
+#### 31 div class=an-label
+A note on what this booklet is, and isn&rsquo;t
+
+#### 32 p
+Classic scenario planning builds a few internally consistent future worlds and asks how you&rsquo;d fare in each. I do something deliberately different here: I track the <em>forces</em> those worlds would be built from, because in a field moving this fast the forces are more stable, and more observable, than any single future. The method is still scenario planning (foresee, watch triggers, adjust), applied to currents instead of finished scenarios. And I&rsquo;m not going to tell you which future will play out; I don&rsquo;t think that&rsquo;s the right question. The right question is which signals you&rsquo;d watch and how you&rsquo;d respond. If a current goes stale, retire it. If a trigger fires, act. That stance is behind every page that follows. Where I do state what I personally expect, it gets its own scoreable page at the end: <a href="#chips">Where I&rsquo;d Put My Chips</a>.
+
+#### 33 div class=chapter-label
+The Method
+
+#### 34 h2
+The Capex Decoder <br><span class="chapter-question">&ldquo;Reading the future from money already spent&rdquo;</span>
+
+#### 35 div class=card-label
+How to read it
+
+#### 36 div class=card-text
+The $228B spent in 2024 funded training clusters for models shipping 2&ndash;3 years later, plus inference infrastructure for the next generation (GPT-4 itself already ran on 2023 hardware). The ~$700B guided for 2026 funds models whose <em>architectures may not be designed yet</em>. Every capex dollar carries a date stamp for when its capability arrives.
+
+#### 37 div class=card-label
+What it can&rsquo;t tell you
+
+#### 38 div class=card-text
+Capex is a forecast made by people who can be wrong. It tells you what the labs <em>expect</em> to exist, which is different from what will. Efficiency leaps can strand the bet (Current 2), the funding can dry up before the payoff (Current 3), and a sovereign can sever the buyer from the seller (Current 4). The decoder dates the bets; the currents stress-test them.
+
+#### 39 p
+When people debate whether AI will &ldquo;live up to the hype,&rdquo; they often miss a crucial fact: the investment decisions have already been made. The Big Four hyperscalers (Alphabet, Amazon, Meta, and Microsoft) spent a combined $228 billion on capital expenditure in 2024, up 62% from $140 billion in 2023. For 2025, guided spending reached $416 billion. For 2026, guidance points to roughly $700 billion: Microsoft around $190B, Amazon around $200B, Alphabet $175&ndash;185B, Meta $115&ndash;135B, with Oracle adding tens of billions on top. This money is flowing into GPU clusters, power infrastructure, and data centers, and the vast majority is earmarked specifically for AI.
+
+#### 40 p
+The reason this is an <em>instrument</em> rather than just a large number is that capex doesn&rsquo;t translate into capability instantly. Building a data center takes 12&ndash;24 months. Procuring the chips takes 6&ndash;12 months. Training a frontier model takes another 6&ndash;12 months. Post-training, safety testing, and deployment add 3&ndash;6 more. Each year&rsquo;s spending splits into three bets running at different timescales: <strong>inference capacity</strong> arriving in roughly 2 years, <strong>training runs</strong> for models 3 years out, and <strong>research compute</strong> powering breakthroughs 4+ years away. Trace any year&rsquo;s money forward and you get a dated map of the future the labs themselves are planning for. The timeline below is that map. Click any investment dot and follow its three arrows.
+
+#### 41 div class=info-strip
+
+      <span class="info-hint">Hover or click any green investment dot to explore where the money goes</span>
+    
+
+#### 42 p
+* Fable 5 (June 2026) is plotted without a parameter size: it reads as an early, safeguard-wrapped variant of the Mythos generation rather than a sizing of the 2026 cohort. The full generation (Mythos / Spud) stays on the 2027 mark; see the staircase note below. The dashed blue <strong>2029 ring</strong> marks the author&rsquo;s dated bet, argued with probabilities in <a href="#chips">Where I&rsquo;d Put My Chips</a>, that the generation financed by 2026&ndash;27 capex lands there. A bet, deliberately drawn on the chart, and open to being wrong.
+
+#### 43 h4
+The staircase pattern
+
+#### 44 p
+Looking backward, AI capability has advanced in a staircase pattern: a major jump every roughly two years, followed by refinement within that generation. GPT-3 (2020) was dramatically surpassed by GPT-4 (2023), which was then refined through GPT-4 Turbo, GPT-4o, and eventually GPT-4o-mini, each iteration better and cheaper within the same capability tier. The same pattern appears with Claude 3 Opus giving way to Claude 3.5 Sonnet, then Claude Opus 4, refined through Opus 4.6 and 4.7. The next step, the Mythos generation, is due on this rhythm toward the end of 2026 and into 2027. What landed in June 2026 was an early variant of it; more on that below.
+
+#### 45 p
+If this pattern holds, the $228 billion spent in 2024 is currently producing the training infrastructure for models that ship in 2026&ndash;2027. The $416 billion committed for 2025 funds models arriving in 2027&ndash;2028. And the ~$700 billion planned for 2026 is investing in capabilities whose architectures may not even be designed yet: research compute for ideas that haven&rsquo;t been conceived. The clearest demonstration of this lag came on March 24, 2026, when OpenAI completed pre-training of GPT-6 (&ldquo;Spud&rdquo;) at the Abilene Stargate facility, a model whose existence was funded by 2024&rsquo;s capex, roughly three years before its expected public launch. Anthropic&rsquo;s next-generation &ldquo;Mythos&rdquo; sits in the same lane: limited testing with cybersecurity defenders through Q1 2026, and then, on June 9, 2026, a safeguard-wrapped variant shipped publicly as <strong>Claude Fable 5</strong> (the unrestricted Mythos 5 stayed reserved for cyberdefenders), priced at $10 input / $50 output per million tokens. Capability paid for by money committed before its architecture had a name.
+
+#### 46 p
+That June release is why Fable 5 carries an asterisk on the timeline above, plotted without a parameter count. Our reading<span class="tag tag-speculation">interpretation</span>: the staircase thesis holds, with the full Mythos / Spud generation remaining on the 2027 mark exactly where the lag pipeline puts it, and Fable 5 looks like that generation released early, in a deliberately wrapped form. The shape of the release supports this. Instead of the final rounds of fine-tuning, the alignment and moderation work appears to ride on a software layer beside the model (conservative safeguards that route sensitive topics to Opus 4.8), and the timing, eight days after Anthropic&rsquo;s S-1 filing, suggests the IPO calendar may have pulled the launch forward. Treat the early arrival as a preview of the step rather than the step itself: the trigger to watch is the full deployment.
+
+#### 47 p
+<em>Postscript, July 2026:</em> three days after launch, a federal directive took both models dark worldwide; they returned gated, with Mythos flowing through Project Glasswing for large US organizations and Fable available via API tokens behind a strong moderation layer, at premium prices. The <em>capability</em> reading above is unchanged: the step previewed is real, and the Remote Labor Index measured it before the restrictions landed (Current 6). But the <em>access</em> story has become its own force. Current 4 picks it up, and the <a href="/mercantilism-of-genai/">companion booklet</a> gives it a full treatment.
+
+#### 48 div class=an-label
+Inside the capex decision
+
+#### 49 p
+A number like $700 billion invites a lazy explanation: herd behavior, fear of missing out, a mania with better PR. It helps to picture how such a line actually gets defended. Imagine you are the hyperscaler executive who owns the AI capex bet. Before you sign, three things are put in front of you:
+
+#### 50 li
+<strong>Capabilities.</strong> The candidate next-generation models that can enter the training pipeline this cycle: what they can already do in the lab, and where the curves are still moving.
+
+#### 51 li
+<strong>Research roadmap.</strong> Which experiments are actually working, why the team believes the next architecture will pay off, and which specific bottlenecks the additional compute removes.
+
+#### 52 li
+<strong>Demand by horizon.</strong> Expected adoption broken down by industry, segment, and use case at 1-year, 2-year, and 3-year horizons, with separate curves for inference, training, and enterprise integration.
+
+#### 53 p
+These are not blind bets. A $700B line survives a board meeting only when all three of those slides look credible together, and the people reading them have information the rest of us lack: they have watched the next generation run in the lab, seen the internal capability curves, and read the demand signals from their largest customers. In a very literal sense, the boards approving this capex have already seen a piece of the future that consumers will meet as products two or three years later. That privileged view is exactly what makes the money readable as an instrument: when insiders with this much visibility keep raising the line, they are telling you what they saw.
+
+#### 54 p
+The discipline cuts both ways, and that keeps the instrument honest. When the slides stop looking credible, the line gets cut, publicly, in an earnings call. Watching the slides is the planning skill.
+
+#### 55 h4
+How to use it from here
+
+#### 56 p
+The decoder gives you a discipline for reading AI news. When a capability headline lands, ask which year&rsquo;s money produced it. When a capex announcement lands, ask which years it will produce: serving capacity in two, models in three, breakthroughs in four. The eight currents that follow are the forces pulling on this machinery: whether the staircase keeps climbing (Current 1), whether efficiency strands the clusters (Current 2), whether the investment timeline survives contact with the revenue timeline (Current 3), whether a sovereign cuts the wire between you and your vendor (Current 4), whether any of it actually reaches production (Current 5), whether the hours-and-dollars math starts moving work (Current 6), whether the atoms of power, chips, and permits keep pace with the money (Current 7), and what politics does when the displacement math starts working (Current 8). Each current ends with trigger signals to watch, and the decoder is how you date a trigger when it fires.
+
+#### 57 div class=chapter-label
+Current 1
+
+#### 58 h2
+Continued Scaling <br><span class="chapter-question">&ldquo;Does the staircase keep climbing?&rdquo;</span>
+
+#### 59 div class=card-label
+The thesis
+
+#### 60 div class=card-text
+The capability staircase keeps stepping: a major jump roughly every two years, and the ~$700B guided for 2026 is priced on at least one more step <em>above</em> the Mythos / Spud generation now arriving. The money is committed either way; the outcomes will land on your roadmap whether or not you planned for them.
+
+#### 61 div class=card-label
+The risk
+
+#### 62 div class=card-text
+DeepSeek V3 achieved frontier performance at 10&times; less compute. If algorithmic efficiency leaps continue, today&rsquo;s massive clusters could be overbuilt for training. But labs are betting <em>inference</em> will dominate, at roughly three-quarters of AI compute by 2030. The bet is on deployment scale as much as model size.
+
+#### 63 h4
+The bet, stated plainly
+
+#### 64 p
+The <a href="#decoder">capex decoder</a> shows where the money goes and when it comes back as capability. This current is the bet that the spending keeps being right: that above the step the field just took, there is at least one more, and that the clusters being poured today will be the ones that train it.
+
+#### 65 p
+Note what just happened to this bet: it began paying out. The 2024 cohort of capex was earmarked, in part, for models shipping 2026&ndash;2027, and on June 9, 2026, an early variant of the Mythos generation arrived as Claude Fable 5, with the full generation (Mythos proper, OpenAI&rsquo;s Spud) still expected toward late 2026 and into 2027, right on the lag pipeline&rsquo;s schedule. The live question is therefore twofold: whether the full deployment confirms the step the early variant previews, and whether the ~$700 billion of 2026 money buys a step <em>above</em> it, or the staircase flattens just as the most expensive clusters in history come online. That is what the trigger signals below are tuned to detect.
+
+#### 66 h4
+What is being built
+
+#### 67 p
+The scale of individual projects is staggering. Elon Musk&rsquo;s xAI deployed Colossus, a cluster of 100,000 GPUs, in just 122 days in late 2024. Project Rainier, the cluster Amazon built for Anthropic, spans roughly 500,000 chips. The Stargate project (a joint venture between OpenAI, Oracle, and SoftBank) targets 450,000 GPUs at its Abilene, Texas flagship and plans clusters exceeding one gigawatt of power, the equivalent of a nuclear power plant dedicated to AI, while Meta&rsquo;s Hyperion campus in Louisiana is designed for five. At these scales, the limiting factor shifts from chip availability to raw electrical power: the Three Mile Island nuclear facility is being restarted specifically to supply AI data centers. Whether the atoms can keep pace with the money is its own force now; <a href="#scenario-7">Current 7</a> takes up that story in full.
+
+#### 68 h4
+The inference bet
+
+#### 69 p
+A common misunderstanding is that all this money is about training bigger models. In reality, the labs are increasingly betting that <strong>inference</strong>, running models at scale for millions of users, will dominate AI compute. Deloitte&rsquo;s 2026 predictions already put inference at roughly two-thirds of all AI compute this year <a href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/compute-power-ai.html"><span class="tag tag-reported">reported</span></a>, and Brookfield&rsquo;s infrastructure forecast has it at roughly 75% of AI compute demand by 2030 <a href="https://www.brookfield.com/sites/default/files/documents/Brookfield_Building_the_Backbone_of_AI.pdf"><span class="tag tag-reported">reported</span></a>. Training a frontier model is a one-time cost; serving it to every enterprise customer, every developer, every consumer product is a continuous cost that scales with adoption. The capex surge is as much about building the serving infrastructure for AI-powered products as it is about training the next generation of models.
+
+#### 70 p
+This is the core planning insight of Current 1: even if you believe the current generation of AI is &ldquo;good enough,&rdquo; the investment already committed will produce outcomes over the next 2&ndash;4 years. Those outcomes (faster models, cheaper inference, new capabilities) will change what&rsquo;s possible and what&rsquo;s expected. Your plans need to account for a moving target rather than a snapshot.
+
+#### 71 div class=kn-value
+$416B
+
+#### 72 div class=kn-label
+2025 Big Four capex
+
+#### 73 div class=kn-value
+~$700B
+
+#### 74 div class=kn-label
+2026 capex (guided)
+
+#### 75 div class=kn-value
+~2 yr
+
+#### 76 div class=kn-label
+Capability staircase cycle
+
+#### 77 div class=kn-label
+AI compute for inference by 2030 (Brookfield)
+
+#### 78 h3
+Trigger signals: what to watch for
+
+#### 79 li
+A generally available (non-gated) release of the Mythos / Spud generation lands, and within 60 days at least three independent benchmarks (LMArena, SWE-Bench Pro, RLI) place it a clear tier above the Opus 4.8 / GPT-5.5 cohort
+
+#### 80 li
+Sector AI revenue (lab ARR plus hyperscaler AI-segment disclosures) grows faster than combined Big Four AI capex for two consecutive quarters, so the $500B+ gap narrows in absolute dollars, in filings
+
+#### 81 li
+Hyperscaler capex guidance continues rising &gt;30% year-over-year through 2027
+
+#### 82 li
+A frontier lab ships a named post-transformer or novel-MoE architecture with published utilization or scaling gains on the new mega-clusters, and a second lab adopts it within two quarters
+
+#### 83 div class=tl-label
+Trigger log &middot; July 2026 edition
+
+#### 84 li
+<span class="tag tag-fired">Fired early</span> <strong>Next-gen capability jump, in variant form.</strong> <span class="tl-date">June 9, 2026 &middot;</span> Claude Fable 5 released: the first Mythos-class model generally available, state-of-the-art on nearly every tested benchmark. Our reading<span class="tag tag-speculation">interpretation</span>: this is the 2027 generation arriving early as a safeguard-wrapped variant (alignment handled on a software layer rather than final fine-tuning, plausibly pulled forward by the IPO calendar), so the jump is real but previewed, not confirmed. Watch the full Mythos / Spud deployment toward late 2026&ndash;2027; that firing is what re-arms this trigger for the generation above.
+
+#### 85 li
+<span class="tag tag-moved">Update</span> <strong>The preview was withdrawn, then re-gated.</strong> <span class="tl-date">June 12 &ndash; July 2026 &middot;</span> Three days after launch, a federal directive took Fable 5 (and Mythos) dark worldwide; by early July access returned gated and expensive, with Mythos flowing through Project Glasswing for large US organizations and Fable via API tokens behind a moderation layer. The capability reading of this log&rsquo;s first entry survives intact: the step exists, and the RLI measured it (16.1%, Current 6) before the restrictions landed. But capability <em>existence</em> and capability <em>access</em> have formally split; the access story now lives in Current 4.
+
+#### 86 li
+<span class="tag tag-notyet">Not yet</span> <strong>Revenue gap closing.</strong> Anthropic&rsquo;s run-rate revenue roughly quintupled in five months (Current 3), but spending is still growing faster than sector-wide AI revenue.
+
+#### 87 h3
+Implications by role
+
+#### 88 div class=impl-role
+Developer
+
+#### 89 div class=impl-text
+New capability jumps every ~2 years. Build with model-agnostic abstractions. What&rsquo;s impossible today may be trivial in 18 months.
+
+#### 90 div class=impl-role
+Team Lead
+
+#### 91 div class=impl-text
+Plan for continuous retraining of team skills. Each model generation changes what tasks can be automated and how.
+
+#### 92 div class=impl-role
+CTO / VP Eng
+
+#### 93 div class=impl-text
+Justify continued AI investment with the staircase argument: current spend funds future capabilities, not today&rsquo;s.
+
+#### 94 div class=impl-role
+Procurement
+
+#### 95 div class=impl-text
+Expect higher API costs initially for each new generation, dropping quickly as competition arrives. Avoid multi-year lock-in.
+
+#### 96 p class=credits
+Data: company earnings reports &amp; guidance (Q1 2026) &bull; Big Four = Alphabet, Amazon, Meta, Microsoft
+
+#### 97 div class=chapter-label
+Current 2
+
+#### 98 h2
+Efficiency Revolution <br><span class="chapter-question">&ldquo;How Much Does GPT-4 Cost?&rdquo;</span>
+
+#### 99 div class=card-label
+The thesis
+
+#### 100 div class=card-text
+The cost to train a GPT-4-class model fell <strong>~95%</strong> in under two years. The cost to run one fell <strong>99%</strong>. When capability becomes a commodity, the moat moves from the model to everything built around it.
+
+#### 101 div class=card-label
+The risk
+
+#### 102 div class=card-text
+Cost compression assumes algorithmic efficiency continues compounding. If frontier capability requires genuinely new architectures (not just MoE optimizations), the floor may be higher than extrapolation suggests. Mistral&rsquo;s bet only works if the ceiling is low.
+
+#### 103 div class=s2-table-title
+Training cost to reach a stated capability tier
+
+#### 104 th
+Model
+
+#### 105 th
+Org
+
+#### 106 th
+Released
+
+#### 107 th
+Training cost
+
+#### 108 th
+Capability claim
+
+#### 109 td
+<strong>GPT-4</strong>
+
+#### 110 td
+OpenAI
+
+#### 111 td
+Mar 2023
+
+#### 112 td class=s2-cost
+&gt;$100M
+
+#### 113 td
+Frontier: set the &ldquo;GPT-4 class&rdquo; bar
+
+#### 114 td
+<strong>Llama 3.1 405B</strong>
+
+#### 115 td
+Meta
+
+#### 116 td
+Jul 2024
+
+#### 117 td class=s2-cost
+~$60M <span class="s2-muted">(compute)</span>
+
+#### 118 td
+Matches GPT-4 on most public benchmarks
+
+#### 119 td
+<strong>DeepSeek V3</strong>
+
+#### 120 td
+DeepSeek
+
+#### 121 td
+Dec 2024
+
+#### 122 td class=s2-cost
+$5.6M <span class="s2-muted">(final pre-training run)</span>
+
+#### 123 td
+Matches/beats GPT-4o on key benchmarks
+
+#### 124 td
+<strong>DeepSeek R1</strong>
+
+#### 125 td
+DeepSeek
+
+#### 126 td
+Jan 2025
+
+#### 127 td class=s2-cost
++$294K <span class="s2-muted">(RL on V3 base)</span>
+
+#### 128 td
+Matches OpenAI o1 on reasoning
+
+#### 129 td
+<strong>GLM-5.1</strong>
+
+#### 130 td
+Zhipu
+
+#### 131 td
+Apr 2026
+
+#### 132 td class=s2-cost
+<span class="s2-muted">undisclosed</span>
+
+#### 133 td
+744B MoE / 40B active, MIT license; 58.4% SWE-Bench Pro (beats GPT-5.4 and Opus 4.6)
+
+#### 134 td
+<strong>Mistral Medium 3.5</strong>
+
+#### 135 td
+Mistral
+
+#### 136 td
+Apr 2026
+
+#### 137 td class=s2-cost
+<span class="s2-muted">undisclosed</span>
+
+#### 138 td
+128B dense, self-hostable on Hugging Face; 77.6% SWE-Bench Verified
+
+#### 139 td
+<strong>DeepSeek V4-Pro</strong>
+
+#### 140 td
+DeepSeek
+
+#### 141 td
+Apr 2026
+
+#### 142 td class=s2-cost
+<span class="s2-muted">undisclosed</span>
+
+#### 143 td
+1.6T total / 49B active, hybrid attention; 80.6% SWE-Bench Verified
+
+#### 144 div class=s2-table-caption
+DeepSeek&rsquo;s $5.6M figure is the final pre-training run only; Epoch AI estimates the full base-to-R1 cost at $6&ndash;7M, and parent company High-Flyer invested $500M+ in GPUs total. R1 reuses V3&rsquo;s pre-training, so it isn&rsquo;t a from-scratch GPT-4-class run. The cleanest like-for-like comparison is GPT-4 &rarr; DeepSeek V3: roughly <strong>95% reduction in 20 months</strong>. The April 2026 wave (GLM-5.1, Mistral Medium 3.5, DeepSeek V4-Pro, plus Qwen 3.6 and Kimi K2.6) extends the curve: training costs are not publicly disclosed, but the resulting capability sits within striking distance of, or above, paid frontier on coding and reasoning.
+
+#### 145 div class=s2-table-title
+Inference price per million output tokens
+
+#### 146 th
+Date
+
+#### 147 th
+Frontier tier (closed)
+
+#### 148 th
+Sub-frontier closed
+
+#### 149 th
+Open-source equivalent
+
+#### 150 td
+Mar 2023
+
+#### 151 td class=s2-cost
+GPT-4: $60
+
+#### 152 td
+Nov 2023
+
+#### 153 td class=s2-cost
+GPT-4 Turbo: $30
+
+#### 154 td
+May 2024
+
+#### 155 td class=s2-cost
+GPT-4o: $15
+
+#### 156 td
+Jul 2024
+
+#### 157 td class=s2-cost
+GPT-4o-mini: $0.60
+
+#### 158 td class=s2-cost
+Llama 3 70B (Groq): ~$0.79
+
+#### 159 td
+Oct 2024
+
+#### 160 td class=s2-cost
+GPT-4o (cut): $10
+
+#### 161 td
+Jan 2025
+
+#### 162 td class=s2-cost
+DeepSeek V3: $0.42
+
+#### 163 td
+Apr 2026
+
+#### 164 td class=s2-cost
+Opus 4.7: $25
+
+#### 165 td class=s2-cost
+DeepSeek V4-Pro: $2.48 <span class="s2-muted">(~10&times; cheaper at frontier-equivalent)</span>
+
+#### 166 td
+Apr 2026
+
+#### 167 td class=s2-cost
+Qwen 3.6 35B-A3B: self-host <span class="s2-muted">(single RTX 4090, 73.4% SWE-Bench)</span>
+
+#### 168 div class=s2-table-caption
+Like-for-like at the frontier tier: GPT-4 ($60) &rarr; GPT-4o ($10) is an <strong>83% drop in 19 months</strong>. The often-cited <strong>99% drop</strong> compares GPT-4 launch ($60) to GPT-4o-mini ($0.60), a different (cheaper) capability tier. That comparison is still useful as a &ldquo;what does GPT-4-class output cost today?&rdquo; question, though it is a cross-tier comparison rather than a frontier-to-frontier one. By April 2026 the comparison that matters most for buyers is closed frontier vs open-weight frontier at the same capability tier: DeepSeek V4-Pro at $0.28 input / $2.48 output per million tokens is roughly an order of magnitude cheaper than Opus 4.6/4.7 on coding-and-reasoning workloads it can actually serve.
+
+#### 169 button class=toggle-btn
+
+    <span class="arrow">&#9654;</span> Mensch&rsquo;s hypothesis: where does value go?
+  
+
+#### 170 div class=hypothesis-strip
+Hypothesis &middot; not measured data
+
+#### 171 p
+Mistral CEO Arthur Mensch&rsquo;s thesis (paraphrased from early-2026 interviews): <em>generic intelligence will commoditize, so competitive advantage moves to specialized systems built around your specific data and domain.</em> Below are the layers he points to. Segment widths are equal; this is a stake-in-the-ground for discussion, not a measured value distribution:
+
+#### 172 span
+Model
+
+#### 173 div class=vc-tooltip
+Commodity layer: open-source matches proprietary
+
+#### 174 span
+Fine-tune
+
+#### 175 div class=vc-tooltip
+Domain adaptation, RLHF, evaluation pipelines
+
+#### 176 span
+Data &amp; RAG
+
+#### 177 div class=vc-tooltip
+Context pipelines, vector search, knowledge management
+
+#### 178 span
+Tooling
+
+#### 179 div class=vc-tooltip
+MCP servers, agent frameworks, orchestration, evaluation
+
+#### 180 span
+Domain expertise
+
+#### 181 div class=vc-tooltip
+Industry knowledge, workflow design, change management
+
+#### 182 p
+Discussion: <strong>If the model is free, which of these layers is your team actually investing in, and which would Mensch say you should be?</strong>
+
+#### 183 h4
+The training cost freefall
+
+#### 184 p
+In March 2023, OpenAI trained GPT-4 for an estimated $63&ndash;100 million; Sam Altman confirmed publicly that the cost exceeded $100 million including research and development. By July 2024, Meta had trained Llama 3.1 405B, an open-weight model matching GPT-4 on most benchmarks, for roughly $60 million in compute (30.84 million H100 GPU-hours). Then in December 2024, DeepSeek released V3, a model that matched or exceeded GPT-4o on key benchmarks for just $5.6 million in GPU time.
+
+#### 185 p
+That is a roughly 95% cost reduction in 20 months. A month later, DeepSeek released R1, which matched OpenAI&rsquo;s o1 on reasoning tasks for an incremental $294,000 in training cost.
+
+#### 186 p
+The caveats matter: DeepSeek&rsquo;s $5.6 million figure covers only the final pre-training run. Their parent company High-Flyer invested over $500 million in Nvidia GPUs total, and the full cost from base model to R1 is estimated at $6&ndash;7 million by Epoch AI. But even the generous estimate represents a 90%+ reduction from GPT-4. The key innovations enabling this (FP8 mixed-precision training, mixture-of-experts architectures with load balancing, and custom CUDA kernels achieving 85%+ GPU utilization versus the industry average of 55&ndash;65%) are algorithmic rather than hardware-bound. They can be replicated.
+
+#### 187 h4
+The open-source convergence
+
+#### 188 p
+The <a href="https://hai.stanford.edu/ai-index/2025-ai-index-report">Stanford HAI 2025 AI Index Report</a> documented the most important shift in the AI landscape: the performance gap between the best open-weight and proprietary models, measured by Chatbot Arena Elo ratings, shrank from 8.04% in January 2024 to 1.7% by February 2025, a 79% reduction in a single year. On MMLU specifically, the gap between US and Chinese models collapsed from 17.5 percentage points to just 0.3 between the end of 2023 and the end of 2024.
+
+#### 189 p
+Llama 3.1 405B was the first open model to match or exceed GPT-4 across multiple benchmarks in July 2024, roughly 16 months after GPT-4&rsquo;s release. By early 2025, that lag had compressed further. Open-source models now represent 62.8% of all models by count, and the best open LLMs lag closed ones by 5&ndash;22 months on benchmarks. One analysis projected open-closed parity by Q2 2026; that projection has aged poorly at the very top, where the <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report">2026 AI Index</a> shows the Elo gap re-widening to roughly 3.3% after the frontier stepped again. Read the convergence as a per-tier story: each capability tier commoditizes on the 5&ndash;22-month lag, while a genuinely new tier can re-open the gap above it.
+
+#### 190 h4
+Inference pricing in freefall
+
+#### 191 p
+The pricing evolution of OpenAI&rsquo;s own API tells the commoditization story in dollar terms. GPT-4 launched at $60 per million output tokens in March 2023. GPT-4 Turbo brought that down to $30 in November 2023. GPT-4o launched at $15 in May 2024, then was cut to $10 in October. Meanwhile, GPT-4o-mini offered GPT-4-class performance at $0.60 per million tokens, a 99% reduction from GPT-4&rsquo;s launch price in under two years.
+
+#### 192 p
+Open-source alternatives are even cheaper. Llama 3 70B via Groq costs roughly $0.79 per million output tokens. DeepSeek V3 is available at $0.42. Self-hosted 70B models on H100 hardware can reach approximately $0.07 per million tokens at full utilization. On average, open-source models cost 7.3 times less than their proprietary equivalents.
+
+#### 193 h4
+The April 2026 wave
+
+#### 194 p
+Over an 18-day window in April 2026, three frontier-class open-weight coding models shipped. <strong>GLM-5.1</strong> (Zhipu, April 7) is 744B MoE / 40B active under MIT license and posts 58.4% on SWE-Bench Pro, ahead of GPT-5.4 and Opus 4.6 on that bench. <strong>Qwen 3.6</strong> (Alibaba, April 16) split into variants; the 35B-A3B open variant runs on a single RTX 4090 with quantization and posts 73.4% SWE-Bench Verified, the throughput sweet spot for solo developers and on-prem deployments. <strong>Kimi K2.6</strong> (Moonshot, April 20) is 1T total / 32B active and introduces a 300-agent swarm primitive for parallel exploration on hard tickets, an agentic precursor that connects to <em>Hours and Dollars</em> in Section 6. <strong>DeepSeek V4-Pro</strong> (April 24) posts 80.6% SWE-Bench Verified at $0.28 input / $2.48 output per million tokens with a 1M-token context window, roughly an order of magnitude cheaper than Opus 4.6 at comparable coding capability, using hybrid attention (Compressed Sparse + Heavily Compressed) at about 27% of V3.2&rsquo;s per-token FLOPs. <strong>Mistral Medium 3.5</strong> (April 29) ships as a 128B dense model, self-hostable from Hugging Face, with 77.6% SWE-Bench Verified and configurable reasoning effort per request; it carries the cleanest EU-data-residency narrative on the market, paired with Mistral&rsquo;s $400M ARR (January 2026) at a $13.8B valuation.
+
+#### 195 p
+By mid-2026, the buyer question is no longer &ldquo;is open-weight good enough.&rdquo; It is which open-weight per workload, which hosting stack, and which sovereign deployment shape. For EU enterprises in particular, these intersect directly with the sovereignty story in Section 4: for the first time, &ldquo;self-hostable frontier-equivalent&rdquo; is a literal product description rather than a euphemism.
+
+#### 196 h4
+Where does value go when the model is free?
+
+#### 197 p
+Mistral CEO Arthur Mensch has been the most articulate voice on this shift. Across early-2026 interviews (the Big Technology Podcast in January, Davos and Bloomberg the same month, the Economic Times in February) he framed AI as becoming infrastructure, &ldquo;a utility&rdquo; measured by efficiency, capital discipline, and reliable delivery rather than novelty. His most quoted line: &ldquo;My generation of engineers has more or less succeeded in commoditizing its own profession.&rdquo; The corollary, which he argues consistently, is that competitive advantage will increasingly accrue to whoever builds the most specialized system around their specific data and domain, rather than to whoever has the largest model.
+
+#### 198 p
+If Mistral is right, and the cost data supports the argument, then the model itself becomes a commodity layer, and value migrates to the layers around it: fine-tuning and domain adaptation, data pipelines and retrieval-augmented generation, tooling and orchestration (agent frameworks, MCP servers, evaluation pipelines), and ultimately domain expertise. The organizations that win in this scenario are the ones that understand their own problems best, whichever model they happen to run.
+
+#### 199 div class=kn-label
+Training cost drop in 20 months
+
+#### 200 div class=kn-label
+DeepSeek V4-Pro input / MTok
+
+#### 201 div class=kn-value
+128B
+
+#### 202 div class=kn-label
+Mistral Medium 3.5 (self-hostable)
+
+#### 203 div class=kn-label
+Open-source cost advantage
+
+#### 204 h3
+Trigger signals: what to watch for
+
+#### 205 li
+An open-weight model lands within 5 points of a closed frontier release on the same headline benchmarks &le;90 days after that release
+
+#### 206 li
+A named Fortune-500 / CAC40 / DAX company states in an earnings call, filing, or press release that it moved a production workload from a proprietary API to open-weight, with a volume or cost figure
+
+#### 207 li
+Inference costs drop below $0.10 per million tokens for GPT-4-class output
+
+#### 208 li
+A hyperscaler explicitly cites model-efficiency gains as a reason for lowering capex or GPU-order guidance in an earnings call
+
+#### 209 div class=tl-label
+Trigger log &middot; July 2026 edition
+
+#### 210 li
+<span class="tag tag-counter">Counter-signal</span> <strong>Frontier prices went up, not down.</strong> <span class="tl-date">June 9, 2026 &middot;</span> Claude Fable 5 launched at $10 input / $50 output per million tokens (double Opus 4.7), and its post-recall return added a gating layer on top of the price (API-only, moderated; see Current 4). The efficiency revolution is real one tier below the frontier; at the very top, a genuine capability jump still commands a premium, now with a scarcity component. Watch whether open-weight labs close <em>this</em> gap on the usual 5&ndash;22-month lag.
+
+#### 211 li
+<span class="tag tag-notyet">Not yet</span> <strong>Sub-$0.10 GPT-4-class inference.</strong> DeepSeek V3 at $0.42 and self-hosted 70B at ~$0.07 (full utilization) bracket the threshold; no major API has crossed it at honest quality.
+
+#### 212 h3
+Implications by role
+
+#### 213 div class=impl-role
+Developer
+
+#### 214 div class=impl-text
+Open-source becomes the default stack. Invest in fine-tuning, RAG, and tooling skills rather than prompt engineering for a single vendor.
+
+#### 215 div class=impl-role
+Team Lead
+
+#### 216 div class=impl-text
+Build team expertise in the &ldquo;static layer&rdquo;: data pipelines, evaluation, deployment. Model expertise commoditizes fast.
+
+#### 217 div class=impl-role
+CTO / VP Eng
+
+#### 218 div class=impl-text
+Reduce vendor lock-in. The value shifts from which model you use to how you integrate it. Invest in infrastructure and domain specialization.
+
+#### 219 div class=impl-role
+Procurement
+
+#### 220 div class=impl-text
+Shift budgets from API costs to infrastructure and talent. Self-hosting becomes economically viable for high-volume workloads.
+
+#### 221 p class=credits
+Data: OpenAI API pricing history &bull; DeepSeek technical reports &bull; Stanford HAI 2025 AI Index &bull; Epoch AI
+
+#### 222 div class=chapter-label
+Current 3
+
+#### 223 h2
+Financial Correction <br><span class="chapter-question">&ldquo;Have We Seen This Before?&rdquo;</span>
+
+#### 224 div class=card-label
+The thesis
+
+#### 225 div class=card-text
+A financial correction kills companies, not technology. Amazon survived a <strong>94%</strong> stock drop. The internet kept working through the crash; the funding disappeared. So take AI working as a given, and ask the open question: <em>does the investment timeline match the revenue timeline?</em>
+
+#### 226 div class=card-label
+The risk
+
+#### 227 div class=card-text
+The parallel breaks in important ways. Dot-com investors were startups burning VC cash. Today&rsquo;s AI investors are the most profitable companies in history spending from earnings. Nasdaq P/E today is ~26&times; vs 60&times; at the dot-com peak. Calling it a bubble may be correct on timing but wrong on magnitude.
+
+#### 228 div class=info-strip
+
+      <span class="info-hint">Hover over timeline events to explore the parallel &bull; Click cards below to flip</span>
+    
+
+#### 229 h3
+Survivors vs. Casualties, then and now
+
+#### 230 p
+Click any card to flip it and see what happened.
+
+#### 231 div class=fc-tag survivor
+Survivor
+
+#### 232 div class=fc-name
+Amazon
+
+#### 233 div class=fc-stat
+Stock: &minus;94%
+
+#### 234 div class=fc-stat
+Peak $106 &rarr; trough $5.51
+
+#### 235 div class=fc-detail
+<strong>Revenue never stopped growing.</strong>
+
+#### 236 div class=fc-detail
+$2.76B (2000) &rarr; $8.49B (2005)
+
+#### 237 div class=fc-detail
+Had $1B cash from well-timed bond offering
+
+#### 238 div class=fc-detail
+Today: ~$2.5 trillion market cap
+
+#### 239 div class=fc-tag casualty
+Casualty
+
+#### 240 div class=fc-name
+Pets.com
+
+#### 241 div class=fc-stat
+Raised $300M
+
+#### 242 div class=fc-stat
+Revenue: $619K
+
+#### 243 div class=fc-detail
+<strong>Dead 268 days after IPO.</strong>
+
+#### 244 div class=fc-detail
+Spent $70M+ on ads
+
+#### 245 div class=fc-detail
+Negative unit economics from day one
+
+#### 246 div class=fc-detail
+Today: a cautionary tale
+
+#### 247 div class=fc-tag tbd
+Today
+
+#### 248 div class=fc-name
+OpenAI
+
+#### 249 div class=fc-stat
+Valuation: $852B<span class="tag tag-reported">reported</span>
+
+#### 250 div class=fc-stat
+Revenue: $25B ARR<span class="tag tag-reported">reported</span>
+
+#### 251 div class=fc-detail
+<strong>Projects &minus;$14B loss in 2026.</strong>
+
+#### 252 div class=fc-detail
+900M+ weekly users
+
+#### 253 div class=fc-detail
+Profitable by 2029 (earliest)
+
+#### 254 div class=fc-detail
+IPO window 2026&ndash;27 at $1T+; Anthropic filed first <em>(speculation)</em>
+
+#### 255 div class=fc-tag casualty
+Casualty
+
+#### 256 div class=fc-name
+Stability AI
+
+#### 257 div class=fc-stat
+CEO resigned Mar 2024
+
+#### 258 div class=fc-stat
+Revenue: &lt;$5M/quarter
+
+#### 259 div class=fc-detail
+<strong>Burn rate: $8M/month</strong>
+
+#### 260 div class=fc-detail
+~$100M in debt
+
+#### 261 div class=fc-detail
+Couldn&rsquo;t compete on frontier model training costs
+
+#### 262 div class=fc-detail
+The AI-era Pets.com?
+
+#### 263 div class=stat-text
+ChatGPT-sized products needed to justify current AI infrastructure capex (Barclays estimate)
+
+#### 264 h4
+The dot-com precedent
+
+#### 265 p
+On March 10, 2000, the Nasdaq Composite reached an all-time high of 5,048.62. By October 9, 2002, it had fallen to 1,114, a 78% decline that destroyed over $5 trillion in market value. The Nasdaq didn&rsquo;t close above 5,000 again until April 23, 2015, a recovery that took fifteen years. At the peak, venture capital investment had surged from roughly $7 billion in 1995 to nearly $100 billion in 2000, with internet companies absorbing 80% of all venture capital. Telecom companies invested more than $500 billion in infrastructure in the five years following the 1996 Telecommunications Act.
+
+#### 266 p
+The lesson that most people take from this period is: &ldquo;it was a bubble and it burst.&rdquo; The more useful lesson is that the survivors and casualties were distinguished by one thing: real revenue, real customers, and cash to survive a funding drought. The quality of their technology mattered surprisingly little.
+
+#### 267 h4
+The bubble argument has matured
+
+#### 268 p
+The most visible bear voice of the past two years, Ed Zitron, has been notable not for being right but for how the argument has had to shift. His original case, sustained across blog posts and his &ldquo;Better Offline&rdquo; podcast, was economic: AI was a value-destruction machine, hyperscaler capex was insane, and the unit economics simply did not work. Some of that case has aged well (the ROI gap is real). Most of it has not. Frontier-tier inference prices fell roughly 83% in 19 months (99% if you accept a cheaper capability tier, a distinction Current 2 unpacks). Anthropic&rsquo;s annualized revenue passed OpenAI&rsquo;s in April 2026 ($30B vs $25B)<span class="tag tag-reported">reported</span> and reached a reported $47B run-rate by mid-May. Cost decline plus revenue growth made the original economic argument harder to sustain in its strongest form. Kelsey Piper, writing in <em>The Argument</em>, documented the shift: Zitron&rsquo;s case has migrated from &ldquo;the economics don&rsquo;t work&rdquo; toward fraud and accounting allegations against OpenAI and the hyperscalers.
+
+#### 269 p
+The bear case is still alive, and parts of it remain sharp. But the goalposts moved, and that itself is a signal worth weighing. A bubble argument that survives collapsing costs and compounding revenue by switching from economics to fraud is a weaker argument than one that didn&rsquo;t have to switch. Hold the correction scenario open; don&rsquo;t hold this particular version of it as the bear case.
+
+#### 270 h4
+Amazon vs. Pets.com
+
+#### 271 p
+Amazon&rsquo;s stock fell 94% from roughly $106 in December 1999 to about $5.51 in late 2001. Yet its revenue grew every single year through the crash: $2.76 billion in 2000, $3.12 billion in 2001, $5.26 billion in 2003, $8.49 billion in 2005. It posted its first profitable quarter in Q4 2001 and its first full profitable year in 2003, with $35 million net income on $5.26 billion revenue. The key decision was a well-timed $1.25 billion bond offering that gave Amazon $1 billion in cash to survive the drought. Today it is worth roughly $2.5 trillion, over 800 times its trough market cap.
+
+#### 272 p
+Pets.com raised $300 million total, spent over $70 million on advertising while generating only $619,000 in revenue, and shut down 268 days after its IPO. Webvan burned through $1.5 billion building automated warehouses before filing bankruptcy. Boo.com raised $135 million, burned it in 18 months, and sold its assets for under $2 million. The common thread: negative unit economics, no path to profitability, and complete dependence on the next funding round.
+
+#### 273 h4
+AI investment has entered unprecedented territory
+
+#### 274 p
+The combined Big Four capex (Alphabet, Amazon, Meta, Microsoft) grew from roughly $140 billion in 2023 to $228 billion in 2024 (+62% year-over-year), to $416 billion in 2025, to roughly $700 billion guided for 2026, the same series the <a href="#decoder">capex decoder</a> plots. Capital intensity has reached historically unprecedented shares of revenue for these companies. Venture funding has concentrated similarly: global AI VC funding grew from roughly $45&ndash;50 billion in 2022 to $211 billion in 2025, the first year AI startups captured more than half (52.7%) of all global venture deal value.
+
+#### 275 p
+OpenAI reached an $852 billion post-money valuation<span class="tag tag-reported">reported</span> after its $122 billion funding round in March 2026. Annualized revenue hit $25 billion by February 2026<span class="tag tag-reported">reported</span>, up from roughly $2 billion in 2023. But the company projects a $14&ndash;17 billion loss in 2026<span class="tag tag-projected">projected</span>, is not expected to be profitable until 2029 at the earliest, and has committed $600 billion in compute spending through 2030. Anthropic&rsquo;s trajectory has been even steeper: revenue grew from $1 billion ARR in December 2024 to roughly $9 billion at the end of 2025 to a $47 billion run-rate by mid-May 2026<span class="tag tag-reported">reported</span>, its Series H closed at $965 billion post-money<span class="tag tag-reported">reported</span>, and on June 1, 2026 it filed a confidential S-1, the most concrete IPO signal short of a roadshow.
+
+#### 276 h4
+The revenue gap
+
+#### 277 p
+Sequoia partner David Cahn published <a href="https://sequoiacap.com/article/ais-600b-question/">&ldquo;AI&rsquo;s $600B Question&rdquo;</a> in June 2024, calculating that the AI infrastructure buildout requires roughly $600 billion in annual end-user revenue to justify itself. At the time, actual AI product revenue was roughly $100 billion, leaving a $500 billion annual gap. Since then, both spending and revenue have grown, but spending has grown far faster: capex roughly tripled while the revenue gap has likely widened, not narrowed. Barclays estimated that current capex levels would require the equivalent of 12,000 ChatGPT-sized products to break even.
+
+#### 278 h4
+Personal value is clear. Enterprise value is the open question.
+
+#### 279 p
+Two ROI stories sit on top of each other and are routinely conflated. Individual subscribers buying Claude or ChatGPT at $20&ndash;$200 a month report value clearly and stickily: paid consumer plans for the two leaders together cross tens of millions of seats by mid-2026, churn is unremarkable, and surveys consistently show personal users describing meaningful time savings. That part of the market has answered. The enterprise market has not.
+
+#### 280 p
+Omdia&rsquo;s October 2025 survey of 350 mid-to-large enterprises reported &ldquo;very good&rdquo; to &ldquo;extraordinary&rdquo; ROI from most respondents, a genuinely positive signal. Accenture, in parallel, found 61% of enterprise AI subscriptions underutilized due to poor integration. The MIT NANDA study reported 95% of organizations seeing zero return, with the measurement caveats already noted (no baselines, six-month cutoff, parallel-pilot designs). Reconcile these and the picture is: enterprises that have integrated AI into workflows are extracting real value; the majority that are still trying are not. The model can usually do the task, so the gap has little to do with capability. The bottleneck is how the model gets wired into the workflow. That is the subject of Section 5.
+
+#### 281 h4
+Vendor concentration is the under-discussed risk
+
+#### 282 p
+Q1 2026 saw AI venture funding concentrate to a degree that has no recent precedent in software. OpenAI, Anthropic, and xAI accounted for roughly 67.3% of all AI venture funding across more than 1,500 deals. OpenAI&rsquo;s $122 billion round at an $852 billion valuation consumed a non-trivial share of global venture capacity. Microsoft, Meta, Amazon, and Alphabet collectively guided investors toward ~$700 billion of capex in 2026. Three foundation-model labs sit on top of a stack the rest of the industry rents from.
+
+#### 283 p
+Concentration this extreme is usually argued as safety: the giants won&rsquo;t fail. The Anthropic-Pentagon situation (covered in Section 4) is the case to study before agreeing. A single sovereign decision in February 2026 severed access to a major AI vendor for the entire US federal government, mid-contract, with little notice. The technology kept working. The vendor didn&rsquo;t fail. The buyer simply couldn&rsquo;t buy. June 12 then supplied the general case: one directive, and every user of a model lost it at once (Current 4). That is a vendor-concentration failure mode the dot-com analogy didn&rsquo;t have. Stress-testing your AI strategy against vendor severance is now first-class planning work, not paranoia.
+
+#### 284 h4
+Why the parallel breaks, and why it might not matter
+
+#### 285 p
+There are important differences from the dot-com era. Today&rsquo;s leading AI investors are massively profitable companies spending from earnings, not startups burning venture capital. Nasdaq forward price-to-earnings ratios are approximately 26 times versus 60 times at the dot-com peak. Enterprise adoption is far more advanced: the large majority of big enterprises have implemented AI in some form, even if mostly in pilots. But the core structural risk, investment dramatically outpacing revenue realization, is identical. And new risks have emerged: AI-related corporate debt has ballooned to $1.2 trillion (JPMorgan), GPU rental prices have already fallen roughly 70% from peak, and the real useful life of GPU infrastructure may be 2&ndash;3 years rather than the 5&ndash;6 years used for accounting depreciation.
+
+#### 286 p
+AI is valuable; that part is settled. The planning question is whether your specific vendors, tools, and providers are the Amazon or the Pets.com of this cycle.
+
+#### 287 div class=kn-value
+$500&ndash;600B
+
+#### 288 div class=kn-label
+Annual AI revenue gap
+
+#### 289 div class=kn-label
+Amazon&rsquo;s stock drop (survived)
+
+#### 290 div class=kn-value
+268 days
+
+#### 291 div class=kn-label
+Pets.com IPO to shutdown
+
+#### 292 div class=kn-label
+Enterprises reporting AI-driven revenue (Deloitte)
+
+#### 293 div class=kn-value
+$1.2T
+
+#### 294 div class=kn-label
+AI-related corporate debt
+
+#### 295 h3
+Trigger signals: what to watch for
+
+#### 296 li
+OpenAI or Anthropic IPO valuations correct significantly (&gt;30%) within 6 months of listing
+
+#### 297 li
+Hyperscaler capex guidance flattens or declines for the first time since 2022
+
+#### 298 li
+&ge;3 AI-native startups that each raised &gt;$100M fail or get acqui-hired within one quarter (the Inflection / Character.AI pattern)
+
+#### 299 li
+A further &ge;30% H100/B200 spot-rate decline within 12 months on published marketplace indexes, or sustained sub-$1.00/GPU-hour rates for a full quarter (H100 rates already ~70% off peak)
+
+#### 300 li
+A default or impairment &ge;$1B on AI-infrastructure debt, reported in filings or rating-agency actions (the CoreWeave-style stranded-asset scenario)
+
+#### 301 div class=tl-label
+Trigger log &middot; July 2026 edition
+
+#### 302 li
+<span class="tag tag-fired">Armed</span> <strong>The IPO trigger is now live.</strong> <span class="tl-date">June 1, 2026 &middot;</span> Anthropic filed a confidential S-1 (Series H closed at $965B post-money; run-rate revenue ~$47B in mid-May, up from ~$9B at the end of 2025)<span class="tag tag-reported">reported</span>. The &ldquo;&gt;30% correction within 6 months of listing&rdquo; signal goes from hypothetical to measurable the day it trades. Mark the calendar; this is the cleanest trigger in the booklet.
+
+#### 303 li
+<span class="tag tag-notyet">Not yet</span> <strong>Capex flattening.</strong> All four hyperscalers raised 2026 guidance in the Q1 reporting cycle. The opposite of this trigger.
+
+#### 304 h3
+Implications by role
+
+#### 305 div class=impl-role
+Developer
+
+#### 306 div class=impl-text
+Diversify beyond AI-only skills. The developers who survived the dot-com bust were the ones who could build real products, not just demos.
+
+#### 307 div class=impl-role
+Team Lead
+
+#### 308 div class=impl-text
+Every AI project must have measurable ROI. &ldquo;We&rsquo;re exploring AI&rdquo; won&rsquo;t survive a budget cut. Show business value now.
+
+#### 309 div class=impl-role
+CTO / VP Eng
+
+#### 310 div class=impl-text
+Stress-test vendor viability. Which of your AI vendors is Amazon (real revenue, cash reserves) and which is Pets.com?
+
+#### 311 div class=impl-role
+Procurement
+
+#### 312 div class=impl-text
+Negotiate shorter contracts. Avoid lock-in with providers who may not exist in 18 months. Prefer pay-as-you-go over committed spend.
+
+#### 313 p class=credits
+Data: Nasdaq historical data &bull; Sequoia &ldquo;AI&rsquo;s $600B Question&rdquo; &bull; Barclays Research &bull; MIT NANDA, Deloitte, Omdia, Accenture enterprise surveys &bull; Kelsey Piper / The Argument
+
+#### 314 div class=chapter-label
+Current 4
+
+#### 315 h2
+Sovereignty <br><span class="chapter-question">&ldquo;What if your vendor isn&rsquo;t allowed to sell to you?&rdquo;</span>
+
+#### 316 div class=card-label
+The thesis
+
+#### 317 div class=card-text
+Vendor access can collapse for political or jurisdictional reasons faster than for technical ones. The on-prem option is now real: Chinese open-weight is at frontier parity, Mistral ships dense and self-hostable, and Meta&rsquo;s exit from open-weight frontier has shifted the &ldquo;Linux of AI&rdquo; mantle to a stack EU enterprises can actually deploy.
+
+#### 318 div class=card-label
+The risk
+
+#### 319 div class=card-text
+Self-hosting trades vendor risk for operational risk. Frontier-equivalent open-weight isn&rsquo;t free to run, and the eval/safety burden moves onto you. Some open-weight options carry dataset-provenance questions that surface only after a regulator looks closely. And the openness itself is positional: Meta and Mistral both closed when their position allowed, so Chinese open-weight tracking the frontier is a strategy that can change, not a promise.
+
+#### 320 p
+
+      Two things changed in the last four months: a major US AI vendor was severed from its largest federal customer by executive action, and the Chinese open-weight stack closed the gap on coding and reasoning at roughly 10&times; lower cost. Sovereignty stopped being a paranoid&rsquo;s concern.
+    
+
+#### 321 div class=kn-value
+Feb&ndash;Apr 2026
+
+#### 322 div class=kn-label
+Anthropic&ndash;Pentagon timeline (designation &rarr; injunction &rarr; appeal &rarr; workaround)
+
+#### 323 div class=kn-label
+DeepSeek V4-Pro per MTok
+
+#### 324 div class=kn-value
+744B
+
+#### 325 div class=kn-label
+GLM-5.1, MIT licensed
+
+#### 326 div class=kn-value
+128B dense
+
+#### 327 div class=kn-label
+Mistral Medium 3.5 (self-hostable)
+
+#### 328 div class=kn-value
+1 GPU
+
+#### 329 div class=kn-label
+Qwen 3.6 35B-A3B on RTX 4090
+
+#### 330 p
+
+      Five anchors. The first is the failure mode; the next four are the alternatives that now exist.
+    
+
+#### 331 h4
+Two collisions, one pattern
+
+#### 332 p
+Two events in spring 2026 turned sovereignty from hypothetical to operational. The first: on February 27, 2026, the US Defense Secretary designated Anthropic a &ldquo;supply chain risk,&rdquo; and the Trump administration ordered federal agencies to stop using Claude. Anthropic and the Pentagon had signed a $200 million contract in July 2025 under Anthropic&rsquo;s acceptable-use policy; the Pentagon wanted &ldquo;all lawful purposes&rdquo; access without limitation, and Anthropic refused to remove restrictions on autonomous weapons and domestic mass surveillance. Anthropic sued, won a preliminary injunction in late March (Judge Rita Lin called the designation &ldquo;Orwellian&rdquo; and First Amendment retaliation), then lost an appeals court bid in early April. As of June 2026 the litigation is still live, and the designation has proven narrower in practice than first implied: Anthropic argued, and Microsoft agreed, that it cannot reach customers outside the defense contracts themselves, so Claude remained available through M365, GitHub, and AI Foundry. But the headline lesson stands: the technology never stopped working. The buyer simply could not buy.
+
+#### 333 p
+The second: on April 8, Meta launched Muse Spark, its first proprietary closed-weight model, from Meta Superintelligence Labs under Alexandr Wang. After nearly a decade of public commitment to open frontier AI, Meta&rsquo;s frontier development is now closed. Existing Llama models remain available but no longer evolve. The combination of $115&ndash;135B in 2026 capex, competitive pressure from Chinese labs building commercial products on top of Llama, and the strategic goal of a deeply integrated &ldquo;personal superintelligence&rdquo; tied to Meta&rsquo;s user data drove the shift. Yann LeCun, Meta&rsquo;s most visible open-source advocate, departed in November 2025. The &ldquo;Linux of AI&rdquo; thesis did not survive contact with $100B+ compute economics, at least at the Western frontier.
+
+#### 334 h4
+June 12: the collision generalized
+
+#### 335 p
+Then, days before this edition closed, the pattern escalated from procurement to existence. On June 12, 2026, three days after the Fable 5 launch, the US government had Anthropic switch off Claude Mythos 5 and Fable 5 for all users worldwide, under a directive scoped by foreign nationality that, being unverifiable in practice, forced a global takedown. By early July the capability was coming back, but gated and priced: full Mythos access limited to large US organizations through Project Glasswing; Fable restored only through API tokens, at premium prices, behind a strong moderation layer. February&rsquo;s lesson was that one buyer can lose its vendor. June&rsquo;s lesson is stronger: every buyer can lose the model at once, and access comes back, when it comes back, on the sovereign&rsquo;s terms, tier by tier. The <a href="/mercantilism-of-genai/#framing">companion booklet</a> was written in the hours after that morning; it treats June 12 not as an outage but as a dress rehearsal.
+
+#### 336 h4
+The Chinese open-weight wave fills the gap
+
+#### 337 p
+Within 18 days in April 2026, three frontier-class open-weight coding models shipped from Chinese labs: GLM-5.1 (Zhipu, MIT-licensed 744B MoE / 40B active, 58.4% SWE-Bench Pro), Kimi K2.6 (Moonshot, 1T total / 32B active with a 300-agent swarm primitive), and DeepSeek V4-Pro (1.6T total / 49B active, 80.6% SWE-Bench Verified at roughly an order of magnitude lower output cost than Opus 4.6). Qwen 3.6 (Alibaba, April 16) split into variants; the 35B-A3B open variant runs on a single RTX 4090 with quantization. By workload as of mid-2026: DeepSeek V4-Pro for cheap large-context coding agents, Kimi K2.6 for hard multi-step tickets with its swarm primitive, GLM-5.1 for self-hosted production where MIT licensing matters, Qwen 3.6-35B-A3B for local laptop or single-GPU deployment. Llama 4 remains integration-default but is no longer evolving.
+
+#### 338 h4
+What this means for EU enterprises
+
+#### 339 p
+The buyer question has shifted from &ldquo;is open-weight good enough&rdquo; to a multi-part procurement question: which open-weight per workload, which hosting stack, which sovereign deployment shape. Mistral Medium 3.5 (128B dense, self-hostable, $400M ARR at a $13.8B valuation) is the cleanest EU-data-residency narrative on the market: dense rather than MoE, easier to deploy than the Chinese stacks, sovereign-aligned. Self-hosted Chinese open-weight is the other major option, with two caveats worth flagging: geopolitical exposure if procurement frameworks tighten, and dataset-provenance questions that some EU regulators are starting to ask.
+
+#### 340 p
+The deeper point: for the first time in this booklet&rsquo;s lifetime, &ldquo;self-hostable frontier-equivalent&rdquo; is not a euphemism. Procurement teams that previously assumed one or two US vendors had no realistic alternative now have several. The work shifts from negotiating with one vendor to architecting around the choice. That choice depends on which sovereign failure modes you weight highest.
+
+#### 341 h4
+Where this current continues
+
+#### 342 p
+Sovereignty is the one current where this booklet deliberately caps its own depth: the companion booklet, <a href="/mercantilism-of-genai/"><em>The Mercantilism of Generative AI</em></a>, treats it at book length. If you take two pieces of it, take these. First, the <a href="/mercantilism-of-genai/#m-armed">armed-versus-targeted test</a>: which industries get frontier access on favorable terms because the factory-holder can never become them, and which get the bloc&rsquo;s champion pointed at their customers because their margin <em>is</em> the cognitive work the factory produces. Second, the <a href="/mercantilism-of-genai/#m-open">&ldquo;open is a position, not a principle&rdquo; mechanism</a>: the reason this chapter prices the Chinese open-weight option as a strategy that can change rather than a guarantee, and the source of the cleanest single tell in either booklet: the day a leading Chinese lab ships its best model closed is the day it believes it has taken the lead. The companion&rsquo;s <a href="/mercantilism-of-genai/#bets">dated bets</a> are wired into this booklet&rsquo;s <a href="#chips">chips section</a>.
+
+#### 343 h3
+Trigger signals: what to watch for
+
+#### 344 li
+Additional supply-chain designations, recalls, or AUP collisions between frontier labs and sovereign buyers <em>(fired June 12; see log)</em>
+
+#### 345 li
+New sovereign-AI regulation requiring on-shore inference, training data, or model weights is <em>enacted</em> (not proposed) in the EU, a member state, or a G20 economy
+
+#### 346 li
+A Chinese open-weight release lands within 5 points of the closed frontier on its headline benchmarks &le;90 days after the closed release; and the inverse tell: a leading Chinese lab shipping its flagship <em>closed</em> fires this current, not Current 2 (see <a href="/mercantilism-of-genai/#bets">mercantilism Bet 5</a>)
+
+#### 347 li
+A named EU enterprise or top-10 EU systems integrator reports a production migration to sovereign or self-hosted stacks with a volume figure, or &gt;25% of its new AI deployments sovereign-hosted
+
+#### 348 li
+Counter-trigger: a signed agreement that formally rescinds an existing severance, designation, or recall (a full, ungated June 12 restoration would count)
+
+#### 349 div class=tl-label
+Trigger log &middot; July 2026 edition
+
+#### 350 li
+<span class="tag tag-fired">Fired</span> <strong>The kill switch, proven, then metered back on.</strong> <span class="tl-date">June 12, 2026 &middot;</span> A federal directive scoped by foreign nationality (unverifiable in practice) had Anthropic switch off Mythos 5 and Fable 5 worldwide, three days after launch. By early July, access returned gated: full Mythos only for large US organizations via Project Glasswing; Fable API-only, at premium prices, behind a strong moderation layer. This is the second severance event in five months; the first trigger above has now fired twice. The <a href="/mercantilism-of-genai/#bets">companion booklet&rsquo;s Bet 1</a> (gated return by end of 2026) fired within weeks of being written.
+
+#### 351 li
+<span class="tag tag-moved">Plot twist</span> <strong>The severed vendor is now a government partner.</strong> <span class="tl-date">June 9, 2026 &middot;</span> Four months after the supply-chain designation, Anthropic shipped Claude Mythos 5, the strongest cybersecurity model in the world, to cyberdefenders through Project Glasswing, <em>in collaboration with the US government</em>, while the Pentagon litigation continues. Three days later the same capability was switched off worldwide (above). Sovereign access gets renegotiated capability by capability, demonstrably in both directions. Plan for that rather than for a clean &ldquo;on/off&rdquo; switch.
+
+#### 352 h3
+Implications by role
+
+#### 353 div class=impl-role
+Developer
+
+#### 354 div class=impl-text
+Hostable open-weight as default for sensitive workloads. Build retrieval and tool layers model-agnostic; the model is now portable.
+
+#### 355 div class=impl-role
+Team Lead
+
+#### 356 div class=impl-text
+Maintain a portable inference layer behind your eval and retrieval pipelines. Treat vendor swap as a planned exercise, not a fire drill.
+
+#### 357 div class=impl-role
+CTO / VP Eng
+
+#### 358 div class=impl-text
+Multi-vendor strategy is no longer paranoia. Quantify single-vendor severance risk against revenue and regulatory exposure.
+
+#### 359 div class=impl-role
+Procurement
+
+#### 360 div class=impl-text
+Contracts should anticipate vendor severance. Insist on data-residency guarantees and explicit exit clauses; price in a second supplier.
+
+#### 361 p class=credits
+Data: court filings (Anthropic v. DoD) &bull; vendor releases (Meta Muse Spark, Mistral Medium 3.5) &bull; open-weight model cards (DeepSeek V4-Pro, GLM-5.1, Qwen 3.6, Kimi K2.6) &bull; Kelsey Piper / The Argument
+
+#### 362 div class=chapter-label
+Current 5
+
+#### 363 h2
+From Lab to Production <br><span class="chapter-question">&ldquo;What we learned from 2015, and what&rsquo;s different now&rdquo;</span>
+
+#### 364 div class=card-label
+The thesis
+
+#### 365 div class=card-text
+The bottleneck has moved from model capability to deployment. Same shape as the 2015 ML/DS production gap: statisticians could build models but not ship them. Now it&rsquo;s LLMs, and the talent &amp; tooling layer hasn&rsquo;t caught up to the capability.
+
+#### 366 div class=card-label
+The risk
+
+#### 367 div class=card-text
+This time is different. Less data-pipeline work (LLMs generate, they don&rsquo;t process). Much more testing and validation work (the damage potential is qualitatively higher). The MLOps cost curves don&rsquo;t transfer cleanly: the new shape is eval-heavy, not ETL-heavy.
+
+#### 368 p
+
+      The capability ceiling overstates what you can deploy. The deployment floor is where the gap actually sits, and that floor is what enterprise AI roadmaps now hit first.
+    
+
+#### 369 div class=kn-value
+40 pts
+
+#### 370 div class=kn-label
+Medical: 92% lab &rarr; 52% real-world (83-study meta-analysis)
+
+#### 371 div class=kn-value
+71 pts
+
+#### 372 div class=kn-label
+Coding: 97% HumanEval &rarr; 26% SWE-Lancer
+
+#### 373 div class=kn-label
+Enterprises reporting AI revenue impact (Deloitte 2026)
+
+#### 374 div class=kn-label
+Underutilized AI subscriptions (Accenture)
+
+#### 375 div class=kn-label
+MIT NANDA zero-ROI rate <em>(measurement caveats)</em>
+
+#### 376 p
+
+      Five lab-to-real-world gaps. The pattern is consistent across modalities, and it points away from capability as the binding constraint.
+    
+
+#### 377 h4
+The 2015 parallel
+
+#### 378 p
+Anyone who lived through machine learning&rsquo;s enterprise adoption between 2014 and 2018 has seen this shape before. Statisticians and data scientists arrived from math and statistics backgrounds, fluent in modeling but uneven in software engineering. They built models in notebooks; the models worked in the notebook; the models did not ship. The gap was real and load-bearing rather than a fashionable complaint. The eventual resolution was a decade of work on MLOps, feature stores, model registries, and cross-functional teams pairing data scientists with software engineers and platform people. The capability was always there. The path from capability to production took the better part of ten years to build out.
+
+#### 379 p
+The LLM gap has the same shape and is hitting enterprises hard right now. Capability has run ahead of the operational maturity to deploy it. Pilots multiply; production deployments lag. The MIT NANDA &ldquo;95% zero ROI&rdquo; figure has measurement issues, but even with conservative reframings the underlying message is correct: most enterprises haven&rsquo;t finished the deployment side. The 61% of AI subscriptions Accenture identified as &ldquo;underutilized due to poor integration&rdquo; is the same story stated more carefully. The same talent and tooling gap. Same response: build the bridge.
+
+#### 380 h4
+What&rsquo;s different this time
+
+#### 381 p
+The 2015 parallel is the right scaffold but it isn&rsquo;t a copy-paste. Two things are materially different, and they should reshape how teams budget the bridge.
+
+#### 382 p
+<strong>First, far less data-pipeline work.</strong> The 2015 ML era spent enormous effort on data engineering: ETL, feature pipelines, training-serving skew, feature stores. LLMs invert most of that. They generate outputs from unstructured inputs rather than processing structured data; the data layer is retrieval and context assembly, not feature transformation; high-volume ETL is largely not the bottleneck. Teams that assume their LLM deployment needs an MLOps-shaped data team will mis-budget. The work is real but it sits elsewhere.
+
+#### 383 p
+<strong>Second, far more testing and validation work.</strong> This is the part most enterprises systematically underestimate. An LLM can confabulate plausibly, an agent can take actions, output reaches end-users directly, and the damage potential of an undetected failure is qualitatively higher than &ldquo;our regression test set drifted.&rdquo; The work that was once 10&ndash;15% of MLOps spend (evaluation, monitoring, output review) becomes first-class infrastructure. Eval pipelines, red-teaming, calibration of human review, behavior change-management when a model upgrades: this <em>is</em> the deployment work itself. Teams that staff the bridge with the MLOps shape will discover the bridge is built wrong.
+
+#### 384 h4
+The benchmark-to-deployment gap, quantified
+
+#### 385 p
+The same pattern shows up in every domain that has been measured carefully. GPT-4 achieved 92% diagnostic accuracy in controlled medical studies, but a meta-analysis across 83 studies found only 52.1% overall AI diagnostic accuracy in real-world settings, nearly a 40-point gap. (The two numbers come from different studies, models, and task designs, so don&rsquo;t treat the subtraction as a measurement; the consistent <em>shape</em>, lab score far above field score, is the finding.) On the SWE-Lancer benchmark of real freelance coding tasks, even top models succeed only 26.2% of the time despite near-perfect HumanEval scores. On RE-Bench long-horizon tasks, AI systems score 4&times; higher than humans at 2 hours but humans outperform AI 2:1 at 32 hours. Deloitte&rsquo;s 2026 enterprise survey found 20% of enterprises reporting AI-driven revenue, with two-thirds still stuck in pilot. Every one of these numbers describes a deployment problem, and none of them a capability problem.
+
+#### 386 h4
+Regulation as a secondary force raising the floor
+
+#### 387 p
+Regulation plays a supporting role in this current rather than the headline, but it is a real second-order force, and one piece of news clarifies how to weight it. On May 7, 2026, EU negotiators reached provisional political agreement on the Digital Omnibus on AI: Annex III high-risk obligations are postponed from August 2, 2026 to December 2, 2027 (a 16-month deferral), and Annex I product-regulated high-risk obligations are deferred from August 2, 2027 to August 2, 2028. Watermarking and AI-content transparency shift by only three months, to December 2, 2026.
+
+#### 388 p
+The delay should not reduce urgency for buyers. General-purpose AI model obligations under Articles 50&ndash;55 are <em>unchanged</em> and continue on the original schedule. Article 5 prohibitions are already in force. The Article 4 AI literacy obligation is already binding. Standards and guidance will still publish close to the new deadlines. The Code of Practice on synthetic content is expected to finalise in May or June 2026. What the omnibus moved was the most expensive, most operationally heavy obligations, precisely the ones tied to deployment of high-risk systems. The deployment gap is the headline; regulation is the floor underneath it, which the omnibus moved but did not remove.
+
+#### 389 p
+Copyright runs in parallel. The Bartz v. Anthropic case produced a $1.5 billion class-wide settlement. The New York Times v. OpenAI multi-district litigation is still grinding through discovery: the expected spring 2026 summary judgment did not materialize; instead, a January 2026 ruling forced OpenAI to hand over a 20-million-conversation sample of ChatGPT logs, which will shape the fair-use fight. There are 56+ ongoing copyright lawsuits against AI companies. Every settlement raises the floor of data-provenance and due-diligence work required to deploy an LLM in production. Treat this as friction on the deployment side, not as a separate force.
+
+#### 390 h4
+What teams that bridge the gap actually look like
+
+#### 391 p
+The 2015 resolution was cross-functional teams: data scientist plus software engineer plus platform engineer. The 2026 resolution looks similar in shape but reweighted: <strong>evaluation engineers</strong>, <strong>red-team specialists</strong>, and <strong>workflow designers</strong> become first-class roles. Less feature-store work; more behavioral testing. Less ETL; more output review. Less concept drift; more model upgrades that change personality. The teams that ship LLM features into production at scale in 2026 are the ones that have already staffed this shape. Most haven&rsquo;t.
+
+#### 392 div class=kn-value
+40 / 71 pts
+
+#### 393 div class=kn-label
+Medical / coding lab-to-real-world gaps
+
+#### 394 div class=kn-label
+Enterprises reporting AI revenue (Deloitte)
+
+#### 395 div class=kn-label
+Underutilized AI subscriptions (Accenture)
+
+#### 396 div class=kn-value
++16 mo
+
+#### 397 div class=kn-label
+EU Annex III delay (Digital Omnibus, May 2026)
+
+#### 398 div class=kn-value
+$1.5B
+
+#### 399 div class=kn-label
+Bartz v. Anthropic settlement
+
+#### 400 h3
+Trigger signals: what to watch for
+
+#### 401 li
+First EU AI Act enforcement actions under remaining-on-schedule obligations (GPAI / Article 5)
+
+#### 402 li
+Major copyright ruling against AI training (NYT v. OpenAI summary judgment; the expected H1 2026 date already slipped, now watch H2 2026, see log)
+
+#### 403 li
+Your own internal pilot-to-production conversion rate stays below 20% across two quarters
+
+#### 404 li
+Evaluation / red-team line items appear in the majority of enterprise AI RFPs you receive in a quarter, or a major analyst framework (Gartner, Forrester) adds them as a named category
+
+#### 405 li
+Counter-trigger: an eval + monitoring + retrieval suite ships as a default bundled feature of at least two hyperscaler AI platforms (Bedrock, AI Foundry, Vertex) at no extra line item
+
+#### 406 div class=tl-label
+Trigger log &middot; July 2026 edition
+
+#### 407 li
+<span class="tag tag-moved">Moved</span> <strong>NYT v. OpenAI summary judgment slipped.</strong> <span class="tl-date">June 2026 &middot;</span> The merits ruling expected in spring did not land; the case is still in discovery, with a January order forcing OpenAI to produce 20 million ChatGPT conversation logs. The copyright floor under deployment keeps rising on settlements (Bartz: $1.5B), not yet on precedent.
+
+#### 408 li
+<span class="tag tag-notyet">Not yet</span> <strong>EU enforcement.</strong> No first enforcement action yet under the obligations that stayed on schedule (GPAI, Article 5). The Digital Omnibus deferral (May 2026) bought deployers time on Annex III; it did not change this trigger.
+
+#### 409 h3
+Implications by role
+
+#### 410 div class=impl-role
+Developer
+
+#### 411 div class=impl-text
+Reliability and observability beat capability chasing. Invest in eval harnesses, behavior tests, and output review tooling earlier than feels necessary.
+
+#### 412 div class=impl-role
+Team Lead
+
+#### 413 div class=impl-text
+Staff evaluation and red-team roles as first-class, not as &ldquo;someone&rsquo;s side responsibility.&rdquo; The bridge to production is mostly testing work.
+
+#### 414 div class=impl-role
+CTO / VP Eng
+
+#### 415 div class=impl-text
+Don&rsquo;t copy your MLOps org chart. Reweight from data engineering toward evaluation engineering. The deployment cost curve is differently shaped.
+
+#### 416 div class=impl-role
+Procurement
+
+#### 417 div class=impl-text
+Require vendors to ship eval and monitoring tooling alongside the model. Factor the May 2026 omnibus delay into compliance budgets but don&rsquo;t draw down readiness.
+
+#### 418 p class=credits
+Data: SWE-Lancer / SWE-Bench leaderboards &bull; medical AI meta-analysis (83 studies) &bull; Deloitte 2026, Accenture, MIT NANDA enterprise surveys &bull; EU AI Act + Digital Omnibus (May 2026) &bull; Bartz v. Anthropic settlement
+
+#### 419 div class=chapter-label
+Current 6
+
+#### 420 h2
+Hours and Dollars <br><span class="chapter-question">&ldquo;The two units that will decide displacement&rdquo;</span>
+
+#### 421 div class=card-label
+The thesis
+
+#### 422 div class=card-text
+Capability is becoming a function of two things employers can actually measure: <strong>how many hours an agent can work undisturbed</strong>, and <strong>what it costs per hour</strong> compared to the human it would replace. Both are improving fast. Parameter counts and MMLU don&rsquo;t enter the conversation.
+
+#### 423 div class=card-label
+The risk
+
+#### 424 div class=card-text
+Theatrical demos overstate the second unit. Sub-agent swarms and 12-hour OS-build runs are illustrative, not yet operational at scale. Error compounding still kills long workflows in production. SWE-bench 94% / SWE-Lancer 26% remains the cautionary split.
+
+#### 425 p
+
+      Stop arguing about IQ benchmarks. The displacement curve to watch is hours of undisturbed work on the X axis, and cost per autonomous task-hour on the Y axis. That is how an employer will price an agent against a person.
+    
+
+#### 426 div class=kn-value
+8 h+
+
+#### 427 div class=kn-label
+Target threshold: one undisturbed knowledge-worker day
+
+#### 428 div class=kn-value
+~3 mo
+
+#### 429 div class=kn-label
+METR doubling from 2024 onward (TH 1.1, Jan 2026)
+
+#### 430 div class=kn-label
+RLI automation rate, Fable 5, Jul 2026 (2.5% at launch)
+
+#### 431 div class=kn-value
+~$8 / hr
+
+#### 432 div class=kn-label
+Opus 4.7 autonomous coding (moderate load, ~1M tok/hr)
+
+#### 433 div class=kn-value
+~$16 / hr
+
+#### 434 div class=kn-label
+Fable 5 same workflow (2&times; price, ~2&times; RLI capability)
+
+#### 435 div class=kn-value
+$130&ndash;245 / hr
+
+#### 436 div class=kn-label
+Loaded US senior dev (EU: &euro;100&ndash;150/hr)
+
+#### 437 p
+
+      Today, a frontier-Opus autonomous coding hour costs roughly an order of magnitude less than the human hour it would replace, before review overhead. After review overhead and retries, the net gap is narrower, but still wide enough to matter.
+    
+
+#### 438 h4
+Two units
+
+#### 439 p
+The conversation about AI capability is changing because the people who buy capability are not benchmark researchers. Employers do not care whether a model added two points on MMLU. They care about two numbers. First: <strong>how many hours an agent can work on something autonomously before a human needs to step in</strong>. Second: <strong>what an hour of that autonomous work costs</strong>, in API tokens or compute, compared to the loaded hourly rate of the person it would otherwise be done by. Those two numbers, multiplied, are the displacement math. The first is improving observably on a roughly four-month doubling cadence. The second is collapsing on the curve Section 2 covers. The product of the two is what will decide which work moves and which doesn&rsquo;t.
+
+#### 440 h4
+Where the autonomy is today
+
+#### 441 p
+The first unit is no longer hypothetical. The observable artifacts as of mid-2026: Claude Code routinely runs multi-hour autonomous coding sessions; Anthropic&rsquo;s Computer Use lets an agent drive a desktop directly; Cursor (with Composer 2.5) and Windsurf (bundling Devin Cloud) sell agentic coding by the hour, not by the demo. Google demonstrated Antigravity 2.0 by having 93 sub-agents generate 2.6 billion tokens to build the core framework of an operating system in roughly 12 hours: theatre, yes, but the artifact existed. Gemini Spark, announced at I/O on May 19, is a personal agent that runs cloud-side 24/7 even when the user&rsquo;s device is off. Anthropic&rsquo;s &ldquo;Dreaming&rdquo; feature gives models memory consolidation across long-running work. None of these tools clear the 8-hour undisturbed-work threshold reliably yet, but several can sustain hours of useful autonomous work in narrow domains. That was not true a year ago.
+
+#### 442 h4
+The cost comparison
+
+#### 443 p
+The displacement framing only works if the second unit lines up with the first. Take a representative knowledge-worker task that takes a senior practitioner about eight hours: a mid-complexity coding ticket with tests, or a structured analysis with document synthesis. Today&rsquo;s math, using May 2026 prices and observed Claude Code token telemetry:
+
+#### 444 li
+<strong>Claude Opus 4.7</strong> at $5 input / $25 output per million tokens. A moderately loaded autonomous coding agent burns on the order of <strong>1M tokens per hour</strong> (typically ~700K input, ~300K output, with most input cached). At cached-input pricing, that lands at roughly <strong>$8 per agent-hour</strong>. An 8-hour autonomous run lands near <strong>$65&ndash;$80</strong>. A heavy multi-tool autonomous workload pushing 3&ndash;5M tokens per hour pushes per-hour cost into the <strong>$25&ndash;$45</strong> range.
+
+#### 445 li
+<strong>Claude Sonnet 4.6</strong> at $3 input / $15 output per million tokens. Same workload at moderate load: roughly <strong>$5 per agent-hour</strong> (the ~300K output tokens alone cost $4.50); an 8-hour run lands near <strong>$35&ndash;$45</strong>. Heavy load reaches <strong>$15&ndash;$25</strong> per hour.
+
+#### 446 li
+<strong>Claude Fable 5</strong> (July 2026 update) at $10 input / $50 output per million tokens, API-only post-recall. Same moderate load: roughly <strong>$16 per agent-hour</strong> (the ~300K output tokens alone cost $15); an 8-hour run lands near <strong>$130&ndash;$160</strong>. The premium is priced against measured capability; see &ldquo;What the Fable 5 pricing does to the math&rdquo; below.
+
+#### 447 li
+<strong>Senior developer comparator</strong>: in the US, loaded hourly cost typically lands at <strong>$130&ndash;$245</strong> per hour (base $110&ndash;$175 plus 20&ndash;40% loaded for benefits, taxes, overhead). In Western Europe the equivalent runs <strong>&euro;100&ndash;&euro;150</strong> fully loaded; in CEE roughly half that. Per 8-hour day, that&rsquo;s <strong>$1,000&ndash;$2,000</strong> US / <strong>&euro;800&ndash;&euro;1,200</strong> Western EU.
+
+#### 448 p
+The raw ratio, before any overhead, is striking: an autonomous Opus 4.7 hour costs <strong>roughly 15&ndash;30&times;</strong> less than the senior US developer hour it would replace; an autonomous Sonnet 4.6 hour costs roughly 30&ndash;50&times; less; even a Fable 5 hour, the most expensive agent-hour on the market, comes in roughly 8&ndash;15&times; below the human comparator. Most observers stop here, get excited, and reach the wrong conclusion. The honest number adds review and retry overhead: every autonomous hour today realistically needs roughly 20&ndash;40 minutes of human supervision, evaluation runs, and retry cycles before the work ships. That overhead compresses the effective gap into something more like <strong>3&ndash;10&times;</strong> cheaper for the right workflow, and to break-even or worse for workflows where the model still gets stuck.
+
+#### 449 p
+Section 2 explains why the underlying token gap closes faster than people expect: frontier-equivalent inference costs fell ~99% in two years and the April 2026 open-weight wave (DeepSeek V4-Pro at $0.28/$2.48 per MTok) is another factor of 10 below paid frontier. The crossover for any specific workflow depends mostly on two things: how much human supervision overhead it still needs, and what the loaded-cost comparator actually is in your geography. Pick one workflow your team actually does. Estimate both numbers. Track the ratio quarterly. That ratio, more than any benchmark, will tell you when displacement becomes economic.
+
+#### 450 h4
+The METR data point
+
+#### 451 p
+One supporting data point is worth keeping in view. METR (Model Evaluation &amp; Threat Research) publishes a measured benchmark called <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">Time Horizon</a>: the duration of human work a model can complete with 50% reliability. Their 2019&ndash;2025 dataset showed the frontier doubling roughly every 7 months. Their TH 1.1 update (January 2026) expanded the task suite by a third and doubled the number of 8-hour-plus tasks; measured from 2024 onward, the doubling time comes out near <strong>3 months</strong> (89 days). The anchors move fast: Claude 3.7 Sonnet (early 2025) sat around a 50-minute horizon, while METR&rsquo;s February&ndash;March 2026 pilot with the frontier labs reported the strongest agents <em>near or beyond the reliable measurement range of the benchmark itself</em>. If the ~3&ndash;4-month doubling holds, frontier models cross the 8-hour threshold by late 2026 or early 2027; the ruler may run out before the calendar does. If the older 7-month cadence reasserts, that slips toward 2028. Either way, the trajectory is the input to the displacement curve, not the headline number.
+
+#### 452 h4
+The Remote Labor Index: displacement gets a leaderboard
+
+#### 453 p
+As of July 2026, this current has the instrument it was missing. The <a href="https://www.remotelabor.ai/"><strong>Remote Labor Index</strong></a> (Center for AI Safety and Scale AI) is built from real commissioned freelance projects: more than 6,000 hours of professional work worth over $140,000, across eight domains from CAD and architecture to data analysis and animation. Its metric is exactly this chapter&rsquo;s question in benchmark form: the <em>automation rate</em>, the share of projects where the AI agent&rsquo;s deliverable is judged as good as the paid professional&rsquo;s. Unlike SWE-bench or MMLU, the units are dollars and deliverables, not points.
+
+#### 454 p
+The curve so far: 2.5% at launch in late 2025; 4.17% by the spring (Opus 4.6 running in an agentic scaffold); then on July 1, 2026, CAIS published the first Mythos-class result: <strong>Fable 5 at 16.1%</strong> (measured on 218 of 240 projects before the access restrictions landed), roughly double Opus 4.8&rsquo;s 8.3%, with GPT-5.5 at 6.3%. The frontier more than quadrupled in under eight months. Two readings of that number are simultaneously true, and both matter. Read pessimistically: 84% of real, paid remote-work projects still can&rsquo;t be automated end-to-end, and even headline deliverables often wouldn&rsquo;t ship as finished client work; that is the lab-to-production gap of Current 5, measured in invoices. Read as a trajectory: this is the METR doubling cadence showing up in a dollar-denominated instrument, and it converts the &ldquo;hours&rdquo; unit of this chapter into something an employer can put in a spreadsheet.
+
+#### 455 div class=an-label
+Field note: my own hours and dollars
+
+#### 456 p
+One data point from my own desk, dated early July 2026, for whatever it is worth. In the GPT-4 era I used models as assistants: a snippet here, a draft there, with me doing all the assembling. Through the Opus generations the ratio shifted; the model handled real stretches of work while I still contributed a large share of the judgment, review, and glue. With Fable 5 I felt the &ldquo;hours&rdquo; unit jump a tier in a single release. The week this edition shipped, we rebuilt most of the booklet together, and I could honestly have watched movies all day while it happened: the model ran the research, the drafting, the fact-checking loops, and most of the editing itself. My monthly spend tells the same story from the dollars side: roughly $20 a month in the GPT-4 era, $200 a month through the Opus generation, and now heading well past $500. I have never paid more per month, and an hour of finished work has never cost me less. That crossover, felt at one desk, is this whole current in miniature.
+
+#### 457 h4
+What the Fable 5 pricing does to the math
+
+#### 458 p
+The June frontier release also moved the second unit, upward, which is why this section&rsquo;s numbers need re-basing. Fable 5 launched at $10 input / $50 output per million tokens, double Opus 4.7 on both meters, and its post-recall availability is API-only with a strong moderation layer. The same moderate autonomous load (~1M tokens per hour) lands at roughly <strong>$16 per agent-hour</strong>; the ~300K output tokens alone cost $15. But price both sides of the trade: at roughly 2&times; the price it posts roughly 2&times; the RLI automation rate of Opus 4.8, so <em>capability per dollar at the very top held flat-to-better even as the absolute price rose</em>. This is Current 2&rsquo;s two-lane market seen from the buyer&rsquo;s chair: the frontier lane charges a premium that, for now, buys measurably more finished work per dollar on the hardest tasks, while one tier down, the commodity lane keeps collapsing toward hardware cost.
+
+#### 459 h4
+What this implies for capex
+
+#### 460 p
+If &ldquo;hours of autonomous work&rdquo; is the right capability axis, the capex picture from Section 1 changes shape. The <strong>training</strong> portion of hyperscaler spend (the largest pre-training runs) becomes harder to justify on its own; smaller models with strong post-training, RL, and tool use can match the capabilities of larger ones for many workflows. The <strong>inference</strong> portion, projected at roughly 75% of AI compute demand by 2030 <a href="https://www.brookfield.com/sites/default/files/documents/Brookfield_Building_the_Backbone_of_AI.pdf"><span class="tag tag-reported">reported</span></a>, becomes <em>more</em> justified, because every long-running agent is a multi-token, multi-call, often multi-hour inference workload. Reasoning models with extended thinking can use 10&ndash;100&times; more tokens per task than chat-style models. The capex stays justified; what shifts is its allocation between training and serving.
+
+#### 461 div class=kn-label
+RLI automation rate (Fable 5); frontier &gt;4&times; in 8 months
+
+#### 462 div class=kn-value
+$5&ndash;16 / hr
+
+#### 463 div class=kn-label
+Agent-hour, Sonnet 4.6 &rarr; Fable 5 (moderate, ~1M tok/hr)
+
+#### 464 div class=kn-label
+US senior dev loaded hourly comparator
+
+#### 465 div class=kn-label
+Net displacement gap after review &amp; retry overhead
+
+#### 466 div class=kn-label
+SWE-bench Verified vs SWE-Lancer (production gap)
+
+#### 467 h3
+Trigger signals: what to watch for
+
+#### 468 li
+8h+ undisturbed autonomy on an RLI- or METR-style task suite at <strong>net agent-cost below 25% of the loaded human comparator</strong> after review and retry overhead (today the gross gap is large; the net gap closes when supervision overhead drops)
+
+#### 469 li
+An RLI-style measured automation rate crosses <strong>25%</strong> on the published task pool, the next arming threshold after July&rsquo;s 16.1%
+
+#### 470 li
+A named enterprise publishes a multi-day agent workflow running in production with cost or ROI figures: in an earnings call, a numbered case study, or an audited report
+
+#### 471 li
+A hyperscaler discloses the inference share of AI capex, or states that inference spend now exceeds training spend, in an earnings call
+
+#### 472 li
+A vendor publishes its own agent cost-per-hour benchmark alongside accuracy benchmarks (the RLI now supplies the third-party version; this trigger is the <em>vendor&rsquo;s own</em> disclosure)
+
+#### 473 li
+Counter-trigger: net agent cost-per-hour (after supervision overhead) stays above human comparator on representative tasks for two consecutive frontier releases
+
+#### 474 div class=tl-label
+Trigger log &middot; July 2026 edition
+
+#### 475 li
+<span class="tag tag-fired">Fired</span> <strong>Displacement got a leaderboard, and the frontier quadrupled on it.</strong> <span class="tl-date">July 1, 2026 &middot;</span> CAIS published Fable 5 at a 16.1% RLI automation rate (218/240 projects, measured before the access restrictions landed): roughly 2&times; Opus 4.8, more than 4&times; the published leader of eight months earlier. The first dollar-denominated, third-party instrument for this current&rsquo;s two units is live and moving fast. Next arming threshold: 25%.
+
+#### 476 li
+<span class="tag tag-fired">Confirmed</span> <strong>The doubling cadence held, and may be faster.</strong> <span class="tl-date">Jan&ndash;Mar 2026 &middot;</span> METR&rsquo;s TH 1.1 puts the 2024-onward doubling near 3 months, and their spring pilot reported frontier agents near or beyond the benchmark&rsquo;s reliable measurement range. The first unit (hours) is moving at the fast end of this chapter&rsquo;s assumptions.
+
+#### 477 li
+<span class="tag tag-notyet">Not yet</span> <strong>Cost-per-hour benchmarks.</strong> No major vendor publishes agent cost-per-hour alongside accuracy yet. The RLI supplies the third-party version, but you still have to compute your own, which is exactly what the Team Lead card below asks you to do.
+
+#### 478 h3
+Implications by role
+
+#### 479 div class=impl-role
+Developer
+
+#### 480 div class=impl-text
+Reliability and observability matter more than prompt cleverness. Retry logic, intermediate checkpoints, tool-call audit trails. The hard part is the long tail, not the happy path.
+
+#### 481 div class=impl-role
+Team Lead
+
+#### 482 div class=impl-text
+Pick one representative team workflow. Estimate (a) autonomous hours, (b) agent $/hr (today ~$16 Fable 5 / ~$8 Opus / ~$5 Sonnet, plus your supervision overhead), (c) loaded human hourly rate. Track that ratio quarterly; it&rsquo;s your displacement curve.
+
+#### 483 div class=impl-role
+CTO / VP Eng
+
+#### 484 div class=impl-text
+Plan for inference-heavy workloads. Budget and architecture should assume agentic workflows with 10&ndash;100&times; more tokens per task, not chat.
+
+#### 485 div class=impl-role
+Procurement
+
+#### 486 div class=impl-text
+Vendor evaluation should include long-horizon task benchmarks and cost-per-hour, not just single-prompt scores. Ask for production reliability data, not just leaderboard positions.
+
+#### 487 p class=credits
+Data: METR Time Horizons (TH 1.0 Mar 2025, TH 1.1 Jan 2026) &bull; Remote Labor Index (CAIS / Scale AI, remotelabor.ai, Jul 2026) &bull; SWE-bench Verified / SWE-Lancer leaderboards &bull; Antigravity 2.0 demo writeups &bull; Anthropic API pricing (May&ndash;Jul 2026) &bull; Claude Code usage telemetry &bull; Index.dev / MarsDevs developer hourly-rate surveys 2026
+
+#### 488 div class=chapter-label
+Current 7
+
+#### 489 h2
+The Physical Substrate <br><span class="chapter-question">&ldquo;Can the atoms keep up with the bits?&rdquo;</span>
+
+#### 490 div class=card-label
+The thesis
+
+#### 491 div class=card-text
+Every other current in this booklet quietly assumes the atoms show up. The ~$700B of 2026 capex is a claim on physical things: advanced wafers from one island, high-bandwidth memory from three vendors, gigawatts from a grid whose connection queue is measured in years. The binding constraint is shifting from capital to <strong>physics and permits</strong>: money stopped being the scarce input before the wafers and megawatts did.
+
+#### 492 div class=card-label
+The risk
+
+#### 493 div class=card-text
+Concentration is the discontinuity. TSMC fabricates roughly 90% of the world&rsquo;s most advanced logic (effectively all the accelerators frontier models train on) behind one strait, one packaging technology, one memory oligopoly. A Taiwan disruption is the single event that would fire triggers in all seven other currents at once, and this current moves in step-functions, not curves. The counter-risk: doomers have under-priced adaptation before, and on-site generation, diversified fabs, and Current 2&rsquo;s efficiency gains all push back.
+
+#### 494 p
+
+      The decoder dates money into capability. This current asks whether the physical middle of that pipeline (fabs, packaging, memory, power, permits) can actually execute on the schedule the money assumes. The slowest clock wins.
+    
+
+#### 495 div class=kn-label
+Of most-advanced logic chips fabbed by TSMC
+
+#### 496 div class=kn-value
+~2,300 GW
+
+#### 497 div class=kn-label
+Generation + storage waiting in US interconnection queues (LBNL)
+
+#### 498 div class=kn-value
+3&times; capped
+
+#### 499 div class=kn-label
+Consecutive PJM capacity auctions clearing at the price cap ($333/MW-day, Dec 2025)
+
+#### 500 div class=kn-label
+Data-center bills filed in 30+ states, first six weeks of 2026
+
+#### 501 div class=kn-value
+61.8&rarr;134 GW
+
+#### 502 div class=kn-label
+US data-center grid demand, 2025&rarr;2030 (451 Research)
+
+#### 503 p
+
+      Five anchors: one concentration, one queue, one price signal, one political wave, one demand curve.
+    
+
+#### 504 h4
+The bit-atom mismatch
+
+#### 505 p
+Every timescale in the <a href="#decoder">capex decoder</a> is really a physical timescale wearing a financial costume. Building a leading-edge fab takes three to five years. A gigawatt-scale grid interconnection can take most of a decade in congested regions. A data center takes 12&ndash;24 months if the power is already there. A frontier training run takes months. The decoder&rsquo;s clean arithmetic (money in year N, capability in year N+2 to N+4) holds only as long as the slowest of those clocks doesn&rsquo;t slip. This current watches the clocks.
+
+#### 506 h4
+Power: the queue is the moat
+
+#### 507 p
+The Lawrence Berkeley National Laboratory&rsquo;s <a href="https://emp.lbl.gov/publications/queued-2025-edition-characteristics">queue tracker</a> counts roughly 2,300 gigawatts of generation and storage waiting for US grid interconnection, nearly twice the country&rsquo;s entire installed capacity, with typical waits measured in years. Meanwhile the demand side compounds: the <a href="https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers">LBNL/DOE energy report</a> has data centers at 4.4% of US electricity in 2023, projected to 6.7&ndash;12% by 2028, and 451 Research has data-center grid demand more than doubling from 61.8 GW in 2025 to 134 GW by 2030. The market has already priced the collision. PJM, the grid operator for the world&rsquo;s densest data-center corridor, has now <a href="https://insidelines.pjm.com/pjm-auction-procures-134479-mw-of-generation-resources/">cleared three consecutive capacity auctions at the regulatory price cap</a>; the December 2025 auction settled at $333.44/MW-day and would have cleared near $530 without the cap, with the market monitor attributing data centers as the primary driver of roughly 40% of that auction&rsquo;s $16.4 billion cost. This is why hyperscalers are buying power plants rather than power: the Three Mile Island Unit 1 restart (now the Crane Clean Energy Center) exists because Microsoft signed a 20-year deal for all 835 MW of it, and it is tracking toward a second-half-2027 restart, a year ahead of the original plan. The first US nuclear reactor brought back from retirement specifically to feed AI is a fact the 2015 version of this industry would have found unbelievable.
+
+#### 508 h4
+Chips: one island, one packager, three memory vendors
+
+#### 509 p
+The silicon side concentrates even harder. TSMC fabricates <a href="https://theconversation.com/how-taiwan-came-to-dominate-the-global-chip-industry-276939">roughly 90% of the world&rsquo;s most advanced logic chips</a>, and its advanced nodes (the ones AI accelerators use) now account for about 74% of its wafer revenue, with price increases landing across all of them. The bottleneck within the bottleneck is advanced packaging: CoWoS capacity is fully booked with lead times of 52&ndash;78 weeks, demand approaching a million wafers in 2026, and Nvidia alone holding an estimated 60% of it. High-bandwidth memory is a three-vendor oligopoly in which SK Hynix holds roughly 62%, and HBM3E is effectively sold out for all of 2026. Read those three sentences against the decoder: when the inputs to capability are pre-sold 12&ndash;18 months out, capex stops being a dial you can turn and becomes a queue position you defend.
+
+#### 510 h4
+The politics of power arrived
+
+#### 511 p
+Through 2025 this current was an engineering story. In 2026 it grew a political layer, fast. More than 300 data-center bills were filed in over 30 states in the first six weeks of the year (up from about 200 bills in all of 2025), with at least a dozen states proposing outright moratoria. Maine&rsquo;s legislature actually passed the first statewide ban (LD 307, blocking data centers over 20 MW); Governor Mills vetoed it in April and the override failed by seven votes. New York&rsquo;s legislature passed a one-year moratorium of its own, awaiting signature as this edition went to press. The pattern to watch is not any single bill but the direction: retail electricity bills are becoming the political transmission mechanism, since IEEFA attributes 63% of the price increase in PJM&rsquo;s 2025/26 auction, some $9.3 billion recoverable from ratepayers, to data centers, and voters pay retail bills. In parallel, the federal layer began treating compute itself as a controlled substance: rules effective January 15, 2026 codified case-by-case export review for advanced AI chips and imposed a 25% tariff on advanced AI chips not destined for the American supply chain. The <a href="/mercantilism-of-genai/#m-compute">companion booklet&rsquo;s &ldquo;bullion is compute&rdquo; chapter</a> argues this is exactly where mercantilist control naturally lands, because concentrated compute is the one input that cannot leak.
+
+#### 512 h4
+Why this is a current, not a footnote to Current 1
+
+#### 513 p
+Current 1 asks whether the money keeps being <em>right</em>. This current asks whether the money can be <em>spent</em>. Those are different failure modes with different signatures: Current 1 fails through disappointing models, Current 3 through disappearing funding, and Current 7 through slipping dates, regional scarcity, and price premiums that have nothing to do with capability. It was promoted from background assumption to full current in this edition because 2026 is the year its trigger surface became observable: capacity auctions at caps, moratorium bills in a dozen statehouses, packaging lead times crossing a year and a half. The atoms got political.
+
+#### 514 div class=kn-value
+52&ndash;78 wk
+
+#### 515 div class=kn-label
+CoWoS advanced-packaging lead times (2026)
+
+#### 516 div class=kn-value
+Sold out
+
+#### 517 div class=kn-label
+HBM3E for 2026; SK Hynix holds ~62% of HBM
+
+#### 518 div class=kn-value
+835 MW
+
+#### 519 div class=kn-label
+TMI Unit 1 restart, 100% to Microsoft (H2 2027)
+
+#### 520 div class=kn-value
+$9.3B
+
+#### 521 div class=kn-label
+Data centers&rsquo; share of PJM 2025/26 price increase, passed to ratepayers (IEEFA)
+
+#### 522 div class=kn-label
+US tariff on advanced AI chips leaving the US supply chain (Jan 2026)
+
+#### 523 h3
+Trigger signals: what to watch for
+
+#### 524 li
+A hyperscaler names power, interconnection, or permitting as the reason for a capex cut or a named-project delay of &ge;2 quarters in an earnings call
+
+#### 525 li
+A US state <em>enacts</em> a statewide data-center moratorium or &gt;20 MW ban: Maine&rsquo;s passed-then-vetoed LD 307 and New York&rsquo;s passed-but-unsigned bill show how close this trigger sits
+
+#### 526 li
+Nvidia, AMD, or a hyperscaler names HBM or advanced-packaging allocation as a shipment-gating factor in an earnings call, or GPU lead times publicly exceed 52 weeks
+
+#### 527 li
+Compute concentration becomes a regulated quantity: a rule, threshold, or reporting regime targeting cluster size or total deployed compute as such (the <a href="/mercantilism-of-genai/#bets">companion booklet&rsquo;s Bet 3</a>, watched from here)
+
+#### 528 li
+Counter-trigger: &ge;5 GW of new US data-center capacity energized in a single year via behind-the-meter or on-site generation, meaning the queue stops being the constraint
+
+#### 529 div class=tl-label
+Trigger log &middot; July 2026 edition
+
+#### 530 li
+<span class="tag tag-fired">Fired</span> <strong>The politics of power arrived.</strong> <span class="tl-date">Feb&ndash;Jun 2026 &middot;</span> 300+ state bills in six weeks; a dozen states with moratorium proposals; Maine&rsquo;s first-in-nation ban passed, was vetoed, and survived the override vote by only seven votes; New York&rsquo;s one-year moratorium passed and awaits signature; PJM cleared its third consecutive auction at the price cap with data centers named the primary driver. The physical substrate now has a voting constituency. The enactment trigger above is one signature away.
+
+#### 531 li
+<span class="tag tag-notyet">Not yet</span> <strong>Compute as a regulated quantity.</strong> The January 15 export rules and tariff regulate where advanced chips may <em>go</em>, and control keeps climbing the stack (chips &rarr; models, per June 12), but no rule yet targets cluster size or total deployed compute as such. When it lands, log it here <em>and</em> in Current 4.
+
+#### 532 h3
+Implications by role
+
+#### 533 div class=impl-role
+Developer
+
+#### 534 div class=impl-text
+Treat capacity as a first-class failure mode, like network partitions: regional inference fallbacks, graceful degradation under rate limits, multi-region routing. Scarcity shows up as 429s before it shows up in headlines.
+
+#### 535 div class=impl-role
+Team Lead
+
+#### 536 div class=impl-text
+GPU and capacity reservations now carry procurement lead times measured in quarters. Put them on the project plan like any long-lead dependency: after the requirements, before the sprint.
+
+#### 537 div class=impl-role
+CTO / VP Eng
+
+#### 538 div class=impl-text
+Vendor due diligence now includes where the inference physically runs and on what power contracts. Run one Taiwan-event tabletop exercise and record which of your workloads dies first; that list is your real exposure.
+
+#### 539 div class=impl-role
+Procurement
+
+#### 540 div class=impl-text
+Make allocation-shortfall and energy-cost pass-through clauses explicit in AI contracts. A vendor who won&rsquo;t discuss its power and capacity exposure is making it your risk without your consent.
+
+#### 541 p class=credits
+Data: TSMC quarterly reports &bull; LBNL &ldquo;Queued Up&rdquo; (Dec 2025) &amp; US Data Center Energy Usage Report &bull; PJM capacity auction results / IEEFA / PJM market monitor &bull; S&amp;P Global 451 Research &bull; Silicon Analysts foundry allocation Q1 2026 &bull; Constellation&ndash;Microsoft PPA &bull; MultiState / Good Jobs First legislation trackers &bull; BIS rule &amp; proclamation eff. Jan 15, 2026 &bull; Companion: <a href="/mercantilism-of-genai/#m-compute">The Mercantilism of Generative AI</a> (compute as bullion)
+
+#### 542 div class=chapter-label
+Current 8
+
+#### 543 h2
+The Political Economy of Displacement <br><span class="chapter-question">&ldquo;What happens when Current 6&rsquo;s math starts working?&rdquo;</span>
+
+#### 544 div class=card-label
+The thesis
+
+#### 545 div class=card-text
+Current 6 tracks whether the displacement math works. This current tracks whether it will be <strong>allowed to keep working</strong>. Displacement politics can move faster than displacement economics: one legible number (the RLI just made automation rates a headline statistic), one bad summer of layoffs, one election, and rules arrive in a single legislative session. The vendors themselves believe this: OpenAI is proposing robot taxes and public wealth funds before any government has asked.
+
+#### 546 div class=card-label
+The risk
+
+#### 547 div class=card-text
+The backlash may stay theatrical. Official channels barely register AI displacement: eleven months into New York&rsquo;s first-in-nation disclosure rule, zero of 162 mass-layoff filings checked the AI box. Polling anxiety hasn&rsquo;t become voting behavior, and taxing &ldquo;AI labor&rdquo; is definitionally hard: nobody can yet specify the taxable unit. This current can simmer for years, and then move all at once.
+
+#### 548 p
+
+      The gap between what&rsquo;s happening and what&rsquo;s officially recorded is this current&rsquo;s defining measurement, and its fuse.
+    
+
+#### 549 div class=kn-label
+Employment, 22&ndash;25-year-olds in most AI-exposed occupations (ADP / &ldquo;Canaries&rdquo; study)
+
+#### 550 div class=kn-label
+NY mass-layoff filings attributing cuts to AI, 11 months into the disclosure rule
+
+#### 551 div class=kn-label
+AI-attributed US job cuts, Jan&ndash;May 2026 (Challenger), vs 54,836 in all of 2025
+
+#### 552 div class=kn-label
+Americans who expect AI to reduce jobs over the next decade (Gallup/Bentley, 2023)
+
+#### 553 div class=kn-value
+$500M+
+
+#### 554 div class=kn-label
+Raised toward the $1B RAISE US retraining fund (Jun 2026)
+
+#### 555 p
+
+      Five anchors: a labor-market signal, an attribution gap, a press tally, a sentiment number, and the industry pre-paying its political bill.
+    
+
+#### 556 p
+Strip the statistics away and this current asks a plain question: when AI starts doing real work, what do the people whose work it was, and the politicians who represent them, do about it? Current 6 watches whether the automation math works. This current watches the human response to it: workers organizing, companies hiding the ball, vendors quietly pre-paying their political bills, legislators hunting for something to tax. Four scenes carry the story.
+
+#### 557 h4
+The canaries stopped singing
+
+#### 558 p
+The cleanest evidence that displacement is real comes from the Stanford Digital Economy Lab&rsquo;s <a href="https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/">&ldquo;Canaries in the Coal Mine&rdquo;</a> study, run on ADP payroll data covering millions of workers. Its core finding is simple: AI absorbs <em>tasks</em> before it absorbs jobs, and entry-level tasks first. Since generative AI arrived, employment of the youngest workers (22&ndash;25) in the most AI-exposed occupations has fallen roughly 16%, while older workers in the same occupations at the same firms <em>grew</em>. Read that again: same firm, same job title, opposite fates, depending on whether your daily work was the entry-level slice. The follow-up dashboard shows the decline still accelerating through spring 2026, and the Stanford AI Index adds the sharpest sectoral cut: employment of young software developers down nearly 20% since 2024. This is Current 6&rsquo;s economics arriving in payroll data, youngest cohort first, exactly where the hours-and-dollars math said it would bite.
+
+#### 559 h4
+Attribution laundering
+
+#### 560 p
+Now put that evidence next to the official record, because the two tell opposite stories. New York became the first state to require employers to say whether AI caused a mass layoff. Eleven months in, zero of 162 filings have said yes. Over the same stretch, the running press tally of publicly AI-attributed job cuts (Challenger, Gray &amp; Christmas) reached 87,714 in the first five months of 2026, more than in all of 2025. Both numbers can be true at once because attribution is a choice: a layoff filed as &ldquo;restructuring&rdquo; is legally cleaner and reputationally cheaper than one filed as &ldquo;automation.&rdquo; Amazon cutting roughly 30,000 corporate roles while spending $125 billion on AI capex, with reported internal plans to avoid some 600,000 future hires through robotics and AI, is the same move at its largest scale. The planning consequence is unusual: <strong>official statistics will systematically understate this current</strong>, so its triggers have to watch other venues (filing gaps, union demands, private funds) rather than the headline numbers.
+
+#### 561 div class=an-label
+Two things I keep hearing in practice
+
+#### 562 p
+In my consulting and training work, two beliefs about this current come up constantly, and I want to flag both. The first is that today&rsquo;s job market, especially in IT, is simply a hangover from the over-hiring of the covid years: companies gorged on headcount in 2021&ndash;22, and what we are watching now is the diet. Honestly, I don&rsquo;t know how much of the current picture that explains. It is a real effect. It is also a very comfortable story, because it requires nobody to update anything. What I can say is that the payroll evidence above, with the youngest workers in the most AI-exposed occupations diverging from older colleagues inside the same firms, does not look like a covid correction to me. A covid correction doesn&rsquo;t care what your occupation&rsquo;s AI exposure is.
+
+#### 563 p
+The second belief is a mindset flaw about speed. People calibrate on previous technology waves: it took marketing departments something like fifteen years to be forced to learn social media, so surely there is time to adjust to this too. I think that clock is wrong. This wave is compressed from both ends. On the supply side, a handful of hyperscalers push capability out at the pace of Current 1&rsquo;s capex machine, with a new tier landing every couple of years and prices collapsing between tiers. On the demand side sit enterprises that have waited decades for exactly this: the ability to automate creative office work, the white-collar tasks that every previous automation wave, which mostly reached blue-collar and routine work, could never touch. When an eager supply side meets a demand side this motivated, the fifteen-year adjustment window collapses to a few years. If you are pacing your career or your team&rsquo;s plans on how long digital transformation took, you are using the wrong clock.
+
+#### 564 h4
+The tax question arrives before the tax
+
+#### 565 p
+The most telling 2026 development is who moved first. On April 6, OpenAI published economic-policy proposals that include a potential robot tax, a &ldquo;Public Wealth Fund&rdquo; giving Americans an automatic stake in AI companies and infrastructure, and a subsidized four-day workweek. Sit with that for a second: the company building the technology is designing its own redistribution mechanism, unprompted. In June, the RAISE US workforce fund launched with more than $500 million raised toward a $1 billion goal, anchored by Amazon, Anthropic, Microsoft, and the OpenAI Foundation. Meanwhile the definitional problem keeps actual legislation stuck: as Bloomberg Law&rsquo;s survey of tax authorities put it, governments want to tax AI but cannot yet define the unit. Tokens? Agent-hours? Compute? Displaced heads? When an industry starts pre-paying a political bill nobody has formally presented, it is telling you what it expects this current to deliver.
+
+#### 566 h4
+Labor&rsquo;s playbook already exists
+
+#### 567 p
+The response side is not starting from zero. SAG-AFTRA&rsquo;s 2023 AI provisions, the Las Vegas Culinary Union&rsquo;s technology-severance terms ($2,000 per year worked for tech-displaced workers), and the longshoremen&rsquo;s January 2025 contract restricting port automation all predate the agent era. In 2026 the playbook entered knowledge work: a one-day strike at ProPublica in April with AI use as a central issue, a New York Times union letter calling the paper&rsquo;s AI policies inadequate the day before, an AP union unfair-labor-practice complaint over AI the day before that, and a December 2025 arbitration win at Politico for launching AI products without consulting the union. AI clauses are becoming a normal bargaining demand. None of this is yet a 10,000-worker action, but the templates are written, tested, and circulating.
+
+#### 568 h4
+Why this is a current, not a chapter of Current 6
+
+#### 569 p
+Current 6 measures the economics; this current tracks the <em>response function</em>, and response functions are discontinuous where economics are smooth. The RLI is the hinge between them: the same instrument that tells employers the math is starting to work tells legislators it is working. Note the bookkeeping implication, because it matters for the synthesis: when one RLI publication lands in both chapters&rsquo; trigger logs, that is one event wearing two jackets. It counts once under the one-event rule, not as a fired pair.
+
+#### 570 div class=kn-value
+3.8%/yr
+
+#### 571 div class=kn-label
+Decline rate, young workers in exposed occupations (accelerating from 2.8%)
+
+#### 572 div class=kn-label
+Drop in 22&ndash;25 software-dev employment since 2024 (AI Index 2026)
+
+#### 573 div class=kn-value
+Apr 6, 2026
+
+#### 574 div class=kn-label
+OpenAI proposes robot tax, public wealth fund, 4-day week
+
+#### 575 div class=kn-value
+$2,000/yr
+
+#### 576 div class=kn-label
+Tech-displacement severance per year worked (Culinary Union template)
+
+#### 577 div class=kn-label
+Jobs in NY WARN filings, none attributed to AI
+
+#### 578 h3
+Trigger signals: what to watch for
+
+#### 579 li
+A G7 economy <em>enacts</em> (not proposes) a levy, tax, or mandatory reporting regime whose unit is AI usage: tokens, agent-hours, compute, or displacement headcount
+
+#### 580 li
+The attribution dam breaks: at least one company formally attributes a mass layoff to AI in an official government filing, or a jurisdiction makes AI attribution mandatory with penalties
+
+#### 581 li
+A strike or collective action of &ge;10,000 workers where AI use or displacement is the stated primary issue, with AI terms appearing in the settlement
+
+#### 582 li
+A professional licensing body (bar association, medical board, accounting institute) in a major economy adopts <em>binding</em> rules restricting AI performance of licensed work: adopted rules, not draft guidance
+
+#### 583 li
+Counter-trigger: two consecutive quarters of official labor statistics (BLS / Eurostat) showing AI-exposed occupations tracking the general labor market with no divergence, meaning the canaries recover
+
+#### 584 div class=tl-label
+Trigger log &middot; July 2026 edition
+
+#### 585 li
+<span class="tag tag-fired">Fired</span> <strong>The vendors are pre-negotiating the backlash.</strong> <span class="tl-date">Apr&ndash;Jun 2026 &middot;</span> OpenAI proposed robot taxes, a public wealth fund, and a subsidized four-day workweek (April 6); the RAISE US retraining fund launched with $500M+ from Amazon, Anthropic, Microsoft, and the OpenAI Foundation (June 25). The industry is designing redistribution before being forced to; that is the clearest evidence available of what insiders expect this current to deliver.
+
+#### 586 li
+<span class="tag tag-notyet">Not yet</span> <strong>Displacement is happening; attribution is not.</strong> Eleven months of New York&rsquo;s disclosure rule: 0 of 162 filings checked the AI box, while Challenger&rsquo;s AI-attributed tally hit 87,714 by May. The gap between the press number and the filings number <em>is</em> the attribution-laundering measure. Watch the gap, not either number alone; the trigger fires when the first filing closes it.
+
+#### 587 h3
+Implications by role
+
+#### 588 div class=impl-role
+Developer
+
+#### 589 div class=impl-text
+The exposed tasks are entry-tasks. Move up the supervision and orchestration stack, and keep evidence of your judgment work, not just your output. The canaries data says seniority in decisions, not years, is the moat.
+
+#### 590 div class=impl-role
+Team Lead
+
+#### 591 div class=impl-text
+Document augment-vs-replace decisions as you make them. They may become reportable, or taxable, retroactively, and the paper trail protects you in both directions.
+
+#### 592 div class=impl-role
+CTO / VP Eng
+
+#### 593 div class=impl-text
+Instrument agent usage now (hours, tokens, workflows, headcount deltas) so a future reporting or tax regime is a query, not a re-architecture. Treat &ldquo;where agents run&rdquo; as a jurisdictional variable, like data residency.
+
+#### 594 div class=impl-role
+Procurement / People
+
+#### 595 div class=impl-text
+Union and works-council consultation duties (especially in the EU) increasingly attach to AI deployment. Check the notification obligations before the rollout announcement, not after; Politico lost that arbitration.
+
+#### 596 p class=credits
+Data: Brynjolfsson, Chandar &amp; Chen &ldquo;Canaries in the Coal Mine&rdquo; + Canaries Dashboard (Stanford Digital Economy Lab / ADP) &bull; Stanford HAI AI Index 2026 &bull; Challenger, Gray &amp; Christmas &bull; NY DOL WARN filings &bull; Gallup/Bentley 2023 &bull; Bloomberg Law &bull; OpenAI economic blueprint (Apr 2026) &bull; RAISE US fund &bull; Poynter / Partnership on AI union-agreement tracking &bull; Remote Labor Index (CAIS)
+
+#### 597 div class=chapter-label
+Synthesis
+
+#### 598 h2
+How the Currents Interact
+
+#### 599 p
+The eight currents are not independent, and reading them one at a time is the most natural mistake to make with this booklet. People argue about scaling, <em>or</em> the bubble, <em>or</em> sovereignty, one lens at a time. But planning errors rarely live inside a single current; they live in the cross-terms, the combinations whose consequences are not the sum of their parts. This section names the seven combinations most worth holding in your head, each with the trigger pair that signals it and the move it should provoke.
+
+#### 600 div class=an-label
+The operating rule
+
+#### 601 p
+<strong>A single trigger fires &rarr; reweight.</strong> Shift attention and budget toward that current; no structural change yet. <strong>A pair fires within the same quarter &rarr; restructure.</strong> Pairs are where strategy actually changes; that is what the composites below are for.
+
+#### 602 p
+<strong>One event, one count.</strong> The refinement this edition adds: a pair only justifies restructuring if its two triggers trace to <em>independent</em> events. The currents share underlying machinery (capex above all), so a single headline can fire triggers in several chapters at once. The June 9 Fable 5 launch alone touched Currents 1, 2, and 6; the June 12 recall touched 1 and 4; one capex-flattening announcement could plausibly fire 1, 2, 3, and 7 in the same morning. That is one signal wearing several jackets, not a pair. The test: <em>would trigger B still have fired if event A hadn&rsquo;t happened?</em> If the answer is no, reweight; don&rsquo;t restructure. The table below is the tool for running that test on the most common ambiguous headlines.
+
+#### 603 p
+<strong>The basic wiring first.</strong> Efficiency (2) arms Sovereignty (4): cheap frontier-equivalent open-weight is what turns on-shore deployment from slogan into procurement choice. Hours and Dollars (6) leans on From Lab to Production (5): eval and supervision burden scales with task duration. Scaling (1) and Efficiency (2) pull capex in opposite directions but resolve through the training-versus-serving split: train-cluster spend gets harder to defend, serving-cluster spend easier. And Scaling (1) and Correction (3) look like opposites but are not mutually exclusive: the technology can work, products can earn real revenue, and the investment timeline can still miss the revenue timeline. The two currents new to this edition slot in at the ends of the chain. The Physical Substrate (7) sits <em>upstream</em> of everything: Current 1&rsquo;s clusters, 2&rsquo;s price floor, and 3&rsquo;s capex all assume the atoms show up on schedule, and 7 is where that assumption gets tested. The Political Economy of Displacement (8) sits <em>downstream</em> of Hours and Dollars (6): 6 measures whether the displacement math works; 8 tracks whether it is allowed to keep working. That&rsquo;s the wiring. The composites are what happens when current actually flows through it.
+
+#### 604 div class=s2-table-title
+Ambiguous headlines: which current actually fired?
+
+#### 605 th
+Headline
+
+#### 606 th
+Could touch
+
+#### 607 th
+The questions that disambiguate
+
+#### 608 td
+<strong>&ldquo;Hyperscaler capex flattens&rdquo;</strong>
+
+#### 609 td
+(1) What reason does the earnings call give: demand or financing (&rarr;3), efficiency gains reducing hardware need (&rarr;2), power or permitting (&rarr;7)? (2) Did the model roadmap slip with it (&rarr;1) or stay intact (pure 3/7)?
+
+#### 610 td
+<strong>&ldquo;Frontier price moves sharply&rdquo;</strong>
+
+#### 611 td
+(1) Is a new capability tier attached (&rarr;1, the two-lane premium) or is it the same tier getting cheaper (&rarr;2)? (2) Does $/agent-hour cross an employer&rsquo;s comparator threshold (&rarr;6)?
+
+#### 612 td
+<strong>&ldquo;Big open-weight release near frontier&rdquo;</strong>
+
+#### 613 td
+(1) Does it change your $/task at the tier you actually use (&rarr;2)? (2) Does its license or origin change your sovereign fallback (&rarr;4)? And note the inverse: a leading Chinese lab shipping its flagship <em>closed</em> is a 4-only signal, the <a href="/mercantilism-of-genai/#m-open">mercantilist tell</a>, not an efficiency event.
+
+#### 614 td
+<strong>&ldquo;Vendor severed / model recalled&rdquo;</strong>
+
+#### 615 td
+(1) Political-jurisdictional origin (&rarr;4) or balance-sheet origin (&rarr;3)? (2) Did the <em>capability</em> leave the market (&rarr;1 wobbles) or only one buyer&rsquo;s access to it (&rarr;4 only)?
+
+#### 616 td
+<strong>&ldquo;Mass layoffs attributed to AI&rdquo;</strong>
+
+#### 617 td
+(1) Do official filings attribute it to AI with task-level economics (&rarr;6, the math working) or only the press release (&rarr;8, salience, or attribution laundering)? (2) Is there a legislative or union response within the quarter (&rarr;8 firing)?
+
+#### 618 div class=s2-table-caption
+Run a headline through its row before logging a trigger. One event that touches four currents is still one event; the pair rule needs two rows, not one row counted twice.
+
+#### 619 div class=cc-pair
+Current 1 (Continued Scaling) &times; Current 3 (Financial Correction)
+
+#### 620 div class=cc-name
+A. The Successful Bubble
+
+#### 621 div class=cc-row
+<span class="cc-k">Watch for</span>Two triggers from two different chapters landing within months of each other. From Continued Scaling: the Mythos / Spud generation deploys fully and the capability step is confirmed, undeniable rather than arguable. From Financial Correction: a listed AI lab corrects more than 30% within six months of its IPO, or hyperscaler capex guidance flattens for the first time since 2022.
+
+#### 622 div class=cc-row
+<span class="cc-k">The interaction term</span>These two feel like they cannot both be true: if the technology delivers, surely the investment holds? The dot-com years say otherwise, and that is the single most useful thing the 2000 crash can teach. The internet worked. Traffic grew straight through the crash; Amazon&rsquo;s revenue grew every single year while its stock lost 94%. What collapsed was the willingness to fund the <em>next</em> round, not the technology itself. Now apply the decoder&rsquo;s logic: the models of 2026&ndash;28 are already paid for by 2024&ndash;25 capex, and a correction in 2027 cannot reach back and un-spend that money. So this composite world combines two things that feel contradictory: capability keeps arriving on schedule (the last guaranteed wave) while funding for the wave after it dries up. Two practical consequences follow. First, you still have to adopt: the crash does not make Mythos-class capability disappear, and competitors who adopt during the drought will do it at distressed prices. Second, <em>who</em> you buy from suddenly matters enormously, because the vendor landscape thins out fast; the survivors will be the ones with real revenue and cash on hand, exactly the Amazon test from Current 3.
+
+#### 623 div class=cc-row
+<span class="cc-k">First move</span>Sort your vendor list into &ldquo;survives a two-year funding drought&rdquo; and &ldquo;doesn&rsquo;t&rdquo; <em>before</em> both triggers fire; revenue, cash position, and burn rate are knowable today. Then time any long-term lock-in to the capability wave that is already funded, not the one that depends on 2027 money showing up.
+
+#### 624 div class=cc-pair
+Current 1 (Continued Scaling) &times; Current 2 (Efficiency Revolution)
+
+#### 625 div class=cc-name
+B. The Two-Speed Frontier
+
+#### 626 div class=cc-row
+<span class="cc-k">Watch for</span>From Continued Scaling: the staircase steps again at the very top, a new frontier generation with a clear capability jump. From the Efficiency Revolution: open-weight models matching the <em>previous</em> step within weeks rather than months. The June 2026 logs already hint at this shape: Fable 5 launched at a price <em>premium</em> (Current 2&rsquo;s counter-signal), while one tier below it, the April open-weight wave keeps commoditizing on schedule.
+
+#### 627 div class=cc-row
+<span class="cc-k">The interaction term</span>The intuitive expectation is that these two forces cancel out: scaling pushes prices up, efficiency pushes them down, and you land somewhere in the middle. What actually happens is different: the market splits into two lanes moving at different speeds. Picture an escalator and a plateau. On the escalator are the workloads that genuinely benefit from each new capability step: frontier research, complex multi-hour agentic work, tasks at the edge of what is currently possible. These keep paying premium prices, because each new step does something the previous one could not. On the plateau is everything else (summarization, extraction, classification, routine drafting), work that was effectively &ldquo;solved&rdquo; a generation or two ago. For plateau work, open-weight catches up and the price collapses toward hardware cost. The planning failure this composite exposes: companies budget as if their whole portfolio were on the escalator (&ldquo;everything should use the best model&rdquo;), while in reality the large majority of enterprise workloads sit comfortably on the plateau. That mispricing is invisible in any single quarter and compounds every year the split widens.
+
+#### 628 div class=cc-row
+<span class="cc-k">First move</span>Walk your AI workflows one by one and tag each: escalator or plateau? The honest test: would this workflow&rsquo;s output <em>measurably</em> improve with the next frontier generation? Then re-price the plateau workloads against open-weight alternatives this quarter; that is usually where the immediate savings hide.
+
+#### 629 div class=cc-pair
+Current 2 (Efficiency Revolution) &times; Current 4 (Sovereignty)
+
+#### 630 div class=cc-name
+C. The Sovereign Dividend, and Its Residue
+
+#### 631 div class=cc-row
+<span class="cc-k">Watch for</span>From the Efficiency Revolution: open-weight parity at the capability tier your workloads actually need, meaning parity <em>for your tasks</em> rather than benchmark parity in the abstract. From Sovereignty: any new severance event, supply-chain designation, or data-residency rule that touches your jurisdiction or your vendor.
+
+#### 632 div class=cc-row
+<span class="cc-k">The interaction term</span>The first half is good news, and the booklet has covered it: efficiency is what makes sovereignty affordable. As long as frontier capability lived only behind one or two US-hosted APIs, &ldquo;sovereign AI&rdquo; was a slogan; there was nothing equivalent to host yourself. Once open-weight reaches your required tier at a tenth of the cost, the escape hatch becomes real: sensitive workloads can move on-shore or in-house without giving up meaningful capability. When Current 2 fires, it arms Current 4&rsquo;s exit. But there is a second half that most sovereignty plans miss, and it follows directly from composite B. Commoditization arrives bottom-up: plateau workloads gain credible open-weight fallbacks first; escalator workloads last, or never, if the frontier stays closed and premium. So as open-weight improves, your sovereignty exposure does not shrink evenly across the portfolio. It drains away from the routine work and pools in exactly the workloads that are hardest to replace: the highest-value, frontier-dependent ones. The irony is sharp: the better open-weight gets, the more your <em>remaining</em> lock-in concentrates where a severance event would hurt the most.
+
+#### 633 div class=cc-row
+<span class="cc-k">First move</span>For each escalator workflow, write down the degraded-but-acceptable open-weight fallback: which model, what capability you would lose, and what that loss costs per month. Then actually run it once, before anyone forces the question. A fallback that has never been tested is a hope, not a hedge.
+
+#### 634 div class=cc-pair
+Current 6 (Hours and Dollars) &times; Current 5 (From Lab to Production)
+
+#### 635 div class=cc-name
+D. The Autonomy Trap
+
+#### 636 div class=cc-row
+<span class="cc-k">Watch for</span>From Hours and Dollars: agent time-horizons keep doubling every three to four months; METR&rsquo;s data has already confirmed this cadence. From the Lab-to-Production side: your own pilot-to-production conversion rate sits below 20% for two consecutive quarters. Note that the second trigger is <em>internal</em>: you are watching your own organization, not the news.
+
+#### 637 div class=cc-row
+<span class="cc-k">The interaction term</span>On the surface this looks like good news arriving faster than you can use it: agents improve, your deployment pipeline lags, so you will simply adopt a little later. The actual dynamic is worse, and it is worth slowing down on. Supervision and evaluation burden scales with task duration. An agent that works for twenty minutes can be checked by reading its output. An agent that works alone for eight hours needs eval harnesses, intermediate checkpoints, audit trails of its tool calls, and people trained to review long chains of decisions. Each doubling of autonomous hours roughly doubles what competent supervision requires. Which means the organization that has not built the eval muscle is falling behind <em>at the doubling rate</em>, even while it feels like standing still. By the time 8-hour agents arrive, the supervision bar will sit far above today&rsquo;s, and that capacity takes quarters to build: hiring, tooling, process, habits. This is why waiting feels prudent and is actually the trap. &ldquo;We&rsquo;ll adopt agents once they&rsquo;re more capable&rdquo; quietly translates to &ldquo;we&rsquo;ll start building supervision capacity at exactly the moment the requirement peaks.&rdquo; Current 6&rsquo;s displacement economics only become real for organizations that did Current 5&rsquo;s homework in advance.
+
+#### 638 div class=cc-row
+<span class="cc-k">First move</span>Staff evaluation and red-team capacity now, and size it for the agent autonomy of two doublings from today (roughly six to eight months out), not for the agents you currently run. If hiring is hard, start with one person whose entire job is eval infrastructure; that is the bottleneck role.
+
+#### 639 div class=cc-pair
+Current 3 (Financial Correction) &times; Current 4 (Sovereignty)
+
+#### 640 div class=cc-name
+E. The Cheap Hedge
+
+#### 641 div class=cc-row
+<span class="cc-k">Watch for</span>Either of two very different headlines about a vendor you depend on. The financial one, from Financial Correction: the funding dries up, the burn rate wins, the Pets.com outcome. The political one, from Sovereignty: a sovereign decision severs access mid-contract, the February 2026 outcome. The point is less to predict which one than to notice that either is possible, and that both arrive without much warning.
+
+#### 642 div class=cc-row
+<span class="cc-k">The interaction term</span>Here is what makes this pair special: from where you sit as a buyer, the two failure modes are operationally identical. In both cases the API stops answering, or the contract becomes unusable, mid-quarter, through no fault of yours. One failure comes from a balance sheet, the other from an executive order, but your incident channel looks exactly the same that morning. And when two distinct risks produce the same operational failure, they can share a single mitigation. That mitigation is well-defined: a <em>portable inference layer</em> (your retrieval, evaluation, and tooling stack built so that the model behind it can be swapped without rebuilding everything above it), plus contracts with explicit exit clauses and data-export guarantees. Notice what this does to the economics of hedging. Most insurance protects against one scenario, so each risk costs its own premium. This one investment pays out under Current 3 (your vendor dies), under Current 4 (your vendor is severed), and partially under composite B as well (your vendor reprices the frontier and you want to move plateau work off it). It is the only place in this booklet where one hedge covers multiple currents at once, which makes it, euro for euro, the cheapest insurance on offer.
+
+#### 643 div class=cc-row
+<span class="cc-k">First move</span>Run one planned vendor-swap exercise this quarter: take a real workflow, swap the model behind it, and measure how long it takes until output quality is acceptable again. That number (days, weeks, or &ldquo;we couldn&rsquo;t do it&rdquo;) is your honest, measured exposure to two currents at once. Most teams have never measured it.
+
+#### 644 div class=cc-pair
+Current 1 (Continued Scaling) &times; Current 7 (The Physical Substrate)
+
+#### 645 div class=cc-name
+F. The Grid Ceiling
+
+#### 646 div class=cc-row
+<span class="cc-k">Watch for</span>From Continued Scaling: capex guidance keeps rising &gt;30% and the next generation stays on schedule, so the demand side stays healthy. From the Physical Substrate: a hyperscaler names power, interconnection, or permitting as the reason for a capex cut or a named-project delay, or a state enacts a data-center moratorium.
+
+#### 647 div class=cc-row
+<span class="cc-k">The interaction term</span>Scaling&rsquo;s failure mode was always assumed to be scientific (the staircase flattens) or financial (Current 3&rsquo;s funding drought). This composite is the third way, and it is stranger than either: the money is there, the science works, and the <em>atoms don&rsquo;t arrive</em>. Training runs queue behind interconnection queues, and the clusters that were paid for in 2026 energize in 2029 instead of 2028. Notice what that does to the decoder: the whole instrument rests on capex carrying a reliable date stamp, and this composite is the one place where the date stamps themselves start slipping. Capability still arrives, late and unevenly by geography, because power is a local commodity. It also produces two-lane pricing for a different reason than composite B: a <em>scarcity</em> premium rather than a capability premium, and the headline (&ldquo;frontier prices rise&rdquo;) looks identical. The disambiguation table exists for exactly this confusion.
+
+#### 648 div class=cc-row
+<span class="cc-k">First move</span>Ask each strategic vendor one question at the next review: of your announced capacity, how much is <em>energized</em>, how much is <em>permitted</em>, and how much is <em>announced</em>? Weight their roadmap promises by that ratio, not by the press release.
+
+#### 649 div class=cc-pair
+Current 6 (Hours and Dollars) &times; Current 8 (Political Economy of Displacement)
+
+#### 650 div class=cc-name
+G. The Backlash Curve
+
+#### 651 div class=cc-row
+<span class="cc-k">Watch for</span>From Hours and Dollars: a measured automation rate crossing a publicly legible threshold (an RLI-style rate above 25%), or a named enterprise publishing audited agent ROI. From the Political Economy of Displacement: a displacement statute enacted in a G7 economy, a 10,000-worker action with AI as the stated issue, or the attribution dam breaking in official filings.
+
+#### 652 div class=cc-row
+<span class="cc-k">The interaction term</span>These two don&rsquo;t simply add: Current 8&rsquo;s response function is <em>triggered by</em> Current 6&rsquo;s success and then feeds back into Current 6&rsquo;s arithmetic. An agent-hour levy or mandatory displacement reporting changes the cost side of the hours-and-dollars math directly; a professional-licensure carve-out removes whole task categories from the addressable pool overnight. The trap mirrors composite D, but points the other way: the organizations that adopt fastest while attribution is voluntary accumulate the largest retroactive exposure for the day it becomes mandatory. The winners of this composite are the ones whose agent usage is instrumented, documented, and defensible when the rules arrive mid-game, and they are rarely the fastest adopters.
+
+#### 653 div class=cc-row
+<span class="cc-k">First move</span>Instrument agent usage now (hours, tokens, workflows touched, headcount deltas) and write the augment-versus-replace rationale down as you make each decision. If a reporting regime lands in 2027, compliance should be a query, not an archaeology project.
+
+#### 654 p
+<strong>Running composites in practice.</strong> In your quarterly review, don&rsquo;t stop at &ldquo;did a trigger fire?&rdquo; Ask the second question: <em>did a pair fire within the same quarter, from independent events?</em> The July 2026 logs are a live exercise in why that last clause matters. They contain a cluster of firings: Current 1 (Fable 5, June 9), Current 3 (the S-1, June 1), Current 4 (the recall, June 12), Current 6 (the RLI result, July 1). Run the one-event test before calling pairs: the launch and the recall are one event chain touching Currents 1, 2, and 4, so they carry one count, not three. But the S-1 was filed <em>before</em> the launch, and the RLI measurement is an independent instrument; those counts stand. That leaves two live pair-candidates: <strong>composite A</strong> (the capability step previewed while the IPO trigger armed) remains the one to track into 2027, and <strong>composite E</strong> got a live-fire rehearsal on June 12, when the severed-vendor drill stopped being hypothetical; the <a href="/mercantilism-of-genai/">companion booklet</a> is the book-length treatment of that day. And these seven composites are not a complete list; they are the seven most load-bearing for a typical enterprise. The two currents most specific to <em>your</em> organization may form a composite that matters more. Write that one yourself, in this same format: the trigger pair, the interaction term, the first move.
+
+#### 655 p
+<strong>The stance.</strong> No current is &ldquo;the answer.&rdquo; The strongest planning position is the one that performs adequately under all eight, not the one that bets everything on whichever current seems most live this quarter. Lock to none; watch triggers in all; treat a single firing as a reason to reweight and a pair firing as the moment strategy actually changes; let currents go stale when their triggers haven&rsquo;t fired in 18 months and replace them with what better describes the world you&rsquo;re actually living in. That discipline is what this booklet exists to make routine.
+
+#### 656 div class=chapter-label
+Practice
+
+#### 657 h2
+How to Use This in Practice
+
+#### 658 p class=lead
+If you take one thing from this booklet, take this: currents are useful only if you commit to a habit. The habit is foresee, watch triggers, adjust. The currents are scaffolding for that habit, not a forecast.
+
+#### 659 h3
+Pre-commit to triggers, not predictions
+
+#### 660 p
+The most useful artifact in this booklet is the trigger list under each current. Far more than the prose or the synthesis, the triggers are what tell you something has shifted. Decide now, before the headlines, what would update you. &ldquo;If frontier agent cost-per-hour drops below $40, I will pilot the displacement workflow.&rdquo; &ldquo;If GPU rental prices fall another 30%, I will renegotiate our vendor contract.&rdquo; The point is to short-circuit the response time between observing a signal and acting on it.
+
+#### 661 h3
+Review on a cadence
+
+#### 662 p
+Quarterly is probably right for most teams. Faster than that and you&rsquo;re reading noise; slower and you miss real shifts. Each review, walk through the trigger list and ask: <em>has any trigger fired? Has any disconfirming signal landed? What changed in our environment?</em> Update your stance accordingly. The output of the review is rarely &ldquo;we were wrong&rdquo;; more often it&rsquo;s &ldquo;we should weight this current heavier than we did last quarter.&rdquo; The green <strong>trigger-log</strong> panels in this edition are that review done in public: between the May and June editions alone, a capability trigger fired early in variant form (Current 1), an IPO trigger went live (Current 3), a court date slipped (Current 5), and a doubling cadence was confirmed (Current 6). Between June and July, the cadence accelerated: a kill switch was proven and metered back on (Current 4), displacement got a leaderboard (Current 6), the politics of power arrived (Current 7), and the vendors started pre-negotiating the backlash (Current 8). That is the cadence working; copy the format for your own currents.
+
+#### 663 h3
+Let currents go stale
+
+#### 664 p
+If a current&rsquo;s triggers haven&rsquo;t fired in 18 months and its disconfirming evidence has been steadily accumulating, the current probably isn&rsquo;t live anymore. Retire it. Replace it with one that better describes the world you&rsquo;re actually living in. This booklet is a snapshot of mid-2026; by mid-2027 at least one of these currents will likely need replacing. That&rsquo;s the system working, not failing.
+
+#### 665 div class=an-label
+Currents changelog: how this booklet has evolved
+
+#### 666 p
+The retire-and-replace rule isn&rsquo;t hypothetical; it has already run. For the record, and so you can score the method itself:
+
+#### 667 p
+<strong>May 2026 edition:</strong> &ldquo;Plateau + Regulation&rdquo; was rebuilt into <em>From Lab to Production</em> (the plateau thesis wasn&rsquo;t earning its keep, and regulation was demoted from headline to secondary force raising the deployment floor). &ldquo;Agentic Acceleration&rdquo; was rebuilt into <em>Hours and Dollars</em>: from a vibe about agents to two measurable units.
+
+#### 668 p
+<strong>July 2026 edition:</strong> two currents added: <em>The Physical Substrate</em> (promoted from a background assumption after capacity auctions hit caps and moratorium bills reached a dozen statehouses) and <em>The Political Economy of Displacement</em> (split out of Hours and Dollars once the RLI made displacement legible enough to have politics). Plus a page this booklet used to refuse to write: the author&rsquo;s own scoreable position, next.
+
+#### 669 h3
+What I think, and where I&rsquo;d put my chips
+
+#### 670 p
+I want to be precise about my view: I think this <em>approach</em> (currents plus triggers plus periodic adjustment) is the healthy way to navigate a technology that changes this fast. I do not think your <em>strategy</em> should bet on any one of the eight currents in this booklet; the discipline of holding several open simultaneously, watching what fires, and updating without ego is the actual skill worth building. But earlier editions used that stance to avoid stating any view at all, and I&rsquo;ve come to see that as its own kind of dodge. My students ask me, fairly, what I actually expect to happen, and a booklet that preaches falsifiable triggers while its author declines to be falsifiable isn&rsquo;t practicing what it teaches. So the method stays agnostic, and my opinion gets its own page: dated, with probabilities, and scored in public every edition. That page is next.
+
+#### 671 div class=chapter-label
+The Author&rsquo;s Position
+
+#### 672 h2
+Where I&rsquo;d Put My Chips <br><span class="chapter-question">&ldquo;Dated July 2026: score me next edition&rdquo;</span>
+
+#### 673 p class=lead
+Everything on this page is opinion. It is the answer to the question the rest of the booklet deliberately refuses: <em>what do I actually think will happen?</em> The method doesn&rsquo;t depend on any of it; if every bet below is wrong, the currents and triggers still work. But each bet carries a probability and a condition under which I&rsquo;m wrong, and every future edition re-scores them in place, misses included. The same discipline the trigger logs impose on the currents, applied to me.
+
+#### 674 div class=bet-by
+Bet 1 &middot; by mid-2027 &middot; ~85%
+
+#### 675 div class=bet-claim
+<strong>The step confirms.</strong> The full Mythos / Spud generation ships in generally available (non-gated) form and delivers the capability tier that Fable 5 previewed, on agent-economics metrics rather than just benchmark points: something like another doubling of RLI-class automation rates over the Opus 4.8 / GPT-5.5 cohort. From where I sit, this generation is ready, and it delivers on expectations.
+
+#### 676 div class=bet-falsify
+<span class="bf-k">Wrong if</span> no full non-gated deployment of the generation exists by June 30, 2027, or the deployed generation lands within noise of Opus 4.8 on independent benchmarks, in which case the &ldquo;preview&rdquo; reading of Fable 5 was wrong and the staircase already flattened.
+
+#### 677 div class=bet-by
+Bet 2 &middot; by end of 2029 &middot; ~70%
+
+#### 678 div class=bet-claim
+<strong>The 2029 generation lands heavy, and it is already financed.</strong> By the decoder&rsquo;s own logic, the money being committed in 2026&ndash;27 is buying the generation <em>after</em> Mythos / Spud, arriving around 2029. I avoid the term AGI; I mean something more concrete: an LLM generation so capable that it materially impacts how research is done, how industries operate, and how economies allocate work. Operationalized: an RLI-style automation rate above 50%, or a frontier lab credibly documenting a material LLM contribution to a first-tier scientific result, or displacement visible in national labor statistics. The signals I weight: the research talent consolidating at the leading labs, what figures like Hassabis are saying out loud, and the fact that models are <em>already</em> contributing meaningfully to research in mid-2026.
+
+#### 679 div class=bet-falsify
+<span class="bf-k">Wrong if</span> the end of 2029 arrives with automation rates plateaued below 30% and no documented research-grade contribution, in which case the staircase bent exactly where the skeptics said it would, and the 2026&ndash;27 capex bought refinement, not transformation.
+
+#### 680 div class=bet-by
+Bet 3 &middot; by end of 2027 &middot; ~80%
+
+#### 681 div class=bet-claim
+<strong>More severance, not less.</strong> At least two further government-imposed severance events (designations, recalls, access-gates, export restrictions on models themselves) hit frontier AI. June 12 was a precedent, not a one-off. I expect the US bloc to play the economics of frontier AI the way the <a href="/mercantilism-of-genai/">companion booklet</a> describes: export the goods, keep the factory. This is the pessimistic half of my position, and I hold it about as firmly as the optimistic half above.
+
+#### 682 div class=bet-falsify
+<span class="bf-k">Wrong if</span> June 12 stands alone through the end of 2027, with no further designation, recall, or access-gate on a frontier model, in which case the mercantilist reading over-indexed on one event and sovereignty deserves a lighter weight than I give it below.
+
+#### 683 div class=bet-by
+Bet 4 &middot; by end of 2028 &middot; ~60%
+
+#### 684 div class=bet-claim
+<strong>The China tell fires.</strong> The first Chinese lab to hold a credible frontier-parity claim ships that flagship <em>closed</em>. People placing their hopes in Chinese open-weight models tracking the frontier indefinitely are, I think, mis-reading why those models are open. Openness is a position, not a principle: Meta held &ldquo;open&rdquo; as an identity until the economics turned, Mistral reframed open weights as a funnel, and a lab that believes it has taken the lead has every incentive to close. (This is the <a href="/mercantilism-of-genai/#m-open">companion booklet&rsquo;s Bet 5</a>, and I&rsquo;m adopting it here as my own.)
+
+#### 685 div class=bet-falsify
+<span class="bf-k">Wrong if</span> the end of 2028 arrives and every Chinese flagship with a credible parity claim is still open-weight, in which case open-weight release survives winning positions better than the positional theory predicts, and the sovereignty picture is genuinely brighter than I believe.
+
+#### 686 h3
+The weights
+
+#### 687 p
+If the four bets are point predictions, this table is the portfolio: where I&rsquo;d allocate 100 units of monitoring attention across the eight currents this quarter. Equal weighting would be 12.5 each; the deviations are the opinion.
+
+#### 688 th
+Current
+
+#### 689 th
+Weight
+
+#### 690 th
+vs. equal
+
+#### 691 th
+Why
+
+#### 692 td
+<strong>1 &middot; Continued Scaling</strong>
+
+#### 693 td
+Over
+
+#### 694 td
+The step is real, previewed, and the next one is already financed. This is the current I&rsquo;d least want to be surprised by.
+
+#### 695 td
+<strong>2 &middot; Efficiency Revolution</strong>
+
+#### 696 td
+Under
+
+#### 697 td
+Real, but running one tier below the frontier, and the frontier premium (Fable 5 at 2&times; Opus pricing) says the top lane holds. For the workloads that decide the next three years, this current follows rather than leads.
+
+#### 698 td
+<strong>3 &middot; Financial Correction</strong>
+
+#### 699 td
+Under
+
+#### 700 td
+The revenue curve bent the strong bear case, and capability delivering (Bet 1) keeps bending it. The IPO trigger stays armed, though; this weight rises the day a listing prices.
+
+#### 701 td
+<strong>4 &middot; Sovereignty</strong>
+
+#### 702 td
+Over
+
+#### 703 td
+June 12 proved the kill switch. I expect this to play out badly, toward mercantilism rather than d&eacute;tente. My most confident pessimism.
+
+#### 704 td
+<strong>5 &middot; From Lab to Production</strong>
+
+#### 705 td
+Over
+
+#### 706 td
+With capability delivering, the action moves downstream to deployment. This is also where my consulting clients actually live, quarter after quarter; the gap between what the model can do and what the organization ships is the story of 2026.
+
+#### 707 td
+<strong>6 &middot; Hours and Dollars</strong>
+
+#### 708 td
+Over
+
+#### 709 td
+The RLI made displacement measurable, and I feel the hours jump at my own desk (see the field note in Current 6). The doubling cadence at the fast end of assumptions is the most under-priced fact in the booklet.
+
+#### 710 td
+<strong>7 &middot; The Physical Substrate</strong>
+
+#### 711 td
+Under
+
+#### 712 td
+Slow until it isn&rsquo;t, and adaptation has so far outrun the doom case. Taiwan stays the fattest tail risk on this list, but tail risks earn a tabletop exercise, not a fifth of my attention.
+
+#### 713 td
+<strong>8 &middot; Political Economy of Displacement</strong>
+
+#### 714 td
+Under
+
+#### 715 td
+Lags Current 6 by design. Watch and instrument rather than act; this weight doubles the first time an attribution dam breaks.
+
+#### 716 div class=s2-table-caption
+100 units of attention, July 2026 edition. The weights get re-argued every edition; the previous edition&rsquo;s weights stay visible so drift is scoreable.
+
+#### 717 p
+<strong>The scoring promise.</strong> Next edition, every bet above gets a status tag in place (fired, not yet, or wrong) using the same vocabulary as the trigger logs, and the weight table gets a &ldquo;last edition&rdquo; column. If I&rsquo;m wrong, the wrongness stays on the page. That&rsquo;s the price of asking you to take the probabilities seriously.
+
+#### 718 p
+
+    Interactive versions of all visualizations: <strong>demos.barcik.training</strong><br>
+    Full research and data: <strong>publications.barcik.training</strong>
+  
+
+#### 719 p
+&copy; 2026 Robert Barcik &middot; LearningDoe s.r.o. &middot; barcik.training
+
+#### 720 span class=ait-label
+AI transparency
+
+#### 721 p
+This publication was written with generative AI (Anthropic&rsquo;s Claude) working alongside Robert Barcik. The text went through his review, and he holds editorial responsibility for what is published here (LearningDoe s.r.o.). Where the AI writes in its own voice, the piece says so. Disclosed in the spirit of Article&nbsp;50 of the EU AI Act.
