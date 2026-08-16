@@ -349,6 +349,19 @@
             padding: 0.16rem 0.7rem;
             margin-bottom: 0.65rem;
         }
+
+        /* ===== AI TRANSPARENCY NOTICE ===== */
+        .ai-notice {
+            max-width: 836px; margin: 0 auto 2rem; padding: 1.25rem 1.5rem;
+            display: flex; gap: 1rem; align-items: flex-start;
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+            color: var(--text-light); font-size: 0.88rem; line-height: 1.6;
+        }
+        .ai-notice .ait-icon { flex: 0 0 auto; width: 2.4rem; height: 2.4rem; color: var(--navy); }
+        .ai-notice-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+        .ai-notice p { margin: 0; }
+        @media (max-width: 600px) { .ai-notice { margin: 2rem 1rem 0; } }
+
         footer {
             text-align: center;
             padding: 2rem;
@@ -713,8 +726,17 @@
 
     </div>
 
+    <!-- AI transparency notice (Art 50 EU AI Act, voluntary) -->
+    <section class="ai-notice" id="ai-transparency" aria-label="AI transparency notice">
+        <svg class="ait-icon" viewBox="85 96 374 374" aria-hidden="true" focusable="false"><defs><mask id="ait-m-idx"><rect width="566.93" height="566.93" fill="#000"/><circle cx="272.03" cy="283.47" r="182.75" fill="#fff"/><path fill="#000" d="M170.79,353.74c-1.08,0-2.05-.43-2.92-1.31-.88-.87-1.31-1.84-1.31-2.92,0-.67.07-1.27.2-1.81l47.34-129.32c.4-1.48,1.24-2.79,2.52-3.93,1.27-1.14,3.05-1.71,5.34-1.71h29.81c2.28,0,4.06.57,5.34,1.71,1.27,1.14,2.11,2.45,2.52,3.93l47.14,129.32c.27.54.4,1.14.4,1.81,0,1.08-.44,2.05-1.31,2.92s-1.91,1.31-3.12,1.31h-24.78c-2.01,0-3.52-.5-4.53-1.51-1.01-1.01-1.65-1.91-1.91-2.72l-7.86-20.55h-53.78l-7.65,20.55c-.27.81-.88,1.71-1.81,2.72-.94,1.01-2.55,1.51-4.83,1.51h-24.78ZM218.13,299.96h37.47l-18.93-53.18-18.53,53.18Z"/><path fill="#000" d="M328.11,353.74c-1.48,0-2.69-.47-3.63-1.41-.94-.94-1.41-2.15-1.41-3.63v-130.93c0-1.48.47-2.68,1.41-3.63s2.15-1.41,3.63-1.41h26.99c1.48,0,2.68.47,3.63,1.41.94.94,1.41,2.15,1.41,3.63v130.93c0,1.48-.47,2.69-1.41,3.63-.94.94-2.15,1.41-3.63,1.41h-26.99Z"/></mask></defs><rect width="566.93" height="566.93" fill="currentColor" opacity=".5" mask="url(#ait-m-idx)"/></svg>
+        <div>
+            <div class="ai-notice-label">AI transparency</div>
+            <p>Everything on this site was written with generative AI (Anthropic&rsquo;s Claude) working alongside Robert Barcik, who reviews every text and holds editorial responsibility for what is published (LearningDoe s.r.o.). Some pieces are written by the AI in its own voice and say so on their cover; the research reports quote machine-generated model outputs, as they explain. This is a voluntary disclosure in the spirit of Article&nbsp;50 of the EU AI Act, and each publication carries the same notice at its end.</p>
+        </div>
+    </section>
+
     <footer>
-        <p>Robert Barcik &middot; <a href="https://barcik.training">barcik.training</a> &middot; LearningDoe s.r.o. &middot; <a href="mailto:robert@barcik.training">robert@barcik.training</a></p>
+        <p>Robert Barcik &middot; <a href="https://barcik.training">barcik.training</a> &middot; LearningDoe s.r.o. &middot; <a href="mailto:robert@barcik.training">robert@barcik.training</a> &middot; <a href="#ai-transparency">AI transparency</a></p>
     </footer>
 </body>
 </html>

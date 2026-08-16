@@ -63,6 +63,21 @@ aws cloudfront create-invalidation \
   --profile barcik-demos
 ```
 
+## AI transparency notice (every publication)
+
+Since 2026-08-16 every deployed page carries an "AI transparency" colophon (an
+`<aside id="ai-transparency">` just before `</main>`, plus a site-level block + footer link on the
+homepage and a footer/before-`</body>` block on the research reports). Voluntary disclosure in the
+spirit of Art 50 EU AI Act: written with generative AI, reviewed by Robert who holds editorial
+responsibility. Wording + generator: `training-ops/web/ai_transparency_label.py`.
+
+- **New publication?** run `python3 ../training-ops/web/ai_transparency_label.py pub <slug>/index.html [en|sk|cs]`
+  (idempotent) or, better, keep the `AI_TRANSPARENCY_NOTICE` constant in its `build_html.py`
+  (all local build scripts + the sibling-repo builders for ai-act-intro / ai-act-developers /
+  llm-human-interaction-patterns / a-point-in-time already emit it, so rebuilding keeps it).
+- **Never remove it** when hand-patching HTML. A Point in Time: the notice sits after the book footer,
+  OUTSIDE the frozen manuscript text.
+
 ## Dependencies
 
 For building publications:
