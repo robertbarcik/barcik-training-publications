@@ -48,3 +48,10 @@ the two in sync or treat the HTML as canonical after first deploy.
   Part 7's "I told you so in the first paragraph" → "the disclosures just below spell out what
   it is". (2) Trainee stat corrected per Robert: ~1,000 trainees is the **past year alone**,
   not the last three years (Part 6). draft.md updated to match.
+
+## 2026-08-16 — Slovak edition (Neviditeľná krivka) at `/the-invisible-curve-sk/`
+
+Translated entirely by Fable 5, meaning-first (glossary + body under `_sources/_translation/`,
+assembled with `assemble_sk.py`). Robert's voice kept in first person; disclaimer + co-author note
+translated verbatim in position; translation credit added to the essay footer. Companion link → SK
+Claude Code edition.

@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizont agentov &middot; Strategický sprievodca podnikovým stackom na vývoj agentov</title>
+    <meta name="description" content="Strategický sprievodca podnikovým stackom na vývoj agentov: MCP, A2A, dodávateľské SDK, LangGraph a CrewAI, kompromisy lock-inu a Akt EÚ o umelej inteligencii.">
+    <link rel="canonical" href="https://publications.barcik.training/agent-horizon-sk/">
+    <link rel="alternate" hreflang="sk" href="https://publications.barcik.training/agent-horizon-sk/">
+    <link rel="alternate" hreflang="en" href="https://publications.barcik.training/agent-horizon/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Horizont agentov &middot; Strategický sprievodca podnikovým stackom na vývoj agentov">
+    <meta property="og:description" content="Strategický sprievodca podnikovým stackom na vývoj agentov: MCP, A2A, dodávateľské SDK, LangGraph a CrewAI, kompromisy lock-inu a Akt EÚ o umelej inteligencii.">
+    <meta property="og:url" content="https://publications.barcik.training/agent-horizon-sk/">
+    <meta property="og:image" content="https://publications.barcik.training/assets/og-card.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+:root {
+    --navy: #1e3a5f;
+    --navy-light: #2a5280;
+    --accent: #3b82f6;
+    --bg: #ffffff;
+    --bg-sidebar: #f8fafc;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --code-bg: #f1f5f9;
+    --sidebar-width: 300px;
+    --progress-height: 3px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+}
+
+/* Progress bar */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: var(--progress-height);
+    background: var(--accent);
+    z-index: 1000;
+    transition: width 0.1s;
+}
+
+/* Sidebar */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 2rem 0;
+    z-index: 100;
+    transition: transform 0.3s;
+}
+
+#sidebar-header {
+    padding: 0 1.5rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1rem;
+}
+
+#sidebar-header .all-pubs-link {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    text-decoration: none;
+    margin-bottom: 0.6rem;
+    transition: color 0.2s;
+}
+
+#sidebar-header .all-pubs-link:hover {
+    color: var(--accent);
+}
+#sidebar-header .lang-link{display:inline-block;margin-top:.6rem;font-size:.78rem;font-weight:600;color:var(--accent);text-decoration:none}
+#sidebar-header .lang-link:hover{text-decoration:underline}
+
+#sidebar-header h2 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+#sidebar-header p {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-top: 0.3rem;
+    line-height: 1.4;
+}
+
+#sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar nav ul li a {
+    display: block;
+    padding: 0.55rem 1.5rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+    line-height: 1.4;
+}
+
+#sidebar nav ul li a:hover {
+    color: var(--navy);
+    background: rgba(30, 58, 95, 0.04);
+}
+
+#sidebar nav ul li a.active {
+    color: var(--navy);
+    font-weight: 600;
+    border-left-color: var(--accent);
+    background: rgba(59, 130, 246, 0.06);
+}
+
+/* Hamburger menu */
+#menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 200;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Main content wrapper */
+#content-wrapper {
+    margin-left: var(--sidebar-width);
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+/* Main content */
+#content {
+    max-width: 780px;
+    width: 100%;
+    padding: 3rem 1rem 6rem;
+}
+
+/* Chapter sections */
+.chapter {
+    margin-bottom: 5rem;
+    padding-top: 1rem;
+}
+
+.chapter:first-child {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.chapter-number {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+}
+
+/* Typography */
+h1 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+h3 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--navy-light);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+p {
+    margin-bottom: 1.1rem;
+}
+
+/* Lists */
+ul, ol {
+    margin-bottom: 1.1rem;
+    padding-left: 1.8rem;
+}
+
+li {
+    margin-bottom: 0.4rem;
+}
+
+/* Strong / emphasis */
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* Code */
+code {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+}
+
+pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+thead {
+    background: var(--navy);
+    color: white;
+}
+
+th {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+tbody tr:nth-child(even) {
+    background: var(--bg-sidebar);
+}
+
+tbody tr:hover {
+    background: rgba(59, 130, 246, 0.04);
+}
+
+/* Blockquotes (used for callouts / key takeaways) */
+blockquote {
+    border-left: 4px solid var(--accent);
+    background: rgba(59, 130, 246, 0.04);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: normal;
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Horizontal rules (chapter dividers) */
+hr {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 4rem 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    #sidebar {
+        transform: translateX(-100%);
+    }
+    #sidebar.open {
+        transform: translateX(0);
+        box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+    }
+    #menu-toggle {
+        display: block;
+    }
+    #content-wrapper {
+        margin-left: 0;
+        padding: 0 1rem;
+    }
+    #content {
+        padding: 2rem 0.5rem 4rem;
+    }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.3rem; }
+    table { font-size: 0.82rem; }
+    th, td { padding: 0.5rem 0.6rem; }
+}
+
+@media (max-width: 600px) {
+    #content { padding: 1.5rem 1rem 3rem; }
+    body { font-size: 15.5px; }
+}
+
+/* Print */
+@media print {
+    #sidebar, #menu-toggle, #progress-bar { display: none !important; }
+    #content-wrapper { margin-left: 0; padding: 0; }
+    #content { max-width: 100%; }
+    .chapter { page-break-before: always; }
+    .chapter:first-child { page-break-before: auto; }
+}
+</style>
+</head>
+<body>
+    <div id="progress-bar"></div>
+
+    <button id="menu-toggle" aria-label="Prepnúť navigáciu">&#9776;</button>
+
+    <aside id="sidebar">
+        <div id="sidebar-header">
+            <a class="all-pubs-link" href="/">&larr; Všetky publikácie</a>
+            <h2>Horizont agentov</h2>
+            <p>Strategický sprievodca podnikovým stackom na vývoj agentov</p>
+            <a class="lang-link" href="/agent-horizon/">Read in English &rarr;</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#the-agent-horizon">Horizont agentov</a></li>
+<li><a href="#chapter-1-the-cloud-parallel">1. Kapitola 1: Paralela s cloudom</a></li>
+<li><a href="#chapter-2-the-layer-cake">2. Kapitola 2: Vrstvová torta</a></li>
+<li><a href="#chapter-3-the-protocol-layer-mcp-and-a2a">3. Kapitola 3: Protokolová vrstva: MCP a A2A</a></li>
+<li><a href="#chapter-4-the-orchestration-layer">4. Kapitola 4: Orchestračná vrstva</a></li>
+<li><a href="#chapter-5-the-vendor-frameworks">5. Kapitola 5: Dodávateľské frameworky</a></li>
+<li><a href="#chapter-6-the-agnostic-frameworks">6. Kapitola 6: Nezávislé frameworky</a></li>
+<li><a href="#chapter-7-observability-evaluation-and-cost">7. Kapitola 7: Pozorovateľnosť, vyhodnocovanie a náklady</a></li>
+<li><a href="#chapter-8-the-lock-in-question">8. Kapitola 8: Otázka lock-inu</a></li>
+<li><a href="#chapter-9-the-eu-angle">9. Kapitola 9: Európsky uhol</a></li>
+<li><a href="#chapter-10-will-the-timeline-actually-squeeze">10. Kapitola 10: Naozaj sa časová os stlačí?</a></li>
+<li><a href="#chapter-11-picking-your-stack">11. Kapitola 11: Výber vášho stacku</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div id="content-wrapper">
+        <main id="content">
+            
+        <section class="chapter" id="the-agent-horizon">
+            
+            <h1>Horizont agentov</h1>
+<h2>Strategický sprievodca podnikovým stackom na vývoj agentov</h2>
+<hr>
+<p><strong>Apríl 2026 &middot; prvé čítanie indikátorov júl 2026 &middot; slovenské vydanie august 2026</strong></p>
+<p><em>Robert Barcik</em></p>
+<p><em>LearningDoe s.r.o.</em></p>
+<p><em>Kontakt: <a href="mailto:robert@barcik.training">robert@barcik.training</a></em></p>
+<hr>
+<h3>O tejto brožúre</h3>
+<p>Každých pár týždňov sa objaví nový framework na agentov. Oznámi sa nový protokol. Ďalšia dodávateľská sada nástrojov sľubuje, že všetko zjednoduší. Pre inžiniera alebo biznisového zadávateľa, ktorý plánuje cestovnú mapu na roky 2026 až 2028, je pomer signálu k šumu hrozný a v hre je veľa.</p>
+<p>Táto brožúra je konceptuálna mapa, nie porovnanie funkcií. Jej cieľom je pomôcť vám vidieť, <strong>čo v rodiacom sa agentnom stacku kde sedí</strong>, <strong>prečo každá vrstva existuje</strong> a <strong>ako sa jednotlivé kúsky s najväčšou pravdepodobnosťou vyvinú</strong> v najbližších dvoch až troch rokoch. Kostrou je analógia, ktorú už poznáte: prechod do cloudu. Paralely nie sú dokonalé, ale namapovanie agentných primitív na známe cloudové pojmy vám dá mentálny model, ktorý prežije aj ďalšie kolo premenovávania.</p>
+<p>Keď dočítate, mali by ste vedieť s istotou odpovedať na štyri otázky. Čo je MCP a prečo ho všetci berú ako uzavretú vec? Aký je skutočný rozdiel medzi Google ADK, OpenAI Agents SDK, Claude Agent SDK a LangGraphom? A kedy má ktorý zmysel? Kde býva lock-in a nakoľko by vás mal trápiť? A konkrétne pre európsky podnik: je rozumnejšie najprv sa zviezť na dodávateľskej vlne a prenositeľnosť riešiť neskôr, alebo investovať do nezávislej infraštruktúry už teraz?</p>
+<p>Brožúra sa uzatvára rozpracovanou prípadovou štúdiou: regulovaná európska banka prekladá rámec piatich otázok do konkrétneho stacku (vrátane jediného rozhodnutia, kde rámec hovoril jedno a my sme urobili druhé, a prečo to bolo správne).</p>
+<p>Žiadny hype. Žiadne zadýchané predpovede. Len mapa a jeden konkrétny príklad.</p>
+<h3>Pre koho je táto brožúra</h3>
+<ul>
+<li><strong>Podnikoví inžinieri</strong>, ktorí hodnotia frameworky na agentov pre produkčné nasadenie</li>
+<li><strong>Architekti</strong>, ktorí navrhujú multiagentné systémy, ktoré musia prežiť jedného dodávateľa</li>
+<li><strong>Technologickí lídri</strong>, ktorí tvarujú cestovnú mapu na roky 2026 až 2028</li>
+<li><strong>Biznisoví zadávatelia</strong>, ktorí sa snažia pochopiť, o čom sa ich inžinieri hádajú</li>
+</ul>
+<p>Ak ste v rozhovore počuli pojmy <em>MCP</em>, <em>ADK</em>, <em>LangGraph</em> alebo <em>A2A</em>, prikyvovali ste a potichu premýšľali, čo z toho je protokol a čo framework, táto brožúra je pre vás.</p>
+<h3>Ako ju čítať</h3>
+<p>Kapitoly 1 a 2 stavajú mentálny model. Prečítajte si ich ako prvé, aj keď ste v téme hlboko. Kapitola 3 pokrýva dva ustálené protokoly (MCP a A2A). Kapitola 4 predstavuje orchestračnú vrstvu; kapitoly 5 a 6 mapujú jej dve rodiny (dodávateľskú a nezávislú). Kapitola 7 sa venuje pozorovateľnosti. Kapitoly 8 až 10 pokrývajú stratégiu: lock-in, európsky uhol, časovú os. Kapitola 11 to všetko spája do rozhodovacieho rámca, rozpracovanej prípadovej štúdie banky a krátkeho epilógu.</p>
+<p>Kapitola 10 urobila svoju predpoveď vyvrátiteľnou šiestimi pomenovanými indikátormi; toto vydanie pridáva ich datované prvé čítanie (júl 2026). Zvyšok textu ostáva aprílovou snímkou, s rovnakou disciplínou, akú naše brožúry o <a href="/scenario-planning/">plánovaní scenárov</a> a <a href="/mercantilism-of-genai/">merkantilizme</a> držia svojimi denníkmi spúšťačov.</p>
+<p><em>Poznámka k slovenskému vydaniu: preložil Claude (Fable 5), ktorý sa podieľal aj na júlovej revízii originálu, 16. augusta 2026; prekladané významovo, nie slovo za slovom. Názvy protokolov, frameworkov a produktov ostávajú v angličtine; pojmy ako stack, framework a lock-in nechávame tak, ako sa používajú v slovenskej IT praxi. Pri pochybnostiach platí <a href="/agent-horizon/">anglický originál</a>.</em></p>
+<hr>
+<h3>Obsah</h3>
+<ol>
+<li>Paralela s cloudom</li>
+<li>Vrstvová torta</li>
+<li>Protokolová vrstva: MCP a A2A</li>
+<li>Orchestračná vrstva</li>
+<li>Dodávateľské frameworky</li>
+<li>Nezávislé frameworky</li>
+<li>Pozorovateľnosť, vyhodnocovanie a náklady</li>
+<li>Otázka lock-inu</li>
+<li>Európsky uhol</li>
+<li>Naozaj sa časová os stlačí?</li>
+<li>Výber vášho stacku: s rozpracovaným prípadom</li>
+</ol>
+        </section>
+
+        <section class="chapter" id="chapter-1-the-cloud-parallel">
+            <div class="chapter-number">Kapitola 1</div>
+            <h1>Kapitola 1: Paralela s cloudom</h1>
+<hr>
+<p>Ak ste v podnikovom IT viac než desať rokov, spôsob, akým sa v roku 2026 debatuje o vývoji agentov, by vám mal pripadať podozrivo známy.</p>
+<p>Traja dodávatelia základných modelov (Google, OpenAI, Anthropic) tlačia vyleštené, názorovo vyhranené vývojárske sady, s ktorými postavíte agenta za jedno popoludnie, pokiaľ ostanete v ich ekosystéme. Menší zhluk dodávateľsky neutrálnych frameworkov (LangGraph, CrewAI) trvá na tom, že jedinou zodpovednou voľbou sú prenositeľné abstrakcie, ktoré prežijú zmenu poskytovateľa modelu. Medzi tým sa protokol s názvom Model Context Protocol (MCP) potichu stal štandardným spôsobom, akým agenti siahajú po nástrojoch a dátach. Je otvorený, spravovaný nadáciou, má desiatky miliónov stiahnutí SDK mesačne a väčšina odvetvia sa o ňom prestala hádať.</p>
+<p>Vymeňte mená a máte takmer presne rozhovor, ktorý sme viedli medzi rokmi 2010 a 2015. Vyleštené dodávateľské sady boli AWS, Azure, GCP. Neutrálne frameworky boli Kubernetes a Docker. Tichý protokol bol HTTP. Debata nebola o tom, <em>či</em> ísť do cloudu; bola o tom, či sa upísať <em>jednému</em> cloudu a prijať lock-in, alebo stavať na prenositeľných abstrakciách a zaplatiť daň za abstrakciu vopred.</p>
+<p>Tvrdenie tejto brožúry je, že agentná krajina znovu prehráva cloudový scenár. Nie v každom detaile a nie rovnakou rýchlosťou. Ale dosť blízko na to, aby vás funkčný mentálny model toho, ako prebehol prechod do cloudu, dostal väčšinu cesty k funkčnému mentálnemu modelu toho, ako prebehne prechod k agentom.</p>
+<p><strong>Základné modely sú nový výpočtový výkon. MCP je nové HTTP. Dodávateľské agentné SDK sú nová platforma ako služba. Nezávislé frameworky ako LangGraph sú nový Kubernetes.</strong> To je jednovetová verzia zvyšku tejto knihy.</p>
+<h2>Prečo paralela platí</h2>
+<p>Hŕstka hyperškálových dodávateľov má na dne stacku nedobytnú nákladovú výhodu. V roku 2012 nikto nedokázal vyrovnať cenu AWS za jadro, lebo AWS amortizoval svoju infraštruktúru naprieč miliónmi zákazníkov. Dnes nikto nedokáže vyrovnať cenu OpenAI alebo Anthropicu za token, lebo amortizovali náklady na trénovanie naprieč podobne obrovskou používateľskou základňou. Nákladová krivka je štrukturálna, nie dočasná. Prenajímať je lacnejšie než vlastniť, s výnimkou úzkej množiny záťaží, kde súlad s predpismi, latencia alebo dátová suverenita vynucujú inú voľbu.</p>
+<p>Dodávatelia, ktorí predávajú lacnú spodnú vrstvu, sa vám snažia predať aj vrstvu nad ňou. AWS nepredával iba EC2: tlačil Elastic Beanstalk, Lambdu, SageMaker a desiatky ďalších spravovaných služieb, ktoré sú mimoriadne pohodlné, kým nikdy nebudete chcieť z AWS odísť. Dodávatelia základných modelov robia to isté: Google tlačí ADK + Vertex, OpenAI tlačí Agents SDK s hostovanými sandboxmi, Anthropic tlačí Claude Agent SDK so zabudovanými nástrojmi na ovládanie počítača. Gravitačný ťah je identický.</p>
+<p>A v oboch prípadoch v reakcii vznikla neutrálna stredná vrstva. Nie preto, že by dodávateľské ponuky boli zlé, ale preto, že kritická masa podnikov usúdila, že možnosť vymeniť spodnú vrstvu bez prepisovania tej hornej stojí za tie inžinierske náklady.</p>
+<h2>Kde sa paralela láme</h2>
+<p>Dobrá analógia je taká, ktorú viete záťažovo otestovať. Táto má dve trhliny, ktoré stojí za to označiť hneď na úvod.</p>
+<p><strong>Časová os je stlačená.</strong> Prechod do cloudu potreboval približne desaťročie, kým dosiahol ustálený tvar. Agentný stack sa dostal od „zaujímavého experimentu“ (koniec 2022) k „ustálenému protokolu plus súperiacim frameworkom“ (začiatok 2026) za menej než štyri roky. Či to znamená, že konečný tvar príde o ďalšie štyri roky, alebo či sme v ekvivalente roka 2010 s ďalším desaťročím vretia pred sebou, je otvorená otázka. Kapitola 10 ju berie vážne.</p>
+<p><strong>Lock-in je hlbší.</strong> Keď podnik migroval z AWS, PostgreSQL bol stále PostgreSQL a Java bola stále Java. Časti špecifické pre dodávateľa (fronty, DNS, identita) boli nahraditeľné. V agentnom svete, keď podnik stavia na schopnosti Clauda ovládať počítač, tá schopnosť nie je prenositeľná abstrakcia; je zapečená do toho, ako bol model Anthropicu trénovaný. Nemôžete pustiť ten istý pracovný postup cez GPT-4o a čakať, že sa bude správať rovnako. Lock-in v cloudovej ére bol väčšinou o okolitých službách. Lock-in v agentnej ére môže siahať až dole k samotnému správaniu modelu.</p>
+<p>Obe výhrady si založte a majte ich na pamäti pri čítaní. Cloudová analógia je lešenie, nie stavebný plán.</p>
+<h2>Európska vráska</h2>
+<p>Jedna črta cloudovej éry stojí za včasné pomenovanie, lebo sa pravdepodobne zopakuje. Európsky prechod do cloudu bol pomalší než americký. GDPR ešte nebolo plne v platnosti, ale normy ochrany údajov urobili z cezhraničného prenosu dát živú inžiniersku, nielen právnu otázku. Predvídateľný dôsledok: kým sa európske podniky vážne presunuli do cloudu, mohli preskočiť bolestivé skoré lekcie. Multi-cloud už bol uznaný vzor; dodávatelia už boli prinútení ponúkať nástroje na prenositeľnosť. Európsky trh v podstate <strong>preskočil fázu 1</strong>.</p>
+<p>Existuje dôveryhodný argument, že EÚ to s agentmi urobí znova. AI Act je silnejšia vynucovacia sila, než bolo GDPR pre cloud. Obavy o suverenitu sú ostrejšie, nie miernejšie. A hnutie za suverénnu AI naprieč Európou tlačí architektonický vzor (smerovanie nezávislé od modelu s vykonávaním on-prem alebo v regióne EÚ pre regulované dáta), ktorý vyzerá skôr ako zrelý agentný stack než ako raný.</p>
+<p>Či k preskoku naozaj dôjde, závisí od vecí, ktoré sú v apríli 2026 skutočne nepoznateľné. Ale vzor je dosť silný na to, aby si každý európsky podnik, ktorý plánuje svoju agentnú stratégiu, položil aspoň otázku: <em>chystáme sa zopakovať cloudový cyklus, alebo preskočiť dopredu?</em> Kapitola 9 to rozvíja priamo.</p>
+<p>Zvyšok tejto brožúry je rozpracovaním obrazu vyššie. Cieľom až po kapitolu 11 je byť dosť konkrétny na to, aby ste po dočítaní vedeli kolegovi povedať, čo je MCP, prečo ADK a LangGraph nie sú v tej istej kategórii a čo by s tým vaša organizácia mala vlastne robiť.</p>
+<hr>
+<p><em>Ďalej: <a href="#chapter-2-the-layer-cake">Kapitola 2: Vrstvová torta</a></em></p>
+        </section>
+
+        <section class="chapter" id="chapter-2-the-layer-cake">
+            <div class="chapter-number">Kapitola 2</div>
+            <h1>Kapitola 2: Vrstvová torta</h1>
+<hr>
+<h2>Najčastejšia chyba</h2>
+<p>Ak čítate technologickú tlač o vývoji agentov, narazíte na vety ako „mali by ste použiť ADK, alebo MCP?“ alebo „firmy si vyberajú medzi Claude Agent SDK a Model Context Protocolom“. Tieto vety sú nezmysel. Berú protokol a framework ako súperiace možnosti, ktorými nie sú. Žijú na rôznych vrstvách stacku a robia rôznu prácu.</p>
+<p>Toto nie je pedantská výhrada. Je to jediné najnosnejšie ujasnenie v celej brožúre. Ak si z tejto kapitoly odnesiete jednu vec, nech je to táto: agentný stack má vrstvy a kúsky, o ktorých počujete debatovať v tlači, nie sú vždy na tej istej. Rozhodnutia o frameworku sa dejú na jednej vrstve, rozhodnutia o protokole na druhej, rozhodnutia o modeli na tretej. „Nevyberáte si medzi“ položkami z rôznych vrstiev. Vyberiete si po jednej z každej a skombinujete ich.</p>
+<p>Cloudový ekvivalent by bola otázka „máme použiť AWS, alebo HTTP?“ AWS je poskytovateľ cloudu; HTTP je protokol. Používate oboje. Nie sú to súperiace rozhodnutia; sú to doplňujúce sa rozhodnutia na rôznych úrovniach stacku.</p>
+<h2>Vrstvy</h2>
+<p>Čítajte tento obrázok zhora nadol, od toho, čo zažíva používateľ, po to, čo skutočne robí prácu.</p>
+<pre><code>┌─────────────────────────────────────────────────────┐
+│  ORCHESTRAČNÁ VRSTVA                                │
+│  „Kedy voláme čo, s akým stavom, pod akými          │
+│   mantinelmi, naprieč koľkými agentmi?“             │
+│                                                     │
+│  ADK · LangGraph · CrewAI · OpenAI Agents SDK ·     │
+│  Claude Agent SDK · AWS Strands · Azure AI Foundry  │
+├─────────────────────────────────────────────────────┤
+│  VRSTVA LLM                                         │
+│  Uvažujúci motor, ktorý generuje volania nástrojov, │
+│  plány a odpovede.                                  │
+│                                                     │
+│  Gemini · Claude · GPT · Mistral · Llama · ...      │
+├─────────────────────────────────────────────────────┤
+│  VRSTVA PRÍSTUPU K NÁSTROJOM/AGENTOM                │
+│  Ako LLM siaha po nástrojoch, dátach a iných        │
+│  agentoch.                                          │
+│                                                     │
+│  MCP (nástroje a dáta) · A2A (agent–agent) ·        │
+│  natívne volanie funkcií · priame volania SDK       │
+├─────────────────────────────────────────────────────┤
+│  SKUTOČNÉ SYSTÉMY                                   │
+│  Databázy, API, súbory, SaaS aplikácie, iní agenti  │
+└─────────────────────────────────────────────────────┘
+</code></pre>
+<p>Štyri vrstvy. Každá má odlišnú úlohu. Z každej vrstvy si niečo vyberiete a potom to poskladáte.</p>
+<p><strong>Orchestračná vrstva.</strong> „Mozog“ agenta. Rozhoduje, ktorý nástroj zavolať, v akom poradí, čo robiť pri zlyhaní, ako odovzdávať stav z kroku na krok, kedy skončiť. V jednoduchom agentovi to môže byť slučka <code>while</code>, ktorá volá model, kým nepovie „hotovo“. V zložitom agentovi je to viackrokový stavový automat s vetveniami, opakovaniami, paralelným vykonávaním a odovzdávaním podagentom. Google ADK, LangGraph, CrewAI, OpenAI Agents SDK, Claude Agent SDK, AWS Strands, Azure AI Foundry Agent Service. Všetky žijú tu. Nezhodujú sa v tom, či je správnou abstrakciou graf, tím agentov s rolami, postupnosť odovzdaní alebo strom podagentov. Všetky riešia ten istý základný problém.</p>
+<p><strong>Vrstva LLM.</strong> Model, ktorý premýšľa. Gemini, Claude, GPT, Mistral, Llama. Framework rozhoduje, <em>kedy</em> model zavolať a <em>čo urobiť</em> s výsledkom; model rozhoduje, <em>čo povedať</em>, keď je zavolaný. Framework je projektový manažér; model je špecialista, ktorého sa pýtajú na názor.</p>
+<p><strong>Vrstva prístupu k nástrojom a agentom.</strong> Ako agent siaha po nástrojoch, dátach a iných agentoch. Záležia dva protokoly: <strong>MCP</strong> pre nástroje a dáta (ako sa môj agent rozpráva s databázou alebo API), <strong>A2A</strong> pre komunikáciu agent–agent (ako sa môj agent rozpráva s agentom niekoho iného). Oba žijú na tejto vrstve. Kapitola 3 ich pokrýva spolu.</p>
+<p><strong>Skutočné systémy.</strong> Databázy, API, SaaS aplikácie, interné nástroje. Vrstva, ktorú už poznáte. Agenti ju nenahrádzajú; zapájajú sa do nej.</p>
+<h2>Prečo je „ADK verzus MCP“ kategoriálna chyba</h2>
+<p>S vrstvami pred očami sa otázka rozpustí.</p>
+<p>ADK žije na orchestračnej vrstve. Rozhoduje, čo agent robí. MCP žije na prístupovej vrstve. Definuje, ako agent (postavený s ADK alebo s čímkoľvek iným) siahne po nástroji. Agent v ADK môže byť klientom MCP: keď ADK chce zavolať nástroj a ten nástroj je náhodou vystavený ako MCP server, ADK použije MCP, aby volanie vykonal. Keď je ten istý nástroj obyčajná funkcia v Pythone, ADK zavolá funkciu priamo. MCP je jeden z viacerých spôsobov, ako ADK siaha po nástrojoch, nie konkurent ADK.</p>
+<p>Naopak, MCP je jedno, ktorý framework je na druhom konci. MCP server, ktorý dodá váš dátový tím, nevie, či agent, ktorý sa s ním rozpráva, bol postavený s ADK, LangGraphom, CrewAI alebo obyčajnou slučkou v Pythone. Vidí len klienta, ktorý hovorí MCP.</p>
+<p>Rovnaká logika platí pre každú zdanlivú debatu „framework verzus protokol“: <em>Claude Agent SDK verzus MCP</em>, <em>LangGraph verzus A2A</em>, <em>OpenAI Agents SDK verzus MCP</em>. Všetky tri sú kategoriálne chyby. Framework robí orchestráciu; protokol robí prístup. Skladajú sa.</p>
+<blockquote>
+<p><strong>Opravený mentálny model v jednej vete:</strong> Frameworky sedia na orchestračnej vrstve a rozhodujú, čo agent robí; protokoly sedia na prístupovej vrstve a rozhodujú, ako agent siaha do vonkajšieho sveta. Skladajú sa. Nesúperia.</p>
+</blockquote>
+<p>Užitočná disciplína: keď čítate o novej agentnej technológii, spýtajte sa <em>na ktorej vrstve toto sedí?</em> skôr, než si utvoríte názor. Ak neviete odpovedať, ešte tomu nerozumiete dosť dobre. Väčšina zdanlivej zložitosti agentnej krajiny sa vyparí, len čo dokážete každý kúsok zasunúť do vrstvy, kam patrí.</p>
+<blockquote>
+<p><strong>Čo si z tejto kapitoly odniesť:</strong> Agentný stack má štyri vrstvy: orchestráciu, LLM, prístup (MCP + A2A), skutočné systémy. Frameworky, modely a protokoly sa skladajú, nesúperia. Jediná najčastejšia chyba v diskusii o vývoji agentov je brať framework (ADK, LangGraph) tak, akoby súperil s protokolom (MCP). Nesúperí. Všetko v tejto brožúre je rozpracovaním tohto obrazu.</p>
+</blockquote>
+<hr>
+<p><em>Ďalej: <a href="#chapter-3-the-protocol-layer-mcp-and-a2a">Kapitola 3: Protokolová vrstva</a></em></p>
+        </section>
+
+        <section class="chapter" id="chapter-3-the-protocol-layer-mcp-and-a2a">
+            <div class="chapter-number">Kapitola 3</div>
+            <h1>Kapitola 3: Protokolová vrstva: MCP a A2A</h1>
+<hr>
+<p>Na prístupovej vrstve agentného stacku sedia dva protokoly. MCP obsluhuje premávku agent–nástroj a agent–dáta. A2A obsluhuje premávku agent–agent. Sú to rovnocenné štandardy a takmer každý podnikový architektonický rozhovor o agentoch sa nakoniec vráti k jednému alebo obom.</p>
+<p>MCP je ustálené. A2A je tesne za ním, na okrajoch ešte tuhne. Táto kapitola pokrýva oba.</p>
+<h2>MCP: HTTP agentnej éry</h2>
+<p>Väčšina technologických štandardov strávi roky v chaotickom medziobdobí, keď súperiace protokoly bojujú o prijatie. MCP ho malo nezvyčajne krátke. Oznámené Anthropicom na konci roka 2024, dostalo sa od „zaujímavého open-source návrhu“ k „faktickému štandardu odvetvia“ približne za osemnásť mesiacov.</p>
+<p>Začiatkom roka 2026 sa s číslami ťažko háda: vyše 97 miliónov stiahnutí SDK mesačne naprieč implementáciami v Pythone a TypeScripte, vyše 10 000 verejne indexovaných MCP serverov, natívna podpora v Claude, ChatGPT, Cursore, v každom väčšom IDE s AI funkciou a v každom frameworku, ktorý táto brožúra pokrýva. V decembri 2025 Anthropic daroval MCP nadácii Linux Foundation, ktorá na jeho správu vytvorila Agentic AI Foundation, spoluzaloženú Anthropicom, Blockom a OpenAI, s ďalšou podporou od Googlu, Microsoftu, AWS, Cloudflare a Bloombergu. To nie je zostava sporného štandardu. To je zostava ustáleného.</p>
+<p>Porovnanie, po ktorom siahajú všetci, je HTTP. Je to dobré porovnanie. HTTP tiež nie je niečo, čo si „vyberáte“; je to všadeprítomný protokol, ktorý dovolí akémukoľvek prehliadaču dosiahnuť akýkoľvek server. MCP sa tým stáva pre agentov: všadeprítomným protokolom, ktorý dovolí akémukoľvek agentovi dosiahnuť akýkoľvek nástroj alebo zdroj dát. Čoraz častejšie je <em>ne</em>podporovať ho drahšie než podporovať.</p>
+<h3>Čo MCP v skutočnosti štandardizuje</h3>
+<p>Tri veci, nie jednu. Podniky, ktoré ho berú ako jednoduchú API bránu, prídu o väčšinu hodnoty.</p>
+<p><strong>Nástroje</strong>: spustiteľné funkcie, ktoré môže agent vyvolať. Nástroj má názov, krátky popis, vstupnú schému s popismi jednotlivých polí a štruktúrované chybové odpovede. Agent zavolá <code>tools/list</code>, aby videl katalóg, a potom <code>tools/call</code>, aby vyvolal konkrétny nástroj s argumentmi. Dôležité návrhové rozhodnutie je, že popisy nástrojov sú písané pre jazykový model, ktorý o nich uvažuje, nie pre človeka, ktorý číta dokumentáciu. Dobre navrhnutý MCP server má bližšie k promptovo vyladenému API než ku konvenčnému REST endpointu; jazyková kvalita popisov nástrojov je súčasťou správnosti servera.</p>
+<p><strong>Zdroje</strong>: dáta len na čítanie, ktoré server sprístupňuje. Dokumenty, riadky databázy, konfiguračné súbory, znalosti o politikách. Agent zdroj „nevolá“; načíta si ho a vloží obsah do vlastného kontextu. Pri podnikových nasadeniach na zdrojoch často záleží viac než na nástrojoch. Interný bot o firemných politikách chce strom zdrojov (<code>policies/hr/parental-leave.md</code>, <code>policies/security/acceptable-use.md</code>), ktorý môže agent prehliadať a čerpať z neho, nie nástroj <code>get_policy_document(id)</code>, pri ktorom musí hádať, ako ho vyvolať.</p>
+<p><strong>Prompty</strong>: znovupoužiteľné šablóny promptov, ktoré server ponúka klientom. Najmenej používaná z troch, ale dôvod jej existencie je principiálny: nástroje sú veci, ktoré sa robia, zdroje sú veci, ktoré sa čítajú, prompty sú veci, ktoré sa hovoria. Úplný MCP server môže ponúkať všetky tri.</p>
+<h3>Podanie rúk</h3>
+<p>MCP je protokol klient–server nad malým slovníkom JSON-RPC. Prvotné pripojenie urobí jedno kolo vyjednávania (<code>initialize</code>): verzia protokolu, schopnosti, identita. Potom sú to už len volania metód: <code>tools/list</code>, <code>tools/call</code>, <code>resources/list</code>, <code>resources/read</code>, <code>prompts/list</code>, <code>prompts/get</code>. Slovník je malý zámerne. Väčšina zaujímavej návrhovej práce sa deje vnútri servera (ako modelujete svoju doménu, ako píšete popisy nástrojov, ako navrhujete strom zdrojov), nie v protokole samotnom.</p>
+<h3>Ako MCP vyzerá v podniku</h3>
+<p>Tvar je takmer vždy rovnaký. Hŕstka interných MCP serverov sedí pred existujúcimi systémami: CRM, ticketovacia platforma, dátový sklad, interná znalostná báza, systém identít. Každý server udržiava tím, ktorý vlastní podkladový systém, lebo ten tím najlepšie rozumie sémantike domény. Ľubovoľný počet agentov (postavených na akomkoľvek frameworku, s akýmkoľvek modelom) sa pripája ako MCP klienti.</p>
+<p>To dáva tri vlastnosti podnikovej triedy, ktoré vysvetľujú väčšinu krivky prijatia. Po prvé: znovupoužitie naprieč agentmi (jeden server, mnoho spotrebiteľov, dramaticky lepšie než svet pred MCP, kde každý agent integroval každý backend osobitne). Po druhé: znovupoužitie naprieč frameworkmi (prejdite budúci rok z LangGraphu na ADK a servery sa meniť nemusia). Po tretie: správa nadáciou (žiadny jednotlivý komerčný záujem nemôže rozbiť kompatibilitu ani zmeniť licencovanie).</p>
+<h3>Cestovná mapa 2026: pripravenosť pre podniky</h3>
+<p>Cestovná mapa Agentic AI Foundation na rok 2026 uvádza štyri prioritné oblasti a prvou je výslovne pripravenosť pre podniky. Konkrétne: <strong>integrácia identity a prístupu</strong> (OAuth 2.1, podnikové SSO, tokeny s obmedzeným rozsahom), <strong>správa a pozorovateľnosť</strong> (správanie brán, audítorské stopy, administrátorské konzoly) a <strong>prenositeľnosť transportu a konfigurácie</strong> (streamovanie, rušenie, odolnosť v podmienkach podnikových sietí).</p>
+<p>Podtext je, že MCP sa vedome pretvára z vývojárskeho protokolu na podnikový protokol. Je to ten istý prechod, akým prešlo HTTP v rokoch 1993 až 1999, stlačený približne do jedného roka.</p>
+<h3>Čo MCP nerobí</h3>
+<p>MCP je zámerne hlúpe v mnohých veciach. Neorchestruje; nevie, ktorý nástroj zavolať, v akom poradí, ani čo robiť pri zlyhaní. To je práca orchestračnej vrstvy. Samo osebe neautentifikuje koncových používateľov; model autentifikácie je rozhodnutie podnikového nasadenia. Nerieši komunikáciu agent–agent; to je A2A, nižšie. A nenahrádza vaše existujúce API; sedí pred nimi.</p>
+<p>Jedna predpoveď stojí za výslovné vyslovenie: o osemnásť mesiacov, ak máte netriviálnu internú platformu, budete pred ňou takmer určite mať MCP servery, napísané vaším vlastným tímom, udržiavané ako súčasť bežnej platformovej inžinierskej práce. Externí dodávatelia dodajú MCP servery pre svoje vlastné produkty (GitHub, Linear, Notion to už robia), ale vaše interné systémy sú na vás. Umenie podnikovej triedy písať dobré MCP servery (tesné rozhrania nástrojov, presné popisy, silná autentifikácia, čisté hierarchie zdrojov) je vznikajúce remeslo platformového inžinierstva, ktoré pred dvoma rokmi neexistovalo. Ak si chcete túto intuíciu vybudovať prakticky, existuje bezplatný spoločník: <a href="https://github.com/robertbarcik/MCP-tutorial">github.com/robertbarcik/MCP-tutorial</a> prechádza pojmy tejto kapitoly v kóde.</p>
+<blockquote>
+<p><strong>Poznámka z júla 2026.</strong> Cestovná mapa pripravenosti pre podniky vyššie prichádza načas. Revízia špecifikácie, ktorá pristáva 28. júla (už zverejnená ako kandidát na vydanie), je najväčšia od spustenia MCP: bezstavové jadro, ktoré škáluje nad obyčajným HTTP, spevnené zosúladenie s OAuth a OIDC pre podnikových poskytovateľov identity a dve oficiálne rozšírenia, MCP Apps pre používateľské rozhranie vykresľované serverom a Tasks pre dlho bežiacu prácu. Nič v tejto časti sa tým nemení; protokol robí to, čo ustálené protokoly robia, čiže nudnú inštalatérsku prácu.</p>
+</blockquote>
+<h2>A2A: ten druhý protokol</h2>
+<p>Ak MCP odpovedá na otázku „ako sa môj agent rozpráva s nástrojom“, A2A odpovedá na otázku „ako sa môj agent rozpráva s iným agentom“. To sú dva smery premávky na prístupovej vrstve a zaslúžia si symetrickú pozornosť. Väčšina podnikových projektov sa najprv sústredí na nástroje a dáta, lebo tam žijú okamžité výhry. Komunikácia agent–agent znie ako problém budúcnosti, kým sa niekde okolo dvanásteho agenta, ktorého organizácia postaví, neprestane byť problémom budúcnosti a nestane sa naliehavou.</p>
+<h3>Prečo sa stane naliehavou rýchlejšie, než tímy čakajú</h3>
+<p>Špecializácia: univerzálny agent podpory narazí na svoje limity a tím z neho vyčlení špecialistu na fakturáciu, technického špecialistu, špecialistu na súlad. Organizačné hranice: obchod postaví obchodného agenta, HR postaví HR agenta, financie postavia finančného agenta, a keď sa obchodník spýta na politiku provízií, tí traja musia spolupracovať. Externí partneri: agent dodávateľa vyjednáva s vaším nákupným agentom a jediný životaschopný spôsob, ako môžu spolupracovať, je otvorený protokol. Skladanie: vzor mikroslužieb sa prehráva znova na úrovni agentov a systémy agentov potrebujú protokol.</p>
+<h3>Čo A2A robí</h3>
+<p>Tri veci. <strong>Objavovanie schopností</strong>: agent kompatibilný s A2A inzeruje „kartu agenta“, ktorá opisuje, čo vie robiť, aké vstupy očakáva, aké výstupy produkuje, ako sa autentifikovať. <strong>Delegovanie úloh</strong>: štruktúrovaný spôsob odovzdania úlohy, ktorý podporuje synchrónnu výmenu požiadavka–odpoveď aj dlhšie asynchrónne interakcie so streamovaným priebehom. <strong>Autentifikácia a dôvera</strong>: háčiky na prenášanie autentifikačného kontextu cez delegovanie, aby mohli nadväzujúci agenti robiť vlastné autorizačné rozhodnutia, namiesto slepého dôverovania tomu, kto je pred nimi. Tretí bod je ten, ktorý podniky podceňujú. Volania medzi agentmi môžu prekračovať organizačné, ba aj firemné hranice, a otázka, čia právomoc sa vykonáva na ktorom kroku, sa stáva zaujímavou.</p>
+<h3>Kde A2A sedí v krajine</h3>
+<p>Chaotickejšie než pri MCP. <strong>Google ADK má natívnu podporu A2A</strong> a automaticky generuje karty agentov, čo je jeden z najsilnejších dôvodov, prečo brať ADK vážne pre multiagentné architektúry. <strong>CrewAI tiež podporuje A2A</strong>, čo odráža jeho dizajn zameraný v prvom rade na viac agentov. <strong>LangGraph, OpenAI Agents SDK, Claude Agent SDK</strong> majú čiastočnú alebo vznikajúcu podporu; všetky tri majú zverejnené položky v cestovnej mape.</p>
+<p>Potenciálni rivali sa väčšinou pridali. Agent Communication Protocol od IBM sa v septembri 2025 zlúčil do A2A a Google daroval A2A nadácii Linux Foundation, kde teraz sedí pod tou istou strechou Agentic AI Foundation ako MCP. Na svoje prvé výročie v apríli 2026 protokol počítal vyše 150 členských organizácií, produkčné použitie v Microsofte, AWS, Salesforce, SAP a ServiceNow a vydanie 1.2 s kryptograficky podpísanými kartami agentov. Nad ním sa už formuje platobná vrstva: Agent Payments Protocol (AP2), podporovaný Googlom, Coinbase, Mastercardom a PayPalom, štandardizuje, ako agenti prevádzajú peniaze, s kryptografickými mandátmi dokazujúcimi, že nákup schválil človek.</p>
+<p>Naše čítanie v apríli 2026: A2A je vedúci kandidát, ale ešte nie jednoznačný konsenzus, akým je MCP. Rozumná stávka pre väčšinu podnikov je navrhovať s A2A na mysli, brať protokoly medzi agentmi ako oblasť, kde môže byť v roku 2027 potrebné niečo prerobiť, a vyhnúť sa budovaniu vlastného proprietárneho variantu.</p>
+<h3>Čo robiť s A2A dnes</h3>
+<p>Väčšina podnikov by do infraštruktúry A2A zatiaľ <strong>nemala</strong> nadmerne investovať. Ak staviate svojho prvého agenta, sústreďte sa na MCP, sústreďte sa na orchestračnú vrstvu a A2A berte ako niečo, čo prijmete, keď sa stane relevantným. Predčasné A2A zvyčajne znamená navrhovať multiagentný systém skôr, než má biznis preň prípad použitia.</p>
+<p><strong>Nevylúčte A2A náhodou.</strong> Keď si vyberáte framework, pozrite sa, ako je na tom s A2A. Framework bez dôveryhodnej cestovnej mapy pre A2A je tichá stávka, že na multiagentnej architektúre pre váš prípad použitia nezáleží. Obhájiteľné pre jednoúčelového agenta; riskantné pre platformu.</p>
+<p><strong>Začnite písať karty agentov.</strong> Aj bez formálneho A2A je zvyk zdokumentovať pre každého agenta, ktorého postavíte, čo robí, čo potrebuje a čo vracia, užitočná disciplína. Tú disciplínu je lacné neskôr formalizovať.</p>
+<blockquote>
+<p><strong>Čo si z tejto kapitoly odniesť:</strong> MCP je ustálený protokol pre prístup agent–nástroj a agent–dáta. A2A je vznikajúci protokol pre komunikáciu agent–agent, menej ustálený, ale získavajúci konsenzus. Oba žijú na prístupovej vrstve stacku, pod orchestračnou vrstvou. Berte MCP ako všadeprítomnú infraštruktúru: konzumujte dodávateľské servery, stavajte vlastné pre interné systémy. Berte A2A ako architektonickú otázku, ktorú budete riešiť, keď sa multiagentné potreby stanú skutočnými, ale vyberajte si frameworky s dôveryhodnou cestovnou mapou pre A2A, aj keď ste dnes pri jednom agentovi.</p>
+</blockquote>
+<hr>
+<p><em>Ďalej: <a href="#chapter-4-the-orchestration-layer">Kapitola 4: Orchestračná vrstva</a></em></p>
+        </section>
+
+        <section class="chapter" id="chapter-4-the-orchestration-layer">
+            <div class="chapter-number">Kapitola 4</div>
+            <h1>Kapitola 4: Orchestračná vrstva</h1>
+<hr>
+<p>S oboma protokolmi za sebou máme spodné poschodia stacku na mieste. LLM vie uvažovať. MCP vie siahnuť po nástrojoch a dátach. A2A vie siahnuť po iných agentoch. Ale niečo stále musí rozhodnúť, <em>čo agent skutočne robí</em>: ktorý nástroj zavolať ako prvý, čo robiť, keď zlyhá, kedy skončiť, kedy sa spýtať používateľa, kedy odovzdať prácu ďalej.</p>
+<p>To je orchestračná vrstva. Tu býva mozog. A je to vrstva, na ktorej sa odohráva väčšina zaujímavých hádok o frameworkoch, lebo na rozdiel od protokolovej vrstvy (ustálenej okolo MCP) a modelovej vrstvy (hŕstka dominantných dodávateľov) je orchestračná vrstva stále naozaj sporná.</p>
+<p>Kým v ďalších dvoch kapitolách zmapujeme frameworky, jedna základnejšia otázka: potrebujete framework vôbec?</p>
+<h2>Základná úroveň: LLM v slučke</h2>
+<p>Najjednoduchšia možná architektúra agenta nemá framework. Je to slučka while, jazykový model s podporou volania funkcií a zoznam nástrojov:</p>
+<ol>
+<li>Pošlite modelu požiadavku používateľa, katalóg nástrojov a doterajší rozhovor.</li>
+<li>Model buď vráti konečnú odpoveď (stop), alebo volanie nástroja (pokračuj).</li>
+<li>Ak je to volanie nástroja, vykonajte ho, pripojte výsledok do rozhovoru, choďte na 1.</li>
+</ol>
+<p>To je všetko. Žiadny framework. Žiadny graf. Žiadne odovzdávanie. Pre prekvapivo veľkú triedu podnikových prípadov použitia to stačí. Zvládne väčšinu asistentov v štýle chatbota, väčšinu prípadov „agent nad konkrétnou sadou nástrojov“, väčšinu krátko bežiacich úloh s menej než tuctom nástrojov.</p>
+<p>Na tomto záleží, lebo inštinkt odvetvia je siahnuť po frameworku okamžite, často skôr, než ho prípad použitia vyžaduje. Framework má skutočné náklady: krivku učenia, daň za abstrakciu, vrstvu nepriamosti medzi vami a modelom, produkčnú archeológiu, keď sa niečo pokazí. Ak tie náklady ešte nepotrebujete, neplaťte ich.</p>
+<p><strong>Prvá poctivá otázka v každom agentnom projekte je, či ste naozaj vyskúšali LLM v slučke s dobrými promptmi a čistou sadou nástrojov. Ak nie, ešte neviete, či framework potrebujete.</strong></p>
+<p>V cloudovej analógii je LLM v slučke obyčajná inštancia EC2 s vlastnými skriptmi. Nie sofistikovaná, nie pôsobivá pri revízii návrhu, často presne správny nástroj na danú prácu a nedostatočne využívaná, lebo nie je v móde.</p>
+<h2>Keď základná úroveň prestane stačiť</h2>
+<p>Základná úroveň začne bolieť v predvídateľnej množine scenárov. Keď na ne narazíte, framework si zaslúži svoje miesto.</p>
+<p><strong>Netriviálny riadiaci tok.</strong> Model potrebuje plánovať, vykonať kroky paralelne a potom syntetizovať. Alebo politiku opakovania s odstupom pre jeden konkrétny nástroj. Alebo vetvenie, kde model rozhoduje medzi dvoma podpostupmi. Vyjadriť to čisto v slučke rýchlo zoškaredie.</p>
+<p><strong>Stav a pamäť naprieč ťahmi.</strong> Slučka s dlhým rozhovorom pchá všetko do promptu, kým kontextové okno nepretečie. Framework vie udržiavať explicitný stav, zhŕňať staršiu históriu, ukladať kontrolné body priebehu a pokračovať z uloženého stavu. Pre každého agenta, ktorý žije dlhšie než jedno sedenie, správa stavu nie je voliteľná.</p>
+<p><strong>Koordinácia viacerých agentov.</strong> Len čo máte viac než jedného agenta, základná úroveň sa stane nesprávnou. Frameworky ponúkajú štruktúrované vzory pre hierarchie nadriadený/pracovník, tímy špecialistov, delegovanie sprostredkované cez A2A. Postaviť to bez frameworku sa dá, ale málokedy je to dobré využitie úsilia.</p>
+<p><strong>Mantinely a spätné volania.</strong> Produkční agenti potrebujú háčiky. „Pred každým volaním nástroja skontroluj oprávnenia.“ „Po odpovedi modelu spusti filter na zaujatosť a osobné údaje.“ „Ak agent minie viac než päť eur, zastav sa a spýtaj sa.“ Frameworky vám dajú pomenované body životného cyklu. Slučka vás núti rozsypať tie isté kontroly po celom kóde, čo rýchlo zhnije.</p>
+<p><strong>Trvanlivosť.</strong> Tridsaťsekundový proces je v slučke v poriadku. Osemhodinový nie; ak sa server reštartuje, stratíte všetko. LangGraph ponúka trvanlivé vykonávanie: stav s kontrolnými bodmi, dlho bežiaci agenti sa pozastavia a pokračujú, pády sú obnoviteľné. Vážna inžinierska otázka pre agentov, ktorí robia skutočnú prácu vo veľkom.</p>
+<p><strong>Pozorovateľnosť a vyhodnocovanie.</strong> Produkční agenti potrebujú stopy, priraďovanie nákladov na tokeny, metriky kvality, možnosť prehratia. Frameworky to buď poskytujú, alebo sa integrujú s nástrojmi (LangSmith, Langfuse, Phoenix), ktoré to robia. Postaviť si to sami je poriadny projekt, ktorý má vlastnú kapitolu (kapitola 7).</p>
+<p>Narazte na viacero z týchto naraz a framework prestane byť príjemným doplnkom a stane sa nevyhnutnou infraštruktúrou. Nenarazte na žiadny a je to väčšinou mŕtva váha.</p>
+<h2>Dve rodiny</h2>
+<p>Ak framework potrebujete, prichádza kľúčové rozhodnutie tejto brožúry: ktorý?</p>
+<p>K roku 2026 sa krajina vyjasnila do dvoch širokých rodín.</p>
+<p><strong>Dodávateľské frameworky.</strong> Google ADK, OpenAI Agents SDK, Claude Agent SDK, AWS Strands, Azure AI Foundry Agent Service. Každý postavil dodávateľ infraštruktúry alebo základných modelov, každý je optimalizovaný pre ekosystém svojho tvorcu. Ponuka: rýchlosť vývojára. Hrajú rolu, ktorú hrali AWS Elastic Beanstalk a Google App Engine: názorovo vyhranené, rýchle a zarovnané s dodávateľom.</p>
+<p><strong>Nezávislé frameworky.</strong> LangGraph, CrewAI a malý počet tichších uchádzačov. Nezávislé od modelu aj od cloudu. Ponuka: prenositeľnosť a kontrola. Hrajú rolu, ktorú hrali Kubernetes a Docker Compose: viac kontroly, viac práce, viac odolnosti voči budúcnosti.</p>
+<p>Ani jedna rodina nie je „lepšia“. Riešia rôzne problémy. Dodávateľské frameworky sú pre tímy, ktoré chcú dodávať rýchlo a zmierili sa so záväzkom voči dodávateľovi. Nezávislé frameworky sú pre tímy, ktoré chcú dlhodobú prenositeľnosť a zaplatia za ňu daň za abstrakciu.</p>
+<p>Ďalšie dve kapitoly pokrývajú každú rodinu po poradí: kapitola 5 mapuje dodávateľov; kapitola 6 pokrýva nezávislé frameworky a vyrovnáva sa s protiargumentom „modely sa stali príliš dobrými“, ktorý získava na váhe.</p>
+<h2>Ešte jedna oprava mentálneho modelu</h2>
+<p>Je ľahké (najmä pre vývojárov prichádzajúcich z tradičného softvéru) myslieť si o orchestračnej vrstve, že „to je ten agent“. Nie je. Orchestračná vrstva je manažér. Skutočná inteligencia je vo vrstve LLM pod ňou. Skutočná schopnosť je v nástrojoch a dátach vystavených cez MCP. Skutočnú hodnotu produkujú systémy na dne. Dobrý framework je cenný tak, ako je cenný dobrý projektový manažér: dokáže, aby tím múdrych špecialistov dobre spolupracoval. A žiadny framework, akokoľvek vyleštený, nezachráni slabých špecialistov.</p>
+<p>Dôsledok: keď agentné projekty zlyhávajú, inštinkt často velí vymeniť framework. To je takmer vždy nesprávne. Zlyhanie je zvyčajne v sade nástrojov, v návrhu promptov, v testovacom postroji alebo vo výbere modelu, nie v orchestrátorovi. Najprv diagnostikujte. <strong>Ak je vaším prvým inštinktom, keď sa agent správa zle, siahnuť po inom frameworku, pravdepodobne liečite nesprávnu chorobu.</strong></p>
+<hr>
+<p><em>Ďalej: <a href="#chapter-5-the-vendor-frameworks">Kapitola 5: Dodávateľské frameworky</a></em></p>
+        </section>
+
+        <section class="chapter" id="chapter-5-the-vendor-frameworks">
+            <div class="chapter-number">Kapitola 5</div>
+            <h1>Kapitola 5: Dodávateľské frameworky</h1>
+<hr>
+<p>Každý veľký dodávateľ AI dnes dodáva framework na vývoj agentov. Google má ADK. OpenAI má Agents SDK. Anthropic má Claude Agent SDK. AWS má Strands. Microsoft má Azure AI Foundry Agent Service. V cloudových pojmoch je každý z nich niečo blízke platforme ako službe: názorovo vyhranené prostredie, v ktorom je stavanie agentov mimoriadne rýchle, pokiaľ ostanete v oplotenej záhrade dodávateľa.</p>
+<p>Táto kapitola je prehliadka. Pri každom frameworku: filozofia návrhu, v čom je naozaj dobrý a aký gravitačný ťah vyvíja smerom k svojmu materskému dodávateľovi. Porovnania funkcia po funkcii zastarajú za týždne. Stabilné je to, <em>aký druh nástroja každý framework je</em> a <em>akú stávku robíte, keď si ho vyberiete</em>. Kapitola 8 rieši otázku nákladov na prechod priamo; tu sú frameworky opísané samy za seba.</p>
+<h2>Google ADK</h2>
+<p>Hierarchické stromy agentov. Koreňový agent prijme požiadavku používateľa a deleguje ju podagentom, ktorí môžu delegovať ďalej. Vykonávanie riadia štrukturálne primitíva, ktoré ADK volá Sequential, Parallel a Loop agenti. Systém agentov je strom; framework ten strom spúšťa.</p>
+<p>Tri skutočné silné stránky. <strong>Vizuálne ladenie</strong>: ADK sa dodáva s CLI a webovým rozhraním, kde sa so svojím agentom rozprávate, sledujete jeho vnútorné uvažovanie a krokujete vykonávanie. Pri zložitých multiagentných nasadeniach jedna z lepších vývojárskych skúseností na trhu. <strong>Natívna podpora A2A</strong>: ADK automaticky generuje karty agentov a stará sa o inštalatérčinu protokolu. Ak máte na cestovnej mape multiagentnú prácu naprieč hranicami, ADK vám dá najhladší nájazd. <strong>Multimodálna schopnosť</strong>: agenti v ADK natívne spracúvajú obrázky, zvuk a video cez multimodálne API Gemini, čo otvára prípady použitia ako vizuálna inšpekcia, hlasová zákaznícka podpora a porozumenie dokumentom.</p>
+<p>Gravitačný ťah: Gemini, Vertex AI, BigQuery, Google Cloud. Technicky nezávislý od modelu, ale každý trecí bod v ekosystéme potichu ukazuje späť na Gemini. To nie je kritika; dodávateľské frameworky to majú robiť.</p>
+<p><strong>Berte ADK vážne, ak</strong> už ste na Google Cloud, uprednostňujete viacero agentov s komunikáciou naprieč hranicami, máte zmysluplne multimodálne prípady použitia alebo zistíte, že vizuálne ladenie vás zrýchľuje viac, než vás názory frameworku spomaľujú.</p>
+<h2>OpenAI Agents SDK</h2>
+<p>Výslovne proti grafom. Kde LangGraph chce, aby ste nakreslili stavový automat, OpenAI chce, aby ste definovali malý počet agentov, každého s jasnou špecializáciou, a nechali ich podľa potreby odovzdávať si prácu. Mentálny model: tím špecialistov s recepčnou, ktorá smeruje hovory, nie vývojový diagram. Štyri primitíva: Agents, Tools, Handoffs, Guardrails. To je celý slovník.</p>
+<p>Silné stránky. <strong>Rýchlosť vývojára</strong>: rýchlo sa učí, rýchlo sa číta, rýchlo sa udržiava. Pre tím, ktorý chce architektúru agenta, ktorá sa zmestí do jedného súboru, framework, ktorý najviac rešpektuje váš čas. <strong>Hostované nástroje a sandboxing</strong>: webové vyhľadávanie, vyhľadávanie v súboroch, interpret kódu bežia na infraštruktúre OpenAI bez nastavovania. Pre agentov, ktorí potrebujú písať a spúšťať kód, je spravovaný sandbox skutočný rozdiel. <strong>Hlas a multimodalita</strong>: Realtime API je prvotriedne, multimodalita GPT-4o je vystavená čisto.</p>
+<p>Gravitačný ťah: modely OpenAI, hostovaná infraštruktúra, spoľahlivosť štruktúrovaného výstupu vyladená pre OpenAI. Vymeňte modely cez smerovacie knižnice a zachováte si sémantiku riadiaceho toku, ale stratíte väčšinu spravovanej infraštruktúry, ktorá robila framework príťažlivým.</p>
+<p><strong>Berte ho vážne, ak</strong> ste upísaní modelom OpenAI, záleží vám na hlase alebo vykonávaní kódu a chcete najrýchlejšiu možnú cestu od konceptu k bežiacemu agentovi bez architektonických ceremónií.</p>
+<h2>Claude Agent SDK</h2>
+<p>Iný prístup. Postavený na predpoklade, že agent bude pôsobiť v prostredí podobnom počítaču: čítať súbory, spúšťať shellové príkazy, písať kód, prehľadávať web. Dodáva sa s ôsmimi zabudovanými nástrojmi hneď z krabice (Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch). Mentalita návrhu: dajte agentovi počítač a nechajte ho pracovať.</p>
+<p>Model orchestrácie: <strong>háčiky a podagenti</strong>. Háčiky zachytávajú udalosti životného cyklu („pred volaním nástroja“, „po odpovedi modelu“), takže môžete vynucovať mantinely alebo sledovať správanie. Podagenti delegujú úlohy detským agentom s vlastnými sadami nástrojov a pokynmi. Kde OpenAI organizuje prácu odovzdávaním medzi rovnocennými, Claude ju organizuje delegovaním deťom.</p>
+<p>Silné stránky. <strong>Dlho bežiaca autonómna práca</strong>: úlohy, ktoré trvajú hodiny alebo dni, nie sekundy. Kompakcia kontextu, kontrolné body stavu, asynchrónne vykonávanie sú zapečené dnu. Pre „prejdi túto kódovú základňu a vypracuj plán migrácie“ alebo „analyzuj tikety za posledný rok a navrhni päť najlepších kandidátov na automatizáciu“ je to framework, ktorý dlho bežiaci tvar zvláda najprirodzenejšie. <strong>Zabudovaná sada nástrojov</strong>: osem nástrojov znamená, že agenti začínajú so skutočnými schopnosťami, nie s prázdnymi registrami. Zmysluplný náskok pre prípady použitia typu vývojársky asistent. <strong>Háčiky ako riadiaci povrch</strong>: presná kontrola nad správaním agenta v bodoch životného cyklu, čo podniky oceňujú z dôvodov súladu a pozorovateľnosti. Novší prírastok, Agent Skills (priečinky s pokynmi, skriptmi a zdrojmi, ktoré si agent načíta na požiadanie), vyšiel začiatkom roka 2026 ako otvorený štandard a dáva SDK prenositeľný spôsob balenia procedurálnych znalostí.</p>
+<p>Gravitačný ťah: toto je najhlbšia väzba v kategórii dodávateľských frameworkov. Claude bol špecificky trénovaný na úlohy ovládania počítača (súborové systémy, shellové príkazy, prehliadače). Iné modely nemajú rovnocenný tréning. Spustiť to isté SDK cez model iný než Claude dáva citeľne horšie výsledky. To je behaviorálna väzba na úrovni modelu, nie iba príslušnosť k ekosystému.</p>
+<p><strong>Berte ho vážne, ak</strong> staviate inžiniersky náročné záťaže (asistenti na programovanie, agenti na správu systémov), dlho bežiace autonómne úlohy a chcete framework so skutočnými názormi na bezpečnosť ovládania počítača.</p>
+<h2>AWS Strands</h2>
+<p>Najmladší z piatich, hoci už nie experiment, ako ktorý sa spúšťal: Strands je dnes produkčné SDK v strede Amazon Bedrock AgentCore, spravovaného agentného behového prostredia AWS, kým špičkový výskum sa presunul do samostatnej organizácie Strands Labs. Návrhová stávka sa nezmenila. Silne sa oprieť o to, že LLM riadi, namiesto toho, aby sa obmedzoval. Kde vás LangGraph núti definovať hrany v grafe, Strands vás núti definovať ciele v prirodzenom jazyku a spolieha sa na to, že model rozhodne, ako ich dosiahnuť. Stávka, že modely sú dnes dosť schopné na to, aby zvládli orchestráciu autonómne, a úlohou frameworku je poskytnúť bezpečné vykonávanie + integráciu s AWS, nie vnucovať riadiaci tok.</p>
+<p>Silné stránky. <strong>Integrácia s AWS</strong>: hlboké prepojenie na Bedrock (modely), Lambdu (nástroje), DynamoDB (stav). Ak je vaša infraštruktúra natívne v AWS, Strands odstráni veľa inštalatérčiny. <strong>Flexibilita v rámci Bedrocku</strong>: natívny prístup ku Claude, Llame, Mistralu a ďalším; väčšia flexibilita modelov než pri frameworkoch dodávateľov základných modelov, <em>v rámci obmedzenia, že na prístup k modelom používate Bedrock</em>. <strong>Spravované behové prostredie</strong>: AgentCore obaľuje agentov v Strands spravovanými sedeniami, pamäťou, identitou a pozorovateľnosťou, takže medzera medzi prototypom a produkciou je nezvyčajne krátka. Experimentálne primitíva („AI Functions“ a ich príbuzní) dnes žijú v Strands Labs, jasne oplotené od produkčného SDK.</p>
+<p>Gravitačný ťah: infraštruktúra AWS, nie jediný model. Obrátený lock-in oproti frameworkom dodávateľov základných modelov.</p>
+<p><strong>Berte ho vážne, ak</strong> je ťažiskom vašej infraštruktúry AWS a flexibilita modelov sprostredkovaná Bedrockom je pre vás konkrétne užitočná.</p>
+<h2>Microsoft Azure AI Foundry Agent Service</h2>
+<p>Agentný príbeh Microsoftu má dve vrstvy. Open-source vrstva je Microsoft Agent Framework, zjednotenie multiagentných výskumných vzorov z AutoGenu s podnikovou inštalatérčinou Semantic Kernelu (verziu 1.0 dosiahol v apríli 2026). Spravovaná vrstva je Azure AI Foundry Agent Service, ktorá tieto vzory spúšťa v produkcii a kladie dôraz na integráciu s podnikovým ekosystémom Microsoftu: agenti, ktorých spúšťajú udalosti v Azure, čítajú SharePoint, píšu do Teams, koordinujú sa s kopilotmi v Microsoft 365.</p>
+<p>Silné stránky. <strong>Šírka integrácie</strong>: pre organizácie na Microsoft 365, Dynamics, SharePointe, Power Platform hĺbka, ktorej sa žiadny iný framework nevyrovná. <strong>Postoj k identite a súladu</strong>: natívne zdedené desaťročia podnikovej compliance infraštruktúry Microsoftu. SSO, podmienený prístup, audítorské stopy, rezidencia dát, podpora suverénneho cloudu, všetko od prvého dňa. <strong>Prevzaté vzory z AutoGenu</strong>: multiagentné konverzačné vzory (debata, konsenzus, hierarchická koordinácia) prenesené z open-source výskumu Microsoftu do Agent Frameworku a spravovanej služby nad ním.</p>
+<p>Gravitačný ťah: ekosystém Microsoftu. Predvolený model je OpenAI cez partnerstvo, predvolené behové prostredie je Azure, predvolené integrácie sú Microsoft 365. Ak žijete v tom svete, framework vás zrýchli; ak nie, platíte za integrácie, ktoré nevyužijete.</p>
+<p><strong>Berte ho vážne, ak</strong> ste organizácia postavená na Microsofte, potrebujete jeho postoj k súladu alebo staviate agentov, ktorí intenzívne pracujú s dátami a pracovnými postupmi v Microsoft 365.</p>
+<h2>Zhrnutie</h2>
+<table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Ponuka v jednej vete</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google ADK</td>
+<td>Špičkové multiagentné + A2A, najlepšie ladenie, hlboký ťah ku Gemini/GCP</td>
+</tr>
+<tr>
+<td>OpenAI Agents SDK</td>
+<td>Najrýchlejšia cesta od nuly k bežiacemu agentovi, ekosystém OpenAI, model odovzdávania</td>
+</tr>
+<tr>
+<td>Claude Agent SDK</td>
+<td>Najsilnejší príbeh ovládania počítača a dlho bežiacich úloh, najhlbšia väzba na model</td>
+</tr>
+<tr>
+<td>AWS Strands</td>
+<td>Natívne pre AWS, flexibilita modelov cez Bedrock, spravované prostredie AgentCore</td>
+</tr>
+<tr>
+<td>Azure AI Foundry Agent Service</td>
+<td>Najhlbšia integrácia s Microsoft 365, najsilnejší postoj k podnikovému súladu</td>
+</tr>
+</tbody>
+</table>
+<p>Každý je rozumná voľba pre organizáciu, pre ktorú bol postavený. Žiadny nie je rozumná voľba pre každú organizáciu.</p>
+<blockquote>
+<p><strong>Čo si z tejto kapitoly odniesť:</strong> Dodávateľské frameworky sú PaaS agentnej éry: názorovo vyhranené, rýchle a hlboko zarovnané s dodávateľom, ktorý ich postavil. Každý má skutočnú silnú stránku a konkrétny gravitačný ťah. Správna voľba závisí od toho, v ktorom ekosystéme už žijete a koľko prenositeľnosti vymeníte za rýchlosť. Kapitola 8 rieši dôsledky lock-inu pre jednotlivých dodávateľov; táto kapitola ustanovila, čím každý framework je sám za seba.</p>
+</blockquote>
+<hr>
+<p><em>Ďalej: <a href="#chapter-6-the-agnostic-frameworks">Kapitola 6: Nezávislé frameworky</a></em></p>
+        </section>
+
+        <section class="chapter" id="chapter-6-the-agnostic-frameworks">
+            <div class="chapter-number">Kapitola 6</div>
+            <h1>Kapitola 6: Nezávislé frameworky</h1>
+<hr>
+<p>Existuje menší, hlučnejší kút krajiny frameworkov, kde je definujúcou črtou <em>ne</em>byť zarovnaný s dodávateľom modelov. To sú nezávislé (agnostické) frameworky. Predpokladajú, že budete chcieť vymieňať modely, cloudy a sady nástrojov, a optimalizujú pre túto flexibilitu aj za cenu rýchlosti vývojára.</p>
+<p>Dominujú dva: <strong>LangGraph</strong> a <strong>CrewAI</strong>. Oba sú staršie než väčšina dodávateľských SDK, oba majú väčšie komunity než ktorýkoľvek jednotlivý dodávateľský framework a oba sa dnes stavajú do pozície neutrálnej strednej vrstvy (Švajčiarska), ktorú budú veľké podniky nakoniec chcieť mať medzi sebou a dodávateľmi základných modelov.</p>
+<p>Cloudová analógia tu drží pevne. Ak sú dodávateľské frameworky PaaS, <strong>LangGraph je Kubernetes</strong> a <strong>CrewAI je Docker Compose</strong>.</p>
+<h2>LangGraph ako Kubernetes</h2>
+<p>Agentné pracovné postupy ako stavové automaty. Uzly (kroky). Hrany (prechody). Stav tečie grafom. Framework je explicitný ohľadom perzistencie: v každom kroku sa stav uloží do kontrolného bodu, takže ak server spadne alebo sa agent pozastaví na ľudské schválenie, pracovný postup pokračuje presne tam, kde skončil. Jeho trvanie na štrukturálnej explicitnosti je to, čo mu dáva silu, a to, čo generuje väčšinu sťažností.</p>
+<p>Silné stránky.</p>
+<p><strong>Trvanlivé vykonávanie.</strong> Definujúca schopnosť LangGraphu. Dlho bežiaci agenti sa môžu pozastaviť na hodiny alebo dni, čakať na ľudský vstup, prežiť reštarty servera a pokračovať bez straty stavu. Pre regulačné schvaľovania, viackrokové pracovné postupy s krokmi s človekom v slučke, agentov, ktorí bežia cez noc; často jediné zvládnuteľné riešenie.</p>
+<p><strong>Pozorovateľnosť a audit.</strong> LangGraph sa prirodzene páruje s LangSmithom, ktorý poskytuje hlboké stopy, testovacie postroje a záznamy audítorskej kvality o každom volaní modelu, vyvolaní nástroja a prechode stavu. Pre regulované podniky môže byť táto papierová stopa rozdielom medzi nasaditeľným agentom a zablokovaným.</p>
+<p><strong>Nezávislosť od modelu.</strong> LangGraphu je jedno, či je podkladový model Claude, GPT, Gemini, Mistral alebo lokálna Llama. Primitíva frameworku sú modelovo neutrálne. Môžete vymeniť vrstvu modelu bez prepisovania pracovného postupu, čo je celá pointa.</p>
+<p><strong>Produkčný rozsah.</strong> Najzrelší produkčný príbeh zo všetkých agentných frameworkov. Vyše 400 verejne zdokumentovaných produkčných nasadení vrátane prípadov vo veľkom rozsahu (agent zákazníckej podpory Klarny s 85 miliónmi používateľov, 80-percentné skrátenie času riešenia). Nudné funkcie spoľahlivosti (združovanie spojení, sémantika opakovania, odstupy, obmedzovanie rýchlosti), na ktorých v produkcii záleží viac než v demách.</p>
+<p>Jedna poctivá hviezdička pri tom vlajkovom čísle. Klarna je zároveň varovný príbeh odvetvia: jej skorší asistent podpory postavený na OpenAI bol tvárou stratégie „AI na prvom mieste“, ktorá zoškrtala zhruba 700 pozícií v podpore, zhoršila kvalitu služieb a do polovice roka 2025 mala firma verejne znova naberať ľudí do hybridného modelu. Nasadenie na LangGraphe je iný, neskorší systém a to číslo o rozsahu je skutočné. Ale keď sa to isté logo objaví v prípadovej štúdii dodávateľa aj v korporátnom cúvaní, čítajte prípadovú štúdiu ako marketing, nie ako dôkaz.</p>
+<p>Cenou je skutočná krivka učenia. Vývojárom prichádzajúcim z prístupu „proste napíš kód agenta“ pripadá grafový formalizmus LangGraphu pre jednoduché prípady upovedaný. Kritici ho volajú „veľmi vyumelkovaný if-else“ a pre trojkrokového lineárneho agenta majú kus pravdy. Hodnota LangGraphu sa ukáže vo veľkom, v produkcii, v hraničných podmienkach, nie v demách.</p>
+<p><strong>Berte LangGraph vážne, ak</strong> ste v regulovanom odvetví, prevádzkujete dlhých agentov alebo agentov s človekom v slučke, robíte smerovanie medzi viacerými modelmi, čelíte mandátom proti lock-inu z úrovne predstavenstva alebo ste dosť veľkí na to, aby ste krivku učenia vstrebali.</p>
+<h2>CrewAI ako Docker Compose</h2>
+<p>Práca organizovaná tak, ako to robí ľudský tím. Vytvoríte agentov, každému dáte rolu („senior dátový analytik“), cieľ („nájdi trendy v dátach o predaji za 2. kvartál“) a príbeh. Zložíte ich do „posádky“ a posádke dáte úlohu. CrewAI tím orchestruje. Biznisoví zadávatelia si vedia prečítať definíciu agenta v CrewAI a pochopiť, čo sa deje, a táto prívetivosť je zároveň najväčšou silou aj najväčšou slabosťou.</p>
+<p>Silné stránky.</p>
+<p><strong>Rýchlosť prototypovania.</strong> Nič v žiadnej z oboch kategórií frameworkov nerozbehne multiagentný prototyp tak rýchlo. Pre workshopy, overenia konceptu, demá často najrýchlejšia cesta.</p>
+<p><strong>Uvažovanie založené na rolách.</strong> Pre úlohy, kde je prirodzený rozklad „tím špecialistov“ (výskumné pipeline, tvorba obsahu, analytické pracovné postupy), je abstrakcia založená na rolách elegantná. Sadne na tvar.</p>
+<p><strong>Podpora protokolov.</strong> Natívna podpora MCP a A2A, skôr než vo väčšine frameworkov. Dizajn s viacerými agentmi na prvom mieste.</p>
+<p><strong>Hybnosť komunity.</strong> Vyše 44 000 hviezdičiek na GitHube, aktívny Discord, rastúci komerčný ekosystém. Množstvo príkladov, ktoré si môžete požičať.</p>
+<p>Cena: abstrakcie optimalizované na prototypovanie, nie na produkciu. Tenšia správa stavu, obmedzené kontrolné body. Pre dlho bežiaceho agenta kritického pre prevádzku vás CrewAI núti riešiť podnikové starosti mimo frameworku, a v tom bode ste jeho hlavnú hodnotu (rýchle prototypovanie) už prerástli.</p>
+<p><strong>Berte CrewAI vážne, ak</strong> robíte rýchle overenia konceptu, workshopy alebo multiagentné pracovné postupy, kde rozklad podľa rol sedí prirodzene a na čase do dema záleží viac než na čase do piatich deviatok.</p>
+<h2>„Ale modely sa stali príliš dobrými“: protiargument</h2>
+<p>Kým si ktokoľvek osvojí nezávislý framework, mal by rozumieť najsilnejšiemu argumentu proti tomu.</p>
+<p>Nezávislé frameworky existujú sčasti preto, že rané LLM boli slabé. Kontextové okná boli malé, tak frameworky pridali zhŕňanie a správu pamäte. Uvažovanie bolo nespoľahlivé, tak frameworky pridali štruktúrovaný riadiaci tok. Volanie funkcií bolo hrubé, tak frameworky pridali lešenie na validáciu nástrojov. Halucinácie boli časté, tak frameworky pridali vrstvy opakovania a validácie. Významná časť toho, čo LangGraph robí, vznikla ako záplata na obmedzenia modelov.</p>
+<p>V roku 2026 sú podkladové modely dramaticky lepšie. Kontextové okná v miliónoch tokenov, nie v tisícoch. Uvažovanie dosť spoľahlivé na to, aby jediné dobre promptované volanie modelu zvládlo úlohy, ktoré pred osemnástimi mesiacmi vyžadovali viackrokový graf. Volanie funkcií presné. Štruktúrovaný výstup natívny. Pre zmysluplný výsek prípadov použitia dnes otázka „potrebujem framework, aby to orchestroval?“ znie „pravdepodobne nie, ak je model dosť dobrý“.</p>
+<p>Tento argument má skutočnú váhu. Vývojár, ktorý v roku 2026 stavia agenta, má aspoň tri možnosti, ktoré v roku 2024 neexistovali: obyčajné LLM v slučke (funguje vo viacerých prípadoch než kedysi), dodávateľské SDK s agresívnymi hostovanými funkciami (odstráni väčšinu integračnej inštalatérčiny) a AI asistenta na programovanie, ktorý vygeneruje lešenie agenta na mieru za desať minút. Všetky tri stláčajú priestor, kde je nezávislý framework správnou odpoveďou.</p>
+<p>Daň za abstrakciu je tiež skutočná. LangGraph pridáva vrstvy medzi vývojára a model. Keď niečo zlyhá, musíte sa cez tie vrstvy prehrabať k promptu, ktorý zlý výstup naozaj vyprodukoval, „produkčná archeológia“. Pre jednoduchých agentov tá cena prevyšuje prínos prenositeľnosti.</p>
+<p>Poctivá verzia argumentu za nezávislé frameworky je v roku 2026 <strong>užšia než pred osemnástimi mesiacmi</strong>. Nezávislé frameworky stále rozhodne vyhrávajú, keď máte: potreby trvanlivosti, ktoré dodávateľské SDK neponúkajú, smerovanie medzi viacerými modelmi vynútené súladom alebo nákladmi, hlboké audítorské potreby regulovaného odvetvia alebo vážny organizačný mandát proti lock-inu. Mimo toho je dôvod platiť daň za abstrakciu slabší než kedysi.</p>
+<h2>Kedy je argument za nezávislosť najsilnejší</h2>
+<p><strong>Regulované odvetvia</strong>, kde je vymeniteľnosť otázkou súladu. Keď sa regulátor spýta „viete preukázať, že tento systém nezávisí od pokračujúceho dobrého správania jediného dodávateľa?“, chcete framework, ktorý vám dovolí odpovedať áno.</p>
+<p><strong>Smerovanie medzi viacerými modelmi.</strong> Keď jeden pracovný postup vyžaduje lokálny model s otvorenými váhami z dôvodov súladu a iný ťaží z frontier API, framework navrhnutý na smerovanie je oveľa jednoduchší než taký, ktorý predpokladá jediný model.</p>
+<p><strong>Dlho bežiace, vysoko rizikové, s človekom v slučke.</strong> Agenti, ktorí sa pozastavujú na dni alebo týždne, potrebujú nepriestrelnú obnoviteľnosť a nesú stav audítorskej kvality cez zložité schvaľovacie toky. Trvanlivé vykonávanie LangGraphu je ťažké zreplikovať od nuly.</p>
+<p><strong>Mandáty proti lock-inu z úrovne predstavenstva.</strong> V niektorých podnikoch je požiadavka „musí byť nezávislé od modelu“ direktívou z najvyššieho vedenia s právnou a obchodnou váhou. Debata o tom, či je dodávateľské SDK „technicky dosť dobré“, je bezpredmetná.</p>
+<p><strong>Veľké inžinierske organizácie</strong> s kapacitou vstrebať krivku učenia. Daň za abstrakciu sa znáša ľahšie s desiatimi inžiniermi prispievajúcimi do platformy než s dvoma, ktorí sa snažia dodať pred koncom kvartálu.</p>
+<p>Pre typický podnik v roku 2026 znie poctivá odpoveď: pravdepodobne dodávateľské SDK dnes, s realistickou možnosťou migrovať na nezávislý framework v roku 2027, ak si to vyžiada rozsah, regulačné prostredie alebo vzťah s dodávateľom. Pre <em>regulovaný</em> podnik (najmä v Európe, kde hryzú obavy o súlad z kapitoly 9) sa odpoveď silnejšie prikláňa k nezávislému táboru už od začiatku.</p>
+<p><strong>Poistky niečo stoja. Vyplatia sa v konkrétnych scenároch. Či za to stoja, závisí od toho, koľko rizika nesiete a nakoľko veríte, že tie scenáre nastanú.</strong> To je argument za nezávislosť, poctivo vyslovený.</p>
+<hr>
+<p><em>Ďalej: <a href="#chapter-7-observability-evaluation-and-cost">Kapitola 7: Pozorovateľnosť, vyhodnocovanie a náklady</a></em></p>
+        </section>
+
+        <section class="chapter" id="chapter-7-observability-evaluation-and-cost">
+            <div class="chapter-number">Kapitola 7</div>
+            <h1>Kapitola 7: Pozorovateľnosť, vyhodnocovanie a náklady</h1>
+<hr>
+<p>Vojdite do miestnosti, kde inžinieri debatujú o frameworkoch na agentov, a budete počuť o riadiacom toku, správe stavu a multiagentných vzoroch. Vojdite do miestnosti, kde tí istí inžinieri vysvetľujú nasadenie svojho agenta finančnému riaditeľovi, a budete počuť tri otázky: <em>funguje to, ako to vieme a koľko nás to stojí?</em></p>
+<p>V prvej miestnosti sa vedú technické hádky. V druhej sa schvaľujú rozpočty. Podniky, ktoré s agentmi uspejú, prišli na to, že práve v druhej miestnosti musí pristáť väčšina ich inžinierskeho úsilia. Táto kapitola je o vrstve, ktorá leží naprieč každým frameworkom, každým modelom a každým protokolom a ktorá sa stáva rozdielom medzi nasadeným pilotom a odloženým.</p>
+<p>V cloudových pojmoch je to vrstva Datadogu. Vrstva Splunku. Vrstva, ktorá v zrelých cloudových nasadeniach predstavuje významný podiel celkových výdavkov na infraštruktúru, a v zrelých agentných nasadeniach to bude rovnako.</p>
+<h2>Prečo je pozorovateľnosť agentov ťažšia než pozorovateľnosť mikroslužieb</h2>
+<p>V klasickej webovej službe je pozorovateľnosť dobre pochopená. Logujte požiadavky, sledujte distribuované volania, merajte latencie, upozorňujte na chyby, počítajte SLO. Povrch je stabilný. Chybové režimy sú známe. Agenti väčšinu týchto predpokladov rozbíjajú.</p>
+<p><strong>„Správny“ výstup nie je dobre definovaný.</strong> Webová služba buď vráti 200, alebo nie. Agent vráti prirodzený jazyk, volanie nástroja, čiastočnú odpoveď, sebaisto nesprávnu odpoveď. Neexistuje jediný stavový kód pre „agent sa mýlil“.</p>
+<p><strong>Vykonávanie je nedeterministické.</strong> Ten istý agent, ten istý vstup, rôzne volané nástroje, v rôznom poradí, s rôznymi argumentmi naprieč behmi. Ladenie reprodukovaním zlyhávajúceho prípadu je ťažšie.</p>
+<p><strong>Spätná väzba je pomalá.</strong> Chyba v službe vyvolá okamžité upozornenie. Chyba kvality v agentovi sa nemusí ukázať, kým používateľ o týždeň neoznačí nepresnú odpoveď, a dovtedy môžu byť vinná verzia modelu, prompt aj rozhovor už iné.</p>
+<p><strong>Náklady sú naviazané na kvalitu.</strong> Upovedaný agent náchylný na halucinácie nie je len nesprávny; je aj drahý, lebo volá viac nástrojov, častejšie opakuje a spáli viac tokenov na interakciu. Kvalita a náklady sú prepletené.</p>
+<p>Dôsledok: klasická pozorovateľnosť je nutná, ale nie postačujúca. Potrebujete stopy a chyby ako pri mikroslužbe. Potrebujete aj vrstvu špecifickú pre agentov (zaznamenávanie trajektórií, vyhodnocovanie, priraďovanie nákladov na tokeny, pracovné postupy ľudskej revízie), ktorá v tradičných nástrojoch nemá obdobu.</p>
+<h2>Štyri piliere</h2>
+<p>Nástroje špecifické pre agentov, ktoré vznikli v rokoch 2025 až 2026 (LangSmith, Langfuse, Phoenix, Braintrust), sú rôzne pokusy o ten istý problém. Organizujú sa okolo štyroch pilierov.</p>
+<p><strong>Stopy.</strong> Každá interakcia agenta vyprodukuje stopu: postupnosť volaní modelu, vyvolaní nástrojov, delegovaní podagentom a prechodov stavu, ktoré viedli k výstupu. Dobrá stopa vám dovolí prehrať presne to, čo sa stalo, s každým promptom, odpoveďou a medzirozhodnutím viditeľným. Pre ladenie nevyhnutné. Pre audit často povinné podľa regulačných rámcov, ako je AI Act.</p>
+<p><strong>Vyhodnocovanie.</strong> Agent bez testovacieho postroja je agent, ktorého neviete zlepšiť. Môžete zmeniť prompt, vymeniť model, upraviť graf a dúfať; alebo spustiť zmeny nad korpusom reprezentatívnych vstupov so známymi očakávanými výstupmi a zmerať rozdiel. Vyhodnocovanie je najmenej okázalá časť inžinierstva agentov a jedna z tých s najväčšou pákou. Tímy, ktoré investujú do dobrých vyhodnocovacích sád, dodávajú rýchlejšie, iterujú s väčšou istotou a chytia regresie skôr než používatelia.</p>
+<p>Najzáludnejšia časť vyhodnocovania agentov je, že „správny“ výstup je často rozsah, nie reťazec. Tu prichádza vyhodnocovanie <em>LLM ako sudca</em>: použitie jedného modelu na známkovanie výstupov iného podľa hodnotiacich kritérií. Ak sa robí dobre, dramaticky škáluje vyhodnocovanie. Ak sa robí zle, nemeria nič a pritom vyzerá dôkladne. Pohľad v rozsahu brožúry na to, ako LLM sudcovia obstoja pod nepriateľským tlakom, nájdete v našej výskumnej správe <a href="/warden/">Warden</a>.</p>
+<p><strong>Priraďovanie nákladov.</strong> Agenti produkujú náklady na viacerých vrstvách: inferencia modelu, vyvolania nástrojov (platené API), výpočtový výkon orchestrácie (úložisko trvanlivosti LangGraphu, hostovaný sandbox OpenAI), ľudská revízia. Priraďovanie týchto nákladov podľa používateľa, pracovného postupu, funkcie a tímu je to, čo oddeľuje nasadenie, ktoré ostane v rozpočte, od nasadenia, ktoré prepáli kvartálny rozpočet na AI za šesť týždňov. Nástroje sú stále rané (väčšina podnikov si stavia interné dashboardy, namiesto toho, aby kupovala hotové), ale rýchlo sa zlepšujú.</p>
+<p>Konkrétne varovanie: náklady na tokeny jednej interakcie agenta sa môžu líšiť o rád v závislosti od volaní nástrojov, natiahnutého kontextu a opakovaní. Pozorovateľnosť nákladov musí byť na úrovni interakcie, nie iba mesiaca, inak vás dlhý chvost pohryzie.</p>
+<p><strong>Signály kvality.</strong> Okrem štruktúrovaného vyhodnocovania potrebujú produkční agenti ľahké priebežné signály. Palec hore/dole od používateľa, miery odchodu, vzory nadväzujúcich správ („to je zle“, „nie, myslel som&hellip;“), čas do vyriešenia. Agentné ekvivalenty miery chýb a percentilov latencie. Ich zachytávanie a spätné vkladanie do vyhodnocovacích sád a iterácie promptov je mašinéria priebežného zlepšovania.</p>
+<h2>Krajina nástrojov</h2>
+<table>
+<thead>
+<tr>
+<th>Nástroj</th>
+<th>Pozícia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LangSmith</td>
+<td>Ekosystém LangChain/LangGraph. Najhlbšia integrácia s LangGraphom, najsilnejší príbeh vyhodnocovania + stôp v nezávislom tábore.</td>
+</tr>
+<tr>
+<td>Langfuse</td>
+<td>Open-source alternatíva, nezávislá od dodávateľa, silná možnosť vlastného hostovania pre dátovo citlivé nasadenia.</td>
+</tr>
+<tr>
+<td>Phoenix (Arize)</td>
+<td>Zameraný na vyhodnocovanie, široká podpora modelov, väzby na nástroje pozorovateľnosti ML.</td>
+</tr>
+<tr>
+<td>Braintrust</td>
+<td>Vyhodnocovanie na prvom mieste so zameraním na LLM ako sudcu vo veľkom.</td>
+</tr>
+<tr>
+<td>W&amp;B Weave</td>
+<td>Rozšírenie Weights &amp; Biases do pozorovateľnosti LLM.</td>
+</tr>
+<tr>
+<td>Natívne od dodávateľa</td>
+<td>Každé dodávateľské SDK dodáva vlastnú základnú pozorovateľnosť. Použiteľné pre jedného dodávateľa, slabé pre viacerých.</td>
+</tr>
+</tbody>
+</table>
+<p>Strategický bod: vrstva pozorovateľnosti agentov sa rýchlo stáva vlastnou softvérovou kategóriou, analogickou k APM pre cloud. Podniky minú skutočné peniaze na nástroje, ktoré robia rozdiel medzi prevádzkyschopným a nefunkčným.</p>
+<h2>Riadenie nákladov nie je voliteľné</h2>
+<p>Jedno z najľahšie prehliadnuteľných zlyhaní v raných nasadeniach agentov sú utekajúce výdavky. Dobre navrhnutý agent, ktorý volá tri nástroje na interakciu po 0,003 € každý, je lacný. Ten istý agent pod tlakom (viac opakovaní, viac kontextu, viac volaní nástrojov, viac sebareflexie) môže ľahko zdesaťnásobiť svoje náklady bez toho, aby si to niekto všimol, kým nepríde faktúra.</p>
+<p>Malá množina praktík oddeľuje disciplinované nasadenia od nedisciplinovaných. <strong>Nákladové rozpočty na interakciu</strong> (agent pozná vlastný nákladový limit a zastaví sa, keď sa k nemu blíži). <strong>Stropy na používateľa alebo nájomcu</strong> (zneužívajúci používateľ alebo chybná integrácia by nemali za deň spáliť mesačný rozpočet na AI). <strong>Smerovanie modelov podľa nákladov</strong> (drahý model na ťažké otázky, lacný model na smerovanie a klasifikáciu; úspory sa rýchlo úročia). <strong>Rozpočtovanie volaní nástrojov</strong> (ak agent volá päť nástrojov, keď by stačili dva, je to otázka kvality aj nákladov). <strong>Kompakcia a hygiena kontextu</strong> (kompakcia kontextu, cachovanie promptov, disciplinované promptovanie vedia znížiť náklady trojnásobne a viac bez dotknutia sa kvality modelu).</p>
+<p>Toto nie je exotický materiál. Je to tá istá disciplína, ktorú si cloudoví inžinieri vyvinuli okolo rezervovaných inštancií, automatického škálovania a spätného účtovania podľa značiek. Agentná éra si vyvinie vlastnú verziu. Biznisovú stránku tejto disciplíny (čo tokeny naozaj stoja, kto platí a ktoré cenové modely prežijú kontakt s agentmi) pokrýva v rozsahu brožúry <a href="/token-economics/">The Token Economics</a>. Podniky, ktoré si túto disciplínu vybudujú skoro, minú podstatne menej na jednotku hodnoty z agentov.</p>
+<h2>Regulačná vynucovacia sila</h2>
+<p>Najmä pre európske podniky (a kapitola 9 sa k tomu vracia) pozorovateľnosť nie je len pohodlie pre vývojárov. Je to regulačná požiadavka. AI Act vyžaduje od subjektov nasadzujúcich vysokorizikové AI systémy uchovávať logy umožňujúce sledovateľnosť počas celého životného cyklu systému, uchovávať ich aspoň šesť mesiacov a preukazovať ľudský dohľad. Tieto požiadavky bez vrstvy pozorovateľnosti splniť nemôžete.</p>
+<p>Dôsledok: pre regulované podniky je stack pozorovateľnosti <strong>infraštruktúrou súladu skôr než infraštruktúrou kvality</strong>. Voľby (granularita stôp, doby uchovávania, kontroly prístupu, audítorské pracovné postupy) majú právne, nielen prevádzkové dôsledky. Kapitola 9 pokrýva architektúru nasadenia v súlade s pravidlami EÚ podrobne.</p>
+<p><strong>Veľmi málo podnikov má v roku 2026 zavedenú zrelú prax pozorovateľnosti. Väčšina je niekde medzi „logujeme volania modelu“ a „máme dashboard, ale nikto sa naň nepozerá“. Medzera medzi týmito dvoma stavmi a „toto funguje“ je jediný najväčší prediktor toho, či agentný program dozreje na niečo strategické.</strong></p>
+<hr>
+<p><em>Ďalej: <a href="#chapter-8-the-lock-in-question">Kapitola 8: Otázka lock-inu</a></em></p>
+        </section>
+
+        <section class="chapter" id="chapter-8-the-lock-in-question">
+            <div class="chapter-number">Kapitola 8</div>
+            <h1>Kapitola 8: Otázka lock-inu</h1>
+<hr>
+<p>Dodávatelia frameworkov hovoria, že modely môžete vymieňať. Nezávislé frameworky hovoria, že nemôžete, alebo presnejšie, že teoreticky áno, ale v praxi nie bez rozbitých funkcií a zhoršeného správania. Kto má pravdu?</p>
+<p>Táto kapitola berie otázku vážne, jedného dodávateľa po druhom. Pri každom veľkom dodávateľskom SDK: ak na ňom dnes staviate s predvoleným modelom a zajtra sa rozhodnete model vymeniť, koľko z vášho agenta stále funguje? A čo sa rozbije ako prvé?</p>
+<p>Odpoveď je premenlivejšia, než naznačuje abstraktná debata o lock-ine. Niektoré dodávateľské SDK sú takmer naozaj nezávislé od modelu. Niektoré sa ako nezávislé predávajú, ale majú hlboké skryté väzby. Jedno je výslovne natrénované do správania modelu a nemalo by sa nezávislým ani volať. Na nuansách záleží, lebo určujú skutočné inžinierske náklady migrácie, nie teoretické.</p>
+<p><strong>Test poctivosti lock-inu:</strong> ak v tomto frameworku vymením podkladový model, ktoré z hlavných schopností frameworku stále fungujú? Poctivá odpoveď sa pohybuje od „väčšina“ po „takmer žiadna“.</p>
+<h2>Google ADK: stredný lock-in (ekosystém, nie model)</h2>
+<p>Nominálne nezávislý od modelu, a v základnom prípade aj je. Ale tri hlavné schopnosti sa pri výmene zhoršia.</p>
+<p><em>Multimodalita</em>: hlboko integrovaná do ADK cez API Gemini. Vymeňte za textový model a stratíte celú triedu prípadov použitia. Vymeňte za multimodálny model od iného dodávateľa a zaplatíte za integračnú prácu na mieru, aby ste dosiahli paritu.</p>
+<p><em>Generovanie kariet agentov</em>: ADK automaticky generuje karty A2A na základe správania Gemini pri volaní funkcií. Iné modely produkujú menej predvídateľné výstupy volaní funkcií, čím sú automaticky generované karty menej spoľahlivé. Dá sa to opraviť, ale z automatického sa stane manuálne.</p>
+<p><em>Integrácie s Vertexom</em>: najplynulejšie integrácie ADK sú s Vertex AI na nasadenie, BigQuery na dáta, Google Cloud na výpočty. Pri výmene modelu nezmiznú, ale stanú sa menej prirodzenými, ak sa zároveň sťahujete z Google Cloud.</p>
+<p>Štruktúra orchestrácie (hierarchický strom agentov, primitíva Sequential/Parallel/Loop, vizuálny debugger) na iných modeloch ďalej funguje, len s viac manuálnej práce na okrajoch.</p>
+<p><strong>Verdikt</strong>: stredný lock-in. Framework samotný je stredne prenositeľný; ekosystém okolo neho nie.</p>
+<h2>OpenAI Agents SDK: vysoký lock-in (hostované funkcie)</h2>
+<p>Čiastočne nezávislý. SDK sa dá namieriť na modely mimo OpenAI cez smerovacie proxy ako LiteLLM. Mechanizmus existuje. Čo sa pri výmene rozbije:</p>
+<p><em>Hostované nástroje</em>: webové vyhľadávanie, vyhľadávanie v súboroch, interpret kódu sú hostované u OpenAI. Zmiznú v okamihu, keď vymeníte poskytovateľa.</p>
+<p><em>Vykonávanie v sandboxe</em>: spravovaný sandbox na vykonávanie kódu beží na infraštruktúre OpenAI. Vymeňte poskytovateľa a buď sandbox stratíte, alebo si ho za netriviálne náklady postavíte sami.</p>
+<p><em>Spoľahlivosť odovzdávania</em>: mechanizmus odovzdávania sa spolieha na spoľahlivosť štruktúrovaného výstupu a volania funkcií u OpenAI. Iné modely štruktúrovaný výstup zvládajú, ale nie vždy s rovnakým profilom spoľahlivosti. Jemné zmeny môžu predtým fungujúce odovzdávania urobiť nestálymi.</p>
+<p><em>Hlas a Realtime API</em>: špecifické pre OpenAI. Hlasové prípady použitia sú fakticky iba pre OpenAI.</p>
+<p>Základné primitíva agentov a odovzdávania na iných modeloch ďalej fungujú. Jednoduchí textoví agenti s vlastnými nástrojmi bežia na modeloch mimo OpenAI s miernym trením.</p>
+<p><strong>Verdikt</strong>: vysoký lock-in, ale skôr o <em>hostovaných funkciách</em> než o <em>správaní modelu</em>. Ak nepoužívate hostované nástroje, sandbox ani hlas, SDK je prenositeľnejšie než jeho povesť. Ak áno (a väčšina presvedčivých prípadov použitia OpenAI SDK <em>áno</em>), náklady na migráciu sú podstatné.</p>
+<h2>Claude Agent SDK: veľmi vysoký lock-in (správanie modelu)</h2>
+<p>Nie je nezávislý a Anthropic nepredstiera opak. SDK sa volá podľa Clauda, je postavené okolo tréningu Clauda, predpokladá Clauda pod sebou.</p>
+<p><em>Vernosť ovládania počítača</em>: Claude bol špecificky trénovaný na úlohy ovládania počítača (čítanie obrazoviek, spúšťanie príkazov, navigácia v súborových systémoch). Iné modely rovnocenný tréning nemali. Spustenie pracovných postupov Claude Agent SDK cez model iný než Claude produkuje nepredvídateľný výstup: halucinované súradnice na obrazovke, nepochopenú sémantiku Bashu, zlyhanú manipuláciu so súbormi.</p>
+<p><em>Zabudované nástroje</em>: osem nástrojov (Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch) je navrhnutých okolo vzorov promptov, na ktoré Claude dobre reaguje. S inými modelmi fungujú, ale presnosť a bezpečnosť sa citeľne zhoršia.</p>
+<p><em>Správanie v dlhých sedeniach</em>: kompakcia kontextu Clauda je natrénovaná do modelu. Iné modely zvládajú dlhé kontexty inak, niekedy horšie.</p>
+<p><em>Háčiky a podagenti</em>: tieto štrukturálne primitíva fungujú s akýmkoľvek modelom, ale prínos závisí od spoľahlivosti modelu pri dodržiavaní kontraktov háčikov, čo je tréning špecifický pre Clauda.</p>
+<p><strong>Verdikt</strong>: najhlbší lock-in zo všetkých frameworkov v tejto kapitole, a úprimne, je to zámer. Nie generický agentný framework, ktorý náhodou pochádza z Anthropicu. Framework postavený špecificky na využitie tréningu Clauda. Vyberiete si ho a vyberáte si Clauda. To je rozumná stávka, ak ste to rozhodnutie už urobili; je to zlá stávka, ak potrebujete prenositeľnosť.</p>
+<h2>AWS Strands: cloudový lock-in, flexibilita modelov</h2>
+<p>Obrátene. Používa Bedrock na prístup k modelom, čo znamená natívnu podporu Clauda, Llamy, Mistralu a ďalších modelov hostovaných v Bedrocku.</p>
+<p><em>Výmena v rámci Bedrocku je relatívne bezbolestná</em>: jedna z najsilnejších návrhových vlastností Strands. Chcete pustiť toho istého agenta dnes na Claude a zajtra na Llame? Strands to podporuje elegantnejšie než ktorékoľvek SDK dodávateľa základných modelov.</p>
+<p><em>Výmena mimo Bedrocku framework rozbije.</em> Cena je na cloudovej vrstve, nie na modelovej. Strands predpokladá Bedrock na modely, Lambdu na nástroje, DynamoDB na stav. Odíďte z AWS a prepisujete nasadenie od nuly.</p>
+<p><strong>Verdikt</strong>: obrátený lock-in oproti frameworkom dodávateľov základných modelov. Flexibilný na modeli (v rámci Bedrocku), uzamknutý na cloude (AWS). Pre podniky natívne v AWS často najlepšia voľba v kategórii dodávateľských frameworkov. Pre podniky prenositeľné medzi cloudmi najhoršia.</p>
+<h2>Azure AI Foundry Agent Service: lock-in do ekosystému Microsoftu</h2>
+<p>Čiastočne nezávislý od modelu. Opiera sa o modely OpenAI cez partnerstvo s Microsoftom, ale existujú aj možnosti mimo OpenAI.</p>
+<p><em>Integrácie s Microsoft 365</em>: SharePoint, Teams, Outlook, celý povrch M365. Hlavný dôvod, prečo ste si službu vybrali. Nezávisia od konkrétneho modelu, ale mimo ekosystému Microsoftu sú nanič.</p>
+<p><em>Súlad a identita</em>: podniková compliance infraštruktúra Microsoftu je vlastnosťou služby. Pri výmene modelu ju nestratíte, stratíte ju úplne pri odchode z Azure.</p>
+<p><em>Spravované behové prostredie</em>: beží na Azure. Spravovaná služba sa neprenesie.</p>
+<p><strong>Verdikt</strong>: lock-in do ekosystému, nie do modelu. Cenný do tej miery, do akej ste upísaní podnikovému ekosystému Microsoftu. Ak ste, je to vlastnosť. Ak sa snažíte ostať neutrálni, je to pasca.</p>
+<h2>Zhrnutie</h2>
+<table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Nominálne</th>
+<th>Skutočná hĺbka</th>
+<th>Čo sa pri výmene modelu rozbije prvé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google ADK</td>
+<td>Áno</td>
+<td>Stredná (ekosystém)</td>
+<td>Multimodalita, automatické karty A2A, integrácie s Vertexom</td>
+</tr>
+<tr>
+<td>OpenAI Agents SDK</td>
+<td>Čiastočne</td>
+<td>Vysoká (hostované funkcie)</td>
+<td>Hostované nástroje, sandbox, hlas, spoľahlivosť odovzdávania</td>
+</tr>
+<tr>
+<td>Claude Agent SDK</td>
+<td>Nie</td>
+<td>Veľmi vysoká (správanie modelu)</td>
+<td>Ovládanie počítača, zabudované nástroje, správanie v dlhých sedeniach</td>
+</tr>
+<tr>
+<td>AWS Strands</td>
+<td>Áno v rámci Bedrocku</td>
+<td>Cloudový lock-in</td>
+<td>Odíde z AWS a neprežije nič</td>
+</tr>
+<tr>
+<td>Azure AI Foundry Agent Service</td>
+<td>Čiastočne</td>
+<td>Ekosystém Microsoftu</td>
+<td>Integrácie s M365, behové prostredie Azure</td>
+</tr>
+<tr>
+<td>LangGraph</td>
+<td>Áno</td>
+<td>Nízka</td>
+<td>Minimálne, to je cieľ návrhu</td>
+</tr>
+<tr>
+<td>CrewAI</td>
+<td>Áno</td>
+<td>Nízka</td>
+<td>Minimálne, to je cieľ návrhu</td>
+</tr>
+</tbody>
+</table>
+<h2>Lock-in nie je vždy problém</h2>
+<p>Kým vyhlásime všetky dodávateľské frameworky za diskvalifikované, symetrický bod. Lock-in nie je automaticky zlý. Je to obchod.</p>
+<p>Podniky, ktoré sa v roku 2010 uzamkli do AWS, mali v roku 2018 drahšiu migráciu než podniky, ktoré od prvého dňa používali Kubernetes. Zároveň dodávali rýchlejšie v rokoch 2010, 2011, 2012, 2013, 2014 a počas tých rokov zachytili biznisovú hodnotu, o ktorej prenositeľnejšie podniky ešte stále písali architektonické dokumenty. V mnohých prípadoch sa výhoda rýchlosti úročila rýchlejšie, než sa hromadili náklady lock-inu.</p>
+<p>Rovnaká logika platí dnes. Podnik, ktorý si v roku 2026 vyberie OpenAI Agents SDK a do 2. kvartálu 2027 dodá troch agentov pre zákazníkov, zachytil hodnotu, ktorú podnik stále sa hádajúci o LangGraph verzus CrewAI nezachytil. Ak bude prípadná migrácia z OpenAI drahá (a môže byť), je to budúci náklad, ktorý treba vážiť oproti súčasnému prínosu.</p>
+<p><strong>Otázka lock-inu, poctivo položená, neznie „bude to niečo stáť?“ Odpoveď je áno. Otázka znie „ako sa náklady tejto budúcej migrácie porovnávajú s hodnotou, ktorú medzitým zachytím?“</strong> Pre mnohé podniky matematika vychádza priaznivo. Pre iné (najmä regulované, kde budúca migrácia môže byť nedobrovoľná a naliehavá) vychádza nepriaznivo a mali by investovať do prenositeľnosti od prvého dňa.</p>
+<h2>Kedy sa lock-in stáva štrukturálnym</h2>
+<p>Štyri podmienky prevážia matematiku v prospech toho, že prenositeľnosť stojí za svoje náklady.</p>
+<p><strong>Regulačné riziko vynútenej migrácie.</strong> Nová regulácia by vás vierohodne mohla prinútiť odísť od konkrétneho dodávateľa. Prenositeľnosť potrebujete <em>pred</em> reguláciou, nie po nej.</p>
+<p><strong>Cenová sila dodávateľa.</strong> Vaša záťaž sa stane závislou od jediného dodávateľa a ten môže jednostranne zdvihnúť ceny. Odovzdali ste svoju maržu. Prenositeľnosť je páka.</p>
+<p><strong>Strategický význam záťaže.</strong> Nasadenie, na ktorom stojí firma, má vyššie migračné riziko než automatizácia oddelenia. Čím vyššie na spektre kritickosti pre biznis, tým viac stojí poistka prenositeľnosti za to.</p>
+<p><strong>Dátová suverenita.</strong> Vaše regulačné prostredie môže vyžadovať suverénnu infraštruktúru. Dodávateľské frameworky, ktoré pod sebou predpokladajú vlastnú infraštruktúru, sa stanú záťažou.</p>
+<p>Mimo týchto podmienok je lock-in u dodávateľa skutočný, ale zvládnuteľný náklad. Vnútri nich sú náklady strategické, nie prevádzkové, a strategické náklady sú tie, ktoré posadia generálnych riaditeľov na nepríjemné zasadnutia predstavenstva.</p>
+<blockquote>
+<p><strong>Čo si z tejto kapitoly odniesť:</strong> „Nezávislý od modelu“ v marketingu dodávateľských frameworkov zvyčajne znamená „model technicky môžete vymeniť“, nie „hlavné schopnosti frameworku výmenu prežijú“. Lock-in sa pohybuje od nízkeho (LangGraph, CrewAI) cez stredný (ADK) a vysoký (OpenAI Agents SDK) po veľmi vysoký (Claude Agent SDK). AWS a Azure vzor obracajú: flexibilné na modeli, uzamknuté na cloude. Pre väčšinu podnikov je lock-in u dodávateľa cena, ktorú stojí za to zaplatiť za rýchlosť, kým nie, a podmienky, za ktorých nie, sú regulačné riziko, cenová sila dodávateľa, kritickosť záťaže a dátová suverenita. Vedzte, ktoré z nich sa vás týkajú, kým sa zaviažete.</p>
+</blockquote>
+<hr>
+<p><em>Ďalej: <a href="#chapter-9-the-eu-angle">Kapitola 9: Európsky uhol</a></em></p>
+        </section>
+
+        <section class="chapter" id="chapter-9-the-eu-angle">
+            <div class="chapter-number">Kapitola 9</div>
+            <h1>Kapitola 9: Európsky uhol</h1>
+<hr>
+<p>Kapitola 1 naznačila myšlienku, že EÚ by mohla preskočiť fázu lock-inu u dodávateľa v agentnom prechode, rovnako ako pred desaťročím preskočila to najhoršie z fázy cloudového lock-inu. Táto kapitola ten argument vyslovuje výslovne. Je to jadro strategického argumentu brožúry pre európskych čitateľov.</p>
+<p>Tvrdenie: kombinácia Aktu EÚ o umelej inteligencii, GDPR, noriem dátovej suverenity a hnutia za suverénnu AI dáva európskym podnikom motiváciu aj krytie zhora na to, aby prijali agentné architektúry, ktoré sú od prvého dňa nezávislé od modelu, viacregionálne a náročné na pozorovateľnosť, namiesto toho, aby prešli hlbokým záväzkom voči dodávateľovi a bolestivou migráciou.</p>
+<p>To je skutočná možnosť. Nie jediná. A či by ju mal konkrétny podnik využiť, závisí od okolností. Ale štrukturálne sily ukazujú jedným smerom.</p>
+<h2>AI Act ako vynucovacia sila</h2>
+<p>AI Act, ktorého postupné uplatňovanie sa začalo začiatkom roka 2025 a ktorý dosahuje svoje najzávažnejšie termíny v auguste 2026 a auguste 2027, nie je primárne rozhodnutím o frameworku. Je to vynucovacia sila, ktorá tvaruje architektúru okolo frameworkov.</p>
+<p>Ustanovenia, na ktorých záleží najviac, sa vzťahujú na „nasadzujúce subjekty“ vysokorizikových AI systémov, ktorými, čo je kľúčové, bude väčšina podnikov používajúcich agentov. Nasadzujúce subjekty musia: zabezpečiť ľudský dohľad nad rozhodnutiami systému, uchovávať logy umožňujúce sledovateľnosť počas celého životného cyklu systému, monitorovať systém a hlásiť závažné incidenty, uchovávať logy aspoň šesť mesiacov a pri určitých kategóriách vykonať posúdenie vplyvu na základné práva.</p>
+<p>Preložme to do architektonických dôsledkov.</p>
+<p><strong>Sledovateľnosť vyžaduje pozorovateľnosť.</strong> Produkčný agent bez štruktúrovaného logu stôp nespĺňa požiadavku na logovanie. Stack pozorovateľnosti z kapitoly 7 nie je voliteľná investícia; je to infraštruktúra súladu.</p>
+<p><strong>Ľudský dohľad vyžaduje integračné háčiky.</strong> Agent nemôže byť čierna skrinka. Ľudia musia mať možnosť kontrolovať, prebiť, zasiahnuť. Frameworky so silnými modelmi spätných volaní a háčikov to splnia ľahšie než frameworky očakávajúce autonómne vykonávanie. Ako by mala vyzerať ľudská strana týchto háčikov v prevádzke (schvaľovacie brány, eskalačné cesty, kedy odovzdanie pomôže a kedy len všetkých spomalí), je témou našej sprievodnej brožúry <a href="/llm-human-interaction-patterns/">LLM-Human Interaction Design Patterns</a>.</p>
+<p><strong>Uchovávanie logov ťahá za sebou dátovú suverenitu.</strong> Šesťmesačné uchovávanie, najmä pri agentoch narábajúcich s osobnými údajmi, vyvoláva otázku: <em>kde</em> sú logy uložené, <em>kto</em> má prístup. Ich uloženie v infraštruktúre amerického dodávateľa vytvára problémy s cezhraničným prenosom údajov. Európska infraštruktúra pod európskou právnou kontrolou je predvolená bezpečná odpoveď.</p>
+<p><strong>Posúdenie vplyvu vyžaduje transparentnosť.</strong> Pri každom vysokorizikovom prípade použitia treba opísať, čo systém robí, ako a ktoré práva ovplyvňuje. Nepriehľadné čierne skrinky (od frameworku alebo od dodávateľa modelu) to robia ťažším, než by malo byť.</p>
+<p>Dokopy to tlačí k špecifickému <em>tvaru</em> agentnej architektúry: náročnej na pozorovateľnosť, s človekom v slučke, rešpektujúcej suverenitu, auditovateľnej od začiatku do konca. Tento tvar sa prirodzenejšie zhoduje s pozíciou nezávislý framework + európska infraštruktúra než s pozíciou hlboko integrovaného dodávateľského SDK.</p>
+<h3>Rozpracovaný príklad: logovanie podľa AI Actu → architektúra</h3>
+<p>Agent nasadený na úverové poradenstvo v európskej retailovej banke sedí priamo pod klasifikáciou „vysokorizikový“. Požiadavka Aktu na logovanie a sledovateľnosť sa krok za krokom prekladá takto.</p>
+<p><strong>Ktoré háčiky frameworku.</strong> Potrebujete háčik pred modelom, po modeli, pred nástrojom a po nástroji: každá udalosť označená ID stopy viazaným na sedenie a identifikátorom používateľa. V LangGraphe je to jeden obslužný handler spätných volaní pripojený ku grafu. V OpenAI Agents SDK je to parameter <code>hooks</code> plus vlastný mantinel. V Claude Agent SDK je to zabudované API háčikov. ADK vystavuje udalosti životného cyklu cez svoj strom agentov. Framework určuje, koľko z toho napíšete a koľko nakonfigurujete.</p>
+<p><strong>Ktoré úložisko pozorovateľnosti.</strong> Stopy idú do úložiska iba na pripisovanie s možnosťou právneho zadržania (legal hold). Langfuse hostovaný vo vlastnej réžii v EÚ regióne Azure, LangSmith vo vlastnej réžii alebo vlastné objektové úložisko + dopytovacia vrstva. Úložisko musí podporovať pravidlá redakcie osobných údajov pri zápise a selektívne prehratie pri čítaní (na audit) bez obnovenia redigovaných polí.</p>
+<p><strong>Ktorá politika uchovávania.</strong> Minimum podľa AI Actu je šesť mesiacov. Pri úverovom poradenstve to interná banková regulácia tlačí na sedem rokov. Vrstvy uchovávania (horúce 90 dní, teplé 12 mesiacov, studené sedem rokov) namapované na náklady úložiska zhruba 1× / 0,3× / 0,05× za GB a mesiac.</p>
+<p><strong>Ktorá kontrola prístupu.</strong> Dáta stôp sú regulované osobné údaje. Prístup vyžaduje tiket + schvaľovateľa + zalogované čítanie. To je infraštruktúra vrstvy identity (nie práca agentného frameworku), ale musí sa čisto pripojiť na úložisko pozorovateľnosti.</p>
+<p>Tri odseky, ku ktorým sa diskusie o výbere frameworku dostanú málokedy. V regulovaných nasadeniach sú to prvé odseky.</p>
+<h2>Dátová suverenita: ostrejšia než kedysi</h2>
+<p>Pri prijímaní cloudu bola dátová suverenita pomalá, tichá starosť, ktorá záležala pri niektorých záťažiach. Pri prijímaní AI stvrdla.</p>
+<p>Tri dôvody. <strong>Trénovanie a inferencia AI sú s dátami prepletené viac, než bol výpočtový výkon tradične</strong>: keď pošlete požiadavku na API OpenAI, neposielate len dopyt, ale aj kontext, systémový prompt, výstupy nástrojov a všetky dáta, ktoré má model zvážiť. Pri podnikových agentoch tento kontext bežne obsahuje osobné údaje, dôverné obchodné údaje alebo regulované informácie. Povrch súkromia pri používaní agentov je štrukturálne väčší než povrch súkromia pri prevádzke webového servera.</p>
+<p><strong>Národné stratégie AI povýšili tému politicky.</strong> Každá veľká európska krajina sformulovala postoj k suverénnej AI: že kritická AI infraštruktúra by nemala byť úplne závislá od amerických alebo čínskych dodávateľov. Nie je to len rétorika; produkuje konkrétne financovanie, infraštruktúru a regulačné kroky. Pre podniky v regulovaných sektoroch je zosúladenie s národnou stratégiou AI čoraz viac súčasťou toho, byť dobrým firemným občanom.</p>
+<p><strong>EÚ aktívne investuje do suverénnych alternatív.</strong> Verejné financovanie európskych modelov a poskytovateľov suverénneho cloudu robí príbeh „európskej alternatívy“ dôveryhodnejším než pri cloude. Či budú konkurencieschopné na špičke, je neisté. Či budú <em>dostatočné</em> pre široký rozsah podnikových prípadov použitia, je menej neisté. Pravdepodobne áno.</p>
+<p>Výsledok: púšťať všetky agentné záťaže cez API hostované v USA je v roku 2026 politicky nabitejšie rozhodnutie, než bolo púšťať cloudové záťaže cez infraštruktúru hostovanú v USA v roku 2016. Ten náboj ovplyvňuje strategické voľby, aj keď litera zákona konkrétnu architektúru nevyžaduje.</p>
+<blockquote>
+<p><strong>Poznámka z júla 2026.</strong> Tri mesiace po napísaní tejto kapitoly prestal byť argument hypotetický. Najschopnejšie americké modely boli znovu vydané za bránami: na najvyššej úrovni iba pre preverené firmy (prevažne americké), pod ňou nákladné moderované API. Prístup k špičke je teraz sám osebe odstupňovaný podľa jurisdikcie, čo je presne tá expozícia, ktorú má smerovací vzor nižšie absorbovať. Ako funguje prístup odstupňovaný podľa blokov a kam pravdepodobne smeruje, je zmapované v <a href="/mercantilism-of-genai/#m-bloc">Merkantilizme generatívnej AI</a>.</p>
+</blockquote>
+<h3>Bočný panel: krajina suverénnej AI</h3>
+<p>Stlačená orientácia v tom, kto skutočne dodáva suverénne alternatívy, lebo mnohí architekti predpokladajú, že pole je redšie, než je.</p>
+<p><strong>Poskytovatelia modelov.</strong> Mistral (Francúzsko): najdôveryhodnejšie európske laboratórium z hľadiska špičky, s Mistral Large a rastúcou rodinou modelov s otvorenými váhami. Aleph Alpha (Nemecko): zamerané na podniky, s modelmi triedy Pharia navrhnutými na regulované nasadenie a so silným výkonom v nemčine. Stability AI (Spojené kráľovstvo): obrazové a textové modely s liberálnym licencovaním. Silo AI (Fínsko, kúpené AMD): viacjazyčné európske modely. Plus obvyklí zabehnutí hráči s otvorenými váhami, ktorých možno prevádzkovať na európskej infraštruktúre: rodina Llama od Mety, séria Qwen, Gemma.</p>
+<p><strong>Suverénny cloud a inferencia.</strong> OVHcloud (Francúzsko), Scaleway (Francúzsko), IONOS (Nemecko), Hetzner (Nemecko), Exoscale (Švajčiarsko): všetci ponúkajú inferenčné regióny iba v EÚ so zmluvnými zárukami rezidencie dát, ktoré americkí hyperškáloví dodávatelia čoraz častejšie vyrovnávajú svojimi suverénnymi ponukami pre EÚ, ale nie vždy <em>z nich vychádzajú</em>. Viaceré národné cloudové iniciatívy (nemecký Delos, francúzsky Bleu cez Orange + Capgemini + Microsoft) cielia striktne na verejný sektor.</p>
+<p><strong>Európska pozorovateľnosť.</strong> Langfuse je významná open-source možnosť, hostovateľná vo vlastnej réžii na európskej infraštruktúre. LangSmith vo vlastnej réžii je dostupný, ale novší. Vynára sa hŕstka dodávateľov pozorovateľnosti natívnych pre suverénny cloud.</p>
+<p>Príbeh suverénnej AI nie je dokonalý (medzery v špičkových schopnostiach ostávajú a pri niektorých záťažiach pretrvajú), ale je dosť dôveryhodný na to, aby „môžeme používať iba americké API“ bolo v roku 2026 zvyčajne výrokom o rozpočte alebo pohodlí, nie o dostupnosti.</p>
+<h2>Európsky smerovací vzor</h2>
+<p>Naprieč európskymi podnikovými AI programami získava prívržencov konkrétna architektúra. Stojí za výslovné pomenovanie.</p>
+<p><strong>Po prvé.</strong> Neutrálna orchestračná vrstva. Zvyčajne LangGraph, niekedy CrewAI, občas vlastná ľahká vrstva. Dôležitá vlastnosť je, že framework neviaže architektúru na konkrétny model.</p>
+<p><strong>Po druhé.</strong> Smerovacie rozhodnutie pre každú interakciu. Pri každej úlohe architektúra rozhodne, ktorý model, na základe citlivosti dát, zložitosti úlohy, nákladového profilu a niekedy jazyka. Citlivé osobné údaje → lokálne hostovaná Llama alebo Mistral. Ťažké uvažovanie s necitlivými dátami → Claude alebo GPT cez API. Jednoduché smerovacie rozhodnutia → malý lokálny model. Rozhodnutie je explicitné a auditovateľné.</p>
+<p><strong>Po tretie.</strong> Európska infraštruktúra pozorovateľnosti a auditu. Langfuse vo vlastnej réžii, LangSmith vo vlastnej réžii alebo vlastná audítorská vrstva, bežiaca na európskej infraštruktúre, vo vlastníctve podniku, s plnou kontrolou nad uchovávaním a prístupom.</p>
+<p>Toto je agentný ekvivalent vzoru hybridného cloudu, ktorý zrelé európske podniky prijali koncom druhej dekády: použiť verejný cloud tam, kde je správnou odpoveďou, držať citlivé jadro pod priamou kontrolou, smerovať podľa záťaže namiesto upísania všetkého jednému poskytovateľovi. Nie najrýchlejšia architektúra na postavenie. Architektúra, ktorá prežije väčšinu politického a regulačného počasia.</p>
+<h2>Čo by európski lídri mali skutočne urobiť</h2>
+<p>Päť stlačených smerov.</p>
+<p><strong>Predpokladajte, že pozorovateľnosť a audit sú nevyhnutné.</strong> Rozpočtujte ich od prvého dňa, nech si vyberiete akýkoľvek framework.</p>
+<p><strong>Vyberajte frameworky s dôveryhodnou cestou k nezávislosti.</strong> Buď nezávislý framework hneď od začiatku, alebo dodávateľské SDK, ktorého závislosť od vrstvy modelu vlastníte ako zámernú strategickú voľbu.</p>
+<p><strong>Navrhujte so smerovaním na mysli.</strong> Aj keď dnes používate jeden model, štruktúrujte systém tak, aby výber modelu pre každú interakciu bol zmenou konfigurácie, nie zmenou architektúry.</p>
+<p><strong>Držte audítorské dáta v Európe.</strong> Požiadavka na uchovávanie nie je tá ťažká časť. Ťažká je suverenita uchovávania. Umiestnite stopy, vyhodnocovacie dáta a stav agentov niekam, kde sa z nich nestane problém cezhraničného prenosu údajov.</p>
+<p><strong>Sledujte regulačný postoj.</strong> Aktívne. Obdobie 2026 až 2027 prinesie prvé zmysluplné vynucovacie kroky podľa AI Actu a tie kroky budú tvarovať normy odvetvia.</p>
+<p>Pre väčšinu európskych podnikov stojí výsledná architektúra v prvom roku o niečo viac a za päť rokov podstatne menej v porovnaní s naivným prístupom cez dodávateľské SDK. Pre regulované podniky nemusí byť prístup cez dodávateľské SDK v čase, keď ich agentné programy dozrejú, ani právne životaschopný. Postoj, ktorý táto kapitola opisuje, je obhájiteľný štandard.</p>
+<blockquote>
+<p><strong>Čo si z tejto kapitoly odniesť:</strong> EÚ má štrukturálne dôvody (AI Act, dátová suverenita, politika suverénnej AI, pamäť na cyklus cloudového lock-inu) preskočiť „hlboký záväzok voči dodávateľovi nasledovaný bolestivou migráciou“ a ísť rovno k hybridným, nezávislým agentným architektúram náročným na pozorovateľnosť. Nie každý európsky podnik by mal túto možnosť využiť, ale malo by ich to urobiť viac, než ich to robí dnes. Kompromisy medzi frameworkmi sa v Európe rozhodnejšie nakláňajú k nezávislosti než inde. Krajina suverénnej AI je redšia, než naznačujú americké naratívy, ale nie ošúchaná, dosť dôveryhodná na to, aby sa s ňou dalo plánovať. Európsky smerovací vzor (nezávislá orchestrácia + výber modelu pre každú interakciu + európska pozorovateľnosť) je architektúra, ktorá prežije väčšinu regulačného počasia.</p>
+</blockquote>
+<hr>
+<p><em>Ďalej: <a href="#chapter-10-will-the-timeline-actually-squeeze">Kapitola 10: Naozaj sa časová os stlačí?</a></em></p>
+        </section>
+
+        <section class="chapter" id="chapter-10-will-the-timeline-actually-squeeze">
+            <div class="chapter-number">Kapitola 10</div>
+            <h1>Kapitola 10: Naozaj sa časová os stlačí?</h1>
+<hr>
+<p>Všetko doteraz predpokladalo, že agentný prechod sa bude hýbať rýchlejšie než cloudový a že najmä európske podniky budú mať dôvod skočiť rovno k zrelej architektúre namiesto prežívania fázy lock-inu. Tento predpoklad je zapečený v radách, ktoré táto brožúra dáva. Je aj skutočne sporný. Táto kapitola dlhuje čitateľovi predpoveď: nie esej „na jednej strane, na druhej strane“, ale jasný verdikt o tom, kam ukazujú dôkazy a čo by sa muselo stať, aby bol verdikt nesprávny.</p>
+<h2>Dva scenáre</h2>
+<p><strong>Scenár Preskok.</strong> Podniky, najmä v Európe, sa rýchlo posunú za lock-in u dodávateľa a do rokov 2027 až 2028 sa usadia na hybridných, nezávislých architektúrach s intenzívnym smerovaním. Protokoly v štýle MCP ovládnu prístupovú vrstvu. Nezávislé frameworky v štýle LangGraphu sa stanú referenčnou orchestračnou vrstvou pre regulované odvetvia. Dodávateľské SDK pretrvajú ako akceleračné nástroje pre menej regulované vertikály, ale nestanú sa dominantným podnikovým štandardom. Nástroje na pozorovateľnosť a audit sa stanú samostatnou kategóriou podnikového softvéru analogickou k APM. Cyklus, ktorý cloudovému odvetviu trval dvanásť rokov, sa uzavrie za päť.</p>
+<p><strong>Scenár Očistec pilotov.</strong> Väčšina podnikov uviazne v tej istej pasci, ktorá už chytá 95 % AI pilotov: technológia funguje, piloty sú zaujímavé, škálovanie nikdy nenastane. Modely sa ďalej zlepšujú, čo paradoxne robí frameworky menej potrebnými, čo drží architektúry malé a neformálne. Dodávateľské SDK vyhrajú automaticky, lebo sú cestou najmenšieho odporu. Nezávislé frameworky ostanú špeciálnou starosťou úzkeho výseku regulovaných podnikov. Cyklus lock-inu pripomína cloudový cyklus, dlhú chaotickú prechodnú fázu trvajúcu väčšinu desaťročia.</p>
+<h2>Verdikt</h2>
+<p>Najpravdepodobnejší výsledok je <strong>rozdvojený, naklonený k Preskoku pre regulovanú EÚ a k Očistcu pilotov pre všetkých ostatných</strong>. Regulované európske podniky (bankovníctvo, poisťovníctvo, verejný sektor, zdravotníctvo, obrana) Preskočia, lebo AI Act je priama vynucovacia sila a architektúry, ktoré potrebujú na splnenie súladu, vyzerajú ako zrelý konečný stav. Všetci ostatní strávia čas v Očistci pilotov, nie preto, že technológia zlyhá, ale preto, že organizačná mašinéria (kvalita dát, sponzorstvo vedenia, disciplína vyhodnocovania) nie je pripravená. Dodávateľské SDK urobia väčšinu tichej ťažkej práce pri pilotoch, ktoré uspejú. Nezávislé frameworky plus pozorovateľnosť ovládnu dlhodobú architektúru pre záťaže, na ktorých záleží najviac.</p>
+<p>V cloudovej paralele: Preskok vyzerá ako európsky podnik v roku 2012, ktorý preskočil monokultúru AWS a išiel rovno do hybridného cloudu s Kubernetesom. Očistec pilotov vyzerá ako americký stredne veľký podnik v roku 2015, ktorý stále prevádzkuje paralelné systémy v troch cloudoch a snaží sa prísť na súvislú stratégiu. Oba existovali; oba boli racionálnou odpoveďou na konkrétne podmienky.</p>
+<h2>Prečo sa to stále môže mýliť: pomenované predstihové indikátory</h2>
+<p>Predpoveď má byť vyvrátiteľná. Tu je šesť konkrétnych indikátorov na roky 2026 až 2027. Ak sa budú vyvíjať, ako je uvedené, Preskok pre regulovanú EÚ platí. Ak nie, mýlim sa.</p>
+<p><strong>1. MCP dosiahne 200 miliónov mesačných stiahnutí SDK do 4. kvartálu 2026.</strong> Dnes ~97 miliónov. Pokračujúce zdvojnásobovanie potvrdí, že protokolová vrstva je naozaj ustálená. Sploštenie pod 150 miliónov do 4. kvartálu znamená, že prijímanie protokolu stagnuje a téza slabne.</p>
+<p><strong>2. AI Act prinesie aspoň jeden verejne oznámený vynucovací krok pri vysokorizikovom systéme do 2. kvartálu 2027.</strong> Nie varovný list, skutočnú pokutu alebo príkaz. Bez toho je premisa vynucovacej sily slabšia, než som tvrdil.</p>
+<p><strong>3. LangSmith prekročí 1 000 platených podnikových licencií do 3. kvartálu 2026.</strong> Konkrétne, sledovateľné (LangChain zverejňuje míľniky). Ak sa kategória pozorovateľnosti nemonetizuje, predpoveď „stane sa vlastnou softvérovou kategóriou ako APM“ neplatí.</p>
+<p><strong>4. Mistral, Aleph Alpha alebo podobne postavené európske laboratórium dodá do polovice roka 2027 model do 10 % od špičky (na pomenovanom benchmarku, povedzme GPQA alebo SWE-Bench).</strong> Ak sa medzera namiesto toho rozšíri, smerovací vzor sa pre záťaže náročné na uvažovanie zrúti a európske podniky budú nútené voliť medzi prístupom k špičke a suverenitou. Šance Očistca pilotov podstatne stúpnu.</p>
+<p><strong>5. Aspoň jeden z OpenAI, Googlu alebo Anthropicu dodá do konca roka 2026 pre zákazníkov v EÚ záruku rezidencie dát v suverénnom cloude (zmluvne záväznú, nielen regionálnu dostupnosť).</strong> Ak áno, dodávateľské SDK ostanú v hre pre európske regulované záťaže a argument za nezávislosť zoslabne. Ak nie, dodávateľské SDK sú fakticky diskvalifikované z kusa regulovaného trhu EÚ.</p>
+<p><strong>6. A2A (alebo jeho priamy nástupca) dosiahne do konca roka 2027 vyše 10 000 verejných kariet agentov v objaviteľnom registri.</strong> To je indikátor toho, že interoperabilita medzi agentmi sa stáva všadeprítomnou, nie teoretickou. Ak premávka A2A ostane interná v rámci jednotlivých podnikov, premisa „multiagentná architektúra sa stane hlavným prúdom“ sa odloží a načasovanie Preskoku sa posunie.</p>
+<p><strong>Toto nie sú obvyklé indikátory. Nikto iný ich nesleduje ako súvislú množinu.</strong> Ak sa tri zo šiestich pohnú, ako je opísané, predpoveď platí. Ak sa tri alebo viac nepohnú, mýlim sa v načasovaní alebo v tvare, pravdepodobne v oboch.</p>
+<h2>Prvé čítanie: júl 2026</h2>
+<p>Tri mesiace je skoro na skórovanie predpovede, ale táto brožúra sľúbila vyvrátiteľnosť, tak tu je prvé čítanie tabule.</p>
+<p><strong>Indikátor 1 (MCP na 200 miliónoch mesačných stiahnutí do 4. kvartálu 2026): hýbe sa podľa predpovede.</strong> Oficiálne citované číslo je stále ~97 miliónov, ale práca na protokole ukazuje správnym smerom: revízia špecifikácie, ktorá pristáva 28. júla (bezstavové jadro, spevnenie podnikovej identity, rozšírenia Apps a Tasks), je presne ten míľnik pripravenosti pre podniky, ktorý kapitola 3 kázala sledovať. Rozhodne číslo za 4. kvartál.</p>
+<p><strong>Indikátor 2 (prvý vynucovací krok podľa AI Actu pri vysokorizikovom systéme do 2. kvartálu 2027): otvorený.</strong> Zatiaľ nič verejné a okno beží ešte rok. Augustové termíny 2026 prichádzajú budúci mesiac; hodiny sa naozaj rozbehnú až vtedy.</p>
+<p><strong>Indikátor 3 (LangSmith na 1 000 platených podnikových licenciách do 3. kvartálu 2026): neoverené, ale smerovo podporené.</strong> LangChain počet licencií nezverejnil. Čo sa stalo: LangGraph aj LangChain dosiahli verziu 1.0 a LangSmith sa rozdelil na samostatné produktové línie pre pozorovateľnosť, vyhodnocovanie a nasadzovanie. Kategórie sa takto neproduktizujú, pokiaľ niekto neplatí.</p>
+<p><strong>Indikátor 4 (európske laboratórium do 10 % od špičky do polovice roka 2027): zakalený udalosťami.</strong> Júlové znovuvydanie najschopnejších amerických modelov za bránami (preverené firmy na najvyššej úrovni, pod ňou nákladné moderované API) sťažuje samotné meranie: ktokoľvek mimo prevereného kruhu má dnes problém sa voči špičke čo i len benchmarkovať. Otázka medzery sa mení na otázku prístupu.</p>
+<p><strong>Indikátor 5 (zmluvne záväzná záruka suverénneho cloudu od OpenAI, Googlu alebo Anthropicu do konca roka 2026): skôr proti, z dôvodu, ktorý predpoveď nepomenovala.</strong> To isté zavedenie brán tlačilo opačným smerom než záruka rezidencie; živou otázkou v júli 2026 nie je, kde model beží, ale kto ho vôbec smie spustiť. Ak to vydrží, indikátor sa vyrieši ako „nie“ a argument za nezávislosť sa posilní ostrejšie, než pôvodná predpoveď predpokladala. Mechanika je zmapovaná v <a href="/mercantilism-of-genai/#m-bloc">Merkantilizme generatívnej AI</a>; rámec scenárov, ktorý to živí, je <a href="/scenario-planning/">Scenario Planning for Generative AI</a>.</p>
+<p><strong>Indikátor 6 (vyše 10 000 verejných kariet agentov do konca roka 2027): hýbe sa podľa predpovede, skoro.</strong> A2A pohltilo svojho hlavného rivala (ACP od IBM), prekročilo 150 členských organizácií a vo vydaní 1.2 dodalo kryptograficky podpísané karty agentov. Otázka rozsahu registra ostáva otvorená.</p>
+<p>Stali sa dve veci, ktoré zoznam indikátorov nepredvídal. Gartner dnes predpovedá, že 40 % projektov agentnej AI bude do roku 2027 zrušených, čo je Očistec pilotov, ktorý získal citáciu. A OpenAI jedenásť mesiacov po spustení ukončilo svoj no-code Agent Builder, pripomienka, že dodávateľská vrstva sa stále vrtí, kým protokolová vrstva tvrdne.</p>
+<p>Čisté čítanie: dva indikátory sa hýbu podľa predpovede, dva sú otvorené, jeden zakalený, jeden sa nakláňa proti spôsobom, ktorý jadro rád tejto brožúry posilňuje, nie oslabuje. Rozdvojený verdikt platí. Ďalšie čítanie príde s číslami za 4. kvartál.</p>
+<blockquote>
+<p><strong>Naša predpoveď v jednej vete:</strong> Regulované európske podniky Preskočia zhruba do roku 2028; väčšina ostatných podnikov prežije stlačenú, ale skutočnú verziu cyklu lock-inu z cloudovej éry; dodávateľské SDK vyhrajú krátkodobo a nezávislé frameworky plus ich ekosystém pozorovateľnosti vyhrajú dlhodobo pre záťaže, na ktorých záleží najviac, pokiaľ sa tri zo šiestich pomenovaných indikátorov vyššie nepohnú, ako je opísané, a v takom prípade som cyklus prečítal zle.</p>
+</blockquote>
+<hr>
+<p><em>Ďalej: <a href="#chapter-11-picking-your-stack">Kapitola 11: Výber vášho stacku</a></em></p>
+        </section>
+
+        <section class="chapter" id="chapter-11-picking-your-stack">
+            <div class="chapter-number">Kapitola 11</div>
+            <h1>Kapitola 11: Výber vášho stacku</h1>
+<hr>
+<p>Krajina je zmapovaná. MCP je všadeprítomný protokol na prístupovej vrstve. A2A je vznikajúci protokol pre komunikáciu agent–agent. Orchestračná vrstva sa delí na dodávateľské SDK a nezávislé frameworky. Pozorovateľnosť je prvotriedna starosť. Lock-in má ostré odpovede pre každého dodávateľa. EÚ má konkrétne dôvody sledovať inú architektúru. Predpoveď má šesť vyvrátiteľných indikátorov.</p>
+<p>Táto kapitola rozhodnutie stláča. Nie do rebríčka; rebríčky zle starnú. Do piatich otázok, kde vaše poctivé odpovede určia architektúru, ktorá vám sedí, plus rozhodovací strom, ktorý odpovede vykreslí vizuálne, plus rozpracovaná prípadová štúdia regulovanej európskej banky, plus krátky epilóg.</p>
+<h2>Päť otázok</h2>
+<p>Prejdite ich po poradí. Každá zužuje pole.</p>
+<p><strong>1. Kde už leží vaša cloudová vernosť?</strong> Úplne na Google Cloud → ADK je predvolený kandidát. Úplne na AWS → Strands. Úplne na Azure alebo Microsoft 365 → Azure AI Foundry Agent Service. Prenositeľní medzi cloudmi alebo multi-cloud z politiky → prirodzeným stredom sa stávajú nezávislé frameworky (LangGraph, CrewAI). Stavať proti srsti vášho cloudového ekosystému stojí mesiace zbytočnej integračnej práce.</p>
+<p><strong>2. Aká tvrdá je vaša požiadavka na výmenu modelu?</strong> Tvrdá (musíte smerovať podľa súladu / nákladov / jazyka, alebo máte mandát proti lock-inu z predstavenstva) → nezávislý framework. LangGraph je obhájiteľný štandard. Claude Agent SDK je okamžite diskvalifikované; OpenAI Agents SDK je hraničné. Mäkká (uprednostňujete prenositeľnosť, ale neprestavali by ste kvôli nej všetko) → dodávateľské SDK sú životaschopné, najmä ADK a OpenAI Agents. Žiadna → všetky frameworky sú na stole; vyberajte podľa ostatných otázok.</p>
+<p><strong>3. Koľko regulačnej alebo audítorskej váhy leží na tomto nasadení?</strong> Ťažká (bankovníctvo, poisťovníctvo, zdravotníctvo, verejný sektor, obrana, vysokorizikové podľa AI Actu) → pozorovateľnosť a audit sú nevyhnutné. LangGraph + LangSmith (alebo Langfuse vo vlastnej réžii) je najbežnejšie obhájiteľná architektúra. Stredná (GDPR, niektoré sektorové pravidlá) → dodávateľské SDK ostávajú životaschopné s doplnkovou pozorovateľnosťou. Ľahká (interná produktivita, necitlivé) → riadia ostatné otázky.</p>
+<p><strong>4. Ako veľmi potrebujete koordináciu viacerých agentov?</strong> Áno, kľúčovo → vedie ADK, s natívnym A2A a hierarchickou štruktúrou. CrewAI je silná dvojka na prototypovanie; LangGraph viacero agentov zvládne, ale vyžaduje viac explicitného inžinierstva. Možno neskôr → vyberte framework s dôveryhodnou cestovnou mapou pre viacerých agentov + A2A. Jeden agent, pravdepodobne navždy → môže stačiť aj základné LLM v slučke. Najčastejšia chyba tu je preceniť potrebu; mnohé podniky dodávajú systémy s tromi agentmi tam, kde by prácu zvládol jeden dobre promptovaný agent.</p>
+<p><strong>5. Koľko interného inžinierskeho talentu na AI máte?</strong> Hlboký → celý rozsah otvorený; nezávislé frameworky sú príťažlivejšie, lebo si ich cenu môžete dovoliť. Stredný → dodávateľské SDK vstrebú viac inžinierskej záťaže; nezávislé sú životaschopné, ale spotrebujú viac kapacity, než čakáte. Obmedzený → dodávateľské SDK sú správny štandard. Nezávislý framework bez tímu, ktorý ho ťahá, je zlyhaný projekt, ktorý čaká, kým sa stane. Buďte tu neúprosní: podniky sú najviac v pokušení odpovedať optimisticky.</p>
+<h2>Rozhodovací strom</h2>
+<div style="margin: 2rem 0; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc; overflow-x: auto;">
+<svg viewBox="0 0 780 520" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 780px; height: auto; font-family: 'Helvetica Neue', Arial, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .q-node { fill: #1e3a5f; }
+      .q-text { fill: white; font-size: 12px; font-weight: 700; }
+      .q-sub { fill: rgba(255,255,255,0.85); font-size: 10px; }
+      .leaf { stroke-width: 2; }
+      .leaf-booklets { fill: #eff6ff; stroke: #3b82f6; }
+      .leaf-reports { fill: #f5f3ff; stroke: #8b5cf6; }
+      .leaf-guides { fill: #fffbeb; stroke: #d97706; }
+      .leaf-text { font-size: 11px; font-weight: 700; fill: #1e293b; }
+      .leaf-sub { font-size: 9.5px; fill: #475569; }
+      .edge { stroke: #94a3b8; stroke-width: 1.5; fill: none; }
+      .edge-label { font-size: 10px; fill: #475569; font-weight: 600; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="390" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a5f">Agentný stack · rozhodovací strom</text>
+
+  <!-- Root: Q3 Regulatory weight -->
+  <rect class="q-node" x="320" y="40" width="140" height="44" rx="6"/>
+  <text class="q-text" x="390" y="58" text-anchor="middle">O3: Regulačná váha?</text>
+  <text class="q-sub" x="390" y="72" text-anchor="middle">Vysoké riziko? Audit?</text>
+
+  <!-- Branch Heavy -->
+  <path class="edge" d="M 380 84 L 200 120" marker-end="url(#arrow)"/>
+  <text class="edge-label" x="270" y="98">Ťažká</text>
+
+  <!-- Branch Light/Medium -->
+  <path class="edge" d="M 400 84 L 580 120" marker-end="url(#arrow)"/>
+  <text class="edge-label" x="490" y="98">Ľahká / stredná</text>
+
+  <!-- Q2 Model swap (on heavy path) -->
+  <rect class="q-node" x="130" y="125" width="140" height="44" rx="6"/>
+  <text class="q-text" x="200" y="143" text-anchor="middle">O2: Výmena modelu?</text>
+  <text class="q-sub" x="200" y="157" text-anchor="middle">Smerovanie / anti-lock-in?</text>
+
+  <!-- Q1 Cloud (on light/med path) -->
+  <rect class="q-node" x="510" y="125" width="140" height="44" rx="6"/>
+  <text class="q-text" x="580" y="143" text-anchor="middle">O1: Cloudová vernosť?</text>
+  <text class="q-sub" x="580" y="157" text-anchor="middle">GCP / AWS / Azure / iná?</text>
+
+  <!-- Leaves on heavy path -->
+  <path class="edge" d="M 170 169 L 90 210" marker-end="url(#arrow)"/>
+  <text class="edge-label" x="115" y="190">Tvrdá</text>
+  <path class="edge" d="M 230 169 L 310 210" marker-end="url(#arrow)"/>
+  <text class="edge-label" x="280" y="190">Mäkká / žiadna</text>
+
+  <!-- Leaf: LangGraph + Langfuse self-hosted (Heavy + Hard) -->
+  <rect class="leaf leaf-booklets" x="10" y="215" width="175" height="90" rx="6"/>
+  <text class="leaf-text" x="97" y="235" text-anchor="middle">LangGraph + vlastný</text>
+  <text class="leaf-text" x="97" y="250" text-anchor="middle">Langfuse / LangSmith</text>
+  <text class="leaf-sub" x="97" y="270" text-anchor="middle">Smerovanie medzi modelmi,</text>
+  <text class="leaf-sub" x="97" y="283" text-anchor="middle">stopy audítorskej kvality,</text>
+  <text class="leaf-sub" x="97" y="296" text-anchor="middle">pozorovateľnosť v EÚ regióne</text>
+
+  <!-- Leaf: Azure AI Foundry Agent Service with heavy compliance (Heavy + Soft/None) -->
+  <rect class="leaf leaf-reports" x="230" y="215" width="175" height="90" rx="6"/>
+  <text class="leaf-text" x="317" y="235" text-anchor="middle">Foundry Agent Service</text>
+  <text class="leaf-text" x="317" y="250" text-anchor="middle">alebo ADK na Vertex EU</text>
+  <text class="leaf-sub" x="317" y="270" text-anchor="middle">Súlad od dodávateľa,</text>
+  <text class="leaf-sub" x="317" y="283" text-anchor="middle">suverénny región + DPA,</text>
+  <text class="leaf-sub" x="317" y="296" text-anchor="middle">doplniť o Langfuse</text>
+
+  <!-- Leaves on light/medium path (Q1) -->
+  <path class="edge" d="M 550 169 L 460 210" marker-end="url(#arrow)"/>
+  <text class="edge-label" x="490" y="190">GCP / AWS / Azure</text>
+  <path class="edge" d="M 610 169 L 700 210" marker-end="url(#arrow)"/>
+  <text class="edge-label" x="670" y="190">Neutrálna</text>
+
+  <!-- Leaf: Vendor SDK fit to cloud (Light + Major cloud) -->
+  <rect class="leaf leaf-guides" x="380" y="215" width="175" height="90" rx="6"/>
+  <text class="leaf-text" x="467" y="235" text-anchor="middle">Dodávateľské SDK</text>
+  <text class="leaf-text" x="467" y="250" text-anchor="middle">podľa vášho cloudu</text>
+  <text class="leaf-sub" x="467" y="270" text-anchor="middle">ADK na GCP,</text>
+  <text class="leaf-sub" x="467" y="283" text-anchor="middle">Strands na AWS,</text>
+  <text class="leaf-sub" x="467" y="296" text-anchor="middle">Azure Agent na Azure</text>
+
+  <!-- Q5 Talent (Neutral branch) -->
+  <rect class="q-node" x="620" y="215" width="140" height="44" rx="6"/>
+  <text class="q-text" x="690" y="233" text-anchor="middle">O5: Interný talent?</text>
+  <text class="q-sub" x="690" y="247" text-anchor="middle">Hĺbka AI inžinierstva</text>
+
+  <!-- Talent leaves -->
+  <path class="edge" d="M 650 259 L 570 310" marker-end="url(#arrow)"/>
+  <text class="edge-label" x="590" y="286">Hlboký / stredný</text>
+  <path class="edge" d="M 720 259 L 720 310" marker-end="url(#arrow)"/>
+  <text class="edge-label" x="728" y="290">Malý</text>
+
+  <!-- Leaf: LangGraph or CrewAI (Neutral + Deep) -->
+  <rect class="leaf leaf-booklets" x="480" y="315" width="175" height="80" rx="6"/>
+  <text class="leaf-text" x="567" y="335" text-anchor="middle">LangGraph (produkcia)</text>
+  <text class="leaf-text" x="567" y="350" text-anchor="middle">alebo CrewAI (prototypy)</text>
+  <text class="leaf-sub" x="567" y="370" text-anchor="middle">Vlastná pozorovateľnosť</text>
+  <text class="leaf-sub" x="567" y="383" text-anchor="middle">+ autentifikácia</text>
+
+  <!-- Leaf: OpenAI Agents or LLM-in-a-loop (Neutral + Limited) -->
+  <rect class="leaf leaf-guides" x="660" y="315" width="115" height="80" rx="6"/>
+  <text class="leaf-text" x="717" y="335" text-anchor="middle">OpenAI Agents SDK</text>
+  <text class="leaf-text" x="717" y="350" text-anchor="middle">alebo LLM v slučke</text>
+  <text class="leaf-sub" x="717" y="370" text-anchor="middle">Dodávateľ nesie záťaž;</text>
+  <text class="leaf-sub" x="717" y="383" text-anchor="middle">dodať rýchlo</text>
+
+  <!-- Note at bottom -->
+  <text x="390" y="465" text-anchor="middle" font-size="11" fill="#475569" font-style="italic">O4 (viac agentov) a O5 (talent) zužujú výber v každom liste; O1 môže prebiť ťažkú vetvu, ak je cloudový záväzok absolútny.</text>
+  <text x="390" y="488" text-anchor="middle" font-size="10" fill="#64748b">Legenda farieb: modrá = skôr nezávislé · fialová = dodávateľ s vrstvou súladu · jantárová = rýchla dodávateľská cesta</text>
+
+</svg>
+</div>
+
+<p>Strom je pomôcka na rýchle skenovanie, nie náhrada premýšľania. Prípadová štúdia nižšie ukazuje, ako sa otázky skutočne riešia v praxi a kde bola odpoveď stromu nesprávna.</p>
+<h2>Rozpracovaný prípad: regulovaná európska banka</h2>
+<p>Prejdime si kompozitný prípad; detaily sú zliate z reálnych zákaziek, konkrétnosti zmenené.</p>
+<p>Stredne veľká európska retailová banka. Zhruba 4 000 zamestnancov v štyroch krajinách EÚ. Retailové produkty (hypotéky, spotrebné úvery, karty), divízia správy majetku, žiadne investičné bankovníctvo. Technologický stack: dominantne Azure, trochu on-prem mainframe pre jadro bankovníctva (obvyklá architektúra európskej banky). Interná vývojárska kapacita: solídna v Jave/.NET, rodiaca sa v AI. Sponzorstvo z vedenia od prevádzkového riaditeľa, ktorému predstavenstvo povedalo, že banka „musí v roku 2026 dodať niečo zmysluplné s AI“, a ktorý si dáva pozor, ktorá zmysluplná vec to bude.</p>
+<p>Prípad použitia: interný poradenský asistent pre manažérov vzťahov s klientmi. Zhrnúť klientovo portfólio, označiť anomálie, vytiahnuť relevantné produktové ponuky, pripraviť poznámky na stretnutie, navrhnúť nadväzujúce e-maily. Nie pre zákazníkov. Nerozhoduje o úveroch. Ale neustále sa dotýka osobných údajov a v časti prípravy na stretnutia susedí s regulovanými poradenskými pracovnými postupmi.</p>
+<h3>Prechod piatimi otázkami</h3>
+<p><strong>O1 Cloudová vernosť.</strong> Primárne Azure, ale s vrstvou suverenity: dáta klientov pre regulované pracovné postupy sa musia spracúvať v regiónoch EÚ a interný bezpečnostný tím je otvorene nepriateľský k akejkoľvek architektúre, ktorá sa natvrdo viaže na jedného amerického dodávateľa. Prvý inštinkt: Azure AI Foundry Agent Service. Strom nesúhlasí (pozri nižšie).</p>
+<p><strong>O2 Výmena modelu.</strong> Tvrdá. Bezpečnostná politika výslovne vyžaduje, aby sa inferencia s osobnými údajmi dala presunúť k inému poskytovateľovi modelu do štyroch týždňov, ak sa konkrétny dodávateľ stane nedostupným alebo nesúladným. Nie je to teoretické: tím sa už v minulosti popálil pri náhlej zmene politiky dodávateľa na inom produkte.</p>
+<p><strong>O3 Regulačná váha.</strong> Ťažká. Pracovné postupy susediace s poradenstvom sa pravdepodobne klasifikujú ako vysokorizikové podľa AI Actu (hoci na judikatúru okolo rozsahu „poradenstva“ ešte čakáme). Šesťmesačné uchovávanie logov je podlaha; interná banková regulácia ho pri čomkoľvek, čo sa dotýka poradenského obsahu, tlačí na sedem rokov. Ročný interný audit + štvrťročná externá kontrola súladu.</p>
+<p><strong>O4 Viac agentov.</strong> Zmysluplne áno. Konečná architektúra chce troch špecialistov: agenta na vyhľadávanie (ťahá dáta klienta a katalóg produktov), poradenského agenta (uvažuje o odporúčaniach), agenta pre súlad (kontroluje výstupy voči politike a označí čokoľvek, čo potrebuje ľudskú revíziu). Smerovanie medzi nimi je štruktúrované, nie ad hoc.</p>
+<p><strong>O5 Talent.</strong> Stredný so sklonom k obmedzenému. Tím má dvoch inžinierov, ktorí už stavali LLM aplikácie. Ani jeden neprevádzkoval LangGraph v produkcii. Kapacita vstrebať krivku učenia je skutočná, ale ohraničená kvartálnym tlakom na dodanie.</p>
+<h3>Čo povedal strom</h3>
+<p>Ťažká regulácia + tvrdá výmena → <strong>LangGraph + Langfuse vo vlastnej réžii, Azure v regióne EÚ, smerovanie medzi modelmi</strong>. To je modrý list.</p>
+<p>Architektúra by bola: LangGraph na orchestráciu; Langfuse vo vlastnej réžii na Azure North Europe pre pozorovateľnosť/audit; MCP servery pred CRM, katalógom produktov a knižnicou politík; smerovanie modelov pre každú interakciu: Claude cez Azure (partnerstvo Anthropicu s Azure, so zmluvnou zárukou regiónu EÚ) na úlohy náročné na uvažovanie; lokálne hostovaný Mistral na úlohy dotýkajúce sa osobných údajov; A2A medzi tromi špecializovanými agentmi s kartami agentov registrovanými v internom registri.</p>
+<p>To je architektonicky správna odpoveď. Je to aj miesto, kde sa odpoveď rámca a to, čo tím skutočne urobil, rozišli.</p>
+<h3>Kde sme rámec prebili</h3>
+<p>Banka dodala verziu 1 na <strong>OpenAI Agents SDK</strong> cez Azure OpenAI, nie na LangGraphe.</p>
+<p>Dôvodom bola O5. Dvaja inžinieri schopní v AI nemali kapacitu súčasne sa učiť LangGraph, postaviť Langfuse vo vlastnej réžii, nakonfigurovať smerovanie medzi modelmi <em>a</em> dodať pilot v kvartáli, ku ktorému sa prevádzkový riaditeľ zaviazal. Odpoveď správna podľa rámca bola vzhľadom na organizačnú realitu neuskutočniteľná. A dodať niečo dosť dobré v sľúbenom okne záležalo strategicky viac než dodať architektonicky dokonalú vec o šesť mesiacov neskôr.</p>
+<p>Čo sme urobili namiesto toho: OpenAI Agents SDK na orchestráciu, Azure OpenAI s Claudom v regióne EÚ (ktorého Microsoft ponúka od Anthropicu cez trhovisko Azure) ako predvoleným modelom, Azure Monitor + tenký interný obal na sledovanie ako vrstva pozorovateľnosti, natívne mantinely dodávateľa, MCP servery pre interné systémy. Zapísali sme (výslovne, do záznamu o architektonickom rozhodnutí), že ide o dočasnú voľbu, že cieľom migrácie je LangGraph + Langfuse a že určité funkcie (delegovanie medzi agentmi cez A2A, trvanlivé vykonávanie pre dlho bežiace kontroly súladu) sa odložia do migrácie.</p>
+<p>Na LangGraph sme migrovali v deviatom mesiaci. Migrácia trvala sedem týždňov vrátane prepnutia pozorovateľnosti. Trvala by dlhšie, keby sme architektúru verzie 1 nenavrhli s vedomím, že je dočasná: konkrétne keby sme nedržali prompty a sady nástrojov čo najviac nezávislé od frameworku a neinvestovali skoro do MCP serverov (ktoré boli tým jedným kúskom, ktorý sa vôbec nemusel meniť). Prompty a MCP servery sa presunuli doslova. Orchestrácia sa čisto prepísala, len čo mal tím kapacitu.</p>
+<h3>Čo prípad učí</h3>
+<p><strong>Odpoveď správna podľa rámca často nie je odpoveďou správnou podľa načasovania.</strong> Verzia 1, ktorá sa dodá na kompromisnom stacku a zmigruje sa, je často lepšia než verzia 1, ktorá je architektonicky nepoškvrnená a dodá sa o osem mesiacov neskôr. Rozhodovací strom vám dá cieľ. Nie vždy vám dá poradie.</p>
+<p><strong>Zachovanie možností stojí menej, než si ľudia myslia, ak naň navrhujete.</strong> Dve veci, ktoré urobili migráciu zvládnuteľnou (MCP servery pre interné systémy a prompty napísané nezávisle od frameworku), stáli tím verzie 1 zhruba o 10 % viac inžinierskeho času než plne dodávateľsky viazaná alternatíva. Tých 10 % ušetrilo 60 % na migrácii.</p>
+<p><strong>Pozorovateľnosť je to najťažšie na dodatočné doplnenie.</strong> Najslabšou časťou architektúry verzie 1 bola tenká interná vrstva sledovania. Keď sme v jedenástom mesiaci potrebovali pre kontrolu súladu auditovať konkrétne poradenské odporúčanie zo štvrtého mesiaca, stopy existovali, ale neboli prehľadávateľné tak, ako by to ponúkla skutočná platforma pozorovateľnosti. Keby som to robil znova, minul by som tri týždne navyše na postavenie Langfuse už vo verzii 1, aj na dodávateľskom SDK. Všetko ostatné sa dá doplniť dodatočne. História stôp nie.</p>
+<p><strong>Hodiny „musíme migrovať do 3. kvartálu“ zafungovali.</strong> Zapísanie dočasnej povahy do záznamu o rozhodnutí, s pomenovaným cieľom migrácie a pomenovaným dátumom, je to, čo tím udržalo pred zosunutím do stázy „dodávateľské SDK funguje dobre, načo migrovať?“. Záznam mal zuby, lebo ho podpísali traja seniorní zadávatelia. Bez toho by stack verzie 1 pravdepodobne bežal dodnes.</p>
+<h2>Epilóg: čo prežije</h2>
+<p>Táto brožúra bola súborom mentálnych modelov. Vrstvová torta. Paralela s cloudom. Dva protokoly. Dve rodiny frameworkov. Rozsahy lock-inu. Hypotéza európskeho preskoku. Predpoveď so šiestimi indikátormi. Rámec piatich otázok. Prípadová štúdia vyššie.</p>
+<p>Ktoré z nich budú o osemnásť mesiacov stále užitočné?</p>
+<p>Vrstvová torta bude. Otázka „na ktorej vrstve toto sedí?“ je trvanlivý návyk, ktorý sa vyplatí zakaždým, keď sa oznámi nový kus technológie. Na MCP bude stále záležať; viac, nie menej. Vrstva pozorovateľnosti bude väčšia a zrelšia. A2A bude buď všadeprítomné, alebo ho nahradí niečo, čo rieši ten istý problém pod iným menom; v každom prípade koncept prežije.</p>
+<p>Konkrétne frameworky sú ťažšie. LangGraph bude veľmi pravdepodobne stále nezávislým štandardom. Budúcnosť CrewAI je neistejšia. ADK bude pokračovať, lebo motivácie Googlu sa nemenia. Claude Agent SDK sa buď rozšíri, alebo dramaticky zúži podľa toho, ako veľmi bude širší trh chcieť ovládanie počítača špecifické pre Clauda. OpenAI Agents SDK sa predpovedá najťažšie; závisí od rozhodnutí vnútri OpenAI, ktoré nevidíme. Azure a AWS pretrvajú, lebo ich materské firmy to potrebujú.</p>
+<p>Konkrétne čísla budú všetky nesprávne. 97 miliónov stiahnutí MCP bude nejaké väčšie číslo. 44 000 hviezdičiek CrewAI sa pohne. Presné schopnosti dodávateľov sa posunú. Každé číslo o nákladoch bude potrebovať revíziu. To je v poriadku. Čísla tu sú, aby ukotvili mentálny model, nie aby niesli váhu samy osebe.</p>
+<p>Čo by som povedal kolegovi, ktorý sa pýta, ako túto knihu použiť v roku 2027: <em>začnite vrstvovou tortou, verte štandardu MCP, vlastnite svoju pozorovateľnosť, rešpektujte lock-in vedome, a keď dôjde na výber stacku, prejdite päť otázok a potom buďte poctiví v tom, ktorú odpoveď dokážete tento kvartál skutočne vykonať.</em> Zvyšok si aktualizujete, ako sa horizont posúva.</p>
+<p><strong>Konkrétnosti sa zmenia. Disciplína nie.</strong></p>
+<hr>
+<p><em>Koniec brožúry.</em></p>
+        </section>
+        
+<!-- AI transparency notice (Art 50 EU AI Act, voluntary) -->
+<aside class="ai-transparency" id="ai-transparency" lang="sk" aria-label="Transparentnosť AI"><svg class="ait-icon" viewBox="85 96 374 374" aria-hidden="true" focusable="false"><defs><mask id="ait-m-c"><rect width="566.93" height="566.93" fill="#000"/><circle cx="272.03" cy="283.47" r="182.75" fill="#fff"/><path fill="#000" d="M170.79,353.74c-1.08,0-2.05-.43-2.92-1.31-.88-.87-1.31-1.84-1.31-2.92,0-.67.07-1.27.2-1.81l47.34-129.32c.4-1.48,1.24-2.79,2.52-3.93,1.27-1.14,3.05-1.71,5.34-1.71h29.81c2.28,0,4.06.57,5.34,1.71,1.27,1.14,2.11,2.45,2.52,3.93l47.14,129.32c.27.54.4,1.14.4,1.81,0,1.08-.44,2.05-1.31,2.92s-1.91,1.31-3.12,1.31h-24.78c-2.01,0-3.52-.5-4.53-1.51-1.01-1.01-1.65-1.91-1.91-2.72l-7.86-20.55h-53.78l-7.65,20.55c-.27.81-.88,1.71-1.81,2.72-.94,1.01-2.55,1.51-4.83,1.51h-24.78ZM218.13,299.96h37.47l-18.93-53.18-18.53,53.18Z"/><path fill="#000" d="M328.11,353.74c-1.48,0-2.69-.47-3.63-1.41-.94-.94-1.41-2.15-1.41-3.63v-130.93c0-1.48.47-2.68,1.41-3.63s2.15-1.41,3.63-1.41h26.99c1.48,0,2.68.47,3.63,1.41.94.94,1.41,2.15,1.41,3.63v130.93c0,1.48-.47,2.69-1.41,3.63-.94.94-2.15,1.41-3.63,1.41h-26.99Z"/></mask></defs><rect width="566.93" height="566.93" fill="currentColor" opacity=".5" mask="url(#ait-m-c)"/></svg><div><span class="ait-label">Transparentnosť AI</span><p>Táto publikácia vznikla s pomocou generatívnej AI (Claude od spoločnosti Anthropic) v spolupráci s Robertom Barcikom. Text prešiel jeho revíziou a on nesie redakčnú zodpovednosť za to, čo je tu zverejnené (LearningDoe s.r.o.). Tam, kde AI hovorí vlastným hlasom, text to uvádza. Zverejnené v duchu článku&nbsp;50 Aktu EÚ o umelej inteligencii.</p></div></aside>
+<style>
+.ai-transparency{display:flex;gap:.9rem;align-items:flex-start;margin:3.5rem 0 1.5rem;padding:1.1rem 0 0;border-top:1px solid;border-color:color-mix(in srgb,currentColor 22%,transparent);opacity:.78;font-size:.82rem;line-height:1.55;font-family:inherit;text-align:left}
+.ai-transparency .ait-icon{flex:0 0 auto;width:2.1rem;height:2.1rem;margin-top:.1rem}
+.ai-transparency .ait-label{display:block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:.3rem}
+.ai-transparency p{margin:0;max-width:62ch}
+</style>
+
+        </main>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Progress bar
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+    });
+
+    // Sidebar navigation highlighting
+    const chapters = document.querySelectorAll('.chapter');
+    const navLinks = document.querySelectorAll('#sidebar nav a');
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    chapters.forEach(function(ch) { observer.observe(ch); });
+
+    // Smooth scrolling
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Close sidebar on mobile
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    menuToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('open');
+    });
+
+    // Close sidebar on outside click (mobile)
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 900 &&
+            !sidebar.contains(e.target) &&
+            e.target !== menuToggle) {
+            sidebar.classList.remove('open');
+        }
+    });
+
+    // Mark first nav item as active
+    if (navLinks.length > 0) navLinks[0].classList.add('active');
+});
+</script>
+</body>
+</html>

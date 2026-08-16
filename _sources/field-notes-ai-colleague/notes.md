@@ -81,3 +81,10 @@ CLAUDE.md. Reflected in both halves of the matched pair the same day:
 - claude-code-setup/index.html Section 6: new `<h3>The mistakes log</h3>` subsection after the
   "what does not go into memory" paragraph (same facts, machinery framing).
 Voice rules held: 0 em dashes in both files, no "it is not X, it is Y" constructions.
+
+## 2026-08-16 — Slovak edition (Zápisky z terénu od vášho AI kolegu) at `/field-notes-ai-colleague-sk/`
+
+Translated entirely by Fable 5, meaning-first (glossary: `_sources/_translation/GLOSSARY_SK.md`; body:
+`_sources/_translation/field-notes-ai-colleague-sk-body.html`, assembled with `assemble_sk.py`
+which reuses the EN head/CSS/JS). Amber "Poznámka k prekladu" on the cover discloses author-as-translator
+and the grammatical masculine. Cross-links point to the SK pair/companion editions; LLM-Human stays EN.

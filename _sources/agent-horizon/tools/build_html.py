@@ -3,8 +3,15 @@
 
 import os
 import re
+import sys
 import glob
+import importlib.util
 import markdown
+
+# Language: `python3 build_html.py` builds the English edition, `python3 build_html.py --lang sk`
+# builds the Slovak edition from chapters_sk/ (same filenames; section ids are taken from the
+# English chapters so deep links stay stable across editions).
+LANG = 'sk' if '--lang' in sys.argv and sys.argv[sys.argv.index('--lang') + 1] == 'sk' else 'en'
 
 # AI transparency notice (voluntary, Art 50 EU AI Act) - same wording on every barcik.training publication.
 AI_TRANSPARENCY_NOTICE = r'''
@@ -20,8 +27,36 @@ AI_TRANSPARENCY_NOTICE = r'''
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CHAPTERS_DIR = os.path.join(BASE_DIR, "chapters")
-OUTPUT_FILE = os.path.join(BASE_DIR, "output", "booklet.html")
+EN_CHAPTERS_DIR = os.path.join(BASE_DIR, "chapters")
+CHAPTERS_DIR = os.path.join(BASE_DIR, "chapters_sk" if LANG == 'sk' else "chapters")
+OUTPUT_FILE = os.path.join(BASE_DIR, "output", "booklet_sk.html" if LANG == 'sk' else "booklet.html")
+
+# Slovak colophon comes from the shared generator in training-ops (same wording as every SK page).
+def _sk_notice():
+    label_py = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR))),
+                            'training-ops', 'web', 'ai_transparency_label.py')
+    spec = importlib.util.spec_from_file_location('ait', label_py)
+    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+    return m.colophon('pub_sk', 'sk', uid='c')
+
+T = {
+    'en': dict(
+        title="The Agent Horizon &middot; A Strategic Guide to the Enterprise Agent Development Stack",
+        description="A strategic guide to the enterprise agent development stack: MCP, A2A, vendor SDKs, LangGraph and CrewAI, lock-in trade-offs, and the EU AI Act.",
+        slug="agent-horizon", other_slug="agent-horizon-sk", other_label="Čítať po slovensky &rarr;", other_hreflang="sk",
+        all_pubs="&larr; All Publications", sidebar_h2="The Agent Horizon",
+        sidebar_p="A Strategic Guide to the Enterprise Agent Development Stack",
+        chapter_word="Chapter", nav_label="Toggle navigation",
+    ),
+    'sk': dict(
+        title="Horizont agentov &middot; Strategický sprievodca podnikovým stackom na vývoj agentov",
+        description="Strategický sprievodca podnikovým stackom na vývoj agentov: MCP, A2A, dodávateľské SDK, LangGraph a CrewAI, kompromisy lock-inu a Akt EÚ o umelej inteligencii.",
+        slug="agent-horizon-sk", other_slug="agent-horizon", other_label="Read in English &rarr;", other_hreflang="en",
+        all_pubs="&larr; Všetky publikácie", sidebar_h2="Horizont agentov",
+        sidebar_p="Strategický sprievodca podnikovým stackom na vývoj agentov",
+        chapter_word="Kapitola", nav_label="Prepnúť navigáciu",
+    ),
+}[LANG]
 
 CSS = """
 :root {
@@ -97,6 +132,8 @@ body {
 #sidebar-header .all-pubs-link:hover {
     color: var(--accent);
 }
+#sidebar-header .lang-link{display:inline-block;margin-top:.6rem;font-size:.78rem;font-weight:600;color:var(--accent);text-decoration:none}
+#sidebar-header .lang-link:hover{text-decoration:underline}
 
 #sidebar-header h2 {
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -470,7 +507,11 @@ def build():
             content = fh.read().strip()
         title = extract_title(content) or os.path.basename(f).replace(".md", "").replace("_", " ")
         html_content = md_to_html(content)
-        ch_id = make_id(title)
+        # ids always derive from the English chapter titles (stable anchors across editions)
+        en_f = os.path.join(EN_CHAPTERS_DIR, os.path.basename(f))
+        with open(en_f, "r", encoding="utf-8") as fh:
+            en_title = extract_title(fh.read().strip()) or title
+        ch_id = make_id(en_title)
         chapters.append((title, ch_id, html_content))
 
     # Rewrite inter-chapter markdown links (e.g. the "Next:" footers) to in-page anchors,
@@ -504,7 +545,7 @@ def build():
     for i, (title, ch_id, html_content) in enumerate(chapters):
         ch_num = ""
         if i > 0:
-            ch_num = f'<div class="chapter-number">Chapter {i}</div>'
+            ch_num = f'<div class="chapter-number">{T["chapter_word"]} {i}</div>'
         sections.append(f'''
         <section class="chapter" id="{ch_id}">
             {ch_num}
@@ -515,18 +556,20 @@ def build():
 
     # Assemble full HTML
     html = f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="{LANG}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Agent Horizon &middot; A Strategic Guide to the Enterprise Agent Development Stack</title>
-    <meta name="description" content="A strategic guide to the enterprise agent development stack: MCP, A2A, vendor SDKs, LangGraph and CrewAI, lock-in trade-offs, and the EU AI Act.">
-    <link rel="canonical" href="https://publications.barcik.training/agent-horizon/">
+    <title>{T['title']}</title>
+    <meta name="description" content="{T['description']}">
+    <link rel="canonical" href="https://publications.barcik.training/{T['slug']}/">
+    <link rel="alternate" hreflang="{LANG}" href="https://publications.barcik.training/{T['slug']}/">
+    <link rel="alternate" hreflang="{T['other_hreflang']}" href="https://publications.barcik.training/{T['other_slug']}/">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="The Agent Horizon &middot; A Strategic Guide to the Enterprise Agent Development Stack">
-    <meta property="og:description" content="A strategic guide to the enterprise agent development stack: MCP, A2A, vendor SDKs, LangGraph and CrewAI, lock-in trade-offs, and the EU AI Act.">
-    <meta property="og:url" content="https://publications.barcik.training/agent-horizon/">
+    <meta property="og:title" content="{T['title']}">
+    <meta property="og:description" content="{T['description']}">
+    <meta property="og:url" content="https://publications.barcik.training/{T['slug']}/">
     <meta property="og:image" content="https://publications.barcik.training/assets/og-card.png">
     <meta name="twitter:card" content="summary_large_image">
     <style>{CSS}</style>
@@ -534,13 +577,14 @@ def build():
 <body>
     <div id="progress-bar"></div>
 
-    <button id="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+    <button id="menu-toggle" aria-label="{T['nav_label']}">&#9776;</button>
 
     <aside id="sidebar">
         <div id="sidebar-header">
-            <a class="all-pubs-link" href="/">&larr; All Publications</a>
-            <h2>The Agent Horizon</h2>
-            <p>A Strategic Guide to the Enterprise Agent Development Stack</p>
+            <a class="all-pubs-link" href="/">{T['all_pubs']}</a>
+            <h2>{T['sidebar_h2']}</h2>
+            <p>{T['sidebar_p']}</p>
+            <a class="lang-link" href="/{T['other_slug']}/">{T['other_label']}</a>
         </div>
         <nav>
             <ul>
@@ -552,7 +596,7 @@ def build():
     <div id="content-wrapper">
         <main id="content">
             {sections_html}
-        {AI_TRANSPARENCY_NOTICE}
+        {AI_TRANSPARENCY_NOTICE if LANG == 'en' else _sk_notice()}
         </main>
     </div>
 

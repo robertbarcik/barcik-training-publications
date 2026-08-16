@@ -15,3 +15,15 @@ Kept deliberately light per Robert's brief ("I like how short and fresh it feels
 - **Build script** (`build_html.py`): adopted the previously hand-patched deploy fixes so rebuilds no longer regress the live page — SEO/OG meta block, canonical + favicon, inter-chapter `href="NN_*.md"` → `#slug` anchor rewrite, `<title>` em dash → `&middot;`.
 
 Anchor slugs all preserved. April numbers (97M MCP downloads, 44k CrewAI stars) intentionally kept; the epilogue already declares them non-load-bearing.
+
+## 2026-08-16 — Slovak edition (Horizont agentov) at `/agent-horizon-sk/`
+
+- Translated entirely by Fable 5 (no sub-models), meaning-first, per the shared glossary
+  `_sources/_translation/GLOSSARY_SK.md`; sources in `chapters_sk/` (same filenames as `chapters/`).
+- `tools/build_html.py --lang sk` builds `output/booklet_sk.html` (copy to `agent-horizon-sk/index.html`).
+  Section ids are always derived from the **English** chapter titles, so `#chapter-N-…` anchors are
+  identical in both editions; both editions now carry hreflang alternates + a sidebar lang link
+  (EN gained "Čítať po slovensky →", SK has "Read in English →"). Rebuilding EN changed nothing else.
+- Decision-tree SVG labels translated in place; a few shortened / one leaf widened to fit
+  (rendered and inspected). Numbers, product names, protocol names unchanged. Translator's note in
+  the SK frontmatter; SK AI-transparency colophon from training-ops.
