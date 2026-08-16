@@ -64,3 +64,20 @@ Changes shipped:
   links The Invisible Curve). This completes the "reciprocal links from companion pieces" item from
   the 2026-07-12 deploy checklist for the ops booklet.
 - This essay's footer: companion sentence reworded to "matched pair" language.
+
+## 2026-08-16 — Postscript: the mistakes log
+
+Robert proposed (2026-08-16) that Claude keep an ongoing log of its own mistakes; created as
+`training-ops/PAST_MISTAKES.md` (commit c836142 there), one file for all repos, pointer in the hub
+CLAUDE.md. Reflected in both halves of the matched pair the same day:
+- This essay, Part 6 (memory): new postscript paragraph before the closing "So when your AI
+  colleague asks you to repeat something..." paragraph. Claims and provenance: memory holds
+  distilled rules / only spoken corrections / one machine (true of the ~/.claude memory dir);
+  log seeded with the shooting-prep and disclaimer failures already in the essay's typology and
+  feedback memories; "first live entry within minutes" = the `cd training-ops && cat > ...`
+  short-circuit incident, logged as the 2026-08-16 entry in PAST_MISTAKES.md.
+- Part 8 bullet "Write corrections where the next session lives": one added sentence.
+- Closing sig line: "postscript on the mistakes log added 16 August 2026".
+- claude-code-setup/index.html Section 6: new `<h3>The mistakes log</h3>` subsection after the
+  "what does not go into memory" paragraph (same facts, machinery framing).
+Voice rules held: 0 em dashes in both files, no "it is not X, it is Y" constructions.

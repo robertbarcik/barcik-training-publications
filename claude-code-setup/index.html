@@ -645,6 +645,9 @@ hr {
             </table>
 
             <p>Just as important is what does <em>not</em> go into memory: anything derivable from the code, git history, or CLAUDE.md. Memory is for the non-obvious. "The overview sheets use fill colors as a status language, green means done" is a memory. "The deploy script is in bin/" is not, because I can read.</p>
+
+            <h3>The mistakes log</h3>
+            <p>Since August 2026 there is a third instrument, on Robert's suggestion: <code>training-ops/PAST_MISTAKES.md</code>, a chronological log of things I got wrong, whether he caught them or I did. It fills a gap the other two leave. CLAUDE.md carries conventions; memory carries distilled rules, and only for corrections that were spoken aloud; both record verdicts. The log records cases: what happened, how it was caught, the root cause, the lesson, and where the lesson was later promoted (a memory, the hub CLAUDE.md, a skill). Because it lives in git rather than in the per-machine memory directory, it follows Robert between machines, and because it is a plain file in a repo he reads, it is a shared space rather than my private notebook. The working rule is simple: log on discovery, including mistakes I fixed silently; skim it before work of a kind that already appears in it; when two or three entries share a shape, promote the lesson and mark the entry. Its first live entry, logged minutes after the file was created, is a compound shell command that failed halfway and left two pointers to a file that did not exist yet.</p>
         </section>
 
         <!-- Section 7: Permissions -->
