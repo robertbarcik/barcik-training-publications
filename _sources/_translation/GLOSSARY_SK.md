@@ -138,3 +138,16 @@ znie aj kolofón transparentnosti („Transparentnosť AI").
 - Claude Code: „honesty box" → „schránka úprimnosti"; „bloopers" → „prešľapy".
 - Invisible Curve: „gotchas" (people who collect gotchas) → „ľudia, ktorí zbierajú prešľapy" /
   „úlovky"; rozhodnuté pri preklade.
+
+
+## AI Act (EU AI Act: úvod, 2026-08-16)
+
+For everything AI-Act-specific the source of truth is the **official Slovak text** of Regulation
+(EU) 2024/1689 (consolidated 27 July 2026, incl. the Digital Omnibus 2026/1744), stored in
+`udemy-mcp/reference/AI Act texts/`. The full EN→SK table (Article 3 definitions, chapter/annex
+headings, Annex III areas, Article 5 and Article 50 phrasing) plus the style decisions
+(„dáta" in prose vs „údaje" in quoted law; „systém AI" postposition; „AI Act" declined
+AI Actu/AI Acte; „nasadzujúci subjekt" never „používateľ") lives in
+`udemy-mcp/reference/notes/2026-08-16_sk_terminology_ai_act_official.md`. Callout labels used
+in the SK textbook: „Akt hovorí · článok N ods. M písm. x)" / „Môj pohľad" / „Pozor" /
+„Stav k júlu 2026"; quiz = „Overte si" / „Odpovede".

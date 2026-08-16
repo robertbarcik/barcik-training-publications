@@ -47,7 +47,12 @@
   </url>
   <url>
     <loc>https://publications.barcik.training/ai-act-intro/</loc>
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://publications.barcik.training/ai-act-intro-sk/</loc>
+    <lastmod>2026-08-16</lastmod>
     <priority>0.8</priority>
   </url>
   <url>

@@ -107,7 +107,7 @@ metadata, adds hreflang/lang-link/colophon). All prose is translated by Fable 5 
 smaller models; each SK page carries a translator's note and links back to the EN original; EN
 pages link forward. SK editions live (2026-08-16): field-notes, claude-code-setup,
 the-invisible-curve, agent-horizon, mercantilism-of-genai, scenario-planning,
-llm-human-interaction-patterns, token-economics (+ the earlier a-point-in-time, mirror-of-ai).
+llm-human-interaction-patterns, token-economics, ai-act-intro (+ the earlier a-point-in-time, mirror-of-ai).
 
 ## Current publications
 
@@ -138,12 +138,16 @@ llm-human-interaction-patterns, token-economics (+ the earlier a-point-in-time, 
 
 | Publication | Path | Source | Notes |
 |---|---|---|---|
-| The EU AI Act: An Introduction | `/ai-act-intro/` | External sibling repo: `course-decks/ai_act_intro/textbook/` (chapters + build_html.py; built HTML + PDF copied here) | 13 chapters, ~38,000 words (July 2026). Companion textbook to the Udemy/Skillmea course "EU AI Act Compliance Introduction". Coffee-friendly reader voice, post-Omnibus dates, audit-corrected against the 2026-07 legislative audit, quiz per chapter, semantic callouts (law/take/watch/status). PDF ships alongside (`eu-ai-act-intro.pdf`); Robert also hands the PDF to Udemy students directly. |
+| The EU AI Act: An Introduction | `/ai-act-intro/` (EN) + `/ai-act-intro-sk/` (SK „EU AI Act: úvod", 2026-08-16; `chapters_sk/` + `build_html.py --lang sk` in the sibling repo, EN-derived section ids, official OJ Slovak terminology, SK PDF `eu-ai-act-intro-sk.pdf`) | External sibling repo: `course-decks/ai_act_intro/textbook/` (chapters + build_html.py; built HTML + PDF copied here) | 13 chapters, ~38,000 words (July 2026). Companion textbook to the Udemy/Skillmea course "EU AI Act Compliance Introduction". Coffee-friendly reader voice, post-Omnibus dates, audit-corrected against the 2026-07 legislative audit, quiz per chapter, semantic callouts (law/take/watch/status). PDF ships alongside (`eu-ai-act-intro.pdf`); Robert also hands the PDF to Udemy students directly. |
 | EU AI Act for Developers | `/ai-act-developers/` | External sibling repo: `ai-act-developers-course/textbook/` (chapters + build_html.py; built HTML + PDF copied here) | 11 chapters, ~44,000 words (July 2026). Companion textbook to the developers course (in production as of July 2026). Evidence-first engineering voice, same callout system and cover design language (slate-teal cover variant). PDF ships alongside (`eu-ai-act-for-developers.pdf`). |
 
 **Updating the AI Act textbooks:** edit chapters in the source repo, rebuild there
 (`python3 textbook/_sources/tools/build_html.py`), regenerate the PDF, then copy
-`textbook/index.html` and the PDF into this repo's slug folder and redeploy.
+`textbook/index.html` and the PDF into this repo's slug folder and redeploy. The intro
+textbook also has a Slovak edition: edit `chapters_sk/`, `python3 textbook/_sources/tools/build_html.py --lang sk`
+→ `textbook/index_sk.html`, print to A4 PDF (`eu-ai-act-intro-sk.pdf`), copy both into
+`ai-act-intro-sk/`. Any EN chapter edit should be mirrored in `chapters_sk/`; the EN build
+now also emits the sidebar language link, so rebuild + recopy `ai-act-intro/index.html` too.
 
 ### Research Reports
 
