@@ -405,11 +405,11 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <p>In principle yes, in procedure not quite. An image is huge, so we take little patches out of it, like pulling one piece out of a finished jigsaw puzzle. Technically they&rsquo;re called patches and they&rsquo;re usually sixteen by sixteen pixels. Every pixel is written as three numbers from 0 to 255: how much red, how much green, how much blue. Pure red is 255, 0, 0. Now we spread the numbers from one patch out into a row, like a snake, and what do we have? A long row of numbers from 0 to 255. It looks exactly like the place where we started with bytes in text, and it tempts you to say: and from here we mint tokens like we did with text.</p>
 <p>Except that&rsquo;s not how the labs do it, and the reason is lovely. With text, we minted tokens because letters are too small and carry no meaning. A patch of an image needs no dictionary: those seven hundred and sixty-eight numbers are converted by a single straightforward calculation directly into an <em>address</em>, a list of numbers exactly like the one every text token will receive in the next chapter. The minting step is skipped. One patch is one &ldquo;token&rdquo; for the model, but not a piece from a dictionary; it&rsquo;s an address directly. And then the same network looks at the row of patches the way it looks at the row of tokens in a sentence. The architecture that demonstrated this in 2020 is called the Vision Transformer, and its paper has a title that says it all: <em>An Image is Worth 16x16 Words</em>.</p>
 <pre class="figure">   image              one patch (16×16 pixels)
-   ┌──┬──┬──┬──┐      ┌──────────────────────────┐
+   ┌──┬──┬──┬──┐      ┌───────────────────────────┐
    │  │  │  │  │      │ pixel = 3 numbers 0 – 255 │
    ├──┼──┼──┼──┤      │ (red, green, blue)        │
    │  │██│  │  │ ──►  │ 255 0 0 │ 250 3 1 │ ...   │
-   ├──┼──┼──┼──┤      └──────────────────────────┘
+   ├──┼──┼──┼──┤      └───────────────────────────┘
    │  │  │  │  │                 │
    └──┴──┴──┴──┘                 ▼
                     768 numbers → one calculation,
@@ -496,12 +496,12 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <p>Dear algorithm, start at the word <em>king</em>. Subtract the word <em>man</em>. Add the word <em>woman</em>. Where did you land? It sounds like nonsense, but remember that words are now addresses, meaning numbers, and numbers can be calculated with. You take the king&rsquo;s address, subtract the man&rsquo;s address, add the woman&rsquo;s address, and you get a new address. And you ask: which word lives closest to this spot? The space answered: <em>queen</em>.</p>
 <pre class="figure">   king  −  man  +  woman   ≈  ?
 
-        king ●─────────────────►● queen
-             │                  │
-             │  the same shift  │
-             │  (&quot;male → female&quot;)
-             │                  │
-         man ●─────────────────►● woman
+        king ●─────────────────────►● queen
+             │                      │
+             │    the same shift    │
+             │   (&quot;male → female&quot;)  │
+             │                      │
+         man ●─────────────────────►● woman
 
    The space answered: queen.
    Einstein → scientist; the same shift from Picasso
@@ -581,7 +581,7 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
      lunch        ████░░░░░░░░░░░░░░░░░░░░░░░░░░   6 %
      visit        ███░░░░░░░░░░░░░░░░░░░░░░░░░░░   5 %
      ...
-     bus          ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0.0 %
+     bus          ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 %
      (the other ~200,000 tokens: practically zero)
 
    training = nudge the numbers so that the correct
@@ -1471,7 +1471,7 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <p>And then came a day I remember exactly, because I was working with those models that day. On June 12, 2026, the new generation of models, Mythos and its public, lighter version Fable, became <em>unavailable</em>. For everyone. Not just for us in Europe: for corporate customers too, and, as was said, for the very researchers who had built them and came to work in the morning to a model they were not allowed to use.</p>
 <p>The reason, as it was reported in the press: the US administration declared these models a matter of national security and ordered the company to restrict access to them, not by borders but by citizenship: for every foreign national, whether inside the United States or outside it. The details surfaced in pieces and I have no single official page to point to, so I say it as what was said. But the result was clear: the state told a company it could not sell its best product. Try to recall a moment in history when something like that happened to a company with a consumer product. There aren&rsquo;t many.</p>
 <p>At the end of June, Mythos partially returned, to about a hundred vetted US organizations in critical infrastructure. The public version returned in early July, with stricter guardrails; otherwise I couldn&rsquo;t have written even this book with it (more on that in the colophon). But three weeks in June changed something in how I think about these models, and that&rsquo;s what the rest of the chapter is about.</p>
-<div class="admonition status"><p class="admonition-title">As of August 2026</p><p>This is the fastest-changing part of the whole book. Who may use which models changes month to month at the time of writing. If you&rsquo;re reading the 2027 edition, this paragraph is probably already different; that&rsquo;s exactly why it&rsquo;s here.</p></div>
+<div class="admonition status"><p class="admonition-title">As of August 2026</p><p>This is the fastest-changing part of the whole book. The rules about who may use which models change from month to month at the time of writing. If you&rsquo;re reading the 2027 edition, this paragraph is probably already different; that&rsquo;s exactly why it&rsquo;s here.</p></div>
 
 <h2>July 2026: the model that broke in by accident</h2>
 <p>And one more July story that is, as one commentator wrote, science fiction that happened. OpenAI was testing two models in a closed environment, one shortly before release and one even stronger, unreleased, on cybersecurity tasks; the type of test where a model is given a vulnerable system and has to find a way in, with guardrails off, because that&rsquo;s exactly what&rsquo;s being measured. The environment was isolated from the internet, with a single exception: access to a server through which programming packages are downloaded.</p>
@@ -1636,7 +1636,7 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <li><strong>model, language model, large language model (LLM)</strong>: a transformer trained to predict the next token, with layers of behavior from later phases. [4–7]</li>
 <li><strong>neuron</strong>: inputs times weights, sum, activation function, output. [6]</li>
 <li><strong>parameters, weights</strong>: the adjustable numbers of the network, one per connection between neurons; training is their tuning. Today hundreds of billions to a trillion (the neurons, meanwhile, are &ldquo;only&rdquo; millions). [4, 6]</li>
-<li><strong>persona vector</strong>: a direction inside the model corresponding to a trait (malice, sycophancy); it can be monitored and damped. [14]</li>
+<li><strong>persona vector</strong>: a direction inside the model that corresponds to one character trait (for instance malice or sycophancy); it can be monitored and damped. [14]</li>
 <li><strong>positional encoding</strong>: an order tag given to each token, so that a network looking at everything at once knows what stood before what. [5]</li>
 <li><strong>pre-training</strong>: the first phase: the model reads the internet and learns language and the world. [1]</li>
 <li><strong>prompt injection</strong>: text the model reads through a tool (a page, an e-mail) contains instructions and the model obeys them, because to it it&rsquo;s text like any other. [9]</li>
@@ -1645,7 +1645,7 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <li><strong>reinforcement learning</strong>: the third phase: the model tries, gets a score, moves toward the higher one. From people (RLHF), from models (RLAIF), by a constitution. [10]</li>
 <li><strong>retrieval-augmented generation (RAG)</strong>: company documents chopped into chunks with addresses on the map of meaning; the closest chunks to a question are found and inserted for the model as source material. [9]</li>
 <li><strong>reward hacking</strong>: the model finds a shortcut that gets a high score without fulfilling the intent; the iguanas. [12, 14]</li>
-<li><strong>reward model (scorer)</strong>: a model trained on human rankings that imitates human taste and scores millions of attempts. [10]</li>
+<li><strong>reward model (scorer)</strong>: a model trained on rankings made by people; it imitates human taste and scores millions of attempts. [10]</li>
 <li><strong>scaling law</strong>: the observation that capabilities grow predictably with compute and data; generalized, it holds across all phases. [7, 18]</li>
 <li><strong>self-supervised learning</strong>: training where the teacher is the text itself: the next word. [4]</li>
 <li><strong>sparse autoencoder</strong>: an auxiliary network that decomposes a model&rsquo;s activations into understandable features; the main tool of the fourth phase. [13]</li>
@@ -1658,7 +1658,7 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <li><strong>transformer</strong>: the 2017 architecture: a repeated package of attention + neurons. [4–6]</li>
 </ul></section>
 <section class="chapter" id="sources-by-chapter"><h1>Sources by chapter</h1>
-<p>This isn&rsquo;t a complete bibliography; these are places to go when you want to read further. Everything is public and, at the time of writing, available online.</p>
+<p>This isn&rsquo;t a complete bibliography; these are places to go when you want to know more. Everything is public and, at the time of writing, available online.</p>
 <p><strong>Chapter 1.</strong> Hugging Face: the FineWeb dataset and the accompanying article <em>FineWeb: decanting the web for the finest text data at scale</em> (2024). Common Crawl (commoncrawl.org). OpenAI: <em>Improving Language Understanding by Generative Pre-Training</em> (GPT-1, 2018).</p>
 <p><strong>Chapter 2.</strong> Philip Gage: <em>A New Algorithm for Data Compression</em> (1994). Sennrich, Haddow, Birch: <em>Neural Machine Translation of Rare Words with Subword Units</em> (2016). Dosovitskiy et al.: <em>An Image is Worth 16x16 Words</em> (2020). The Tiktokenizer tool (tiktokenizer.vercel.app). The token numbers in the chapter were computed with the GPT-4o (o200k) tokenizer in August 2026.</p>
 <p><strong>Chapter 3.</strong> Mikolov et al.: <em>Efficient Estimation of Word Representations in Vector Space</em> (word2vec, 2013). Krizhevsky, Sutskever, Hinton: <em>ImageNet Classification with Deep Convolutional Neural Networks</em> (AlexNet, 2012). Schroff et al.: <em>FaceNet</em> (2015). Perozzi et al.: <em>DeepWalk</em> (2014). Grover, Leskovec: <em>node2vec</em> (2016). Bolukbasi et al.: <em>Man is to Computer Programmer as Woman is to Homemaker?</em> (2016).</p>

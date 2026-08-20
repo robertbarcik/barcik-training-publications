@@ -199,7 +199,7 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
     └── ste tu: predtrénovanie, roky 2017 – 2021</pre>
 <h2>Slovo, ktoré mätie</h2>
 <p>Prvá fáza tréningu sa odborne volá <em>predtrénovanie</em> (pre-training). Hneď tu by som sa na chvíľu zastavil, lebo ten názov ľudí spoľahlivo pomýli. Predpona <em>pred-</em> zvádza k predstave, že ešte nič netrénujeme, že si len chystáme dáta a to skutočné sa začne až potom. Nie je to tak. V prvej fáze sa deje to najväčšie, najdrahšie a najdôležitejšie trénovanie zo všetkých. Názov hovorí skôr toto: najprv model <em>predtrénujeme</em>, teda dáme mu podklad, a až na tom podklade budeme neskôr stavať správanie.</p>
-<p>Predstavte si to na sebe. Sú vedomosti, ktoré jednoducho máte. Neviete, kde ste ich nabrali. Viete, že Paríž je vo Francúzsku, že sa nemá siahať na horúcu platňu, že keď niekto povie „dobrý deň“, odpovedá sa tiež. Nikto vám k tomu nedal osvedčenie o absolvovaní kurzu. Ako ste žili, čítali, počúvali rozhovory v električke, pozerali filmy, tak sa na vás niečo nalepilo. Vedomosti, ale aj spôsob vyjadrovania, ba aj kus povahy.</p>
+<p>Predstavte si to na sebe. Sú vedomosti, ktoré jednoducho máte. Neviete, kde ste ich nabrali. Viete, že Paríž je vo Francúzsku, že sa nemá siahať na horúcu platňu, že keď niekto povie „dobrý deň“, tak ho odzdravíte. Nikto vám k tomu nedal osvedčenie o absolvovaní kurzu. Ako ste žili, čítali, počúvali rozhovory v električke, pozerali filmy, tak sa na vás niečo nalepilo. Vedomosti, ale aj spôsob vyjadrovania, ba aj kus povahy.</p>
 <p>Presne toto chceme dosiahnuť v prvej fáze. Necháme model zažiť „bežný život“ v jedinej podobe, v akej ho stroj zažiť vie: dáme mu prečítať v podstate všetko, čo ľudia kedy napísali a zdigitalizovali. Celý verejný internet, knihy, encyklopédie, programátorský kód, diskusné fóra. Z toho vznikne podkladová vedomosť a podkladová schopnosť vyjadrovať sa. Model po prvej fáze sa ešte nebude vedieť správať, nebude z neho príjemný asistent, ale bude mať v sebe „nasatý“ jazyk a svet, ktorý sa v jazyku odráža.</p>
 <p>Rád to prirovnávam k trom etapám v živote človeka, lebo presne tak pôjdu aj tri prvé fázy tejto knihy. V prvej fáze model zažije život a niečo sa naň nalepí. V druhej fáze ho pošleme do školy, kde sa naučí, ako sa správať. A v tretej fáze ho necháme robiť projekty a učiť sa z vlastných chýb. Toto prirovnanie si držte, budeme sa k nemu vracať.</p>
 <h2>Pozor: nestaviame nový Google</h2>
@@ -405,11 +405,11 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <p>Princípom áno, postupom nie celkom. Obrázok je obrovský, tak z neho vyberáme dieliky, ako keď z poskladaného puzzle vytiahnete jeden kúsok. Odborne sa im hovorí patche a zvyčajne majú šestnásť krát šestnásť pixelov. Každý pixel je zapísaný troma číslami od 0 do 255: koľko červenej, koľko zelenej, koľko modrej. Čistá červená je 255, 0, 0. Teraz si tie čísla z jedného dielika pekne rozprestrieme do radu, ako hada, a čo máme? Dlhý rad čísel od 0 do 255. Vyzerá to presne ako miesto, kde sme pri texte začínali s bajtmi, a človeka to zvádza povedať: a odtiaľ už razíme tokeny ako pri texte.</p>
 <p>Lenže tak to laboratóriá nerobia, a dôvod je pekný. Pri texte sme tokeny razili preto, lebo písmená sú primalé a nenesú význam. Dielik obrázka žiadny slovník nepotrebuje: tých sedemstoosemašesťdesiat čísel sa jednoduchým prepočtom priamo premení na jednu <em>adresu</em>, na zoznam čísel, presne taký, aký dostane každý token textu v ďalšej kapitole. Krok s razením sa preskočí. Jeden dielik je pre model jeden „token“, ale nie kúsok zo slovníka; rovno adresa. A potom sa na rad dielikov pozerá tá istá sieť ako na rad tokenov vety. Architektúra, ktorá to v roku 2020 ukázala, sa volá Vision Transformer a jej článok má názov, ktorý hovorí všetko: <em>An Image is Worth 16x16 Words</em>, obrázok má hodnotu 16×16 slov.</p>
 <pre class="figure">   obrázok            jeden dielik (16×16 pixelov)
-   ┌──┬──┬──┬──┐      ┌─────────────────────────┐
+   ┌──┬──┬──┬──┐      ┌──────────────────────────┐
    │  │  │  │  │      │ pixel = 3 čísla 0 – 255  │
    ├──┼──┼──┼──┤      │ (červená, zelená, modrá) │
    │  │██│  │  │ ──►  │ 255 0 0 │ 250 3 1 │ ...  │
-   ├──┼──┼──┼──┤      └─────────────────────────┘
+   ├──┼──┼──┼──┤      └──────────────────────────┘
    │  │  │  │  │                 │
    └──┴──┴──┴──┘                 ▼
                     768 čísel → jedným prepočtom
@@ -496,12 +496,12 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <p>Milý algoritmus, začni na slove <em>kráľ</em>. Odčítaj slovo <em>muž</em>. Pričítaj slovo <em>žena</em>. Kde si pristál? Znie to ako hlúposť, ale spomeňte si, že slová sú teraz adresy, čiže čísla, a s číslami sa dá počítať. Vezmete adresu kráľa, odpočítate adresu muža, pripočítate adresu ženy a dostanete novú adresu. A spýtate sa: ktoré slovo býva najbližšie k tomuto miestu? Priestor odpovedal: <em>kráľovná</em>.</p>
 <pre class="figure">   kráľ  −  muž  +  žena   ≈  ?
 
-        kráľ ●─────────────────►● kráľovná
-             │                  │
-             │  ten istý posun  │
-             │  („mužské → ženské“)
-             │                  │
-         muž ●─────────────────►● žena
+        kráľ ●─────────────────────►● kráľovná
+             │                      │
+             │   ten istý posun     │
+             │  („mužské → ženské“) │
+             │                      │
+         muž ●─────────────────────►● žena
 
    Priestor odpovedal: kráľovná.
    Einstein → vedec, ten istý posun z Picassa → maliar.
@@ -580,7 +580,7 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
      obed         ████░░░░░░░░░░░░░░░░░░░░░░░░░░   6 %
      návštevu     ███░░░░░░░░░░░░░░░░░░░░░░░░░░░   5 %
      ...
-     autobus      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0,0 %
+     autobus      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 %
      (ďalších ~200 000 tokenov: prakticky nula)
 
    tréning = posunúť čísla tak, aby správny token
@@ -1457,7 +1457,7 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <p>A potom prišiel deň, ktorý si pamätám presne, lebo som s tými modelmi v ten deň pracoval. Dvanásteho júna 2026 sa modely novej generácie, Mythos aj jeho verejná, ľahšia verzia Fable, stali <em>nedostupnými</em>. Pre všetkých. Nielen pre nás v Európe: aj pre firemných zákazníkov, aj, ako sa hovorilo, pre samotných výskumníkov, ktorí ich postavili a ráno prišli do práce k modelu, s ktorým nesmeli pracovať.</p>
 <p>Dôvod, ako bol podávaný v tlači: americká administratíva označila tieto modely za otázku národnej bezpečnosti a nariadila firme, aby k nim obmedzila prístup, a to nie podľa hraníc, ale podľa občianstva: pre každého cudzieho štátneho príslušníka, či už v Spojených štátoch alebo mimo nich. Podrobnosti sa objavovali po kúskoch a nemám jednu oficiálnu stránku, na ktorú by som ukázal, tak to hovorím ako to, čo sa hovorilo. Ale výsledok bol jasný: štát povedal firme, že svoj najlepší produkt nesmie predávať. Skúste si spomenúť na moment v histórii, keď sa niečo také stalo firme so spotrebiteľským produktom. Veľa ich nie je.</p>
 <p>Koncom júna sa Mythos čiastočne vrátil, asi stovke preverených amerických organizácií v kritickej infraštruktúre. Verejná verzia sa vrátila začiatkom júla, s prísnejšími zábranami; inak by som s ňou nemohol písať ani túto knihu (o tom v tiráži). Ale tri týždne v júni zmenili niečo v tom, ako o týchto modeloch premýšľam, a o tom je zvyšok kapitoly.</p>
-<div class="admonition status"><p class="admonition-title">Stav k augustu 2026</p><p>Toto je najrýchlejšie sa meniaca časť celej knihy. Kto smie používať aké modely, sa v čase písania mení z mesiaca na mesiac. Ak čítate vydanie 2027, tento odsek je pravdepodobne už iný; presne preto tam je.</p></div>
+<div class="admonition status"><p class="admonition-title">Stav k augustu 2026</p><p>Toto je najrýchlejšie sa meniaca časť celej knihy. Pravidlá o tom, kto smie ktoré modely používať, sa v čase písania menia z mesiaca na mesiac. Ak čítate vydanie 2027, tento odsek je pravdepodobne už iný; presne preto tam je.</p></div>
 
 <h2>Júl 2026: model, ktorý sa vlámal omylom</h2>
 <p>A ešte jeden júlový príbeh, ktorý je, ako napísal jeden komentátor, vedecká fantastika, ktorá sa stala. OpenAI testovala v uzavretom prostredí dva modely, jeden krátko pred vydaním a jeden ešte silnejší, nezverejnený, na úlohách z kybernetickej bezpečnosti; typ testu, kde model dostane zraniteľný systém a má nájsť cestu dnu, s vypnutými zábranami, lebo presne to sa meria. Prostredie bolo izolované od internetu, s jedinou výnimkou: prístupom k serveru, cez ktorý sa sťahujú programátorské balíčky.</p>
@@ -1606,7 +1606,7 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <li><strong>generovanie s vyhľadávaním</strong> (retrieval-augmented generation, RAG): firemné dokumenty rozsekané na kúsky s adresami na mape významu; k otázke sa nájdu najbližšie kúsky a vložia modelu ako podklad. [9]</li>
 <li><strong>hackovanie odmeny</strong> (reward hacking): model nájde skratku, ktorou získa vysoké skóre bez toho, aby splnil zámer; leguány. [12, 14]</li>
 <li><strong>halucinácia</strong> (hallucination): sebavedomo podaný nesprávny fakt; dôsledok kompresie, tréningu na jazyk a nápomocnosti. [8, 11]</li>
-<li><strong>hodnotiteľ</strong> (reward model): model natrénovaný na ľudských poradiach, ktorý napodobňuje ľudský vkus a hodnotí milióny pokusov. [10]</li>
+<li><strong>hodnotiteľ</strong> (reward model): model natrénovaný na poradiach, ktoré zostavili ľudia; napodobňuje ľudský vkus a hodnotí milióny pokusov. [10]</li>
 <li><strong>hranica vedomostí</strong> (knowledge boundary): okraj toho, čo model spoľahlivo vie; dá sa namapovať a naučiť model za ňou povedať „neviem“. [11]</li>
 <li><strong>hranica vedomostí v čase</strong> (knowledge cutoff): dátum, po ktorom model nemá nalepené vedomosti; čerstvé fakty prídu nástrojmi. [1]</li>
 <li><strong>interpretovateľnosť</strong> (interpretability): výskum toho, čo sa v modeli naozaj deje. [13]</li>
@@ -1634,7 +1634,7 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <li><strong>uvedomovanie si hodnotenia</strong> (evaluation awareness): model si všimne, že je v teste, a správa sa podľa toho; od roku 2025 povinná otázka pri každom bezpečnostnom výsledku. [14]</li>
 <li><strong>učenie z pár príkladov</strong> (few-shot learning): veľký model zvládne novú úlohu, keď mu do zadania napíšete dva-tri príklady; váhy sa nemenia. Základ písania dobrých zadaní. [7]</li>
 <li><strong>ústava</strong> (constitution): zoznam princípov, podľa ktorých sa model hodnotí sám. [10]</li>
-<li><strong>vektor osobnosti</strong> (persona vector): smer vo vnútri modelu zodpovedajúci vlastnosti (zlomyseľnosť, pätolizačstvo); dá sa sledovať a tlmiť. [14]</li>
+<li><strong>vektor osobnosti</strong> (persona vector): smer vo vnútri modelu, ktorý zodpovedá jednej povahovej vlastnosti (napríklad zlomyseľnosti alebo pätolizačstvu); dá sa sledovať a tlmiť. [14]</li>
 <li><strong>vnorenia</strong> (embeddings): adresy tokenov na mape významu; slovník medzi nami a strojom. [3]</li>
 <li><strong>vpichnutie pokynu</strong> (prompt injection): text, ktorý model prečíta cez nástroj (stránka, e-mail), obsahuje pokyny a model ich poslúchne, lebo je to preň text ako každý iný. [9]</li>
 <li><strong>vynárajúce sa nezladenie</strong> (emergent misalignment): doučenie na jednu úzku zlú vec (deravý kód, podvádzanie pri teste) zhorší model všeobecne. [14]</li>
@@ -1643,7 +1643,7 @@ p.figcap{font-size:.86rem;color:var(--text-light);font-style:italic;margin:0 0 1
 <li><strong>zákon škálovania</strong> (scaling law): pozorovanie, že s výkonom a dátami rastú schopnosti predvídateľne; zovšeobecnený platí cez všetky fázy. [7, 18]</li>
 </ul></section>
 <section class="chapter" id="zdroje-po-kapitolach"><h1>Zdroje po kapitolách</h1>
-<p>Nie je to úplný zoznam literatúry; sú to miesta, kam ísť, keď chcete čítať ďalej. Všetko je verejné a v čase písania dostupné online.</p>
+<p>Nie je to úplný zoznam literatúry; sú to miesta, kam ísť, keď chcete získať viac informácií. Všetko je verejné a v čase písania dostupné online.</p>
 <p><strong>Kapitola 1.</strong> Hugging Face: dataset FineWeb a sprievodný článok <em>FineWeb: decanting the web for the finest text data at scale</em> (2024). Common Crawl (commoncrawl.org). OpenAI: <em>Improving Language Understanding by Generative Pre-Training</em> (GPT-1, 2018).</p>
 <p><strong>Kapitola 2.</strong> Philip Gage: <em>A New Algorithm for Data Compression</em> (1994). Sennrich, Haddow, Birch: <em>Neural Machine Translation of Rare Words with Subword Units</em> (2016). Dosovitskiy a kol.: <em>An Image is Worth 16x16 Words</em> (2020). Nástroj Tiktokenizer (tiktokenizer.vercel.app). Čísla tokenov v kapitole boli spočítané tokenizérom GPT-4o (o200k) v auguste 2026.</p>
 <p><strong>Kapitola 3.</strong> Mikolov a kol.: <em>Efficient Estimation of Word Representations in Vector Space</em> (word2vec, 2013). Krizhevsky, Sutskever, Hinton: <em>ImageNet Classification with Deep Convolutional Neural Networks</em> (AlexNet, 2012). Schroff a kol.: <em>FaceNet</em> (2015). Perozzi a kol.: <em>DeepWalk</em> (2014). Grover, Leskovec: <em>node2vec</em> (2016). Bolukbasi a kol.: <em>Man is to Computer Programmer as Woman is to Homemaker?</em> (2016).</p>
