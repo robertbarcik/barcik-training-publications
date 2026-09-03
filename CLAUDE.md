@@ -39,6 +39,12 @@ After building, copy the HTML output to the site directory for deployment.
 **S3 Bucket:** `barcik-training-publications`
 **CloudFront Distribution ID:** `E1LQ9VRFA5AT7D`
 
+**404 rule (2026-09-03):** the distribution's custom error response maps 404 → `/index.html`
+and MUST keep `ResponseCode 404` (never 200). With 200, the homepage's relative links
+(`href="slug/"`) turned every bogus nested path into a "valid" page and crawlers walked an
+infinite tree (~300k uncached S3 GETs/day, mostly Meta + bingbot). Same reason to prefer
+root-absolute links (`/slug/`) in index.html. No page relies on the fallback.
+
 ### Step 1: Sync to S3
 
 ```bash
