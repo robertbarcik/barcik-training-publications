@@ -214,2098 +214,2095 @@ Stávka, vyslovená jednoducho
 <a href="#decoder">Dekodér capexu</a> ukazuje, kam idú peniaze a kedy sa vrátia ako schopnosť. Tento prúd je stávka, že výdavky budú naďalej správne: že nad schodom, ktorý odbor práve urobil, je aspoň jeden ďalší, a že klastre, ktoré sa dnes lejú, budú tie, ktoré ho natrénujú.
 
 #### 69 p
-Všimnite si, čo sa s touto stávkou práve stalo: začala sa vyplácať. Kohorta capexu z roku 2024 bola sčasti vyčlenená na modely dodávané v rokoch 2026&ndash;2027 a 9. júna 2026 dorazil raný variant generácie Mythos ako Claude Fable 5, pričom plná generácia (Mythos ako taký, Spud od OpenAI) sa stále očakáva ku koncu roka 2026 a do roku 2027, presne podľa harmonogramu pipeline oneskorenia. Živá otázka je teda dvojaká: či plné nasadenie potvrdí schod, ktorý raný variant ukazuje, a či ~730 miliárd dolárov z roku 2026 kúpi schod <em>nad</em> ním, alebo sa schodisko splošti presne vo chvíli, keď sa spustia najdrahšie klastre v histórii. Na to sú naladené spúšťacie signály nižšie.
+Všimnite si, čo sa s touto stávkou práve stalo: vyplatila sa. Kohorta capexu z roku 2024 bola sčasti vyčlenená na modely dodávané v rokoch 2026&ndash;2027 a generácia prišla v lete 2026: Claude Fable 5 9. júna (od 1. júla späť vo všeobecnej dostupnosti), Fable 5.1 1. septembra a GPT-6 Astra 3. septembra, so širokou dostupnosťou do niekoľkých dní. Živá otázka je dnes už len tá druhá polovica: či ~730 miliárd z roku 2026 kúpi schod <em>nad</em> ňou, a ako skoro, alebo či sa schodisko sploští práve vtedy, keď sa spúšťajú najdrahšie klastre v histórii. Rámček dekodéra tvrdí, že sa schod skrátil na zhruba rok; spúšťacie signály nižšie sú naladené na zachytenie ďalšieho schodu a denník zaznamenáva, čo sa spustilo.
 
-#### 70 p
-<em>September 2026:</em> prvá polovica tej otázky si odpovedala rýchlejšie, než júlový text pripúšťal. Fable 5 sa 1. júla vrátil ako všeobecne dostupný, 1. septembra nasledoval Fable 5.1 a 3. septembra vyšla GPT-6 Astra, nový a väčší predtréning, so širokou dostupnosťou do niekoľkých dní. Generácia, ktorú kúpili peniaze z roku 2024, je nasadená, v roku 2026. Živá otázka je dnes už len druhá polovica: či ~730 miliárd z roku 2026 kúpi schod nad ňou, a ako skoro. Nový septembrový rámček dekodéra tvrdí, že sa schod skrátil na zhruba rok; denník spúšťačov nižšie zaznamenáva, čo sa spustilo.
-
-#### 71 h4
+#### 70 h4
 Čo sa stavia
 
-#### 72 p
+#### 71 p
 Rozsah jednotlivých projektov je ohromujúci. xAI Elona Muska nasadilo Colossus, klaster 100 000 GPU, za púhych 122 dní na konci roka 2024. Project Rainier, klaster, ktorý Amazon postavil pre Anthropic, má zhruba 500 000 čipov. Projekt Stargate (spoločný podnik OpenAI, Oracle a SoftBank) mieri na 450 000 GPU vo svojej vlajkovej lokalite v texaskom Abilene a plánuje klastre presahujúce jeden gigawatt výkonu, ekvivalent jadrovej elektrárne vyhradenej pre AI, kým kampus Hyperion Mety v Louisiane je navrhnutý na päť. Pri týchto rozsahoch sa limitujúci faktor presúva z dostupnosti čipov na surovú elektrickú energiu: jadrová elektráreň Three Mile Island sa reštartuje špecificky na zásobovanie dátových centier AI. Či atómy udržia krok s peniazmi, je dnes samostatná sila; <a href="#scenario-7">Prúd 7</a> preberá tento príbeh v plnom rozsahu.
 
-#### 73 h4
+#### 72 h4
 Stávka na inferenciu
 
-#### 74 p
+#### 73 p
 Bežným nedorozumením je, že všetky tieto peniaze sú o trénovaní väčších modelov. V skutočnosti laboratóriá čoraz viac stavia na to, že výpočtovému výkonu AI bude dominovať <strong>inferencia</strong>, prevádzka modelov vo veľkom pre milióny používateľov. Predpovede Deloitte na rok 2026 už kladú inferenciu na zhruba dve tretiny všetkého výpočtového výkonu AI tento rok <a href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/compute-power-ai.html"><span class="tag tag-reported">hlásené</span></a> a infraštruktúrna prognóza Brookfieldu ju má na zhruba 75 % dopytu po výpočtovom výkone AI do roku 2030 <a href="https://www.brookfield.com/sites/default/files/documents/Brookfield_Building_the_Backbone_of_AI.pdf"><span class="tag tag-reported">hlásené</span></a>. Natrénovať frontier model je jednorazový náklad; obsluhovať ho pre každého podnikového zákazníka, každého vývojára, každý spotrebiteľský produkt je priebežný náklad, ktorý škáluje s prijatím. Vlna capexu je rovnako o budovaní obslužnej infraštruktúry pre produkty poháňané AI ako o trénovaní ďalšej generácie modelov.
 
-#### 75 p
+#### 74 p
 Toto je jadro plánovacieho vhľadu Prúdu 1: aj keď veríte, že súčasná generácia AI je &bdquo;dosť dobrá&ldquo;, už zaviazaná investícia prinesie výsledky v najbližších 2&ndash;4 rokoch. Tie výsledky (rýchlejšie modely, lacnejšia inferencia, nové schopnosti) zmenia, čo je možné a čo sa očakáva. Vaše plány musia počítať s pohyblivým cieľom, nie so snímkou.
 
-#### 76 div class=kn-value
+#### 75 div class=kn-value
 416 mld. $
 
-#### 77 div class=kn-label
+#### 76 div class=kn-label
 Capex Veľkej štvorky 2025
 
-#### 78 div class=kn-value
+#### 77 div class=kn-value
 ~730 mld. $
 
-#### 79 div class=kn-label
+#### 78 div class=kn-label
 Capex 2026 (ohlásený)
 
-#### 80 div class=kn-value
+#### 79 div class=kn-value
 ~1 rok
 
-#### 81 div class=kn-label
+#### 80 div class=kn-label
 Predtréningový schod u vedúcich laboratórií (bolo ~2 roky; pozri dekodér)
 
-#### 82 div class=kn-label
+#### 81 div class=kn-label
 Výpočtový výkon AI na inferenciu do 2030 (Brookfield)
 
-#### 83 h3
+#### 82 h3
 Spúšťacie signály: čo sledovať
 
-#### 84 li
-Pristane všeobecne dostupné (neobmedzené) vydanie generácie Mythos / Spud a do 60 dní ho aspoň tri nezávislé benchmarky (LMArena, SWE-Bench Pro, RLI) zaradia o jasnú úroveň nad kohortu Opus 4.8 / GPT-5.5
+#### 83 li
+Pristane všeobecne dostupné (neobmedzené) vydanie generácie Fable / Astra a do 60 dní ho aspoň tri nezávislé benchmarky (LMArena, SWE-Bench Pro, RLI) zaradia o jasnú úroveň nad kohortu Opus 4.8 / GPT-5.5
 
-#### 85 li
+#### 84 li
 Sektorové tržby z AI (ARR laboratórií plus zverejnenia AI segmentov hyperškálových firiem) rastú dva po sebe idúce kvartály rýchlejšie než spoločný capex Veľkej štvorky do AI, takže medzera 500 mld. $+ sa v absolútnych dolároch zužuje, vo výkazoch
 
-#### 86 li
+#### 85 li
 Výhľad capexu hyperškálových firiem naďalej rastie o &gt;30 % medziročne až do roku 2027
 
-#### 87 li
+#### 86 li
 Frontier laboratórium dodá pomenovanú post-transformerovú alebo novú MoE architektúru s publikovanými ziskami vo využití alebo škálovaní na nových megaklastroch a druhé laboratórium ju prevezme do dvoch kvartálov
 
-#### 88 div class=tl-label
+#### 87 div class=tl-label
 Denník spúšťačov &middot; vydanie júl 2026, aktualizované september 2026
 
-#### 89 li
+#### 88 li
 <span class="tag tag-fired">Spustené skoro</span> <strong>Skok schopností ďalšej generácie, v podobe variantu.</strong> <span class="tl-date">9. júna 2026 &middot;</span> Vydaný Claude Fable 5: prvý všeobecne dostupný model triedy Mythos, špička takmer na každom testovanom benchmarku. Naše čítanie<span class="tag tag-speculation">interpretácia</span>: toto je generácia 2027 prichádzajúca skoro ako ochrannými vrstvami obalený variant (zosúladenie riešené na softvérovej vrstve namiesto finálneho dolaďovania, pravdepodobne potiahnuté dopredu kalendárom IPO), takže skok je skutočný, ale ukázaný, nie potvrdený. Sledujte plné nasadenie Mythos / Spud ku koncu roka 2026&ndash;2027; to spustenie znovu nabije tento spúšťač pre generáciu nad ním.
 
-#### 90 li
+#### 89 li
 <span class="tag tag-moved">Aktualizácia</span> <strong>Ukážka bola stiahnutá a potom znovu obmedzená.</strong> <span class="tl-date">12. jún &ndash; júl 2026 &middot;</span> Tri dni po spustení federálna direktíva vypla Fable 5 (a Mythos) celosvetovo; začiatkom júla sa prístup vrátil obmedzený a drahý, Mythos tečie cez Project Glasswing pre veľké americké organizácie a Fable cez API tokeny za vrstvou moderovania. Čítanie schopnosti z prvého záznamu tohto denníka prežíva neporušené: schod existuje a RLI ho zmeral (16,1 %, Prúd 6) skôr, než dopadli obmedzenia. Ale <em>existencia</em> schopnosti a <em>prístup</em> k schopnosti sa formálne rozdelili; príbeh prístupu teraz žije v Prúde 4.
 
-#### 91 li
+#### 90 li
 <span class="tag tag-notyet">Zatiaľ nie</span> <strong>Uzatváranie medzery v tržbách.</strong> Bežné ročné tržby Anthropicu sa za päť mesiacov zhruba zpäťnásobili (Prúd 3), ale výdavky stále rastú rýchlejšie než tržby z AI naprieč sektorom. <em>September:</em> bežné ročné tržby OpenAI prekročili v auguste 40 mld. $ a Anthropicu v máji 47 mld. $, oproti ~730 mld. $ ohláseného capexu; medzera je v dolároch širšia, než bola v júli.
 
-#### 92 li
+#### 91 li
 <span class="tag tag-fired">Spustené</span> <strong>Schod potvrdený, dvakrát, a o rok skôr.</strong> <span class="tl-date">1. júl &ndash; 3. september 2026 &middot;</span> Fable 5 sa 1. júla vrátil do všeobecnej dostupnosti celosvetovo (opravený záznam o prístupe má Prúd 4). 1. septembra Anthropic dodal Fable 5.1 a Mythos 5.1, ten istý základný model s tesnejšími ochrannými opatreniami a o ~25 % nižšími nákladmi pri bežných záťažiach; 3. septembra OpenAI spustilo GPT-6 Astra, nový predtréningový beh (svoj najväčší, vyše 100 000 GPU v Stargate Abilene), v úrovniach ChatGPT a v API do niekoľkých dní za 10 / 50 $ na milión tokenov. <span class="tag tag-reported">hlásené</span> Prvý spúšťač vyššie sa spustil v plnej podobe. Júlové čítanie<span class="tag tag-speculation">interpretácia</span>, že Fable 5 je ukážka generácie z roku 2027, je stiahnuté: bod 2026 na dekodéri <em>je</em> tá generácia, prišla o rok pred značkou.
 
-#### 93 li
+#### 92 li
 <span class="tag tag-fired">Spustené skoro</span> <strong>Generácia nad ňou už produkuje.</strong> <span class="tl-date">8. september 2026 &middot;</span> OpenAI ohlásilo dôkaz overený v Leane, že v trojrozmerných Navierových&ndash;Stokesových rovniciach existujú singularity v konečnom čase, jeden z problémov Millennium Prize, vyprodukovaný zhruba 10 000 autonómnymi agentmi za 88 hodín pod vedením nezverejneného interného modelu, ktorého tréning sa začal 28. augusta a ešte bežal. <span class="tag tag-reported">hlásené</span> Model jedenásť dní v tréningu je post-tréningový beh nad hotovým základom, s najväčšou pravdepodobnosťou základom Astry, nie nový predtréning<span class="tag tag-speculation">interpretácia</span>; spor o prvenstvo s matematikmi, ktorí na probléme pracovali rok, a mlčanie Clayovho inštitútu ho nechávajú predbežným. Tak či onak má spúšťač pre generáciu <em>nad</em> tou, ktorá práve prišla, svojho prvého kandidáta, mesiace a nie roky po schode pod ňou.
 
-#### 94 li
+#### 93 li
 <span class="tag tag-moved">Aktualizácia</span> <strong>Výhľad capexu znovu stúpol.</strong> <span class="tl-date">výsledky za 2. kvartál 2026, júl&ndash;august &middot;</span> Výhľad Veľkej štvorky na rok 2026 dnes dáva zhruba 720&ndash;745 mld. $ (Amazon ~220 mld., Alphabet 195&ndash;205 mld., Meta 130&ndash;145 mld., Microsoft ~175 mld. po prepočte účtovania lízingov), Oracle ohlasuje 90&ndash;95 mld. hrubého na svoj fiškálny rok 2027. <span class="tag tag-reported">hlásené</span> Spúšťač &bdquo;&gt;30 % medziročne&ldquo; ostáva na správnej ceste.
 
-#### 95 li
+#### 94 li
 <span class="tag tag-notyet">Zatiaľ nie</span> <strong>Pomenovaná post-transformerová architektúra.</strong> &bdquo;Nepriehľadná rekurencia&ldquo; Astry je technika uvažovania, ktorej hlavný verejný dôsledok je zatiaľ slabšie monitorovanie reťazca myšlienok (šéf výskumu OpenAI povedal, že monitorovateľnosť je čoraz ťažšia), nie publikovaná škálovacia architektúra, ktorú prevzalo druhé laboratórium. Sledujeme.
 
-#### 96 h3
+#### 95 h3
 Dôsledky podľa roly
 
-#### 97 div class=impl-role
+#### 96 div class=impl-role
 Vývojár
 
-#### 98 div class=impl-text
+#### 97 div class=impl-text
 Nové skoky schopností dnes zhruba každý rok, s obnovami medzitým. Stavajte s abstrakciami nezávislými od modelu. Čo je dnes nemožné, môže byť o 12 mesiacov triviálne.
 
-#### 99 div class=impl-role
+#### 98 div class=impl-role
 Vedúci tímu
 
-#### 100 div class=impl-text
+#### 99 div class=impl-text
 Plánujte s priebežným preškoľovaním tímu. Každá generácia modelov mení, ktoré úlohy sa dajú automatizovať a ako.
 
-#### 101 div class=impl-role
+#### 100 div class=impl-role
 CTO / VP Eng
 
-#### 102 div class=impl-text
+#### 101 div class=impl-text
 Zdôvodňujte pokračujúce investície do AI argumentom schodiska: dnešné výdavky financujú budúce schopnosti, nie dnešné.
 
-#### 103 div class=impl-role
+#### 102 div class=impl-role
 Nákup
 
-#### 104 div class=impl-text
+#### 103 div class=impl-text
 Očakávajte pri každej novej generácii spočiatku vyššie ceny API, ktoré rýchlo klesnú, keď príde konkurencia. Vyhýbajte sa viacročnému lock-inu.
 
-#### 105 p class=credits
+#### 104 p class=credits
 Dáta: výsledky a výhľady firiem (Q1 2026) &bull; Veľká štvorka = Alphabet, Amazon, Meta, Microsoft
 
-#### 106 div class=chapter-label
+#### 105 div class=chapter-label
 Prúd 2
 
-#### 107 h2
+#### 106 h2
 Revolúcia efektivity <br><span class="chapter-question">&bdquo;Koľko stojí GPT-4?&ldquo;</span>
 
-#### 108 div class=card-label
+#### 107 div class=card-label
 Téza
 
-#### 109 div class=card-text
+#### 108 div class=card-text
 Náklady na natrénovanie modelu triedy GPT-4 klesli za necelé dva roky o <strong>~95 %</strong>. Náklady na jeho prevádzku klesli o <strong>99 %</strong>. Keď sa schopnosť stane komoditou, priekopa sa presunie z modelu na všetko postavené okolo neho.
 
-#### 110 div class=card-label
+#### 109 div class=card-label
 Riziko
 
-#### 111 div class=card-text
+#### 110 div class=card-text
 Stláčanie nákladov predpokladá, že algoritmická efektivita sa bude ďalej úročiť. Ak frontier schopnosti vyžadujú skutočne nové architektúry (nielen optimalizácie MoE), podlaha môže byť vyššie, než extrapolácia naznačuje. Stávka Mistralu funguje len vtedy, ak je strop nízko.
 
-#### 112 div class=s2-table-title
+#### 111 div class=s2-table-title
 Náklady na tréning na dosiahnutie uvedenej úrovne schopností
 
-#### 113 th
+#### 112 th
 Model
 
-#### 114 th
+#### 113 th
 Organizácia
 
-#### 115 th
+#### 114 th
 Vydané
 
-#### 116 th
+#### 115 th
 Náklady na tréning
 
-#### 117 th
+#### 116 th
 Tvrdená schopnosť
 
-#### 118 td
+#### 117 td
 <strong>GPT-4</strong>
 
-#### 119 td
+#### 118 td
 OpenAI
 
-#### 120 td
+#### 119 td
 mar 2023
 
-#### 121 td class=s2-cost
+#### 120 td class=s2-cost
 &gt;100 mil. $
 
-#### 122 td
+#### 121 td
 Špička: nastavil latku &bdquo;triedy GPT-4&ldquo;
 
-#### 123 td
+#### 122 td
 <strong>Llama 3.1 405B</strong>
 
-#### 124 td
+#### 123 td
 Meta
 
-#### 125 td
+#### 124 td
 júl 2024
 
-#### 126 td class=s2-cost
+#### 125 td class=s2-cost
 ~60 mil. $ <span class="s2-muted">(výpočtový výkon)</span>
 
-#### 127 td
+#### 126 td
 Vyrovná sa GPT-4 na väčšine verejných benchmarkov
 
-#### 128 td
+#### 127 td
 <strong>DeepSeek V3</strong>
 
-#### 129 td
+#### 128 td
 DeepSeek
 
-#### 130 td
+#### 129 td
 dec 2024
 
-#### 131 td class=s2-cost
+#### 130 td class=s2-cost
 5,6 mil. $ <span class="s2-muted">(finálny predtréningový beh)</span>
 
-#### 132 td
+#### 131 td
 Vyrovná sa / prekonáva GPT-4o na kľúčových benchmarkoch
 
-#### 133 td
+#### 132 td
 <strong>DeepSeek R1</strong>
 
-#### 134 td
+#### 133 td
 DeepSeek
 
-#### 135 td
+#### 134 td
 jan 2025
 
-#### 136 td class=s2-cost
+#### 135 td class=s2-cost
 +294 tis. $ <span class="s2-muted">(RL na základe V3)</span>
 
-#### 137 td
+#### 136 td
 Vyrovná sa OpenAI o1 v uvažovaní
 
-#### 138 td
+#### 137 td
 <strong>GLM-5.1</strong>
 
-#### 139 td
+#### 138 td
 Zhipu
 
-#### 140 td
+#### 139 td
 apr 2026
 
-#### 141 td class=s2-cost
+#### 140 td class=s2-cost
 <span class="s2-muted">nezverejnené</span>
 
-#### 142 td
+#### 141 td
 744B MoE / 40B aktívnych, licencia MIT; 58,4 % SWE-Bench Pro (poráža GPT-5.4 a Opus 4.6)
 
-#### 143 td
+#### 142 td
 <strong>Mistral Medium 3.5</strong>
 
-#### 144 td
+#### 143 td
 Mistral
 
-#### 145 td
+#### 144 td
 apr 2026
 
-#### 146 td class=s2-cost
+#### 145 td class=s2-cost
 <span class="s2-muted">nezverejnené</span>
 
-#### 147 td
+#### 146 td
 128B hustý, hostovateľný vo vlastnej réžii z Hugging Face; 77,6 % SWE-Bench Verified
 
-#### 148 td
+#### 147 td
 <strong>DeepSeek V4-Pro</strong>
 
-#### 149 td
+#### 148 td
 DeepSeek
 
-#### 150 td
+#### 149 td
 apr 2026
 
-#### 151 td class=s2-cost
+#### 150 td class=s2-cost
 <span class="s2-muted">nezverejnené</span>
 
-#### 152 td
+#### 151 td
 1,6T celkom / 49B aktívnych, hybridná pozornosť; 80,6 % SWE-Bench Verified
 
-#### 153 div class=s2-table-caption
+#### 152 div class=s2-table-caption
 Číslo 5,6 mil. $ DeepSeeku je iba finálny predtréningový beh; Epoch AI odhaduje plné náklady od základného modelu po R1 na 6&ndash;7 mil. $ a materská firma High-Flyer investovala do GPU celkovo vyše 500 mil. $. R1 znovu využíva predtréning V3, takže nejde o beh triedy GPT-4 od nuly. Najčistejšie porovnanie rovnakého s rovnakým je GPT-4 &rarr; DeepSeek V3: zhruba <strong>95-percentné zníženie za 20 mesiacov</strong>. Aprílová vlna 2026 (GLM-5.1, Mistral Medium 3.5, DeepSeek V4-Pro plus Qwen 3.6 a Kimi K2.6) krivku predlžuje: náklady na tréning nie sú verejne zverejnené, ale výsledná schopnosť sedí na dostrel od platenej špičky alebo nad ňou v programovaní a uvažovaní.
 
-#### 154 div class=s2-table-title
+#### 153 div class=s2-table-title
 Cena inferencie za milión výstupných tokenov
 
-#### 155 th
+#### 154 th
 Dátum
 
-#### 156 th
+#### 155 th
 Frontier úroveň (uzavretá)
 
-#### 157 th
+#### 156 th
 Pod špičkou, uzavretá
 
-#### 158 th
+#### 157 th
 Open-source ekvivalent
 
-#### 159 td
+#### 158 td
 mar 2023
 
-#### 160 td class=s2-cost
+#### 159 td class=s2-cost
 GPT-4: 60 $
 
-#### 161 td
+#### 160 td
 nov 2023
 
-#### 162 td class=s2-cost
+#### 161 td class=s2-cost
 GPT-4 Turbo: 30 $
 
-#### 163 td
+#### 162 td
 máj 2024
 
-#### 164 td class=s2-cost
+#### 163 td class=s2-cost
 GPT-4o: 15 $
 
-#### 165 td
+#### 164 td
 júl 2024
 
-#### 166 td class=s2-cost
+#### 165 td class=s2-cost
 GPT-4o-mini: 0,60 $
 
-#### 167 td class=s2-cost
+#### 166 td class=s2-cost
 Llama 3 70B (Groq): ~0,79 $
 
-#### 168 td
+#### 167 td
 okt 2024
 
-#### 169 td class=s2-cost
+#### 168 td class=s2-cost
 GPT-4o (zľava): 10 $
 
-#### 170 td
+#### 169 td
 jan 2025
 
-#### 171 td class=s2-cost
+#### 170 td class=s2-cost
 DeepSeek V3: 0,42 $
 
-#### 172 td
+#### 171 td
 apr 2026
 
-#### 173 td class=s2-cost
+#### 172 td class=s2-cost
 Opus 4.7: 25 $
 
-#### 174 td class=s2-cost
+#### 173 td class=s2-cost
 DeepSeek V4-Pro: 2,48 $ <span class="s2-muted">(~10&times; lacnejší pri ekvivalente špičky)</span>
 
-#### 175 td
+#### 174 td
 apr 2026
 
-#### 176 td class=s2-cost
+#### 175 td class=s2-cost
 Qwen 3.6 35B-A3B: vlastný hosting <span class="s2-muted">(jedna RTX 4090, 73,4 % SWE-Bench)</span>
 
-#### 177 div class=s2-table-caption
+#### 176 div class=s2-table-caption
 Rovnaké s rovnakým na frontier úrovni: GPT-4 (60 $) &rarr; GPT-4o (10 $) je <strong>83-percentný pokles za 19 mesiacov</strong>. Často citovaný <strong>99-percentný pokles</strong> porovnáva štart GPT-4 (60 $) s GPT-4o-mini (0,60 $), inú (lacnejšiu) úroveň schopností. To porovnanie je stále užitočné ako otázka &bdquo;koľko dnes stojí výstup triedy GPT-4?&ldquo;, hoci ide o porovnanie naprieč úrovňami, nie špičky so špičkou. V apríli 2026 je pre kupujúcich najdôležitejšie porovnanie uzavretá špička vs. špička s otvorenými váhami na tej istej úrovni schopností: DeepSeek V4-Pro za 0,28 $ vstup / 2,48 $ výstup na milión tokenov je zhruba o rád lacnejší než Opus 4.6/4.7 na záťažiach s programovaním a uvažovaním, ktoré naozaj vie obslúžiť.
 
-#### 178 button class=toggle-btn
+#### 177 button class=toggle-btn
 
     <span class="arrow">&#9654;</span> Menschova hypotéza: kam ide hodnota?
 
 
-#### 179 div class=hypothesis-strip
+#### 178 div class=hypothesis-strip
 Hypotéza &middot; nie namerané dáta
 
-#### 180 p
+#### 179 p
 Téza šéfa Mistralu Arthura Menscha (parafrázovaná z rozhovorov zo začiatku roka 2026): <em>generická inteligencia sa skomoditizuje, takže konkurenčná výhoda sa presunie na špecializované systémy postavené okolo vašich konkrétnych dát a domény.</em> Nižšie sú vrstvy, na ktoré ukazuje. Šírky segmentov sú rovnaké; je to kolík na diskusiu, nie namerané rozloženie hodnoty:
 
-#### 181 span
+#### 180 span
 Model
 
-#### 182 div class=vc-tooltip
+#### 181 div class=vc-tooltip
 Komoditná vrstva: open-source sa vyrovná proprietárnemu
 
-#### 183 span
+#### 182 span
 Dolaďovanie
 
-#### 184 div class=vc-tooltip
+#### 183 div class=vc-tooltip
 Doménová adaptácia, RLHF, vyhodnocovacie pipeline
 
-#### 185 span
+#### 184 span
 Dáta a RAG
 
-#### 186 div class=vc-tooltip
+#### 185 div class=vc-tooltip
 Kontextové pipeline, vektorové vyhľadávanie, správa znalostí
 
-#### 187 span
+#### 186 span
 Nástroje
 
-#### 188 div class=vc-tooltip
+#### 187 div class=vc-tooltip
 MCP servery, agentné frameworky, orchestrácia, vyhodnocovanie
 
-#### 189 span
+#### 188 span
 Doménová odbornosť
 
-#### 190 div class=vc-tooltip
+#### 189 div class=vc-tooltip
 Znalosť odvetvia, návrh pracovných postupov, riadenie zmeny
 
-#### 191 p
+#### 190 p
 Diskusia: <strong>Ak je model zadarmo, do ktorej z týchto vrstiev váš tím naozaj investuje a do ktorej by podľa Menscha mal?</strong>
 
-#### 192 h4
+#### 191 h4
 Voľný pád nákladov na tréning
 
-#### 193 p
+#### 192 p
 V marci 2023 OpenAI natrénovalo GPT-4 za odhadovaných 63&ndash;100 miliónov dolárov; Sam Altman verejne potvrdil, že náklady vrátane výskumu a vývoja presiahli 100 miliónov. Do júla 2024 Meta natrénovala Llama 3.1 405B, model s otvorenými váhami vyrovnávajúci sa GPT-4 na väčšine benchmarkov, za zhruba 60 miliónov dolárov výpočtového výkonu (30,84 milióna GPU-hodín H100). Potom v decembri 2024 DeepSeek vydal V3, model, ktorý sa vyrovnal alebo prekonal GPT-4o na kľúčových benchmarkoch za púhych 5,6 milióna dolárov času GPU.
 
-#### 194 p
+#### 193 p
 To je zhruba 95-percentné zníženie nákladov za 20 mesiacov. O mesiac neskôr DeepSeek vydal R1, ktorý sa vyrovnal o1 od OpenAI v úlohách uvažovania za dodatočných 294 000 dolárov nákladov na tréning.
 
-#### 195 p
+#### 194 p
 Výhrady sú dôležité: číslo 5,6 milióna DeepSeeku pokrýva iba finálny predtréningový beh. Ich materská firma High-Flyer investovala do GPU Nvidie celkovo vyše 500 miliónov dolárov a plné náklady od základného modelu po R1 odhaduje Epoch AI na 6&ndash;7 miliónov. Ale aj štedrý odhad predstavuje viac než 90-percentné zníženie oproti GPT-4. Kľúčové inovácie, ktoré to umožnili (tréning so zmiešanou presnosťou FP8, architektúry zmesi expertov s vyvažovaním záťaže a vlastné CUDA jadrá dosahujúce využitie GPU 85 %+ oproti priemeru odvetvia 55&ndash;65 %), sú algoritmické, nie viazané na hardvér. Dajú sa zopakovať.
 
-#### 196 h4
+#### 195 h4
 Konvergencia open-source
 
-#### 197 p
+#### 196 p
 <a href="https://hai.stanford.edu/ai-index/2025-ai-index-report">Správa Stanford HAI 2025 AI Index</a> zdokumentovala najdôležitejší posun v krajine AI: výkonnostná medzera medzi najlepšími modelmi s otvorenými váhami a proprietárnymi, meraná ratingom Elo v Chatbot Arena, sa zmenšila z 8,04 % v januári 2024 na 1,7 % vo februári 2025, čo je 79-percentné zníženie za jediný rok. Konkrétne na MMLU sa medzera medzi americkými a čínskymi modelmi zrútila zo 17,5 percentuálneho bodu na iba 0,3 medzi koncom roka 2023 a koncom roka 2024.
 
-#### 198 p
+#### 197 p
 Llama 3.1 405B bol prvým otvoreným modelom, ktorý sa v júli 2024 vyrovnal alebo prekonal GPT-4 na viacerých benchmarkoch, zhruba 16 mesiacov po vydaní GPT-4. Začiatkom roka 2025 sa toto oneskorenie ďalej stlačilo. Open-source modely dnes tvoria 62,8 % všetkých modelov podľa počtu a najlepšie otvorené LLM zaostávajú za uzavretými o 5&ndash;22 mesiacov na benchmarkoch. Jedna analýza predpovedala paritu otvorených a uzavretých modelov do 2. kvartálu 2026; tá predpoveď na samom vrchole zostarla zle, kde <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report">AI Index 2026</a> ukazuje, ako sa medzera Elo znovu rozšírila na zhruba 3,3 % po tom, čo špička znovu urobila krok. Čítajte konvergenciu ako príbeh po úrovniach: každá úroveň schopností sa komoditizuje s oneskorením 5&ndash;22 mesiacov, kým skutočne nová úroveň môže medzeru nad sebou znovu otvoriť.
 
-#### 199 h4
+#### 198 h4
 Ceny inferencie vo voľnom páde
 
-#### 200 p
+#### 199 p
 Cenový vývoj vlastného API OpenAI rozpráva príbeh komoditizácie v dolároch. GPT-4 štartoval v marci 2023 na 60 dolároch za milión výstupných tokenov. GPT-4 Turbo to v novembri 2023 stlačil na 30. GPT-4o štartoval v máji 2024 na 15, potom bol v októbri znížený na 10. Medzitým GPT-4o-mini ponúkol výkon triedy GPT-4 za 0,60 dolára na milión tokenov, 99-percentné zníženie oproti štartovacej cene GPT-4 za necelé dva roky.
 
-#### 201 p
+#### 200 p
 Open-source alternatívy sú ešte lacnejšie. Llama 3 70B cez Groq stojí zhruba 0,79 dolára na milión výstupných tokenov. DeepSeek V3 je dostupný za 0,42. Vlastne hostované modely 70B na hardvéri H100 môžu pri plnom využití dosiahnuť približne 0,07 dolára na milión tokenov. Open-source modely stoja v priemere 7,3-krát menej než ich proprietárne ekvivalenty.
 
-#### 202 h4
+#### 201 h4
 Aprílová vlna 2026
 
-#### 203 p
+#### 202 p
 Počas 18-dňového okna v apríli 2026 vyšli tri frontier modely na programovanie s otvorenými váhami. <strong>GLM-5.1</strong> (Zhipu, 7. apríla) je 744B MoE / 40B aktívnych pod licenciou MIT a dosahuje 58,4 % na SWE-Bench Pro, pred GPT-5.4 a Opus 4.6 na tomto benchmarku. <strong>Qwen 3.6</strong> (Alibaba, 16. apríla) sa rozdelil na varianty; otvorený variant 35B-A3B beží s kvantizáciou na jedinej RTX 4090 a dosahuje 73,4 % SWE-Bench Verified, priepustnostný sladký bod pre sólo vývojárov a nasadenia on-prem. <strong>Kimi K2.6</strong> (Moonshot, 20. apríla) je 1T celkom / 32B aktívnych a zavádza primitívum roja 300 agentov na paralelné skúmanie ťažkých tiketov, agentný predchodca, ktorý sa spája s <em>Hodinami a dolármi</em> v časti 6. <strong>DeepSeek V4-Pro</strong> (24. apríla) dosahuje 80,6 % SWE-Bench Verified za 0,28 $ vstup / 2,48 $ výstup na milión tokenov s kontextovým oknom 1M tokenov, zhruba o rád lacnejšie než Opus 4.6 pri porovnateľnej schopnosti programovania, s hybridnou pozornosťou (Compressed Sparse + Heavily Compressed) pri asi 27 % FLOPs na token oproti V3.2. <strong>Mistral Medium 3.5</strong> (29. apríla) vychádza ako hustý model 128B, hostovateľný vo vlastnej réžii z Hugging Face, so 77,6 % SWE-Bench Verified a konfigurovateľným úsilím uvažovania pre každú požiadavku; nesie najčistejší príbeh rezidencie dát v EÚ na trhu, spárovaný s ARR Mistralu 400 mil. $ (január 2026) pri ocenení 13,8 mld. $.
 
-#### 204 p
+#### 203 p
 Do polovice roka 2026 už otázka kupujúceho neznie &bdquo;sú otvorené váhy dosť dobré&ldquo;. Znie: ktoré otvorené váhy na ktorú záťaž, ktorý hostingový stack a ktorý tvar suverénneho nasadenia. Najmä pre podniky v EÚ sa to priamo pretína s príbehom suverenity v časti 4: po prvý raz je &bdquo;hostovateľný ekvivalent špičky vo vlastnej réžii&ldquo; doslovný popis produktu, nie eufemizmus.
 
-#### 205 h4
+#### 204 h4
 Kam ide hodnota, keď je model zadarmo?
 
-#### 206 p
+#### 205 p
 Šéf Mistralu Arthur Mensch je najvýrečnejším hlasom tohto posunu. V rozhovoroch zo začiatku roka 2026 (Big Technology Podcast v januári, Davos a Bloomberg v tom istom mesiaci, Economic Times vo februári) rámcoval AI ako niečo, čo sa stáva infraštruktúrou, &bdquo;utilitou&ldquo; meranou efektivitou, kapitálovou disciplínou a spoľahlivým dodávaním, nie novosťou. Jeho najcitovanejšia veta: &bdquo;Moja generácia inžinierov viac-menej uspela v komoditizácii vlastnej profesie.&ldquo; Dôsledok, ktorý dôsledne obhajuje, je, že konkurenčná výhoda bude čoraz viac pripadať tomu, kto postaví najšpecializovanejší systém okolo svojich konkrétnych dát a domény, a nie tomu, kto má najväčší model.
 
-#### 207 p
+#### 206 p
 Ak má Mistral pravdu, a nákladové dáta ten argument podporujú, potom sa model sám stáva komoditnou vrstvou a hodnota migruje do vrstiev okolo neho: dolaďovanie a doménová adaptácia, dátové pipeline a generovanie rozšírené o vyhľadávanie, nástroje a orchestrácia (agentné frameworky, MCP servery, vyhodnocovacie pipeline) a nakoniec doménová odbornosť. Organizácie, ktoré v tomto scenári vyhrajú, sú tie, ktoré najlepšie rozumejú vlastným problémom, nech už prevádzkujú akýkoľvek model.
 
-#### 208 div class=kn-label
+#### 207 div class=kn-label
 Pokles nákladov na tréning za 20 mesiacov
 
-#### 209 div class=kn-label
+#### 208 div class=kn-label
 DeepSeek V4-Pro vstup / mil. tok.
 
-#### 210 div class=kn-value
+#### 209 div class=kn-value
 128B
 
-#### 211 div class=kn-label
+#### 210 div class=kn-label
 Mistral Medium 3.5 (vlastný hosting)
 
-#### 212 div class=kn-label
+#### 211 div class=kn-label
 Nákladová výhoda open-source
 
-#### 213 h3
+#### 212 h3
 Spúšťacie signály: čo sledovať
 
-#### 214 li
+#### 213 li
 Model s otvorenými váhami pristane do 5 bodov od uzavretého frontier vydania na tých istých hlavných benchmarkoch &le;90 dní po tom vydaní
 
-#### 215 li
+#### 214 li
 Pomenovaná firma z Fortune 500 / CAC40 / DAX uvedie na hovore k výsledkom, vo výkaze alebo v tlačovej správe, že presunula produkčnú záťaž z proprietárneho API na otvorené váhy, s údajom o objeme alebo nákladoch
 
-#### 216 li
+#### 215 li
 Náklady na inferenciu klesnú pod 0,10 $ za milión tokenov pri výstupe triedy GPT-4
 
-#### 217 li
+#### 216 li
 Hyperškálová firma na hovore k výsledkom výslovne uvedie zisky v efektivite modelov ako dôvod zníženia výhľadu capexu alebo objednávok GPU
 
-#### 218 div class=tl-label
+#### 217 div class=tl-label
 Denník spúšťačov &middot; vydanie júl 2026, aktualizované september 2026
 
-#### 219 li
+#### 218 li
 <span class="tag tag-counter">Protisignál</span> <strong>Ceny na špičke išli hore, nie dole.</strong> <span class="tl-date">9. júna 2026 &middot;</span> Claude Fable 5 štartoval na 10 $ vstup / 50 $ výstup na milión tokenov (dvojnásobok Opus 4.7) a jeho návrat po stiahnutí pridal navrch ceny bránu (iba API, moderované; pozri Prúd 4). Revolúcia efektivity je skutočná jednu úroveň pod špičkou; na samom vrchole si skutočný skok schopností stále pýta prémiu, teraz so zložkou vzácnosti. Sledujte, či laboratóriá s otvorenými váhami uzavrú <em>túto</em> medzeru s obvyklým oneskorením 5&ndash;22 mesiacov.
 
-#### 220 li
+#### 219 li
 <span class="tag tag-notyet">Zatiaľ nie</span> <strong>Inferencia triedy GPT-4 pod 0,10 $.</strong> DeepSeek V3 za 0,42 $ a vlastne hostované 70B za ~0,07 $ (plné využitie) prah zvierajú z oboch strán; žiadne veľké API ho pri poctivej kvalite neprekročilo.
 
-#### 221 li
+#### 220 li
 <span class="tag tag-counter">Protisignál</span> <strong>Cena špičky sa udržala, v oboch laboratóriách.</strong> <span class="tl-date">1.&ndash;3. september 2026 &middot;</span> Fable 5.1 si ponechal cenník Fable 5 10 / 50 $ (čítania z cache zlacneli o 75 %, takže bežné záťaže vychádzajú o ~25 % lacnejšie) a GPT-6 Astra vyšla za rovnakých 10 / 50 $, s rýchlou úrovňou 20 / 100 $ nad tým. <span class="tag tag-reported">hlásené</span> Dve laboratóriá, jeden cenový bod: najvyšší pruh je nacenený ako úroveň. Revolúcia efektivity pokračuje o úroveň nižšie.
 
-#### 222 li
+#### 221 li
 <span class="tag tag-moved">Aktualizácia</span> <strong>Otvorené váhy ďalej prichádzali, s novým zaváhaním.</strong> <span class="tl-date">júl&ndash;august 2026 &middot;</span> Moonshot dal 27. júla na Hugging Face Kimi K3 (2,8T parametrov); Z.ai spustil GLM-5.3 14. augusta zatvorený a váhy otvoril asi o dva týždne neskôr po &bdquo;bezpečnostnom spevnení&ldquo;; rad Max od Alibaby (Qwen 3.7-Max, máj) ostáva len cez API. <span class="tag tag-reported">hlásené</span> Oneskorenie 5&ndash;22 mesiacov, ktoré tento prúd sleduje, stále platí o úroveň pod špičkou; dvojtýždňové zadržanie je nový vzor a Prúd 4 ho číta.
 
-#### 223 h3
+#### 222 h3
 Dôsledky podľa roly
 
-#### 224 div class=impl-role
+#### 223 div class=impl-role
 Vývojár
 
-#### 225 div class=impl-text
+#### 224 div class=impl-text
 Open-source sa stáva predvoleným stackom. Investujte do zručností v dolaďovaní, RAG a nástrojoch, nie do promptovania pre jedného dodávateľa.
 
-#### 226 div class=impl-role
+#### 225 div class=impl-role
 Vedúci tímu
 
-#### 227 div class=impl-text
+#### 226 div class=impl-text
 Budujte odbornosť tímu v &bdquo;statickej vrstve&ldquo;: dátové pipeline, vyhodnocovanie, nasadzovanie. Odbornosť v modeloch sa komoditizuje rýchlo.
 
-#### 228 div class=impl-role
+#### 227 div class=impl-role
 CTO / VP Eng
 
-#### 229 div class=impl-text
+#### 228 div class=impl-text
 Znižujte lock-in u dodávateľa. Hodnota sa presúva z toho, ktorý model používate, na to, ako ho integrujete. Investujte do infraštruktúry a doménovej špecializácie.
 
-#### 230 div class=impl-role
+#### 229 div class=impl-role
 Nákup
 
-#### 231 div class=impl-text
+#### 230 div class=impl-text
 Presúvajte rozpočty z nákladov na API do infraštruktúry a talentu. Vlastný hosting sa pri veľkoobjemových záťažiach stáva ekonomicky životaschopným.
 
-#### 232 p class=credits
+#### 231 p class=credits
 Dáta: história cien API OpenAI &bull; technické správy DeepSeeku &bull; Stanford HAI 2025 AI Index &bull; Epoch AI
 
-#### 233 div class=chapter-label
+#### 232 div class=chapter-label
 Prúd 3
 
-#### 234 h2
+#### 233 h2
 Finančná korekcia <br><span class="chapter-question">&bdquo;Už sme to niekedy videli?&ldquo;</span>
 
-#### 235 div class=card-label
+#### 234 div class=card-label
 Téza
 
-#### 236 div class=card-text
+#### 235 div class=card-text
 Finančná korekcia zabíja firmy, nie technológiu. Amazon prežil <strong>94-percentný</strong> pád akcií. Internet fungoval ďalej aj počas krachu; zmizlo financovanie. Berte teda to, že AI funguje, ako dané, a pýtajte sa otvorenú otázku: <em>zodpovedá investičná časová os časovej osi tržieb?</em>
 
-#### 237 div class=card-label
+#### 236 div class=card-label
 Riziko
 
-#### 238 div class=card-text
+#### 237 div class=card-text
 Paralela sa v dôležitých ohľadoch láme. Dot-com investori boli startupy páliace peniaze rizikového kapitálu. Dnešní investori do AI sú najziskovejšie firmy v histórii, ktoré míňajú zo ziskov. P/E Nasdaqu je dnes ~26&times; oproti 60&times; na vrchole dot-com. Nazvať to bublinou môže byť správne v načasovaní, ale nesprávne vo veľkosti.
 
-#### 239 div class=info-strip
+#### 238 div class=info-strip
 
       <span class="info-hint">Prejdite myšou po udalostiach na časovej osi a preskúmajte paralelu &bull; Kliknutím na karty nižšie ich otočíte</span>
 
 # SK segments of scenario-planning (part 2)
 
-#### 240 h3
+#### 239 h3
 Preživší vs. obete, vtedy a dnes
 
-#### 241 p
+#### 240 p
 Kliknite na ktorúkoľvek kartu, otočte ju a pozrite sa, čo sa stalo.
 
-#### 242 div class=fc-tag survivor
+#### 241 div class=fc-tag survivor
 Prežil
 
-#### 243 div class=fc-name
+#### 242 div class=fc-name
 Amazon
 
-#### 244 div class=fc-stat
+#### 243 div class=fc-stat
 Akcie: &minus;94 %
 
-#### 245 div class=fc-stat
+#### 244 div class=fc-stat
 Vrchol 106 $ &rarr; dno 5,51 $
 
-#### 246 div class=fc-detail
+#### 245 div class=fc-detail
 <strong>Tržby nikdy neprestali rásť.</strong>
 
-#### 247 div class=fc-detail
+#### 246 div class=fc-detail
 2,76 mld. $ (2000) &rarr; 8,49 mld. $ (2005)
 
-#### 248 div class=fc-detail
+#### 247 div class=fc-detail
 Mal 1 mld. $ hotovosti z dobre načasovanej emisie dlhopisov
 
-#### 249 div class=fc-detail
+#### 248 div class=fc-detail
 Dnes: trhová kapitalizácia ~2,5 bil. $
 
-#### 250 div class=fc-tag casualty
+#### 249 div class=fc-tag casualty
 Obeť
 
-#### 251 div class=fc-name
+#### 250 div class=fc-name
 Pets.com
 
-#### 252 div class=fc-stat
+#### 251 div class=fc-stat
 Získal 300 mil. $
 
-#### 253 div class=fc-stat
+#### 252 div class=fc-stat
 Tržby: 619 tis. $
 
-#### 254 div class=fc-detail
+#### 253 div class=fc-detail
 <strong>Mŕtvy 268 dní po IPO.</strong>
 
-#### 255 div class=fc-detail
+#### 254 div class=fc-detail
 Minul 70 mil. $+ na reklamu
 
-#### 256 div class=fc-detail
+#### 255 div class=fc-detail
 Záporná jednotková ekonomika od prvého dňa
 
-#### 257 div class=fc-detail
+#### 256 div class=fc-detail
 Dnes: varovný príbeh
 
-#### 258 div class=fc-tag tbd
+#### 257 div class=fc-tag tbd
 Dnes
 
-#### 259 div class=fc-name
+#### 258 div class=fc-name
 OpenAI
 
-#### 260 div class=fc-stat
+#### 259 div class=fc-stat
 Ocenenie: 852 mld. $<span class="tag tag-reported">hlásené</span>
 
-#### 261 div class=fc-stat
+#### 260 div class=fc-stat
 Tržby: 25 mld. $ ARR<span class="tag tag-reported">hlásené</span>
 
-#### 262 div class=fc-detail
+#### 261 div class=fc-detail
 <strong>Projektuje stratu &minus;14 mld. $ v roku 2026.</strong>
 
-#### 263 div class=fc-detail
+#### 262 div class=fc-detail
 900 mil.+ týždenných používateľov
 
-#### 264 div class=fc-detail
+#### 263 div class=fc-detail
 Ziskové do 2029 (najskôr)
 
-#### 265 div class=fc-detail
+#### 264 div class=fc-detail
 Okno IPO 2026&ndash;27 pri 1 bil. $+; Anthropic podal ako prvý <em>(špekulácia)</em>
 
-#### 266 div class=fc-tag casualty
+#### 265 div class=fc-tag casualty
 Obeť
 
-#### 267 div class=fc-name
+#### 266 div class=fc-name
 Stability AI
 
-#### 268 div class=fc-stat
+#### 267 div class=fc-stat
 Šéf odstúpil mar 2024
 
-#### 269 div class=fc-stat
+#### 268 div class=fc-stat
 Tržby: &lt;5 mil. $/kvartál
 
-#### 270 div class=fc-detail
+#### 269 div class=fc-detail
 <strong>Miera pálenia: 8 mil. $/mesiac</strong>
 
-#### 271 div class=fc-detail
+#### 270 div class=fc-detail
 ~100 mil. $ dlhu
 
-#### 272 div class=fc-detail
+#### 271 div class=fc-detail
 Nedokázal konkurovať v nákladoch na tréning frontier modelov
 
-#### 273 div class=fc-detail
+#### 272 div class=fc-detail
 Pets.com éry AI?
 
-#### 274 div class=stat-text
+#### 273 div class=stat-text
 Produktov veľkosti ChatGPT potrebných na zdôvodnenie súčasného capexu do infraštruktúry AI (odhad Barclays)
 
-#### 275 h4
+#### 274 h4
 Precedens dot-com
 
-#### 276 p
+#### 275 p
 10. marca 2000 dosiahol Nasdaq Composite historické maximum 5 048,62. Do 9. októbra 2002 klesol na 1 114, 78-percentný pokles, ktorý zničil vyše 5 biliónov dolárov trhovej hodnoty. Nasdaq neuzavrel nad 5 000 znova až do 23. apríla 2015, zotavenie, ktoré trvalo pätnásť rokov. Na vrchole vyskočili investície rizikového kapitálu zo zhruba 7 miliárd dolárov v roku 1995 na takmer 100 miliárd v roku 2000, pričom internetové firmy pohltili 80 % všetkého rizikového kapitálu. Telekomunikačné firmy investovali do infraštruktúry vyše 500 miliárd dolárov v piatich rokoch po telekomunikačnom zákone z roku 1996.
 
-#### 277 p
+#### 276 p
 Poučenie, ktoré si z tohto obdobia berie väčšina ľudí, znie: &bdquo;bola to bublina a praskla.&ldquo; Užitočnejšie poučenie je, že preživších a obete odlišovala jediná vec: skutočné tržby, skutoční zákazníci a hotovosť na prežitie sucha vo financovaní. Kvalita ich technológie záležala prekvapivo málo.
 
-#### 278 h4
+#### 277 h4
 Argument o bubline dozrel
 
-#### 279 p
+#### 278 p
 Najviditeľnejší medvedí hlas posledných dvoch rokov, Ed Zitron, je pozoruhodný nie tým, že mal pravdu, ale tým, ako sa jeho argument musel posúvať. Jeho pôvodná téza, udržiavaná naprieč blogovými príspevkami a podcastom &bdquo;Better Offline&ldquo;, bola ekonomická: AI je stroj na ničenie hodnoty, capex hyperškálových firiem je šialený a jednotková ekonomika jednoducho nefunguje. Časť tej tézy zostarla dobre (medzera v návratnosti je skutočná). Väčšina nie. Ceny inferencie na frontier úrovni klesli za 19 mesiacov zhruba o 83 % (o 99 %, ak prijmete lacnejšiu úroveň schopností, rozdiel, ktorý Prúd 2 rozoberá). Ročné tržby Anthropicu prekonali v apríli 2026 tržby OpenAI (30 mld. $ vs 25 mld. $)<span class="tag tag-reported">hlásené</span> a do polovice mája dosiahli hlásené bežné tempo 47 mld. $. Pokles nákladov plus rast tržieb urobili pôvodný ekonomický argument v jeho najsilnejšej podobe ťažšie udržateľným. Kelsey Piperová v <em>The Argument</em> ten posun zdokumentovala: Zitronova téza migrovala od &bdquo;ekonomika nefunguje&ldquo; k obvineniam z podvodu a účtovných praktík proti OpenAI a hyperškálovým firmám.
 
-#### 280 p
+#### 279 p
 Medvedí argument je stále živý a časti ostávajú ostré. Ale bránky sa posunuli a to samo je signál, ktorý stojí za zváženie. Argument o bubline, ktorý prežije kolabujúce náklady a úročiace sa tržby tým, že prejde od ekonomiky k podvodu, je slabší než ten, ktorý sa nemusel posúvať. Držte scenár korekcie otvorený; nedržte túto konkrétnu verziu ako medvedí prípad.
 
-#### 281 h4
+#### 280 h4
 Amazon vs. Pets.com
 
-#### 282 p
+#### 281 p
 Akcie Amazonu klesli o 94 % zo zhruba 106 dolárov v decembri 1999 na približne 5,51 dolára na konci roka 2001. Napriek tomu jeho tržby rástli každý jeden rok počas krachu: 2,76 miliardy v roku 2000, 3,12 miliardy v roku 2001, 5,26 miliardy v roku 2003, 8,49 miliardy v roku 2005. Prvý ziskový kvartál zaznamenal v 4. kvartáli 2001 a prvý celý ziskový rok v roku 2003, s čistým ziskom 35 miliónov dolárov pri tržbách 5,26 miliardy. Kľúčovým rozhodnutím bola dobre načasovaná emisia dlhopisov za 1,25 miliardy, ktorá dala Amazonu 1 miliardu dolárov hotovosti na prežitie sucha. Dnes má hodnotu zhruba 2,5 bilióna dolárov, vyše 800-násobok svojej trhovej kapitalizácie na dne.
 
-#### 283 p
+#### 282 p
 Pets.com získal celkovo 300 miliónov dolárov, minul vyše 70 miliónov na reklamu, pričom vygeneroval iba 619 000 dolárov tržieb, a zavrel 268 dní po svojom IPO. Webvan spálil 1,5 miliardy na stavbe automatizovaných skladov, kým vyhlásil bankrot. Boo.com získal 135 miliónov, spálil ich za 18 mesiacov a predal aktíva za menej než 2 milióny. Spoločná niť: záporná jednotková ekonomika, žiadna cesta k ziskovosti a úplná závislosť od ďalšieho investičného kola.
 
-#### 284 h4
+#### 283 h4
 Investície do AI vstúpili na neprebádané územie
 
-#### 285 p
+#### 284 p
 Spoločný capex Veľkej štvorky (Alphabet, Amazon, Meta, Microsoft) vzrástol zo zhruba 140 miliárd dolárov v roku 2023 na 228 miliárd v roku 2024 (+62 % medziročne), na 416 miliárd v roku 2025 a na zhruba 730 miliárd ohlásených na rok 2026, ten istý rad, ktorý vykresľuje <a href="#decoder">dekodér capexu</a>. Kapitálová intenzita dosiahla u týchto firiem historicky bezprecedentné podiely na tržbách. Rizikové financovanie sa koncentrovalo podobne: globálne financovanie AI rizikovým kapitálom vzrástlo zo zhruba 45&ndash;50 miliárd dolárov v roku 2022 na 211 miliárd v roku 2025, prvom roku, keď AI startupy zachytili viac než polovicu (52,7 %) celkovej globálnej hodnoty rizikových obchodov.
 
-#### 286 p
+#### 285 p
 OpenAI dosiahlo po svojom investičnom kole za 122 miliárd v marci 2026 ocenenie 852 miliárd dolárov po investícii<span class="tag tag-reported">hlásené</span>. Ročné tržby dosiahli do februára 2026 25 miliárd<span class="tag tag-reported">hlásené</span>, oproti zhruba 2 miliardám v roku 2023. Ale firma projektuje stratu 14&ndash;17 miliárd v roku 2026<span class="tag tag-projected">projekcia</span>, nečaká sa, že bude zisková skôr než v roku 2029, a zaviazala sa k 600 miliardám výdavkov na výpočtový výkon do roku 2030. Trajektória Anthropicu bola ešte strmšia: tržby vzrástli z 1 miliardy ARR v decembri 2024 na zhruba 9 miliárd na konci roka 2025 a na bežné tempo 47 miliárd do polovice mája 2026<span class="tag tag-reported">hlásené</span>, jeho séria H sa uzavrela pri 965 miliardách po investícii<span class="tag tag-reported">hlásené</span> a 1. júna 2026 podal dôverný S-1, najkonkrétnejší signál IPO okrem roadshow.
 
-#### 287 h4
+#### 286 h4
 Medzera v tržbách
 
-#### 288 p
+#### 287 p
 Partner Sequoie David Cahn publikoval v júni 2024 <a href="https://sequoiacap.com/article/ais-600b-question/">&bdquo;AI&rsquo;s $600B Question&ldquo;</a>, kde vypočítal, že výstavba infraštruktúry AI vyžaduje na svoje zdôvodnenie zhruba 600 miliárd dolárov ročných tržieb od koncových používateľov. V tom čase boli skutočné tržby z AI produktov zhruba 100 miliárd, čo nechávalo ročnú medzeru 500 miliárd. Odvtedy vzrástli výdavky aj tržby, ale výdavky rástli oveľa rýchlejšie: capex sa zhruba strojnásobil, kým medzera v tržbách sa pravdepodobne rozšírila, nie zúžila. Barclays odhadol, že súčasná úroveň capexu by na dosiahnutie rovnováhy vyžadovala ekvivalent 12 000 produktov veľkosti ChatGPT.
 
-#### 289 h4
+#### 288 h4
 Osobná hodnota je jasná. Podniková hodnota je otvorená otázka.
 
-#### 290 p
+#### 289 p
 Dva príbehy o návratnosti ležia na sebe a bežne sa zamieňajú. Jednotliví predplatitelia, ktorí si kupujú Claude alebo ChatGPT za 20&ndash;200 dolárov mesačne, hlásia hodnotu jasne a stabilne: platené spotrebiteľské plány dvoch lídrov spolu prekročia do polovice roka 2026 desiatky miliónov miest, odchodovosť je nevýrazná a prieskumy konzistentne ukazujú, že osobní používatelia opisujú zmysluplné úspory času. Táto časť trhu odpovedala. Podnikový trh nie.
 
-#### 291 p
+#### 290 p
 Prieskum Omdie z októbra 2025 medzi 350 stredne veľkými a veľkými podnikmi hlásil od väčšiny respondentov &bdquo;veľmi dobrú&ldquo; až &bdquo;mimoriadnu&ldquo; návratnosť, skutočne pozitívny signál. Accenture paralelne zistilo, že 61 % podnikových predplatných AI je nedostatočne využívaných kvôli slabej integrácii. Štúdia MIT NANDA hlásila, že 95 % organizácií nevidí žiadnu návratnosť, s už spomenutými výhradami k meraniu (žiadne východiskové hodnoty, šesťmesačný strih, dizajn paralelných pilotov). Zosúlaďte to a obraz je: podniky, ktoré integrovali AI do pracovných postupov, získavajú skutočnú hodnotu; väčšina, ktorá sa o to stále snaží, nie. Model zvyčajne úlohu zvládne, takže medzera má so schopnosťou málo spoločné. Úzkym hrdlom je, ako sa model zapojí do pracovného postupu. To je téma časti 5.
 
-#### 292 h4
+#### 291 h4
 Koncentrácia dodávateľov je poddiskutované riziko
 
-#### 293 p
+#### 292 p
 1. kvartál 2026 priniesol koncentráciu rizikového financovania AI v miere, ktorá v softvéri nemá nedávny precedens. OpenAI, Anthropic a xAI tvorili zhruba 67,3 % všetkého rizikového financovania AI naprieč vyše 1 500 obchodmi. Kolo OpenAI za 122 miliárd pri ocenení 852 miliárd spotrebovalo netriviálny podiel globálnej kapacity rizikového kapitálu. Microsoft, Meta, Amazon a Alphabet spoločne nasmerovali investorov k ~700 miliardám capexu v roku 2026. Tri laboratóriá základných modelov sedia na vrchole stacku, ktorý si zvyšok odvetvia od nich prenajíma.
 
-#### 294 p
+#### 293 p
 Takáto extrémna koncentrácia sa zvyčajne obhajuje ako bezpečnosť: giganti nezlyhajú. Situácia Anthropic–Pentagon (pokrytá v časti 4) je prípad, ktorý treba naštudovať, kým s tým budete súhlasiť. Jediné suverénne rozhodnutie vo februári 2026 odrezalo prístup k veľkému dodávateľovi AI pre celú americkú federálnu vládu, uprostred zmluvy, takmer bez varovania. Technológia fungovala ďalej. Dodávateľ nezlyhal. Kupujúci jednoducho nemohol kupovať. 12. jún potom dodal všeobecný prípad: jedna direktíva a každý používateľ modelu ho stratil naraz (Prúd 4). To je režim zlyhania z koncentrácie dodávateľov, ktorý analógia dot-com nemala. Záťažové testovanie vašej AI stratégie proti odrezaniu od dodávateľa je dnes prvotriedna plánovacia práca, nie paranoja.
 
-#### 295 h4
+#### 294 h4
 Prečo sa paralela láme a prečo na tom možno nezáleží
 
-#### 296 p
+#### 295 p
 Od éry dot-com sú tu dôležité rozdiely. Dnešní poprední investori do AI sú masívne ziskové firmy míňajúce zo ziskov, nie startupy páliace rizikový kapitál. Forwardové pomery ceny k zisku na Nasdaqu sú približne 26-násobok oproti 60-násobku na vrchole dot-com. Podnikové prijatie je oveľa ďalej: veľká väčšina veľkých podnikov zaviedla AI v nejakej podobe, aj keď väčšinou v pilotoch. Ale jadrové štrukturálne riziko, investície dramaticky predbiehajúce realizáciu tržieb, je identické. A objavili sa nové riziká: firemný dlh súvisiaci s AI narástol na 1,2 bilióna dolárov (JPMorgan), ceny prenájmu GPU už klesli zhruba o 70 % z vrcholu a skutočná životnosť infraštruktúry GPU môže byť 2&ndash;3 roky namiesto 5&ndash;6 rokov používaných na účtovné odpisy.
 
-#### 297 p
+#### 296 p
 AI je hodnotná; to je uzavreté. Plánovacia otázka je, či vaši konkrétni dodávatelia, nástroje a poskytovatelia sú Amazonom alebo Pets.com tohto cyklu.
 
-#### 298 div class=kn-value
+#### 297 div class=kn-value
 500&ndash;600 mld. $
 
-#### 299 div class=kn-label
+#### 298 div class=kn-label
 Ročná medzera v tržbách z AI
 
-#### 300 div class=kn-label
+#### 299 div class=kn-label
 Pád akcií Amazonu (prežil)
 
-#### 301 div class=kn-value
+#### 300 div class=kn-value
 268 dní
 
-#### 302 div class=kn-label
+#### 301 div class=kn-label
 Pets.com od IPO po zatvorenie
 
-#### 303 div class=kn-label
+#### 302 div class=kn-label
 Podniky hlásiace tržby poháňané AI (Deloitte)
 
-#### 304 div class=kn-value
+#### 303 div class=kn-value
 1,2 bil. $
 
-#### 305 div class=kn-label
+#### 304 div class=kn-label
 Firemný dlh súvisiaci s AI
 
-#### 306 h3
+#### 305 h3
 Spúšťacie signály: čo sledovať
 
-#### 307 li
+#### 306 li
 Ocenenia OpenAI alebo Anthropicu pri IPO výrazne skorigujú (&gt;30 %) do 6 mesiacov od uvedenia na burzu
 
-#### 308 li
+#### 307 li
 Výhľad capexu hyperškálových firiem sa prvýkrát od roku 2022 splošťuje alebo klesá
 
-#### 309 li
+#### 308 li
 &ge;3 AI natívne startupy, z ktorých každý získal &gt;100 mil. $, zlyhajú alebo sú kúpené pre ľudí v rámci jedného kvartálu (vzor Inflection / Character.AI)
 
-#### 310 li
+#### 309 li
 Ďalší pokles spotových sadzieb H100/B200 o &ge;30 % do 12 mesiacov na zverejnených indexoch trhovísk, alebo trvalé sadzby pod 1,00 $/GPU-hodinu celý kvartál (sadzby H100 už ~70 % pod vrcholom)
 
-#### 311 li
+#### 310 li
 Default alebo znehodnotenie &ge;1 mld. $ na dlhu infraštruktúry AI, hlásené vo výkazoch alebo krokoch ratingových agentúr (scenár uviaznutých aktív v štýle CoreWeave)
 
-#### 312 div class=tl-label
+#### 311 div class=tl-label
 Denník spúšťačov &middot; vydanie júl 2026, aktualizované september 2026
 
-#### 313 li
+#### 312 li
 <span class="tag tag-fired">Nabité</span> <strong>Spúšťač IPO je teraz živý.</strong> <span class="tl-date">1. júna 2026 &middot;</span> Anthropic podal dôverný S-1 (séria H uzavretá pri 965 mld. $ po investícii; bežné tempo tržieb ~47 mld. $ v polovici mája, oproti ~9 mld. $ na konci roka 2025)<span class="tag tag-reported">hlásené</span>. Signál &bdquo;korekcia &gt;30 % do 6 mesiacov od uvedenia&ldquo; prejde z hypotetického na merateľný v deň, keď sa začne obchodovať. Poznačte si to do kalendára; toto je najčistejší spúšťač v brožúre.
 
-#### 314 li
+#### 313 li
 <span class="tag tag-notyet">Zatiaľ nie</span> <strong>Sploštenie capexu.</strong> Všetky štyri hyperškálové firmy v cykle výsledkov za 1. kvartál zvýšili výhľad na rok 2026 a znovu za 2. kvartál (Prúd 1). Opak tohto spúšťača.
 
-#### 315 li
+#### 314 li
 <span class="tag tag-fired">Nabité</span> <strong>Dva S-1, zatiaľ žiadne kótovanie.</strong> <span class="tl-date">máj&ndash;september 2026 &middot;</span> OpenAI podalo dôverne 22. mája, Anthropic 1. júna; k tejto aktualizácii nenacenil úpis ani jeden a augustový tender OpenAI potvrdil značku 852 mld. $. <span class="tag tag-reported">hlásené</span> Spúšťač &bdquo;30 % do šiestich mesiacov&ldquo; ostáva nabitý a nemerateľný, kým neexistuje ticker.
 
-#### 316 li
+#### 315 li
 <span class="tag tag-moved">Aktualizácia</span> <strong>Centrálne banky vyslovili to slovo.</strong> <span class="tl-date">29. jún 2026 &middot;</span> Výročná správa BIS porovnala investičný boom v AI so skoršími bublinami a varovala pred capexom financovaným dlhom a kruhovým financovaním dodávateľmi. <span class="tag tag-reported">hlásené</span> Medvedí prípad má dnes oficiálneho autora; krivka tržieb (Prúd 1) ho stále ohýba.
 
-#### 317 h3
+#### 316 h3
 Dôsledky podľa roly
 
-#### 318 div class=impl-role
+#### 317 div class=impl-role
 Vývojár
 
-#### 319 div class=impl-text
+#### 318 div class=impl-text
 Diverzifikujte mimo čisto AI zručností. Vývojári, ktorí prežili krach dot-com, boli tí, ktorí vedeli stavať skutočné produkty, nie iba demá.
 
-#### 320 div class=impl-role
+#### 319 div class=impl-role
 Vedúci tímu
 
-#### 321 div class=impl-text
+#### 320 div class=impl-text
 Každý AI projekt musí mať merateľnú návratnosť. &bdquo;Skúmame AI&ldquo; škrt v rozpočte neprežije. Ukážte biznisovú hodnotu teraz.
 
-#### 322 div class=impl-role
+#### 321 div class=impl-role
 CTO / VP Eng
 
-#### 323 div class=impl-text
+#### 322 div class=impl-text
 Záťažovo testujte životaschopnosť dodávateľov. Ktorý z vašich AI dodávateľov je Amazon (skutočné tržby, hotovostné rezervy) a ktorý Pets.com?
 
-#### 324 div class=impl-role
+#### 323 div class=impl-role
 Nákup
 
-#### 325 div class=impl-text
+#### 324 div class=impl-text
 Vyjednávajte kratšie zmluvy. Vyhýbajte sa lock-inu s poskytovateľmi, ktorí o 18 mesiacov nemusia existovať. Uprednostňujte platbu podľa spotreby pred záväznými výdavkami.
 
-#### 326 p class=credits
+#### 325 p class=credits
 Dáta: historické dáta Nasdaq &bull; Sequoia &bdquo;AI&rsquo;s $600B Question&ldquo; &bull; Barclays Research &bull; podnikové prieskumy MIT NANDA, Deloitte, Omdia, Accenture &bull; Kelsey Piper / The Argument
 
-#### 327 div class=chapter-label
+#### 326 div class=chapter-label
 Prúd 4
 
-#### 328 h2
+#### 327 h2
 Suverenita <br><span class="chapter-question">&bdquo;Čo ak váš dodávateľ nesmie predávať vám?&ldquo;</span>
 
-#### 329 div class=card-label
+#### 328 div class=card-label
 Téza
 
-#### 330 div class=card-text
+#### 329 div class=card-text
 Prístup k dodávateľovi sa môže zrútiť z politických alebo jurisdikčných dôvodov rýchlejšie než z technických. Možnosť on-prem je dnes skutočná: čínske otvorené váhy sú na parite so špičkou, Mistral dodáva husté a hostovateľné modely a odchod Mety od otvorených váh na špičke presunul plášť &bdquo;Linuxu umelej inteligencie&ldquo; na stack, ktorý podniky v EÚ vedia naozaj nasadiť.
 
-#### 331 div class=card-label
+#### 330 div class=card-label
 Riziko
 
-#### 332 div class=card-text
+#### 331 div class=card-text
 Vlastný hosting vymieňa riziko dodávateľa za prevádzkové riziko. Otvorené váhy ekvivalentné špičke nie sú zadarmo na prevádzku a bremeno vyhodnocovania/bezpečnosti sa presúva na vás. Niektoré možnosti s otvorenými váhami nesú otázky pôvodu dátových sád, ktoré vyplávajú až vtedy, keď sa regulátor pozrie zblízka. A samotná otvorenosť je pozičná: Meta aj Mistral zavreli, keď im to pozícia dovolila, takže čínske otvorené váhy sledujúce špičku sú stratégia, ktorá sa môže zmeniť, nie sľub.
 
-#### 333 p
+#### 332 p
 
       Za posledné štyri mesiace sa zmenili dve veci: veľký americký dodávateľ AI bol výkonným rozhodnutím odrezaný od svojho najväčšieho federálneho zákazníka a čínsky stack s otvorenými váhami uzavrel medzeru v programovaní a uvažovaní pri zhruba 10&times; nižších nákladoch. Suverenita prestala byť starosťou paranoikov.
 
 
-#### 334 div class=kn-value
+#### 333 div class=kn-value
 feb&ndash;apr 2026
 
-#### 335 div class=kn-label
+#### 334 div class=kn-label
 Časová os Anthropic&ndash;Pentagon (označenie &rarr; predbežné opatrenie &rarr; odvolanie &rarr; obchádzka)
 
-#### 336 div class=kn-label
+#### 335 div class=kn-label
 DeepSeek V4-Pro za mil. tok.
 
-#### 337 div class=kn-value
+#### 336 div class=kn-value
 744B
 
-#### 338 div class=kn-label
+#### 337 div class=kn-label
 GLM-5.1, licencia MIT
 
-#### 339 div class=kn-value
+#### 338 div class=kn-value
 128B hustý
 
-#### 340 div class=kn-label
+#### 339 div class=kn-label
 Mistral Medium 3.5 (vlastný hosting)
 
-#### 341 div class=kn-value
+#### 340 div class=kn-value
 1 GPU
 
-#### 342 div class=kn-label
+#### 341 div class=kn-label
 Qwen 3.6 35B-A3B na RTX 4090
 
-#### 343 p
+#### 342 p
 
       Päť kotiev. Prvá je režim zlyhania; ďalšie štyri sú alternatívy, ktoré dnes existujú.
 
 
-#### 344 h4
+#### 343 h4
 Dve zrážky, jeden vzor
 
-#### 345 p
+#### 344 p
 Dve udalosti na jar 2026 zmenili suverenitu z hypotetickej na prevádzkovú. Prvá: 27. februára 2026 americký minister obrany označil Anthropic za &bdquo;riziko dodávateľského reťazca&ldquo; a Trumpova administratíva nariadila federálnym agentúram prestať používať Claude. Anthropic a Pentagon podpísali v júli 2025 zmluvu za 200 miliónov dolárov podľa politiky prijateľného použitia Anthropicu; Pentagon chcel prístup &bdquo;na všetky zákonné účely&ldquo; bez obmedzení a Anthropic odmietol odstrániť obmedzenia na autonómne zbrane a domáce hromadné sledovanie. Anthropic žaloval, koncom marca vyhral predbežné opatrenie (sudkyňa Rita Linová nazvala označenie &bdquo;orwellovským&ldquo; a odvetou za výkon slobody prejavu), potom začiatkom apríla prehral na odvolacom súde. K júnu 2026 je spor stále živý a označenie sa v praxi ukázalo užšie, než sa spočiatku zdalo: Anthropic argumentoval, a Microsoft súhlasil, že nedosahuje na zákazníkov mimo samotných obranných zmlúv, takže Claude ostal dostupný cez M365, GitHub a AI Foundry. Ale hlavné poučenie platí: technológia nikdy neprestala fungovať. Kupujúci jednoducho nemohol kupovať.
 
-#### 346 p
+#### 345 p
 Druhá: 8. apríla Meta spustila Muse Spark, svoj prvý proprietárny model s uzavretými váhami, z Meta Superintelligence Labs pod Alexandrom Wangom. Po takmer desaťročí verejného záväzku k otvorenej špičke AI je vývoj Mety na špičke teraz uzavretý. Existujúce modely Llama ostávajú dostupné, ale už sa nevyvíjajú. Kombinácia 115&ndash;135 mld. $ capexu na rok 2026, konkurenčného tlaku čínskych laboratórií stavajúcich komerčné produkty nad Llamou a strategického cieľa hlboko integrovanej &bdquo;osobnej superinteligencie&ldquo; viazanej na používateľské dáta Mety ten posun vyvolala. Yann LeCun, najviditeľnejší obhajca open-source v Mete, odišiel v novembri 2025. Téza &bdquo;Linux umelej inteligencie&ldquo; neprežila kontakt s ekonomikou výpočtového výkonu za 100 mld. $+, aspoň na západnej špičke.
 
-#### 347 h4
+#### 346 h4
 12. jún: zrážka zovšeobecnená
 
-#### 348 p
+#### 347 p
 Potom, pár dní pred uzávierkou tohto vydania, vzor eskaloval z obstarávania na existenciu. 12. júna 2026, tri dni po spustení Fable 5, americká vláda prinútila Anthropic vypnúť Claude Mythos 5 a Fable 5 pre všetkých používateľov na svete, na základe direktívy vymedzenej cudzou štátnou príslušnosťou, ktorá, keďže je v praxi neoveriteľná, vynútila globálne stiahnutie. Začiatkom júla sa schopnosť vracala, ale obmedzená a nacenená: plný prístup k Mythosu obmedzený na veľké americké organizácie cez Project Glasswing; Fable obnovený iba cez API tokeny, za prémiové ceny, za silnou vrstvou moderovania. <em>Oprava, september 2026:</em> to platilo asi týždeň; príkaz bol 30. júna zrušený s trvalými podmienkami a Fable je od 1. júla všeobecne dostupný celosvetovo. Opravený záznam nesie denník spúšťačov nižšie. Februárové poučenie znelo, že jeden kupujúci môže stratiť svojho dodávateľa. Júnové poučenie je silnejšie: každý kupujúci môže stratiť model naraz a prístup sa vracia, keď sa vracia, za podmienok suveréna, úroveň po úrovni. <a href="/mercantilism-of-genai-sk/#framing">Sprievodná brožúra</a> bola napísaná v hodinách po tom ráne; berie 12. jún nie ako výpadok, ale ako generálku.
 
-#### 349 h4
+#### 348 h4
 Čínska vlna otvorených váh zapĺňa medzeru
 
-#### 350 p
+#### 349 p
 Do 18 dní v apríli 2026 vyšli z čínskych laboratórií tri frontier modely na programovanie s otvorenými váhami: GLM-5.1 (Zhipu, licencia MIT, 744B MoE / 40B aktívnych, 58,4 % SWE-Bench Pro), Kimi K2.6 (Moonshot, 1T celkom / 32B aktívnych s primitívom roja 300 agentov) a DeepSeek V4-Pro (1,6T celkom / 49B aktívnych, 80,6 % SWE-Bench Verified pri zhruba o rád nižších výstupných nákladoch než Opus 4.6). Qwen 3.6 (Alibaba, 16. apríla) sa rozdelil na varianty; otvorený variant 35B-A3B beží s kvantizáciou na jedinej RTX 4090. Podľa záťaže k polovici roka 2026: DeepSeek V4-Pro pre lacných agentov na programovanie s veľkým kontextom, Kimi K2.6 pre ťažké viackrokové tikety s primitívom roja, GLM-5.1 pre produkciu vo vlastnej réžii, kde záleží na licencii MIT, Qwen 3.6-35B-A3B pre lokálne nasadenie na notebooku alebo jednom GPU. Llama 4 ostáva integračným štandardom, ale už sa nevyvíja.
 
-#### 351 h4
+#### 350 h4
 Čo to znamená pre podniky v EÚ
 
-#### 352 p
+#### 351 p
 Otázka kupujúceho sa posunula z &bdquo;sú otvorené váhy dosť dobré&ldquo; na viacdielnu obstarávaciu otázku: ktoré otvorené váhy na ktorú záťaž, ktorý hostingový stack, ktorý tvar suverénneho nasadenia. Mistral Medium 3.5 (128B hustý, hostovateľný vo vlastnej réžii, ARR 400 mil. $ pri ocenení 13,8 mld. $) je najčistejší príbeh rezidencie dát v EÚ na trhu: hustý, nie MoE, ľahšie nasaditeľný než čínske stacky, zosúladený so suverenitou. Vlastne hostované čínske otvorené váhy sú druhá veľká možnosť, s dvoma výhradami, ktoré stojí za to označiť: geopolitická expozícia, ak sa obstarávacie rámce sprísnia, a otázky pôvodu dátových sád, ktoré niektorí regulátori v EÚ začínajú klásť.
 
-#### 353 p
+#### 352 p
 Hlbšia pointa: po prvý raz v živote tejto brožúry &bdquo;hostovateľný ekvivalent špičky vo vlastnej réžii&ldquo; nie je eufemizmus. Nákupné tímy, ktoré predtým predpokladali, že jeden alebo dvaja americkí dodávatelia nemajú realistickú alternatívu, ich teraz majú viacero. Práca sa presúva z vyjednávania s jedným dodávateľom na navrhovanie architektúry okolo voľby. Tá voľba závisí od toho, ktoré suverénne režimy zlyhania vážite najviac.
 
-#### 354 h4
+#### 353 h4
 Kde tento prúd pokračuje
 
-#### 355 p
+#### 354 p
 Suverenita je jediný prúd, kde táto brožúra zámerne obmedzuje vlastnú hĺbku: sprievodná brožúra <a href="/mercantilism-of-genai-sk/"><em>Merkantilizmus generatívnej AI</em></a> ju spracúva v rozsahu knihy. Ak si z nej vezmete dva kúsky, vezmite si tieto. Po prvé, <a href="/mercantilism-of-genai-sk/#m-armed">test vyzbrojený verzus na muške</a>: ktoré odvetvia dostanú frontier prístup za priaznivých podmienok, lebo držiteľ továrne sa nimi nikdy nemôže stať, a na ktoré bude namierený šampión bloku, lebo ich marža <em>je</em> kognitívna práca, ktorú továreň vyrába. Po druhé, <a href="/mercantilism-of-genai-sk/#m-open">mechanizmus &bdquo;otvorenosť je pozícia, nie princíp&ldquo;</a>: dôvod, prečo táto kapitola naceňuje čínske otvorené váhy ako stratégiu, ktorá sa môže zmeniť, nie ako záruku, a zdroj najčistejšieho jediného prezradenia v oboch brožúrach: deň, keď popredné čínske laboratórium dodá svoj najlepší model zatvorený, je deň, keď verí, že získalo náskok. <a href="/mercantilism-of-genai-sk/#bets">Datované stávky</a> sprievodnej brožúry sú zapojené do <a href="#chips">časti o žetónoch</a> tejto brožúry.
 
-#### 356 h3
+#### 355 h3
 Spúšťacie signály: čo sledovať
 
-#### 357 li
+#### 356 li
 Ďalšie označenia rizika dodávateľského reťazca, stiahnutia alebo zrážky politík prijateľného použitia medzi frontier laboratóriami a suverénnymi kupujúcimi <em>(spustené 12. júna; pozri denník)</em>
 
-#### 358 li
+#### 357 li
 Nová regulácia suverénnej AI vyžadujúca inferenciu, tréningové dáta alebo váhy modelov na domácej pôde je <em>prijatá</em> (nie navrhnutá) v EÚ, členskom štáte alebo ekonomike G20
 
-#### 359 li
+#### 358 li
 Čínske vydanie s otvorenými váhami pristane do 5 bodov od uzavretej špičky na svojich hlavných benchmarkoch &le;90 dní po uzavretom vydaní; a opačné prezradenie: popredné čínske laboratórium dodávajúce svoju vlajkovú loď <em>zatvorenú</em> spúšťa tento prúd, nie Prúd 2 (pozri <a href="/mercantilism-of-genai-sk/#bets">stávku 5 v merkantilizme</a>)
 
-#### 360 li
+#### 359 li
 Pomenovaný podnik v EÚ alebo systémový integrátor z top 10 v EÚ hlási produkčnú migráciu na suverénne alebo vlastne hostované stacky s údajom o objeme, alebo &gt;25 % jeho nových AI nasadení je hostovaných suverénne
 
-#### 361 li
+#### 360 li
 Protispúšťač: podpísaná dohoda, ktorá formálne ruší existujúce odrezanie, označenie alebo stiahnutie (plné, neobmedzené obnovenie po 12. júni by sa počítalo)
 
-#### 362 div class=tl-label
+#### 361 div class=tl-label
 Denník spúšťačov &middot; vydanie júl 2026, aktualizované september 2026
 
-#### 363 li
+#### 362 li
 <span class="tag tag-fired">Spustené</span> <strong>Vypínač dokázaný, potom pomerne zapnutý späť.</strong> <span class="tl-date">12. júna 2026 &middot;</span> Federálna direktíva vymedzená cudzou štátnou príslušnosťou (v praxi neoveriteľnou) prinútila Anthropic vypnúť Mythos 5 a Fable 5 celosvetovo, tri dni po spustení. Začiatkom júla sa prístup vrátil obmedzený: plný Mythos iba pre veľké americké organizácie cez Project Glasswing; Fable iba cez API, za prémiové ceny, za silnou vrstvou moderovania. Toto je druhá udalosť odrezania za päť mesiacov; prvý spúšťač vyššie sa už spustil dvakrát. <a href="/mercantilism-of-genai-sk/#bets">Stávka 1 sprievodnej brožúry</a> (obmedzený návrat do konca roka 2026) sa spustila do týždňov od napísania.
 
-#### 364 li
+#### 363 li
 <span class="tag tag-moved">Zvrat</span> <strong>Odrezaný dodávateľ je teraz vládny partner.</strong> <span class="tl-date">9. júna 2026 &middot;</span> Štyri mesiace po označení rizika dodávateľského reťazca Anthropic dodal Claude Mythos 5, najsilnejší kyberbezpečnostný model na svete, kyberobrancom cez Project Glasswing, <em>v spolupráci s americkou vládou</em>, kým spor s Pentagonom pokračuje. O tri dni neskôr bola tá istá schopnosť vypnutá celosvetovo (vyššie). Suverénny prístup sa znovu vyjednáva schopnosť po schopnosti, preukázateľne oboma smermi. Plánujte s tým, nie s čistým vypínačom &bdquo;zap/vyp&ldquo;.
 
-#### 365 li
+#### 364 li
 <span class="tag tag-counter">Protisignál</span> <strong>Oprava: brána na tovar sa zdvihla; brána na továreň ostala.</strong> <span class="tl-date">30. jún &ndash; 1. júl 2026 &middot;</span> Ministerstvo obchodu 30. júna zrušilo príkaz vymedzený štátnou príslušnosťou, s trvalými podmienkami: Anthropic proaktívne odhaľuje a hlási zneužitie a koordinuje s vládou štandardy pre budúce modely. Fable 5 je od 1. júla všeobecne dostupný celosvetovo. Mythos ostal tam, kam ho postavila obnova z 26. júna, u preverených, prevažne amerických organizácií. <span class="tag tag-reported">hlásené</span> Júlový záznam vyššie zveličil stranu Fable: čo nasledovalo v júli, bolo utiahnutie kvót a kreditov (limity predplatného znížené 7. a 20. júla), nie trvalá prístupová brána. Protispúšťač vyššie (&bdquo;podpísaná dohoda, ktorá formálne ruší&ldquo;) sa spustil, len pre tovar; denník sprievodnej brožúry nesie rovnakú opravu.
 
-#### 366 li
+#### 365 li
 <span class="tag tag-fired">Spustené</span> <strong>Brána sa stala obojstrannou.</strong> <span class="tl-date">3. september 2026 &middot;</span> OpenAI spustilo GPT-6 Astra najprv pre svoju kyberobrannú kohortu Daybreak a vládu USA, podľa vlastných pravidiel pripravenosti (prvý model, ktorý prekročil jeho &bdquo;kritický&ldquo; kybernetický prah), so širokým nasadením do niekoľkých dní. <span class="tag tag-reported">hlásené</span> Nikto to neprikázal. Spúšťanie najprv pre preverených je dnes domácou politikou oboch vedúcich laboratórií, čo je prvý spúšťač vyššie spustený v podobe, ktorú žiadny súd nepreskúma.<span class="tag tag-speculation">interpretácia</span>
 
-#### 367 li
+#### 366 li
 <span class="tag tag-fired">Spustené</span> <strong>Spojenecký prístup, vyjednaný agentúra po agentúre.</strong> <span class="tl-date">10. september 2026 &middot;</span> Po rokovaniach, ktoré sa začali koncom mája, Komisia oznámila, že ENISA má prístup k Mythosu 5 na testovanie; novší 5.1 ostáva mimo dosahu. <span class="tag tag-reported">hlásené</span> Jurisdikcia dostala úroveň, o verziu pozadu, vyjednávaním. To je tvar suverenity, ktorý tento prúd odteraz očakáva.
 
-#### 368 li
+#### 367 li
 <span class="tag tag-counter">Protisignál</span> <strong>Súd zatlačil späť.</strong> <span class="tl-date">28. august 2026 &middot;</span> Sudkyňa Rita Lin rozhodla, že označenie Anthropicu Pentagónom za riziko dodávateľského reťazca bolo svojvoľné a nepodložené a išlo o odvetu podľa Prvého dodatku; paralelný prípad na odvolacom súde pre D.C. stále čaká, takže nálepka technicky platí. <span class="tag tag-reported">hlásené</span> O ovládač sa bojuje aj vnútri bloku.
 
-#### 369 li
+#### 368 li
 <span class="tag tag-moved">Posunuté</span> <strong>Európska suverénna možnosť dostala peniaze.</strong> <span class="tl-date">30. júl &amp; 8. september 2026 &middot;</span> Komisia otvorila výzvu na až sedem gigafabrík AI (asi 30 mld. &euro;, cieľ prevádzky v polovici roka 2028); Mistral získal 3 mld. &euro; pri ocenení nad 21 mld. &euro;, doteraz najväčšie európske technologické kolo, na výslovnom argumente suverénnej AI s prísľubom gigawattu výpočtového výkonu v EÚ do roku 2030. <span class="tag tag-reported">hlásené</span> Spúšťač prijatej regulácie vyššie sa nespustil; peniaze sa pohli prvé.
 
-#### 370 li
+#### 369 li
 <span class="tag tag-notyet">Polovičný signál</span> <strong>Čínsky signál.</strong> <span class="tl-date">máj&ndash;august 2026 &middot;</span> Qwen 3.7-Max od Alibaby (20. máj) je len cez API, ako jeho rad Max vždy bol; Z.ai dodal GLM-5.3 14. augusta zatvorený a o dva týždne ho otvoril; DeepSeek V4 a Kimi K3 sú otvorené. <span class="tag tag-reported">hlásené</span> Zatiaľ žiadna zatvorená čínska vlajková loď s dôveryhodným nárokom na paritu, takže Stávka 5 z merkantilizmu ostáva otvorená; dvojtýždňové zadržanie je zatiaľ najbližšie k tomu signálu.
 
-#### 371 h3
+#### 370 h3
 Dôsledky podľa roly
 
-#### 372 div class=impl-role
+#### 371 div class=impl-role
 Vývojár
 
-#### 373 div class=impl-text
+#### 372 div class=impl-text
 Hostovateľné otvorené váhy ako štandard pre citlivé záťaže. Stavajte vrstvy vyhľadávania a nástrojov nezávisle od modelu; model je dnes prenositeľný.
 
-#### 374 div class=impl-role
+#### 373 div class=impl-role
 Vedúci tímu
 
-#### 375 div class=impl-text
+#### 374 div class=impl-text
 Udržiavajte prenositeľnú inferenčnú vrstvu za svojimi pipeline na vyhodnocovanie a vyhľadávanie. Berte výmenu dodávateľa ako plánované cvičenie, nie ako požiarny poplach.
 
-#### 376 div class=impl-role
+#### 375 div class=impl-role
 CTO / VP Eng
 
-#### 377 div class=impl-text
+#### 376 div class=impl-text
 Stratégia viacerých dodávateľov už nie je paranoja. Kvantifikujte riziko odrezania od jediného dodávateľa oproti tržbám a regulačnej expozícii.
 
-#### 378 div class=impl-role
+#### 377 div class=impl-role
 Nákup
 
-#### 379 div class=impl-text
+#### 378 div class=impl-text
 Zmluvy by mali počítať s odrezaním od dodávateľa. Trvajte na zárukách rezidencie dát a výslovných výstupných klauzulách; naceňte druhého dodávateľa.
 
-#### 380 p class=credits
+#### 379 p class=credits
 Dáta: súdne podania (Anthropic v. DoD) &bull; vydania dodávateľov (Meta Muse Spark, Mistral Medium 3.5) &bull; karty modelov s otvorenými váhami (DeepSeek V4-Pro, GLM-5.1, Qwen 3.6, Kimi K2.6) &bull; Kelsey Piper / The Argument
 
-#### 381 div class=chapter-label
+#### 380 div class=chapter-label
 Prúd 5
 
-#### 382 h2
+#### 381 h2
 Z laboratória do produkcie <br><span class="chapter-question">&bdquo;Čo sme sa naučili v roku 2015 a čo je dnes inak&ldquo;</span>
 
-#### 383 div class=card-label
+#### 382 div class=card-label
 Téza
 
-#### 384 div class=card-text
+#### 383 div class=card-text
 Úzke hrdlo sa presunulo zo schopnosti modelov na nasadenie. Rovnaký tvar ako medzera medzi ML/DS a produkciou v roku 2015: štatistici vedeli modely postaviť, ale nie dodať. Teraz sú to LLM a vrstva talentu a nástrojov nedobehla schopnosť.
 
-#### 385 div class=card-label
+#### 384 div class=card-label
 Riziko
 
-#### 386 div class=card-text
+#### 385 div class=card-text
 Tentoraz je to iné. Menej práce na dátových pipeline (LLM generujú, nespracúvajú). Oveľa viac práce na testovaní a validácii (potenciál škody je kvalitatívne vyšší). Nákladové krivky MLOps sa neprenášajú čisto: nový tvar je náročný na vyhodnocovanie, nie na ETL.
 
-#### 387 p
+#### 386 p
 
       Strop schopností nadhodnocuje to, čo môžete nasadiť. Podlaha nasadenia je tam, kde medzera naozaj sedí, a práve na túto podlahu dnes podnikové cestovné mapy AI narážajú ako prvú.
 
 
-#### 388 div class=kn-value
+#### 387 div class=kn-value
 40 bodov
 
-#### 389 div class=kn-label
+#### 388 div class=kn-label
 Medicína: 92 % v laboratóriu &rarr; 52 % v skutočnom svete (metaanalýza 83 štúdií)
 
-#### 390 div class=kn-value
+#### 389 div class=kn-value
 71 bodov
 
-#### 391 div class=kn-label
+#### 390 div class=kn-label
 Programovanie: 97 % HumanEval &rarr; 26 % SWE-Lancer
 
-#### 392 div class=kn-label
+#### 391 div class=kn-label
 Podniky hlásiace vplyv AI na tržby (Deloitte 2026)
 
-#### 393 div class=kn-label
+#### 392 div class=kn-label
 Nedostatočne využívané predplatné AI (Accenture)
 
-#### 394 div class=kn-label
+#### 393 div class=kn-label
 Miera nulovej návratnosti podľa MIT NANDA <em>(výhrady k meraniu)</em>
 
-#### 395 p
+#### 394 p
 
       Päť medzier medzi laboratóriom a skutočným svetom. Vzor je konzistentný naprieč modalitami a ukazuje preč od schopnosti ako záväzného obmedzenia.
 
 
-#### 396 h4
+#### 395 h4
 Paralela s rokom 2015
 
-#### 397 p
+#### 396 p
 Ktokoľvek, kto zažil podnikové prijímanie strojového učenia v rokoch 2014 až 2018, už tento tvar videl. Štatistici a dátoví vedci prišli z matematiky a štatistiky, plynulí v modelovaní, ale nerovnomerní v softvérovom inžinierstve. Stavali modely v notebookoch; modely fungovali v notebooku; modely sa nedodávali. Medzera bola skutočná a nosná, nie módna sťažnosť. Nakoniec ju vyriešilo desaťročie práce na MLOps, úložiskách príznakov, registroch modelov a medzifunkčných tímoch párujúcich dátových vedcov so softvérovými inžiniermi a platformovými ľuďmi. Schopnosť tam bola vždy. Cesta od schopnosti k produkcii sa stavala lepšiu časť desiatich rokov.
 
-#### 398 p
+#### 397 p
 Medzera pri LLM má rovnaký tvar a podniky práve teraz tvrdo zasahuje. Schopnosť predbehla prevádzkovú zrelosť na jej nasadenie. Piloty sa množia; produkčné nasadenia zaostávajú. Číslo MIT NANDA &bdquo;95 % nulová návratnosť&ldquo; má problémy s meraním, ale aj pri konzervatívnom prerámcovaní je základné posolstvo správne: väčšina podnikov nedokončila stranu nasadenia. Tých 61 % predplatných AI, ktoré Accenture označilo za &bdquo;nedostatočne využívané kvôli slabej integrácii&ldquo;, je ten istý príbeh vyslovený opatrnejšie. Rovnaká medzera v talente a nástrojoch. Rovnaká odpoveď: postavte most.
 
-#### 399 h4
+#### 398 h4
 Čo je tentoraz inak
 
-#### 400 p
+#### 399 p
 Paralela s rokom 2015 je správne lešenie, ale nie kópia. Dve veci sú podstatne iné a mali by pretvoriť, ako tímy rozpočtujú most.
 
-#### 401 p
+#### 400 p
 <strong>Po prvé, oveľa menej práce na dátových pipeline.</strong> Éra ML z roku 2015 minula obrovské úsilie na dátové inžinierstvo: ETL, pipeline príznakov, rozdiel medzi tréningom a obsluhou, úložiská príznakov. LLM väčšinu z toho obracajú. Generujú výstupy z neštruktúrovaných vstupov namiesto spracovania štruktúrovaných dát; dátovou vrstvou je vyhľadávanie a skladanie kontextu, nie transformácia príznakov; veľkoobjemové ETL väčšinou nie je úzke hrdlo. Tímy, ktoré predpokladajú, že ich nasadenie LLM potrebuje dátový tím v tvare MLOps, budú rozpočtovať zle. Práca je skutočná, ale sedí inde.
 
-#### 402 p
+#### 401 p
 <strong>Po druhé, oveľa viac práce na testovaní a validácii.</strong> Toto je časť, ktorú väčšina podnikov systematicky podceňuje. LLM vie vierohodne konfabulovať, agent vie konať, výstup sa dostáva priamo ku koncovým používateľom a potenciál škody neodhaleného zlyhania je kvalitatívne vyšší než &bdquo;naša regresná testovacia sada sa posunula&ldquo;. Práca, ktorá bývala 10&ndash;15 % výdavkov na MLOps (vyhodnocovanie, monitorovanie, kontrola výstupov), sa stáva prvotriednou infraštruktúrou. Vyhodnocovacie pipeline, red-teaming, kalibrácia ľudskej kontroly, riadenie zmien správania pri upgrade modelu: toto <em>je</em> samotná práca nasadenia. Tímy, ktoré obsadia most v tvare MLOps, zistia, že most je postavený zle.
 
-#### 403 h4
+#### 402 h4
 Medzera medzi benchmarkom a nasadením, kvantifikovaná
 
-#### 404 p
+#### 403 p
 Rovnaký vzor sa objavuje v každej doméne, ktorá bola starostlivo zmeraná. GPT-4 dosiahol v kontrolovaných medicínskych štúdiách 92-percentnú diagnostickú presnosť, ale metaanalýza 83 štúdií zistila iba 52,1 % celkovej diagnostickej presnosti AI v podmienkach skutočného sveta, takmer 40-bodovú medzeru. (Tie dve čísla pochádzajú z rôznych štúdií, modelov a návrhov úloh, takže rozdiel neberte ako meranie; zistením je konzistentný <em>tvar</em>, laboratórne skóre vysoko nad skóre v teréne.) Na benchmarku SWE-Lancer so skutočnými úlohami z freelance programovania uspejú aj špičkové modely iba v 26,2 % prípadov napriek takmer dokonalým skóre na HumanEval. Na úlohách s dlhým horizontom RE-Bench dosahujú AI systémy pri 2 hodinách 4&times; vyššie skóre než ľudia, ale pri 32 hodinách ľudia prekonávajú AI 2:1. Podnikový prieskum Deloitte 2026 zistil, že 20 % podnikov hlási tržby poháňané AI, kým dve tretiny sú stále zaseknuté v pilotoch. Každé z týchto čísel opisuje problém nasadenia a ani jedno problém schopnosti.
 
-#### 405 h4
+#### 404 h4
 Regulácia ako druhotná sila zdvíhajúca podlahu
 
-#### 406 p
+#### 405 p
 Regulácia hrá v tomto prúde vedľajšiu, nie hlavnú úlohu, ale je to skutočná sila druhého rádu a jedna správa objasňuje, ako ju vážiť. 7. mája 2026 dosiahli vyjednávači EÚ predbežnú politickú dohodu o Digitálnom omnibuse pre AI: vysokorizikové povinnosti podľa prílohy III sa odkladajú z 2. augusta 2026 na 2. decembra 2027 (16-mesačný odklad) a vysokorizikové povinnosti podľa prílohy I pre produkty regulované inými predpismi sa odkladajú z 2. augusta 2027 na 2. augusta 2028. Vodoznaky a transparentnosť AI obsahu sa posúvajú iba o tri mesiace, na 2. decembra 2026.
 
-#### 407 p
+#### 406 p
 Odklad by nemal znížiť naliehavosť pre kupujúcich. Povinnosti pre modely všeobecného použitia podľa článkov 50&ndash;55 sú <em>nezmenené</em> a pokračujú podľa pôvodného harmonogramu. Zákazy podľa článku 5 už platia. Povinnosť gramotnosti v oblasti AI podľa článku 4 je už záväzná. Normy a usmernenia sa aj tak zverejnia tesne pred novými termínmi. Kódex postupov pre syntetický obsah sa má finalizovať v máji alebo júni 2026. Omnibus posunul najdrahšie, prevádzkovo najťažšie povinnosti, presne tie viazané na nasadenie vysokorizikových systémov. Medzera v nasadení je hlavný titulok; regulácia je podlaha pod ňou, ktorú omnibus posunul, ale neodstránil.
 
-#### 408 p
+#### 407 p
 Paralelne beží autorské právo. Prípad Bartz v. Anthropic priniesol hromadné vyrovnanie za 1,5 miliardy dolárov. Viacokresný spor New York Times v. OpenAI sa stále melie cez dokazovanie: očakávané rozhodnutie v skrátenom konaní na jar 2026 neprišlo; namiesto toho rozhodnutie z januára 2026 prinútilo OpenAI vydať vzorku 20 miliónov konverzácií z logov ChatGPT, ktorá bude tvarovať spor o fair use. Proti AI firmám prebieha vyše 56 sporov o autorské práva. Každé vyrovnanie zdvíha podlahu práce na pôvode dát a náležitej starostlivosti potrebnej na nasadenie LLM v produkcii. Berte to ako trenie na strane nasadenia, nie ako samostatnú silu.
 
-#### 409 h4
+#### 408 h4
 Ako naozaj vyzerajú tímy, ktoré medzeru preklenú
 
-#### 410 p
+#### 409 p
 Riešením z roku 2015 boli medzifunkčné tímy: dátový vedec plus softvérový inžinier plus platformový inžinier. Riešenie z roku 2026 vyzerá tvarom podobne, ale prevážené: <strong>inžinieri vyhodnocovania</strong>, <strong>špecialisti na red-teaming</strong> a <strong>návrhári pracovných postupov</strong> sa stávajú prvotriednymi rolami. Menej práce s úložiskami príznakov; viac behaviorálneho testovania. Menej ETL; viac kontroly výstupov. Menej posunu konceptov; viac upgradov modelov, ktoré menia osobnosť. Tímy, ktoré v roku 2026 dodávajú funkcie s LLM do produkcie vo veľkom, sú tie, ktoré tento tvar už obsadili. Väčšina nie.
 
-#### 411 div class=kn-value
+#### 410 div class=kn-value
 40 / 71 bodov
 
-#### 412 div class=kn-label
+#### 411 div class=kn-label
 Medzery medicína / programovanie medzi laboratóriom a skutočným svetom
 
-#### 413 div class=kn-label
+#### 412 div class=kn-label
 Podniky hlásiace tržby z AI (Deloitte)
 
-#### 414 div class=kn-label
+#### 413 div class=kn-label
 Nedostatočne využívané predplatné AI (Accenture)
 
-#### 415 div class=kn-value
+#### 414 div class=kn-value
 +16 mes.
 
-#### 416 div class=kn-label
+#### 415 div class=kn-label
 Odklad prílohy III v EÚ (Digitálny omnibus, máj 2026)
 
-#### 417 div class=kn-value
+#### 416 div class=kn-value
 1,5 mld. $
 
-#### 418 div class=kn-label
+#### 417 div class=kn-label
 Vyrovnanie Bartz v. Anthropic
 
-#### 419 h3
+#### 418 h3
 Spúšťacie signály: čo sledovať
 
-#### 420 li
+#### 419 li
 Prvé vynucovacie kroky podľa AI Actu pri povinnostiach, ktoré ostali v harmonograme (GPAI / článok 5)
 
-#### 421 li
+#### 420 li
 Veľké rozhodnutie o autorských právach proti tréningu AI (skrátené konanie NYT v. OpenAI; očakávaný termín 1. polrok 2026 sa už posunul, teraz sledujte 2. polrok 2026, pozri denník)
 
-#### 422 li
+#### 421 li
 Vaša vlastná interná miera konverzie z pilotu do produkcie ostáva dva kvartály pod 20 %
 
-#### 423 li
+#### 422 li
 Položky na vyhodnocovanie / red-teaming sa objavia vo väčšine podnikových výziev na predloženie ponuky na AI, ktoré za kvartál dostanete, alebo ich veľký analytický rámec (Gartner, Forrester) pridá ako pomenovanú kategóriu
 
-#### 424 li
+#### 423 li
 Protispúšťač: sada na vyhodnocovanie + monitorovanie + vyhľadávanie sa dodáva ako predvolená pribalená funkcia aspoň dvoch AI platforiem hyperškálových firiem (Bedrock, AI Foundry, Vertex) bez samostatnej položky
 
-#### 425 div class=tl-label
+#### 424 div class=tl-label
 Denník spúšťačov &middot; vydanie júl 2026, aktualizované september 2026
 
-#### 426 li
+#### 425 li
 <span class="tag tag-moved">Posunuté</span> <strong>Skrátené konanie NYT v. OpenAI sa posunulo.</strong> <span class="tl-date">jún 2026 &middot;</span> Meritórne rozhodnutie očakávané na jar neprišlo; prípad je stále v dokazovaní, s januárovým príkazom, ktorý núti OpenAI vydať 20 miliónov logov konverzácií ChatGPT. Autorskoprávna podlaha pod nasadením stále stúpa na vyrovnaniach (Bartz: 1,5 mld. $), zatiaľ nie na precedense.
 
-#### 427 li
+#### 426 li
 <span class="tag tag-notyet">Zatiaľ nie</span> <strong>Vynucovanie v EÚ.</strong> Zatiaľ žiadny prvý vynucovací krok podľa povinností, ktoré ostali v harmonograme (GPAI, článok 5). Odklad Digitálneho omnibusu (máj 2026) kúpil nasadzujúcim subjektom čas na prílohu III; tento spúšťač nezmenil.
 
-#### 428 li
+#### 427 li
 <span class="tag tag-fired">Spustené</span> <strong>Omnibus je zákon a hodiny sa pohli.</strong> <span class="tl-date">24.&ndash;27. júl 2026 &middot;</span> Nariadenie (EÚ) 2026/1744 vyšlo 24. júla v Úradnom vestníku a 27. júla nadobudlo účinnosť: povinnosti pre vysokorizikové systémy z prílohy III sa uplatňujú od 2. decembra 2027, tie pre systémy zabudované do výrobkov z prílohy I od 2. augusta 2028; pravidlá pre GPAI, transparentnosť a zakázané praktiky si ponechali dátumy. <span class="tag tag-reported">hlásené</span> Do konca roka 2027 sa spúšťač vymáhania v EÚ vyššie môže spustiť len pri povinnostiach, ktoré ostali v harmonograme.
 
-#### 429 li
+#### 428 li
 <span class="tag tag-moved">Aktualizácia</span> <strong>Medzera v jednom prieskume.</strong> <span class="tl-date">august 2026 &middot;</span> McKinsey, State of AI 2026: 88 % organizácií používa AI aspoň v jednej funkcii, 37 % hlási akýkoľvek vplyv na EBIT, 6 % spĺňa kritériá &bdquo;špičkových&ldquo;. <span class="tag tag-reported">hlásené</span> Ten pomer 88 ku 6 je tento prúd v jednej vete.
 
-#### 430 li
+#### 429 li
 <span class="tag tag-moved">Posunuté</span> <strong>Vláda sa v spore NYT v. OpenAI postavila na stranu.</strong> <span class="tl-date">september 2026 &middot;</span> Po podaní argumentov k skrátenému konaniu podalo ministerstvo spravodlivosti stanovisko podporujúce pozíciu OpenAI o fair use; rozhodnutie zatiaľ nie je. <span class="tag tag-reported">hlásené</span> Autorskoprávna podlaha stále stúpa na vyrovnaniach (Bartz 1,5 mld. $; hudobné majory si v auguste vzali podiel v Stability AI), nie na precedense.
 
-#### 431 h3
+#### 430 h3
 Dôsledky podľa roly
 
-#### 432 div class=impl-role
+#### 431 div class=impl-role
 Vývojár
 
-#### 433 div class=impl-text
+#### 432 div class=impl-text
 Spoľahlivosť a pozorovateľnosť porážajú naháňanie schopností. Investujte do testovacích postrojov, behaviorálnych testov a nástrojov na kontrolu výstupov skôr, než sa to zdá potrebné.
 
-#### 434 div class=impl-role
+#### 433 div class=impl-role
 Vedúci tímu
 
-#### 435 div class=impl-text
+#### 434 div class=impl-text
 Obsadzujte roly vyhodnocovania a red-teamingu ako prvotriedne, nie ako &bdquo;niečiu vedľajšiu zodpovednosť&ldquo;. Most do produkcie je väčšinou testovacia práca.
 
-#### 436 div class=impl-role
+#### 435 div class=impl-role
 CTO / VP Eng
 
-#### 437 div class=impl-text
+#### 436 div class=impl-text
 Nekopírujte svoju organizačnú schému MLOps. Preváž z dátového inžinierstva na inžinierstvo vyhodnocovania. Nákladová krivka nasadenia má iný tvar.
 
-#### 438 div class=impl-role
+#### 437 div class=impl-role
 Nákup
 
-#### 439 div class=impl-text
+#### 438 div class=impl-text
 Vyžadujte od dodávateľov, aby spolu s modelom dodali nástroje na vyhodnocovanie a monitorovanie. Zohľadnite májový odklad omnibusu v rozpočtoch na súlad, ale neuberajte z pripravenosti.
 
-#### 440 p class=credits
+#### 439 p class=credits
 Dáta: rebríčky SWE-Lancer / SWE-Bench &bull; metaanalýza medicínskej AI (83 štúdií) &bull; podnikové prieskumy Deloitte 2026, Accenture, MIT NANDA &bull; AI Act EÚ + Digitálny omnibus (máj 2026) &bull; vyrovnanie Bartz v. Anthropic
 
-#### 441 div class=chapter-label
+#### 440 div class=chapter-label
 Prúd 6
 
-#### 442 h2
+#### 441 h2
 Hodiny a doláre <br><span class="chapter-question">&bdquo;Dve jednotky, ktoré rozhodnú o vytláčaní&ldquo;</span>
 
-#### 443 div class=card-label
+#### 442 div class=card-label
 Téza
 
-#### 444 div class=card-text
+#### 443 div class=card-text
 Schopnosť sa stáva funkciou dvoch vecí, ktoré zamestnávatelia naozaj vedia zmerať: <strong>koľko hodín dokáže agent pracovať nerušene</strong> a <strong>koľko stojí za hodinu</strong> v porovnaní s človekom, ktorého by nahradil. Oboje sa rýchlo zlepšuje. Počty parametrov a MMLU do rozhovoru nevstupujú.
 
-#### 445 div class=card-label
+#### 444 div class=card-label
 Riziko
 
-#### 446 div class=card-text
+#### 445 div class=card-text
 Divadelné demá druhú jednotku nadhodnocujú. Roje podagentov a 12-hodinové behy stavajúce OS sú ilustratívne, zatiaľ nie prevádzkové vo veľkom. Hromadenie chýb stále zabíja dlhé pracovné postupy v produkcii. SWE-bench 94 % / SWE-Lancer 26 % ostáva varovným rozdielom.
 
-#### 447 p
+#### 446 p
 
       Prestaňte sa hádať o benchmarkoch IQ. Krivka vytláčania, ktorú treba sledovať, má na osi X hodiny nerušenej práce a na osi Y náklady na hodinu autonómnej úlohy. Takto zamestnávateľ nacení agenta proti človeku.
 
 
-#### 448 div class=kn-value
+#### 447 div class=kn-value
 8 h+
 
-#### 449 div class=kn-label
+#### 448 div class=kn-label
 Cieľový prah: jeden nerušený deň znalostného pracovníka
 
-#### 450 div class=kn-value
+#### 449 div class=kn-value
 ~3 mes.
 
-#### 451 div class=kn-label
+#### 450 div class=kn-label
 Zdvojnásobovanie podľa METR od 2024 (TH 1.1, jan 2026)
 
-#### 452 div class=kn-label
+#### 451 div class=kn-label
 Miera automatizácie RLI, Fable 5, júl 2026 (2,5 % pri štarte)
 
-#### 453 div class=kn-value
+#### 452 div class=kn-value
 ~8 $ / h
 
-#### 454 div class=kn-label
+#### 453 div class=kn-label
 Autonómne programovanie Opus 4.7 (mierna záťaž, ~1M tok./h)
 
-#### 455 div class=kn-value
+#### 454 div class=kn-value
 ~16 $ / h
 
-#### 456 div class=kn-label
+#### 455 div class=kn-label
 Fable 5 rovnaký pracovný postup (2&times; cena, ~2&times; schopnosť podľa RLI)
 
-#### 457 div class=kn-value
+#### 456 div class=kn-value
 130&ndash;245 $ / h
 
-#### 458 div class=kn-label
+#### 457 div class=kn-label
 Plne zaťažený senior vývojár v USA (EÚ: 100&ndash;150 &euro;/h)
 
-#### 459 p
+#### 458 p
 
       Dnes stojí hodina autonómneho programovania frontier modelom Opus zhruba o rád menej než ľudská hodina, ktorú by nahradila, pred réžiou kontroly. Po réžii kontroly a opakovaniach je čistá medzera užšia, ale stále dosť široká na to, aby na nej záležalo.
 
 
-#### 460 h4
+#### 459 h4
 Dve jednotky
 
-#### 461 p
+#### 460 p
 Rozhovor o schopnostiach AI sa mení, lebo ľudia, ktorí schopnosti kupujú, nie sú výskumníci benchmarkov. Zamestnávateľov nezaujíma, či model pridal dva body na MMLU. Zaujímajú ich dve čísla. Po prvé: <strong>koľko hodín dokáže agent na niečom autonómne pracovať, kým musí zasiahnuť človek</strong>. Po druhé: <strong>koľko hodina tej autonómnej práce stojí</strong>, v API tokenoch alebo výpočtovom výkone, v porovnaní s plne zaťaženou hodinovou sadzbou človeka, ktorý by to inak robil. Tieto dve čísla, vynásobené, sú matematika vytláčania. Prvé sa pozorovateľne zlepšuje v tempe zdvojnásobenia zhruba každé štyri mesiace. Druhé kolabuje na krivke, ktorú pokrýva časť 2. Súčin tých dvoch rozhodne, ktorá práca sa presunie a ktorá nie.
 
-#### 462 h4
+#### 461 h4
 Kde je autonómia dnes
 
-#### 463 p
+#### 462 p
 Prvá jednotka už nie je hypotetická. Pozorovateľné výstupy k polovici roka 2026: Claude Code bežne prevádzkuje viachodinové autonómne sedenia programovania; Computer Use od Anthropicu dovolí agentovi priamo ovládať plochu; Cursor (s Composerom 2.5) a Windsurf (s pribaleným Devin Cloud) predávajú agentné programovanie na hodiny, nie na demá. Google predviedol Antigravity 2.0 tak, že 93 podagentov vygenerovalo 2,6 miliardy tokenov na postavenie jadra frameworku operačného systému za zhruba 12 hodín: divadlo, áno, ale výstup existoval. Gemini Spark, oznámený na I/O 19. mája, je osobný agent, ktorý beží v cloude 24/7, aj keď je zariadenie používateľa vypnuté. Funkcia &bdquo;Dreaming&ldquo; od Anthropicu dáva modelom konsolidáciu pamäte naprieč dlho bežiacou prácou. Žiadny z týchto nástrojov zatiaľ spoľahlivo neprekročí prah 8 hodín nerušenej práce, ale viaceré vedia v úzkych doménach udržať hodiny užitočnej autonómnej práce. To pred rokom neplatilo.
 
-#### 464 h4
+#### 463 h4
 Porovnanie nákladov
 
-#### 465 p
+#### 464 p
 Rámcovanie vytláčania funguje len vtedy, ak sa druhá jednotka zoradí s prvou. Vezmite reprezentatívnu úlohu znalostného pracovníka, ktorá senior praktikovi zaberie asi osem hodín: stredne zložitý programátorský tiket s testami alebo štruktúrovanú analýzu so syntézou dokumentov. Dnešná matematika, s cenami z mája 2026 a pozorovanou telemetriou tokenov Claude Code:
 
-#### 466 li
+#### 465 li
 <strong>Claude Opus 4.7</strong> za 5 $ vstup / 25 $ výstup na milión tokenov. Mierne zaťažený autonómny agent na programovanie spáli rádovo <strong>1M tokenov za hodinu</strong> (typicky ~700K vstup, ~300K výstup, s väčšinou vstupu v cache). Pri cene cachovaného vstupu to vychádza zhruba na <strong>8 $ za agentnú hodinu</strong>. 8-hodinový autonómny beh vychádza na <strong>65&ndash;80 $</strong>. Ťažká autonómna záťaž s mnohými nástrojmi tlačiaca 3&ndash;5M tokenov za hodinu posúva hodinové náklady do rozsahu <strong>25&ndash;45 $</strong>.
 
-#### 467 li
+#### 466 li
 <strong>Claude Sonnet 4.6</strong> za 3 $ vstup / 15 $ výstup na milión tokenov. Rovnaká záťaž pri miernom zaťažení: zhruba <strong>5 $ za agentnú hodinu</strong> (samotných ~300K výstupných tokenov stojí 4,50 $); 8-hodinový beh vychádza na <strong>35&ndash;45 $</strong>. Ťažká záťaž dosahuje <strong>15&ndash;25 $</strong> za hodinu.
 
-#### 468 li
+#### 467 li
 <strong>Claude Fable 5</strong> (aktualizácia júl 2026) za 10 $ vstup / 50 $ výstup na milión tokenov, po stiahnutí iba cez API. Rovnaká mierna záťaž: zhruba <strong>16 $ za agentnú hodinu</strong> (samotných ~300K výstupných tokenov stojí 15 $); 8-hodinový beh vychádza na <strong>130&ndash;160 $</strong>. Prémia je nacenená proti nameranej schopnosti; pozri &bdquo;Čo cena Fable 5 robí s matematikou&ldquo; nižšie.
 
-#### 469 li
+#### 468 li
 <strong>Porovnávací senior vývojár</strong>: v USA plne zaťažené hodinové náklady typicky vychádzajú na <strong>130&ndash;245 $</strong> za hodinu (základ 110&ndash;175 $ plus 20&ndash;40 % za benefity, dane, réžiu). V západnej Európe ekvivalent vychádza na <strong>100&ndash;150 &euro;</strong> plne zaťažených; v strednej a východnej Európe zhruba polovicu. Za 8-hodinový deň je to <strong>1 000&ndash;2 000 $</strong> v USA / <strong>800&ndash;1 200 &euro;</strong> v západnej EÚ.
 
-#### 470 p
+#### 469 p
 Surový pomer, pred akoukoľvek réžiou, je pozoruhodný: autonómna hodina Opus 4.7 stojí <strong>zhruba 15&ndash;30&times;</strong> menej než hodina senior vývojára v USA, ktorú by nahradila; autonómna hodina Sonnet 4.6 zhruba 30&ndash;50&times; menej; aj hodina Fable 5, najdrahšia agentná hodina na trhu, vychádza zhruba 8&ndash;15&times; pod ľudský komparátor. Väčšina pozorovateľov sa tu zastaví, nadchne sa a dôjde k nesprávnemu záveru. Poctivé číslo pridáva réžiu kontroly a opakovaní: každá autonómna hodina dnes realisticky potrebuje zhruba 20&ndash;40 minút ľudského dohľadu, vyhodnocovacích behov a cyklov opakovania, kým sa práca dodá. Táto réžia stláča efektívnu medzeru na niečo skôr ako <strong>3&ndash;10&times;</strong> lacnejšie pri správnom pracovnom postupe a na nulu alebo horšie pri pracovných postupoch, kde sa model stále zasekáva.
 
-#### 471 p
+#### 470 p
 Časť 2 vysvetľuje, prečo sa podkladová medzera v tokenoch uzatvára rýchlejšie, než ľudia čakajú: náklady na inferenciu ekvivalentnú špičke klesli za dva roky o ~99 % a aprílová vlna otvorených váh 2026 (DeepSeek V4-Pro za 0,28 $/2,48 $ na milión tokenov) je ďalší faktor 10 pod platenou špičkou. Bod zlomu pre akýkoľvek konkrétny pracovný postup závisí najmä od dvoch vecí: koľko réžie ľudského dohľadu stále potrebuje a aký je plne zaťažený komparátor vo vašej geografii. Vyberte si jeden pracovný postup, ktorý váš tím naozaj robí. Odhadnite obe čísla. Sledujte pomer kvartálne. Ten pomer, viac než akýkoľvek benchmark, vám povie, kedy sa vytláčanie stane ekonomickým.
 
-#### 472 h4
+#### 471 h4
 Dátový bod od METR
 
-#### 473 p
+#### 472 p
 Jeden podporný dátový bod stojí za to držať na očiach. METR (Model Evaluation &amp; Threat Research) publikuje meraný benchmark s názvom <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">Time Horizon</a>: dĺžka ľudskej práce, ktorú model dokáže dokončiť s 50-percentnou spoľahlivosťou. Ich dátová sada 2019&ndash;2025 ukazovala, že špička sa zdvojnásobuje zhruba každých 7 mesiacov. Ich aktualizácia TH 1.1 (január 2026) rozšírila sadu úloh o tretinu a zdvojnásobila počet úloh na 8+ hodín; merané od roku 2024 vychádza čas zdvojnásobenia blízko <strong>3 mesiacov</strong> (89 dní). Kotvy sa hýbu rýchlo: Claude 3.7 Sonnet (začiatok 2025) sedel okolo horizontu 50 minút, kým pilot METR s frontier laboratóriami z februára&ndash;marca 2026 hlásil najsilnejších agentov <em>blízko alebo za spoľahlivým meracím rozsahom samotného benchmarku</em>. Ak ~3&ndash;4-mesačné zdvojnásobovanie vydrží, frontier modely prekročia 8-hodinový prah koncom roka 2026 alebo začiatkom 2027; pravítko sa môže minúť skôr než kalendár. Ak sa presadí staršie 7-mesačné tempo, posúva sa to k roku 2028. Tak či onak, vstupom do krivky vytláčania je trajektória, nie titulkové číslo.
 
-#### 474 h4
+#### 473 h4
 Remote Labor Index: vytláčanie dostalo rebríček
 
-#### 475 p
+#### 474 p
 K júlu 2026 má tento prúd nástroj, ktorý mu chýbal. <a href="https://www.remotelabor.ai/"><strong>Remote Labor Index</strong></a> (Center for AI Safety a Scale AI) je postavený zo skutočných zadaných freelance projektov: vyše 6 000 hodín profesionálnej práce v hodnote vyše 140 000 dolárov naprieč ôsmimi doménami od CAD a architektúry po dátovú analýzu a animáciu. Jeho metrikou je presne otázka tejto kapitoly v podobe benchmarku: <em>miera automatizácie</em>, podiel projektov, kde je výstup AI agenta posúdený ako rovnako dobrý ako výstup plateného profesionála. Na rozdiel od SWE-bench či MMLU sú jednotkami doláre a dodávky, nie body.
 
-#### 476 p
+#### 475 p
 Doterajšia krivka: 2,5 % pri štarte koncom roka 2025; 4,17 % na jar (Opus 4.6 bežiaci v agentnom lešení); potom 1. júla 2026 CAIS publikoval prvý výsledok triedy Mythos: <strong>Fable 5 na 16,1 %</strong> (merané na 218 z 240 projektov pred dopadom obmedzení prístupu), zhruba dvojnásobok 8,3 % Opus 4.8, s GPT-5.5 na 6,3 %. Špička sa za necelých osem mesiacov viac než zoštvornásobila. Dve čítania toho čísla sú súčasne pravdivé a na oboch záleží. Pesimistické čítanie: 84 % skutočných, platených projektov práce na diaľku sa stále nedá zautomatizovať od začiatku do konca a aj titulkové výstupy by sa často nedali dodať ako hotová klientska práca; to je medzera medzi laboratóriom a produkciou z Prúdu 5, meraná vo faktúrach. Čítanie ako trajektória: toto je zdvojnásobovacie tempo METR objavujúce sa v nástroji denominovanom v dolároch a prevádza jednotku &bdquo;hodiny&ldquo; tejto kapitoly na niečo, čo zamestnávateľ vie dať do tabuľky.
 
-#### 477 div class=an-label
+#### 476 div class=an-label
 Poznámka z terénu: moje vlastné hodiny a doláre
 
-#### 478 p
+#### 477 p
 Jeden dátový bod z môjho vlastného stola, datovaný začiatkom júla 2026, za čo stojí. V ére GPT-4 som používal modely ako asistentov: útržok tu, návrh tam, s tým, že skladanie som robil celé ja. Cez generácie Opus sa pomer posunul; model zvládal skutočné úseky práce, kým ja som stále prispieval veľkým podielom úsudku, kontroly a lepidla. S Fable 5 som pocítil, ako jednotka &bdquo;hodiny&ldquo; skočila o úroveň v jedinom vydaní. V týždni, keď vyšlo toto vydanie, sme spolu prestavali väčšinu brožúry a úprimne som mohol celý deň pozerať filmy, kým sa to dialo: model bežal výskum, písanie návrhov, slučky overovania faktov a väčšinu editovania sám. Moje mesačné výdavky rozprávajú ten istý príbeh zo strany dolárov: zhruba 20 dolárov mesačne v ére GPT-4, 200 dolárov mesačne cez generáciu Opus a teraz smerujem hlboko za 500. Nikdy som neplatil mesačne viac a hodina hotovej práce ma nikdy nestála menej. Tento bod zlomu, pocítený pri jednom stole, je celý tento prúd v miniatúre.
 
-#### 479 h4
+#### 478 h4
 Čo cena Fable 5 robí s matematikou
 
-#### 480 p
+#### 479 p
 Júnové frontier vydanie pohlo aj druhou jednotkou, nahor, a preto čísla tejto časti potrebujú nový základ. Fable 5 štartoval na 10 $ vstup / 50 $ výstup na milión tokenov, dvojnásobok Opus 4.7 na oboch meračoch, a jeho dostupnosť po stiahnutí je iba cez API so silnou vrstvou moderovania. Rovnaká mierna autonómna záťaž (~1M tokenov za hodinu) vychádza zhruba na <strong>16 $ za agentnú hodinu</strong>; samotných ~300K výstupných tokenov stojí 15 $. Ale naceňte obe strany obchodu: pri zhruba 2&times; cene dosahuje zhruba 2&times; mieru automatizácie RLI oproti Opus 4.8, takže <em>schopnosť na dolár na samom vrchole ostala rovnaká alebo lepšia, aj keď absolútna cena vzrástla</em>. Toto je dvojpruhový trh z Prúdu 2 videný zo stoličky kupujúceho: frontier pruh si účtuje prémiu, ktorá zatiaľ kupuje merateľne viac hotovej práce na dolár pri najťažších úlohách, kým jednu úroveň nižšie komoditný pruh ďalej kolabuje k nákladom na hardvér.
 # SK segments of scenario-planning (part 3)
 
-#### 481 h4
+#### 480 h4
 Čo z toho vyplýva pre capex
 
-#### 482 p
+#### 481 p
 Ak sú &bdquo;hodiny autonómnej práce&ldquo; správna os schopností, obraz capexu z časti 1 mení tvar. <strong>Tréningová</strong> časť výdavkov hyperškálových firiem (najväčšie predtréningové behy) sa sama osebe ťažšie obhajuje; menšie modely so silným post-tréningom, RL a používaním nástrojov sa pri mnohých pracovných postupoch vyrovnajú schopnostiam väčších. <strong>Inferenčná</strong> časť, projektovaná na zhruba 75 % dopytu po výpočtovom výkone AI do roku 2030 <a href="https://www.brookfield.com/sites/default/files/documents/Brookfield_Building_the_Backbone_of_AI.pdf"><span class="tag tag-reported">hlásené</span></a>, sa stáva <em>viac</em> odôvodnenou, lebo každý dlho bežiaci agent je inferenčná záťaž s mnohými tokenmi, mnohými volaniami a často mnohými hodinami. Uvažujúce modely s rozšíreným myslením môžu použiť 10&ndash;100&times; viac tokenov na úlohu než chatové modely. Capex ostáva odôvodnený; posúva sa jeho rozdelenie medzi tréning a obsluhu.
 
-#### 483 div class=kn-label
+#### 482 div class=kn-label
 Miera automatizácie RLI (Fable 5); špička &gt;4&times; za 8 mesiacov
 
-#### 484 div class=kn-value
+#### 483 div class=kn-value
 5&ndash;16 $ / h
 
-#### 485 div class=kn-label
+#### 484 div class=kn-label
 Agentná hodina, Sonnet 4.6 &rarr; Fable 5 (mierna, ~1M tok./h)
 
-#### 486 div class=kn-label
+#### 485 div class=kn-label
 Plne zaťažený hodinový komparátor senior vývojára v USA
 
-#### 487 div class=kn-label
+#### 486 div class=kn-label
 Čistá medzera vytláčania po réžii kontroly a opakovaní
 
-#### 488 div class=kn-label
+#### 487 div class=kn-label
 SWE-bench Verified vs SWE-Lancer (produkčná medzera)
 
-#### 489 h3
+#### 488 h3
 Spúšťacie signály: čo sledovať
 
-#### 490 li
+#### 489 li
 8h+ nerušenej autonómie na sade úloh v štýle RLI alebo METR pri <strong>čistých nákladoch agenta pod 25 % plne zaťaženého ľudského komparátora</strong> po réžii kontroly a opakovaní (dnes je hrubá medzera veľká; čistá sa uzavrie, keď klesne réžia dohľadu)
 
-#### 491 li
+#### 490 li
 Meraná miera automatizácie v štýle RLI prekročí <strong>25 %</strong> na zverejnenej sade úloh, ďalší nabíjací prah po júlových 16,1 %
 
-#### 492 li
+#### 491 li
 Pomenovaný podnik zverejní viacdňový agentný pracovný postup bežiaci v produkcii s údajmi o nákladoch alebo návratnosti: na hovore k výsledkom, v číslovanej prípadovej štúdii alebo v auditovanej správe
 
-#### 493 li
+#### 492 li
 Hyperškálová firma zverejní podiel inferencie na capexe do AI alebo na hovore k výsledkom uvedie, že výdavky na inferenciu už prevyšujú výdavky na tréning
 
-#### 494 li
+#### 493 li
 Dodávateľ zverejní vlastný benchmark nákladov agenta na hodinu popri benchmarkoch presnosti (RLI dnes dodáva verziu od tretej strany; tento spúšťač je <em>dodávateľovo vlastné</em> zverejnenie)
 
-#### 495 li
+#### 494 li
 Protispúšťač: čisté náklady agenta na hodinu (po réžii dohľadu) ostanú nad ľudským komparátorom pri reprezentatívnych úlohách dve po sebe idúce frontier vydania
 
-#### 496 div class=tl-label
+#### 495 div class=tl-label
 Denník spúšťačov &middot; vydanie júl 2026, aktualizované september 2026
 
-#### 497 li
+#### 496 li
 <span class="tag tag-fired">Spustené</span> <strong>Vytláčanie dostalo rebríček a špička sa na ňom zoštvornásobila.</strong> <span class="tl-date">1. júla 2026 &middot;</span> CAIS publikoval Fable 5 s mierou automatizácie RLI 16,1 % (218/240 projektov, merané pred dopadom obmedzení prístupu): zhruba 2&times; Opus 4.8, vyše 4&times; publikovaný líder spred ôsmich mesiacov. Prvý v dolároch denominovaný nástroj tretej strany pre dve jednotky tohto prúdu je živý a rýchlo sa hýbe. Ďalší nabíjací prah: 25 %.
 
-#### 498 li
+#### 497 li
 <span class="tag tag-fired">Potvrdené</span> <strong>Zdvojnásobovacie tempo vydržalo a môže byť rýchlejšie.</strong> <span class="tl-date">jan&ndash;mar 2026 &middot;</span> TH 1.1 od METR kladie zdvojnásobovanie od roku 2024 blízko 3 mesiacov a ich jarný pilot hlásil frontier agentov blízko alebo za spoľahlivým meracím rozsahom benchmarku. Prvá jednotka (hodiny) sa hýbe na rýchlom konci predpokladov tejto kapitoly.
 
-#### 499 li
+#### 498 li
 <span class="tag tag-notyet">Zatiaľ nie</span> <strong>Benchmarky nákladov na hodinu.</strong> Žiadny veľký dodávateľ zatiaľ nezverejňuje náklady agenta na hodinu popri presnosti. RLI dodáva verziu od tretej strany, ale svoju vlastnú si stále musíte vypočítať, čo je presne to, o čo vás žiada karta vedúceho tímu nižšie.
 
-#### 500 li
+#### 499 li
 <span class="tag tag-moved">Aktualizácia</span> <strong>Lacnejšie na špičke, na tom istom základe.</strong> <span class="tl-date">1. september 2026 &middot;</span> Fable 5.1 je ten istý model ako Fable 5 s inými ochrannými opatreniami; Anthropic uvádza o ~25 % nižšie náklady pri bežných záťažiach (45 % pri silne agentných), skóre v agentnom kódovaní zo 42 % na 56&ndash;61 % a v agentnom vedeckom výskume z 24,7 % na 52,6 % vo vlastných vyhodnoteniach. <span class="tag tag-reported">hlásené</span> Čísla dodávateľa, takže čítajte ako smer, nie veľkosť. RLI od júla nebežal znovu; prah nabitia 25 % naň čaká.
 
-#### 501 li
+#### 500 li
 <span class="tag tag-moved">Pozorované</span> <strong>Hodiny vo veľkom, s cenovkou.</strong> <span class="tl-date">8. september 2026 &middot;</span> Výsledok pri Navierových&ndash;Stokesových rovniciach (Prúd 1) bežal zhruba 10 000 agentov 88 hodín, okolo 880 000 agentohodín, za uvádzané náklady &bdquo;niekoľko miliónov dolárov&ldquo;. <span class="tag tag-reported">hlásené</span> To je prvé verejné číslo agentohodín na výsledok v špičkovom meradle: pár dolárov za agentohodinu, na probléme, ktorý odolával storočiu ľudských hodín. Spúšťač nákladov na hodinu vyššie stále čaká na dodávateľa, ktorý ich zverejní vedľa presnosti.
 
-#### 502 li
+#### 501 li
 <span class="tag tag-notyet">Zatiaľ nie</span> <strong>Čerstvé meranie METR.</strong> Medzi júlom a touto aktualizáciou nevyšlo žiadne nové meranie časového horizontu; trojmesačné zdvojnásobenie ostáva posledným dátovým bodom.
 
-#### 503 h3
+#### 502 h3
 Dôsledky podľa roly
 
-#### 504 div class=impl-role
+#### 503 div class=impl-role
 Vývojár
 
-#### 505 div class=impl-text
+#### 504 div class=impl-text
 Spoľahlivosť a pozorovateľnosť záležia viac než šikovnosť promptov. Logika opakovania, priebežné kontrolné body, audítorské stopy volaní nástrojov. Ťažká časť je dlhý chvost, nie šťastná cesta.
 
-#### 506 div class=impl-role
+#### 505 div class=impl-role
 Vedúci tímu
 
-#### 507 div class=impl-text
+#### 506 div class=impl-text
 Vyberte jeden reprezentatívny tímový pracovný postup. Odhadnite (a) autonómne hodiny, (b) $/h agenta (dnes ~16 $ Fable 5 / ~8 $ Opus / ~5 $ Sonnet plus vaša réžia dohľadu), (c) plne zaťaženú ľudskú hodinovú sadzbu. Sledujte ten pomer kvartálne; je to vaša krivka vytláčania.
 
-#### 508 div class=impl-role
+#### 507 div class=impl-role
 CTO / VP Eng
 
-#### 509 div class=impl-text
+#### 508 div class=impl-text
 Plánujte s inferenčne náročnými záťažami. Rozpočet a architektúra by mali predpokladať agentné pracovné postupy s 10&ndash;100&times; viac tokenmi na úlohu, nie chat.
 
-#### 510 div class=impl-role
+#### 509 div class=impl-role
 Nákup
 
-#### 511 div class=impl-text
+#### 510 div class=impl-text
 Hodnotenie dodávateľov by malo zahŕňať benchmarky úloh s dlhým horizontom a náklady na hodinu, nie iba skóre na jeden prompt. Pýtajte si dáta o spoľahlivosti v produkcii, nie iba pozície v rebríčkoch.
 
-#### 512 p class=credits
+#### 511 p class=credits
 Dáta: METR Time Horizons (TH 1.0 mar 2025, TH 1.1 jan 2026) &bull; Remote Labor Index (CAIS / Scale AI, remotelabor.ai, júl 2026) &bull; rebríčky SWE-bench Verified / SWE-Lancer &bull; opisy dema Antigravity 2.0 &bull; ceny API Anthropicu (máj&ndash;júl 2026) &bull; telemetria používania Claude Code &bull; prieskumy hodinových sadzieb vývojárov Index.dev / MarsDevs 2026
 
-#### 513 div class=chapter-label
+#### 512 div class=chapter-label
 Prúd 7
 
-#### 514 h2
+#### 513 h2
 Fyzický substrát <br><span class="chapter-question">&bdquo;Udržia atómy krok s bitmi?&ldquo;</span>
 
-#### 515 div class=card-label
+#### 514 div class=card-label
 Téza
 
-#### 516 div class=card-text
+#### 515 div class=card-text
 Každý ďalší prúd v tejto brožúre potichu predpokladá, že atómy sa dostavia. ~730 mld. $ capexu na rok 2026 je nárok na fyzické veci: pokročilé wafery z jedného ostrova, pamäť s vysokou priepustnosťou od troch dodávateľov, gigawatty zo siete, ktorej rad na pripojenie sa meria v rokoch. Záväzné obmedzenie sa presúva z kapitálu na <strong>fyziku a povolenia</strong>: peniaze prestali byť vzácnym vstupom skôr než wafery a megawatty.
 
-#### 517 div class=card-label
+#### 516 div class=card-label
 Riziko
 
-#### 518 div class=card-text
+#### 517 div class=card-text
 Diskontinuitou je koncentrácia. TSMC vyrába zhruba 90 % najpokročilejšej logiky sveta (fakticky všetky akcelerátory, na ktorých sa trénujú frontier modely) za jedným prielivom, jednou technológiou balenia, jedným pamäťovým oligopolom. Narušenie Taiwanu je jediná udalosť, ktorá by spustila spúšťače vo všetkých siedmich ostatných prúdoch naraz, a tento prúd sa hýbe skokmi, nie krivkami. Protiriziko: pesimisti prispôsobenie už podcenili a výroba na mieste, diverzifikované fabriky a zisky efektivity z Prúdu 2 tlačia späť.
 
-#### 519 p
+#### 518 p
 
       Dekodér datuje peniaze na schopnosť. Tento prúd sa pýta, či fyzický stred tej pipeline (fabriky, balenie, pamäť, energia, povolenia) dokáže naozaj vykonať harmonogram, ktorý peniaze predpokladajú. Vyhrávajú najpomalšie hodiny.
 
 
-#### 520 div class=kn-label
+#### 519 div class=kn-label
 Najpokročilejších logických čipov vyrobených TSMC
 
-#### 521 div class=kn-value
+#### 520 div class=kn-value
 ~2 300 GW
 
-#### 522 div class=kn-label
+#### 521 div class=kn-label
 Výroba + úložiská čakajúce v amerických radoch na pripojenie k sieti (LBNL)
 
-#### 523 div class=kn-value
+#### 522 div class=kn-value
 3&times; na strope
 
-#### 524 div class=kn-label
+#### 523 div class=kn-label
 Po sebe idúce kapacitné aukcie PJM uzavreté na cenovom strope (333 $/MW-deň, dec 2025)
 
-#### 525 div class=kn-label
+#### 524 div class=kn-label
 Návrhy zákonov o dátových centrách podané v 30+ štátoch, prvých šesť týždňov 2026
 
-#### 526 div class=kn-value
+#### 525 div class=kn-value
 61,8&rarr;134 GW
 
-#### 527 div class=kn-label
+#### 526 div class=kn-label
 Dopyt amerických dátových centier po sieti, 2025&rarr;2030 (451 Research)
 
-#### 528 p
+#### 527 p
 
       Päť kotiev: jedna koncentrácia, jeden rad, jeden cenový signál, jedna politická vlna, jedna krivka dopytu.
 
 
-#### 529 h4
+#### 528 h4
 Nesúlad bitov a atómov
 
-#### 530 p
+#### 529 p
 Každá časová mierka v <a href="#decoder">dekodéri capexu</a> je v skutočnosti fyzická časová mierka vo finančnom kostýme. Postaviť fabriku na najmodernejšie čipy trvá tri až päť rokov. Pripojenie k sieti v gigawattovom rozsahu môže v preťažených regiónoch trvať väčšinu desaťročia. Dátové centrum trvá 12&ndash;24 mesiacov, ak energia už je. Frontier tréningový beh trvá mesiace. Čistá aritmetika dekodéra (peniaze v roku N, schopnosť v roku N+2 až N+4) platí len dovtedy, kým sa najpomalšie z tých hodín nezošmyknú. Tento prúd hodiny sleduje.
 
-#### 531 h4
+#### 530 h4
 Energia: rad je priekopa
 
-#### 532 p
+#### 531 p
 <a href="https://emp.lbl.gov/publications/queued-2025-edition-characteristics">Sledovač radov</a> Lawrence Berkeley National Laboratory počíta zhruba 2 300 gigawattov výroby a úložísk čakajúcich na pripojenie k americkej sieti, takmer dvojnásobok celej inštalovanej kapacity krajiny, s typickým čakaním meraným v rokoch. Medzitým sa strana dopytu úročí: <a href="https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers">energetická správa LBNL/DOE</a> má dátové centrá na 4,4 % americkej elektriny v roku 2023, s projekciou 6,7&ndash;12 % do roku 2028, a 451 Research má dopyt dátových centier po sieti viac než zdvojnásobený zo 61,8 GW v roku 2025 na 134 GW do roku 2030. Trh už zrážku nacenil. PJM, prevádzkovateľ siete pre najhustejší koridor dátových centier na svete, dnes <a href="https://insidelines.pjm.com/pjm-auction-procures-134479-mw-of-generation-resources/">uzavrel tri po sebe idúce kapacitné aukcie na regulačnom cenovom strope</a>; decembrová aukcia 2025 sa vyrovnala na 333,44 $/MW-deň a bez stropu by sa uzavrela blízko 530 $, pričom trhový monitor pripisuje dátovým centrám ako primárnemu hnaciemu faktoru zhruba 40 % z 16,4 miliardy dolárov nákladov tej aukcie. Preto hyperškálové firmy kupujú elektrárne, nie elektrinu: reštart bloku 1 Three Mile Island (dnes Crane Clean Energy Center) existuje, lebo Microsoft podpísal 20-ročnú zmluvu na všetkých jeho 835 MW, a smeruje k reštartu v druhej polovici roka 2027, rok pred pôvodným plánom. Prvý americký jadrový reaktor privedený späť z dôchodku špecificky na kŕmenie AI je fakt, ktorý by verzia tohto odvetvia z roku 2015 považovala za neuveriteľný.
 
-#### 533 h4
+#### 532 h4
 Čipy: jeden ostrov, jeden baliaci závod, traja dodávatelia pamäte
 
-#### 534 p
+#### 533 p
 Kremíková strana sa koncentruje ešte tvrdšie. TSMC vyrába <a href="https://theconversation.com/how-taiwan-came-to-dominate-the-global-chip-industry-276939">zhruba 90 % najpokročilejších logických čipov sveta</a> a jeho pokročilé uzly (tie, ktoré používajú AI akcelerátory) dnes tvoria asi 74 % jeho tržieb z waferov, so zvyšovaním cien naprieč všetkými. Úzke hrdlo v úzkom hrdle je pokročilé balenie: kapacita CoWoS je úplne obsadená s dodacími lehotami 52&ndash;78 týždňov, dopyt sa v roku 2026 blíži k miliónu waferov a samotná Nvidia drží odhadovaných 60 % z toho. Pamäť s vysokou priepustnosťou je oligopol troch dodávateľov, v ktorom SK Hynix drží zhruba 62 %, a HBM3E je na celý rok 2026 fakticky vypredaná. Prečítajte tie tri vety oproti dekodéru: keď sú vstupy schopnosti predpredané 12&ndash;18 mesiacov dopredu, capex prestane byť gombíkom, ktorým otáčate, a stane sa pozíciou v rade, ktorú bránite.
 
-#### 535 h4
+#### 534 h4
 Politika energie dorazila
 
-#### 536 p
+#### 535 p
 Počas roka 2025 bol tento prúd inžinierskym príbehom. V roku 2026 mu rýchlo narástla politická vrstva. V prvých šiestich týždňoch roka bolo vo vyše 30 štátoch podaných vyše 300 návrhov zákonov o dátových centrách (oproti asi 200 návrhom za celý rok 2025), pričom aspoň tucet štátov navrhuje priame moratóriá. Zákonodarný zbor Maine skutočne schválil prvý celoštátny zákaz (LD 307, blokujúci dátové centrá nad 20 MW); guvernérka Millsová ho v apríli vetovala a prelomenie veta zlyhalo o sedem hlasov. Zákonodarný zbor New Yorku schválil vlastné ročné moratórium, ktoré čakalo na podpis, keď toto vydanie išlo do tlače. Vzor, ktorý treba sledovať, nie je jednotlivý zákon, ale smer: maloobchodné účty za elektrinu sa stávajú politickým prenosovým mechanizmom, keďže IEEFA pripisuje 63 % nárastu cien v aukcii PJM 2025/26, nejakých 9,3 miliardy dolárov vymáhateľných od odberateľov, dátovým centrám, a voliči platia maloobchodné účty. Paralelne začala federálna vrstva zaobchádzať so samotným výpočtovým výkonom ako s kontrolovanou látkou: pravidlá účinné od 15. januára 2026 kodifikovali exportnú kontrolu pokročilých AI čipov prípad od prípadu a uložili 25-percentné clo na pokročilé AI čipy neurčené pre americký dodávateľský reťazec. <a href="/mercantilism-of-genai-sk/#m-compute">Kapitola &bdquo;zlato je výpočtový výkon&ldquo; sprievodnej brožúry</a> argumentuje, že presne sem merkantilistická kontrola prirodzene pristáva, lebo koncentrovaný výpočtový výkon je jediný vstup, ktorý nemôže uniknúť.
 
-#### 537 h4
+#### 536 h4
 Prečo je to prúd, nie poznámka pod čiarou k Prúdu 1
 
-#### 538 p
+#### 537 p
 Prúd 1 sa pýta, či peniaze ostávajú <em>správne</em>. Tento prúd sa pýta, či sa peniaze dajú <em>minúť</em>. To sú rôzne režimy zlyhania s rôznymi podpismi: Prúd 1 zlyháva cez sklamanie z modelov, Prúd 3 cez miznúce financovanie a Prúd 7 cez posúvajúce sa dátumy, regionálnu vzácnosť a cenové prémie, ktoré nemajú nič spoločné so schopnosťou. Z pozadia bol na plný prúd povýšený v tomto vydaní, lebo 2026 je rok, keď sa jeho spúšťací povrch stal pozorovateľným: kapacitné aukcie na stropoch, návrhy moratórií v tucte parlamentov, dodacie lehoty balenia presahujúce poldruha roka. Atómy sa stali politickými.
 
-#### 539 div class=kn-value
+#### 538 div class=kn-value
 52&ndash;78 týž.
 
-#### 540 div class=kn-label
+#### 539 div class=kn-label
 Dodacie lehoty pokročilého balenia CoWoS (2026)
 
-#### 541 div class=kn-value
+#### 540 div class=kn-value
 Vypredané
 
-#### 542 div class=kn-label
+#### 541 div class=kn-label
 HBM3E na rok 2026; SK Hynix drží ~62 % HBM
 
-#### 543 div class=kn-value
+#### 542 div class=kn-value
 835 MW
 
-#### 544 div class=kn-label
+#### 543 div class=kn-label
 Reštart bloku 1 TMI, 100 % pre Microsoft (2. polrok 2027)
 
-#### 545 div class=kn-value
+#### 544 div class=kn-value
 9,3 mld. $
 
-#### 546 div class=kn-label
+#### 545 div class=kn-label
 Podiel dátových centier na náraste cien PJM 2025/26, prenesený na odberateľov (IEEFA)
 
-#### 547 div class=kn-label
+#### 546 div class=kn-label
 Americké clo na pokročilé AI čipy opúšťajúce americký dodávateľský reťazec (jan 2026)
 
-#### 548 h3
+#### 547 h3
 Spúšťacie signály: čo sledovať
 
-#### 549 li
+#### 548 li
 Hyperškálová firma na hovore k výsledkom pomenuje energiu, pripojenie k sieti alebo povolenia ako dôvod zníženia capexu alebo oneskorenia pomenovaného projektu o &ge;2 kvartály
 
-#### 550 li
+#### 549 li
 Americký štát <em>prijme</em> celoštátne moratórium na dátové centrá alebo zákaz nad 20 MW: schválený a potom vetovaný LD 307 v Maine a schválený, ale nepodpísaný zákon v New Yorku ukazujú, ako blízko tento spúšťač sedí
 
-#### 551 li
+#### 550 li
 Nvidia, AMD alebo hyperškálová firma na hovore k výsledkom pomenuje alokáciu HBM alebo pokročilého balenia ako faktor brzdiaci dodávky, alebo dodacie lehoty GPU verejne presiahnu 52 týždňov
 
-#### 552 li
+#### 551 li
 Koncentrácia výpočtového výkonu sa stane regulovanou veličinou: pravidlo, prah alebo režim hlásenia mieriaci na veľkosť klastra alebo celkový nasadený výpočtový výkon ako taký (<a href="/mercantilism-of-genai-sk/#bets">stávka 3 sprievodnej brožúry</a>, sledovaná odtiaľto)
 
-#### 553 li
+#### 552 li
 Protispúšťač: &ge;5 GW novej americkej kapacity dátových centier zapojenej za jediný rok cez výrobu za elektromerom alebo na mieste, čo znamená, že rad prestane byť obmedzením
 
-#### 554 div class=tl-label
+#### 553 div class=tl-label
 Denník spúšťačov &middot; vydanie júl 2026, aktualizované september 2026
 
-#### 555 li
+#### 554 li
 <span class="tag tag-fired">Spustené</span> <strong>Politika energie dorazila.</strong> <span class="tl-date">feb&ndash;jún 2026 &middot;</span> 300+ štátnych návrhov zákonov za šesť týždňov; tucet štátov s návrhmi moratórií; prvý zákaz v krajine v Maine schválený, vetovaný a prežil hlasovanie o prelomení veta iba o sedem hlasov; ročné moratórium New Yorku schválené a čaká na podpis; PJM uzavrel tretiu po sebe idúcu aukciu na cenovom strope s dátovými centrami pomenovanými ako primárny hnací faktor. Fyzický substrát má teraz voličskú základňu. Spúšťač prijatia vyššie je jeden podpis od spustenia.
 
-#### 556 li
+#### 555 li
 <span class="tag tag-notyet">Zatiaľ nie</span> <strong>Výpočtový výkon ako regulovaná veličina.</strong> Exportné pravidlá a clo z 15. januára regulujú, kam pokročilé čipy smú <em>ísť</em>, a kontrola stále stúpa po stacku (čipy &rarr; modely, podľa 12. júna), ale žiadne pravidlo zatiaľ nemieri na veľkosť klastra alebo celkový nasadený výpočtový výkon ako taký. Keď pristane, zapíšte ho sem <em>aj</em> do Prúdu 4. <em>September 2026:</em> najkonkrétnejší návrh doteraz prišiel z laboratória, nie zo zákonodarného zboru: šéf Anthropicu 12. septembra žiadal kontrolné body schopností a rýchlostný limit na rekurzívne sebazlepšovanie a limity výpočtového výkonu označil za obíditeľné. Stále to nie je pravidlo.
 
-#### 557 li
+#### 556 li
 <span class="tag tag-fired">Spustené</span> <strong>Prijaté.</strong> <span class="tl-date">14. júl 2026 &middot;</span> Guvernérka štátu New York podpísala výkonný príkaz 62, ročné moratórium na diskrečné environmentálne povolenia pre dátové centrá od 50 MW, prvé celoštátne moratórium v USA; veto v Maine zostalo v platnosti. <span class="tag tag-reported">hlásené</span> Záznam &bdquo;jeden podpis&ldquo; vyššie svoj podpis dostal. FERC 18. júna nariadil všetkým šiestim prevádzkovateľom sústavy odôvodniť alebo reformovať pravidlá pripájania veľkých odberov. <span class="tag tag-reported">hlásené</span>
 
-#### 558 li
+#### 557 li
 <span class="tag tag-moved">Aktualizácia</span> <strong>Rad na turbíny je nový rad na čipy.</strong> <span class="tl-date">22. júl 2026 &middot;</span> Zásobník objednávok plynových turbín GE Vernova dosiahol 116 GW, nové objednávky ťažkých turbín sa ponúkajú s dodaním v roku 2031; zásobník Siemens Energy je 69 GW. Reštart Crane (Three Mile Island) dnes čaká rozhodnutie NRC o licencii v máji 2027. <span class="tag tag-reported">hlásené</span>
 
-#### 559 li
+#### 558 li
 <span class="tag tag-moved">Aktualizácia</span> <strong>Rubin je vo výrobe; rack po ňom sa posunul.</strong> <span class="tl-date">jún&ndash;august 2026 &middot;</span> Vera Rubin od Nvidie vstúpila v júni do výroby s prvými rackmi bežiacimi v Azure a dodávkami partnerom v druhom polroku; Nvidia uvádza 3,5&times; tréningový výkon racku Blackwell. Rack Rubin Ultra &bdquo;Kyber&ldquo; sa podľa správ posúva na rok 2028 (Nvidia to spochybňuje). Tržby z dátových centier za kvartál do 26. júla: 89 mld. $, o 117 % viac, na Blackwell Ultra. <span class="tag tag-reported">hlásené</span> Čo to robí s cyklom schopností, argumentuje septembrový rámček dekodéra.
 
-#### 560 h3
+#### 559 h3
 Dôsledky podľa roly
 
-#### 561 div class=impl-role
+#### 560 div class=impl-role
 Vývojár
 
-#### 562 div class=impl-text
+#### 561 div class=impl-text
 Berte kapacitu ako prvotriedny režim zlyhania, ako rozdelenie siete: regionálne záložné inferencie, dôstojná degradácia pri obmedzení rýchlosti, smerovanie cez viac regiónov. Vzácnosť sa ukáže ako chyby 429 skôr, než sa ukáže v titulkoch.
 
-#### 563 div class=impl-role
+#### 562 div class=impl-role
 Vedúci tímu
 
-#### 564 div class=impl-text
+#### 563 div class=impl-text
 Rezervácie GPU a kapacity dnes nesú obstarávacie lehoty merané v kvartáloch. Dajte ich do projektového plánu ako každú závislosť s dlhou dodacou lehotou: po požiadavkách, pred šprintom.
 
-#### 565 div class=impl-role
+#### 564 div class=impl-role
 CTO / VP Eng
 
-#### 566 div class=impl-text
+#### 565 div class=impl-text
 Náležitá starostlivosť o dodávateľov dnes zahŕňa, kde inferencia fyzicky beží a na akých zmluvách o energii. Spravte jedno stolové cvičenie s taiwanskou udalosťou a zaznamenajte, ktoré z vašich záťaží zomrú prvé; ten zoznam je vaša skutočná expozícia.
 
-#### 567 div class=impl-role
+#### 566 div class=impl-role
 Nákup
 
-#### 568 div class=impl-text
+#### 567 div class=impl-text
 Urobte klauzuly o výpadku alokácie a prenesení nákladov na energiu v AI zmluvách výslovnými. Dodávateľ, ktorý nechce hovoriť o svojej expozícii voči energii a kapacite, z toho robí vaše riziko bez vášho súhlasu.
 
-#### 569 p class=credits
+#### 568 p class=credits
 Dáta: kvartálne správy TSMC &bull; LBNL &bdquo;Queued Up&ldquo; (dec 2025) a US Data Center Energy Usage Report &bull; výsledky kapacitných aukcií PJM / IEEFA / trhový monitor PJM &bull; S&amp;P Global 451 Research &bull; alokácia zlievarní Silicon Analysts Q1 2026 &bull; PPA Constellation&ndash;Microsoft &bull; sledovače legislatívy MultiState / Good Jobs First &bull; pravidlo BIS a proklamácia úč. 15. jan 2026 &bull; Spoločník: <a href="/mercantilism-of-genai-sk/#m-compute">Merkantilizmus generatívnej AI</a> (výpočtový výkon ako zlato)
 
-#### 570 div class=chapter-label
+#### 569 div class=chapter-label
 Prúd 8
 
-#### 571 h2
+#### 570 h2
 Politická ekonómia vytláčania <br><span class="chapter-question">&bdquo;Čo sa stane, keď matematika Prúdu 6 začne fungovať?&ldquo;</span>
 
-#### 572 div class=card-label
+#### 571 div class=card-label
 Téza
 
-#### 573 div class=card-text
+#### 572 div class=card-text
 Prúd 6 sleduje, či matematika vytláčania funguje. Tento prúd sleduje, či jej bude <strong>dovolené fungovať ďalej</strong>. Politika vytláčania sa môže hýbať rýchlejšie než ekonomika vytláčania: jedno čitateľné číslo (RLI práve urobil z mier automatizácie titulkovú štatistiku), jedno zlé leto prepúšťania, jedny voľby, a pravidlá prídu za jediné zasadacie obdobie. Samotní dodávatelia tomu veria: OpenAI navrhuje dane z robotov a verejné fondy bohatstva skôr, než o to ktorákoľvek vláda požiadala.
 
-#### 574 div class=card-label
+#### 573 div class=card-label
 Riziko
 
-#### 575 div class=card-text
+#### 574 div class=card-text
 Odpor môže ostať divadelný. Oficiálne kanály vytláčanie AI sotva zaznamenávajú: jedenásť mesiacov po prvom pravidle o zverejňovaní v krajine v New Yorku nula zo 162 hlásení o hromadnom prepúšťaní zaškrtla políčko AI. Úzkosť v prieskumoch sa nestala volebným správaním a zdaniť &bdquo;prácu AI&ldquo; je definične ťažké: nikto zatiaľ nevie určiť zdaniteľnú jednotku. Tento prúd môže roky tlieť a potom sa pohnúť naraz.
 
-#### 576 p
+#### 575 p
 
       Medzera medzi tým, čo sa deje, a tým, čo je oficiálne zaznamenané, je definujúce meranie tohto prúdu a jeho zápalná šnúra.
 
 
-#### 577 div class=kn-label
+#### 576 div class=kn-label
 Zamestnanosť 22&ndash;25-ročných v profesiách najviac vystavených AI (štúdia ADP / &bdquo;Kanáriky&ldquo;)
 
-#### 578 div class=kn-label
+#### 577 div class=kn-label
 Hlásenia o hromadnom prepúšťaní v NY pripisujúce škrty AI, 11 mesiacov po pravidle o zverejňovaní
 
-#### 579 div class=kn-label
+#### 578 div class=kn-label
 Škrty pracovných miest v USA pripísané AI, jan&ndash;máj 2026 (Challenger), oproti 54 836 za celý rok 2025
 
-#### 580 div class=kn-label
+#### 579 div class=kn-label
 Američania, ktorí očakávajú, že AI v najbližšom desaťročí zníži počet pracovných miest (Gallup/Bentley, 2023)
 
-#### 581 div class=kn-value
+#### 580 div class=kn-value
 500 mil. $+
 
-#### 582 div class=kn-label
+#### 581 div class=kn-label
 Získaných smerom k fondu na rekvalifikáciu RAISE US za 1 mld. $ (jún 2026)
 
-#### 583 p
+#### 582 p
 
       Päť kotiev: signál z trhu práce, medzera v pripisovaní, tlačový súčet, číslo o nálade a odvetvie, ktoré si predpláca politický účet.
 
 
-#### 584 p
+#### 583 p
 Odstráňte štatistiky a tento prúd kladie jednoduchú otázku: keď AI začne robiť skutočnú prácu, čo urobia ľudia, ktorých práca to bola, a politici, ktorí ich zastupujú? Prúd 6 sleduje, či matematika automatizácie funguje. Tento prúd sleduje ľudskú odpoveď na ňu: pracovníci sa organizujú, firmy zatajujú, dodávatelia si potichu predplácajú politické účty, zákonodarcovia hľadajú, čo zdaniť. Príbeh nesú štyri scény.
 
-#### 585 h4
+#### 584 h4
 Kanáriky prestali spievať
 
-#### 586 p
+#### 585 p
 Najčistejší dôkaz, že vytláčanie je skutočné, pochádza zo štúdie Stanford Digital Economy Lab <a href="https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/">&bdquo;Kanáriky v uhoľnej bani&ldquo;</a>, spracovanej na mzdových dátach ADP pokrývajúcich milióny pracovníkov. Jej jadrové zistenie je jednoduché: AI pohlcuje <em>úlohy</em> skôr než pracovné miesta, a najprv vstupné úlohy. Od príchodu generatívnej AI klesla zamestnanosť najmladších pracovníkov (22&ndash;25) v profesiách najviac vystavených AI zhruba o 16 %, kým starší pracovníci v tých istých profesiách v tých istých firmách <em>rástli</em>. Prečítajte si to znova: tá istá firma, ten istý názov pozície, opačné osudy, podľa toho, či vaša denná práca bola vstupný výsek. Nadväzujúci dashboard ukazuje, že pokles sa počas jari 2026 stále zrýchľuje, a Stanford AI Index pridáva najostrejší sektorový rez: zamestnanosť mladých softvérových vývojárov klesla od roku 2024 takmer o 20 %. Toto je ekonomika Prúdu 6 prichádzajúca do mzdových dát, najmladšia kohorta prvá, presne tam, kde matematika hodín a dolárov povedala, že zahryzne.
 
-#### 587 h4
+#### 586 h4
 Pranie pripisovania
 
-#### 588 p
+#### 587 p
 Teraz položte tento dôkaz vedľa oficiálneho záznamu, lebo tie dva rozprávajú opačné príbehy. New York sa stal prvým štátom, ktorý od zamestnávateľov vyžaduje, aby uviedli, či hromadné prepúšťanie spôsobila AI. Po jedenástich mesiacoch nula zo 162 hlásení povedala áno. V tom istom úseku dosiahol priebežný tlačový súčet verejne AI pripísaných škrtov pracovných miest (Challenger, Gray &amp; Christmas) 87 714 za prvých päť mesiacov 2026, viac než za celý rok 2025. Obe čísla môžu byť pravdivé naraz, lebo pripisovanie je voľba: prepúšťanie ohlásené ako &bdquo;reštrukturalizácia&ldquo; je právne čistejšie a reputačne lacnejšie než ohlásené ako &bdquo;automatizácia&ldquo;. Amazon škrtajúci zhruba 30 000 korporátnych pozícií, kým míňa 125 miliárd dolárov na capex do AI, s hlásenými internými plánmi vyhnúť sa asi 600 000 budúcim náborom cez robotiku a AI, je ten istý ťah v najväčšom rozsahu. Plánovací dôsledok je nezvyčajný: <strong>oficiálne štatistiky budú tento prúd systematicky podceňovať</strong>, takže jeho spúšťače musia sledovať iné miesta (medzery v hláseniach, požiadavky odborov, súkromné fondy), nie titulkové čísla.
 
-#### 589 div class=an-label
+#### 588 div class=an-label
 Dve veci, ktoré v praxi stále počúvam
 
-#### 590 p
+#### 589 p
 V mojej konzultačnej a školiacej práci sa neustále objavujú dve presvedčenia o tomto prúde a chcem označiť obe. Prvé je, že dnešný trh práce, najmä v IT, je jednoducho kocovina z prenaberania v covidových rokoch: firmy sa v rokoch 2021&ndash;22 prejedli počtami zamestnancov a to, čo dnes sledujeme, je diéta. Úprimne, neviem, koľko zo súčasného obrazu to vysvetľuje. Je to skutočný efekt. Je to aj veľmi pohodlný príbeh, lebo nevyžaduje, aby ktokoľvek čokoľvek aktualizoval. Čo môžem povedať, je, že mzdové dôkazy vyššie, s najmladšími pracovníkmi v profesiách najviac vystavených AI rozchádzajúcimi sa so staršími kolegami v tých istých firmách, mi nevyzerajú ako covidová korekcia. Covidovej korekcii je jedno, aká je expozícia vašej profesie voči AI.
 
-#### 591 p
+#### 590 p
 Druhé presvedčenie je chyba v myslení o rýchlosti. Ľudia sa kalibrujú na predchádzajúce technologické vlny: marketingovým oddeleniam trvalo asi pätnásť rokov, kým boli prinútené naučiť sa sociálne médiá, takže určite je čas prispôsobiť sa aj tomuto. Myslím, že tie hodiny idú zle. Táto vlna je stlačená z oboch koncov. Na strane ponuky hŕstka hyperškálových firiem tlačí schopnosti von tempom capexovej mašinérie Prúdu 1, s novou úrovňou každých pár rokov a cenami kolabujúcimi medzi úrovňami. Na strane dopytu sedia podniky, ktoré na presne toto čakali desaťročia: na schopnosť automatizovať kreatívnu kancelársku prácu, tie kancelárske úlohy, ktorých sa každá predchádzajúca automatizačná vlna, ktorá siahala väčšinou na manuálnu a rutinnú prácu, nikdy nemohla dotknúť. Keď sa dychtivá strana ponuky stretne s takto motivovanou stranou dopytu, pätnásťročné okno na prispôsobenie sa scvrkne na pár rokov. Ak tempo svojej kariéry alebo plánov svojho tímu odvodzujete od toho, ako dlho trvala digitálna transformácia, používate nesprávne hodiny.
 
-#### 592 h4
+#### 591 h4
 Otázka dane prichádza pred daňou
 
-#### 593 p
+#### 592 p
 Najvýrečnejší vývoj roku 2026 je, kto sa pohol prvý. 6. apríla OpenAI zverejnilo hospodársko-politické návrhy, ktoré zahŕňajú potenciálnu daň z robotov, &bdquo;Public Wealth Fund&ldquo; dávajúci Američanom automatický podiel v AI firmách a infraštruktúre a dotovaný štvordňový pracovný týždeň. Zastavte sa pri tom na sekundu: firma, ktorá tú technológiu stavia, navrhuje vlastný redistribučný mechanizmus, bez vyzvania. V júni sa spustil fond pre pracovnú silu RAISE US s vyše 500 miliónmi dolárov získanými smerom k cieľu 1 miliardy, ukotvený Amazonom, Anthropicom, Microsoftom a OpenAI Foundation. Medzitým definičný problém drží skutočnú legislatívu zaseknutú: ako to vyjadril prieskum daňových úradov Bloomberg Law, vlády chcú zdaniť AI, ale zatiaľ nevedia definovať jednotku. Tokeny? Agentné hodiny? Výpočtový výkon? Nahradené hlavy? Keď si odvetvie začne predplácať politický účet, ktorý mu nikto formálne nepredložil, hovorí vám, čo očakáva, že tento prúd prinesie.
 
-#### 594 h4
+#### 593 h4
 Odborársky scenár už existuje
 
-#### 595 p
+#### 594 p
 Strana odpovede nezačína od nuly. Ustanovenia SAG-AFTRA o AI z roku 2023, podmienky technologického odstupného Kulinárskeho zväzu v Las Vegas (2 000 dolárov za každý odpracovaný rok pre technológiou vytlačených pracovníkov) a zmluva prístavných robotníkov z januára 2025 obmedzujúca automatizáciu prístavov predchádzajú agentnej ére. V roku 2026 scenár vstúpil do znalostnej práce: jednodňový štrajk v ProPublica v apríli s používaním AI ako ústrednou témou, list odborov New York Times deň predtým označujúci politiku novín k AI za nedostatočnú, sťažnosť odborov AP na nekalé pracovné praktiky pre AI deň pred tým a arbitrážne víťazstvo z decembra 2025 v Politicu za spustenie AI produktov bez konzultácie s odbormi. Klauzuly o AI sa stávajú bežnou požiadavkou pri vyjednávaní. Nič z toho zatiaľ nie je akcia 10 000 pracovníkov, ale šablóny sú napísané, otestované a kolujú.
 
-#### 596 h4
+#### 595 h4
 Prečo je to prúd, nie kapitola Prúdu 6
 
-#### 597 p
+#### 596 p
 Prúd 6 meria ekonomiku; tento prúd sleduje <em>funkciu odpovede</em> a funkcie odpovede sú nespojité tam, kde je ekonomika hladká. RLI je pánt medzi nimi: ten istý nástroj, ktorý zamestnávateľom hovorí, že matematika začína fungovať, hovorí zákonodarcom, že funguje. Všimnite si účtovný dôsledok, lebo záleží na ňom pri syntéze: keď jedno zverejnenie RLI pristane v denníkoch spúšťačov oboch kapitol, je to jedna udalosť v dvoch kabátoch. Podľa pravidla jednej udalosti sa počíta raz, nie ako spustený pár.
 
-#### 598 div class=kn-value
+#### 597 div class=kn-value
 3,8 %/rok
 
-#### 599 div class=kn-label
+#### 598 div class=kn-label
 Miera poklesu, mladí pracovníci v exponovaných profesiách (zrýchľuje z 2,8 %)
 
-#### 600 div class=kn-label
+#### 599 div class=kn-label
 Pokles zamestnanosti 22&ndash;25-ročných softvérových vývojárov od 2024 (AI Index 2026)
 
-#### 601 div class=kn-value
+#### 600 div class=kn-value
 6. apr 2026
 
-#### 602 div class=kn-label
+#### 601 div class=kn-label
 OpenAI navrhuje daň z robotov, verejný fond bohatstva, 4-dňový týždeň
 
-#### 603 div class=kn-value
+#### 602 div class=kn-value
 2 000 $/rok
 
-#### 604 div class=kn-label
+#### 603 div class=kn-label
 Odstupné za technologické vytlačenie za odpracovaný rok (šablóna Kulinárskeho zväzu)
 
-#### 605 div class=kn-label
+#### 604 div class=kn-label
 Pracovných miest v hláseniach WARN v NY, žiadne pripísané AI
 
-#### 606 h3
+#### 605 h3
 Spúšťacie signály: čo sledovať
 
-#### 607 li
+#### 606 li
 Ekonomika G7 <em>prijme</em> (nie navrhne) odvod, daň alebo režim povinného hlásenia, ktorého jednotkou je používanie AI: tokeny, agentné hodiny, výpočtový výkon alebo počet vytlačených ľudí
 
-#### 608 li
+#### 607 li
 Priehrada pripisovania sa pretrhne: aspoň jedna firma formálne pripíše hromadné prepúšťanie AI v oficiálnom vládnom hlásení, alebo jurisdikcia urobí pripisovanie AI povinným s pokutami
 
-#### 609 li
+#### 608 li
 Štrajk alebo kolektívna akcia &ge;10 000 pracovníkov, kde je používanie AI alebo vytláčanie deklarovaným hlavným problémom, s podmienkami o AI v urovnaní
 
-#### 610 li
+#### 609 li
 Profesijná licenčná autorita (advokátska komora, lekárska komora, inštitút účtovníkov) vo veľkej ekonomike prijme <em>záväzné</em> pravidlá obmedzujúce výkon licencovanej práce pomocou AI: prijaté pravidlá, nie návrh usmernení
 
-#### 611 li
+#### 610 li
 Protispúšťač: dva po sebe idúce kvartály oficiálnych štatistík trhu práce (BLS / Eurostat) ukazujúce profesie vystavené AI kopírujúce všeobecný trh práce bez odchýlky, čo znamená, že kanáriky sa zotavujú
 
-#### 612 div class=tl-label
+#### 611 div class=tl-label
 Denník spúšťačov &middot; vydanie júl 2026, aktualizované september 2026
 
-#### 613 li
+#### 612 li
 <span class="tag tag-fired">Spustené</span> <strong>Dodávatelia vopred vyjednávajú odpor.</strong> <span class="tl-date">apr&ndash;jún 2026 &middot;</span> OpenAI navrhlo dane z robotov, verejný fond bohatstva a dotovaný štvordňový pracovný týždeň (6. apríla); fond na rekvalifikáciu RAISE US sa spustil s 500 mil. $+ od Amazonu, Anthropicu, Microsoftu a OpenAI Foundation (25. júna). Odvetvie navrhuje redistribúciu skôr, než je k nej prinútené; to je najjasnejší dostupný dôkaz toho, čo insideri očakávajú, že tento prúd prinesie.
 
-#### 614 li
+#### 613 li
 <span class="tag tag-notyet">Zatiaľ nie</span> <strong>Vytláčanie sa deje; pripisovanie nie.</strong> Jedenásť mesiacov newyorského pravidla o zverejňovaní: 0 zo 162 hlásení zaškrtlo políčko AI, kým Challengerov súčet pripísaný AI dosiahol do mája 87 714. Medzera medzi tlačovým číslom a číslom z hlásení <em>je</em> mierou prania pripisovania. Sledujte medzeru, nie ktorékoľvek číslo samostatne; spúšťač sa spustí, keď ju prvé hlásenie uzavrie.
 
-#### 615 li
+#### 614 li
 <span class="tag tag-moved">Aktualizácia</span> <strong>Číslo pripisovania ďalej stúpalo, potom kleslo.</strong> <span class="tl-date">september 2026 &middot;</span> Augustová správa Challengeru uvádza 116 175 prepúšťaní pripísaných AI od začiatku roka, asi 22 % všetkých oznámených škrtov a najčastejšie uvádzaný dôvod roka; AI bola dôvodom číslo jeden každý mesiac od marca do júla a v auguste klesla na štvrté miesto (3 462). <span class="tag tag-reported">hlásené</span> Jeden mesiac je šum; ročná línia je vyše dvojnásobkom celého roka 2025.
 
-#### 616 li
+#### 615 li
 <span class="tag tag-fired">Potvrdené</span> <strong>Medzera kanárikov sa rozšírila, cez nábor, nie prepúšťanie.</strong> <span class="tl-date">august 2026 &middot;</span> Aktualizácia Stanford / ADP dáva 22&ndash;25-ročných v najviac AI exponovaných povolaniach 19 % pod trend (z 16 %), ťahané zníženým náborom, nie prepúšťaním; celková nezamestnanosť mladých bola v júli 9,1 %, medziročne nižšia. <span class="tag tag-reported">hlásené</span> Vytláčanie je v týchto dátach dvere, ktoré sa prestali otvárať, a presne preto ostávajú hlásenia prázdne.
 
-#### 617 li
+#### 616 li
 <span class="tag tag-fired">Spustené</span> <strong>Práca to žiadala písomne.</strong> <span class="tl-date">21.&ndash;26. august 2026 &middot;</span> Kórejské odbory Hyundaia vstúpili do prvého úplného štrajku za desať rokov s požiadavkou písomných záruk pracovných miest pred AI a automatizáciou; UAW označili AI za &bdquo;hlbokú hrozbu&ldquo; pre vyjednávanie v roku 2028; Bill Gates 26. augusta navrhol daň z robotov a &bdquo;miesta vyhradené pre ľudí&ldquo;; OpenAI v júli nadhodilo 5 % podiel vlády USA vo vedúcich laboratóriách. <span class="tag tag-reported">hlásené</span> Redistribučné návrhy z júnového záznamu majú dnes náprotivky na strane práce a, opatrne, na strane štátu.
 
-#### 618 h3
+#### 617 h3
 Dôsledky podľa roly
 
-#### 619 div class=impl-role
+#### 618 div class=impl-role
 Vývojár
 
-#### 620 div class=impl-text
+#### 619 div class=impl-text
 Exponované úlohy sú vstupné úlohy. Posuňte sa hore po stacku dohľadu a orchestrácie a uchovávajte dôkazy o svojej úsudkovej práci, nielen o výstupe. Dáta o kanárikoch hovoria, že priekopou je seniorita v rozhodnutiach, nie v rokoch.
 
-#### 621 div class=impl-role
+#### 620 div class=impl-role
 Vedúci tímu
 
-#### 622 div class=impl-text
+#### 621 div class=impl-text
 Dokumentujte rozhodnutia rozšíriť verzus nahradiť tak, ako ich robíte. Môžu sa stať hlásiteľnými alebo zdaniteľnými spätne a papierová stopa vás chráni oboma smermi.
 
-#### 623 div class=impl-role
+#### 622 div class=impl-role
 CTO / VP Eng
 
-#### 624 div class=impl-text
+#### 623 div class=impl-text
 Inštrumentujte používanie agentov už teraz (hodiny, tokeny, pracovné postupy, zmeny počtu zamestnancov), aby budúci režim hlásenia alebo dane bol dopyt, nie prestavba architektúry. Berte &bdquo;kde agenti bežia&ldquo; ako jurisdikčnú premennú, ako rezidenciu dát.
 
-#### 625 div class=impl-role
+#### 624 div class=impl-role
 Nákup / HR
 
-#### 626 div class=impl-text
+#### 625 div class=impl-text
 Povinnosti konzultovať s odbormi a zamestnaneckými radami (najmä v EÚ) sa čoraz viac viažu na nasadenie AI. Skontrolujte oznamovacie povinnosti pred oznámením nasadenia, nie po ňom; Politico tú arbitráž prehralo.
 
-#### 627 p class=credits
+#### 626 p class=credits
 Dáta: Brynjolfsson, Chandar &amp; Chen &bdquo;Canaries in the Coal Mine&ldquo; + Canaries Dashboard (Stanford Digital Economy Lab / ADP) &bull; Stanford HAI AI Index 2026 &bull; Challenger, Gray &amp; Christmas &bull; hlásenia WARN NY DOL &bull; Gallup/Bentley 2023 &bull; Bloomberg Law &bull; hospodársky plán OpenAI (apr 2026) &bull; fond RAISE US &bull; sledovanie odborárskych dohôd Poynter / Partnership on AI &bull; Remote Labor Index (CAIS)
 # SK segments of scenario-planning (part 4)
 
-#### 628 div class=chapter-label
+#### 627 div class=chapter-label
 Syntéza
 
-#### 629 h2
+#### 628 h2
 Ako prúdy interagujú
 
-#### 630 p
+#### 629 p
 Osem prúdov nie je nezávislých a čítať ich jeden po druhom je najprirodzenejšia chyba, akú sa s touto brožúrou dá urobiť. Ľudia sa hádajú o škálovaní, <em>alebo</em> o bubline, <em>alebo</em> o suverenite, jednou optikou naraz. Ale plánovacie chyby málokedy žijú vnútri jediného prúdu; žijú v krížových členoch, v kombináciách, ktorých dôsledky nie sú súčtom častí. Táto časť pomenúva sedem kombinácií, ktoré sa najviac oplatí držať v hlave, každú s párom spúšťačov, ktoré ju signalizujú, a s ťahom, ktorý by mala vyvolať.
 
-#### 631 div class=an-label
+#### 630 div class=an-label
 Prevádzkové pravidlo
 
-#### 632 p
+#### 631 p
 <strong>Spustí sa jediný spúšťač &rarr; preváž.</strong> Presuňte pozornosť a rozpočet k tomu prúdu; zatiaľ žiadna štrukturálna zmena. <strong>Spustí sa pár v tom istom kvartáli &rarr; reštrukturalizuj.</strong> Páry sú tam, kde sa stratégia naozaj mení; na to sú kompozity nižšie.
 
-#### 633 p
+#### 632 p
 <strong>Jedna udalosť, jeden počet.</strong> Spresnenie, ktoré pridáva toto vydanie: pár ospravedlňuje reštrukturalizáciu len vtedy, ak jeho dva spúšťače vedú k <em>nezávislým</em> udalostiam. Prúdy zdieľajú podkladovú mašinériu (capex nadovšetko), takže jeden titulok môže spustiť spúšťače vo viacerých kapitolách naraz. Samotné spustenie Fable 5 9. júna sa dotklo Prúdov 1, 2 a 6; stiahnutie z 12. júna sa dotklo 1 a 4; jedno oznámenie o sploštení capexu by mohlo vierohodne spustiť 1, 2, 3 a 7 v to isté ráno. To je jeden signál v niekoľkých kabátoch, nie pár. Test: <em>spustil by sa spúšťač B aj tak, keby sa udalosť A nestala?</em> Ak je odpoveď nie, prevážte; nereštrukturalizujte. Tabuľka nižšie je nástroj na spustenie tohto testu na najbežnejších nejednoznačných titulkoch.
 
-#### 634 p
+#### 633 p
 <strong>Najprv základné zapojenie.</strong> Efektivita (2) nabíja Suverenitu (4): lacné otvorené váhy ekvivalentné špičke sú to, čo mení nasadenie na domácej pôde zo sloganu na obstarávaciu voľbu. Hodiny a doláre (6) sa opierajú o Z laboratória do produkcie (5): bremeno vyhodnocovania a dohľadu škáluje s trvaním úlohy. Škálovanie (1) a Efektivita (2) ťahajú capex opačnými smermi, ale riešia sa cez rozdelenie tréning verzus obsluha: výdavky na tréningové klastre sa obhajujú ťažšie, na obslužné ľahšie. A Škálovanie (1) a Korekcia (3) vyzerajú ako protiklady, ale nevylučujú sa: technológia môže fungovať, produkty môžu zarábať skutočné tržby a investičná časová os môže aj tak minúť časovú os tržieb. Dva prúdy nové v tomto vydaní sa zasúvajú na konce reťaze. Fyzický substrát (7) sedí <em>proti prúdu</em> od všetkého: klastre Prúdu 1, cenová podlaha 2 a capex 3 predpokladajú, že atómy sa dostavia načas, a 7 je miesto, kde sa tento predpoklad testuje. Politická ekonómia vytláčania (8) sedí <em>po prúde</em> od Hodín a dolárov (6): 6 meria, či matematika vytláčania funguje; 8 sleduje, či jej je dovolené fungovať ďalej. To je zapojenie. Kompozity sú to, čo sa stane, keď ním naozaj potečie prúd.
 
-#### 635 div class=s2-table-title
+#### 634 div class=s2-table-title
 Nejednoznačné titulky: ktorý prúd sa naozaj spustil?
 
-#### 636 th
+#### 635 th
 Titulok
 
-#### 637 th
+#### 636 th
 Môže sa dotknúť
 
-#### 638 th
+#### 637 th
 Otázky, ktoré rozlíšia
 
-#### 639 td
+#### 638 td
 <strong>&bdquo;Capex hyperškálových firiem sa splošťuje&ldquo;</strong>
 
-#### 640 td
+#### 639 td
 (1) Aký dôvod uvádza hovor k výsledkom: dopyt alebo financovanie (&rarr;3), zisky efektivity znižujúce potrebu hardvéru (&rarr;2), energia alebo povolenia (&rarr;7)? (2) Posunula sa s ním aj cestovná mapa modelov (&rarr;1), alebo ostala nedotknutá (čisté 3/7)?
 
-#### 641 td
+#### 640 td
 <strong>&bdquo;Cena na špičke sa prudko hýbe&ldquo;</strong>
 
-#### 642 td
+#### 641 td
 (1) Je k tomu pripojená nová úroveň schopností (&rarr;1, dvojpruhová prémia), alebo tá istá úroveň lacnie (&rarr;2)? (2) Prekročí $/agentná hodina prah komparátora zamestnávateľa (&rarr;6)?
 
-#### 643 td
+#### 642 td
 <strong>&bdquo;Veľké vydanie s otvorenými váhami blízko špičky&ldquo;</strong>
 
-#### 644 td
+#### 643 td
 (1) Mení to vaše $/úlohu na úrovni, ktorú naozaj používate (&rarr;2)? (2) Mení jeho licencia alebo pôvod váš suverénny záložný plán (&rarr;4)? A všimnite si opak: popredné čínske laboratórium dodávajúce svoju vlajkovú loď <em>zatvorenú</em> je signál iba pre 4, <a href="/mercantilism-of-genai-sk/#m-open">merkantilistické prezradenie</a>, nie udalosť efektivity.
 
-#### 645 td
+#### 644 td
 <strong>&bdquo;Dodávateľ odrezaný / model stiahnutý&ldquo;</strong>
 
-#### 646 td
+#### 645 td
 (1) Politicko-jurisdikčný pôvod (&rarr;4) alebo pôvod v súvahe (&rarr;3)? (2) Opustila trh <em>schopnosť</em> (&rarr;1 sa zakolíše) alebo iba prístup jedného kupujúceho k nej (&rarr;iba 4)?
 
-#### 647 td
+#### 646 td
 <strong>&bdquo;Hromadné prepúšťanie pripísané AI&ldquo;</strong>
 
-#### 648 td
+#### 647 td
 (1) Pripisujú ho oficiálne hlásenia AI s ekonomikou na úrovni úloh (&rarr;6, matematika funguje) alebo iba tlačová správa (&rarr;8, viditeľnosť alebo pranie pripisovania)? (2) Príde do kvartálu legislatívna alebo odborárska odpoveď (&rarr;8 sa spúšťa)?
 
-#### 649 div class=s2-table-caption
+#### 648 div class=s2-table-caption
 Prežeňte titulok jeho riadkom, kým zapíšete spúšťač. Jedna udalosť, ktorá sa dotkne štyroch prúdov, je stále jedna udalosť; pravidlo páru potrebuje dva riadky, nie jeden riadok počítaný dvakrát.
 
-#### 650 div class=cc-pair
+#### 649 div class=cc-pair
 Prúd 1 (Pokračujúce škálovanie) &times; Prúd 3 (Finančná korekcia)
 
-#### 651 div class=cc-name
+#### 650 div class=cc-name
 A. Úspešná bublina
 
-#### 652 div class=cc-row
+#### 651 div class=cc-row
 <span class="cc-k">Sledujte</span>Dva spúšťače z dvoch rôznych kapitol pristávajúce v rozmedzí mesiacov. Z Pokračujúceho škálovania: generácia Fable / Astra sa plne nasadí a schod schopností je potvrdený, nepopierateľný, nie sporný (táto polovica sa spustila v septembri 2026; dvojica dnes čaká na tú druhú). Z Finančnej korekcie: kótované AI laboratórium skoriguje o viac než 30 % do šiestich mesiacov od IPO, alebo sa výhľad capexu hyperškálových firiem prvýkrát od roku 2022 splošťuje.
 
-#### 653 div class=cc-row
+#### 652 div class=cc-row
 <span class="cc-k">Interakčný člen</span>Tieto dve veci pôsobia, akoby nemohli platiť obe: ak technológia dodá, investícia predsa vydrží? Roky dot-com hovoria niečo iné a to je jediná najužitočnejšia vec, ktorú krach z roku 2000 môže naučiť. Internet fungoval. Prevádzka rástla priamo cez krach; tržby Amazonu rástli každý jeden rok, kým jeho akcie stratili 94 %. Čo sa zrútilo, bola ochota financovať <em>ďalšie</em> kolo, nie technológia samotná. Teraz uplatnite logiku dekodéra: modely z rokov 2026&ndash;28 sú už zaplatené capexom z rokov 2024&ndash;25 a korekcia v roku 2027 nemôže siahnuť späť a tie peniaze odminúť. Takže tento kompozitný svet spája dve veci, ktoré pôsobia protirečivo: schopnosť ďalej prichádza podľa harmonogramu (posledná zaručená vlna), kým financovanie vlny po nej vysychá. Nasledujú dva praktické dôsledky. Po prvé, stále musíte adoptovať: krach nespôsobí, že schopnosti triedy Mythos zmiznú, a konkurenti, ktorí adoptujú počas sucha, to urobia za núdzové ceny. Po druhé, <em>od koho</em> kupujete, zrazu záleží nesmierne, lebo krajina dodávateľov rýchlo redne; preživší budú tí so skutočnými tržbami a hotovosťou v ruke, presne test Amazonu z Prúdu 3.
 
-#### 654 div class=cc-row
+#### 653 div class=cc-row
 <span class="cc-k">Prvý ťah</span>Roztrieďte svoj zoznam dodávateľov na &bdquo;prežije dvojročné sucho vo financovaní&ldquo; a &bdquo;neprežije&ldquo; <em>skôr</em>, než sa spustia oba spúšťače; tržby, hotovostná pozícia a miera pálenia sú poznateľné už dnes. Potom načasujte akýkoľvek dlhodobý lock-in na vlnu schopností, ktorá je už financovaná, nie na tú, ktorá závisí od toho, či sa dostavia peniaze z roku 2027.
 
-#### 655 div class=cc-pair
+#### 654 div class=cc-pair
 Prúd 1 (Pokračujúce škálovanie) &times; Prúd 2 (Revolúcia efektivity)
 
-#### 656 div class=cc-name
+#### 655 div class=cc-name
 B. Dvojrýchlostná špička
 
-#### 657 div class=cc-row
+#### 656 div class=cc-row
 <span class="cc-k">Sledujte</span>Z Pokračujúceho škálovania: schodisko na samom vrchole znovu urobí krok, nová frontier generácia s jasným skokom schopností. Z Revolúcie efektivity: modely s otvorenými váhami sa vyrovnajú <em>predchádzajúcemu</em> schodu do týždňov namiesto mesiacov. Júnové denníky 2026 už tento tvar naznačujú: Fable 5 štartoval s cenovou <em>prémiou</em> (protisignál Prúdu 2), kým jednu úroveň pod ním aprílová vlna otvorených váh ďalej komoditizuje podľa harmonogramu.
 
-#### 658 div class=cc-row
+#### 657 div class=cc-row
 <span class="cc-k">Interakčný člen</span>Intuitívne očakávanie je, že tieto dve sily sa vyrušia: škálovanie tlačí ceny hore, efektivita dole a pristanete niekde v strede. To, čo sa v skutočnosti deje, je iné: trh sa rozdelí na dva pruhy hýbuce sa rôznymi rýchlosťami. Predstavte si eskalátor a plošinu. Na eskalátore sú záťaže, ktoré skutočne ťažia z každého nového schodu schopností: frontier výskum, zložitá viachodinová agentná práca, úlohy na hrane toho, čo je dnes možné. Tie ďalej platia prémiové ceny, lebo každý nový schod robí niečo, čo predchádzajúci nevedel. Na plošine je všetko ostatné (zhŕňanie, extrakcia, klasifikácia, rutinné písanie návrhov), práca, ktorá bola fakticky &bdquo;vyriešená&ldquo; pred generáciou či dvoma. Pre prácu na plošine otvorené váhy dobiehajú a cena kolabuje k nákladom na hardvér. Plánovacie zlyhanie, ktoré tento kompozit odhaľuje: firmy rozpočtujú, akoby celé ich portfólio bolo na eskalátore (&bdquo;všetko by malo používať najlepší model&ldquo;), kým v skutočnosti veľká väčšina podnikových záťaží pohodlne sedí na plošine. Toto zlé nacenenie je v ktoromkoľvek jednotlivom kvartáli neviditeľné a úročí sa každý rok, ako sa rozdelenie rozširuje.
 
-#### 659 div class=cc-row
+#### 658 div class=cc-row
 <span class="cc-k">Prvý ťah</span>Prejdite svoje AI pracovné postupy jeden po druhom a každý označte: eskalátor alebo plošina? Poctivý test: zlepšil by sa výstup tohto pracovného postupu <em>merateľne</em> s ďalšou frontier generáciou? Potom tento kvartál znovu naceňte záťaže na plošine oproti alternatívam s otvorenými váhami; tam sa zvyčajne skrývajú okamžité úspory.
 
-#### 660 div class=cc-pair
+#### 659 div class=cc-pair
 Prúd 2 (Revolúcia efektivity) &times; Prúd 4 (Suverenita)
 
-#### 661 div class=cc-name
+#### 660 div class=cc-name
 C. Suverénna dividenda a jej zvyšok
 
-#### 662 div class=cc-row
+#### 661 div class=cc-row
 <span class="cc-k">Sledujte</span>Z Revolúcie efektivity: parita otvorených váh na úrovni schopností, ktorú vaše záťaže naozaj potrebujú, teda parita <em>pre vaše úlohy</em>, nie parita na benchmarkoch v abstrakcii. Zo Suverenity: akákoľvek nová udalosť odrezania, označenie rizika dodávateľského reťazca alebo pravidlo o rezidencii dát, ktoré sa dotkne vašej jurisdikcie alebo vášho dodávateľa.
 
-#### 663 div class=cc-row
+#### 662 div class=cc-row
 <span class="cc-k">Interakčný člen</span>Prvá polovica je dobrá správa a brožúra ju pokryla: efektivita je to, čo robí suverenitu dostupnou. Kým frontier schopnosti žili iba za jedným či dvoma API hostovanými v USA, &bdquo;suverénna AI&ldquo; bola slogan; nebolo čo ekvivalentné hostovať samému. Len čo otvorené váhy dosiahnu vašu požadovanú úroveň za desatinu ceny, únikový východ sa stane skutočným: citlivé záťaže sa môžu presunúť na domácu pôdu alebo dovnútra bez vzdania sa zmysluplnej schopnosti. Keď sa spustí Prúd 2, nabije východ Prúdu 4. Ale je tu druhá polovica, ktorú väčšina plánov suverenity prehliada, a vyplýva priamo z kompozitu B. Komoditizácia prichádza zdola nahor: záťaže na plošine získajú dôveryhodné záložné otvorené váhy najprv; záťaže na eskalátore naposledy, alebo nikdy, ak špička ostane zatvorená a prémiová. Takže ako sa otvorené váhy zlepšujú, vaša suverénna expozícia sa nezmenšuje rovnomerne naprieč portfóliom. Odteká z rutinnej práce a hromadí sa presne v záťažiach, ktoré je najťažšie nahradiť: v tých s najvyššou hodnotou, závislých od špičky. Irónia je ostrá: čím lepšie sú otvorené váhy, tým viac sa váš <em>zostávajúci</em> lock-in koncentruje tam, kde by udalosť odrezania bolela najviac.
 
-#### 664 div class=cc-row
+#### 663 div class=cc-row
 <span class="cc-k">Prvý ťah</span>Pre každý pracovný postup na eskalátore si zapíšte zhoršený, ale prijateľný záložný plán s otvorenými váhami: ktorý model, akú schopnosť by ste stratili a čo tá strata stojí mesačne. Potom ho raz naozaj spustite, kým vás k tej otázke niekto neprinúti. Záložný plán, ktorý nebol nikdy otestovaný, je nádej, nie poistka.
 
-#### 665 div class=cc-pair
+#### 664 div class=cc-pair
 Prúd 6 (Hodiny a doláre) &times; Prúd 5 (Z laboratória do produkcie)
 
-#### 666 div class=cc-name
+#### 665 div class=cc-name
 D. Pasca autonómie
 
-#### 667 div class=cc-row
+#### 666 div class=cc-row
 <span class="cc-k">Sledujte</span>Z Hodín a dolárov: časové horizonty agentov sa ďalej zdvojnásobujú každé tri až štyri mesiace; dáta METR toto tempo už potvrdili. Zo strany Z laboratória do produkcie: vaša vlastná miera konverzie z pilotu do produkcie sedí dva po sebe idúce kvartály pod 20 %. Všimnite si, že druhý spúšťač je <em>interný</em>: sledujete vlastnú organizáciu, nie správy.
 
-#### 668 div class=cc-row
+#### 667 div class=cc-row
 <span class="cc-k">Interakčný člen</span>Na povrchu to vyzerá ako dobrá správa prichádzajúca rýchlejšie, než ju stíhate využiť: agenti sa zlepšujú, vaša nasadzovacia pipeline zaostáva, takže jednoducho adoptujete o čosi neskôr. Skutočná dynamika je horšia a oplatí sa pri nej spomaliť. Bremeno dohľadu a vyhodnocovania škáluje s trvaním úlohy. Agenta, ktorý pracuje dvadsať minút, možno skontrolovať prečítaním jeho výstupu. Agent, ktorý pracuje sám osem hodín, potrebuje testovacie postroje, priebežné kontrolné body, audítorské stopy svojich volaní nástrojov a ľudí vyškolených na kontrolu dlhých reťazcov rozhodnutí. Každé zdvojnásobenie autonómnych hodín zhruba zdvojnásobí, čo kompetentný dohľad vyžaduje. Čo znamená, že organizácia, ktorá nevybudovala sval na vyhodnocovanie, zaostáva <em>rýchlosťou zdvojnásobovania</em>, aj keď to pôsobí ako státie na mieste. Kým prídu 8-hodinoví agenti, latka dohľadu bude sedieť vysoko nad dnešnou a tá kapacita sa buduje kvartály: nábor, nástroje, procesy, návyky. Preto čakanie pôsobí obozretne a v skutočnosti je pascou. &bdquo;Adoptujeme agentov, keď budú schopnejší&ldquo; sa potichu prekladá na &bdquo;začneme budovať kapacitu dohľadu presne vo chvíli, keď požiadavka vrcholí&ldquo;. Ekonomika vytláčania Prúdu 6 sa stane skutočnou iba pre organizácie, ktoré si vopred spravili domácu úlohu z Prúdu 5.
 
-#### 669 div class=cc-row
+#### 668 div class=cc-row
 <span class="cc-k">Prvý ťah</span>Obsaďte kapacitu na vyhodnocovanie a red-teaming teraz a nadimenzujte ju na autonómiu agentov dve zdvojnásobenia od dneška (zhruba o šesť až osem mesiacov), nie na agentov, ktorých prevádzkujete dnes. Ak je nábor ťažký, začnite jedným človekom, ktorého celá práca je infraštruktúra vyhodnocovania; to je rola úzkeho hrdla.
 
-#### 670 div class=cc-pair
+#### 669 div class=cc-pair
 Prúd 3 (Finančná korekcia) &times; Prúd 4 (Suverenita)
 
-#### 671 div class=cc-name
+#### 670 div class=cc-name
 E. Lacná poistka
 
-#### 672 div class=cc-row
+#### 671 div class=cc-row
 <span class="cc-k">Sledujte</span>Ktorýkoľvek z dvoch veľmi rôznych titulkov o dodávateľovi, od ktorého závisíte. Finančný, z Finančnej korekcie: financovanie vyschne, miera pálenia vyhrá, výsledok Pets.com. Politický, zo Suverenity: suverénne rozhodnutie odreže prístup uprostred zmluvy, výsledok z februára 2026. Pointa je menej predpovedať, ktorý z nich, a viac všimnúť si, že ktorýkoľvek je možný a že oba prídu bez veľkého varovania.
 
-#### 673 div class=cc-row
+#### 672 div class=cc-row
 <span class="cc-k">Interakčný člen</span>Tu je, čo robí tento pár špeciálnym: z miesta, kde sedíte ako kupujúci, sú tie dva režimy zlyhania prevádzkovo identické. V oboch prípadoch API prestane odpovedať alebo sa zmluva stane nepoužiteľnou, uprostred kvartálu, bez vašej viny. Jedno zlyhanie pochádza zo súvahy, druhé z výkonného nariadenia, ale váš kanál incidentov vyzerá v to ráno presne rovnako. A keď dve odlišné riziká produkujú rovnaké prevádzkové zlyhanie, môžu zdieľať jedno zmiernenie. To zmiernenie je dobre definované: <em>prenositeľná inferenčná vrstva</em> (váš stack vyhľadávania, vyhodnocovania a nástrojov postavený tak, aby sa model za ním dal vymeniť bez prestavby všetkého nad ním) plus zmluvy s výslovnými výstupnými klauzulami a zárukami exportu dát. Všimnite si, čo to robí s ekonomikou poistenia. Väčšina poistiek chráni proti jednému scenáru, takže každé riziko stojí vlastné poistné. Táto jedna investícia sa vyplatí pri Prúde 3 (váš dodávateľ zomrie), pri Prúde 4 (váš dodávateľ je odrezaný) a čiastočne aj pri kompozite B (váš dodávateľ preceňuje špičku a vy chcete presunúť prácu na plošine preč). Je to jediné miesto v tejto brožúre, kde jedna poistka pokrýva viacero prúdov naraz, čo z nej robí, euro za euro, najlacnejšie poistenie v ponuke.
 
-#### 674 div class=cc-row
+#### 673 div class=cc-row
 <span class="cc-k">Prvý ťah</span>Tento kvartál spravte jedno plánované cvičenie výmeny dodávateľa: vezmite skutočný pracovný postup, vymeňte model za ním a zmerajte, ako dlho trvá, kým je kvalita výstupu znova prijateľná. To číslo (dni, týždne alebo &bdquo;nedokázali sme to&ldquo;) je vaša poctivá, nameraná expozícia voči dvom prúdom naraz. Väčšina tímov ju nikdy nemerala.
 
-#### 675 div class=cc-pair
+#### 674 div class=cc-pair
 Prúd 1 (Pokračujúce škálovanie) &times; Prúd 7 (Fyzický substrát)
 
-#### 676 div class=cc-name
+#### 675 div class=cc-name
 F. Strop siete
 
-#### 677 div class=cc-row
+#### 676 div class=cc-row
 <span class="cc-k">Sledujte</span>Z Pokračujúceho škálovania: výhľad capexu ďalej rastie o &gt;30 % a ďalšia generácia ostáva v harmonograme, takže strana dopytu ostáva zdravá. Z Fyzického substrátu: hyperškálová firma pomenuje energiu, pripojenie k sieti alebo povolenia ako dôvod zníženia capexu alebo oneskorenia pomenovaného projektu, alebo štát prijme moratórium na dátové centrá.
 
-#### 678 div class=cc-row
+#### 677 div class=cc-row
 <span class="cc-k">Interakčný člen</span>Režim zlyhania škálovania sa vždy predpokladal ako vedecký (schodisko sa splošťuje) alebo finančný (sucho vo financovaní z Prúdu 3). Tento kompozit je tretia cesta a je zvláštnejšia než obe: peniaze sú, veda funguje a <em>atómy nedorazia</em>. Tréningové behy stoja v rade za radmi na pripojenie k sieti a klastre zaplatené v roku 2026 sa zapoja v roku 2029 namiesto 2028. Všimnite si, čo to robí s dekodérom: celý nástroj stojí na tom, že capex nesie spoľahlivú dátumovú pečiatku, a tento kompozit je jediné miesto, kde sa samotné dátumové pečiatky začnú šmýkať. Schopnosť stále prichádza, neskoro a nerovnomerne podľa geografie, lebo energia je lokálna komodita. Produkuje aj dvojpruhové ceny z iného dôvodu než kompozit B: prémia za <em>vzácnosť</em>, nie za schopnosť, a titulok (&bdquo;ceny na špičke rastú&ldquo;) vyzerá identicky. Tabuľka na rozlíšenie existuje presne pre tento zmätok.
 
-#### 679 div class=cc-row
+#### 678 div class=cc-row
 <span class="cc-k">Prvý ťah</span>Položte každému strategickému dodávateľovi pri ďalšej revízii jednu otázku: z vašej oznámenej kapacity, koľko je <em>zapojenej</em>, koľko <em>povolenej</em> a koľko <em>oznámenej</em>? Vážte sľuby ich cestovnej mapy týmto pomerom, nie tlačovou správou.
 
-#### 680 div class=cc-pair
+#### 679 div class=cc-pair
 Prúd 6 (Hodiny a doláre) &times; Prúd 8 (Politická ekonómia vytláčania)
 
-#### 681 div class=cc-name
+#### 680 div class=cc-name
 G. Krivka odporu
 
-#### 682 div class=cc-row
+#### 681 div class=cc-row
 <span class="cc-k">Sledujte</span>Z Hodín a dolárov: nameraná miera automatizácie prekročí verejne čitateľný prah (miera v štýle RLI nad 25 %), alebo pomenovaný podnik zverejní auditovanú návratnosť agentov. Z Politickej ekonómie vytláčania: zákon o vytláčaní prijatý v ekonomike G7, akcia 10 000 pracovníkov s AI ako deklarovaným problémom, alebo pretrhnutie priehrady pripisovania v oficiálnych hláseniach.
 
-#### 683 div class=cc-row
+#### 682 div class=cc-row
 <span class="cc-k">Interakčný člen</span>Tieto dva sa jednoducho nesčítajú: funkcia odpovede Prúdu 8 je <em>spúšťaná</em> úspechom Prúdu 6 a potom sa vracia späť do aritmetiky Prúdu 6. Odvod z agentných hodín alebo povinné hlásenie vytláčania priamo mení nákladovú stranu matematiky hodín a doláre; výnimka pre profesijné licencie cez noc odstráni z dosiahnuteľného bazéna celé kategórie úloh. Pasca zrkadlí kompozit D, ale ukazuje opačným smerom: organizácie, ktoré adoptujú najrýchlejšie, kým je pripisovanie dobrovoľné, hromadia najväčšiu spätnú expozíciu na deň, keď sa stane povinným. Víťazmi tohto kompozitu sú tí, ktorých používanie agentov je inštrumentované, zdokumentované a obhájiteľné, keď pravidlá prídu uprostred hry, a málokedy sú to najrýchlejší adoptéri.
 
-#### 684 div class=cc-row
+#### 683 div class=cc-row
 <span class="cc-k">Prvý ťah</span>Inštrumentujte používanie agentov už teraz (hodiny, tokeny, dotknuté pracovné postupy, zmeny počtu zamestnancov) a zapisujte si zdôvodnenie rozšíriť verzus nahradiť pri každom rozhodnutí. Ak v roku 2027 pristane režim hlásenia, súlad by mal byť dopyt, nie archeologický projekt.
 
-#### 685 p
+#### 684 p
 <strong>Práca s kompozitmi v praxi.</strong> Pri kvartálnej revízii sa nezastavte pri &bdquo;spustil sa spúšťač?&ldquo;. Položte druhú otázku: <em>spustil sa v tom istom kvartáli pár, z nezávislých udalostí?</em> Júlové denníky 2026 sú živým cvičením toho, prečo na tej poslednej klauzule záleží. Obsahujú zhluk spustení: Prúd 1 (Fable 5, 9. jún), Prúd 3 (S-1, 1. jún), Prúd 4 (stiahnutie, 12. jún), Prúd 6 (výsledok RLI, 1. júl). Spustite test jednej udalosti, kým vyhlásite páry: spustenie a stiahnutie sú jeden reťazec udalostí dotýkajúci sa Prúdov 1, 2 a 4, takže nesú jeden počet, nie tri. Ale S-1 bol podaný <em>pred</em> spustením a meranie RLI je nezávislý nástroj; tie počty stoja. Ostávajú dvaja živí kandidáti na pár: <strong>kompozit A</strong> (schod schopností ukázaný, kým sa nabíjal spúšťač IPO) ostáva tým, ktorý treba sledovať do roku 2027, a <strong>kompozit E</strong> dostal 12. júna ostrú skúšku, keď cvičenie s odrezaným dodávateľom prestalo byť hypotetické; <a href="/mercantilism-of-genai-sk/">sprievodná brožúra</a> je knižné spracovanie toho dňa. A týchto sedem kompozitov nie je úplný zoznam; je to sedem najnosnejších pre typický podnik. Dva prúdy najšpecifickejšie pre <em>vašu</em> organizáciu môžu tvoriť kompozit, na ktorom záleží viac. Napíšte si ho sami, v tomto istom formáte: pár spúšťačov, interakčný člen, prvý ťah.
 
-#### 686 p
+#### 685 p
 <strong>Postoj.</strong> Žiadny prúd nie je &bdquo;odpoveď&ldquo;. Najsilnejšia plánovacia pozícia je tá, ktorá primerane obstojí pri všetkých ôsmich, nie tá, ktorá vsadí všetko na ktorýkoľvek prúd, ktorý sa tento kvartál zdá najživší. Neuzamknite sa na žiadny; sledujte spúšťače vo všetkých; berte jediné spustenie ako dôvod prevážiť a spustenie páru ako okamih, keď sa stratégia naozaj mení; nechajte prúdy zostarnúť, keď sa ich spúšťače 18 mesiacov nespustili, a nahraďte ich tým, čo lepšie opisuje svet, v ktorom naozaj žijete. Táto disciplína je to, čo má táto brožúra urobiť rutinou.
 
-#### 687 div class=chapter-label
+#### 686 div class=chapter-label
 Prax
 
-#### 688 h2
+#### 687 h2
 Ako to používať v praxi
 
-#### 689 p class=lead
+#### 688 p class=lead
 Ak si z tejto brožúry vezmete jednu vec, vezmite si túto: prúdy sú užitočné len vtedy, ak sa zaviažete k návyku. Ten návyk je predvídať, sledovať spúšťače, upravovať. Prúdy sú lešením pre tento návyk, nie predpoveďou.
 
-#### 690 h3
+#### 689 h3
 Zaviažte sa vopred k spúšťačom, nie k predpovediam
 
-#### 691 p
+#### 690 p
 Najužitočnejším výstupom tejto brožúry je zoznam spúšťačov pod každým prúdom. Oveľa viac než próza alebo syntéza sú spúšťače tým, čo vám povie, že sa niečo posunulo. Rozhodnite sa teraz, pred titulkami, čo by vás aktualizovalo. &bdquo;Ak náklady frontier agenta na hodinu klesnú pod 40 $, spustím pilot pracovného postupu vytláčania.&ldquo; &bdquo;Ak ceny prenájmu GPU klesnú o ďalších 30 %, znovu vyjednám našu zmluvu s dodávateľom.&ldquo; Pointa je skrátiť čas odozvy medzi pozorovaním signálu a konaním podľa neho.
 
-#### 692 h3
+#### 691 h3
 Revidujte v pravidelnom rytme
 
-#### 693 p
+#### 692 p
 Kvartálne je pre väčšinu tímov pravdepodobne správne. Rýchlejšie a čítate šum; pomalšie a míňate skutočné posuny. Pri každej revízii prejdite zoznam spúšťačov a spýtajte sa: <em>spustil sa nejaký spúšťač? Pristál nejaký vyvracajúci signál? Čo sa zmenilo v našom prostredí?</em> Podľa toho aktualizujte svoj postoj. Výstupom revízie je málokedy &bdquo;mýlili sme sa&ldquo;; častejšie je to &bdquo;mali by sme tento prúd vážiť ťažšie než minulý kvartál&ldquo;. Zelené panely <strong>denníka spúšťačov</strong> v tomto vydaní sú tá revízia urobená verejne: len medzi májovým a júnovým vydaním sa skoro spustil spúšťač schopností v podobe variantu (Prúd 1), spúšťač IPO ožil (Prúd 3), súdny termín sa posunul (Prúd 5) a zdvojnásobovacie tempo bolo potvrdené (Prúd 6). Medzi júnom a júlom sa tempo zrýchlilo: vypínač bol dokázaný a pomerne zapnutý späť (Prúd 4), vytláčanie dostalo rebríček (Prúd 6), politika energie dorazila (Prúd 7) a dodávatelia začali vopred vyjednávať odpor (Prúd 8). To je rytmus, ktorý funguje; skopírujte formát pre vlastné prúdy.
 
-#### 694 h3
+#### 693 h3
 Nechajte prúdy zostarnúť
 
-#### 695 p
+#### 694 p
 Ak sa spúšťače prúdu 18 mesiacov nespustili a jeho vyvracajúce dôkazy sa vytrvalo hromadili, prúd už pravdepodobne nie je živý. Vyraďte ho. Nahraďte ho takým, ktorý lepšie opisuje svet, v ktorom naozaj žijete. Táto brožúra je snímka polovice roka 2026; do polovice roka 2027 bude pravdepodobne aspoň jeden z týchto prúdov potrebovať náhradu. To je systém, ktorý funguje, nie zlyháva.
 
-#### 696 div class=an-label
+#### 695 div class=an-label
 Zoznam zmien prúdov: ako sa táto brožúra vyvíjala
 
-#### 697 p
+#### 696 p
 Pravidlo vyradiť a nahradiť nie je hypotetické; už bežalo. Pre záznam, a aby ste mohli hodnotiť samotnú metódu:
 
-#### 698 p
+#### 697 p
 <strong>Májové vydanie 2026:</strong> &bdquo;Plošina + regulácia&ldquo; bola prestavaná na <em>Z laboratória do produkcie</em> (téza plošiny si nezarábala na svoje miesto a regulácia bola degradovaná z hlavného titulku na druhotnú silu zdvíhajúcu podlahu nasadenia). &bdquo;Agentné zrýchlenie&ldquo; bolo prestavané na <em>Hodiny a doláre</em>: z pocitu o agentoch na dve merateľné jednotky.
 
-#### 699 p
+#### 698 p
 <strong>Júlové vydanie 2026:</strong> pridané dva prúdy: <em>Fyzický substrát</em> (povýšený z predpokladu v pozadí po tom, čo kapacitné aukcie narazili na stropy a návrhy moratórií dorazili do tucta parlamentov) a <em>Politická ekonómia vytláčania</em> (vyčlenená z Hodín a dolárov, len čo RLI urobil vytláčanie dosť čitateľným na to, aby malo politiku). Plus strana, ktorú táto brožúra kedysi odmietala napísať: autorova vlastná hodnotiteľná pozícia, hneď nasleduje. <strong>Aktualizácia denníka, september 2026:</strong> žiadne nové prúdy; každý denník spúšťačov získal datované záznamy, čítanie dekodéra &bdquo;Mythos / Spud na značke 2027&ldquo; bolo stiahnuté (zaznamenané v denníku Prúdu 1), júlový opis návratu Fable bol opravený a štyri stávky nesú priebežné hodnotenie.
 
-#### 700 h3
+#### 699 h3
 Čo si myslím a kam by som vsadil svoje žetóny
 
-#### 701 p
+#### 700 p
 Chcem byť presný v tom, aký mám názor: myslím si, že tento <em>prístup</em> (prúdy plus spúšťače plus pravidelné úpravy) je zdravý spôsob, ako sa orientovať v technológii, ktorá sa mení takto rýchlo. Nemyslím si, že by vaša <em>stratégia</em> mala staviť na ktorýkoľvek z ôsmich prúdov v tejto brožúre; disciplína držať viacero otvorených súčasne, sledovať, čo sa spustí, a aktualizovať bez ega je tá skutočná zručnosť, ktorú stojí za to budovať. Ale skoršie vydania používali tento postoj na to, aby sa vyhli akémukoľvek názoru, a začal som to vnímať ako vlastný druh úhybu. Moji študenti sa ma, oprávnene, pýtajú, čo naozaj očakávam, že sa stane, a brožúra, ktorá káže vyvrátiteľné spúšťače, kým jej autor odmieta byť vyvrátiteľný, nepraktizuje to, čo učí. Takže metóda ostáva agnostická a môj názor dostáva vlastnú stranu: datovanú, s pravdepodobnosťami a hodnotenú verejne v každom vydaní. Tá strana nasleduje.
 
-#### 702 div class=chapter-label
+#### 701 div class=chapter-label
 Autorova pozícia
 
-#### 703 h2
+#### 702 h2
 Kam by som vsadil svoje žetóny <br><span class="chapter-question">&bdquo;Datované júl 2026: ohodnoťte ma v ďalšom vydaní&ldquo;</span>
 
-#### 704 p class=lead
+#### 703 p class=lead
 Všetko na tejto strane je názor. Je to odpoveď na otázku, ktorú zvyšok brožúry zámerne odmieta: <em>čo si naozaj myslím, že sa stane?</em> Metóda od ničoho z toho nezávisí; ak je každá stávka nižšie nesprávna, prúdy a spúšťače stále fungujú. Ale každá stávka nesie pravdepodobnosť a podmienku, za ktorej sa mýlim, a každé budúce vydanie ich na mieste znovu ohodnotí, vrátane omylov. Tá istá disciplína, ktorú denníky spúšťačov ukladajú prúdom, uplatnená na mňa.
 
-#### 705 p
+#### 704 p
 <em>Priebežné hodnotenie, september 2026:</em> každá stávka nižšie nesie datovaný stavový pás. Váhy sú nedotknuté; znovu sa argumentujú v ďalšom vydaní, nie v aktualizácii denníka.
 
-#### 706 div class=bet-by
+#### 705 div class=bet-by
 Stávka 1 &middot; do polovice roka 2027 &middot; ~85 %
 
-#### 707 div class=bet-claim
-<strong>Schod sa potvrdí.</strong> Plná generácia Mythos / Spud vyjde vo všeobecne dostupnej (neobmedzenej) podobe a dodá úroveň schopností, ktorú Fable 5 ukázal, na metrikách ekonomiky agentov, nielen na bodoch benchmarkov: niečo ako ďalšie zdvojnásobenie mier automatizácie triedy RLI oproti kohorte Opus 4.8 / GPT-5.5. Z môjho pohľadu je táto generácia pripravená a naplní očakávania.
+#### 706 div class=bet-claim
+<strong>Schod sa potvrdí.</strong> Plná generácia Mythos / Spud (dnešná generácia Fable / Astra) vyjde vo všeobecne dostupnej (neobmedzenej) podobe a dodá úroveň schopností, ktorú Fable 5 ukázal, na metrikách ekonomiky agentov, nielen na bodoch benchmarkov: niečo ako ďalšie zdvojnásobenie mier automatizácie triedy RLI oproti kohorte Opus 4.8 / GPT-5.5. Z môjho pohľadu je táto generácia pripravená a naplní očakávania.
 
-#### 708 div class=bet-falsify
+#### 707 div class=bet-falsify
 <span class="bf-k">Nesprávne, ak</span> do 30. júna 2027 neexistuje žiadne plné neobmedzené nasadenie tej generácie, alebo nasadená generácia pristane v rámci šumu od Opus 4.8 na nezávislých benchmarkoch, v takom prípade bolo čítanie Fable 5 ako &bdquo;ukážky&ldquo; nesprávne a schodisko sa už sploštilo.
 
-#### 709 div class=bet-falsify
+#### 708 div class=bet-falsify
 <span class="bf-k" style="color:var(--green)">Priebežne &middot; september 2026</span> Vyhraté, s opraveným čítaním. Generácia vyšla vo všeobecne dostupnej podobe 1. júla (Fable 5, celosvetovo) a 3. septembra (GPT-6 Astra), deväť mesiacov pred termínom, a zdvojnásobenie na metrikách triedy RLI bolo zmerané už v júli (16,1 % oproti 8,3 %). V čom som sa mýlil, je kalendár: Fable 5 bol samotný schod, nie ukážka schodu z roku 2027. Ohodnotené ako vyhraté; júlové znenie je stiahnuté a zaznamenané v denníku Prúdu 1.
 
-#### 710 div class=bet-by
+#### 709 div class=bet-by
 Stávka 2 &middot; do konca roka 2029 &middot; ~70 %
 
-#### 711 div class=bet-claim
-<strong>Generácia 2029 pristane ťažko a už je financovaná.</strong> Podľa vlastnej logiky dekodéra peniaze zaväzované v rokoch 2026&ndash;27 kupujú generáciu <em>po</em> Mythos / Spud, prichádzajúcu okolo roku 2029. Vyhýbam sa pojmu AGI; myslím niečo konkrétnejšie: generáciu LLM tak schopnú, že podstatne ovplyvní, ako sa robí výskum, ako fungujú odvetvia a ako ekonomiky rozdeľujú prácu. Operacionalizované: miera automatizácie v štýle RLI nad 50 %, alebo frontier laboratórium dôveryhodne zdokumentuje podstatný príspevok LLM k prvotriednemu vedeckému výsledku, alebo vytláčanie viditeľné v národných štatistikách trhu práce. Signály, ktoré vážim: výskumný talent konsolidujúci sa v popredných laboratóriách, čo nahlas hovoria postavy ako Hassabis, a fakt, že modely <em>už</em> v polovici roka 2026 zmysluplne prispievajú k výskumu.
+#### 710 div class=bet-claim
+<strong>Generácia 2029 pristane ťažko a už je financovaná.</strong> Podľa vlastnej logiky dekodéra peniaze zaväzované v rokoch 2026&ndash;27 kupujú generáciu <em>po</em> Mythos / Spud (dnešnej Fable / Astra), prichádzajúcu okolo roku 2029. Vyhýbam sa pojmu AGI; myslím niečo konkrétnejšie: generáciu LLM tak schopnú, že podstatne ovplyvní, ako sa robí výskum, ako fungujú odvetvia a ako ekonomiky rozdeľujú prácu. Operacionalizované: miera automatizácie v štýle RLI nad 50 %, alebo frontier laboratórium dôveryhodne zdokumentuje podstatný príspevok LLM k prvotriednemu vedeckému výsledku, alebo vytláčanie viditeľné v národných štatistikách trhu práce. Signály, ktoré vážim: výskumný talent konsolidujúci sa v popredných laboratóriách, čo nahlas hovoria postavy ako Hassabis, a fakt, že modely <em>už</em> v polovici roka 2026 zmysluplne prispievajú k výskumu.
 
-#### 712 div class=bet-falsify
+#### 711 div class=bet-falsify
 <span class="bf-k">Nesprávne, ak</span> koniec roka 2029 príde s mierami automatizácie ustálenými pod 30 % a bez zdokumentovaného príspevku výskumnej úrovne, v takom prípade sa schodisko ohlo presne tam, kde skeptici hovorili, a capex 2026&ndash;27 kúpil zjemnenie, nie transformáciu.
 
-#### 713 div class=bet-falsify
+#### 712 div class=bet-falsify
 <span class="bf-k" style="color:#854d0e">Priebežne &middot; september 2026</span> Prvý signál, o tri roky skôr, predbežne. OpenAI 8. septembra ohlásilo v Leane overené vyriešenie Navierovho&ndash;Stokesovho problému Millennium Prize nezverejneným modelom riadiacim ~10 000 agentov, čo takmer doslova zodpovedá jednej z troch operačných podmienok tejto stávky. Predbežne preto, že preskúmanie matematickou komunitou, spor o autorstvo a mlčanie Clayovho inštitútu sú všetky otvorené. Zatiaľ nehodnotené; ak niečo, pravdepodobnosť ide hore.
 
-#### 714 div class=bet-by
+#### 713 div class=bet-by
 Stávka 3 &middot; do konca roka 2027 &middot; ~80 %
 
-#### 715 div class=bet-claim
+#### 714 div class=bet-claim
 <strong>Viac odrezania, nie menej.</strong> Aspoň dve ďalšie vládou uložené udalosti odrezania (označenia, stiahnutia, prístupové brány, exportné obmedzenia na samotné modely) zasiahnu frontier AI. 12. jún bol precedens, nie jednorazovka. Očakávam, že americký blok bude hrať ekonomiku frontier AI tak, ako opisuje <a href="/mercantilism-of-genai-sk/">sprievodná brožúra</a>: vyvážať tovar, nechať si továreň. Toto je pesimistická polovica mojej pozície a držím ju asi tak pevne ako optimistickú polovicu vyššie.
 
-#### 716 div class=bet-falsify
+#### 715 div class=bet-falsify
 <span class="bf-k">Nesprávne, ak</span> 12. jún ostane až do konca roka 2027 osamotený, bez ďalšieho označenia, stiahnutia alebo prístupovej brány na frontier modeli, v takom prípade merkantilistické čítanie preceňovalo jednu udalosť a suverenita si zaslúži nižšiu váhu, než jej dávam nižšie.
 
-#### 717 div class=bet-falsify
+#### 716 div class=bet-falsify
 <span class="bf-k" style="color:#475569">Priebežne &middot; september 2026</span> Zatiaľ nie, a vzor sa presunul niekam, kde ho stávka nepomenovala. Od 12. júna žiadne ďalšie vládou uložené odpojenie; vládna línia sa pohla opačným smerom (zrušenie z 30. júna, rozsudok z 28. augusta). Čo sa stalo: spúšťanie najprv pre preverených sa stalo politikou laboratórií (Astra, 3. september) a spojenecký prístup vyjednanou úrovňou (ENISA, 10. september). To je mechanizmus, nie spúšťač; počet ostáva na nule.
 
-#### 718 div class=bet-by
+#### 717 div class=bet-by
 Stávka 4 &middot; do konca roka 2028 &middot; ~60 %
 
-#### 719 div class=bet-claim
+#### 718 div class=bet-claim
 <strong>Čínske prezradenie sa spustí.</strong> Prvé čínske laboratórium, ktoré bude mať dôveryhodný nárok na paritu so špičkou, dodá tú vlajkovú loď <em>zatvorenú</em>. Ľudia, ktorí vkladajú nádeje do čínskych modelov s otvorenými váhami sledujúcich špičku donekonečna, podľa mňa zle čítajú, prečo sú tie modely otvorené. Otvorenosť je pozícia, nie princíp: Meta držala &bdquo;otvorenosť&ldquo; ako identitu, kým sa neotočila ekonomika, Mistral prerámcoval otvorené váhy na lievik a laboratórium, ktoré verí, že získalo náskok, má všetky dôvody zavrieť. (Toto je <a href="/mercantilism-of-genai-sk/#m-open">stávka 5 sprievodnej brožúry</a> a tu ju prijímam za svoju.)
 
-#### 720 div class=bet-falsify
+#### 719 div class=bet-falsify
 <span class="bf-k">Nesprávne, ak</span> koniec roka 2028 príde a každá čínska vlajková loď s dôveryhodným nárokom na paritu bude stále s otvorenými váhami, v takom prípade vydávanie otvorených váh prežíva víťazné pozície lepšie, než pozičná teória predpovedá, a obraz suverenity je skutočne svetlejší, než verím.
 
-#### 721 div class=bet-falsify
+#### 720 div class=bet-falsify
 <span class="bf-k" style="color:#475569">Priebežne &middot; september 2026</span> Polovica signálu. GLM-5.3 vyšiel 14. augusta zatvorený a o dva týždne sa otvoril; rad Max od Alibaby ostáva zatvorený bez nároku na paritu; DeepSeek a Kimi ostávajú otvorené. Nespustené.
 
-#### 722 h3
+#### 721 h3
 Váhy
 
-#### 723 p
+#### 722 p
 Ak sú štyri stávky bodové predpovede, táto tabuľka je portfólio: kam by som tento kvartál rozdelil 100 jednotiek monitorovacej pozornosti naprieč ôsmimi prúdmi. Rovnomerné váženie by bolo 12,5 pre každý; odchýlky sú ten názor.
 
-#### 724 th
+#### 723 th
 Prúd
 
-#### 725 th
+#### 724 th
 Váha
 
-#### 726 th
+#### 725 th
 vs. rovnomerne
 
-#### 727 th
+#### 726 th
 Prečo
 
-#### 728 td
+#### 727 td
 <strong>1 &middot; Pokračujúce škálovanie</strong>
 
-#### 729 td
+#### 728 td
 Nad
 
-#### 730 td
+#### 729 td
 Schod je skutočný, ukázaný a ďalší je už financovaný. Toto je prúd, ktorým by som najmenej chcel byť prekvapený.
 
-#### 731 td
+#### 730 td
 <strong>2 &middot; Revolúcia efektivity</strong>
 
-#### 732 td
+#### 731 td
 Pod
 
-#### 733 td
+#### 732 td
 Skutočná, ale beží jednu úroveň pod špičkou a prémia na špičke (Fable 5 za 2&times; cenu Opus) hovorí, že horný pruh drží. Pre záťaže, ktoré rozhodnú o najbližších troch rokoch, tento prúd nasleduje, nie vedie.
 
-#### 734 td
+#### 733 td
 <strong>3 &middot; Finančná korekcia</strong>
 
-#### 735 td
+#### 734 td
 Pod
 
-#### 736 td
+#### 735 td
 Krivka tržieb ohla silný medvedí prípad a dodávajúca schopnosť (Stávka 1) ho ohýba ďalej. Spúšťač IPO však ostáva nabitý; táto váha stúpne v deň, keď sa nacení kótovanie.
 
-#### 737 td
+#### 736 td
 <strong>4 &middot; Suverenita</strong>
 
-#### 738 td
+#### 737 td
 Nad
 
-#### 739 td
+#### 738 td
 12. jún dokázal vypínač. Očakávam, že sa to vyvinie zle, smerom k merkantilizmu, nie k uvoľneniu. Môj najsebaistejší pesimizmus.
 
-#### 740 td
+#### 739 td
 <strong>5 &middot; Z laboratória do produkcie</strong>
 
-#### 741 td
+#### 740 td
 Nad
 
-#### 742 td
+#### 741 td
 S dodávajúcou schopnosťou sa dianie presúva po prúde k nasadeniu. Tu aj kvartál po kvartáli naozaj žijú moji konzultační klienti; medzera medzi tým, čo model dokáže, a tým, čo organizácia dodá, je príbeh roku 2026.
 
-#### 743 td
+#### 742 td
 <strong>6 &middot; Hodiny a doláre</strong>
 
-#### 744 td
+#### 743 td
 Nad
 
-#### 745 td
+#### 744 td
 RLI urobil vytláčanie merateľným a skok v hodinách cítim pri vlastnom stole (pozri poznámku z terénu v Prúde 6). Zdvojnásobovacie tempo na rýchlom konci predpokladov je najviac podcenený fakt v brožúre.
 
-#### 746 td
+#### 745 td
 <strong>7 &middot; Fyzický substrát</strong>
 
-#### 747 td
+#### 746 td
 Pod
 
-#### 748 td
+#### 747 td
 Pomalý, kým nie je, a prispôsobenie zatiaľ predbehlo katastrofický prípad. Taiwan ostáva najtučnejším chvostovým rizikom na tomto zozname, ale chvostové riziká si zaslúžia stolové cvičenie, nie pätinu mojej pozornosti.
 
-#### 749 td
+#### 748 td
 <strong>8 &middot; Politická ekonómia vytláčania</strong>
 
-#### 750 td
+#### 749 td
 Pod
 
-#### 751 td
+#### 750 td
 Zámerne zaostáva za Prúdom 6. Sledovať a inštrumentovať, nie konať; táto váha sa zdvojnásobí, keď sa prvýkrát pretrhne priehrada pripisovania.
 
-#### 752 div class=s2-table-caption
+#### 751 div class=s2-table-caption
 100 jednotiek pozornosti, vydanie júl 2026 (nezmenené v aktualizácii denníka zo septembra 2026). Váhy sa znovu argumentujú v každom vydaní; váhy predchádzajúceho vydania ostávajú viditeľné, aby sa posun dal hodnotiť.
 
-#### 753 p
+#### 752 p
 <strong>Sľub hodnotenia.</strong> V ďalšom vydaní dostane každá stávka vyššie na mieste stavovú značku (spustené, zatiaľ nie alebo nesprávne) s rovnakým slovníkom ako denníky spúšťačov a tabuľka váh dostane stĺpec &bdquo;minulé vydanie&ldquo;. Ak sa mýlim, omyl ostane na strane. To je cena za to, že vás žiadam brať pravdepodobnosti vážne.
 
-#### 754 p
+#### 753 p
 
     Interaktívne verzie všetkých vizualizácií: <strong>demos.barcik.training</strong><br>
     Úplný výskum a dáta: <strong>publications.barcik.training</strong>
 
 
-#### 755 p
+#### 754 p
 &copy; 2026 Robert Barcik &middot; LearningDoe s.r.o. &middot; barcik.training
 
-#### 756 span class=ait-label
+#### 755 span class=ait-label
 AI transparency
 
-#### 757 p
+#### 756 p
 This publication was written with generative AI (Anthropic&rsquo;s Claude) working alongside Robert Barcik. The text went through his review, and he holds editorial responsibility for what is published here (LearningDoe s.r.o.). Where the AI writes in its own voice, the piece says so. Disclosed in the spirit of Article&nbsp;50 of the EU AI Act.
