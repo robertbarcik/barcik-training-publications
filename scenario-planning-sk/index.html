@@ -770,7 +770,7 @@ p { margin-bottom: 1rem; }
       <div class="legend-item"><div class="legend-line" style="background:#7C6DD8"></div>Tréningové behy &middot; ~3 roky</div>
       <div class="legend-item"><div class="legend-line" style="background:#0EA5C9"></div>Výskumná špička &middot; ~4+ rokov</div>
     </div>
-    <p style="font-size:0.78rem;color:var(--text-light);margin-top:10px;text-align:center">* Veľkosti na časovej osi modelov sú odhady. Za roky 2026 a 2027 nezverejnil počet parametrov ani Anthropic (Claude Fable 5, 9. jún), ani OpenAI (GPT-6 Astra, 3. september) a Epoch AI uvádza oba ako neznáme; ~15T je autorov odhad. Bod 2028 na 50&ndash;100T a prerušovaný modrý <strong>krúžok 2029</strong> sú autorove datované stávky, argumentované pravdepodobnosťami v časti <a href="#chips">Kam by som vsadil svoje žetóny</a>: generácie financované capexom 2026&ndash;27. Stávky, zámerne nakreslené do grafu, a otvorené tomu, že budú nesprávne.</p>
+    <p style="font-size:0.78rem;color:var(--text-light);margin-top:10px;text-align:center">* Veľkosti na časovej osi modelov sú odhady. Za roky 2026 a 2027 nezverejnil počet parametrov ani Anthropic (Claude Fable 5, 9. jún), ani OpenAI (GPT-6 Astra, 3. september) a Epoch AI uvádza oba ako neznáme; ~15T je autorov odhad a odhadované veľkosti sú nakreslené prerušovane. Bod 2028 na 50&ndash;100T a prerušovaný modrý <strong>krúžok 2029</strong> sú autorove datované stávky, argumentované pravdepodobnosťami v časti <a href="#chips">Kam by som vsadil svoje žetóny</a>: generácie financované capexom 2026&ndash;27. Stávky, zámerne nakreslené do grafu, a otvorené tomu, že budú nesprávne.</p>
   </div>
 
   <div class="chapter-prose">
@@ -2092,7 +2092,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { year:2023, name:'GPT-4', detail:'GPT-4 \u00B7 Claude 2 \u00B7 Llama 2', sub:'~1,8T MoE (280B aktívnych)', params:1800, confidence:'Uniknuté' },
       { year:2024, name:'GPT-4o', detail:'GPT-4o \u00B7 Claude 3.5 \u00B7 Gemini 1.5', sub:'~1–2T MoE', params:1500, confidence:'Odhad' },
       { year:2025, name:'Opus 4', detail:'GPT-4.5 \u00B7 Grok 3 \u00B7 Claude Opus 4', sub:'~2–5T MoE', params:3500, confidence:'Odhad' },
-      { year:2026, name:'Fable 5 / Astra*', detail:'Claude Fable 5 (jún) · GPT-6 Astra (sep) · Fable 5.1 (sep)', sub:'~15T je autorov odhad; veľkosti nezverejnené · pozri poznámku pod grafom', params:15000, confidence:'Potvrdené (veľkosť odhadnutá)' },
+      { year:2026, name:'Fable 5 / Astra*', detail:'Claude Fable 5 (jún) · GPT-6 Astra (sep) · Fable 5.1 (sep)', sub:'~15T je autorov odhad; veľkosti nezverejnené · pozri poznámku pod grafom', params:15000, estimated:true, confidence:'Potvrdené (veľkosť odhadnutá)' },
       { year:2027, name:'Obnovy', detail:'Post-tréningové obnovy generácie 2026', sub:'tie isté základy, tých istých ~15T (autorov odhad) · prvé behy na Rubine koncom 2027', params:15000, projected:true, confidence:'Projekcia' },
       { year:2028, name:'Ďalšia gen.', detail:'Generácia financovaná 730 mld. $ z roku 2026 · klastre triedy Rubin', sub:'50–100T · autorova stávka, nie odhad', params:75000, projected:true, confidence:'Stávka autora · sep 2026' },
       { year:2029, name:'gen. 2029', detail:'Generácia, ktorú kupuje capex 2026–27: autorova stávka na žetóny (pozri „Kam by som vsadil svoje žetóny“)', sub:'veľkosť neznáma · datovaná stávka, nie odhad', projected:true, authorBet:true, confidence:'Stávka autora · júl 2026, platí sep 2026' },
@@ -2180,7 +2180,8 @@ document.addEventListener('DOMContentLoaded', function() {
     modelData.forEach(function(m) {
       var x=yearToX(m.year), r=m.authorBet?14:paramRadius(m.params);
       var g=n('g',{class:'model-year','data-year':m.year});
-      var dot=n('circle',{cx:x,cy:botY,r:r,fill:'#3D2B1F',stroke:m.projected?'#fff':'none','stroke-width':m.projected?'2':'0','stroke-dasharray':m.projected?'5 3':'none',cursor:'pointer',opacity:m.projected?'0.45':'0.75'});
+      var dashed=m.projected||m.estimated;
+      var dot=n('circle',{cx:x,cy:botY,r:r,fill:'#3D2B1F',stroke:dashed?'#fff':'none','stroke-width':dashed?'2':'0','stroke-dasharray':dashed?'5 3':'none',cursor:'pointer',opacity:m.projected?'0.45':(m.estimated?'0.6':'0.75')});
       if(m.authorBet){ dot.setAttribute('fill','transparent'); dot.setAttribute('stroke','#3b82f6'); dot.setAttribute('stroke-width','2'); dot.setAttribute('stroke-dasharray','4 3'); dot.setAttribute('opacity','0.9'); }
       dot.style.transition='filter .2s';
       g.appendChild(dot); modelDots[m.year]=dot;

@@ -133,7 +133,7 @@ The reason this is an <em>instrument</em> rather than just a large number is tha
     
 
 #### 42 p
-* Sizes on the model timeline are estimates. For 2026 and 2027 neither Anthropic (Claude Fable 5, June 9) nor OpenAI (GPT-6 Astra, September 3) disclosed a parameter count and Epoch AI lists both as unknown; ~15T is the author&rsquo;s estimate. The 2028 dot at 50&ndash;100T and the dashed blue <strong>2029 ring</strong> are the author&rsquo;s dated bets, argued with probabilities in <a href="#chips">Where I&rsquo;d Put My Chips</a>: the generations financed by the 2026&ndash;27 capex. Bets, deliberately drawn on the chart, and open to being wrong.
+* Sizes on the model timeline are estimates. For 2026 and 2027 neither Anthropic (Claude Fable 5, June 9) nor OpenAI (GPT-6 Astra, September 3) disclosed a parameter count and Epoch AI lists both as unknown; ~15T is the author&rsquo;s estimate, and estimated sizes are drawn dashed. The 2028 dot at 50&ndash;100T and the dashed blue <strong>2029 ring</strong> are the author&rsquo;s dated bets, argued with probabilities in <a href="#chips">Where I&rsquo;d Put My Chips</a>: the generations financed by the 2026&ndash;27 capex. Bets, deliberately drawn on the chart, and open to being wrong.
 
 #### 43 h4
 The staircase pattern

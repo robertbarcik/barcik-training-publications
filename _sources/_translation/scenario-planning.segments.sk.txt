@@ -133,7 +133,7 @@ Dôvod, prečo je to <em>nástroj</em>, a nie len veľké číslo, je, že capex
 
 
 #### 42 p
-* Veľkosti na časovej osi modelov sú odhady. Za roky 2026 a 2027 nezverejnil počet parametrov ani Anthropic (Claude Fable 5, 9. jún), ani OpenAI (GPT-6 Astra, 3. september) a Epoch AI uvádza oba ako neznáme; ~15T je autorov odhad. Bod 2028 na 50&ndash;100T a prerušovaný modrý <strong>krúžok 2029</strong> sú autorove datované stávky, argumentované pravdepodobnosťami v časti <a href="#chips">Kam by som vsadil svoje žetóny</a>: generácie financované capexom 2026&ndash;27. Stávky, zámerne nakreslené do grafu, a otvorené tomu, že budú nesprávne.
+* Veľkosti na časovej osi modelov sú odhady. Za roky 2026 a 2027 nezverejnil počet parametrov ani Anthropic (Claude Fable 5, 9. jún), ani OpenAI (GPT-6 Astra, 3. september) a Epoch AI uvádza oba ako neznáme; ~15T je autorov odhad a odhadované veľkosti sú nakreslené prerušovane. Bod 2028 na 50&ndash;100T a prerušovaný modrý <strong>krúžok 2029</strong> sú autorove datované stávky, argumentované pravdepodobnosťami v časti <a href="#chips">Kam by som vsadil svoje žetóny</a>: generácie financované capexom 2026&ndash;27. Stávky, zámerne nakreslené do grafu, a otvorené tomu, že budú nesprávne.
 
 #### 43 h4
 Vzor schodiska

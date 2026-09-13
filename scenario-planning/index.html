@@ -769,7 +769,7 @@ p { margin-bottom: 1rem; }
       <div class="legend-item"><div class="legend-line" style="background:#7C6DD8"></div>Training runs &middot; ~3 yr</div>
       <div class="legend-item"><div class="legend-line" style="background:#0EA5C9"></div>Research frontier &middot; ~4+ yr</div>
     </div>
-    <p style="font-size:0.78rem;color:var(--text-light);margin-top:10px;text-align:center">* Sizes on the model timeline are estimates. For 2026 and 2027 neither Anthropic (Claude Fable 5, June 9) nor OpenAI (GPT-6 Astra, September 3) disclosed a parameter count and Epoch AI lists both as unknown; ~15T is the author&rsquo;s estimate. The 2028 dot at 50&ndash;100T and the dashed blue <strong>2029 ring</strong> are the author&rsquo;s dated bets, argued with probabilities in <a href="#chips">Where I&rsquo;d Put My Chips</a>: the generations financed by the 2026&ndash;27 capex. Bets, deliberately drawn on the chart, and open to being wrong.</p>
+    <p style="font-size:0.78rem;color:var(--text-light);margin-top:10px;text-align:center">* Sizes on the model timeline are estimates. For 2026 and 2027 neither Anthropic (Claude Fable 5, June 9) nor OpenAI (GPT-6 Astra, September 3) disclosed a parameter count and Epoch AI lists both as unknown; ~15T is the author&rsquo;s estimate, and estimated sizes are drawn dashed. The 2028 dot at 50&ndash;100T and the dashed blue <strong>2029 ring</strong> are the author&rsquo;s dated bets, argued with probabilities in <a href="#chips">Where I&rsquo;d Put My Chips</a>: the generations financed by the 2026&ndash;27 capex. Bets, deliberately drawn on the chart, and open to being wrong.</p>
   </div>
 
   <div class="chapter-prose">
@@ -2088,7 +2088,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { year:2023, name:'GPT-4', detail:'GPT-4 \u00B7 Claude 2 \u00B7 Llama 2', sub:'~1.8T MoE (280B active)', params:1800, confidence:'Leaked' },
       { year:2024, name:'GPT-4o', detail:'GPT-4o \u00B7 Claude 3.5 \u00B7 Gemini 1.5', sub:'~1\u20132T MoE', params:1500, confidence:'Estimated' },
       { year:2025, name:'Opus 4', detail:'GPT-4.5 \u00B7 Grok 3 \u00B7 Claude Opus 4', sub:'~2\u20135T MoE', params:3500, confidence:'Estimated' },
-      { year:2026, name:'Fable 5 / Astra*', detail:'Claude Fable 5 (Jun) \u00B7 GPT-6 Astra (Sep) \u00B7 Fable 5.1 (Sep)', sub:'~15T is the author\u2019s estimate; sizes undisclosed \u00B7 see note below chart', params:15000, confidence:'Confirmed (size estimated)' },
+      { year:2026, name:'Fable 5 / Astra*', detail:'Claude Fable 5 (Jun) \u00B7 GPT-6 Astra (Sep) \u00B7 Fable 5.1 (Sep)', sub:'~15T is the author\u2019s estimate; sizes undisclosed \u00B7 see note below chart', params:15000, estimated:true, confidence:'Confirmed (size estimated)' },
       { year:2027, name:'Refreshes', detail:'Post-training refreshes of the 2026 generation', sub:'same bases, same ~15T (author estimate) \u00B7 first Rubin runs late 2027', params:15000, projected:true, confidence:'Projected' },
       { year:2028, name:'Next gen', detail:'Generation financed by the $730B of 2026 \u00B7 Rubin-class clusters', sub:'50\u2013100T \u00B7 the author\u2019s bet, not an estimate', params:75000, projected:true, confidence:'Author bet \u00B7 Sep 2026' },
       { year:2029, name:'2029 gen', detail:'The generation the 2026\u201327 capex buys: the author\u2019s chips bet (see \u201cWhere I\u2019d Put My Chips\u201d)', sub:'size unknown \u00b7 dated bet, not an estimate', projected:true, authorBet:true, confidence:'Author bet \u00b7 Jul 2026, held Sep 2026' },
@@ -2176,7 +2176,8 @@ document.addEventListener('DOMContentLoaded', function() {
     modelData.forEach(function(m) {
       var x=yearToX(m.year), r=m.authorBet?14:paramRadius(m.params);
       var g=n('g',{class:'model-year','data-year':m.year});
-      var dot=n('circle',{cx:x,cy:botY,r:r,fill:'#3D2B1F',stroke:m.projected?'#fff':'none','stroke-width':m.projected?'2':'0','stroke-dasharray':m.projected?'5 3':'none',cursor:'pointer',opacity:m.projected?'0.45':'0.75'});
+      var dashed=m.projected||m.estimated;
+      var dot=n('circle',{cx:x,cy:botY,r:r,fill:'#3D2B1F',stroke:dashed?'#fff':'none','stroke-width':dashed?'2':'0','stroke-dasharray':dashed?'5 3':'none',cursor:'pointer',opacity:m.projected?'0.45':(m.estimated?'0.6':'0.75')});
       if(m.authorBet){ dot.setAttribute('fill','transparent'); dot.setAttribute('stroke','#3b82f6'); dot.setAttribute('stroke-width','2'); dot.setAttribute('stroke-dasharray','4 3'); dot.setAttribute('opacity','0.9'); }
       dot.style.transition='filter .2s';
       g.appendChild(dot); modelDots[m.year]=dot;
