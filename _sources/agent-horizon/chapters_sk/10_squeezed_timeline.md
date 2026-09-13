@@ -54,6 +54,26 @@ Stali sa dve veci, ktoré zoznam indikátorov nepredvídal. Gartner dnes predpov
 
 Čisté čítanie: dva indikátory sa hýbu podľa predpovede, dva sú otvorené, jeden zakalený, jeden sa nakláňa proti spôsobom, ktorý jadro rád tejto brožúry posilňuje, nie oslabuje. Rozdvojený verdikt platí. Ďalšie čítanie príde s číslami za 4. kvartál.
 
+## Druhé čítanie: september 2026
+
+O dva mesiace neskôr sa jeden termín posunul a jeden protokol zlúčil, takže tabuľa dostáva druhý prechod.
+
+**Indikátor 1 (MCP na 200 mil. mesačných stiahnutí do 4. kvartálu 2026): hýbe sa podľa predpovede, stále nezmeraný.** Novšie overené číslo stiahnutí než ~97 mil. nebolo zverejnené; správcovia ho prestali uvádzať. Čo merateľné je: revízia z 28. júla 2026 vyšla načas, Python SDK prešlo na 2.x, Agentic AI Foundation prekročila 250 členských organizácií a 6. augusta formát Agent Plugins vložil konfiguráciu MCP do spoločného baliaceho štandardu odvetvia. Ak sa číslo za 4. kvartál nikdy neobjaví, tento indikátor sa ohodnotí podľa počtu serverov v registri a klientov, a poviem to nahlas.
+
+**Indikátor 2 (prvé vymáhanie AI Actu pri vysokorizikovom systéme do 2. kvartálu 2027): hodiny vynuloval zákon.** Digitálny omnibus vyšiel v Úradnom vestníku 24. júla a nadobudol účinnosť 27. júla. Povinnosti pre vysokorizikové systémy z prílohy III sa dnes uplatňujú od 2. decembra 2027, tie pre systémy zabudované do výrobkov (príloha I) od 2. augusta 2028. Vymáhanie pri vysokorizikovom systéme do 2. kvartálu 2027 teda pri odložených povinnostiach už nie je možné; vyprodukovať ho môžu len pravidlá pre GPAI a zakázané praktiky, ktoré ostali v harmonograme. Čítané poctivo, nútiaca sila, o ktorú sa táto brožúra opiera, prichádza zhruba o šestnásť mesiacov neskôr, než aprílový text predpokladal. Rozdvojený verdikt platí (architektúra, ktorú regulovaní kupujúci potrebujú, sa nezmenila), ale dátum Preskoku sa posúva k rokom 2028 až 2029 a tento indikátor sa pre prílohu III predatuje na 4. kvartál 2028.
+
+**Indikátor 3 (LangSmith na 1 000 platiacich podnikových miest do 3. kvartálu 2026): nevyriešený.** Stále bez zverejneného počtu miest; k termínu hodnotený ako neznámy, nie ako neúspech.
+
+**Indikátor 4 (laboratórium z EÚ do 10 % od špičky do polovice roka 2027): peniaze prišli, medzera sa nezavrela.** Mistral získal 8. septembra 3 miliardy eur pri ocenení nad 21 miliárd, výslovne na argumente suverénnej AI s prísľubom gigawattu výpočtového výkonu v EÚ do roku 2030, a Komisia otvorila 30. júla výzvu na až sedem gigafabrík AI. Špička sa medzitým posunula dvakrát, Claude Fable 5 v júni a GPT-6 Astra v septembri. Otázka benchmarkov ostáva otvorená.
+
+**Indikátor 5 (záväzná garancia suverénneho cloudu do konca roka 2026): nakláňa sa proti, potvrdené.** Európa dostala vyjednanú prístupovú úroveň pre jednu verejnú agentúru (ENISA, 10. septembra), o verziu pozadu, po troch mesiacoch rokovaní. To je prístup podľa jurisdikcie, opak garancie rezidencie. Obe vedúce americké laboratóriá dnes spúšťajú svoje najsilnejšie modely najprv za preverenými kohortami, jedno na vládny príkaz v júni, druhé podľa vlastných pravidiel pripravenosti v septembri. Argument za nezávislé riešenia je silnejší, než aprílový text tvrdil.
+
+**Indikátor 6 (vyše 10 000 verejných kariet agentov do konca roka 2027): hýbe sa podľa predpovede.** A2A sa 17. augusta pridalo k Agentic AI Foundation vedľa MCP a dodáva sa ako všeobecne dostupná integrácia v Azure AI Foundry, Bedrock AgentCore a Google Cloude. Verejný počet v registri zatiaľ neexistuje a práve to číslo tento indikátor v skutočnosti potrebuje.
+
+Tri veci, ktoré júlové čítanie nepredvídalo. Dodávateľská vrstva sa ďalej vrtela podľa plánu: OpenAI 26. augusta vyplo Assistants API a ukončenie Agent Buildera datovalo na 30. novembra, kým ADK od Googlu prešlo od konca júla do polovice septembra ôsmimi vydaniami. Vrstva pozorovateľnosti sa neštandardizovala: sémantické konvencie OpenTelemetry pre GenAI sú stále označené ako nestabilné, čo nástroje z kapitoly 7 ešte rok nechá v tvare podľa dodávateľa. A objavil sa tretí objekt na úrovni protokolu, Agent Plugins, ktorý balí to, čo agent vie robiť; vrstvená torta z kapitoly 2 získava poličku bez zmeny tvaru.
+
+Čisté čítanie: dva indikátory sa hýbu podľa predpovede, jeden je otvorený, jeden nevyriešený, jeden predatovaný legislatívou, jeden sa nakláňa proti smerom, ktorý radu posilňuje. Verdikt platí; jeho kalendár sa pre Preskok regulovanej EÚ posunul zhruba o rok. Ďalšie čítanie s číslami za 4. kvartál, alebo v deň, keď register zverejní počet.
+
 > **Naša predpoveď v jednej vete:** Regulované európske podniky Preskočia zhruba do roku 2028; väčšina ostatných podnikov prežije stlačenú, ale skutočnú verziu cyklu lock-inu z cloudovej éry; dodávateľské SDK vyhrajú krátkodobo a nezávislé frameworky plus ich ekosystém pozorovateľnosti vyhrajú dlhodobo pre záťaže, na ktorých záleží najviac, pokiaľ sa tri zo šiestich pomenovaných indikátorov vyššie nepohnú, ako je opísané, a v takom prípade som cyklus prečítal zle.
 
 ---

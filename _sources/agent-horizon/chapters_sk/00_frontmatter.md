@@ -4,7 +4,7 @@
 
 ---
 
-**Apríl 2026 &middot; prvé čítanie indikátorov júl 2026 &middot; slovenské vydanie august 2026**
+**Apríl 2026 &middot; čítania indikátorov júl a september 2026 &middot; slovenské vydanie august 2026**
 
 *Robert Barcik*
 
@@ -39,7 +39,7 @@ Ak ste v rozhovore počuli pojmy *MCP*, *ADK*, *LangGraph* alebo *A2A*, prikyvov
 
 Kapitoly 1 a 2 stavajú mentálny model. Prečítajte si ich ako prvé, aj keď ste v téme hlboko. Kapitola 3 pokrýva dva ustálené protokoly (MCP a A2A). Kapitola 4 predstavuje orchestračnú vrstvu; kapitoly 5 a 6 mapujú jej dve rodiny (dodávateľskú a nezávislú). Kapitola 7 sa venuje pozorovateľnosti. Kapitoly 8 až 10 pokrývajú stratégiu: lock-in, európsky uhol, časovú os. Kapitola 11 to všetko spája do rozhodovacieho rámca, rozpracovanej prípadovej štúdie banky a krátkeho epilógu.
 
-Kapitola 10 urobila svoju predpoveď vyvrátiteľnou šiestimi pomenovanými indikátormi; toto vydanie pridáva ich datované prvé čítanie (júl 2026). Zvyšok textu ostáva aprílovou snímkou, s rovnakou disciplínou, akú naše brožúry o [plánovaní scenárov](/scenario-planning/) a [merkantilizme](/mercantilism-of-genai/) držia svojimi denníkmi spúšťačov.
+Kapitola 10 urobila svoju predpoveď vyvrátiteľnou šiestimi pomenovanými indikátormi; toto vydanie pridáva ich dve datované čítania (júl a september 2026). Zvyšok textu ostáva aprílovou snímkou, s rovnakou disciplínou, akú naše brožúry o [plánovaní scenárov](/scenario-planning/) a [merkantilizme](/mercantilism-of-genai/) držia svojimi denníkmi spúšťačov.
 
 *Poznámka k slovenskému vydaniu: preložil Claude (Fable 5), ktorý sa podieľal aj na júlovej revízii originálu, 16. augusta 2026; prekladané významovo, nie slovo za slovom. Názvy protokolov, frameworkov a produktov ostávajú v angličtine; pojmy ako stack, framework a lock-in nechávame tak, ako sa používajú v slovenskej IT praxi. Pri pochybnostiach platí [anglický originál](/agent-horizon/).*
 

@@ -54,6 +54,26 @@ Two things happened that the indicator list didn't anticipate. Gartner now predi
 
 Net reading: two indicators moving as forecast, two open, one muddied, one leaning against in a way that strengthens the booklet's core advice rather than weakening it. The bifurcated call stands. Next reading due with the Q4 numbers.
 
+## A Second Reading: September 2026
+
+Two months on, one deadline moved and one protocol consolidated, so the board gets a second pass.
+
+**Indicator 1 (MCP at 200M monthly downloads by Q4 2026): moving as forecast, still unmeasured.** No verified download figure newer than the ~97M has been published; the maintainers stopped quoting one. What is measurable: the 2026-07-28 revision shipped on time, the Python SDK went 2.x, the Agentic AI Foundation passed 250 member organisations, and on August 6 the Agent Plugins format put MCP configuration inside the industry's shared packaging standard. If the Q4 number never appears, this indicator gets scored on registry and client counts instead, and I will say so.
+
+**Indicator 2 (first AI Act high-risk enforcement action by Q2 2027): the clock was reset by law.** The Digital Omnibus was published in the Official Journal on July 24 and entered into force on July 27. The Annex III high-risk obligations now apply from December 2, 2027, the product-embedded (Annex I) ones from August 2, 2028. A high-risk enforcement action by Q2 2027 is therefore no longer possible on the deferred obligations; only the GPAI and prohibited-practice rules, which stayed on schedule, can produce one. Read honestly, the forcing function this booklet leans on arrives about sixteen months later than the April text assumed. The bifurcated call stands (the architecture regulated buyers need has not changed), but the Leapfrog date slips toward 2028-2029, and this indicator is re-dated to Q4 2028 for Annex III.
+
+**Indicator 3 (LangSmith at 1,000 paying enterprise seats by Q3 2026): unresolved.** Still no published seat count; scored as unknown at the deadline rather than as a miss.
+
+**Indicator 4 (an EU lab within 10% of the frontier by mid-2027): the money arrived, the gap did not close.** Mistral raised 3 billion euro on September 8 at a valuation above 21 billion, explicitly on a sovereign-AI pitch with a gigawatt of EU compute promised by 2030, and the Commission opened its call for up to seven AI gigafactories on July 30. Meanwhile the frontier stepped twice, Claude Fable 5 in June and GPT-6 Astra in September. The benchmark question stays open.
+
+**Indicator 5 (a binding sovereign-cloud guarantee by end of 2026): leaning against, confirmed.** What Europe got was a negotiated access tier for a public agency (ENISA, September 10), one version behind, after three months of talks. That is jurisdictional access, the opposite of a residency guarantee. Both leading US labs now launch their strongest models behind vetted cohorts first, one on a government order in June, the other on its own preparedness rules in September. The agnostic case is stronger than the April text argued.
+
+**Indicator 6 (10k+ public agent cards by end of 2027): moving as forecast.** A2A joined the Agentic AI Foundation on August 17, next to MCP, and ships as a generally available integration in Azure AI Foundry, Bedrock AgentCore, and Google Cloud. No public registry count exists yet, and that count is the number this indicator actually needs.
+
+Three things the July reading did not anticipate. The vendor layer kept churning on schedule: OpenAI switched off the Assistants API on August 26 and dated the Agent Builder shutdown for November 30, while Google's ADK went through eight releases between late July and mid-September. The observability layer has not standardised: the OpenTelemetry GenAI semantic conventions are still marked unstable, which keeps the tooling in Chapter 7 vendor-shaped for another year. And a third protocol-level object appeared, Agent Plugins, which packages what an agent knows how to do; the layer cake in Chapter 2 gains a shelf without changing shape.
+
+Net reading: two indicators moving as forecast, one open, one unresolved, one re-dated by legislation, one leaning against in the direction that strengthens the advice. The call holds; its calendar slipped by about a year for the regulated-EU Leapfrog. Next reading with the Q4 numbers, or the day a registry publishes a count.
+
 > **Our forecast in one sentence:** Regulated European enterprises will Leapfrog by roughly 2028; most other enterprises will live through a compressed but real version of the cloud-era Lock-In Cycle; vendor SDKs will win the short term and the agnostic frameworks plus their observability ecosystem will win the long term for workloads that matter most, unless three of the six named indicators above don't move as described, in which case I've mis-read the cycle.
 
 ---

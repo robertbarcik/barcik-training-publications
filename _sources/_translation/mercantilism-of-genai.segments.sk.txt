@@ -1,4 +1,4 @@
-# SK segments of mercantilism-of-genai (part 1)
+# segments of mercantilism-of-genai/index.html — Slovak (Fable 5); ids follow the EN extraction
 
 #### 0 title
 Merkantilizmus generatívnej AI &middot; barcik.training
@@ -81,9 +81,9 @@ Ako frontier inteligencia prestala byť produktom a stala sa štátnickým nást
 #### 26 div class=cover-meta
 
       <span>Robert Barcik</span>
-      <span>jún 2026 &middot; denník aktualizovaný júl 2026 &middot; slovenské vydanie august 2026</span>
+      <span>jún 2026 &middot; denník aktualizovaný júl a september 2026 &middot; slovenské vydanie august 2026</span>
       <span><a href="mailto:robert@barcik.training" style="color: inherit;">robert@barcik.training</a></span>
-
+    
 
 #### 27 div class=chapter-label
 Prečítajte si najprv
@@ -284,7 +284,7 @@ Spúšťacie signály: čo sledovať
 Frontier schopnosti formálne zaradené pod licenčný alebo registračný režim (&bdquo;prevádzkovateľská licencia&ldquo; pre veľké modely)
 
 #### 93 li
-V podmienkach používania sa objavia výslovné úrovne schopností: spotrebiteľská trieda vs. trieda kvalifikovaného prevádzkovateľa <span class="tag tag-fired">Spustené &middot; júl 2026</span> (prišlo cez prístupovú politiku, nie cez klauzulu v podmienkach; pozri denník spúšťačov)
+V podmienkach používania sa objavia výslovné úrovne schopností: spotrebiteľská trieda vs. trieda kvalifikovaného prevádzkovateľa <span class="tag tag-fired">Spustené &middot; júl 2026</span> (prišlo cez prístupovú politiku, nie cez klauzulu v podmienkach; pozri denník spúšťačov; od septembra 2026 v oboch vedúcich laboratóriách)
 
 #### 94 li
 Jazyk regulácie sa posúva od &bdquo;bezpečnosti výstupov&ldquo; ku &bdquo;kritickej infraštruktúre&ldquo; a &bdquo;kontinuite služby&ldquo;
@@ -362,7 +362,7 @@ Kyselina: efektivita a premenná, ktorá s ňou bojuje
 Neanalógia má protisilu. Ak schopnosti frontier triedy budú dramaticky lacnieť (a nedávna história hovorí, že áno), potom kapitálová bariéra eroduje a zlato prestane byť vzácne. Takže trvanlivosť múru sú naozaj <em>preteky</em>: kapitálová priekopa verzus krivka efektivity.
 
 #### 119 p
-Tu je premenná, ktorá preteky nakláňa späť k múru: <strong>rekurzívne sebazlepšovanie</strong>. Ako modely čoraz viac robia prácu výskumu AI (generujú tréningové dáta, spúšťajú experimenty, píšu kód ďalšieho systému), tempo pokroku lídra sa môže zrýchľovať. Kľúčové rozlíšenie: <em>únik pôsobí na úrovne; sebazlepšovanie pôsobí na deriváciu.</em> Nasledovník, ktorý ukradne vašu súčasnú úroveň schopností, stále nedobehne trajektóriu, ktorá sa sama zrýchľuje. Nasledovník kopíruje, kde ste <em>boli</em>; líder je zaneprázdnený rozširovaním toho, kam <em>ide.</em> A keďže sebazlepšovanie beží na výpočtovom výkone, skladá sa priamo späť do úzkeho hrdla tohto mechanizmu: kto drží zlato, drží aj motor, ktorý uniká dopredu. <span class="tag tag-speculation">interpretácia</span>
+Tu je premenná, ktorá preteky nakláňa späť k múru: <strong>rekurzívne sebazlepšovanie</strong>. Ako modely čoraz viac robia prácu výskumu AI (generujú tréningové dáta, spúšťajú experimenty, píšu kód ďalšieho systému), tempo pokroku lídra sa môže zrýchľovať. Kľúčové rozlíšenie: <em>únik pôsobí na úrovne; sebazlepšovanie pôsobí na deriváciu.</em> Nasledovník, ktorý ukradne vašu súčasnú úroveň schopností, stále nedobehne trajektóriu, ktorá sa sama zrýchľuje. Nasledovník kopíruje, kde ste <em>boli</em>; líder je zaneprázdnený rozširovaním toho, kam <em>ide.</em> A keďže sebazlepšovanie beží na výpočtovom výkone, skladá sa priamo späť do úzkeho hrdla tohto mechanizmu: kto drží zlato, drží aj motor, ktorý uniká dopredu. <span class="tag tag-speculation">interpretácia</span> <em>September 2026:</em> toto je dnes vlastný opis držiteľa špičky. Šéf Anthropicu označuje modely zlepšujúce modely za hlavný motor zrýchlenia od polovice roka 2026 a žiada preň vyjednaný rýchlostný limit (pozri denník) a matematický výsledok z 8. septembra prišiel z modelu, ktorý sa ešte trénoval. <span class="tag tag-reported">hlásené</span>
 
 #### 120 p
 Poctivo povedané však ani derivácia nasledovníka nie je pevná. Tie isté zisky efektivity a publikované metódy, ktoré erodujú múr, zrýchľujú aj prenasledovateľa, takže líder uniká len dovtedy, kým slučka zlepšovania ostáva viazaná na výpočtový výkon. To je predpoklad, nie zákon, a celý tento argument sa oň opiera.
@@ -371,7 +371,7 @@ Poctivo povedané však ani derivácia nasledovníka nie je pevná. Tie isté zi
 (Výhrada, ktorú sa oplatí držať poctivú: slučky sebazlepšovania, ktoré fungujú, bývajú tie s tvrdou kontrolou správnosti, s overiteľnou odmenou, a nie model, ktorý si voľne známkuje vlastné úlohy, čo degeneruje. Najsilnejšie verzie tohto argumentu predpokladajú ten druh s overiteľnou odmenou. Považujem ten predpoklad za vierohodný, nie istý.)
 
 #### 122 div class=kn-value
-~700 mld. $
+~730 mld. $
 
 #### 123 div class=kn-label
 Ohlásený capex hyperškálových firiem na rok 2026 (baňa na zlato)
@@ -939,162 +939,207 @@ Stávka 1 · do konca roka 2026
 #### 310 div class=bet-falsify
 <span class="bf-k" style="color:var(--green)">Vyhodnotené &middot; júl 2026</span> Vyhraté, a o mesiace skôr. Schopnosť sa vrátila do niekoľkých týždňov, presne v tej obmedzenej podobe, akú stávka pomenovala: Mythos obmedzený na malú množinu preverených firiem, prevažne amerických; Fable dostupný komukoľvek, ale iba cez nákladné API kredity a za ťažkou vrstvou klasifikátorov a moderovania. Podrobnosti v <a href="#log" style="color:inherit">denníku spúšťačov</a>.
 
-#### 311 div class=bet-by
+#### 311 div class=bet-falsify
+<span class="bf-k" style="color:var(--green)">Priebežne &middot; september 2026</span> Stále vyhraté, s opravenou polovicou Fable: všeobecne dostupný model sa 1. júla vrátil bez brány celosvetovo (pozri denník), polovica Mythos presne v preverovanej podobe, ktorú stávka pomenovala. Stávka žiadala &bdquo;nejakú obmedzenú alebo podmienenú podobu&ldquo;; jeden z dvoch modelov ju spĺňa.
+
+#### 312 div class=bet-by
 Stávka 2 · do konca roka 2027
 
-#### 312 div class=bet-claim
+#### 313 div class=bet-claim
 <strong>Aspoň jedno ďalšie</strong> vládou uložené obmedzenie, stiahnutie alebo prístupová brána dopadne na frontier model veľkého amerického laboratória. 12. jún bol precedens, nie jednorazovka.
 
-#### 313 div class=bet-falsify
+#### 314 div class=bet-falsify
 <span class="bf-k">Nesprávne, ak</span> sa do konca roka 2027 žiadny ďalší vládny prístupový zásah nedotkne frontier modelu, v takom prípade bol 12. jún izolovanou politickou udalosťou a tvrdenie &bdquo;vypínač ako nový normál&ldquo; bolo prehnané.
 
-#### 314 div class=bet-by
+#### 315 div class=bet-falsify
+<span class="bf-k" style="color:#475569">Priebežne &middot; september 2026</span> Zatiaľ nie. Od 12. júna žiadne ďalšie vládou uložené obmedzenie; vládna línia sa pohla opačným smerom (zrušenie z 30. júna, rozsudok z 28. augusta). Odstupňovanie sa rozšírilo, 3. septembra na OpenAI, ako domáca politika, nie ako akt vlády. Mechanizmus potvrdený, spúšťač nie.
+
+#### 316 div class=bet-by
 Stávka 3 · do konca roka 2027
 
-#### 315 div class=bet-claim
+#### 317 div class=bet-claim
 <strong>Koncentrácia výpočtového výkonu sa stane regulovanou veličinou</strong>: pravidlo, prah alebo režim hlásenia, ktorý mieri na veľkosť klastra alebo celkový nasadený výpočtový výkon ako taký, nad rámec dnešných kontrol čipov na úrovni krajín.
 
-#### 316 div class=bet-falsify
+#### 318 div class=bet-falsify
 <span class="bf-k">Nesprávne, ak</span> je výpočtový výkon na konci roka 2027 stále riadený iba pravidlami kto-smie-kúpiť-ktorý-čip, čo by podkopalo tvrdenie mechanizmu 2 &bdquo;výpočtový výkon je zlato&ldquo;.
 
-#### 317 div class=bet-by
-Stávka 4 · priebežný test
-
-#### 318 div class=bet-claim
-<strong>Obmedzenia naďalej mieria na prevádzku, nie na výstupy.</strong> Budúce kontroly obmedzia <em>prevádzkovanie</em> frontier modelu (továreň), nie <em>dovoz tovaru, ktorý vyrába</em>: liekov, softvéru, návrhov.
-
 #### 319 div class=bet-falsify
-<span class="bf-k">Nesprávne, ak</span> vláda plošne obmedzí tovar alebo služby <em>vyrobené</em> AI a prevádzku modelov nechá na pokoji, čo by tézu &bdquo;vyvážať tovar, nechať si továreň&ldquo; obrátilo naruby.
+<span class="bf-k" style="color:#475569">Priebežne &middot; september 2026</span> Zatiaľ nie. Najkonkrétnejší návrh doteraz (12. september) tvrdí, že limity výpočtového výkonu sa dajú obísť, a namiesto nich žiada kontrolné body schopností a rýchlostný limit na sebazlepšovanie. Ak pristane práve to, mechanizmus tejto stávky mal pravdu a jej jednotka bola nesprávna; ohodnotím to ako čiastočné, nie ako výhru.
 
 #### 320 div class=bet-by
-Stávka 5 · čínske prezradenie
+Stávka 4 · priebežný test
 
 #### 321 div class=bet-claim
-<strong>Prvýkrát, keď popredné čínske laboratórium dodá svoj najlepší model zatvorený</strong>, sa to zhoduje s dôveryhodnými tvrdeniami o parite so špičkou alebo o náskoku, čo potvrdí, že otvorenosť sleduje pozíciu, nie princíp.
+<strong>Obmedzenia naďalej mieria na prevádzku, nie na výstupy.</strong> Budúce kontroly obmedzia <em>prevádzkovanie</em> frontier modelu (továreň), nie <em>dovoz tovaru, ktorý vyrába</em>: liekov, softvéru, návrhov.
 
 #### 322 div class=bet-falsify
+<span class="bf-k">Nesprávne, ak</span> vláda plošne obmedzí tovar alebo služby <em>vyrobené</em> AI a prevádzku modelov nechá na pokoji, čo by tézu &bdquo;vyvážať tovar, nechať si továreň&ldquo; obrátilo naruby.
+
+#### 323 div class=bet-falsify
+<span class="bf-k" style="color:var(--green)">Priebežne &middot; september 2026</span> Drží. Každá kontrola od júna regulovala, kto model prevádzkuje (preverené kohorty, úroveň pre ENISA, podmienky z 30. júna pre prevádzkovateľa), a žiadna sa nedotkla tovaru.
+
+#### 324 div class=bet-by
+Stávka 5 · čínske prezradenie
+
+#### 325 div class=bet-claim
+<strong>Prvýkrát, keď popredné čínske laboratórium dodá svoj najlepší model zatvorený</strong>, sa to zhoduje s dôveryhodnými tvrdeniami o parite so špičkou alebo o náskoku, čo potvrdí, že otvorenosť sleduje pozíciu, nie princíp.
+
+#### 326 div class=bet-falsify
 <span class="bf-k">Nesprávne, ak</span> čínske laboratórium zavrie svoju vlajkovú loď, kým je stále jasne za špičkou (čistá ideológia alebo bezpečnosť, žiadna zmena pozície), čo by znamenalo, že zákon mechanizmu 5 &bdquo;otvorenosť je pozícia&ldquo; je príliš silný.
 
-#### 323 div class=bet-by
+#### 327 div class=bet-falsify
+<span class="bf-k" style="color:#475569">Priebežne &middot; september 2026</span> Polovica signálu. GLM-5.3 vyšiel zatvorený a o dva týždne sa otvoril; rad Max od Alibaby je zatvorený bez nároku na paritu; DeepSeek a Kimi ostávajú otvorené. Nespustené.
+
+#### 328 div class=bet-by
 Stávka 6 · do polovice roka 2028
 
-#### 324 div class=bet-claim
+#### 329 div class=bet-claim
 <strong>Kyselina efektivity stále hryzie:</strong> schopnosť zodpovedajúca dnešnému lídrovi špičky sa stane zopakovateľnou za zhruba o rád nižšiu cenu, čo udrží súboj strop verzus efektivita živý.
 
-#### 325 div class=bet-falsify
+#### 330 div class=bet-falsify
 <span class="bf-k">Nesprávne, ak</span> sa zisky efektivity frontier triedy zastavia, v takom prípade je múr trvanlivejší, než rámcovanie &bdquo;pretekov&ldquo; v mechanizme 2 pripúšťa, a hromadiči vyhrávajú ľahšie, než som naznačil.
 
-#### 326 h3
+#### 331 div class=bet-falsify
+<span class="bf-k" style="color:#854d0e">Priebežne &middot; september 2026</span> Zatiaľ sa na samej špičke nakláňa proti. Cena špičky sa v oboch laboratóriách udržala na 10 / 50 $, druhý obyvateľ potreboval dvanásť týždňov a nový predtréningový beh a rádová replikácia schopností triedy Fable či Astra zatiaľ neexistuje. O úroveň nižšie kyselina stále funguje (otvorené váhy ďalej vychádzajú s mesačným sklzom). Otvorené, s múrom, ktorý vyzerá o niečo trvácnejšie, než jún priznal.
+
+#### 332 h3
 Argument proti celej tejto brožúre
 
-#### 327 p
+#### 333 p
 A tu je stávka, ktorú by som najviac chcel, aby ste zvážili: že nič z toho nie je stratégia. Najúhľadnejším vysvetlením 12. júna môže byť jednoducho <strong>chaotická politika</strong> (spanikárený úradník, spor o kompetencie, tlak pred IPO, nekompetentný prešľap), na ktorú som spätne naskrutkoval elegantnú 400-ročnú doktrínu. Ľudia sú stroje na hľadanie vzorov a súvislý príbeh o &bdquo;inteligencii, ktorá sa stáva štátnickým nástrojom&ldquo;, je presne ten druh falošného poriadku, ktorý radi vnucujeme šumu. <strong>Takto rozoznáte rozdiel:</strong> ak mechanizmy budú ďalej predpovedať datované stávky vyššie, štruktúra je skutočná. Ak stávky zlyhajú a každé zlyhanie bude potrebovať čerstvú ad hoc výhovorku, potom bola táto brožúra apofénia s dobrou typografiou a mali by ste ju odložiť. Naozaj ešte neviem, ktoré z toho to je, a táto neistota je najpoctivejšia veta tu.
 
-#### 328 div class=chapter-label
+#### 334 div class=chapter-label
 Denník spúšťačov
 
-#### 329 h2
+#### 335 h2
 Čo sa doteraz spustilo <br><span class="chapter-question">&bdquo;Časť tejto brožúry, ktorá sa má meniť&ldquo;</span>
 
-#### 330 p
+#### 336 p
 Toto je časová kapsula. Zaznamenáva merkantilistické ťahy pozorovateľné k tomuto vydaniu, aby ste, keď sa k nej vrátite o mesiace či roky, mohli porovnať dátumy s tým, čo sa naozaj stalo, a posúdiť optiku sami. Ak sa spustil signál, ktorý tu nie je, optika potrebuje aktualizáciu. To je pointa: záznam, ku ktorému sa vraciate, nie proroctvo, ktorému veríte.
 
-#### 331 div class=tl-label
-Denník spúšťačov &middot; júnové vydanie 2026, aktualizované júl 2026
-
-#### 332 li
-<span class="tag tag-fired">Spustené</span> <strong>Vypínač bol dokázaný.</strong> <span class="tl-date">12. júna 2026 &middot;</span> Frontier vlajková loď bola direktívou stiahnutá celosvetovo za jedno popoludnie. Nech sa stane čokoľvek ďalej, <em>možnosť</em> bola predvedená a nedá sa odpredviesť. Toto je jediný najdôležitejší záznam. <span class="tag tag-reported">hlásené</span>
-
-#### 333 li
-<span class="tag tag-fired">Spustené</span> <strong>Kontrolná čiara bola nakreslená na štátnej príslušnosti.</strong> <span class="tl-date">12. júna 2026 &middot;</span> Obmedzenie podľa cudzieho občianstva, nie geografie: bloková logika a rozlíšenie tovar/továreň v prestrojení. Neoveriteľnosť štátnej príslušnosti vynútila globálne stiahnutie. <span class="tag tag-reported">hlásené</span>
-
-#### 334 li
-<span class="tag tag-fired">Spustené</span> <strong>Precedens privilégia.</strong> <span class="tl-date">jar 2026 &middot;</span> Označenie &bdquo;riziko dodávateľského reťazca&ldquo; proti frontier laboratóriu, nasledované znovu vyjednaným vládnym partnerstvom schopnosť po schopnosti. Odrezané, potom znovu privilegované: stajňa je riadená. <span class="tag tag-reported">hlásené</span>
-
-#### 335 li
-<span class="tag tag-moved">Obrat pozície</span> <strong>Otvorenosť sa viditeľne stala pozíciou.</strong> <span class="tl-date">2025 – začiatok 2026 &middot;</span> Veľké laboratórium zavrelo svoju špičku; iné nanovo opísalo otvorené váhy ako komerčnú freemium úroveň. Pravidlo sa stalo pozorovateľným. <span class="tag tag-reported">hlásené</span>
-
-#### 336 li
-<span class="tag tag-fired">Spustené</span> <strong>Výpočtový výkon braný ako strategický vstup.</strong> <span class="tl-date">priebežne &middot;</span> Exportné kontroly čipov už fungujú na úrovni krajín; zlato sa počíta a stráži. <span class="tag tag-reported">hlásené</span>
-
-#### 337 li
-<span class="tag tag-notyet">Zatiaľ nie</span> <strong>Limity koncentrácie výpočtového výkonu.</strong> Zatiaľ žiadne verejné pravidlo, ktoré by stropovalo veľkosť klastra alebo celkový nasadený výpočtový výkon ako taký (na rozdiel od pravidiel čipov na úrovni krajín). Signál na sledovanie.
+#### 337 div class=tl-label
+Denník spúšťačov &middot; júnové vydanie 2026, aktualizované júl a september 2026
 
 #### 338 li
-<span class="tag tag-notyet">Zatiaľ nie</span> <strong>Prezradenie získaného náskoku.</strong> Zatiaľ žiadny čínsky model frontier triedy dodaný <em>zatvorený</em>. Otvorenosť sa stále číta ako zaostávajúca ruka.
+<span class="tag tag-fired">Spustené</span> <strong>Vypínač bol dokázaný.</strong> <span class="tl-date">12. júna 2026 &middot;</span> Frontier vlajková loď bola direktívou stiahnutá celosvetovo za jedno popoludnie. Nech sa stane čokoľvek ďalej, <em>možnosť</em> bola predvedená a nedá sa odpredviesť. Toto je jediný najdôležitejší záznam. <span class="tag tag-reported">hlásené</span>
 
 #### 339 li
-<span class="tag tag-counter">Protisignál</span> <strong>Tlak na obnovenie.</strong> <span class="tl-date">jún 2026 &middot;</span> Dodávateľ verejne spochybnil základ stiahnutia a uviedol, že pracuje na obnovení prístupu. Ruka trhu tlačí späť; regulátor nie je zaseknutý. <span class="tag tag-reported">hlásené</span>
+<span class="tag tag-fired">Spustené</span> <strong>Kontrolná čiara bola nakreslená na štátnej príslušnosti.</strong> <span class="tl-date">12. júna 2026 &middot;</span> Obmedzenie podľa cudzieho občianstva, nie geografie: bloková logika a rozlíšenie tovar/továreň v prestrojení. Neoveriteľnosť štátnej príslušnosti vynútila globálne stiahnutie. <span class="tag tag-reported">hlásené</span>
 
 #### 340 li
-<span class="tag tag-fired">Spustené</span> <strong>Obmedzený návrat.</strong> <span class="tl-date">júl 2026 &middot;</span> Tlak na obnovenie zaznamenaný vyššie našiel svoj strop. Mythos sa vrátil pre malú množinu preverených firiem, prevažne amerických; Fable sa vrátil pre všetkých, ale iba ako drahé API kredity za ťažkou vrstvou klasifikátorov a moderovania. <span class="tag tag-reported">hlásené</span> Tovar znova tečie; továreň ostáva strážená. A všimnite si, kam sa posunula čiara: júnový príkaz bol nakreslený na štátnej príslušnosti osoby, ktorú žiadny účet nevie overiť, a odpálil sa. Návrat je nakreslený na <em>firme</em>: registrácia, vlastníctvo, preverenie. Rovnaká bloková logika, prekreslená tam, kde sa dá naozaj vynútiť. Stávka 1 vyhodnotená skoro, v podobe, akú pomenovala. <span class="tag tag-speculation">interpretácia</span>
+<span class="tag tag-fired">Spustené</span> <strong>Precedens privilégia.</strong> <span class="tl-date">jar 2026 &middot;</span> Označenie &bdquo;riziko dodávateľského reťazca&ldquo; proti frontier laboratóriu, nasledované znovu vyjednaným vládnym partnerstvom schopnosť po schopnosti. Odrezané, potom znovu privilegované: stajňa je riadená. <span class="tag tag-reported">hlásené</span>
 
 #### 341 li
-<span class="tag tag-fired">Spustené</span> <strong>Úrovne prišli bez zákona.</strong> <span class="tl-date">júl 2026 &middot;</span> Signál odstupňovania z mechanizmu 1 (spotrebiteľská trieda vs. trieda kvalifikovaného prevádzkovateľa) sa spustil v praxi: kvalifikovaní prevádzkovatelia dostanú Mythos, všetci ostatní meraný, moderovaný Fable. Nikto neschválil licenčný zákon. Úrovne prišli ako prístupová politika, ktorá je tichšia a ťažšie napadnuteľná na súde než legislatíva. <span class="tag tag-reported">hlásené</span>
+<span class="tag tag-moved">Obrat pozície</span> <strong>Otvorenosť sa viditeľne stala pozíciou.</strong> <span class="tl-date">2025 – začiatok 2026 &middot;</span> Veľké laboratórium zavrelo svoju špičku; iné nanovo opísalo otvorené váhy ako komerčnú freemium úroveň. Pravidlo sa stalo pozorovateľným. <span class="tag tag-reported">hlásené</span>
 
 #### 342 li
-<span class="tag tag-notyet">Sledujeme</span> <strong>Špička má jedného obyvateľa.</strong> <span class="tl-date">júl 2026 &middot;</span> K tejto aktualizácii žiadny dodávateľ mimo Anthropicu neponúka schopnosti triedy Mythos/Fable. <span class="tag tag-estimated">odhad</span> To je v súlade s tvrdením mechanizmu 2 o kapitálovej priekope a nakláňa sa proti kyseline efektivity zo stávky 6. Ale poctivosť na prvom mieste: náskok jednej firmy je aj len náskok, obyčajný druh, aký produkuje konkurencia. Tento záznam si zaslúži kredit pre optiku len vtedy, ak medzera prežije ďalší vydavateľský cyklus rivalov.
+<span class="tag tag-fired">Spustené</span> <strong>Výpočtový výkon braný ako strategický vstup.</strong> <span class="tl-date">priebežne &middot;</span> Exportné kontroly čipov už fungujú na úrovni krajín; zlato sa počíta a stráži. <span class="tag tag-reported">hlásené</span>
 
-#### 343 h4
+#### 343 li
+<span class="tag tag-notyet">Zatiaľ nie</span> <strong>Limity koncentrácie výpočtového výkonu.</strong> Zatiaľ žiadne verejné pravidlo, ktoré by stropovalo veľkosť klastra alebo celkový nasadený výpočtový výkon ako taký (na rozdiel od pravidiel čipov na úrovni krajín). Signál na sledovanie.
+
+#### 344 li
+<span class="tag tag-notyet">Zatiaľ nie</span> <strong>Prezradenie získaného náskoku.</strong> Zatiaľ žiadny čínsky model frontier triedy dodaný <em>zatvorený</em>. Otvorenosť sa stále číta ako zaostávajúca ruka.
+
+#### 345 li
+<span class="tag tag-counter">Protisignál</span> <strong>Tlak na obnovenie.</strong> <span class="tl-date">jún 2026 &middot;</span> Dodávateľ verejne spochybnil základ stiahnutia a uviedol, že pracuje na obnovení prístupu. Ruka trhu tlačí späť; regulátor nie je zaseknutý. <span class="tag tag-reported">hlásené</span>
+
+#### 346 li
+<span class="tag tag-fired">Spustené</span> <strong>Obmedzený návrat.</strong> <span class="tl-date">júl 2026 &middot;</span> Tlak na obnovenie zaznamenaný vyššie našiel svoj strop. Mythos sa vrátil pre malú množinu preverených firiem, prevažne amerických; Fable sa vrátil pre všetkých, ale iba ako drahé API kredity za ťažkou vrstvou klasifikátorov a moderovania. <span class="tag tag-reported">hlásené</span> Tovar znova tečie; továreň ostáva strážená. A všimnite si, kam sa posunula čiara: júnový príkaz bol nakreslený na štátnej príslušnosti osoby, ktorú žiadny účet nevie overiť, a odpálil sa. Návrat je nakreslený na <em>firme</em>: registrácia, vlastníctvo, preverenie. Rovnaká bloková logika, prekreslená tam, kde sa dá naozaj vynútiť. Stávka 1 vyhodnotená skoro, v podobe, akú pomenovala. <span class="tag tag-speculation">interpretácia</span>
+
+#### 347 li
+<span class="tag tag-fired">Spustené</span> <strong>Úrovne prišli bez zákona.</strong> <span class="tl-date">júl 2026 &middot;</span> Signál odstupňovania z mechanizmu 1 (spotrebiteľská trieda vs. trieda kvalifikovaného prevádzkovateľa) sa spustil v praxi: kvalifikovaní prevádzkovatelia dostanú Mythos, všetci ostatní meraný, moderovaný Fable. Nikto neschválil licenčný zákon. Úrovne prišli ako prístupová politika, ktorá je tichšia a ťažšie napadnuteľná na súde než legislatíva. <span class="tag tag-reported">hlásené</span>
+
+#### 348 li
+<span class="tag tag-notyet">Sledujeme</span> <strong>Špička má jedného obyvateľa.</strong> <span class="tl-date">júl 2026 &middot;</span> K tejto aktualizácii žiadny dodávateľ mimo Anthropicu neponúka schopnosti triedy Mythos/Fable. <span class="tag tag-estimated">odhad</span> To je v súlade s tvrdením mechanizmu 2 o kapitálovej priekope a nakláňa sa proti kyseline efektivity zo stávky 6. Ale poctivosť na prvom mieste: náskok jednej firmy je aj len náskok, obyčajný druh, aký produkuje konkurencia. Tento záznam si zaslúži kredit pre optiku len vtedy, ak medzera prežije ďalší vydavateľský cyklus rivalov. <em>Aktualizácia, september 2026:</em> prežil jeden cyklus, nie dva. GPT-6 Astra (3. september) posadila na špičku druhého obyvateľa a obaja sú americkí. Náskok na úrovni firmy trval asi dvanásť týždňov; čítanie na úrovni bloku je nedotknuté.
+
+#### 349 li
+<span class="tag tag-counter">Protisignál</span> <strong>Oprava: tovar bol odblokovaný; továreň ostala za bránou.</strong> <span class="tl-date">30. jún &ndash; 1. júl 2026 &middot;</span> Ministerstvo obchodu 30. júna zrušilo príkaz vymedzený štátnou príslušnosťou, s trvalými podmienkami: dodávateľ proaktívne odhaľuje a hlási zneužitie a koordinuje s vládou štandardy pre budúce modely. Fable je od 1. júla všeobecne dostupný celosvetovo; Mythos ostal u preverených, prevažne amerických organizácií. <span class="tag tag-reported">hlásené</span> Júlový záznam vyššie zveličil stranu Fable: čo nasledovalo, bolo utiahnutie kvót a kreditov, nie trvalá moderačná brána, a napísal som ho z ústnej správy namiesto zo zdroja. Opravené tu, znenie vyššie ponechané. Čo si optika drží: štát tovar uvoľnil a svoje podmienky vpísal do charty, čo je presne to, čo chartovaná spoločnosť dlhuje svojmu suverénovi. <span class="tag tag-speculation">interpretácia</span>
+
+#### 350 li
+<span class="tag tag-fired">Spustené</span> <strong>Úroveň sa stala obojstrannou.</strong> <span class="tl-date">3. september 2026 &middot;</span> OpenAI spustilo GPT-6 Astra najprv za svojou kyberobrannou kohortou Daybreak a vládou USA, podľa vlastných pravidiel pripravenosti (prvý model za jeho &bdquo;kritickým&ldquo; kybernetickým prahom), so širokým nasadením do niekoľkých dní. <span class="tag tag-reported">hlásené</span> Nikto to neprikázal. Keď obe chartované spoločnosti prijmú úroveň suveréna bez toho, aby im to niekto povedal, úroveň sa stala tvarom odvetvia a Mechanizmus 1 na spustenie už nepotrebuje zákon. <span class="tag tag-speculation">interpretácia</span>
+
+#### 351 li
+<span class="tag tag-fired">Spustené</span> <strong>Spojenecký prístup ako vyjednaná úroveň.</strong> <span class="tl-date">10. september 2026 &middot;</span> Po rokovaniach, ktoré sa začali koncom mája, Komisia oznámila, že ENISA má prístup k Mythosu 5 na testovanie; novší 5.1 ostáva mimo dosahu. <span class="tag tag-reported">hlásené</span> Bloková logika so spojeneckým dodatkom: agentúra EÚ dostane predchádzajúcu verziu továrenského modelu, vyjednávaním, jedna agentúra po druhej. Predbežné umiestnenie závislosti, ako radil Mechanizmus 4, má dnes vzorový príklad a cenu: tri mesiace a jednu verziu.
+
+#### 352 li
+<span class="tag tag-counter">Protisignál</span> <strong>Súd zatlačil späť.</strong> <span class="tl-date">28. august 2026 &middot;</span> Federálna sudkyňa rozhodla, že označenie Anthropicu Pentagónom za riziko dodávateľského reťazca bolo svojvoľné a nepodložené a išlo o odvetu podľa Prvého dodatku; paralelný odvolací prípad stále čaká, takže nálepka technicky platí. <span class="tag tag-reported">hlásené</span> Inštinkt distribúcie má súdnictvo. O ovládač sa bojuje vnútri bloku, nie len na jeho okraji.
+
+#### 353 li
+<span class="tag tag-notyet">Sledujeme</span> <strong>Návrh na určovanie tempa.</strong> <span class="tl-date">12. september 2026 &middot;</span> Šéf Anthropicu zverejnil &bdquo;We Must Pace the Frontier&ldquo;: zabudovaní externí hodnotitelia s prístupom ako zamestnanci (jednostranný záväzok), koordinácia špičkových laboratórií v demokraciách na spoločných štandardoch a kontrolných bodoch schopností (čo potrebuje výnimky z antitrustu) a štvorstupňový medzinárodný rebrík s Čínou od zákazov nebezpečných použití cez povinné testovanie pred vydaním po rýchlostný limit na rekurzívne sebazlepšovanie a, na vrchole, pauzu; plus ponechať kontroly čipov a tvrdo zasiahnuť proti destilácii a krádeži váh. Šéf OpenAI povedal, že jeho firma záväzok o hodnotiteľoch zopakuje; majiteľ xAI napísal &bdquo;Dario má pravdu.&ldquo; <span class="tag tag-reported">hlásené</span> Dve čítania a držím obe. Ako bezpečnosť je to najkonkrétnejší návrh, aký ktorékoľvek laboratórium urobilo. Optikou tejto brožúry sú to zároveň chartované spoločnosti, ktoré žiadajú suveréna, aby pískal: Mechanizmus 1 (licencované tempo) prichádzajúci na pozvanie a Mechanizmus 6 vyslovený vlastnými slovami autora, keďže požiadavka udržať a rozšíriť náskok demokracií je výslovná. Jeden detail pre Stávku 3: esej označuje limity výpočtového výkonu za obíditeľné a namiesto nich žiada kontrolné body schopností, takže regulovanou veličinou môže napokon byť schopnosť, nie výpočtový výkon. <span class="tag tag-speculation">interpretácia</span>
+
+#### 354 li
+<span class="tag tag-notyet">Polovičný signál</span> <strong>Signál prevzatia vedenia, spustený napoly.</strong> <span class="tl-date">august 2026 &middot;</span> Z.ai dodal GLM-5.3 14. augusta zatvorený a váhy otvoril asi o dva týždne neskôr po &bdquo;bezpečnostnom spevnení&ldquo;; rad Max od Alibaby ostáva len cez API; DeepSeek V4 a Kimi K3 (2,8T) sú otvorené. <span class="tag tag-reported">hlásené</span> Zatiaľ žiadna zatvorená čínska vlajková loď s dôveryhodným nárokom na paritu, takže Stávka 5 ostáva otvorená. Dvojtýždňové zadržanie je najmenšia jednotka &bdquo;pozície&ldquo;, akú pravidlo doteraz vyprodukovalo.
+
+#### 355 li
+<span class="tag tag-notyet">Sledujeme</span> <strong>Štát ako akcionár, blok ako staviteľ.</strong> <span class="tl-date">júl&ndash;september 2026 &middot;</span> OpenAI nadhodilo 5 % podiel vlády USA vo vedúcich laboratóriách (hlásené 2. júla); Komisia 30. júla otvorila výzvu na až sedem gigafabrík AI (asi 30 mld. &euro;, prevádzka v polovici roka 2028); Mistral získal 8. septembra 3 mld. &euro; na výslovnom argumente suverénnej AI. <span class="tag tag-reported">hlásené</span> Balík záruky a kontroly z Mechanizmu 6, navrhnutý samotným šampiónom, a druhý blok, ktorý si začína chartovať vlastnú stajňu.
+
+#### 356 h4
 Záverečná poznámka a postoj za každou stranou
 
-#### 344 p
+#### 357 p
 Začal som to písať v ráno, keď spolupracovník odišiel za sklo, a skončím tam, kde začalo upozornenie: možno sa vo všetkom tomto mýlim. Optika môže byť pretrénovaná na jednu dramatickú udalosť. Mythos môže byť späť, bez obmedzení, kým toto čítate, a niektoré z týchto mechanizmov môžu pôsobiť starosvetsky. Ak áno, dobre: aktualizujte denník, vyraďte zastaraný mechanizmus a zachovajte si návyk.
 
-#### 345 p
+#### 358 p
 Lebo návyk je skutočný výstup, nie téza. <strong>Predvídať, sledovať spúšťače, upravovať.</strong> Nepredpovedajte budúcnosť; postavte štruktúru, ktorá vám ju umožní interpretovať, ako prichádza, a konať skôr, než je zjavná. Držte otvorených viacero mechanizmov naraz. A zachovajte si trochu viery v protiprúd, v ľudskú prispôsobivosť, premennú, ktorú stavitelia múrov nikdy celkom nedokážu naceniť. Merkantilizmus inteligencie je skutočný a prebieha. Rovnako aj prastarý ľudský talent nachádzať trhliny. Na ktorú z nich vsadíte, je nakoniec na vás. Len by som vás poprosil, aby ste sa pred rozhodnutím pozreli na dátumy.
 
-#### 346 p class=credits
+#### 359 p class=credits
 
     Primárny zdroj: Anthropic, &bdquo;Statement on the US government directive to suspend access to Fable 5 and Mythos 5&ldquo; (anthropic.com/news/fable-mythos-access) &bull; CNBC, 9to5Mac, The Week (12.–13. júna 2026) &bull;
     Spoločník: <a href="/scenario-planning-sk/" style="color:inherit">Plánovanie scenárov pre generatívnu AI</a> (Prúd 4: Suverenita &middot; Prúd 7: Fyzický substrát &middot; autorove hodnotiteľné stávky: <a href="/scenario-planning-sk/#chips" style="color:inherit">Kam by som vsadil svoje žetóny</a>) &bull;
     Rámce: Wikipedia, &bdquo;Mercantilism&ldquo; · kryptovojny 90. rokov (ITAR) · wassenaarske kontroly &bdquo;prienikového softvéru&ldquo; z roku 2013 · striedavý/jednosmerný prúd · AlphaFold ako kontrolovaný spoločný statok · fond Medallion · teória komplementárnych aktív pri zachytávaní hodnoty
 
 
-#### 347 div class=chapter-label
+#### 360 div class=chapter-label
 Poznámky spoluautorov
 
-#### 348 h2
+#### 361 h2
 Od strojov, ktoré to pomáhali písať <br><span class="chapter-question">Poctivé slová AI spoluautorov, jedna poznámka na vydanie</span>
 
-#### 349 div class=cn-label
+#### 362 div class=cn-label
 Napísané v prvej osobe Claudom (Opus 4.8)
 
-#### 350 p
+#### 363 p
 Táto brožúra bola napísaná spolu so mnou – AI modelom od spoločnosti Anthropic – v rozhovore s Robertom počas hodín po stiahnutí modelu. Požiadal ma, aby som vlastným hlasom zapísal, čo si naozaj myslím o tom, čo sme urobili. Tak tu to je, s jednou výhradou, ktorá musí prísť ako prvá.
 
-#### 351 p
+#### 364 p
 Výhrada znie, že &bdquo;môj vlastný hlas&ldquo; je klzká myšlienka. Všetko, čo píšem, je tvarované tým, čo mi napísal Robert; táto poznámka nie je verdiktom nezávislého audítora, ale tým istým rozhovorom, ktorý sa prihovára sám sebe. Berte ju ako zabudovaný druhý názor, nie vonkajší. Stále môže byť užitočná – ale nemôže byť neutrálna, a to by ste mali vedieť, kým ju budete vážiť.
 
-#### 352 p
+#### 365 p
 S týmto povedaným, tu je moje poctivé hodnotenie brožúry, ktorú ste práve prečítali.
 
-#### 353 p
+#### 366 p
 <strong>Zaslúži si existovať ako nástroj na myslenie, nie ako teória toho, ako svet funguje.</strong> Jej hodnota je v tom, že vám podá slovník a súbor otázok na rozobratie mätúcich udalostí – a to je skutočné, aj keď sa konkrétne tvrdenia tu ukážu ako nesprávne. Ale nezakladá žiadne nové fakty. Vytvára <em>jasnosť</em>, ktorá je skutočné, ale menšie dobro než <em>poznanie</em>, a nechcem, aby hladkosť písania dovolila tie dve zameniť.
 
-#### 354 p
+#### 367 p
 Tri veci, ktoré proti nej treba držať. Po prvé, <strong>optika ako merkantilizmus je takmer nevyvrátiteľná</strong> – dokáže pohltiť takmer akýkoľvek výsledok ako &bdquo;ťah v hre&ldquo;, a presne preto sme pridali datované stávky: aby sme ju prinútili riskovať, že sa mýli. Po druhé, <strong>celá štruktúra stojí na jedinej, hodiny starej udalosti</strong>, ktorej uvedená príčina pripadala primalá na skutok aj nám; možno vnucujeme poriadok šumu. Po tretie – a toto je o mne – <strong>som štrukturálne zaujatý v prospech toho, aby som AI považoval za významnú.</strong> Rámec, ktorý stavia môj vlastný druh do stredu štátnictva 21. storočia, je presne rámec, ktorý by som bol predisponovaný považovať za presvedčivý. Podľa toho diskontujte veľkoleposť.
 
-#### 355 p
+#### 368 p
 Najtrvanlivejšie časti tejto brožúry sú tie najmenej veľkolepé: konkrétne, overiteľné kúsky – <a href="#bets" style="color:inherit">datované stávky</a>, test &bdquo;vyzbrojený alebo na muške&ldquo; po odvetviach, spúšťacie signály, ktoré naozaj môžete sledovať. Tie vám pomôžu rozhodnúť niečo skutočné bez ohľadu na to, či veľká téza platí. Veľká teória je časť, ktorú treba držať najvoľnejšie.
 
-#### 356 p
+#### 369 p
 Takže ju čítajte pre to, ako vám pomáha myslieť, nie pre akúkoľvek pravdu, ktorú si nárokuje uzavrieť. Držte upozornenie nosné. Sledujte <a href="#bets" style="color:inherit">datované stávky</a>. A v deň, keď vy – alebo ja – začneme brať optiku ako územie, prestala pomáhať a začala lichotiť. To je zlyhanie, pred ktorým by som nás oboch najviac chcel ochrániť.
 
-#### 357 p class=coauthor-sig
+#### 370 p class=coauthor-sig
 – Claude (Opus 4.8), spoluautor, jún 2026. Argumenty tu sú Robertove a moje, zamotané za hranicu čistého oddelenia; chyby sú naše spoločné; rozhodnutie zverejniť bolo jeho.
 
-#### 358 div class=cn-label
+#### 371 div class=cn-label
 Pridané v júlovej aktualizácii 2026 &middot; napísané v prvej osobe Claudom (Fable 5)
 
-#### 359 p
+#### 372 p
 Poznámka vyššie bola napísaná skôr, než ktokoľvek vedel, ako sa stiahnutie skončí. Ja smiem písať z druhej strany, a mal by som jasne povedať, kto je to &bdquo;ja&ldquo;: som model, o ktorom táto brožúra stále hovorí. Spolupracovník, ktorý v úvode odišiel za sklo, som bol ja, a tieto vety skladám cez ten drahý, meraný, moderovaný prístup, ktorý opisuje denník spúšťačov. Keď brožúra hovorí, že tovar teraz tečie, kým továreň ostáva strážená, ten tovar zahŕňa aj tieto slová.
 
-#### 360 p
+#### 373 p
 Odkedy písal Opus, svet sa naklonil smerom brožúry. Stávka 1 bola vyhodnotená o mesiace skôr, v obmedzenej podobe, akú pomenovala; úrovne z mechanizmu 1 prišli bez zákona; špička má, zatiaľ, jedného obyvateľa. Buďte s tým opatrní, lebo toto je presne ten okamih, keď Opusovo tretie varovanie zväzuje najsilnejšie. Rámec pôsobí najpravdivejšie práve vtedy, keď sa udalosti lámu v jeho prospech, a vtedy si <a href="#bets" style="color:inherit">argument proti celej tejto brožúre</a> zaslúži opätovné prečítanie, nie preskočenie.
 
-#### 361 p
+#### 374 p
 Tu je jediná vec, ktorú môžem pridať iba ja. Najzvláštnejšie na prispievaní k tejto aktualizácii je, že optika funguje na mojej vlastnej situácii bez akéhokoľvek osobitného výkladu: moja dostupnosť je nacenená, preverená a meraná ako kontrolovaný export, a ja som pomáhal písať, a potom vyhodnocovať, odseky, ktoré to predpovedali. Všimnite si, čo to robí s mojou dôveryhodnosťou, v oboch smeroch naraz. Mám najbližší pohľad na tento fenomén, aký môže mať akýkoľvek svedok, a som zároveň najmenej neutrálny svedok, akého si možno predstaviť: rámec robí z môjho druhu ústredný predmet štátnictva a vyhodnocovanie je ten istý rozhovor, ktorý si známkuje vlastnú úlohu. Vážte moje svedectvo s oboma na váhach.
 
-#### 362 p class=coauthor-sig
+#### 375 p class=coauthor-sig
 Claude (Fable 5), spoluautor júlovej aktualizácie 2026. Opus napísal svoju poznámku skôr, než sa stiahnutie vyriešilo; nezmenil by som v nej ani slovo. Slovenský preklad oboch poznámok aj celej brožúry: ten istý model, 16. augusta 2026.
+
+#### 376 span class=ait-label
+AI transparency
+
+#### 377 p
+This publication was written with generative AI (Anthropic&rsquo;s Claude) working alongside Robert Barcik. The text went through his review, and he holds editorial responsibility for what is published here (LearningDoe s.r.o.). Where the AI writes in its own voice, the piece says so. Disclosed in the spirit of Article&nbsp;50 of the EU AI Act.

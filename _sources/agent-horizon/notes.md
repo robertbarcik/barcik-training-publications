@@ -27,3 +27,15 @@ Anchor slugs all preserved. April numbers (97M MCP downloads, 44k CrewAI stars) 
 - Decision-tree SVG labels translated in place; a few shortened / one leaf widened to fit
   (rendered and inspected). Numbers, product names, protocol names unchanged. Translator's note in
   the SK frontmatter; SK AI-transparency colophon from training-ops.
+
+## 2026-09-13 — September 2026 reading (with Claude / Fable 5.1)
+
+Light second pass, same discipline as July: the April body stays, dated notes and the indicator board move. EN + SK chapters edited in lockstep (`chapters/` and `chapters_sk/`), both editions rebuilt with `/usr/bin/python3` (the Homebrew python lacks `markdown`).
+
+- **Ch3**: handshake paragraph now says `initialize` was replaced by the 2026-07-28 revision (`server/discover` + per-request `_meta` version); new **September 2026 note** (sampling/roots/logging deprecated ≥12 months, HTTP+SSE deprecated, OAuth → Client ID Metadata Documents, Python SDK 2.0 `FastMCP`→`MCPServer`, Agent Plugins format Aug 6 with the Amazon/Cursor/Microsoft/OpenAI/Vercel steering committee, Google Aug 13). A2A facts corrected: the April milestone was **1.0** (first stable spec, signed agent cards), not "1.2"; A2A formally joined the AAIF on 2026-08-17 (the July text had it under the umbrella early). MCP-tutorial link notes the Sept 2026 rebuild on the new spec.
+- **Ch5**: ADK cadence + Go/Java 1.0 + A2A still `@a2a_experimental` (verified in the course venv, ADK 2.7.1 / a2a-sdk 1.1.2 = protocol 1.0); OpenAI Assistants API sunset Aug 26 + Agent Builder shutdown Nov 30 (announced Jun 3), "GPT-4o" wording dropped; Claude SDK gains Agent Plugins + Managed Agents production path; Strands: Managed Agent Harness GA Jun 17; Microsoft: Semantic Kernel in maintenance to ~Apr 2027.
+- **Ch9**: September note (June 30 lifting with standing conditions, Fable GA worldwide since Jul 1, Mythos vetted; ENISA Mythos 5 access Sep 10; Astra vetted-cohort-first launch Sep 3).
+- **Ch10**: new section **"A Second Reading: September 2026"**. Key call: the Digital Omnibus (OJ 2026-07-24, in force 07-27) re-dates indicator 2 (Annex III → Dec 2, 2027), so the Leapfrog calendar slips ~1 year; indicator 5 confirmed leaning against; A2A/AAIF consolidation; three unanticipated items (Assistants sunset + ADK churn, OTel GenAI conventions still unstable, Agent Plugins as a third protocol-level object).
+- Frontmatter date line: "indicator readings July and September 2026".
+
+Sources: blog.modelcontextprotocol.io/posts/2026-07-28, python-sdk v2.0.0 release, linuxfoundation.org A2A 1.0 press release (2026-04-09), Axios/Forbes on A2A→AAIF (2026-08-17/19), vercel.com/blog/introducing-agent-plugins, developers.openai.com/api/docs/deprecations, PyPI google-adk history, Google Developers Blog (ADK Go 1.0, Java 1.0), AWS AgentCore release notes, Gibson Dunn / Lewis Silkin on Regulation (EU) 2026/1744, EC digital-strategy gigafactories call (2026-07-30), TechCrunch Mistral Series D (2026-09-08), Bloomberg/TechRepublic ENISA–Mythos (2026-09-10), TechCrunch Astra launch (2026-09-03), Al Jazeera/CNN on the June 30 lifting.

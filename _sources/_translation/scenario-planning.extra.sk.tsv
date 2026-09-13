@@ -5,22 +5,24 @@ Research frontier &middot; ~4+ yr</div>	Výskumná špička &middot; ~4+ rokov</
 infra:'Colossus: 100K GPUs deployed in 122 days'	infra:'Colossus: 100K GPU nasadených za 122 dní'
 infra:'Rainier 500K · Abilene 450K GPUs'	infra:'Rainier 500K · Abilene 450K GPU'
 infra:'TMI restart · multi-GW sites'	infra:'reštart TMI · multi-GW lokality'
+infra:'Prometheus 1GW · Fairwater · Rubin ramps'	infra:'Prometheus 1GW · Fairwater · nábeh Rubinu'
 detail:'ChatGPT / GPT-3.5', sub:'~175B dense', params:175, confidence:'Confirmed'	detail:'ChatGPT / GPT-3.5', sub:'~175B hustý', params:175, confidence:'Potvrdené'
 sub:'~1.8T MoE (280B active)', params:1800, confidence:'Leaked'	sub:'~1,8T MoE (280B aktívnych)', params:1800, confidence:'Uniknuté'
 sub:'~1–2T MoE', params:1500, confidence:'Estimated'	sub:'~1–2T MoE', params:1500, confidence:'Odhad'
 sub:'~2–5T MoE', params:3500, confidence:'Estimated'	sub:'~2–5T MoE', params:3500, confidence:'Odhad'
-detail:'Claude Fable 5* (early Mythos-class variant, Jun 9) · Opus 4.7 · Gemini 3.5', sub:'params N/A · outlier · see note below chart', confidence:'Confirmed'	detail:'Claude Fable 5* (raný variant triedy Mythos, 9. jún) · Opus 4.7 · Gemini 3.5', sub:'parametre neznáme · odľahlý bod · pozri poznámku pod grafom', confidence:'Potvrdené'
-detail:'Claude Mythos (full deployment) · GPT-6 (Spud) · next-gen frontier', sub:'~10–20T', params:15000, projected:true, confidence:'Projected'	detail:'Claude Mythos (plné nasadenie) · GPT-6 (Spud) · špička ďalšej generácie', sub:'~10–20T', params:15000, projected:true, confidence:'Projekcia'
-name:'From $700B', detail:'Models from $700B spend', sub:'~10–20T+ (est.)', params:15000, projected:true, confidence:'Projected'	name:'Z 700 mld. $', detail:'Modely z výdavkov 700 mld. $', sub:'~10–20T+ (odhad)', params:15000, projected:true, confidence:'Projekcia'
-name:'2029 gen', detail:'The generation the 2026–27 capex buys: the author’s chips bet (see “Where I’d Put My Chips”)', sub:'size unknown · dated bet, not an estimate', projected:true, authorBet:true, confidence:'Author bet · Jul 2026'	name:'gen. 2029', detail:'Generácia, ktorú kupuje capex 2026–27: autorova stávka na žetóny (pozri „Kam by som vsadil svoje žetóny“)', sub:'veľkosť neznáma · datovaná stávka, nie odhad', projected:true, authorBet:true, confidence:'Stávka autora · júl 2026'
+name:'Fable 5 / Astra*', detail:'Claude Fable 5 (Jun 9) · GPT-6 Astra (Sep 3) · Fable 5.1 (Sep 1) · Opus 4.8 closes the prior gen (May 28)', sub:'params undisclosed · new pretrains · see note below chart', confidence:'Confirmed'	name:'Fable 5 / Astra*', detail:'Claude Fable 5 (9. jún) · GPT-6 Astra (3. sep) · Fable 5.1 (1. sep) · Opus 4.8 uzatvára predošlú gen. (28. máj)', sub:'parametre nezverejnené · nové predtréningy · pozri poznámku pod grafom', confidence:'Potvrdené'
+name:'Refresh year?', detail:'Post-training refreshes of the Fable / Astra generation · first Rubin-trained runs late in the year', sub:'~10–20T? · labs stopped disclosing sizes', params:15000, projected:true, confidence:'Projected'	name:'Rok obnov?', detail:'Post-tréningové obnovy generácie Fable / Astra · prvé behy trénované na Rubine koncom roka', sub:'~10–20T? · laboratóriá prestali zverejňovať veľkosti', params:15000, projected:true, confidence:'Projekcia'
+name:'From $730B', detail:'Models from the $730B 2026 spend · Rubin-class clusters', sub:'~10–20T+ (est.)', params:15000, projected:true, confidence:'Projected'	name:'Z 730 mld. $', detail:'Modely z výdavkov 730 mld. $ v roku 2026 · klastre triedy Rubin', sub:'~10–20T+ (odhad)', params:15000, projected:true, confidence:'Projekcia'
+name:'2029 gen', detail:'The generation the 2026–27 capex buys: the author’s chips bet (see “Where I’d Put My Chips”)', sub:'size unknown · dated bet, not an estimate', projected:true, authorBet:true, confidence:'Author bet · Jul 2026, held Sep 2026'	name:'gen. 2029', detail:'Generácia, ktorú kupuje capex 2026–27: autorova stávka na žetóny (pozri „Kam by som vsadil svoje žetóny“)', sub:'veľkosť neznáma · datovaná stávka, nie odhad', projected:true, authorBet:true, confidence:'Stávka autora · júl 2026, platí sep 2026'
 offset:2, label:'Inference' }	offset:2, label:'Inferencia' }
 offset:3, label:'Training' }	offset:3, label:'Tréning' }
 offset:4, label:'Research' }	offset:4, label:'Výskum' }
 label:'GPT-3 gen · ~175B'	label:'gen. GPT-3 · ~175B'
 label:'GPT-4 gen · ~1–2T'	label:'gen. GPT-4 · ~1–2T'
-label:'Opus gen · ~2–5T'	label:'gen. Opus · ~2–5T'
-label:'Mythos / Spud gen · ~10–20T?'	label:'gen. Mythos / Spud · ~10–20T?'
-label:'2029 gen · the chips bet'	label:'gen. 2029 · stávka na žetóny'
+label:'Opus 4 gen'	label:'gen. Opus 4'
+label:'Fable / Astra gen · 2026→'	label:'gen. Fable / Astra · 2026→'
+label:'Rubin gen?'	label:'gen. Rubin?'
+label:'2029 · the chips bet'	label:'2029 · stávka na žetóny'
 ' invested in '+year+(capex.projected?' (est.)':'')	' investovaných v roku '+year+(capex.projected?' (odhad)':'')
 <div class="info-lock">🔒 Locked · click dot or background to release</div>	<div class="info-lock">🔒 Uzamknuté · kliknite na bod alebo pozadie na uvoľnenie</div>
 :'Models in '+ty+'+'	:'Modely v roku '+ty+'+'

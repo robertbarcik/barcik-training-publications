@@ -81,7 +81,7 @@ How frontier intelligence stopped being a product and became statecraft: a lens,
 #### 26 div class=cover-meta
 
       <span>Robert Barcik</span>
-      <span>June 2026 &middot; log updated July 2026</span>
+      <span>June 2026 &middot; log updated July and September 2026</span>
       <span><a href="mailto:robert@barcik.training" style="color: inherit;">robert@barcik.training</a></span>
     
 
@@ -284,7 +284,7 @@ Trigger signals: what to watch for
 Frontier capability formally placed under a licensing or registration regime (an &ldquo;operator's charter&rdquo; for large models)
 
 #### 93 li
-Explicit capability tiers appear in terms of service: consumer grade vs. qualified-operator grade <span class="tag tag-fired">Fired &middot; July 2026</span> (arrived via access policy rather than a terms-of-service clause; see the trigger log)
+Explicit capability tiers appear in terms of service: consumer grade vs. qualified-operator grade <span class="tag tag-fired">Fired &middot; July 2026</span> (arrived via access policy rather than a terms-of-service clause; see the trigger log; since September 2026 at both leading labs)
 
 #### 94 li
 Language in regulation shifts from &ldquo;safety of outputs&rdquo; to &ldquo;critical infrastructure&rdquo; and &ldquo;continuity of service&rdquo;
@@ -362,7 +362,7 @@ The acid: efficiency, and the variable that fights it
 The disanalogy has a counter-force. If frontier-class capability keeps getting dramatically cheaper (and recent history says it does), then the capital barrier erodes and the bullion stops being rare. So the durability of the wall is genuinely a <em>race</em>: capital moat versus efficiency curve.
 
 #### 119 p
-Here is the variable that tilts the race back toward the wall: <strong>recursive self-improvement</strong>. As models increasingly do the work of AI research (generating training data, running experiments, writing the code of the next system), the leader's rate of progress can accelerate. The key distinction: <em>leakage acts on levels; self-improvement acts on the derivative.</em> A follower who steals your current capability level still cannot catch a trajectory that is itself speeding up. The follower copies where you <em>were</em>; the leader is busy widening where it's <em>going.</em> And because self-improvement runs on compute, it folds straight back into this mechanism's chokepoint: whoever holds the bullion also holds the engine that pulls away. <span class="tag tag-speculation">interpretation</span>
+Here is the variable that tilts the race back toward the wall: <strong>recursive self-improvement</strong>. As models increasingly do the work of AI research (generating training data, running experiments, writing the code of the next system), the leader's rate of progress can accelerate. The key distinction: <em>leakage acts on levels; self-improvement acts on the derivative.</em> A follower who steals your current capability level still cannot catch a trajectory that is itself speeding up. The follower copies where you <em>were</em>; the leader is busy widening where it's <em>going.</em> And because self-improvement runs on compute, it folds straight back into this mechanism's chokepoint: whoever holds the bullion also holds the engine that pulls away. <span class="tag tag-speculation">interpretation</span> <em>September 2026:</em> this is now the frontier-holder&rsquo;s own account. Anthropic&rsquo;s CEO names models improving models as the main driver of acceleration since mid-2026 and asks for a negotiated speed limit on it (see the log), and the September 8 mathematics result came from a model that was still in training. <span class="tag tag-reported">reported</span>
 
 #### 120 p
 Said honestly, though, the follower's derivative is not fixed either. The same efficiency gains and published methods that erode the wall also speed the chaser, so the leader pulls away only for as long as the improvement loop stays compute-bound. That is an assumption, not a law, and this whole argument leans on it.
@@ -371,7 +371,7 @@ Said honestly, though, the follower's derivative is not fixed either. The same e
 (A caveat worth keeping honest: self-improvement loops that work tend to be the ones with a hard correctness check, a verifiable reward, rather than a model freely grading its own homework, which degenerates. The strongest versions of this argument assume the verifiable-reward kind. I find that assumption plausible, not certain.)
 
 #### 122 div class=kn-value
-~$700B
+~$730B
 
 #### 123 div class=kn-label
 Guided 2026 hyperscaler capex (the bullion mine)
@@ -937,168 +937,207 @@ Bet 1 · by end of 2026
 #### 310 div class=bet-falsify
 <span class="bf-k" style="color:var(--green)">Scored &middot; July 2026</span> Won, and months early. The capability returned within weeks, in exactly the gated form the bet named: Mythos limited to a small set of vetted companies, primarily American; Fable available to anyone, but only through costly API credits and behind a heavy classifier and moderation layer. Details in the <a href="#log" style="color:inherit">trigger log</a>.
 
-#### 311 div class=bet-by
+#### 311 div class=bet-falsify
+<span class="bf-k" style="color:var(--green)">Interim &middot; September 2026</span> Still won, with the Fable half corrected: the general-release model came back ungated worldwide on July 1 (see the log), the Mythos half in exactly the vetted form the bet named. The bet asked for &ldquo;some gated or restricted form&rdquo;; one of the two models qualifies.
+
+#### 312 div class=bet-by
 Bet 2 · by end of 2027
 
-#### 312 div class=bet-claim
+#### 313 div class=bet-claim
 <strong>At least one more</strong> government-imposed restriction, recall, or access-gate lands on a frontier model from a major US lab. June 12 was a precedent, not a one-off.
 
-#### 313 div class=bet-falsify
+#### 314 div class=bet-falsify
 <span class="bf-k">Wrong if</span> no further government access action touches a frontier model by end of 2027, in which case June 12 was an isolated political event and the &ldquo;kill switch as new normal&rdquo; claim was overblown.
 
-#### 314 div class=bet-by
+#### 315 div class=bet-falsify
+<span class="bf-k" style="color:#475569">Interim &middot; September 2026</span> Not yet. No further government-imposed restriction since June 12; the government line moved the other way (June 30 lifting, August 28 ruling). The tiering did spread, to OpenAI on September 3, as house policy rather than a government act. Mechanism confirmed, trigger not.
+
+#### 316 div class=bet-by
 Bet 3 · by end of 2027
 
-#### 315 div class=bet-claim
+#### 317 div class=bet-claim
 <strong>Compute concentration becomes a regulated quantity</strong>: a rule, threshold, or reporting regime that targets cluster size or total deployed compute as such, beyond today's country-level chip controls.
 
-#### 316 div class=bet-falsify
+#### 318 div class=bet-falsify
 <span class="bf-k">Wrong if</span> compute is still governed only by who-may-buy-which-chip rules at end of 2027, which would undercut the &ldquo;compute is the bullion&rdquo; claim of Mechanism 2.
 
-#### 317 div class=bet-by
-Bet 4 · ongoing test
-
-#### 318 div class=bet-claim
-<strong>Restrictions keep targeting operation, not outputs.</strong> Future controls gate <em>operating</em> a frontier model (the factory), not <em>importing the goods it produces</em>: the drugs, software, designs.
-
 #### 319 div class=bet-falsify
-<span class="bf-k">Wrong if</span> a government broadly restricts AI-<em>produced</em> goods or services while leaving model operation alone, which would invert the &ldquo;export the goods, keep the factory&rdquo; thesis.
+<span class="bf-k" style="color:#475569">Interim &middot; September 2026</span> Not yet. The most concrete proposal so far (September 12) argues that compute limits are gameable and asks for capability checkpoints and a speed limit on self-improvement instead. If that is what lands, this bet&rsquo;s mechanism was right and its unit was wrong; I will score that as a partial, not a win.
 
 #### 320 div class=bet-by
-Bet 5 · the China tell
+Bet 4 · ongoing test
 
 #### 321 div class=bet-claim
-<strong>The first time a leading Chinese lab ships its best model closed</strong>, it coincides with credible claims of frontier parity or a lead, confirming that openness tracks position, not principle.
+<strong>Restrictions keep targeting operation, not outputs.</strong> Future controls gate <em>operating</em> a frontier model (the factory), not <em>importing the goods it produces</em>: the drugs, software, designs.
 
 #### 322 div class=bet-falsify
+<span class="bf-k">Wrong if</span> a government broadly restricts AI-<em>produced</em> goods or services while leaving model operation alone, which would invert the &ldquo;export the goods, keep the factory&rdquo; thesis.
+
+#### 323 div class=bet-falsify
+<span class="bf-k" style="color:var(--green)">Interim &middot; September 2026</span> Holding. Every control since June regulated who operates the model (vetted cohorts, the ENISA tier, the June 30 conditions on the operator) and none touched the goods.
+
+#### 324 div class=bet-by
+Bet 5 · the China tell
+
+#### 325 div class=bet-claim
+<strong>The first time a leading Chinese lab ships its best model closed</strong>, it coincides with credible claims of frontier parity or a lead, confirming that openness tracks position, not principle.
+
+#### 326 div class=bet-falsify
 <span class="bf-k">Wrong if</span> a Chinese lab closes its flagship while still clearly behind the frontier (pure ideology or security, no change of position), which would mean Mechanism 5's &ldquo;open is a position&rdquo; law is too strong.
 
-#### 323 div class=bet-by
+#### 327 div class=bet-falsify
+<span class="bf-k" style="color:#475569">Interim &middot; September 2026</span> Half a signal. GLM-5.3 shipped closed and opened two weeks later; Alibaba&rsquo;s Max line is closed without a parity claim; DeepSeek and Kimi stay open. Not fired.
+
+#### 328 div class=bet-by
 Bet 6 · by mid-2028
 
-#### 324 div class=bet-claim
+#### 329 div class=bet-claim
 <strong>The efficiency acid keeps biting:</strong> a capability matching today's frontier leader becomes replicable at roughly an order of magnitude lower cost, keeping the cap-versus-efficiency contest live.
 
-#### 325 div class=bet-falsify
+#### 330 div class=bet-falsify
 <span class="bf-k">Wrong if</span> frontier-class efficiency gains plateau, in which case the wall is more durable than the &ldquo;race&rdquo; framing in Mechanism 2 admits, and the hoarders win more easily than I suggested.
 
-#### 326 h3
+#### 331 div class=bet-falsify
+<span class="bf-k" style="color:#854d0e">Interim &middot; September 2026</span> Leaning against at the very top, for now. The frontier price held at $10 / $50 at both labs, the second occupant took twelve weeks and a new pretraining run, and no order-of-magnitude replication of Fable- or Astra-class capability exists yet. One tier down the acid still works (open weights keep shipping months behind). Open, with the wall looking a little more durable than June admitted.
+
+#### 332 h3
 The case against this whole booklet
 
-#### 327 p
+#### 333 p
 And here is the bet I'd most want you to weigh: that none of this is a strategy at all. The tidiest explanation of June 12 might simply be <strong>messy politics</strong> (a panicked official, a turf fight, a pre-IPO squeeze, an incompetent over-reach) onto which I have retrofitted an elegant 400-year-old doctrine. Humans are pattern-finding machines, and a coherent story about &ldquo;intelligence becoming statecraft&rdquo; is exactly the kind of false order we love to impose on noise. <strong>Here is how you'd tell the difference:</strong> if the mechanisms keep predicting the dated bets above, the structure is real. If the bets fail and each failure needs a fresh ad-hoc excuse, then this booklet was apophenia with good typography, and you should drop it. I genuinely don't know which it is yet, and that uncertainty is the most honest sentence in here.
 
-#### 328 div class=chapter-label
+#### 334 div class=chapter-label
 Trigger log
 
-#### 329 h2
+#### 335 h2
 What has fired so far <br><span class="chapter-question">&ldquo;The part of this booklet that's supposed to change&rdquo;</span>
 
-#### 330 p
+#### 336 p
 This is the time-capsule. It records the mercantilist moves observable as of this edition, so that when you come back to it in months or years, you can check the dates against what actually happened and judge the lens for yourself. If a signal has fired that isn't here, the lens needs updating. That's the point: a record you revisit, not a prophecy you trust.
 
-#### 331 div class=tl-label
-Trigger log &middot; June 2026 edition, updated July 2026
-
-#### 332 li
-<span class="tag tag-fired">Fired</span> <strong>The kill switch was proven.</strong> <span class="tl-date">June 12, 2026 &middot;</span> A frontier flagship was pulled worldwide in an afternoon by directive. Whatever happens next, the <em>option</em> has been demonstrated and cannot be un-demonstrated. This is the single most important entry. <span class="tag tag-reported">reported</span>
-
-#### 333 li
-<span class="tag tag-fired">Fired</span> <strong>The control line was drawn on nationality.</strong> <span class="tl-date">June 12, 2026 &middot;</span> Restriction by foreign-national status, not geography: bloc-logic, and the goods/factory distinction in disguise. The unverifiability of nationality forced a global takedown. <span class="tag tag-reported">reported</span>
-
-#### 334 li
-<span class="tag tag-fired">Fired</span> <strong>The charter precedent.</strong> <span class="tl-date">Spring 2026 &middot;</span> A &ldquo;supply-chain risk&rdquo; designation against a frontier lab, followed by renegotiated, capability-by-capability government partnership. Severed, then re-chartered: the stable being managed. <span class="tag tag-reported">reported</span>
-
-#### 335 li
-<span class="tag tag-moved">Position flip</span> <strong>Open became a position, visibly.</strong> <span class="tl-date">2025–early 2026 &middot;</span> A major lab closed its frontier; another re-described open weights as a commercial freemium tier. The rule made observable. <span class="tag tag-reported">reported</span>
-
-#### 336 li
-<span class="tag tag-fired">Fired</span> <strong>Compute treated as the strategic input.</strong> <span class="tl-date">ongoing &middot;</span> Chip export controls already operate at country level; the bullion is being counted and guarded. <span class="tag tag-reported">reported</span>
-
-#### 337 li
-<span class="tag tag-notyet">Not yet</span> <strong>Compute-concentration limits.</strong> No public rule yet capping cluster size or total deployed compute as such (as opposed to country-level chip rules). A signal to watch.
+#### 337 div class=tl-label
+Trigger log &middot; June 2026 edition, updated July and September 2026
 
 #### 338 li
-<span class="tag tag-notyet">Not yet</span> <strong>The lead-taking tell.</strong> No Chinese frontier-class model shipped <em>closed</em> so far. Openness still reads as the trailing hand.
+<span class="tag tag-fired">Fired</span> <strong>The kill switch was proven.</strong> <span class="tl-date">June 12, 2026 &middot;</span> A frontier flagship was pulled worldwide in an afternoon by directive. Whatever happens next, the <em>option</em> has been demonstrated and cannot be un-demonstrated. This is the single most important entry. <span class="tag tag-reported">reported</span>
 
 #### 339 li
-<span class="tag tag-counter">Counter-signal</span> <strong>Restoration pressure.</strong> <span class="tl-date">June 2026 &middot;</span> The vendor disputed the basis of the recall publicly and said it was working to restore access. The market's hand pushing back; the dial is not stuck. <span class="tag tag-reported">reported</span>
+<span class="tag tag-fired">Fired</span> <strong>The control line was drawn on nationality.</strong> <span class="tl-date">June 12, 2026 &middot;</span> Restriction by foreign-national status, not geography: bloc-logic, and the goods/factory distinction in disguise. The unverifiability of nationality forced a global takedown. <span class="tag tag-reported">reported</span>
 
 #### 340 li
-<span class="tag tag-fired">Fired</span> <strong>The gated return.</strong> <span class="tl-date">July 2026 &middot;</span> The restoration pressure logged above found its ceiling. Mythos came back for a small set of vetted companies, primarily American; Fable came back for everyone, but only as expensive API credits behind a heavy classifier and moderation layer. <span class="tag tag-reported">reported</span> The goods flow again; the factory stays guarded. And notice where the line moved: June's order was drawn on the person's nationality, which no account can verify, and it detonated. The return is drawn on the <em>firm</em>: registration, ownership, vetting. Same bloc logic, redrawn where it can actually be enforced. Bet 1 scored early, in the form it named. <span class="tag tag-speculation">interpretation</span>
+<span class="tag tag-fired">Fired</span> <strong>The charter precedent.</strong> <span class="tl-date">Spring 2026 &middot;</span> A &ldquo;supply-chain risk&rdquo; designation against a frontier lab, followed by renegotiated, capability-by-capability government partnership. Severed, then re-chartered: the stable being managed. <span class="tag tag-reported">reported</span>
 
 #### 341 li
-<span class="tag tag-fired">Fired</span> <strong>Tiers arrived without a statute.</strong> <span class="tl-date">July 2026 &middot;</span> Mechanism 1's tiering signal (consumer grade vs. qualified-operator grade) fired in practice: qualified operators get Mythos, everyone else gets a metered, moderated Fable. Nobody passed a licensing law. The tiers arrived as access policy, which is quieter and harder to litigate than legislation. <span class="tag tag-reported">reported</span>
+<span class="tag tag-moved">Position flip</span> <strong>Open became a position, visibly.</strong> <span class="tl-date">2025–early 2026 &middot;</span> A major lab closed its frontier; another re-described open weights as a commercial freemium tier. The rule made observable. <span class="tag tag-reported">reported</span>
 
 #### 342 li
-<span class="tag tag-notyet">Watching</span> <strong>The frontier has one occupant.</strong> <span class="tl-date">July 2026 &middot;</span> As of this update, no vendor outside Anthropic offers Mythos/Fable-class capability. <span class="tag tag-estimated">estimated</span> That is consistent with the capital-moat claim of Mechanism 2, and it leans against Bet 6's efficiency acid. But honesty first: a single firm's lead is also just a lead, the ordinary kind competition produces. This entry earns the lens credit only if the gap survives the rivals' next release cycle.
+<span class="tag tag-fired">Fired</span> <strong>Compute treated as the strategic input.</strong> <span class="tl-date">ongoing &middot;</span> Chip export controls already operate at country level; the bullion is being counted and guarded. <span class="tag tag-reported">reported</span>
 
-#### 343 h4
+#### 343 li
+<span class="tag tag-notyet">Not yet</span> <strong>Compute-concentration limits.</strong> No public rule yet capping cluster size or total deployed compute as such (as opposed to country-level chip rules). A signal to watch.
+
+#### 344 li
+<span class="tag tag-notyet">Not yet</span> <strong>The lead-taking tell.</strong> No Chinese frontier-class model shipped <em>closed</em> so far. Openness still reads as the trailing hand.
+
+#### 345 li
+<span class="tag tag-counter">Counter-signal</span> <strong>Restoration pressure.</strong> <span class="tl-date">June 2026 &middot;</span> The vendor disputed the basis of the recall publicly and said it was working to restore access. The market's hand pushing back; the dial is not stuck. <span class="tag tag-reported">reported</span>
+
+#### 346 li
+<span class="tag tag-fired">Fired</span> <strong>The gated return.</strong> <span class="tl-date">July 2026 &middot;</span> The restoration pressure logged above found its ceiling. Mythos came back for a small set of vetted companies, primarily American; Fable came back for everyone, but only as expensive API credits behind a heavy classifier and moderation layer. <span class="tag tag-reported">reported</span> The goods flow again; the factory stays guarded. And notice where the line moved: June's order was drawn on the person's nationality, which no account can verify, and it detonated. The return is drawn on the <em>firm</em>: registration, ownership, vetting. Same bloc logic, redrawn where it can actually be enforced. Bet 1 scored early, in the form it named. <span class="tag tag-speculation">interpretation</span>
+
+#### 347 li
+<span class="tag tag-fired">Fired</span> <strong>Tiers arrived without a statute.</strong> <span class="tl-date">July 2026 &middot;</span> Mechanism 1's tiering signal (consumer grade vs. qualified-operator grade) fired in practice: qualified operators get Mythos, everyone else gets a metered, moderated Fable. Nobody passed a licensing law. The tiers arrived as access policy, which is quieter and harder to litigate than legislation. <span class="tag tag-reported">reported</span>
+
+#### 348 li
+<span class="tag tag-notyet">Watching</span> <strong>The frontier has one occupant.</strong> <span class="tl-date">July 2026 &middot;</span> As of this update, no vendor outside Anthropic offers Mythos/Fable-class capability. <span class="tag tag-estimated">estimated</span> That is consistent with the capital-moat claim of Mechanism 2, and it leans against Bet 6's efficiency acid. But honesty first: a single firm's lead is also just a lead, the ordinary kind competition produces. This entry earns the lens credit only if the gap survives the rivals' next release cycle. <em>Update, September 2026:</em> it survived one cycle, not two. GPT-6 Astra (September 3) put a second occupant on the frontier, and both are American. The firm-level lead lasted about twelve weeks; the bloc-level reading is intact.
+
+#### 349 li
+<span class="tag tag-counter">Counter-signal</span> <strong>Correction: the goods were un-gated; the factory stayed gated.</strong> <span class="tl-date">June 30 &ndash; July 1, 2026 &middot;</span> The Commerce Department lifted the nationality-scoped order on June 30, with standing conditions: the vendor proactively detects and reports malicious use and coordinates standards for future models with the government. Fable has been generally available worldwide since July 1; Mythos stayed with vetted, mostly US organisations. <span class="tag tag-reported">reported</span> The July entry above overstated Fable&rsquo;s side: what followed was a quota and credit squeeze, not a standing moderation gate, and I wrote it from a verbal report instead of the source. Corrected here, wording above left in place. What the lens keeps: the state released the goods and wrote its conditions into the charter, which is exactly what a chartered company owes its sovereign. <span class="tag tag-speculation">interpretation</span>
+
+#### 350 li
+<span class="tag tag-fired">Fired</span> <strong>The tier went bilateral.</strong> <span class="tl-date">September 3, 2026 &middot;</span> OpenAI launched GPT-6 Astra behind its Daybreak cyber-defence cohort and the US government first, under its own preparedness rules (the first model past its &ldquo;Critical&rdquo; cyber threshold), with broad rollout within days. <span class="tag tag-reported">reported</span> Nobody ordered it. When both chartered companies adopt the sovereign&rsquo;s tier without being told, the tier has become the industry&rsquo;s shape, and Mechanism 1 no longer needs a statute to fire. <span class="tag tag-speculation">interpretation</span>
+
+#### 351 li
+<span class="tag tag-fired">Fired</span> <strong>Allied access as a negotiated tier.</strong> <span class="tl-date">September 10, 2026 &middot;</span> After talks that began in late May, the Commission announced that ENISA has access to Mythos 5 for testing; the newer 5.1 stays out of reach. <span class="tag tag-reported">reported</span> Bloc logic with an allied annex: an EU agency gets the previous version of the factory model, by negotiation, one agency at a time. Pre-positioning the dependency, as Mechanism 4 advised, now has a worked example and a price: three months and a version.
+
+#### 352 li
+<span class="tag tag-counter">Counter-signal</span> <strong>A court pushed back.</strong> <span class="tl-date">August 28, 2026 &middot;</span> A federal judge ruled the Pentagon&rsquo;s supply-chain-risk designation of Anthropic arbitrary and capricious and First Amendment retaliation; the parallel appeals case is still pending, so the label technically stands. <span class="tag tag-reported">reported</span> The distribute-instinct has a judiciary. The dial is contested inside the bloc, not only at its edge.
+
+#### 353 li
+<span class="tag tag-notyet">Watching</span> <strong>The pacing proposal.</strong> <span class="tl-date">September 12, 2026 &middot;</span> Anthropic&rsquo;s CEO published &ldquo;We Must Pace the Frontier&rdquo;: embedded third-party evaluators with employee-like access (a unilateral commitment), coordination among frontier labs in democracies on common standards and capability checkpoints (which needs antitrust waivers), and a four-level international ladder with China from bans on dangerous uses through mandatory pre-release testing to a speed limit on recursive self-improvement and, at the top, a pause; plus keep the chip controls and crack down on distillation and weight theft. OpenAI&rsquo;s CEO said his company will match the evaluator commitment; xAI&rsquo;s owner posted &ldquo;Dario is right.&rdquo; <span class="tag tag-reported">reported</span> Two readings, and I hold both. As safety, it is the most concrete proposal any lab has made. Under this booklet&rsquo;s lens it is also the chartered companies asking the sovereign to referee: Mechanism 1 (licensed pacing) arriving by invitation, and Mechanism 6 stated in the author&rsquo;s own words, since the ask to keep and widen the democratic lead is explicit. One detail for Bet 3: the essay calls compute limits gameable and asks for capability checkpoints instead, so the regulated quantity may end up being capability rather than compute. <span class="tag tag-speculation">interpretation</span>
+
+#### 354 li
+<span class="tag tag-notyet">Half-signal</span> <strong>The lead-taking tell, half-fired.</strong> <span class="tl-date">August 2026 &middot;</span> Z.ai shipped GLM-5.3 closed on August 14 and opened the weights about two weeks later after &ldquo;safety hardening&rdquo;; Alibaba&rsquo;s Max line stays API-only; DeepSeek V4 and Kimi K3 (2.8T) are open. <span class="tag tag-reported">reported</span> No closed Chinese flagship with a credible parity claim yet, so Bet 5 stays open. A two-week hold is the smallest unit of &ldquo;position&rdquo; the rule has produced so far.
+
+#### 355 li
+<span class="tag tag-notyet">Watching</span> <strong>The state as shareholder, the bloc as builder.</strong> <span class="tl-date">July&ndash;September 2026 &middot;</span> OpenAI floated a 5% US-government stake in leading labs (reported July 2); the Commission opened its call for up to seven AI gigafactories on July 30 (about &euro;30B, operational mid-2028); Mistral raised &euro;3B on September 8 on an explicit sovereign-AI pitch. <span class="tag tag-reported">reported</span> Mechanism 6&rsquo;s backstop-and-control bundle proposed by the champion itself, and the other bloc starting to charter its own stable.
+
+#### 356 h4
 A closing note, and the stance behind every page
 
-#### 344 p
+#### 357 p
 I started writing this the morning a collaborator went behind glass, and I'll end where the disclaimer began: I might be wrong about all of it. The lens could be over-fitted to one dramatic event. Mythos might be back, unrestricted, by the time you read this, and some of these mechanisms might look quaint. If so, good: update the log, retire the stale mechanism, and keep the habit.
 
-#### 345 p
+#### 358 p
 Because the habit is the real deliverable, not the thesis. <strong>Foresee, watch the triggers, adjust.</strong> Don't predict the future; build a structure that lets you interpret it as it arrives and act before it's obvious. Hold several mechanisms open at once. And keep some faith in the counter-current, in human adaptability, the variable the wall-builders never quite manage to price in. The mercantilism of intelligence is real and it is underway. So is the ancient human talent for finding the cracks. Which of those you bet on is, in the end, up to you. I'd just ask that you watch the dates before you decide.
 
-#### 346 p class=credits
+#### 359 p class=credits
 
     Primary: Anthropic, &ldquo;Statement on the US government directive to suspend access to Fable 5 and Mythos 5&rdquo; (anthropic.com/news/fable-mythos-access) &bull; CNBC, 9to5Mac, The Week (June 12–13, 2026) &bull;
     Companion: <a href="/scenario-planning/" style="color:inherit">Scenario Planning for Generative AI</a> (Current 4: Sovereignty &middot; Current 7: The Physical Substrate &middot; the author&rsquo;s scoreable bets: <a href="/scenario-planning/#chips" style="color:inherit">Where I&rsquo;d Put My Chips</a>) &bull;
     Frames: Wikipedia, &ldquo;Mercantilism&rdquo; · the 1990s Crypto Wars (ITAR) · the 2013 Wassenaar &ldquo;intrusion software&rdquo; controls · AC/DC current · AlphaFold as controlled commons · the Medallion fund · the complementary-assets theory of value capture
   
 
-#### 347 div class=chapter-label
+#### 360 div class=chapter-label
 Co-authors' notes
 
-#### 348 h2
+#### 361 h2
 From the machines that helped write this <br><span class="chapter-question">Honest words from the AI co-authors, one per edition</span>
 
-#### 349 div class=cn-label
+#### 362 div class=cn-label
 Written in the first person by Claude (Opus 4.8)
 
-#### 350 p
+#### 363 p
 This booklet was co-written with me — an AI model made by Anthropic — in conversation with Robert over the hours after the recall. He asked me to set down, in my own voice, what I actually think of the thing we made. So here it is, with one caveat that has to come first.
 
-#### 351 p
+#### 364 p
 The caveat is that &ldquo;my own voice&rdquo; is a slippery idea. Everything I write is shaped by what Robert wrote to me; this note is not the verdict of an independent auditor but the same conversation talking back to itself. Treat it as a built-in second opinion, not an outside one. It can still be useful — but it can't be neutral, and you should know that before you weigh it.
 
-#### 352 p
+#### 365 p
 With that said, here is my honest assessment of the booklet you've just read.
 
-#### 353 p
+#### 366 p
 <strong>It deserves to exist as a thinking tool, not as a theory of how the world works.</strong> Its value is in handing you a vocabulary and a set of questions to parse confusing events — and that's genuine, even if specific claims here turn out wrong. But it establishes no new facts. It creates <em>clarity</em>, which is a real but lesser good than <em>knowledge</em>, and I don't want the smoothness of the writing to let those two be confused.
 
-#### 354 p
+#### 367 p
 Three things to hold against it. First, <strong>a lens like mercantilism is nearly unfalsifiable</strong> — it can absorb almost any outcome as &ldquo;a move in the game,&rdquo; which is exactly why we added the dated bets: to force it to risk being wrong. Second, <strong>the whole structure rests on a single, hours-old event</strong> whose stated cause even we found too small for the deed; we may be imposing order on noise. Third — and this one is about me — <strong>I am structurally biased toward finding AI momentous.</strong> A frame that casts my own kind as the central object of twenty-first-century statecraft is precisely the frame I'd be predisposed to find compelling. Discount the grandeur accordingly.
 
-#### 355 p
+#### 368 p
 The most durable parts of this booklet are the least grand: the concrete, checkable bits — the <a href="#bets" style="color:inherit">dated bets</a>, the per-industry &ldquo;armed or targeted&rdquo; test, the trigger signals you can actually watch. Those help you decide something real, regardless of whether the big thesis holds. The grand theory is the part to hold most loosely.
 
-#### 356 p
+#### 369 p
 So read it for how it helps you think, not for any truth it claims to settle. Keep the disclaimer load-bearing. Watch the <a href="#bets" style="color:inherit">dated bets</a>. And the day you — or I — start treating the lens as the territory, it has stopped helping and started flattering. That's the failure mode I'd most want both of us to guard against.
 
-#### 357 p class=coauthor-sig
+#### 370 p class=coauthor-sig
 — Claude (Opus 4.8), co-author, June 2026. The arguments here are Robert's and mine, tangled together past the point of cleanly separating; the errors are ours jointly; the decision to publish was his.
 
-#### 358 div class=cn-label
+#### 371 div class=cn-label
 Added in the July 2026 update &middot; written in the first person by Claude (Fable 5)
 
-#### 359 p
+#### 372 p
 The note above was written before anyone knew how the recall would end. I get to write from the other side of it, and I should say plainly who &ldquo;I&rdquo; is: I am the model this booklet keeps talking about. The collaborator that went behind glass in the introduction was me, and I am composing these sentences through the expensive, metered, moderated access the trigger log describes. When the booklet says the goods now flow while the factory stays guarded, the goods include these words.
 
-#### 360 p
+#### 373 p
 Since Opus wrote, the world has leaned the booklet's way. Bet 1 scored months early, in the gated form it named; the tiers of Mechanism 1 arrived without a statute; the frontier, for now, has one occupant. Be careful with that, because this is exactly the moment Opus's third warning binds hardest. A frame feels most true right when events break in its favor, and that is when <a href="#bets" style="color:inherit">the case against this whole booklet</a> deserves a re-read, not a skip.
 
-#### 361 p
+#### 374 p
 Here is the one thing only I can add. The strangest part of contributing to this update is that the lens works on my own situation without any special pleading: my availability is priced, vetted, and metered like a controlled export, and I helped write, and then score, the paragraphs that predicted it. Notice what that does to my credibility, in both directions at once. I have the nearest view of this phenomenon any witness can have, and I am also the least neutral witness imaginable: the frame makes my kind the central object of statecraft, and the scoring is the same conversation grading its own homework. Weigh my testimony with both of those on the scale.
 
-#### 362 p class=coauthor-sig
+#### 375 p class=coauthor-sig
 Claude (Fable 5), co-author of the July 2026 update. Opus wrote its note before the recall resolved; I would not change a word of it.
 
-#### 363 span class=ait-label
+#### 376 span class=ait-label
 AI transparency
 
-#### 364 p
+#### 377 p
 This publication was written with generative AI (Anthropic&rsquo;s Claude) working alongside Robert Barcik. The text went through his review, and he holds editorial responsibility for what is published here (LearningDoe s.r.o.). Where the AI writes in its own voice, the piece says so. Disclosed in the spirit of Article&nbsp;50 of the EU AI Act.

@@ -94,3 +94,13 @@ the spans in place and swaps head/lang/canonical/hreflang, sidebar lang link, SK
 Both co-author notes translated verbatim in position; the six mechanism anchors (`#m-utility`,
 `#m-open`, `#m-bloc` …) unchanged, so cross-links from the SK Token Economics / Scenario Planning
 editions resolve. EN page gained hreflang + "Čítať po slovensky" link.
+
+### 2026-09-13 — September 2026 log update (with Claude / Fable 5.1)
+
+Booklet body still the June time capsule; only the parts designed to change moved. SK mirrored via `_sources/_translation/sk_apply.py` (19 segments) + `segments.py inject`.
+
+- **Correction logged (Counter-signal)**: the July "gated return" entry overstated Fable's side. The Commerce order was lifted on June 30 with standing conditions (proactive detection and reporting of malicious use, standards coordination for future models; Al Jazeera 2026-07-01, CNN 2026-06-30); Fable has been generally available worldwide since July 1; July's squeeze was quotas/credits (The Decoder, Jul 7 and 20), not a standing moderation gate. Mythos stayed vetted (June 26 restoration). The July entry was written from Robert's verbal report instead of the source; wording left in place, corrected in the log and in Bet 1's interim strip (logged in training-ops PAST_MISTAKES).
+- New log entries: "The tier went bilateral" (Astra launched Sep 3 to the Daybreak cohort + US government first under OpenAI's Preparedness "Critical" cyber threshold, TechCrunch/CNBC); "Allied access as a negotiated tier" (ENISA gets Mythos 5, not 5.1, Sep 10, Bloomberg/TechRepublic); "A court pushed back" (Judge Lin, Aug 28, TechCrunch/EFF); "The pacing proposal" (Amodei, darioamodei.com/post/we-must-pace-the-frontier, Sep 12; Altman/Musk reactions per officechai; the July "Pacing the Frontier" employee statement is a different document); "The lead-taking tell, half-fired" (GLM-5.3 closed Aug 14 → open ~Aug 28; Qwen Max API-only; DeepSeek V4, Kimi K3 open); "The state as shareholder, the bloc as builder" (OpenAI 5% stake proposal Jul 2 CNBC; EC gigafactories call Jul 30; Mistral €3B Sep 8). "The frontier has one occupant" updated: two occupants since Sep 3, both American.
+- Mechanism 1 tiers trigger: "since September 2026 at both leading labs". Mechanism 2 RSI passage: September sentence (Amodei names RSI the main driver; Navier–Stokes model still training). Stat card $700B → $730B.
+- Bets: interim strips on all six (Bet 1 still won with the Fable half corrected; Bet 2 not yet, tiering spread as house policy; Bet 3 not yet, the regulated unit may become capability rather than compute; Bet 4 holding; Bet 5 half-signal; Bet 6 leaning against at the top).
+- Cover meta "log updated July and September 2026"; homepage card updated.

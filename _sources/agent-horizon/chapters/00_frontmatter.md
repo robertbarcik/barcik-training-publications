@@ -4,7 +4,7 @@
 
 ---
 
-**April 2026 &middot; first indicator reading July 2026**
+**April 2026 &middot; indicator readings July and September 2026**
 
 *By Robert Barcik*
 
@@ -39,7 +39,7 @@ If you've heard the terms *MCP*, *ADK*, *LangGraph*, or *A2A* used in conversati
 
 Chapters 1 and 2 set up the mental model. Read these first even if you're deep in the space. Chapter 3 covers the two settled protocols (MCP and A2A). Chapter 4 introduces the orchestration layer; Chapters 5 and 6 survey its two families (vendor and agnostic). Chapter 7 addresses observability. Chapters 8 through 10 cover strategy: lock-in, EU angle, timeline. Chapter 11 brings it all together with a decision framework, a worked bank case study, and a short epilogue.
 
-Chapter 10 made its forecast falsifiable with six named indicators; this edition adds a dated first reading of them (July 2026). The rest of the text remains the April snapshot, the same discipline our [scenario-planning](/scenario-planning/) and [mercantilism](/mercantilism-of-genai/) booklets follow with their trigger logs.
+Chapter 10 made its forecast falsifiable with six named indicators; this edition adds two dated readings of them (July and September 2026). The rest of the text remains the April snapshot, the same discipline our [scenario-planning](/scenario-planning/) and [mercantilism](/mercantilism-of-genai/) booklets follow with their trigger logs.
 
 ---
 
