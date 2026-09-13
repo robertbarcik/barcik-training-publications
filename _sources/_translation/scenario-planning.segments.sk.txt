@@ -133,7 +133,7 @@ Dôvod, prečo je to <em>nástroj</em>, a nie len veľké číslo, je, že capex
 
 
 #### 42 p
-* Bod za rok 2026 nesie namiesto veľkosti v parametroch otáznik, lebo ju nikto nezverejnil: ani Anthropic (Claude Fable 5, 9. jún), ani OpenAI (GPT-6 Astra, 3. september), a Epoch AI uvádza oba ako neznáme. <em>Čítanie zo septembra 2026:</em> tento bod je samotná nová generácia, nie ukážka generácie z roku 2027; júlové &bdquo;Mythos / Spud na značke 2027&ldquo; je stiahnuté a ohodnotené v poznámke o schodisku nižšie. Prerušovaný modrý <strong>krúžok 2029</strong> označuje autorovu datovanú stávku, argumentovanú pravdepodobnosťami v časti <a href="#chips">Kam by som vsadil svoje žetóny</a>, že generácia financovaná capexom 2026&ndash;27 pristane práve tam. Stávka, zámerne nakreslená do grafu, a otvorená tomu, že bude nesprávna.
+* Bod za rok 2026 je nakreslený na ~15T, čo je autorov odhad: ani Anthropic (Claude Fable 5, 9. jún), ani OpenAI (GPT-6 Astra, 3. september) veľkosť nezverejnili a Epoch AI uvádza oba ako neznáme. Obnovy z roku 2027 sú nakreslené v rovnakej veľkosti (tie isté základy) a bod 2028 na 50&ndash;100T je autorova stávka na ďalšiu generáciu, nie odhad. <em>Čítanie zo septembra 2026:</em> tento bod je samotná nová generácia, nie ukážka generácie z roku 2027; júlové &bdquo;Mythos / Spud na značke 2027&ldquo; je stiahnuté a ohodnotené v poznámke o schodisku nižšie. Prerušovaný modrý <strong>krúžok 2029</strong> označuje autorovu datovanú stávku, argumentovanú pravdepodobnosťami v časti <a href="#chips">Kam by som vsadil svoje žetóny</a>, že generácia financovaná capexom 2026&ndash;27 pristane práve tam. Stávka, zámerne nakreslená do grafu, a otvorená tomu, že bude nesprávna.
 
 #### 43 h4
 Vzor schodiska

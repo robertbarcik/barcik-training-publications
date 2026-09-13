@@ -133,7 +133,7 @@ The reason this is an <em>instrument</em> rather than just a large number is tha
     
 
 #### 42 p
-* The 2026 dot carries a question mark instead of a parameter size because none was disclosed: neither Anthropic (Claude Fable 5, June 9) nor OpenAI (GPT-6 Astra, September 3) published one, and Epoch AI lists both as unknown. <em>September 2026 reading:</em> this dot is the new generation itself, not a preview of a 2027 one; the July edition&rsquo;s &ldquo;Mythos / Spud on the 2027 mark&rdquo; is retired and scored in the staircase note below. The dashed blue <strong>2029 ring</strong> marks the author&rsquo;s dated bet, argued with probabilities in <a href="#chips">Where I&rsquo;d Put My Chips</a>, that the generation financed by 2026&ndash;27 capex lands there. A bet, deliberately drawn on the chart, and open to being wrong.
+* The 2026 dot is drawn at ~15T, the author&rsquo;s estimate: neither Anthropic (Claude Fable 5, June 9) nor OpenAI (GPT-6 Astra, September 3) disclosed a size, and Epoch AI lists both as unknown. The 2027 refreshes are drawn at the same size (same bases), and the 2028 dot at 50&ndash;100T is the author&rsquo;s bet on the next generation, not an estimate. <em>September 2026 reading:</em> this dot is the new generation itself, not a preview of a 2027 one; the July edition&rsquo;s &ldquo;Mythos / Spud on the 2027 mark&rdquo; is retired and scored in the staircase note below. The dashed blue <strong>2029 ring</strong> marks the author&rsquo;s dated bet, argued with probabilities in <a href="#chips">Where I&rsquo;d Put My Chips</a>, that the generation financed by 2026&ndash;27 capex lands there. A bet, deliberately drawn on the chart, and open to being wrong.
 
 #### 43 h4
 The staircase pattern
