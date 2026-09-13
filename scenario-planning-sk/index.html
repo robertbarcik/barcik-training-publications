@@ -220,11 +220,11 @@ p { margin-bottom: 1rem; }
 }
 .info-hint { color: #94a3b8; font-size: 13px; width: 100%; text-align: center; }
 .info-content { display: flex; width: 100%; gap: 24px; align-items: flex-start; }
-.info-left { flex-shrink: 0; min-width: 180px; }
+.info-left { flex: 1 1 55%; min-width: 180px; }
 .info-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
 .info-infra { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 4px; font-style: italic; }
 .info-lock { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 6px; }
-.info-right { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.info-right { display: flex; flex-direction: column; gap: 4px; flex: 0 0 auto; min-width: 230px; }
 .info-line { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.5; }
 .info-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
 
@@ -770,7 +770,7 @@ p { margin-bottom: 1rem; }
       <div class="legend-item"><div class="legend-line" style="background:#7C6DD8"></div>Tréningové behy &middot; ~3 roky</div>
       <div class="legend-item"><div class="legend-line" style="background:#0EA5C9"></div>Výskumná špička &middot; ~4+ rokov</div>
     </div>
-    <p style="font-size:0.78rem;color:var(--text-light);margin-top:10px;text-align:center">* Bod za rok 2026 nemá veľkosť v parametroch, lebo ju nikto nezverejnil: ani Anthropic (Claude Fable 5, 9. jún), ani OpenAI (GPT-6 Astra, 3. september), a Epoch AI uvádza oba ako neznáme. <em>Čítanie zo septembra 2026:</em> tento bod je samotná nová generácia, nie ukážka generácie z roku 2027; júlové &bdquo;Mythos / Spud na značke 2027&ldquo; je stiahnuté a ohodnotené v poznámke o schodisku nižšie. Prerušovaný modrý <strong>krúžok 2029</strong> označuje autorovu datovanú stávku, argumentovanú pravdepodobnosťami v časti <a href="#chips">Kam by som vsadil svoje žetóny</a>, že generácia financovaná capexom 2026&ndash;27 pristane práve tam. Stávka, zámerne nakreslená do grafu, a otvorená tomu, že bude nesprávna.</p>
+    <p style="font-size:0.78rem;color:var(--text-light);margin-top:10px;text-align:center">* Bod za rok 2026 nesie namiesto veľkosti v parametroch otáznik, lebo ju nikto nezverejnil: ani Anthropic (Claude Fable 5, 9. jún), ani OpenAI (GPT-6 Astra, 3. september), a Epoch AI uvádza oba ako neznáme. <em>Čítanie zo septembra 2026:</em> tento bod je samotná nová generácia, nie ukážka generácie z roku 2027; júlové &bdquo;Mythos / Spud na značke 2027&ldquo; je stiahnuté a ohodnotené v poznámke o schodisku nižšie. Prerušovaný modrý <strong>krúžok 2029</strong> označuje autorovu datovanú stávku, argumentovanú pravdepodobnosťami v časti <a href="#chips">Kam by som vsadil svoje žetóny</a>, že generácia financovaná capexom 2026&ndash;27 pristane práve tam. Stávka, zámerne nakreslená do grafu, a otvorená tomu, že bude nesprávna.</p>
   </div>
 
   <div class="chapter-prose">
@@ -2095,9 +2095,9 @@ document.addEventListener('DOMContentLoaded', function() {
       { year:2023, name:'GPT-4', detail:'GPT-4 \u00B7 Claude 2 \u00B7 Llama 2', sub:'~1,8T MoE (280B aktívnych)', params:1800, confidence:'Uniknuté' },
       { year:2024, name:'GPT-4o', detail:'GPT-4o \u00B7 Claude 3.5 \u00B7 Gemini 1.5', sub:'~1–2T MoE', params:1500, confidence:'Odhad' },
       { year:2025, name:'Opus 4', detail:'GPT-4.5 \u00B7 Grok 3 \u00B7 Claude Opus 4', sub:'~2–5T MoE', params:3500, confidence:'Odhad' },
-      { year:2026, name:'Fable 5 / Astra*', detail:'Claude Fable 5 (9. jún) · GPT-6 Astra (3. sep) · Fable 5.1 (1. sep) · Opus 4.8 uzatvára predošlú gen. (28. máj)', sub:'parametre nezverejnené · nové predtréningy · pozri poznámku pod grafom', confidence:'Potvrdené' },
-      { year:2027, name:'Rok obnov?', detail:'Post-tréningové obnovy generácie Fable / Astra · prvé behy trénované na Rubine koncom roka', sub:'~10–20T? · laboratóriá prestali zverejňovať veľkosti', params:15000, projected:true, confidence:'Projekcia' },
-      { year:2028, name:'Z 730 mld. $', detail:'Modely z výdavkov 730 mld. $ v roku 2026 · klastre triedy Rubin', sub:'~10–20T+ (odhad)', params:15000, projected:true, confidence:'Projekcia' },
+      { year:2026, name:'Fable 5 / Astra*', detail:'Claude Fable 5 (jún) · GPT-6 Astra (sep) · Fable 5.1 (sep)', sub:'veľkosť nezverejnená · nové predtréningy · pozri poznámku pod grafom', params:8000, confidence:'Potvrdené' },
+      { year:2027, name:'Obnovy', detail:'Post-tréningové obnovy generácie 2026', sub:'tie isté základy · prvé behy na Rubine koncom 2027', projected:true, confidence:'Projekcia' },
+      { year:2028, name:'Ďalšia gen.', detail:'Generácia financovaná 730 mld. $ z roku 2026 · klastre triedy Rubin', sub:'~10–20T+ (odhad)', params:15000, projected:true, confidence:'Projekcia' },
       { year:2029, name:'gen. 2029', detail:'Generácia, ktorú kupuje capex 2026–27: autorova stávka na žetóny (pozri „Kam by som vsadil svoje žetóny“)', sub:'veľkosť neznáma · datovaná stávka, nie odhad', projected:true, authorBet:true, confidence:'Stávka autora · júl 2026, platí sep 2026' },
     ];
     var FRONTIERS = [
@@ -2191,7 +2191,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var pLabel=m.params>=1000?(m.params/1000)+'T':m.params+'B';
         if(m.year===2024) pLabel='~1.5T';
         if(m.year===2025) pLabel='~3.5T';
-        if(m.year===2027||m.year===2028) pLabel='~15T';
+        if(m.year===2026) pLabel='?';
+        if(m.year===2028) pLabel='~15T';
         g.appendChild(n('text',{x:x,y:botY+4,'text-anchor':'middle','font-size':r>25?'11':'9','font-weight':'600',fill:'#fff'},pLabel));
       }
       var nameEl=n('text',{x:x,y:botY+r+14,'text-anchor':'middle','font-size':'11','font-weight':'600',fill:m.authorBet?'#3b82f6':(m.projected?'#94a3b8':'#3D2B1F')},m.name);

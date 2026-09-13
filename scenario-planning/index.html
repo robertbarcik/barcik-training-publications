@@ -219,11 +219,11 @@ p { margin-bottom: 1rem; }
 }
 .info-hint { color: #94a3b8; font-size: 13px; width: 100%; text-align: center; }
 .info-content { display: flex; width: 100%; gap: 24px; align-items: flex-start; }
-.info-left { flex-shrink: 0; min-width: 180px; }
+.info-left { flex: 1 1 55%; min-width: 180px; }
 .info-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
 .info-infra { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 4px; font-style: italic; }
 .info-lock { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 6px; }
-.info-right { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.info-right { display: flex; flex-direction: column; gap: 4px; flex: 0 0 auto; min-width: 230px; }
 .info-line { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.5; }
 .info-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
 
@@ -769,7 +769,7 @@ p { margin-bottom: 1rem; }
       <div class="legend-item"><div class="legend-line" style="background:#7C6DD8"></div>Training runs &middot; ~3 yr</div>
       <div class="legend-item"><div class="legend-line" style="background:#0EA5C9"></div>Research frontier &middot; ~4+ yr</div>
     </div>
-    <p style="font-size:0.78rem;color:var(--text-light);margin-top:10px;text-align:center">* The 2026 dot carries no parameter size because none was disclosed: neither Anthropic (Claude Fable 5, June 9) nor OpenAI (GPT-6 Astra, September 3) published one, and Epoch AI lists both as unknown. <em>September 2026 reading:</em> this dot is the new generation itself, not a preview of a 2027 one; the July edition&rsquo;s &ldquo;Mythos / Spud on the 2027 mark&rdquo; is retired and scored in the staircase note below. The dashed blue <strong>2029 ring</strong> marks the author&rsquo;s dated bet, argued with probabilities in <a href="#chips">Where I&rsquo;d Put My Chips</a>, that the generation financed by 2026&ndash;27 capex lands there. A bet, deliberately drawn on the chart, and open to being wrong.</p>
+    <p style="font-size:0.78rem;color:var(--text-light);margin-top:10px;text-align:center">* The 2026 dot carries a question mark instead of a parameter size because none was disclosed: neither Anthropic (Claude Fable 5, June 9) nor OpenAI (GPT-6 Astra, September 3) published one, and Epoch AI lists both as unknown. <em>September 2026 reading:</em> this dot is the new generation itself, not a preview of a 2027 one; the July edition&rsquo;s &ldquo;Mythos / Spud on the 2027 mark&rdquo; is retired and scored in the staircase note below. The dashed blue <strong>2029 ring</strong> marks the author&rsquo;s dated bet, argued with probabilities in <a href="#chips">Where I&rsquo;d Put My Chips</a>, that the generation financed by 2026&ndash;27 capex lands there. A bet, deliberately drawn on the chart, and open to being wrong.</p>
   </div>
 
   <div class="chapter-prose">
@@ -2091,9 +2091,9 @@ document.addEventListener('DOMContentLoaded', function() {
       { year:2023, name:'GPT-4', detail:'GPT-4 \u00B7 Claude 2 \u00B7 Llama 2', sub:'~1.8T MoE (280B active)', params:1800, confidence:'Leaked' },
       { year:2024, name:'GPT-4o', detail:'GPT-4o \u00B7 Claude 3.5 \u00B7 Gemini 1.5', sub:'~1\u20132T MoE', params:1500, confidence:'Estimated' },
       { year:2025, name:'Opus 4', detail:'GPT-4.5 \u00B7 Grok 3 \u00B7 Claude Opus 4', sub:'~2\u20135T MoE', params:3500, confidence:'Estimated' },
-      { year:2026, name:'Fable 5 / Astra*', detail:'Claude Fable 5 (Jun 9) \u00B7 GPT-6 Astra (Sep 3) \u00B7 Fable 5.1 (Sep 1) \u00B7 Opus 4.8 closes the prior gen (May 28)', sub:'params undisclosed \u00B7 new pretrains \u00B7 see note below chart', confidence:'Confirmed' },
-      { year:2027, name:'Refresh year?', detail:'Post-training refreshes of the Fable / Astra generation \u00B7 first Rubin-trained runs late in the year', sub:'~10\u201320T? \u00B7 labs stopped disclosing sizes', params:15000, projected:true, confidence:'Projected' },
-      { year:2028, name:'From $730B', detail:'Models from the $730B 2026 spend \u00B7 Rubin-class clusters', sub:'~10\u201320T+ (est.)', params:15000, projected:true, confidence:'Projected' },
+      { year:2026, name:'Fable 5 / Astra*', detail:'Claude Fable 5 (Jun) \u00B7 GPT-6 Astra (Sep) \u00B7 Fable 5.1 (Sep)', sub:'size undisclosed \u00B7 new pretrains \u00B7 see note below chart', params:8000, confidence:'Confirmed' },
+      { year:2027, name:'Refreshes', detail:'Post-training refreshes of the 2026 generation', sub:'same bases \u00B7 first Rubin runs late 2027', projected:true, confidence:'Projected' },
+      { year:2028, name:'Next gen', detail:'Generation financed by the $730B of 2026 \u00B7 Rubin-class clusters', sub:'~10\u201320T+ (est.)', params:15000, projected:true, confidence:'Projected' },
       { year:2029, name:'2029 gen', detail:'The generation the 2026\u201327 capex buys: the author\u2019s chips bet (see \u201cWhere I\u2019d Put My Chips\u201d)', sub:'size unknown \u00b7 dated bet, not an estimate', projected:true, authorBet:true, confidence:'Author bet \u00b7 Jul 2026, held Sep 2026' },
     ];
     var FRONTIERS = [
@@ -2187,7 +2187,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var pLabel=m.params>=1000?(m.params/1000)+'T':m.params+'B';
         if(m.year===2024) pLabel='~1.5T';
         if(m.year===2025) pLabel='~3.5T';
-        if(m.year===2027||m.year===2028) pLabel='~15T';
+        if(m.year===2026) pLabel='?';
+        if(m.year===2028) pLabel='~15T';
         g.appendChild(n('text',{x:x,y:botY+4,'text-anchor':'middle','font-size':r>25?'11':'9','font-weight':'600',fill:'#fff'},pLabel));
       }
       var nameEl=n('text',{x:x,y:botY+r+14,'text-anchor':'middle','font-size':'11','font-weight':'600',fill:m.authorBet?'#3b82f6':(m.projected?'#94a3b8':'#3D2B1F')},m.name);
