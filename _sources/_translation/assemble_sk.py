@@ -54,6 +54,8 @@ def main():
     head = re.sub(r'<title>.*?</title>', f'<title>{a.title}</title>', head, count=1, flags=re.S)
     head = re.sub(r'<meta name="description" content=".*?">',
                   f'<meta name="description" content="{a.description}">', head, count=1, flags=re.S)
+    # the EN page may already carry the hreflang pair; drop it so the SK head gets it once
+    head = re.sub(r'<link rel="alternate" hreflang="[a-z]+" href="[^"]*">\n?', '', head)
     head = head.replace(f'<link rel="canonical" href="{base}/{a.slug}/">',
                         f'<link rel="canonical" href="{base}/{out_slug}/">\n'
                         f'<link rel="alternate" hreflang="en" href="{base}/{a.slug}/">\n'
