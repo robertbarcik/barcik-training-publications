@@ -66,6 +66,17 @@ and MUST keep `ResponseCode 404` (never 200). With 200, the homepage's relative 
 infinite tree (~300k uncached S3 GETs/day, mostly Meta + bingbot). Same reason to prefer
 root-absolute links (`/slug/`) in index.html. No page relies on the fallback.
 
+### Step 0: Riso check (always, before every deploy)
+
+```bash
+/usr/bin/python3 ../training-ops/web/riso/riso_reader.py apply   # re-adds the reader block to any rebuilt page
+/usr/bin/python3 ../training-ops/web/riso/build.py               # regenerates the shelf (index.html) from the catalog
+```
+
+Both are idempotent. A rebuilt publication without the reader block deploys in its OLD look; a
+new publication missing from `training-ops/web/riso/data/publications.json` (and from `FAMILIES`
+in `riso_reader.py`) does not appear on the shelf. Then `git status` and look at what changed.
+
 ### Step 1: Sync to S3
 
 ```bash
