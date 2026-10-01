@@ -832,9 +832,10 @@ p.padding-top {{
 <!-- Sidebar -->
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <a class="all-pubs-link" href="/">&larr; All Publications</a>
-    <h2>The Mirror of<br>Artificial Intelligence</h2>
+    <a class="all-pubs-link" href="/">&larr; Všetky publikácie</a>
+    <h2>Zrkadlo umelej<br>inteligencie</h2>
     <div class="author">R&oacute;bert Barc&iacute;k</div>
+    <a class="lang-link" href="/mirror-of-ai/">Read in English &rarr;</a>
   </div>
   <div class="sidebar-nav" id="sidebarNav">
 {nav_html}

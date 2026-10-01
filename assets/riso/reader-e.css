@@ -29,6 +29,8 @@
 :root .sidebar .sidebar-header .all-pubs-link:hover { color: var(--rz-strong); }
 :root .sidebar .sidebar-header h2 { font-family: var(--rz-ui); font-stretch: 78%; font-weight: 800; font-size: 22px; line-height: 1.02; letter-spacing: -0.02em; text-transform: none; color: var(--rz-strong); }
 :root .sidebar .sidebar-header .author { font-family: var(--rz-ui); font-size: 13.5px; letter-spacing: 0; color: var(--rz-muted); opacity: 1; margin-top: .4rem; }
+:root .sidebar .sidebar-header .lang-link { display: inline-block; margin-top: .7rem; font-family: var(--rz-ui); font-size: 13.5px; font-weight: 700; color: var(--rz-link); text-decoration: none; }
+:root .sidebar .sidebar-header .lang-link:hover { text-decoration: underline; }
 :root .sidebar .sidebar-nav { padding: 1rem 0 3rem; }
 :root .sidebar .nav-item { font-family: var(--rz-ui); font-size: 14.5px; font-weight: 500; line-height: 1.4; color: var(--rz-muted); border-left: 4px solid transparent; padding: .42rem 1.5rem; }
 :root .sidebar .nav-item:hover { color: var(--rz-strong); background: transparent; text-decoration: underline; text-underline-offset: 3px; }
