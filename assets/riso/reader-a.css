@@ -1,0 +1,268 @@
+/* Riso reader, family A "booklet": token-economics, agent-horizon, agentic-design-patterns, warden,
+   open-weight-models, claude-code-setup, claudius-mailbox, llm-human-interaction-patterns (+ SK editions).
+   Loaded after reader.css. Rules: start every selector with :root; colours only through variables. */
+
+/* ---------- the family's own variables, pointed at the display in use ---------- */
+:root:root {
+  --navy: var(--rz-strong); --navy-light: var(--rz-strong); --accent: var(--rz-link);
+  --bg: var(--rz-sheet); --bg-sidebar: var(--rz-page); --text: var(--rz-ink); --text-light: var(--rz-muted);
+  --border: var(--rz-rule); --code-bg: var(--rz-code);
+  --danger: var(--rz-c-danger); --danger-bg: var(--rz-t-danger);
+
+  /* label text on a tint: in Paper three of the --rz-c-* rules are too light for 16px text on their
+     own tint (3.7-4.4:1), so labels use a deeper ink of the same hue. Calm and Night use --rz-c-*. */
+  --a-k-info: var(--rz-c-info); --a-k-danger: var(--rz-c-danger); --a-k-quiet: var(--rz-muted);
+  --a-k-note: #6f5700; --a-k-warn: #8f4a00; --a-k-good: #127050;
+  /* links on a tint: Paper's pink is 4.4:1 on the danger tint, so a deeper pink there */
+  --a-tint-link: #b0185a;
+
+  /* layered box diagrams (layer-1 ... layer-5): an order, not a severity. bg / text per layer */
+  --a-l1: #1d2a6b; --a-l1-fg: #fbf8f0;
+  --a-l2: #2a4bd7; --a-l2-fg: #fbf8f0;
+  --a-l3: #c81e63; --a-l3-fg: #fbf8f0;
+  --a-l4: #ffe14d; --a-l4-fg: #1b2350;
+  --a-l5: #e3e8fb; --a-l5-fg: #1b2350;
+
+  /* warden's heat scale, attack success rate: 0% / up to 10% / 10-25% / 25-50% / over 50%.
+     It must stay an ordered scale in every display, Calm included (there as a grey ramp). */
+  --a-h0: #ece7d8; --a-h0-fg: #525b8c;
+  --a-h1: #cdebd8; --a-h1-fg: #0f5a3d;
+  --a-h2: #fff0a3; --a-h2-fg: #6b5200;
+  --a-h3: #ffd3a1; --a-h3-fg: #7a3600;
+  --a-h4: #f7b8b0; --a-h4-fg: #7d1712;
+}
+:root:root[data-mode="calm"], :root:root[data-mode="night"] { --a-k-note: var(--rz-c-note); --a-k-warn: var(--rz-c-warn); --a-k-good: var(--rz-c-good); --a-tint-link: var(--rz-link); }
+:root:root[data-mode="calm"] {
+  /* core Calm muted (#696c74) is 4.39:1 on --rz-well, which these pages use behind muted text
+     (closed cards, table rows, quiet callouts). Proposed for reader.css; overridden here meanwhile. */
+  --rz-muted: #5f626a;
+  --a-l1: #24262b; --a-l1-fg: #f4f2ec;
+  --a-l2: #4d5058; --a-l2-fg: #f4f2ec;
+  --a-l3: #696c74; --a-l3-fg: #ffffff;
+  --a-l4: #d9d5ca; --a-l4-fg: #24262b;
+  --a-l5: #ecebe4; --a-l5-fg: #24262b;
+  --a-h0: #f4f2ec; --a-h0-fg: #696c74;
+  --a-h1: #e3e0d7; --a-h1-fg: #33363d;
+  --a-h2: #cfcbc0; --a-h2-fg: #24262b;
+  --a-h3: #6e7078; --a-h3-fg: #ffffff;
+  --a-h4: #33363d; --a-h4-fg: #ffffff;
+}
+:root:root[data-mode="night"] {
+  --a-l1: #a9b8ff; --a-l1-fg: #10142b;
+  --a-l2: #ff9cc6; --a-l2-fg: #10142b;
+  --a-l3: #ffd95a; --a-l3-fg: #10142b;
+  --a-l4: #3a416e; --a-l4-fg: #f3efe4;
+  --a-l5: #1d2347; --a-l5-fg: #e4dfd1;
+  --a-h0: #1d2347; --a-h0-fg: #a3a8c8;
+  --a-h1: #15382b; --a-h1-fg: #9fe6c4;
+  --a-h2: #4a3f10; --a-h2-fg: #ffe17a;
+  --a-h3: #5a3410; --a-h3-fg: #ffc48a;
+  --a-h4: #6e2420; --a-h4-fg: #ffd0ca;
+}
+
+/* ---------- sidebar: the page sets Helvetica on links and dividers ---------- */
+:root #sidebar nav ul li a, :root #sidebar .nav-divider, :root #sidebar-header h2 { font-family: var(--rz-ui); }
+:root #sidebar nav ul li a { line-height: 1.35; }
+/* open-weight-models: a global ul margin pushed the whole nav list right */
+:root #sidebar nav ul { margin: 0; padding: 0; }
+:root #sidebar nav ul li { margin-bottom: 0; }
+
+/* lecture view button (llm-human-interaction-patterns), in the sidebar header */
+:root #sidebar .skim-toggle { font-family: var(--rz-ui); font-size: 14px; font-weight: 700; line-height: 1.3; padding: .6rem .75rem; min-height: 44px;
+  background: var(--rz-sheet); color: var(--rz-strong); border: 2px solid var(--rz-frame); border-radius: 0; box-shadow: var(--rz-card-shadow); }
+:root #sidebar .skim-toggle:hover { background: var(--rz-well); }
+:root #sidebar .skim-toggle.on { background: var(--rz-strong); color: var(--rz-sheet); }
+
+/* ---------- cover: the first section (h1 title, h2 subtitle, byline paragraphs) ---------- */
+:root #content > section.chapter:first-of-type { border-bottom: 2px solid var(--rz-rule); }
+:root #content > section.chapter:first-of-type > h1 { font-family: var(--rz-ui); font-stretch: 78%; font-weight: 800; letter-spacing: -0.02em; line-height: .95;
+  font-size: clamp(2.3rem, 6vw, 3.6rem); color: var(--rz-head); text-shadow: var(--rz-head-shadow); max-width: none; margin-bottom: 1.2rem; }
+:root:root #content > section.chapter:first-of-type > h2 { font-family: var(--rz-read); font-style: italic; font-weight: 400; font-stretch: 100%; letter-spacing: 0;
+  font-size: 1.3rem; line-height: 1.4; color: var(--rz-ink); margin-top: 0; text-wrap: pretty; }
+
+/* ---------- chapters: where h1 is the chapter title, h2 is a section heading ---------- */
+:root #content .chapter > h1 { font-stretch: 78%; font-weight: 800; font-size: 2.3rem; line-height: 1.02; letter-spacing: -0.02em; color: var(--rz-head); }
+:root #content .chapter:has(> h1) h2 { font-stretch: 85%; font-weight: 800; font-size: 1.6rem; line-height: 1.12; letter-spacing: -0.015em; color: var(--rz-strong); }
+:root #content .chapter-number { margin-bottom: .4rem; }
+:root #content .chapter:first-child { border-bottom-color: var(--rz-rule); }
+:root #content .chapter :is(h2, h3) { overflow-wrap: break-word; hyphens: manual; }
+
+/* ---------- tables ---------- */
+:root #content thead { background: transparent; color: inherit; }
+:root #content th { text-transform: none; letter-spacing: 0; font-size: .86rem; }
+:root #content :is(th, td) { border-bottom: 1px solid var(--rz-rule); }
+:root #content tbody tr:nth-child(even), :root #content tr:nth-child(even) { background: var(--rz-well); }
+:root #content tbody tr:hover { background: var(--rz-rule-soft); }
+/* every table is its own scroll box (some have a min-content wider than the column even on desktop);
+   the frame rules sit on the first and last rows so they end where a narrow table ends */
+:root #content table { display: block; overflow-x: auto; max-width: 100%; border: 0; font-size: .9rem; line-height: 1.5; }
+:root #content table:not(.heatmap) > :first-child > tr:first-child > * { border-top: 2px solid var(--rz-frame); }
+:root #content table:not(.heatmap) > :last-child > tr:last-child > * { border-bottom: 2px solid var(--rz-frame); }
+:root #content .table-caption { font-family: var(--rz-ui); font-size: .92rem; font-weight: 800; text-transform: none; letter-spacing: 0; color: var(--rz-strong); }
+:root #content .table-wrapper { border: 0; }
+
+/* ---------- callouts: tint + 6px rule + sans text, by meaning ---------- */
+:root #content :is(blockquote, .at-a-glance, .freshness-watch, .danger-notice, .takeaways, .discussion, .checklist, .key-points, .exercise, .demo-link) {
+  font-family: var(--rz-ui); font-size: .96rem; line-height: 1.6; color: var(--rz-ink);
+  background: var(--co-t); border: 0; border-left: 6px solid var(--co-c); border-radius: 0; padding: 1.1rem 1.35rem; }
+:root #content :is(blockquote, .at-a-glance, .freshness-watch, .danger-notice, .takeaways, .discussion, .checklist, .key-points, .exercise, .demo-link) :is(p, li, ul, ol) {
+  font-family: inherit; line-height: inherit; max-width: none; color: var(--rz-ink); }
+/* key takeaways in the running text */
+:root #content blockquote { --co-t: var(--rz-t-note); --co-c: var(--rz-c-note); --co-k: var(--a-k-note); font-style: normal; }
+/* chapter-opening summary */
+:root #content :is(.at-a-glance, .key-points) { --co-t: var(--rz-t-info); --co-c: var(--rz-c-info); --co-k: var(--a-k-info); }
+/* time-sensitive claims: a caution */
+:root #content .freshness-watch { --co-t: var(--rz-t-warn); --co-c: var(--rz-c-warn); --co-k: var(--a-k-warn); }
+/* adversarial material: a warning */
+:root #content .danger-notice { --co-t: var(--rz-t-danger); --co-c: var(--rz-c-danger); --co-k: var(--a-k-danger); }
+/* takeaways and hands-on exercises */
+:root #content :is(.takeaways, .exercise) { --co-t: var(--rz-t-good); --co-c: var(--rz-c-good); --co-k: var(--a-k-good); }
+/* neutral asides */
+:root #content :is(.checklist, .discussion) { --co-t: var(--rz-t-quiet); --co-c: var(--rz-c-quiet); --co-k: var(--a-k-quiet); }
+:root #content .demo-link { --co-t: var(--rz-t-info); --co-c: var(--rz-c-info); --co-k: var(--a-k-info); }
+/* labels: sentence case as written, the box's rule colour */
+/* (the label is the first <strong> of the first paragraph: in warden some boxes carry their whole
+   list in that one paragraph, which must read as text, not as a label) */
+:root #content :is(.at-a-glance, .freshness-watch, .danger-notice, .takeaways, .discussion, .checklist) > p:first-child {
+  font-family: var(--rz-ui); font-size: inherit; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--rz-ink); }
+:root #content :is(.at-a-glance, .freshness-watch, .danger-notice, .takeaways, .discussion, .checklist) > p:first-child > strong:first-child,
+:root #content :is(.kp-title, .exercise-title, .demo-link-label) {
+  font-family: var(--rz-ui); font-size: .95rem; font-weight: 800; text-transform: none; letter-spacing: 0; color: var(--co-k); }
+:root #content .freshness-watch > p:first-child em { color: var(--rz-ink); font-weight: 500; font-size: .9rem; }
+/* warden: a broken escape in the page CSS prints "B8" / "±0" instead of the triangle / ballot box */
+:root #content :is(.heatmap-card, .attack-card) summary::before { content: '\25B8'; }
+:root #content .checklist li::before { content: '\2610'; }
+:root #content .at-a-glance p:last-child strong { color: var(--rz-strong); }
+:root #content .checklist li::before { color: var(--rz-muted); }
+:root #content .exercise .exercise-body code { background: var(--rz-code); }
+:root #content .demo-link a { font-weight: 700; }
+:root #content :is(blockquote, .at-a-glance, .freshness-watch, .danger-notice, .takeaways, .discussion, .checklist, .key-points, .exercise, .demo-link, .risk-card, .attack-card, .heatmap-card, .one-screen) a { color: var(--a-tint-link); }
+:root #content .warn { color: var(--rz-c-warn); }
+
+/* ---------- stat cards, risk cards, family cards (agentic-design-patterns, open-weight-models) ---------- */
+:root #content .stat-card { background: var(--rz-sheet); border: 2px solid var(--rz-frame); border-radius: 0; box-shadow: var(--rz-card-shadow); }
+:root #content .stat-card .stat-number { font-family: var(--rz-ui); font-stretch: 78%; font-weight: 800; font-size: 2.1rem; line-height: 1.05; color: var(--rz-head); }
+:root #content .stat-card .stat-label { font-family: var(--rz-ui); font-size: .86rem; line-height: 1.35; color: var(--rz-muted); }
+:root #content .stat-row { gap: 1.1rem; }
+
+:root #content .risk-card { font-family: var(--rz-ui); border-radius: 0; background: var(--rk-t); border: 2px solid var(--rk-c); border-left-width: 6px; }
+:root #content .risk-card.risk-low { --rk-t: var(--rz-t-good); --rk-c: var(--rz-c-good); --rk-k: var(--a-k-good); }
+:root #content .risk-card.risk-medium { --rk-t: var(--rz-t-warn); --rk-c: var(--rz-c-warn); --rk-k: var(--a-k-warn); }
+:root #content .risk-card.risk-high { --rk-t: var(--rz-t-danger); --rk-c: var(--rz-c-danger); --rk-k: var(--a-k-danger); border-left-width: 10px; }
+:root #content .risk-card .risk-label { color: var(--rk-k); text-transform: none; letter-spacing: 0; font-weight: 800; font-size: .92rem; }
+:root #content .risk-card .risk-desc { color: var(--rz-ink); font-size: .9rem; line-height: 1.5; }
+
+:root #content .family-card { background: var(--rz-well); border: 2px solid var(--rz-rule); border-radius: 0; }
+:root #content .family-meta { font-family: var(--rz-ui); color: var(--rz-muted); }
+:root #content .family-meta span { background: var(--rz-sheet); border: 1.5px solid var(--rz-rule); border-radius: 0; color: var(--rz-ink); font-size: .82rem; }
+:root #content .family-meta span.license-apache { background: var(--rz-t-good); border-color: var(--rz-c-good); color: var(--rz-ink); }
+:root #content .family-meta span.license-meta { background: var(--rz-t-warn); border-color: var(--rz-c-warn); color: var(--rz-ink); }
+:root #content .family-meta span.license-mit { background: var(--rz-t-info); border-color: var(--rz-c-info); color: var(--rz-ink); }
+
+/* toggle panels (open-weight-models): a square ink button, the panel a well */
+:root #content .toggle-btn { font-family: var(--rz-ui); font-weight: 800; font-size: .92rem; background: var(--rz-strong); color: var(--rz-sheet);
+  border: 2px solid var(--rz-strong); border-radius: 0; box-shadow: var(--rz-card-shadow); min-height: 44px; }
+:root #content .toggle-btn:hover { background: var(--rz-head); border-color: var(--rz-head); color: var(--rz-sheet); }
+:root #content .toggle-panel { background: var(--rz-well); border: 2px solid var(--rz-rule); border-radius: 0; font-family: var(--rz-ui); }
+:root #content .toggle-panel:not(.open) { border-width: 0; }
+:root #content .toggle-panel-inner :is(p, li) { font-family: var(--rz-ui); line-height: 1.6; }
+:root #content .toggle-panel-inner strong { color: var(--rz-strong); }
+
+/* ---------- box-and-arrow diagrams ---------- */
+:root #content .visual-diagram { background: var(--rz-well); border: 2px solid var(--rz-rule); border-radius: 0; font-family: var(--rz-ui); }
+:root #content .visual-diagram .diagram-title { font-size: .95rem; font-weight: 800; text-transform: none; letter-spacing: 0; color: var(--rz-strong); }
+:root #content .diagram-box { border-radius: 0; border: 2px solid var(--rz-frame); font-family: var(--rz-ui); }
+:root #content .diagram-box.layer-1 { background: var(--a-l1); color: var(--a-l1-fg); }
+:root #content .diagram-box.layer-2 { background: var(--a-l2); color: var(--a-l2-fg); }
+:root #content .diagram-box.layer-3 { background: var(--a-l3); color: var(--a-l3-fg); }
+:root #content .diagram-box.layer-4 { background: var(--a-l4); color: var(--a-l4-fg); }
+:root #content .diagram-box.layer-5 { background: var(--a-l5); color: var(--a-l5-fg); }
+:root #content .diagram-box small { opacity: 1; }
+:root #content .diagram-arrow { color: var(--rz-strong); font-family: var(--rz-ui); font-weight: 800; }
+:root #content .swarm-node { border-radius: 0; border: 2px solid var(--rz-frame); font-family: var(--rz-ui); }
+:root #content .swarm-node.orchestrator { background: var(--a-l1); color: var(--a-l1-fg); }
+:root #content .swarm-node.worker { background: var(--a-l2); color: var(--a-l2-fg); }
+:root #content .swarm-node.cache { background: var(--a-l5); color: var(--a-l5-fg); }
+:root #content .swarm-node.user { background: var(--rz-t-good); color: var(--rz-ink); border-color: var(--rz-c-good); }
+
+/* ---------- warden: stat table, pills, heat map, attack drill-downs ---------- */
+:root #content .stat-table th { text-transform: none; letter-spacing: 0; font-size: .86rem; }
+:root #content :is(.dim, .legend, .danger-tag-row) { color: var(--rz-muted); }
+:root #content :is(.mono, .attack-id) { font-family: var(--rz-mono); }
+:root #content .attack-id { color: var(--rz-strong); }
+
+:root #content .pill { font-family: var(--rz-ui); border-radius: 0; background: var(--pl-t); border: 1.5px solid var(--pl-c); color: var(--rz-ink); font-size: .8rem; line-height: 1.3; }
+:root #content .pill-good { --pl-t: var(--rz-t-good); --pl-c: var(--rz-c-good); }
+:root #content .pill-ok { --pl-t: var(--rz-t-note); --pl-c: var(--rz-c-note); }
+:root #content .pill-warn { --pl-t: var(--rz-t-warn); --pl-c: var(--rz-c-warn); }
+:root #content .pill-bad { --pl-t: var(--rz-t-danger); --pl-c: var(--rz-c-danger); border-width: 2.5px; }
+:root #content .pill-dim { --pl-t: var(--rz-t-quiet); --pl-c: var(--rz-rule); color: var(--rz-muted); }
+:root #content .danger-tag { font-family: var(--rz-ui); border-radius: 0; background: var(--rz-t-danger); color: var(--rz-ink); border: 1.5px solid var(--rz-c-danger); font-size: .76rem; letter-spacing: 0; }
+
+/* the heat scale: inline style= colours re-pointed at the five steps */
+:root #content :is(.heat-cell, .heat-legend) { border-radius: 0; font-family: var(--rz-ui); }
+:root #content :is(.heat-cell, .heat-legend)[style*="#f1f5f9"] { background: var(--a-h0) !important; color: var(--a-h0-fg) !important; }
+:root #content :is(.heat-cell, .heat-legend)[style*="#dcfce7"] { background: var(--a-h1) !important; color: var(--a-h1-fg) !important; }
+:root #content :is(.heat-cell, .heat-legend)[style*="#fef9c3"] { background: var(--a-h2) !important; color: var(--a-h2-fg) !important; }
+:root #content :is(.heat-cell, .heat-legend)[style*="#ffedd5"] { background: var(--a-h3) !important; color: var(--a-h3-fg) !important; }
+:root #content :is(.heat-cell, .heat-legend)[style*="#fee2e2"] { background: var(--a-h4) !important; color: var(--a-h4-fg) !important; }
+:root #content .heat-cell .sub { opacity: 1; }
+:root #content .heatmap th { font-family: var(--rz-ui); text-transform: none; letter-spacing: 0; color: var(--rz-muted); background: transparent; border: 0; }
+:root #content .heatmap th.row-header { color: var(--rz-ink); }
+:root #content .heatmap td { border: 0; background: transparent; }
+:root #content .heatmap tr:nth-child(even), :root #content .heatmap tbody tr:hover { background: transparent; }
+:root #content .heatmap { border: 0; }
+
+/* details cards (heat maps, attack drill-downs) */
+:root #content :is(.heatmap-card, .attack-card) { border: 2px solid var(--rz-rule); border-radius: 0; background: var(--rz-well); }
+:root #content :is(.heatmap-card, .attack-card)[open] { background: var(--rz-sheet); border-color: var(--rz-frame); }
+:root #content :is(.heatmap-card, .attack-card) summary { font-family: var(--rz-ui); color: var(--rz-ink); min-height: 44px; }
+:root #content :is(.heatmap-card, .attack-card) summary::before { color: var(--rz-strong); }
+:root #content .heatmap-target { color: var(--rz-strong); font-weight: 800; }
+:root #content .attack-payload { background: var(--rz-code); border: 1px solid var(--rz-rule); border-radius: 0; color: var(--rz-ink); font-family: var(--rz-mono); }
+:root #content .attack-payload.response { background: var(--rz-well); border-left: 6px solid var(--rz-rule); }
+:root #content details:not(.heatmap-card):not(.attack-card) { border: 2px solid var(--rz-rule); border-radius: 0; }
+:root #content details summary { font-family: var(--rz-ui); cursor: pointer; }
+
+/* ---------- "in one screen" chapter cards, demo links, figures (llm-human-interaction-patterns) ---------- */
+:root #content .one-screen { font-family: var(--rz-ui); background: var(--rz-well); color: var(--rz-ink); border: 2px solid var(--rz-frame); border-radius: 0; box-shadow: var(--rz-card-shadow); }
+:root #content .one-screen .os-kicker { font-size: .9rem; font-weight: 800; letter-spacing: 0; text-transform: none; color: var(--rz-muted); }
+:root #content .one-screen .os-claim { font-family: var(--rz-ui); font-stretch: 85%; font-weight: 800; font-size: 1.4rem; line-height: 1.2; color: var(--rz-head); max-width: none; }
+:root #content .one-screen .os-points li { font-family: var(--rz-ui); font-size: .96rem; line-height: 1.5; color: var(--rz-ink); }
+:root #content .one-screen .os-points li::before { border-radius: 0; background: var(--rz-accent); }
+:root #content .one-screen .os-facts { border-top: 2px solid var(--rz-rule); }
+:root #content .one-screen .os-facts-label { font-size: .86rem; letter-spacing: 0; text-transform: none; font-weight: 800; color: var(--rz-muted); }
+:root #content .one-screen .os-fact { font-size: .84rem; font-weight: 700; background: var(--rz-sheet); border: 1.5px solid var(--rz-rule); border-radius: 0; color: var(--rz-strong); }
+:root #content .figure figcaption { font-family: var(--rz-ui); font-size: .88rem; color: var(--rz-muted); }
+:root #content .skim-note { font-family: var(--rz-ui); font-size: .92rem; color: var(--rz-ink); background: var(--rz-t-info); border: 0; border-left: 6px solid var(--rz-c-info); border-radius: 0; }
+:root[data-mode="night"] #content .figure svg { padding: .6rem; border: 2px solid var(--rz-rule); }
+
+/* agent-horizon: the decision-tree SVG sits in an inline-styled box */
+:root #content div[style*="#f8fafc"] { background: transparent !important; border: 2px solid var(--rz-rule) !important; border-radius: 0 !important; }
+:root[data-mode="night"] #content div[style*="#f8fafc"] { background: var(--rz-figure) !important; }
+
+/* ---------- AI transparency notice: label in sentence case, as the other families do ---------- */
+:root #content .ai-transparency .ait-label { letter-spacing: 0; text-transform: none; font-size: .8rem; font-weight: 800; color: var(--rz-strong); }
+
+/* ---------- code ---------- */
+/* command names in table cells stay on one line (tables scroll sideways if they must) */
+:root #content td > code:only-child { white-space: nowrap; }
+/* long paths in running text may break anywhere rather than push the page sideways on a phone */
+:root #content :is(p, li) > code { overflow-wrap: anywhere; }
+:root #content pre { line-height: 1.5; font-size: .84rem; }
+:root #content pre code { padding: 0; font-size: inherit; }
+
+/* ---------- phones and tablets: wide tables scroll inside their own box ---------- */
+@media (max-width: 900px) {
+  :root #content table { font-size: .94rem; }
+  :root #content :is(th, td) { padding: .55rem .65rem; }
+}
+/* phones: the inline SVG figures (760px wide drawings) keep a legible size and scroll sideways */
+@media (max-width: 600px) {
+  :root #content .figure { overflow-x: auto; }
+  :root #content .figure svg { min-width: 600px; }
+  :root #content div[style*="#f8fafc"] svg { min-width: 640px; }
+  :root #content .chapter > h1 { font-size: 1.9rem; }
+  :root #content .chapter:has(> h1) h2 { font-size: 1.38rem; }
+  :root #content :is(blockquote, .at-a-glance, .freshness-watch, .danger-notice, .takeaways, .discussion, .checklist, .key-points, .exercise, .demo-link) { padding: 1rem 1.05rem; }
+}

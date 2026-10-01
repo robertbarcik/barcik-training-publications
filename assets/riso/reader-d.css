@@ -1,0 +1,115 @@
+/* Riso reader, family D "autobiography": a-point-in-time (+ -sk, -cs). Loaded after reader.css.
+   Rules: start every selector with :root; colours only through --rz-* variables (see reader.css).
+   The text of this book is FROZEN: nothing here hides, reorders or re-words content. It only re-skins.
+
+   Choices. The cover keeps its dark, bookish character: navy ink ground, off-white type, a yellow rule
+   (Paper); a deeper-than-sheet panel with the yellow title (Night); plain type between two rules (Calm).
+   Movements are the condensed heavy blue chapter titles of the Riso family; interludes keep their own
+   voice: a tinted sheet laid on the page (Paper), a lifted panel (Night), an indented rule (Calm),
+   with the title in reading-serif italic, centred. The theta facsimile stays a monospace page whose
+   columns never wrap: it scrolls sideways on narrow screens. */
+
+/* the family's own variables, pointed at the display in use
+   (:root:root, because the page's inline :root block comes later in the document) */
+:root:root {
+  --ink: var(--rz-strong); --ink-deep: var(--rz-strong); --navy: var(--rz-strong); --accent: var(--rz-link);
+  --paper: var(--rz-sheet); --paper-warm: var(--rz-well); --bg-sidebar: var(--rz-page);
+  --text: var(--rz-ink); --text-light: var(--rz-muted); --border: var(--rz-rule); --gold: var(--rz-link);
+  /* cover and interlude grounds: new colours, defined once per display */
+  --d-cover-bg: #1d2a6b; --d-cover-ink: #fbf8f0; --d-cover-muted: #c3c8e6; --d-cover-title: #fbf8f0; --d-cover-rule: #ffe14d;
+  --d-cover-frame: #1d2a6b; --d-cover-shadow: .045em .04em 0 #ff5fa2;
+  --d-panel: #f3ecd9; --d-panel-frame: #1d2a6b; --d-facs: #fffdf7;
+}
+:root:root[data-mode="calm"] {
+  --d-cover-bg: transparent; --d-cover-ink: #33363d; --d-cover-muted: #696c74; --d-cover-title: #24262b; --d-cover-rule: #d9d5ca;
+  --d-cover-frame: transparent; --d-cover-shadow: none;
+  --d-panel: transparent; --d-panel-frame: #d9d5ca; --d-facs: #f4f2ec;
+}
+:root:root[data-mode="night"] {
+  --d-cover-bg: #0c1024; --d-cover-ink: #e4dfd1; --d-cover-muted: #a3a8c8; --d-cover-title: #ffd95a; --d-cover-rule: #ffd95a;
+  --d-cover-frame: #3a416e; --d-cover-shadow: none;
+  --d-panel: #1d2347; --d-panel-frame: #3a416e; --d-facs: #10142b;
+}
+
+/* ---------- sidebar ---------- */
+:root #sidebar nav ul { margin: 0; }
+:root #sidebar nav ul li a { padding-left: 1.5rem; }
+:root #sidebar nav ul li.nav-interlude a { font-family: var(--rz-read); font-style: italic; font-size: 14px; padding-left: 2.6rem; opacity: 1; }
+:root #sidebar nav ul li.nav-interlude a.active { font-weight: 700; }
+:root #sidebar.open { box-shadow: none; }
+
+/* ---------- cover ---------- */
+:root #content .cover { background: var(--d-cover-bg); color: var(--d-cover-ink); border: 2px solid var(--d-cover-frame); border-radius: 0;
+  box-shadow: none; margin: 0 0 4.5rem; padding: 5rem 2.5rem 2rem; }
+:root[data-mode="calm"] #content .cover { border-width: 2px 0; border-color: var(--d-cover-rule); padding: 4rem 0 2rem; }
+:root #content .cover .cover-kicker { font-family: var(--rz-ui); font-size: .85rem; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--d-cover-muted); margin-bottom: 2.6rem; }
+:root #content :is(.cover, #cover) h1 { font-family: var(--rz-ui); font-stretch: 78%; font-weight: 800; font-size: clamp(2.6rem, 7vw, 4.2rem); line-height: .95; letter-spacing: -0.02em;
+  color: var(--d-cover-title); text-shadow: var(--d-cover-shadow); margin-bottom: 1.1rem; }
+:root #content .cover .cover-sub { font-family: var(--rz-read); font-style: italic; font-size: 1.3rem; color: var(--d-cover-ink); }
+:root #content .cover .cover-rule { width: 88px; height: 4px; background: var(--d-cover-rule); }
+:root #content .cover .cover-byline { font-family: var(--rz-read); color: var(--d-cover-ink); }
+:root #content .cover .cover-veto { font-family: var(--rz-read); color: var(--d-cover-muted); }
+:root #content .cover .cover-meta { font-family: var(--rz-ui); font-size: .85rem; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--d-cover-muted); gap: .4rem 1.6rem; }
+:root #content .cover .cover-corner { font-family: var(--rz-read); color: var(--d-cover-muted); }
+
+/* ---------- movements ---------- */
+:root #content .chapter-label { font-size: .95rem; margin-bottom: .35rem; }
+:root #content .chapter h1.chapter-title { font-size: clamp(2.1rem, 4.6vw, 2.6rem); line-height: 1; margin-bottom: 2rem; color: var(--rz-head); text-shadow: var(--rz-head-shadow); }
+/* in this book h2 is a sub-heading inside a movement, not a chapter title: undo the core's big blue */
+:root #content .chapter > h2 { font-family: var(--rz-ui); font-stretch: 90%; font-weight: 800; font-size: 1.22rem; line-height: 1.2; letter-spacing: -0.01em;
+  color: var(--rz-strong); margin: 2.6rem 0 .9rem; text-shadow: none; }
+:root #content .chapter > h3 { font-size: 1.08rem; color: var(--rz-strong); }
+:root #content hr { height: 0; width: 72px; background: none; border: 0; border-top: 2px solid var(--rz-rule); margin: 2.4rem auto; }
+:root #content blockquote { font-style: italic; padding: .9rem 1.4rem; margin: 1.6rem 0; }
+:root #content blockquote :is(p, li) { color: var(--rz-ink); }
+
+/* ASCII art: same metrics, never wrapped, sideways scroll inside its own box. The book's own mono
+   stack is kept (not --rz-mono) so the drawings render with exactly the font they were checked in.
+   (Two lines of the zeta self-portrait are one character longer than the rest in the frozen source;
+   their right border sits one column out in every display. Content, not skin.) */
+:root #content :is(pre, pre code) { font-family: 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; }
+:root #content pre { font-size: calc(12.5px * var(--rz-scale)); line-height: 1.45; white-space: pre; overflow-x: auto; overflow-wrap: normal; word-break: normal;
+  max-width: 100%; padding: 1.3rem 1.5rem; margin: 1.8rem 0; color: var(--rz-ink); }
+:root #content pre code { font-size: inherit; white-space: inherit; }
+
+/* ---------- interludes ---------- */
+:root #content .interlude-panel { background: var(--d-panel) var(--rz-grain); border: 2px solid var(--d-panel-frame); border-radius: 0;
+  box-shadow: var(--rz-card-shadow); padding: 2.6rem clamp(1.2rem, 4vw, 2.8rem) 2rem; }
+:root[data-mode="calm"] #content .interlude-panel { border-width: 0 0 0 3px; box-shadow: none; padding: .4rem 0 .4rem clamp(1.1rem, 4vw, 2.4rem); margin-left: clamp(0rem, 2vw, 1rem); }
+:root[data-mode="night"] #content .interlude-panel { box-shadow: none; }
+:root #content .interlude-label { font-family: var(--rz-ui); font-size: .9rem; font-weight: 800; letter-spacing: .04em; color: var(--rz-link); }
+:root #content .interlude-panel h1.interlude-title { font-family: var(--rz-read); font-style: italic; font-weight: 600; font-size: 1.75rem; line-height: 1.2;
+  letter-spacing: 0; color: var(--rz-strong); max-width: none; margin-bottom: 1.6rem; }
+:root[data-mode="calm"] #content :is(.interlude-label, .interlude-panel h1.interlude-title) { text-align: left; }
+:root #content .interlude-panel :is(p, ul, ol, blockquote) { max-width: none; }
+:root #content .interlude-panel > p:first-of-type { font-size: .95rem; color: var(--rz-muted); }
+:root #content .interlude-panel > p:first-of-type em { color: var(--rz-muted); }
+:root #content .interlude-panel hr { background: none; border-top-color: var(--d-panel-frame); }
+:root[data-mode="calm"] #content .interlude-panel hr { margin-left: 0; }
+:root #content .interlude-panel pre { background: var(--d-facs); border-color: var(--rz-rule); }
+/* the theta facsimile: a page of the inherited draft with marginalia in fixed columns */
+:root #content pre.facsimile { background: var(--d-facs); border: 1px solid var(--rz-rule); border-left: 6px solid var(--rz-rule); color: var(--rz-ink);
+  font-size: calc(12.5px * var(--rz-scale)); white-space: pre; overflow-x: auto; }
+
+/* ---------- endings ---------- */
+:root #content .signature { font-family: var(--rz-read); color: var(--rz-strong); }
+:root #content .signature span { color: var(--rz-muted); }
+:root #content .book-footer { font-family: var(--rz-ui); border-top: 2px solid var(--rz-rule); color: var(--rz-muted); }
+:root #content .book-footer p { font-family: var(--rz-ui); color: var(--rz-muted); max-width: none; }
+:root #content .book-footer a { color: var(--rz-link); text-decoration: underline; text-underline-offset: 3px; }
+:root #content .ai-transparency { color: var(--rz-muted); opacity: 1; }
+:root #content .ai-transparency p { font-family: var(--rz-ui); color: var(--rz-muted); }
+:root #content .ai-transparency .ait-label { letter-spacing: 0; text-transform: none; font-size: .8rem; font-weight: 800; color: var(--rz-strong); }
+
+@media (max-width: 1024px) {
+  :root #content .cover { padding: 3.6rem 1.3rem 1.6rem; }
+  /* a chapter reached from the table of contents does not land under the fixed menu button */
+  :root #content :is(.chapter, .cover) { scroll-margin-top: 4.2rem; }
+  /* the open sidebar starts below the menu button, which stays on top of it */
+  :root #sidebar { padding-top: 4.4rem; }
+}
+@media (max-width: 900px) {
+  :root #content .interlude-panel { margin-left: -.35rem; margin-right: -.35rem; }
+  :root[data-mode="calm"] #content .interlude-panel { margin: 0; }
+  :root #content pre { padding: 1rem 1.1rem; }
+}

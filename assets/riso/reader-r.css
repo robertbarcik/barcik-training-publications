@@ -1,0 +1,122 @@
+/* Riso reader, family R "research reports": reports/bloom, reports/geobias-7b, reports/selfjudge.
+   Loaded after reader.css. Rules: start every selector with :root; colours only through variables.
+
+   These are generated data reports, not reading pages. They get a light FRAME, not a re-skin:
+   paper page, the report sitting on a framed sheet, Bricolage headings and chrome, square buttons
+   and tabs. The report's own data colours (scores, verdicts, models, origins, heat cells) stay
+   exactly as generated. Two of the three reports (Bloom, GeoBias) are dark by design and every
+   score colour was picked against that dark ground, so their sheet keeps the report's own dark
+   ground (var(--bg)); SelfJudge is light and sits on --rz-sheet.
+   No display control here: the reports are shown in Paper only, whatever was saved. */
+
+/* ---------- Paper only: a saved Calm/Night/large choice must not reach these pages ---------- */
+:root:root, :root:root[data-mode], :root:root[data-size] {
+  --rz-scale: 1;
+  --rz-page: #f3efe4; --rz-sheet: #fbf8f0; --rz-ink: #1b2350; --rz-strong: #1d2a6b; --rz-muted: #525b8c;
+  --rz-rule: #c9c3ae; --rz-rule-soft: #e2dccb; --rz-frame: #1d2a6b; --rz-head: #2a4bd7; --rz-head-shadow: .045em .04em 0 #ff5fa2;
+  --rz-link: #c81e63; --rz-hl: #ffe14d; --rz-accent: #ff5fa2; --rz-well: #f3efe4; --rz-code: #efe9da;
+  --rz-sheet-shadow: 8px 8px 0 #ff5fa2; --rz-card-shadow: 4px 4px 0 #2a4bd7;
+  --rz-figure: transparent;
+  --rz-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .11 0 0 0 0 .16 0 0 0 0 .42 0 0 0 .22 -.07'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* family-only: link colour on the two dark report grounds (the Night link pink) */
+  --rr-link-dark: #ff9cc6;
+  color-scheme: light;
+}
+/* the reports were laid out at 16px: the reader's 112.5% / 106.25% makes the dense cards and tables wrap */
+:root:root { font-size: 100%; }
+:root .rz-ctl { display: none !important; }
+
+/* SelfJudge (light report): its chrome variables point at the paper palette. Data colours untouched. */
+:root:root:has(#mainNav) {
+  --bg: var(--rz-sheet); --text: var(--rz-ink); --text-muted: var(--rz-muted); --border: var(--rz-rule-soft);
+  --font: var(--rz-ui);
+}
+
+@media screen {
+  /* ---------- the frame: paper page, framed sheet ---------- */
+  :root:root { background: var(--rz-page) var(--rz-grain); }
+  /* Bloom + SelfJudge: <body> is the report's own centred container, so it becomes the sheet */
+  :root:root body {
+    background: var(--bg); color: var(--text); font-family: var(--rz-ui);
+    width: calc(100% - 4rem); max-width: 1400px; margin: 3.75rem auto 3.5rem;
+    border: 2px solid var(--rz-frame); box-shadow: var(--rz-sheet-shadow);
+  }
+  :root:root:has(#mainNav) body { max-width: 1300px; }
+  /* GeoBias: <body> is full width (sticky nav on top); the sheet is the main .container */
+  :root:root:has(body > .container) body { background: transparent; width: auto; max-width: none; margin: 0; border: 0; box-shadow: none; }
+  :root:root body > .container {
+    background: var(--bg); border: 2px solid var(--rz-frame); box-shadow: var(--rz-sheet-shadow);
+    width: calc(100% - 4rem); margin: 2.5rem auto 3.5rem; padding-bottom: 1rem;
+  }
+
+  /* ---------- the way back to the shelf (exists in all three reports) ---------- */
+  /* Bloom + SelfJudge: the page's fixed pill covered the sticky filter bar and table headers; it now
+     sits on the paper above the sheet and scrolls with the page (GeoBias keeps it in its sticky nav) */
+  :root body > .all-pubs-link {
+    position: absolute; top: .8rem; left: .9rem; border-radius: 0; background: var(--rz-sheet); border: 2px solid var(--rz-frame);
+    box-shadow: var(--rz-card-shadow); color: var(--rz-link); font-family: var(--rz-ui); font-size: .82rem; font-weight: 700; padding: .4rem .75rem;
+  }
+  :root body > .all-pubs-link:hover { color: var(--rz-strong); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---------- headings: Bricolage, condensed heavy title ---------- */
+  :root body :is(h1, h2, h3, h4, h5) { font-family: var(--rz-ui); }
+  :root body > h1, :root .hero h1 { font-stretch: 78%; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  :root body > h1 { font-size: 2.6rem; margin-bottom: .5rem; }
+  :root body h2 { font-weight: 800; font-stretch: 85%; letter-spacing: -0.01em; }
+  :root:root:has(#mainNav) body > h1 { color: var(--rz-head); text-shadow: var(--rz-head-shadow); }
+  :root:root:has(#mainNav) body h2 { color: var(--rz-strong); border-bottom: 2px solid var(--rz-rule); }
+  /* GeoBias title: was gradient-clipped text; now one solid colour from the report's own palette */
+  :root:root .hero h1 { background: none; -webkit-text-fill-color: currentColor; color: var(--accent-light); font-size: 3.6rem; }
+  :root .section-header .section-num { text-transform: none; letter-spacing: 0; font-weight: 800; font-size: .95rem; }
+  :root .metric-card .metric-label { text-transform: none; letter-spacing: 0; }
+
+  /* ---------- links ---------- */
+  :root:root:has(#mainNav) body a { color: var(--rz-link); text-underline-offset: 3px; }
+  :root:root body > div > p > a, :root:root .container :is(p, li, td) > a { color: var(--rr-link-dark) !important; text-underline-offset: 3px; }
+
+  /* ---------- Bloom: filter bar and cards ---------- */
+  :root .filter-bar { border-bottom: 2px solid var(--card-border); }
+  :root .filter-bar .filter-btn { border-radius: 0; border: 2px solid var(--card-border); color: var(--text); font-family: var(--rz-ui); }
+  :root .filter-bar .filter-btn:hover { border-color: var(--text); }
+  :root .filter-bar .filter-btn.active { border-color: var(--accent-blue); color: var(--text); background: var(--card); box-shadow: inset 0 -4px 0 var(--accent-blue); }
+  :root :is(.dash-card, .behavior-section, .scenario-card, .conversation, .msg, .highlight, .justification, .finding, .dash-bar, .dash-bar-fill) { border-radius: 0; }
+  :root .conversation-toggle { font-family: var(--rz-ui); font-weight: 700; }
+
+  /* ---------- SelfJudge: tabs, filter buttons, cards ---------- */
+  :root #mainNav { border-bottom: 0; gap: 0; }
+  :root #mainNav .nav-tab {
+    border: 2px solid var(--rz-frame); margin: 0 -2px -2px 0; border-radius: 0; background: var(--rz-sheet);
+    color: var(--rz-ink); font-family: var(--rz-ui); font-weight: 600; padding: .55rem 1rem;
+  }
+  :root #mainNav .nav-tab:hover { background: var(--rz-well); color: var(--rz-strong); }
+  :root #mainNav .nav-tab.active { background: var(--rz-strong); color: var(--rz-sheet); font-weight: 800; position: relative; }
+  :root:root:has(#mainNav) .filters .filter-btn { border: 2px solid var(--rz-frame); border-radius: 0; background: var(--rz-sheet); color: var(--rz-ink); font-family: var(--rz-ui); font-weight: 600; }
+  :root:root:has(#mainNav) .filters .filter-btn:hover { background: var(--rz-well); }
+  :root:root:has(#mainNav) .filters .filter-btn.active { background: var(--rz-strong); color: var(--rz-sheet); border-color: var(--rz-strong); }
+  :root:root:has(#mainNav) :is(.card, .case-item, .callout, .pipeline-step) { border-radius: 0; }
+  :root:root:has(#mainNav) .card { border: 2px solid var(--rz-rule-soft); }
+
+  /* ---------- GeoBias: top nav, tabs, buttons, cards ---------- */
+  :root body > nav { background: var(--rz-sheet); backdrop-filter: none; border-bottom: 2px solid var(--rz-frame); }
+  :root body > nav a { color: var(--rz-ink); border-radius: 0; font-family: var(--rz-ui); font-weight: 500; padding-left: .6rem; padding-right: .6rem; }
+  :root body > nav a:hover { color: var(--rz-strong); background: var(--rz-well); text-decoration: underline; text-underline-offset: 3px; }
+  :root body > nav .all-pubs-link { color: var(--rz-link); font-weight: 800; font-size: .82rem; text-transform: none; letter-spacing: 0; border-right: 2px solid var(--rz-frame); }
+  :root body > nav .all-pubs-link:hover { color: var(--rz-strong); background: transparent; }
+  :root .tabs { border-bottom: 0; gap: 0; }
+  :root .tabs .tab { border: 2px solid var(--border); margin-right: -2px; color: var(--text); font-family: var(--rz-ui); font-weight: 600; }
+  :root .tabs .tab:hover { background: var(--surface3); }
+  :root .tabs .tab.active { background: var(--text); color: var(--bg); border-color: var(--text); font-weight: 800; position: relative; }
+  :root :is(.expand-btn, .download-btn) { border-radius: 0; border-width: 2px; font-family: var(--rz-ui); font-weight: 600; }
+  :root .container :is(.card, .stat-box, .intro-card, .finding, .example-card, .example-prompt, .evaluator-judgment, .profile-card, .empty-response-callout, .empty-response-model, .evaluator-warning, .method-prompt, .partial-banner, .disclaimer, .matrix-cell, .bar-track, .bar-value, .refusal-bar) { border-radius: 0; }
+}
+
+/* ---------- tablet and phone: the sheet goes edge to edge, no shadow ---------- */
+@media screen and (max-width: 900px) {
+  :root:root body { width: auto; margin: 3.6rem 0 0; border-left: 0; border-right: 0; border-bottom: 0; box-shadow: none; padding: 1.25rem 1rem; }
+  :root:root:has(body > .container) body { margin: 0; padding: 0; }
+  :root:root body > .container { width: auto; margin: 1.5rem 0 0; border-left: 0; border-right: 0; border-bottom: 0; box-shadow: none; }
+  :root body > h1 { font-size: 2.1rem; }
+  :root:root .hero h1 { font-size: 2.5rem; }
+  /* wide tables and grids scroll inside their own card instead of pushing the page sideways */
+  :root:root :is(.card, .behavior-section) { overflow-x: auto; }
+}

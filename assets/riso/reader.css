@@ -1,0 +1,158 @@
+/* Riso reader: the skin of every publication page, and its three displays.
+   Source of truth: training-ops/web/riso/reader.css (copied to publications /assets/riso/ by build.py).
+
+   How it works. Publication pages keep their own inline CSS and their HTML untouched; riso_reader.py
+   only adds <link>s to this file + one family file, and reader.js, to <head>. Every rule here starts
+   with :root so it outranks the page's inline rule of the same shape. Colours come from --rz-*
+   variables, and the three displays (Paper, Calm, Night) are nothing more than three sets of them:
+   never write a colour literal in a rule, or it will be wrong in two of the three displays.
+
+   Family files (reader-a.css ...) map each template family's own variables and components onto
+   --rz-*. Reader chrome built by reader.js: .rz-ctl (display control). */
+
+/* ---------- the three displays ---------- */
+:root {
+  --rz-ui: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --rz-read: 'Literata', Georgia, 'Times New Roman', serif;
+  --rz-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --rz-scale: 1;
+  /* Paper (default): risograph on uncoated stock */
+  --rz-page: #f3efe4; --rz-sheet: #fbf8f0; --rz-ink: #1b2350; --rz-strong: #1d2a6b; --rz-muted: #525b8c;
+  --rz-rule: #c9c3ae; --rz-rule-soft: #e2dccb; --rz-frame: #1d2a6b; --rz-head: #2a4bd7; --rz-head-shadow: .045em .04em 0 #ff5fa2;
+  --rz-link: #c81e63; --rz-hl: #ffe14d; --rz-accent: #ff5fa2; --rz-well: #f3efe4; --rz-code: #efe9da;
+  --rz-sheet-shadow: 8px 8px 0 #ff5fa2; --rz-card-shadow: 4px 4px 0 #2a4bd7;
+  /* tints for callouts: info / note / warning / danger / good. A family maps its boxes onto these. */
+  --rz-t-info: #e3e8fb; --rz-t-note: #fff3b8; --rz-t-warn: #ffe6c4; --rz-t-danger: #fbe1dc; --rz-t-good: #dcf1e4; --rz-t-quiet: #efe9da;
+  /* dark enough to be small bold label text on the tint of the same name (4.8:1 or better) */
+  --rz-c-info: #2a4bd7; --rz-c-note: #745b00; --rz-c-warn: #9a4f00; --rz-c-danger: #c22a23; --rz-c-good: #12704c; --rz-c-quiet: #525b8c;
+  --rz-figure: transparent; /* ground behind diagrams and images */
+  --rz-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .11 0 0 0 0 .16 0 0 0 0 .42 0 0 0 .22 -.07'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  color-scheme: light;
+}
+/* Calm: nothing but the text. No grain, no shadows, no colour; a little more air between lines. */
+:root[data-mode="calm"] {
+  --rz-page: #f4f2ec; --rz-sheet: #f4f2ec; --rz-ink: #33363d; --rz-strong: #24262b; --rz-muted: #5c5f67;
+  --rz-rule: #d9d5ca; --rz-rule-soft: #e6e3da; --rz-frame: #d9d5ca; --rz-head: #24262b; --rz-head-shadow: none;
+  --rz-link: #2f4f86; --rz-hl: transparent; --rz-accent: #8a8d95; --rz-well: #ecebe4; --rz-code: #eae8e0;
+  --rz-sheet-shadow: none; --rz-card-shadow: none;
+  --rz-t-info: #ecebe4; --rz-t-note: #ecebe4; --rz-t-warn: #ecebe4; --rz-t-danger: #ecebe4; --rz-t-good: #ecebe4; --rz-t-quiet: #ecebe4;
+  --rz-c-info: #4d5058; --rz-c-note: #4d5058; --rz-c-warn: #4d5058; --rz-c-danger: #7a3a36; --rz-c-good: #4d5058; --rz-c-quiet: #696c74;
+  --rz-grain: none;
+}
+/* Night: deep navy, warm off-white type. Diagrams keep a light card so their own colours stay readable. */
+:root[data-mode="night"] {
+  --rz-page: #10142b; --rz-sheet: #161b38; --rz-ink: #e4dfd1; --rz-strong: #f3efe4; --rz-muted: #a3a8c8;
+  --rz-rule: #3a416e; --rz-rule-soft: #2a3058; --rz-frame: #3a416e; --rz-head: #ffd95a; --rz-head-shadow: none;
+  --rz-link: #ff9cc6; --rz-hl: transparent; --rz-accent: #ff7bb3; --rz-well: #1d2347; --rz-code: #1d2347;
+  --rz-sheet-shadow: none; --rz-card-shadow: none;
+  --rz-t-info: #1e2a5c; --rz-t-note: #3a3413; --rz-t-warn: #40290f; --rz-t-danger: #43201f; --rz-t-good: #15382b; --rz-t-quiet: #1d2347;
+  --rz-c-info: #a9b8ff; --rz-c-note: #ffd95a; --rz-c-warn: #ffb066; --rz-c-danger: #ff9a8f; --rz-c-good: #7fd9b0; --rz-c-quiet: #a3a8c8;
+  --rz-figure: #f3efe4; --rz-grain: none;
+  color-scheme: dark;
+}
+:root[data-size="large"] { --rz-scale: 1.14; }
+
+/* ---------- base ---------- */
+:root { font-size: calc(112.5% * var(--rz-scale)); }
+:root body { background: var(--rz-page) var(--rz-grain); color: var(--rz-ink); font-family: var(--rz-ui); font-size: 1rem; }
+:root ::selection { background: var(--rz-accent); color: #1d2a6b; }
+:root :focus-visible { outline: 3px solid var(--rz-accent); outline-offset: 2px; }
+
+/* ---------- common skeleton: progress bar, sidebar, sheet ---------- */
+:root #progress-bar { background: var(--rz-accent); height: 5px; }
+:root #sidebar { background: var(--rz-page); border-right: 2px solid var(--rz-frame); font-family: var(--rz-ui); font-size: 16px; }
+:root #sidebar-header { border-bottom: 2px solid var(--rz-frame); }
+:root #sidebar-header .all-pubs-link { font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--rz-link); }
+:root #sidebar-header .all-pubs-link:hover { color: var(--rz-strong); }
+:root #sidebar-header h2 { font-family: var(--rz-ui); font-stretch: 78%; font-weight: 800; font-size: 22px; line-height: 1.02; letter-spacing: -0.02em; text-transform: none; color: var(--rz-strong); }
+:root #sidebar-header p { font-size: 13.5px; color: var(--rz-muted); }
+:root #sidebar-header .lang-link { font-size: 13.5px; font-weight: 700; color: var(--rz-link); }
+:root #sidebar nav ul li a { font-size: 14.5px; color: var(--rz-muted); border-left: 4px solid transparent; font-weight: 500; }
+:root #sidebar nav ul li a:hover { color: var(--rz-strong); background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+:root #sidebar nav ul li a.active { color: var(--rz-strong); font-weight: 800; border-left-color: var(--rz-accent); background: var(--rz-hl); }
+:root #sidebar .nav-divider { font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 800; color: var(--rz-strong); opacity: 1; }
+:root #menu-toggle { background: var(--rz-sheet); color: var(--rz-strong); border: 2px solid var(--rz-frame); border-radius: 0; box-shadow: var(--rz-card-shadow); min-width: 44px; min-height: 44px; }
+:root #content-wrapper { padding-top: 4rem; padding-bottom: 3rem; }
+:root #content { background: var(--rz-sheet); border: 2px solid var(--rz-frame); box-shadow: var(--rz-sheet-shadow); max-width: 52rem; padding: 3rem clamp(1.25rem, 5vw, 4rem) 4rem;
+  font-family: var(--rz-read); line-height: 1.7; color: var(--rz-ink); }
+:root[data-mode="calm"] #content { border-color: transparent; line-height: 1.8; }
+:root[data-mode="night"] #content { border-color: var(--rz-rule); }
+
+/* ---------- reading typography ---------- */
+:root #content :is(p, li, dd, dt, blockquote) { font-family: var(--rz-read); }
+:root #content :is(p, li) { line-height: inherit; color: var(--rz-ink); }
+:root #content :is(p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5) { max-width: 38rem; }
+:root #content :is(table, figure, .figure, td, th, li, blockquote, [class*="card"], [class*="grid"], [class*="note"], [class*="box"]) :is(p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5) { max-width: none; }
+:root #content :is(h1, h2, h3, h4, h5) { font-family: var(--rz-ui); color: var(--rz-strong); letter-spacing: -0.01em; text-wrap: balance; }
+:root #content .chapter h2, :root #content section > h2, :root #content section > h1 { font-stretch: 78%; font-weight: 800; font-size: 2.1rem; line-height: 1; letter-spacing: -0.02em; color: var(--rz-head); }
+:root #content h3 { font-weight: 800; font-stretch: 85%; font-size: 1.32rem; line-height: 1.15; }
+:root #content h4 { font-weight: 800; font-size: 1.08rem; }
+:root #content a { color: var(--rz-link); text-underline-offset: 3px; }
+:root #content strong, :root #content b { color: var(--rz-strong); }
+:root #content hr { border: 0; border-top: 2px solid var(--rz-rule); }
+:root #content blockquote { background: transparent; border: 0; border-left: 8px solid var(--rz-hl); border-radius: 0; color: var(--rz-ink); }
+:root[data-mode="calm"] #content blockquote, :root[data-mode="night"] #content blockquote { border-left-color: var(--rz-rule); }
+:root #content :is(code, kbd, samp, pre) { font-family: var(--rz-mono); }
+:root #content :not(pre) > code { background: var(--rz-code); color: var(--rz-strong); border-radius: 0; padding: .08em .3em; font-size: .86em; }
+:root #content pre { background: var(--rz-code); color: var(--rz-ink); border: 1px solid var(--rz-rule); border-radius: 0; }
+:root #content pre code { background: transparent; color: inherit; }
+:root #content table { font-family: var(--rz-ui); border-color: var(--rz-rule); color: var(--rz-ink); }
+:root #content :is(th, td) { border-color: var(--rz-rule); color: var(--rz-ink); }
+:root #content th { background: var(--rz-well); color: var(--rz-strong); font-weight: 800; }
+:root #content tr:nth-child(even) td { background: transparent; }
+/* the chapter eyebrow: plain words, not tracked capitals */
+:root #content :is(.chapter-label, .chapter-number) { font-family: var(--rz-ui); text-transform: none; letter-spacing: 0; font-weight: 800; font-size: .95rem; color: var(--rz-muted); }
+/* covers */
+:root #content :is(.cover-page, #cover) h1 { font-family: var(--rz-ui); font-stretch: 78%; font-weight: 800; letter-spacing: -0.02em; line-height: .92; font-size: clamp(2.4rem, 7vw, 4rem); color: var(--rz-head); text-shadow: var(--rz-head-shadow); max-width: none; }
+:root #content :is(.cover-label, .cover-kicker) { font-family: var(--rz-ui); text-transform: none; letter-spacing: 0; font-weight: 700; color: var(--rz-muted); }
+:root #content :is(.cover-subtitle, .cover-meta, .cover-edition, .cover-author) { color: var(--rz-muted); max-width: none; }
+:root #content .cover-subtitle { font-family: var(--rz-read); font-style: italic; color: var(--rz-ink); }
+:root #content .cover-meta { font-family: var(--rz-ui); }
+/* figures: in Night they sit on a light card so hard-coded diagram colours stay legible */
+:root[data-mode="night"] #content :is(img, svg:not(.ait-icon), canvas) { background: var(--rz-figure); }
+:root .ai-transparency { font-family: var(--rz-ui); }
+:root .ai-transparency .ait-label { text-transform: none; letter-spacing: 0; }
+
+/* ---------- display control (built by reader.js, outside <main>) ---------- */
+.rz-ctl { position: fixed; top: 12px; right: 12px; z-index: 1500; font: 700 13.5px/1 var(--rz-ui); color: var(--rz-strong); }
+.rz-ctl .rz-ctl-toggle { display: none; }
+.rz-ctl-panel { display: flex; align-items: stretch; background: var(--rz-sheet); border: 2px solid var(--rz-frame); box-shadow: var(--rz-card-shadow); }
+.rz-ctl-panel > span { display: flex; }
+.rz-ctl-panel > span + span { border-left: 2px solid var(--rz-frame); }
+.rz-ctl button { font: inherit; color: inherit; background: transparent; border: 0; border-radius: 0; cursor: pointer; padding: 9px 11px; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; }
+.rz-ctl button:hover { background: var(--rz-well); }
+.rz-ctl button[aria-pressed="true"] { background: var(--rz-strong); color: var(--rz-sheet); }
+.rz-ctl .rz-sw { width: 13px; height: 13px; border: 1.5px solid currentColor; border-radius: 50%; flex: none; }
+.rz-ctl [data-mode="paper"] .rz-sw { background: #fbf8f0; box-shadow: inset -4px 0 0 #ff5fa2; }
+.rz-ctl [data-mode="calm"] .rz-sw { background: #f4f2ec; }
+.rz-ctl [data-mode="night"] .rz-sw { background: #10142b; }
+.rz-ctl [data-size="large"] { font-size: 17px; padding-top: 6px; padding-bottom: 6px; }
+:root[data-mode="calm"] .rz-ctl-panel { border-color: var(--rz-muted); }
+/* once the reader has scrolled, the bar folds into one "Aa" button so it never sits on the text */
+:root.rz-scrolled .rz-ctl .rz-ctl-toggle { display: inline-flex; justify-content: center; min-width: 44px; min-height: 44px; font-size: 16px; background: var(--rz-sheet); border: 2px solid var(--rz-frame); box-shadow: var(--rz-card-shadow); }
+:root.rz-scrolled .rz-ctl-panel { display: none; position: absolute; top: 52px; right: 0; }
+:root.rz-scrolled .rz-ctl.open .rz-ctl-panel { display: flex; }
+
+/* ---------- tablet and phone ---------- */
+@media (max-width: 900px) {
+  :root { font-size: calc(106.25% * var(--rz-scale)); }
+  :root #content-wrapper { padding: 3.6rem 0 0; }
+  :root #content { border-left: 0; border-right: 0; box-shadow: none; padding: 2rem 1.15rem 3rem; max-width: none; }
+  :root #sidebar { width: min(320px, 86vw); border-right: 2px solid var(--rz-frame); padding-top: 4.4rem; } /* clear of the menu button */
+  :root #menu-toggle { top: 10px; left: 10px; }
+  /* the control folds into one button next to the menu */
+  .rz-ctl { top: 10px; right: 10px; }
+  .rz-ctl .rz-ctl-toggle { display: inline-flex; background: var(--rz-sheet) !important; border: 2px solid var(--rz-frame) !important; box-shadow: var(--rz-card-shadow); min-width: 44px; min-height: 44px; justify-content: center; font-size: 16px !important; }
+  .rz-ctl-panel { display: none; position: absolute; top: 52px; right: 0; flex-direction: column; min-width: 190px; }
+  .rz-ctl.open .rz-ctl-panel { display: flex; }
+  .rz-ctl-panel > span { flex-direction: column; }
+  .rz-ctl-panel > span + span { border-left: 0; border-top: 2px solid var(--rz-frame); flex-direction: row; }
+  .rz-ctl-panel button { min-height: 44px; padding: 10px 14px; flex: 1; }
+}
+@media (prefers-reduced-motion: reduce) { :root * { transition: none !important; scroll-behavior: auto !important; } }
+@media print {
+  .rz-ctl { display: none !important; }
+  :root { font-size: 100%; }
+  :root body { background: #fff; color: #000; }
+  :root #content { border: 0; box-shadow: none; background: #fff; padding: 0; max-width: 100%; }
+}

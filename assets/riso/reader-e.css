@@ -1,0 +1,113 @@
+/* Riso reader, family E "InDesign book": mirror-of-ai (+ -sk). Loaded after reader.css.
+   Rules: start every selector with :root; colours only through --rz-* variables (see reader.css).
+
+   This page has its own skeleton, so most of the core's #content / #sidebar-header rules do not reach it:
+   .progress-bar#progressBar, .hamburger, .overlay, nav.sidebar#sidebar > .sidebar-header + .sidebar-nav
+   (.nav-item.nav-story | .nav-essay | .nav-other), main.main-content#mainContent, InDesign body classes.
+   Everything below styles that skeleton directly, so the book reads as a sibling of the others.
+   Do not position or transform .main-content: the page's script reads section.offsetTop for the TOC. */
+
+/* the family's own variables, pointed at the display in use */
+:root:root {
+  --color-bg: var(--rz-sheet); --color-bg-warm: var(--rz-t-info); --color-text: var(--rz-ink); --color-text-light: var(--rz-muted);
+  --color-heading: var(--rz-strong); --color-accent: var(--rz-link); --color-accent-light: var(--rz-link); --color-accent-faint: var(--rz-hl);
+  --color-sidebar-bg: var(--rz-page); --color-sidebar-text: var(--rz-muted); --color-sidebar-hover: var(--rz-strong); --color-sidebar-active: var(--rz-strong);
+  --color-divider: var(--rz-rule); --color-essay-accent: var(--rz-strong);
+  --e-pad: clamp(1.25rem, 5vw, 4rem);
+}
+
+/* ---------- progress bar, menu button, overlay ---------- */
+:root .progress-bar { background: var(--rz-accent); height: 5px; }
+:root .hamburger { background: var(--rz-sheet); border: 2px solid var(--rz-frame); border-radius: 0; box-shadow: var(--rz-card-shadow); }
+:root .hamburger span { background: var(--rz-strong); border-radius: 0; }
+
+/* ---------- sidebar ---------- */
+:root .sidebar { scrollbar-color: var(--rz-rule) transparent; }
+:root .sidebar::-webkit-scrollbar-thumb { background: var(--rz-rule); border-radius: 0; }
+:root .sidebar .sidebar-header { padding: 2rem 1.5rem 1.3rem; border-bottom: 2px solid var(--rz-frame); }
+:root .sidebar .sidebar-header .all-pubs-link { font-family: var(--rz-ui); font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--rz-link); opacity: 1; margin-bottom: .9rem; }
+:root .sidebar .sidebar-header .all-pubs-link:hover { color: var(--rz-strong); }
+:root .sidebar .sidebar-header h2 { font-family: var(--rz-ui); font-stretch: 78%; font-weight: 800; font-size: 22px; line-height: 1.02; letter-spacing: -0.02em; text-transform: none; color: var(--rz-strong); }
+:root .sidebar .sidebar-header .author { font-family: var(--rz-ui); font-size: 13.5px; letter-spacing: 0; color: var(--rz-muted); opacity: 1; margin-top: .4rem; }
+:root .sidebar .sidebar-nav { padding: 1rem 0 3rem; }
+:root .sidebar .nav-item { font-family: var(--rz-ui); font-size: 14.5px; font-weight: 500; line-height: 1.4; color: var(--rz-muted); border-left: 4px solid transparent; padding: .42rem 1.5rem; }
+:root .sidebar .nav-item:hover { color: var(--rz-strong); background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+/* stories: plain; essays (A-I): reading-serif italic in the info ink; front and back matter: smaller, muted */
+:root .sidebar .nav-essay { font-family: var(--rz-read); font-style: italic; font-size: 14.5px; color: var(--rz-c-info); }
+:root .sidebar .nav-other { font-size: 13.5px; color: var(--rz-muted); }
+:root .sidebar .nav-item.active { color: var(--rz-strong); font-weight: 800; border-left-color: var(--rz-accent); background: var(--rz-hl); }
+:root .sidebar .nav-essay.active { font-weight: 700; }
+
+/* ---------- the sheet ---------- */
+:root .content-wrapper { padding-top: 4rem; padding-bottom: 3rem; }
+:root .main-content { background: var(--rz-sheet); border: 2px solid var(--rz-frame); box-shadow: var(--rz-sheet-shadow); max-width: 52rem;
+  padding: 3rem var(--e-pad) 4rem; font-family: var(--rz-read); line-height: 1.7; color: var(--rz-ink); }
+:root[data-mode="calm"] .main-content { border-color: transparent; line-height: 1.8; }
+:root[data-mode="night"] .main-content { border-color: var(--rz-rule); }
+
+/* ---------- cover ---------- */
+:root .main-content .cover-section { text-align: left; padding: 1rem 0 3rem; margin-bottom: 1rem; border-bottom: 2px solid var(--rz-rule); }
+:root .main-content .cover-section img { display: block; max-width: 340px; border-radius: 0; border: 2px solid var(--rz-frame); box-shadow: var(--rz-card-shadow); }
+:root .main-content .cover-section h1 { font-family: var(--rz-ui); font-stretch: 78%; font-weight: 800; font-size: clamp(2.4rem, 6.4vw, 3.8rem); line-height: .95;
+  letter-spacing: -0.02em; color: var(--rz-head); text-shadow: var(--rz-head-shadow); margin-top: 2rem; }
+:root .main-content .cover-section .cover-author { font-family: var(--rz-read); font-style: italic; font-size: 1.15rem; color: var(--rz-ink); margin-top: .6rem; }
+
+/* ---------- chapters ---------- */
+:root .main-content .chapter { padding: 3rem 0 2.5rem; border-bottom: 2px solid var(--rz-rule); }
+:root .main-content .chapter:last-of-type { border-bottom: 0; }
+:root .main-content .chapter :is(h1.kap, h1[class*="kap"]) { font-family: var(--rz-ui); font-stretch: 78%; font-weight: 800; font-size: clamp(1.9rem, 4.4vw, 2.3rem); line-height: 1.02;
+  letter-spacing: -0.02em; text-align: left; color: var(--rz-head); text-wrap: balance; margin: 0 0 1.8rem; max-width: 38rem; }
+/* essays: a tinted band across the sheet with a heavy left rule; the title in plain strong ink */
+:root .main-content .chapter-essay { background: var(--rz-t-info); border-left: 6px solid var(--rz-c-info);
+  margin-left: calc(-1 * var(--e-pad)); margin-right: calc(-1 * var(--e-pad)); padding-left: calc(var(--e-pad) - 6px); padding-right: var(--e-pad); }
+:root .main-content .chapter-essay :is(h1.kap, h1[class*="kap"]) { color: var(--rz-strong); }
+
+/* reading text */
+:root .main-content :is(p, li) { font-family: var(--rz-read); color: var(--rz-ink); }
+:root .main-content :is(p.nrmltxt, .chapter p.nrmltxt) { line-height: inherit; max-width: 38rem; margin-bottom: .35rem; }
+:root .main-content .chapter :is(ol, ul) { max-width: 36rem; }
+:root .main-content .chapter li { line-height: 1.65; }
+/* the annex lists bare URLs; let them break instead of pushing the page sideways on phones */
+:root .main-content :is(li, p) { overflow-wrap: anywhere; }
+:root .main-content :is(span.bold, span[class*="bold"]) { color: var(--rz-strong); }
+:root .main-content :is(p.Podnadpis, .chapter p.Podnadpis) { font-family: var(--rz-ui); font-weight: 800; font-size: 1.2rem; line-height: 1.2; text-align: left; color: var(--rz-strong); margin: 2.2rem 0 .8rem; }
+:root .main-content :is(p.text-skraja, .chapter p.text-skraja) { font-family: var(--rz-ui); font-size: .86rem; line-height: 1.6; color: var(--rz-muted); }
+:root .main-content :is(p.text-na-stred, .chapter p.text-na-stred) { max-width: 38rem; margin-left: auto; margin-right: auto; }
+
+/* illustrations keep their own colours; square, framed, no soft shadow */
+:root .main-content .chapter img, :root .main-content .chapter p.logo img { border-radius: 0; box-shadow: none; border: 2px solid var(--rz-frame); }
+/* the export sets width:100% inline; on the wide sheet that made portrait plates taller than the screen */
+:root .main-content .chapter p.logo img { max-width: min(100%, 32rem); }
+:root[data-mode="calm"] .main-content .chapter img, :root[data-mode="night"] .main-content .chapter img { border-color: var(--rz-rule); }
+:root .main-content .chapter a img { border-width: 0; }
+
+/* links, including the one with an inline colour from the InDesign export */
+:root .main-content .chapter a { color: var(--rz-link); border-bottom: 0; text-decoration: underline; text-underline-offset: 3px; }
+:root .main-content a[style*="color"] { color: var(--rz-link) !important; }
+:root .main-content .chapter a:has(> img) { text-decoration: none; }
+
+/* footnotes */
+:root .main-content ._idFootnotes { border-top: 2px solid var(--rz-rule); }
+:root .main-content ._idFootnote { max-width: 38rem; }
+:root .main-content ._idFootnote p { font-family: var(--rz-ui); color: var(--rz-muted); }
+:root .main-content :is(._idFootnoteAnchor, a._idFootnoteLink) { color: var(--rz-link); font-weight: 800; text-decoration: none; }
+
+/* AI transparency notice */
+:root .main-content .ai-transparency { font-family: var(--rz-ui); color: var(--rz-muted); opacity: 1; }
+:root .main-content .ai-transparency p { font-family: var(--rz-ui); color: var(--rz-muted); max-width: 62ch; }
+:root .main-content .ai-transparency .ait-label { letter-spacing: 0; text-transform: none; font-size: .8rem; font-weight: 800; color: var(--rz-strong); }
+
+/* ---------- tablet and phone ---------- */
+@media (max-width: 960px) {
+  :root .content-wrapper { padding: 3.6rem 0 0; }
+  :root .main-content { border-left: 0; border-right: 0; box-shadow: none; max-width: none; --e-pad: 1.15rem; padding: 2rem var(--e-pad) 3rem; }
+  :root .sidebar { width: min(320px, 86vw); border-right: 2px solid var(--rz-frame); }
+  :root .hamburger { top: 10px; left: 10px; }
+  /* the open sidebar starts below the menu button, which stays on top of it */
+  :root .sidebar .sidebar-header { padding-top: 4.4rem; }
+  :root .main-content .chapter { scroll-margin-top: 4.2rem; }
+}
+@media (max-width: 600px) {
+  :root .main-content .cover-section img { max-width: 260px; }
+  :root .main-content :is(p.nrmltxt, .chapter p.nrmltxt) { text-align: left; }
+}

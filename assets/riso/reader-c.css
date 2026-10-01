@@ -1,0 +1,172 @@
+/* Riso reader, family C "textbook": ai-act-intro (+ -sk), ai-act-developers, pod-kapotou-genai (SK
+   original) + pod-kapotou-genai-en. Loaded after reader.css.
+   Rules: start every selector with :root; colours only through --rz-* variables (see reader.css).
+
+   Page shapes. Each page has section#cover, #colophon, section.chapter with .chapter-number + h1
+   (chapter title) + h2/h3 (sections), and .admonition callouts. The two AI Act textbooks also carry
+   tables and, in the intro, a five-question quiz per chapter written as plain paragraphs; the
+   developers edition has Python code blocks. pod-kapotou adds parts (.part-divider), ASCII figures
+   (pre.figure, pre.figure.strip, p.figcap), .ack and pre.cover-art; its inline CSS hard-codes colours.
+   Page tells (no page HTML is edited): developers = code[class*="language-"]; pod-kapotou = .cover-art. */
+
+/* ---------- the family's own variables, pointed at the display in use ---------- */
+:root:root {
+  --navy: var(--rz-strong); --navy-light: var(--rz-strong); --accent: var(--rz-link);
+  --amber: var(--rz-accent); --amber-dark: var(--rz-muted);
+  --bg: var(--rz-sheet); --bg-sidebar: var(--rz-page); --text: var(--rz-ink); --text-light: var(--rz-muted);
+  --border: var(--rz-rule); --code-bg: var(--rz-code); --code-block-bg: var(--rz-code); --code-block-text: var(--rz-ink);
+  --panel: var(--rz-code);
+  /* the cover plate: a solid ink slab printed onto the sheet (navy; slate-teal for the developers edition) */
+  --c-cover-bg: var(--rz-strong); --c-cover-ink: var(--rz-sheet); --c-cover-muted: #c9cdea;
+  --c-cover-kicker: var(--rz-hl); --c-cover-title: var(--rz-sheet); --c-cover-shadow: .05em .045em 0 var(--rz-accent);
+  --c-cover-ring1: var(--rz-accent); --c-cover-ring2: var(--rz-hl); --c-cover-frame: var(--rz-frame);
+}
+:root:root[data-mode="calm"] {
+  --c-cover-bg: transparent; --c-cover-ink: var(--rz-ink); --c-cover-muted: var(--rz-muted);
+  --c-cover-kicker: var(--rz-muted); --c-cover-title: var(--rz-strong); --c-cover-shadow: none;
+  --c-cover-ring1: transparent; --c-cover-ring2: transparent; --c-cover-frame: transparent;
+}
+:root:root[data-mode="night"] {
+  --c-cover-bg: var(--rz-well); --c-cover-ink: var(--rz-ink); --c-cover-muted: var(--rz-muted);
+  --c-cover-kicker: var(--rz-accent); --c-cover-title: var(--rz-head); --c-cover-shadow: none;
+  --c-cover-ring1: var(--rz-accent); --c-cover-ring2: var(--rz-rule); --c-cover-frame: var(--rz-rule);
+}
+:root:root:has(code[class*="language-"]) { --c-cover-bg: #0f5257; --c-cover-muted: #c4e2de; }
+:root:root[data-mode="calm"]:has(code[class*="language-"]) { --c-cover-bg: transparent; --c-cover-muted: var(--rz-muted); }
+:root:root[data-mode="night"]:has(code[class*="language-"]) { --c-cover-bg: #123b3e; --c-cover-muted: #b4d6d2; }
+
+/* ---------- sidebar extras ---------- */
+:root #sidebar-header .all-pubs-link { display: inline-block; margin-bottom: 1rem; text-decoration: none; }
+:root #sidebar-header .all-pubs-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+:root #sidebar-header .lang-link a { color: var(--rz-link); font-weight: 700; }
+:root #sidebar-header .lang-link a:hover { color: var(--rz-strong); }
+:root #sidebar nav ul li.part { font-family: var(--rz-ui); font-size: 13px; font-weight: 800; letter-spacing: 0; text-transform: none; color: var(--rz-strong); padding-top: 1.1rem; }
+
+/* ---------- cover: a full-bleed plate at the top of the sheet ---------- */
+:root #content #cover {
+  background: var(--c-cover-bg) var(--rz-grain); color: var(--c-cover-ink); border-radius: 0;
+  margin: -3rem calc(-1 * clamp(1.25rem, 5vw, 4rem)) 3rem; padding: 4.5rem clamp(1.25rem, 5vw, 4rem) 4rem;
+  min-height: min(80vh, 42rem); border-bottom: 2px solid var(--c-cover-frame);
+}
+:root[data-mode="calm"] #content #cover { min-height: 0; padding-top: 4rem; padding-bottom: 2.5rem; border-bottom: 0; }
+:root #content #cover::before { border: 3px solid var(--c-cover-ring1); opacity: .9; z-index: 0; }
+:root #content #cover::after { border: 2px solid var(--c-cover-ring2); opacity: .75; z-index: 0; }
+:root #content #cover > * { position: relative; z-index: 1; }
+:root #content #cover h1 { color: var(--c-cover-title); text-shadow: var(--c-cover-shadow); max-width: 13em; }
+:root #content #cover .cover-kicker { color: var(--c-cover-kicker); font-size: 1rem; letter-spacing: 0; text-transform: none; }
+:root #content #cover .cover-rule { background: var(--rz-accent); height: 6px; width: 84px; border-radius: 0; }
+:root[data-mode="calm"] #content #cover .cover-rule { background: var(--rz-rule); }
+:root #content #cover .cover-subtitle { color: var(--c-cover-ink); font-size: 1.2rem; position: relative; }
+:root #content #cover .cover-author { color: var(--c-cover-ink); font-family: var(--rz-ui); font-weight: 800; font-size: 1.1rem; }
+:root #content #cover .cover-edition { color: var(--c-cover-muted); font-family: var(--rz-ui); font-size: .9rem; }
+:root #content #cover pre.cover-art { color: var(--c-cover-muted); background: transparent; border: 0; font-size: .7rem; position: relative; max-width: 100%; overflow-x: auto; }
+:root #content #colophon { font-family: var(--rz-ui); font-size: .9rem; color: var(--rz-muted); border-top: 2px solid var(--rz-rule); border-bottom: 2px solid var(--rz-rule); }
+:root #content #colophon p { font-family: inherit; max-width: none; color: inherit; }
+
+/* ---------- headings: h1 is the chapter title, h2/h3 are sections ---------- */
+:root #content section > h2, :root #content .chapter h2 {
+  font-stretch: 85%; font-weight: 800; font-size: 1.5rem; line-height: 1.15; letter-spacing: -0.01em; color: var(--rz-strong);
+  margin-top: 2.6rem;
+}
+:root #content h3 { color: var(--rz-strong); font-size: 1.2rem; }
+:root #content .chapter-number { margin-bottom: .35rem; }
+:root #content section.chapter > h1 { margin-bottom: 1.6rem; }
+
+/* ---------- callouts: tint by meaning + 6px rule + sans ---------- */
+:root #content .admonition {
+  --adm-c: var(--rz-c-quiet); --adm-t: var(--rz-t-quiet);
+  font-family: var(--rz-ui); font-size: .96rem; line-height: 1.6; color: var(--rz-ink);
+  background: var(--adm-t); border: 0; border-left: 6px solid var(--adm-c); border-radius: 0; padding: 1.05rem 1.3rem; margin: 1.8rem 0;
+}
+:root #content .admonition :is(p, li) { font-family: inherit; line-height: inherit; max-width: none; color: var(--rz-ink); }
+:root #content .admonition.law p:not(.admonition-title) { font-size: 1em; }
+:root #content .admonition > .admonition-title { font-family: var(--rz-ui); font-size: .92rem; font-weight: 800; letter-spacing: 0; text-transform: none; margin-bottom: .45rem;
+  /* the rule colour, nudged toward the ink so the small label clears 4.5:1 on its tint */
+  color: color-mix(in srgb, var(--adm-c) 72%, var(--rz-ink)); }
+/* a box whose only content is its title (pod-kapotou's key sentence) reads as a statement */
+:root #content .admonition > .admonition-title:only-child { font-size: 1.08rem; color: var(--rz-strong); margin: 0; }
+:root #content .admonition.law { --adm-c: var(--rz-c-info); --adm-t: var(--rz-t-info); }      /* the Act's own words */
+:root #content .admonition.deep { --adm-c: var(--rz-c-info); --adm-t: var(--rz-t-info); }     /* one level deeper */
+:root #content .admonition.take { --adm-c: var(--rz-c-note); --adm-t: var(--rz-t-note); }     /* the author's take */
+:root #content .admonition.watch { --adm-c: var(--rz-c-warn); --adm-t: var(--rz-t-warn); }    /* misreadings, pitfalls */
+:root #content .admonition.status { --adm-c: var(--rz-c-quiet); --adm-t: var(--rz-t-quiet); } /* dated state of play */
+:root #content .admonition.try { --adm-c: var(--rz-c-good); --adm-t: var(--rz-t-good); }      /* try it yourself */
+/* Calm drops the tints: the dated box keeps a dashed rule, the warning a heavier one */
+:root[data-mode="calm"] #content .admonition.status { border-left-style: dashed; }
+:root[data-mode="calm"] #content .admonition.watch { border-left-width: 9px; }
+:root #content .admonition code { background: var(--rz-sheet); }
+
+/* ---------- tables ---------- */
+:root #content thead { background: transparent; color: var(--rz-strong); }
+:root #content th { text-transform: none; letter-spacing: 0; font-size: .9rem; font-family: var(--rz-ui); border-bottom: 2px solid var(--rz-frame); }
+:root #content td { font-family: var(--rz-ui); }
+:root #content tbody tr:nth-child(even) { background: transparent; }
+:root #content tbody tr:hover { background: var(--rz-well); }
+:root #content :is(td, th) :is(code) { white-space: normal; }
+
+/* ---------- code (developers edition) ---------- */
+:root #content pre { font-size: .82rem; line-height: 1.6; padding: 1.1rem 1.2rem; overflow-x: auto; white-space: pre; max-width: 100%; }
+:root #content pre code { font-size: inherit; padding: 0; white-space: inherit; }
+/* long file paths in running text may break anywhere rather than push the page sideways */
+:root #content :not(pre) > code { overflow-wrap: anywhere; }
+
+/* ---------- quiz (AI Act intro): five questions + answers as paragraphs after the last h2 ---------- */
+/* The options sit on their own source lines; pre-line lets them show as lines. Not on the developers
+   page, whose hard-wrapped prose would break. */
+:root:not(:has(code[class*="language-"])) #content section.chapter > h2:last-of-type ~ p:has(> strong:first-child) {
+  white-space: pre-line; font-family: var(--rz-ui); font-size: .98rem; line-height: 1.65;
+  background: var(--rz-well); border-left: 6px solid var(--rz-c-info); padding: .9rem 1.2rem; margin: 0 0 .9rem; max-width: none;
+}
+:root:not(:has(code[class*="language-"])) #content section.chapter > h2:last-of-type ~ p:has(> strong:first-child) > strong { display: inline-block; margin-bottom: .2rem; }
+/* the answers paragraph: the last one in the run */
+:root:not(:has(code[class*="language-"])) #content section.chapter > h2:last-of-type ~ p:has(> strong:first-child):not(:has(+ p > strong:first-child)) {
+  white-space: normal; background: transparent; border-left: 0; border-top: 2px solid var(--rz-rule);
+  padding: .9rem 0 0; margin-top: 1.6rem; font-size: .92rem; color: var(--rz-muted);
+}
+:root:not(:has(code[class*="language-"])) #content section.chapter > h2:last-of-type ~ p:has(> strong:first-child):not(:has(+ p > strong:first-child)) > strong { display: inline; }
+
+/* ---------- pod-kapotou: parts, figures, strips, acknowledgement ---------- */
+:root #content .part-divider { text-align: left; border-top: 2px solid var(--rz-frame); border-bottom: 2px solid var(--rz-rule); padding: 2.4rem 0 2.2rem; margin: 5rem 0 3rem; }
+:root #content .part-divider .part-kicker { font-family: var(--rz-ui); font-size: 1rem; font-weight: 800; letter-spacing: 0; text-transform: none; color: var(--rz-muted); }
+:root #content .part-divider h1 { font-size: 2.6rem; line-height: .98; text-shadow: var(--rz-head-shadow); max-width: none; }
+/* ASCII figures: the page's own monospace stack (box-drawing coverage), no wrapping, scroll if wider */
+:root #content pre.figure {
+  font-family: 'DejaVu Sans Mono', Menlo, 'SF Mono', 'Fira Code', Consolas, monospace;
+  font-size: .76rem; line-height: 1.35; white-space: pre; overflow-x: auto; max-width: 100%;
+  background: var(--rz-code); color: var(--rz-ink); border: 2px solid var(--rz-rule); border-radius: 0; padding: 1.1rem 1.2rem; margin: 1.6rem 0 .5rem;
+}
+:root #content pre.figure.strip { background: transparent; border: 0; border-top: 2px dashed var(--rz-rule); border-bottom: 2px dashed var(--rz-rule); color: var(--rz-muted); padding: .7rem .2rem; margin: .5rem 0 1.8rem; font-size: .72rem; }
+:root #content p.figcap { font-family: var(--rz-read); font-style: italic; font-size: .9rem; line-height: 1.5; color: var(--rz-muted); margin: 0 0 1.8rem; }
+:root #content .ack { background: var(--rz-t-quiet); border: 0; border-left: 6px solid var(--rz-accent); border-radius: 0; padding: 1.4rem 1.6rem; font-family: var(--rz-ui); }
+:root #content .ack h2 { margin-top: 0; font-size: 1.2rem; }
+:root #content .ack p { font-family: inherit; max-width: none; }
+:root[data-mode="calm"] #content .ack { border-left-color: var(--rz-rule); }
+
+/* ---------- AI transparency notice: keep it legible (the inline rule fades it to .78) ---------- */
+:root #content .ai-transparency { opacity: 1; color: var(--rz-muted); border-color: var(--rz-rule); }
+:root #content .ai-transparency .ait-label { letter-spacing: 0; text-transform: none; font-size: .8rem; color: var(--rz-strong); }
+:root #content .ai-transparency p { color: var(--rz-muted); font-family: var(--rz-ui); }
+
+/* ---------- tablet and phone ---------- */
+@media (max-width: 900px) {
+  :root #content #cover { margin: -2rem -1.15rem 2.5rem; padding: 3.5rem 1.15rem 3rem; min-height: 0; }
+  :root #content #cover h1 { font-size: clamp(2.3rem, 9vw, 3.2rem); }
+  :root #content .part-divider h1 { font-size: 2.1rem; }
+  :root #content section > h2, :root #content .chapter h2 { font-size: 1.35rem; }
+  :root #content .admonition { padding: .95rem 1rem; }
+  /* wide tables scroll inside their own box instead of widening the page */
+  :root #content table { display: block; max-width: 100%; overflow-x: auto; }
+  :root #content :is(th, td) { padding: .6rem .75rem; min-width: 9.5rem; }
+  :root #content :is(th, td):first-child { min-width: 5rem; }
+  /* the menu button sits over the top of the open sidebar: start its header below it */
+  :root #sidebar { padding-top: 4.4rem; }
+  /* smaller rings so they do not run through the title on a phone */
+  :root #content #cover::before { width: 190px; height: 190px; top: -70px; right: -70px; }
+  :root #content #cover::after { width: 190px; height: 190px; top: 14px; right: -40px; }
+}
+@media (max-width: 600px) {
+  /* 60 columns do not fit a phone at a readable size: the figure keeps ~11px and scrolls sideways */
+  :root #content pre.figure { font-size: .66rem; padding: .9rem .8rem; }
+  :root #content pre.figure.strip { font-size: .62rem; }
+  :root #content pre { font-size: .76rem; padding: .9rem .9rem; }
+}

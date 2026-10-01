@@ -1,0 +1,256 @@
+/* Riso reader, family B "essay": scenario-planning, mercantilism-of-genai, economics-of-the-frontier,
+   field-notes-ai-colleague, the-invisible-curve (+ SK editions). Loaded after reader.css.
+   Rules: start every selector with :root; colours only through --rz-* variables (see reader.css). */
+
+/* ---------- family colour variables ----------
+   --b-k-*: text-safe versions of the --rz-c-* rule colours. In Paper the core warn / good / note rules
+   are a shade too light for small bold labels on their own tints (3.6-4.4:1), so labels use these.
+   --b-inv-*: the family's "navy block with white type" (info strips, stat bar, flip-card backs,
+   tooltips, the toggle button): a solid ink block in Paper, a quiet well in Calm and Night. */
+:root:root {
+  --b-k-warn: #9a4f00; --b-k-good: #12704c; --b-k-note: #745b00; --b-k-link: #a8235b;
+  --b-inv-bg: var(--rz-strong); --b-inv-fg: var(--rz-sheet); --b-inv-hot: var(--rz-accent); --b-inv-line: var(--rz-strong);
+  --b-muted-on-tint: var(--rz-muted);
+}
+:root:root[data-mode="calm"] {
+  --b-k-warn: var(--rz-c-warn); --b-k-good: var(--rz-c-good); --b-k-note: var(--rz-c-note); --b-k-link: var(--rz-link);
+  --b-inv-bg: var(--rz-well); --b-inv-fg: var(--rz-ink); --b-inv-hot: var(--rz-strong); --b-inv-line: var(--rz-rule);
+  --b-muted-on-tint: #5c5f67;
+}
+:root:root[data-mode="night"] {
+  --b-k-warn: var(--rz-c-warn); --b-k-good: var(--rz-c-good); --b-k-note: var(--rz-c-note); --b-k-link: var(--rz-link);
+  --b-inv-bg: var(--rz-well); --b-inv-fg: var(--rz-ink); --b-inv-hot: var(--rz-accent); --b-inv-line: var(--rz-rule);
+  --b-muted-on-tint: var(--rz-muted);
+}
+
+/* the family's own variables, pointed at the display in use
+   (:root:root, because the page's inline :root block comes later in the document).
+   The series colours (--green, --orange-red, --purple, --cyan) are also used as text in inline
+   style= attributes, so they point at text-safe inks. */
+:root:root {
+  --navy: var(--rz-strong); --navy-light: var(--rz-strong); --accent: var(--rz-link);
+  --bg: var(--rz-sheet); --bg-sidebar: var(--rz-page); --text: var(--rz-ink); --text-light: var(--rz-muted); --border: var(--rz-rule);
+  --risk-color: var(--rz-c-danger); --purple: var(--rz-c-info); --cyan: var(--b-k-note); --green: var(--b-k-good); --orange-red: var(--b-k-warn);
+  --teal: var(--b-k-good); --dark-brown: var(--rz-muted); --chart-bg: var(--rz-well);
+}
+
+/* ---------- running text, cover ---------- */
+:root #content .lead { font-size: 1.16rem; line-height: 1.6; }
+:root #content .chapter-question { font-family: var(--rz-read); color: var(--rz-muted); font-stretch: 100%; letter-spacing: 0; }
+:root #content .cover-page { text-align: left; padding: 2.5rem 0 3rem; border-bottom: 2px solid var(--rz-rule); }
+:root #content .cover-meta { justify-content: flex-start; gap: .4rem 1.6rem; flex-wrap: wrap; }
+:root #content .chapter-prose { border-top: 2px solid var(--rz-rule); }
+:root #content .chapter-prose h4 { color: var(--rz-strong); }
+:root #content .chapter-prose p { color: var(--rz-ink); }
+
+/* ---------- notes: four voices. Sans, square, a tint and a heavy left rule each ---------- */
+:root #content :is(.disclaimer-note, .coauthor-note, .field-note, .author-note) {
+  font-family: var(--rz-ui); font-size: .96rem; line-height: 1.6; color: var(--rz-ink);
+  border: 0; border-left: 6px solid var(--note-c); border-radius: 0; background: var(--note-t); padding: 1.1rem 1.3rem; margin: 1.8rem 0;
+}
+:root #content :is(.disclaimer-note, .coauthor-note, .field-note, .author-note) p { font-family: inherit; line-height: inherit; max-width: none; }
+:root #content .disclaimer-note { --note-c: var(--rz-c-danger); --note-t: var(--rz-t-danger); --note-k: var(--rz-c-danger); }
+:root #content .coauthor-note { --note-c: var(--rz-c-info); --note-t: var(--rz-t-info); --note-k: var(--rz-c-info); }
+:root #content .field-note { --note-c: var(--rz-c-note); --note-t: var(--rz-t-note); --note-k: var(--b-k-note); }
+:root #content .author-note { --note-c: var(--rz-c-warn); --note-t: var(--rz-t-warn); --note-k: var(--b-k-warn); }
+/* mercantilism: the second co-author note (July update) is told apart by a cyan rule: give it the green voice */
+:root #content .coauthor-note[style*="--cyan"] { --note-c: var(--rz-c-good); --note-t: var(--rz-t-good); --note-k: var(--b-k-good); border-left-color: var(--note-c) !important; }
+:root #content :is(.dn-label, .cn-label, .fn-label, .an-label) { font-size: .9rem; font-weight: 800; text-transform: none; letter-spacing: 0; color: var(--note-k); }
+:root #content .cn-label[style*="color"] { color: var(--note-k) !important; }
+:root #content :is(.coauthor-sig, .fn-sig) { color: var(--b-muted-on-tint); }
+:root #content :is(.disclaimer-note, .coauthor-note, .field-note, .author-note) a { color: var(--b-k-link); }
+:root #content .essay-footer { border-top-color: var(--rz-rule); color: var(--rz-muted); font-family: var(--rz-ui); font-style: normal; }
+:root #content .credits { color: var(--rz-muted); font-family: var(--rz-ui); font-size: .8rem; }
+/* AI transparency notice: its label as written, not tracked capitals (proposed for reader.css) */
+:root #content .ai-transparency .ait-label { text-transform: none; letter-spacing: 0; font-size: .8rem; font-weight: 800; }
+
+/* ---------- small labels inside components: sentence case, sans ---------- */
+:root #content :is(.card-label, .bet-by, .bf-k, .tl-label, .impl-role, .cc-pair, .cc-k, .fc-tag, .sr-k, .tr-label, .chart-title, .s2-table-title, .leak-col h5, .hypothesis-strip) {
+  font-family: var(--rz-ui); text-transform: none; letter-spacing: 0;
+}
+
+/* ---------- thesis / risk cards ---------- */
+:root #content .thesis-grid { gap: 16px; }
+:root #content .thesis-card { background: var(--rz-sheet); border: 2px solid var(--rz-frame); border-radius: 0; box-shadow: none; padding: 1.05rem 1.25rem; }
+:root #content .thesis-card .card-label { font-size: .92rem; font-weight: 800; margin-bottom: .35rem; color: var(--rz-strong); }
+:root #content .thesis-card .card-text { font-family: var(--rz-ui); font-size: .93rem; line-height: 1.6; color: var(--rz-ink); }
+
+/* ---------- figure cards: SVG charts, PNG figures ---------- */
+:root #content :is(.chart-wrap, .figure) { background: var(--rz-sheet); border: 2px solid var(--rz-frame); border-radius: 0; box-shadow: none; }
+:root #content .chart-wrap :is(p, li) { font-family: var(--rz-ui); }
+:root #content .chart-title { font-size: 1rem; font-weight: 800; color: var(--rz-strong); }
+:root #content .figure img { border-radius: 0; }
+:root #content .figure-caption { font-family: var(--rz-ui); font-style: normal; font-size: .86rem; color: var(--rz-muted); }
+/* Night: the diagrams keep their own hard-coded colours, so they sit on the light figure ground with a margin */
+:root[data-mode="night"] #content .chart-wrap > svg { padding: 10px 8px; }
+:root[data-mode="night"] #content .figure img { padding: 6px; }
+/* legend under the capex chart */
+:root #content .legend-item { font-family: var(--rz-ui); color: var(--rz-ink); font-size: .85rem; }
+:root #content .legend-line { border-radius: 0; height: 4px; }
+
+/* info strip under the interactive charts (content written by the page's script) */
+:root #content .info-strip { background: var(--b-inv-bg); color: var(--b-inv-fg); border: 2px solid var(--b-inv-line); border-radius: 0; font-family: var(--rz-ui); }
+:root #content .info-strip :is(.info-hint, .info-infra, .info-lock) { color: inherit; opacity: .82; }
+:root #content .info-strip .info-hint { font-size: .85rem; }
+:root #content .info-strip strong { color: inherit; }
+/* the page's right column does not shrink (flex: 0 0 auto) and its long lines ran out of the narrower sheet */
+:root #content .info-strip .info-right { flex: 1 1 45%; min-width: 0; }
+:root #content .info-strip [style*="#94a3b8"] { color: inherit !important; opacity: .82; }
+
+/* ---------- key numbers ---------- */
+:root #content .kn { background: var(--rz-well); border: 0; border-top: 4px solid var(--rz-accent); border-radius: 0; font-family: var(--rz-ui); }
+:root #content .kn-value { font-family: var(--rz-ui); font-stretch: 80%; font-weight: 800; font-size: 1.6rem; line-height: 1.1; color: var(--rz-head); }
+:root #content .kn-label { color: var(--b-muted-on-tint); font-size: .8rem; line-height: 1.35; }
+/* grey text set inline (var(--text-light)) inside a well: use the muted shade that holds on tints */
+:root #content :is(.kn, .toggle-panel, .impl-card, .trigger-log, .bet-falsify) { --text-light: var(--b-muted-on-tint); }
+
+/* ---------- dated bets (author probabilities) ---------- */
+:root #content .bet { background: var(--rz-sheet); border: 2px solid var(--rz-frame); border-left: 6px solid var(--rz-link); border-radius: 0; }
+:root #content .bet .bet-by { font-size: .9rem; font-weight: 800; color: var(--rz-link); }
+:root #content .bet .bet-claim { color: var(--rz-ink); font-size: 1rem; max-width: 38rem; }
+:root #content .bet .bet-falsify { font-family: var(--rz-ui); font-size: .9rem; color: var(--rz-ink); background: var(--rz-t-danger); border-radius: 0; border-left: 4px solid var(--rz-c-danger); margin-top: .5rem; }
+:root #content .bet .bet-falsify .bf-k { font-size: .85rem; font-weight: 800; color: var(--rz-c-danger); }
+/* scored / interim verdicts carry their state in an inline background: good, open, leaning */
+:root #content .bet .bet-falsify[style*="#dcfce7"] { background: var(--rz-t-good) !important; border-left-color: var(--rz-c-good); }
+:root #content .bet .bet-falsify[style*="#f1f5f9"] { background: var(--rz-t-quiet) !important; border-left-color: var(--rz-c-quiet); }
+:root #content .bet .bet-falsify[style*="#fef9c3"] { background: var(--rz-t-note) !important; border-left-color: var(--rz-c-note); }
+:root #content .bet .bf-k[style*="--green"] { color: var(--b-k-good) !important; }
+:root #content .bet .bf-k[style*="#475569"] { color: var(--b-muted-on-tint) !important; }
+:root #content .bet .bf-k[style*="#854d0e"] { color: var(--b-k-note) !important; }
+:root #content .bet .bet-falsify a { color: var(--b-k-link); }
+
+/* ---------- triggers and the dated trigger log ---------- */
+:root #content .triggers li { border-bottom-color: var(--rz-rule); }
+:root #content .triggers li::before { color: var(--rz-link); }
+:root #content .trigger-log { background: var(--rz-t-good); border-left: 6px solid var(--rz-c-good); border-radius: 0; font-family: var(--rz-ui); font-size: .92rem; line-height: 1.6; }
+:root #content .trigger-log :is(ul, li) { font-family: var(--rz-ui); color: var(--rz-ink); max-width: none; }
+:root #content .trigger-log li + li { border-top: 1px solid var(--rz-rule); }
+:root #content .trigger-log .tl-label { font-size: .9rem; font-weight: 800; color: var(--b-k-good); }
+:root #content .trigger-log .tl-date { color: var(--b-muted-on-tint); font-size: .82rem; }
+:root #content .trigger-log a { color: var(--b-k-link); }
+
+/* ---------- status tags: six kinds that must stay apart ----------
+   Paper / Night: tint + ink. Calm (one neutral tint): the word itself, and the border style
+   (dashed = not measured: interpretation, projected, estimated). */
+:root #content .tag {
+  font-family: var(--rz-ui); font-size: .74rem; font-weight: 800; letter-spacing: 0; text-transform: none; font-style: normal;
+  border-radius: 0; padding: .05em .45em; line-height: 1.45; vertical-align: .1em; border: 1px solid currentColor;
+}
+:root #content .tag-reported { background: var(--rz-t-info); color: var(--rz-c-info); }
+:root #content .tag-fired { background: var(--rz-t-good); color: var(--b-k-good); }
+:root #content .tag-moved { background: var(--rz-t-note); color: var(--b-k-note); }
+:root #content .tag-notyet { background: var(--rz-t-quiet); color: var(--b-muted-on-tint); }
+:root #content .tag-speculation { background: var(--rz-t-warn); color: var(--b-k-warn); border-style: dashed; }
+:root #content .tag-counter { background: var(--rz-t-danger); color: var(--rz-c-danger); }
+:root #content .tag-projected { background: var(--rz-t-note); color: var(--b-k-note); border-style: dashed; }
+:root #content .tag-estimated { background: var(--rz-t-quiet); color: var(--b-muted-on-tint); border-style: dashed; }
+:root[data-mode="calm"] #content .tag-counter { border-width: 2px; }
+
+/* ---------- implications by role ---------- */
+:root #content .impl-card { background: var(--rz-well); border: 0; border-left: 4px solid var(--rz-rule); border-radius: 0; }
+:root #content .impl-role { font-size: .9rem; font-weight: 800; color: var(--rz-link); }
+:root #content .impl-text { font-family: var(--rz-ui); font-size: .9rem; color: var(--rz-ink); }
+
+/* ---------- toggle button + panel (scenario 2) ---------- */
+:root #content .toggle-btn { font-family: var(--rz-ui); font-weight: 800; background: var(--b-inv-bg); color: var(--b-inv-fg); border: 2px solid var(--b-inv-line); border-radius: 0; box-shadow: var(--rz-card-shadow); }
+:root #content .toggle-btn:hover { background: var(--rz-link); color: var(--rz-sheet); border-color: var(--rz-link); }
+:root[data-mode="calm"] #content .toggle-btn:hover, :root[data-mode="night"] #content .toggle-btn:hover { background: var(--rz-well); color: var(--rz-strong); border-color: var(--rz-strong); }
+:root #content .toggle-panel { background: var(--rz-well); border: 0; border-radius: 0; }
+:root #content .toggle-panel.open { border: 2px solid var(--rz-rule); }
+:root #content .hypothesis-strip { background: var(--rz-t-warn); border: 1.5px dashed var(--b-k-warn); border-radius: 0; color: var(--b-k-warn); font-size: .82rem; font-weight: 800; }
+/* value chain: segment colours come from inline style=; the label takes the sheet colour, which is
+   light on Paper's dark inks and dark on Night's light inks */
+:root #content .value-chain { border-radius: 0; overflow: visible; }
+:root #content .vc-segment { color: var(--rz-sheet); font-family: var(--rz-ui); font-weight: 800; font-size: .78rem; }
+:root #content .vc-segment[style*="#94a3b8"] { background: var(--rz-muted) !important; }
+:root[data-mode="calm"] #content .vc-segment { outline: 1px solid var(--rz-sheet); }
+:root #content .vc-tooltip { background: var(--b-inv-bg); color: var(--b-inv-fg); border: 2px solid var(--b-inv-line); border-radius: 0; font-family: var(--rz-ui); font-size: .8rem; font-weight: 500;
+  white-space: normal; width: max-content; max-width: 15rem; text-align: center; }
+
+/* ---------- flip cards (scenario 3) ---------- */
+/* sized in rem (the page's 200x180px was set for 16px text): the backs overflowed at reading size */
+:root #content .flip-card { width: 11.5rem; height: 13rem; }
+:root #content .flip-card-back { font-size: .78rem; line-height: 1.45; padding: 12px 14px; }
+:root #content :is(.flip-card-front, .flip-card-back) { border-radius: 0; border: 2px solid var(--rz-frame); font-family: var(--rz-ui); }
+:root #content .flip-card-front { background: var(--rz-sheet); }
+:root #content .flip-card-back { background: var(--b-inv-bg); color: var(--b-inv-fg); border-color: var(--rz-accent); }
+:root #content .flip-card-back :is(strong, em, b) { color: inherit; }
+:root #content .fc-name { font-family: var(--rz-ui); font-stretch: 85%; font-weight: 800; color: var(--rz-strong); }
+:root #content .fc-stat { color: var(--rz-muted); }
+:root #content .fc-tag { font-size: .78rem; font-weight: 800; border-radius: 0; border: 1px solid currentColor; }
+:root #content .fc-tag.survivor { background: var(--rz-t-good); color: var(--b-k-good); }
+:root #content .fc-tag.casualty { background: var(--rz-t-danger); color: var(--rz-c-danger); }
+:root #content .fc-tag.tbd { background: var(--rz-t-note); color: var(--b-k-note); }
+:root #content .flip-card .tag { margin-left: 0; }
+
+/* ---------- stat bar ---------- */
+:root #content .stat-bar { background: var(--b-inv-bg); color: var(--b-inv-fg); border: 2px solid var(--b-inv-line); border-radius: 0; font-family: var(--rz-ui); }
+:root #content .stat-counter { font-family: var(--rz-ui); font-stretch: 78%; font-weight: 800; color: var(--b-inv-hot); }
+:root #content .stat-text { color: inherit; opacity: .85; }
+
+/* ---------- composite cards (synthesis) ---------- */
+:root #content .composite-card { background: var(--rz-sheet); border: 2px solid var(--rz-frame); border-radius: 0; box-shadow: none; }
+:root #content .composite-card .cc-strip { height: 6px; }
+:root #content .composite-card .cc-pair { font-size: .82rem; font-weight: 700; color: var(--rz-muted); }
+:root #content .composite-card .cc-name { font-family: var(--rz-ui); font-stretch: 85%; font-weight: 800; font-size: 1.2rem; color: var(--rz-strong); }
+/* the card's prose is reading text: body size and the body measure */
+:root #content .composite-card .cc-row { color: var(--rz-ink); font-size: 1rem; max-width: 38rem; }
+:root #content .composite-card .cc-row .cc-k { font-size: .86rem; font-weight: 800; color: var(--rz-link); }
+
+/* ---------- tables ---------- */
+/* desktop: the page's full-width tables; the no-wrap cost cells may wrap so nothing spills past the sheet.
+   Narrow screens (below): each table becomes its own sideways-scrolling box. */
+:root #content .s2-table .s2-cost { white-space: normal; }
+:root #content :is(.s2-table, .map-table) { background: var(--rz-sheet); border: 2px solid var(--rz-frame); border-radius: 0; box-shadow: none; font-family: var(--rz-ui); }
+:root #content :is(.s2-table, .map-table) th { background: var(--rz-well); color: var(--rz-strong); font-weight: 800; letter-spacing: 0; border-bottom: 2px solid var(--rz-frame); }
+:root #content :is(.s2-table, .map-table) td { border-top-color: var(--rz-rule); }
+:root #content :is(.s2-table, .map-table) tr:nth-child(even) td { background: transparent; }
+:root #content .s2-table :is(.s2-cost, .rowhead), :root #content .map-table td:first-child { color: var(--rz-strong); }
+:root #content .s2-table .s2-muted { color: var(--rz-muted); }
+:root #content .s2-table-caption { font-family: var(--rz-ui); font-style: normal; font-size: .84rem; color: var(--rz-muted); max-width: none; }
+:root #content .s2-table-title { font-size: 1rem; font-weight: 800; color: var(--rz-strong); }
+
+/* ---------- mercantilism: static HTML diagrams ---------- */
+:root #content .leak-col { background: var(--rz-sheet); border: 2px solid var(--rz-rule); border-radius: 0; font-family: var(--rz-ui); }
+:root #content .leak-col h5 { font-size: .95rem; font-weight: 800; color: var(--rz-strong); }
+:root #content .leak-col li { border-bottom-color: var(--rz-rule); color: var(--rz-ink); }
+/* stack rows: solid ink bands from inline style=, label in the sheet colour (see .vc-segment) */
+:root #content .stack-row { color: var(--rz-sheet); border-radius: 0; font-family: var(--rz-ui); }
+:root #content .stack-row[style*="#64748b"] { background: var(--rz-muted) !important; }
+:root #content .stack-row :is(.sr-k, .sr-note) { opacity: .9; }
+:root #content .stack-row .sr-k { font-size: .8rem; font-weight: 800; }
+:root #content .stack-row .sr-v { font-weight: 800; }
+
+/* ---------- economics: translate callout, endnotes, sources ---------- */
+:root #content .translate { background: var(--rz-t-good); border: 0; border-left: 6px solid var(--rz-c-good); border-radius: 0; font-family: var(--rz-ui); }
+:root #content .translate p { font-family: inherit; color: var(--rz-ink); max-width: none; }
+:root #content .translate .tr-label { font-size: .9rem; font-weight: 800; color: var(--b-k-good); }
+:root #content .translate strong { color: var(--rz-strong); }
+:root #content .en { font-family: var(--rz-ui); font-weight: 800; }
+:root #content .en a { color: var(--rz-link); }
+:root #content .sources-intro { font-family: var(--rz-ui); color: var(--rz-muted); }
+:root #content .sources-group h4 { color: var(--rz-strong); border-bottom: 2px solid var(--rz-rule); }
+:root #content ol.sources-list li { font-family: var(--rz-ui); font-size: .88rem; color: var(--rz-ink); border-bottom-color: var(--rz-rule); max-width: none; }
+:root #content ol.sources-list li::before { background: var(--rz-well); color: var(--rz-strong); border: 1px solid var(--rz-rule); border-radius: 0; }
+:root #content ol.sources-list li a { color: var(--rz-link); }
+:root #content ol.sources-list li .src-tag { color: var(--rz-strong); }
+:root #content ol.sources-list li.src-flash { background: var(--rz-t-note); border-radius: 0; }
+
+/* ---------- tablet and phone ---------- */
+@media (max-width: 900px) {
+  :root #content :is(.s2-table, .map-table) { display: block; overflow-x: auto; width: fit-content; max-width: 100%; font-size: .86rem; }
+  :root #content .s2-table .s2-cost { white-space: nowrap; }
+  :root #content :is(.s2-table, .map-table) :is(th, td) { min-width: 8.5rem; }
+  :root #content :is(.s2-table, .map-table) :is(th, td):last-child { min-width: 14rem; }
+}
+@media (max-width: 640px) {
+  /* the charts are drawn for ~760px: on phones they keep a legible size and scroll sideways in their card */
+  :root #content .chart-wrap:has(> svg) { overflow-x: auto; padding: 14px 12px; }
+  :root #content .chart-wrap > svg { min-width: 560px; }
+  :root #content .figure { padding: 10px; }
+}
+@media (max-width: 600px) {
+  :root #content .thesis-card .card-text { font-size: 1rem; }
+  :root #content .impl-text { font-size: 1rem; }
+  :root #content .trigger-log { font-size: 1rem; }
+}

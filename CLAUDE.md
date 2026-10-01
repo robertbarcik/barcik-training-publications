@@ -18,6 +18,27 @@ Publications site for barcik.training — long-form guides, booklets, and resear
 - `tools/` — Build scripts (build_html.py, build_docx.py, build_md.py)
 - `output/` — DOCX and Markdown outputs (not deployed to S3)
 
+## Riso design (since October 2026)
+
+The look of the whole site comes from the kit in `training-ops/web/riso/` (source of truth; the
+copies in `assets/riso/` and `assets/covers/` are written by its `build.py`, do not edit them here).
+
+- **Homepage = the shelf, generated.** `index.html` is written by
+  `/usr/bin/python3 ../training-ops/web/riso/build.py` from `training-ops/web/riso/data/publications.json`
+  (six shelves, cover emblem, one-line blurb, long description, links per edition).
+  **New publication:** add an entry there (series, cover title, motif, blurb, desc, links), run the
+  builder, review. Do not hand-edit `index.html`. All links are root-absolute (`/slug/`).
+- **Publication pages are skinned from `<head>` only.** A marked block (`<!-- riso-reader:start -->`)
+  links `assets/riso/reader.css`, one family file `reader-<a|b|c|d|e|r>.css` and `reader.js` (the
+  Paper / Calm / Night display control and text size). The page's own inline CSS and its `<body>`
+  stay untouched, so the Kindle hashes and the SK segment numbering are not affected.
+- **After every rebuild or copy of a publication page** (any builder, here or in a sibling repo) run
+  `/usr/bin/python3 ../training-ops/web/riso/riso_reader.py apply` (idempotent; `check` only reports).
+  A page without the block still works, it just shows its old look. New slug: add it to `FAMILIES`
+  in `riso_reader.py` (the family = the template it was built from).
+- **New component in a publication?** Style it in the family file with `--rz-*` variables only,
+  and look at it in all three displays (`training-ops/web/riso/READER_FAMILY.md`).
+
 ## Build a publication
 
 Each publication has its own build scripts in `_sources/{name}/tools/`.
