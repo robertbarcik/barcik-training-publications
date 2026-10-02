@@ -79,18 +79,32 @@ in `riso_reader.py`) does not appear on the shelf. Then `git status` and look at
 
 ### Step 1: Sync to S3
 
+Two passes, because the two groups carry different `Cache-Control` headers (since 2026-10-02).
+Without a header Safari guessed a lifetime for CSS/JS and kept showing the old look after a
+deploy, even across a browser restart. Pages, CSS and JS are revalidated by the browser on every
+visit (a cheap 304 from the edge); everything else may sit in the browser for an hour.
+CloudFront keeps both for a day (`s-maxage`), the invalidation in step 2 clears it.
+
 ```bash
+# pass 1: pages + CSS + JS (browser always revalidates)
 aws s3 sync . s3://barcik-training-publications/ \
-  --exclude ".git/*" \
-  --exclude ".github/*" \
-  --exclude ".claude/*" \
-  --exclude ".gitignore" \
-  --exclude ".DS_Store" \
-  --exclude "CLAUDE.md" \
-  --exclude "_sources/*" \
-  --profile barcik-demos \
-  --region eu-central-1
+  --exclude "*" --include "*.html" --include "*.css" --include "*.js" \
+  --exclude ".git/*" --exclude ".github/*" --exclude ".claude/*" --exclude "_sources/*" \
+  --cache-control "public, max-age=0, s-maxage=86400, must-revalidate" \
+  --profile barcik-demos --region eu-central-1
+
+# pass 2: everything else (covers, PDFs, EPUBs, sitemap ...)
+aws s3 sync . s3://barcik-training-publications/ \
+  --exclude ".git/*" --exclude ".github/*" --exclude ".claude/*" \
+  --exclude ".gitignore" --exclude "*.DS_Store" --exclude "CLAUDE.md" --exclude "_sources/*" \
+  --exclude "*.html" --exclude "*.css" --exclude "*.js" \
+  --cache-control "public, max-age=3600, s-maxage=86400" \
+  --profile barcik-demos --region eu-central-1
 ```
+
+`sync` sets the header only on files it uploads. To put headers on files that did not change
+(done once on 2026-10-02 for the whole site), run the same two commands with `cp --recursive`
+instead of `sync`.
 
 ### Step 2: Invalidate CloudFront cache
 
