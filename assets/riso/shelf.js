@@ -66,3 +66,21 @@
     dlg.scrollTop = 0;
   });
 })();
+
+/* footer link "AI transparency": opens and closes the folded notice below it */
+(() => {
+  const link = document.querySelector('.ai-toggle');
+  const box = document.getElementById('ai-transparency');
+  if (!link || !box) return;
+  const isOpen = () => getComputedStyle(box).display !== 'none';
+  link.setAttribute('role', 'button');
+  link.setAttribute('aria-expanded', String(isOpen()));
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const open = !isOpen();
+    box.classList.toggle('open', open);
+    box.classList.toggle('shut', !open);
+    link.setAttribute('aria-expanded', String(open));
+    if (open) box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+})();

@@ -240,12 +240,16 @@ dialog.detail::backdrop { background: rgba(29, 42, 107, .6); }
 .cta p { color: var(--muted); margin-bottom: 22px; font-size: 1.05rem; }
 
 /* ---------- AI transparency notice, footer ---------- */
-.ai-notice { max-width: 880px; margin: 4rem auto 0; padding: 20px 22px; display: flex; gap: 16px; align-items: flex-start;
-  width: calc(100% - 2 * var(--gut)); background: var(--panel); border: 2px solid var(--navy); font-size: 14px; line-height: 1.6; }
-.ai-notice .ait-icon { flex: 0 0 auto; width: 2.4rem; height: 2.4rem; color: var(--navy); }
-.ai-notice-label { font-weight: 800; margin-bottom: 4px; }
+/* The notice sits folded under the footer (Robert, 2026-10-02: it drew the eye away from the shelf).
+   The footer link opens it: :target works without JavaScript, shelf.js adds open/close on click. */
+.ai-notice { max-width: 640px; margin: 0 auto 3rem; padding: 14px 16px; display: none; gap: 12px; align-items: flex-start;
+  width: calc(100% - 2 * var(--gut)); background: var(--panel); border: 1px solid var(--muted); font-size: 13px; line-height: 1.55; }
+.ai-notice:target, .ai-notice.open { display: flex; }
+.ai-notice.shut { display: none; }
+.ai-notice .ait-icon { flex: 0 0 auto; width: 1.7rem; height: 1.7rem; color: var(--muted); }
+.ai-notice-label { font-weight: 800; margin-bottom: 2px; color: var(--navy); }
 .ai-notice p { margin: 0; color: var(--muted); }
-.sitefoot { text-align: center; padding: 2.2rem var(--gut) 3rem; color: var(--muted); font-size: 14px; }
+.sitefoot { text-align: center; padding: 2.2rem var(--gut) 1.6rem; color: var(--muted); font-size: 14px; }
 .sitefoot a { font-weight: 700; }
 
 @media (max-width: 860px) {
