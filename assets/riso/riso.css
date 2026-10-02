@@ -152,16 +152,18 @@ h1, h2, h3 { font-family: var(--font); font-stretch: 78%; font-weight: 800; lett
 .s-tools    { --g: var(--yellow); --p: var(--blue);   --q: var(--pink); }
 
 /* the first page, waiting under the cover; a few more sheets show at the edge */
-.inside { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 8px;
-  padding: 11cqw 8cqw 8cqw 20cqw; background: var(--panel); color: var(--navy); border: 2px solid var(--navy);
+/* the cover opens only 40deg, so just a strip at the right edge shows: the blurb (already in the
+   caption) stays hidden and the strip carries a vertical "Open" */
+.inside { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: flex-end;
+  padding: 0 4.5cqw 0 0; background: var(--panel); color: var(--navy); border: 2px solid var(--navy);
   box-shadow: 3px 3px 0 var(--panel), 5px 5px 0 var(--navy); overflow: hidden; }
-.inside b { font-family: var(--font-read); font-weight: 400; font-style: italic; font-size: 7.4cqw; line-height: 1.32; }
-.inside i { align-self: flex-start; font-style: normal; font-weight: 800; font-size: 7cqw; background: linear-gradient(transparent 50%, var(--yellow) 50%); padding: 0 3px; }
-.tile-demo .inside { padding: 5cqw 5cqw 5cqw 27cqw; }
-.tile-demo .inside b { font-size: 4.3cqw; line-height: 1.3; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden; }
-.tile-demo .inside i { font-size: 4.6cqw; }
+.inside b { display: none; }
+.inside i { writing-mode: vertical-rl; font-style: normal; font-weight: 800; font-size: 7cqw; line-height: 1; background: var(--yellow); padding: 6px 2px; }
+.tile-demo .inside { padding-right: 2.6cqw; }
+.tile-demo .inside i { font-size: 4.4cqw; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .tile:hover .cover, .tile:focus-visible .cover { transform: rotateY(-68deg); }
+  /* 40deg, not 68 (Robert, 2026-10-02): the cover must stay readable while it is open */
+  .tile:hover .cover, .tile:focus-visible .cover { transform: rotateY(-40deg); }
   .tile:hover .book, .tile:focus-visible .book { transform: rotate(0); transition: transform .2s; }
 }
 @media (hover: hover) and (prefers-reduced-motion: reduce) {
