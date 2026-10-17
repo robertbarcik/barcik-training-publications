@@ -1,0 +1,10 @@
+{
+  "title": "SelfJudge — Can Small Language Models Judge Their Own Outputs?",
+  "short_title": "SelfJudge",
+  "blurb": "Twenty-two small and mid-size models asked to grade their own answers. Where judging skill switches on, and why every model is lenient with itself.",
+  "description": "A research report on whether small open-weight language models (1B to 70B) can act as their own quality and safety judge. Planted-anchor judging skill, self-assessment, self-leniency and a time perspective across model generations, March to October 2026.",
+  "canonical": "https://publications.barcik.training/reports/selfjudge/",
+  "output": "reports/selfjudge",
+  "lang": "en",
+  "data_provenance": "selfjudge-results/*/metrics.json (July 2026 run + October 2026 extension run), copied by collect_data.py"
+}

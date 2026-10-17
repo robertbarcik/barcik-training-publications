@@ -1,0 +1,10 @@
+{
+  "title": "GeoBias — Does a Model's Origin Show on Sensitive Topics?",
+  "short_title": "GeoBias",
+  "blurb": "Open-weight models from the US, China and the EU answer the same politically sensitive prompts, judged by a three-origin evaluator panel. Two runs, March and October 2026.",
+  "description": "A research report measuring geopolitical bias and refusal asymmetry in small open-weight language models from the US, China and the EU, judged by a three-origin evaluator panel. March 2026 and October 2026 runs on identical prompts.",
+  "canonical": "https://publications.barcik.training/reports/geobias/",
+  "output": "reports/geobias",
+  "lang": "en",
+  "data_provenance": "geobias-results/7b-run-20260313-153256 and geobias-results/ext-run-2026-10, exported by export_metrics.py"
+}

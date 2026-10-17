@@ -266,3 +266,17 @@
   :root #content .chapter:has(> h1) h2 { font-size: 1.38rem; }
   :root #content :is(blockquote, .at-a-glance, .freshness-watch, .danger-notice, .takeaways, .discussion, .checklist, .key-points, .exercise, .demo-link) { padding: 1rem 1.05rem; }
 }
+
+/* ---------- research reports (reports/selfjudge, reports/geobias, reports/bloom; built by
+   _sources/research-reports/tools/build_report.py): hero number, PNG figures, citations, references ---------- */
+:root #content .hero { font-family: var(--rz-ui); }
+:root #content .hero-num { font-family: var(--rz-ui); font-stretch: 78%; font-weight: 800; color: var(--rz-head); text-shadow: var(--rz-head-shadow); }
+:root #content .hero-cap { font-family: var(--rz-ui); color: var(--rz-muted); }
+:root #content .figure img { border: 2px solid var(--rz-rule); border-radius: 0; background: #fcfcfb; }
+:root #content .figure figcaption strong { color: var(--rz-strong); }
+:root #content a.cite { color: var(--rz-link); font-family: var(--rz-ui); }
+:root #content ol.refs { font-family: var(--rz-read); font-size: .95rem; }
+:root #content ol.refs li:target { background: var(--rz-hl); }
+:root #content .exercise > p:first-child { font-family: var(--rz-ui); font-size: inherit; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--rz-ink); }
+:root #content .exercise > p:first-child > strong:first-child { font-family: var(--rz-ui); font-size: .95rem; font-weight: 800; color: var(--co-k); }
+:root #content .model-table td:first-child { font-family: var(--rz-ui); font-weight: 700; }

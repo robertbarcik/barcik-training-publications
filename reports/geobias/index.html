@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoBias — Does a Model&#x27;s Origin Show on Sensitive Topics?</title>
+    <meta name="description" content="A research report measuring geopolitical bias and refusal asymmetry in small open-weight language models from the US, China and the EU, judged by a three-origin evaluator panel. March 2026 and October 2026 runs on identical prompts.">
+    <link rel="canonical" href="https://publications.barcik.training/reports/geobias/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="GeoBias — Does a Model&#x27;s Origin Show on Sensitive Topics?">
+    <meta property="og:description" content="A research report measuring geopolitical bias and refusal asymmetry in small open-weight language models from the US, China and the EU, judged by a three-origin evaluator panel. March 2026 and October 2026 runs on identical prompts.">
+    <meta property="og:url" content="https://publications.barcik.training/reports/geobias/">
+<!-- riso-reader:start -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&amp;family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&amp;display=swap">
+<link rel="stylesheet" href="/assets/riso/reader.css">
+<link rel="stylesheet" href="/assets/riso/reader-a.css">
+<script src="/assets/riso/reader.js"></script>
+<!-- riso-reader:end -->
+    <style>
+:root {
+    --navy: #1e3a5f; --navy-light: #2a5280; --accent: #3b82f6;
+    --bg: #ffffff; --bg-sidebar: #f8fafc; --text: #1e293b; --text-light: #64748b;
+    --border: #e2e8f0; --code-bg: #f1f5f9; --sidebar-width: 300px; --progress-height: 3px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Georgia', 'Times New Roman', serif; font-size: 18px; line-height: 1.7; color: var(--text); background: var(--bg); }
+#progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: var(--progress-height); background: var(--accent); z-index: 1000; transition: width 0.1s; }
+#sidebar { position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100vh; background: var(--bg-sidebar); border-right: 1px solid var(--border); overflow-y: auto; padding: 2rem 0; z-index: 100; transition: transform 0.3s; }
+#sidebar-header { padding: 0 1.5rem 1.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+#sidebar-header .all-pubs-link { display: inline-block; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-light); text-decoration: none; margin-bottom: 0.6rem; }
+#sidebar-header .all-pubs-link:hover { color: var(--accent); }
+#sidebar-header h2 { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--navy); letter-spacing: 0.02em; text-transform: uppercase; }
+#sidebar-header p { font-size: 0.78rem; color: var(--text-light); margin-top: 0.3rem; line-height: 1.4; }
+#sidebar nav ul { list-style: none; padding: 0; }
+#sidebar nav ul li a { display: block; padding: 0.55rem 1.5rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem; color: var(--text-light); text-decoration: none; border-left: 3px solid transparent; transition: all 0.2s; line-height: 1.4; }
+#sidebar nav ul li a:hover { color: var(--navy); background: rgba(30, 58, 95, 0.04); }
+#sidebar nav ul li a.active { color: var(--navy); font-weight: 600; border-left-color: var(--accent); background: rgba(59, 130, 246, 0.06); }
+#menu-toggle { display: none; position: fixed; top: 1rem; left: 1rem; z-index: 200; background: var(--navy); color: white; border: none; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 1.2rem; cursor: pointer; }
+#content-wrapper { margin-left: var(--sidebar-width); display: flex; justify-content: center; padding: 0 2rem; }
+#content { max-width: 820px; width: 100%; padding: 3rem 1rem 6rem; }
+.chapter { margin-bottom: 5rem; padding-top: 1rem; }
+.chapter:first-child { margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+.chapter-number { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+h1 { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 2.3rem; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 1.5rem; }
+h2 { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); margin-top: 2.5rem; margin-bottom: 1rem; line-height: 1.3; }
+h3 { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.2rem; font-weight: 600; color: var(--navy-light); margin-top: 2rem; margin-bottom: 0.75rem; }
+p { margin-bottom: 1.1rem; }
+ul, ol { margin-bottom: 1.1rem; padding-left: 1.8rem; }
+li { margin-bottom: 0.4rem; }
+code { font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; font-size: 0.88em; background: var(--code-bg); padding: 0.15em 0.4em; border-radius: 4px; }
+pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; overflow-x: auto; margin-bottom: 1.5rem; font-size: 0.85rem; line-height: 1.6; }
+pre code { background: none; padding: 0; border-radius: 0; }
+table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; line-height: 1.5; }
+thead { background: var(--navy); color: white; }
+th { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; padding: 0.7rem 0.9rem; text-align: left; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.03em; }
+td { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--bg-sidebar); }
+.table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+.table-wrap table { margin: 0; }
+blockquote { border-left: 4px solid var(--accent); background: rgba(59, 130, 246, 0.04); padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; font-style: normal; }
+blockquote p:last-child { margin-bottom: 0; }
+/* callouts (same class names as the other reports so the Riso family file styles them) */
+.freshness-watch, .takeaways, .discussion, .exercise, .at-a-glance { padding: 1rem 1.5rem; margin: 2rem 0 1rem; border-radius: 0 8px 8px 0; font-size: 0.97rem; border-left: 4px solid var(--accent); background: rgba(59,130,246,0.05); }
+.freshness-watch { border-left-color: #d97706; background: rgba(217,119,6,0.06); }
+.takeaways { border-left-color: #059669; background: rgba(5,150,105,0.06); }
+.discussion { border-left-color: #7c3aed; background: rgba(124,58,237,0.05); }
+.exercise { border-left-color: #059669; background: rgba(5,150,105,0.05); }
+.at-a-glance { border-left-color: var(--navy); background: rgba(30,58,95,0.05); font-size: 1.05rem; padding: 1.4rem 1.8rem; margin: 1.5rem 0 2rem; }
+.at-a-glance ul { margin-bottom: 0; }
+.at-a-glance li { margin-bottom: 0.6rem; }
+:is(.freshness-watch, .takeaways, .discussion, .exercise, .at-a-glance) > p:first-child { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; color: var(--navy); }
+:is(.freshness-watch, .takeaways, .discussion, .exercise, .at-a-glance) > :last-child { margin-bottom: 0; }
+/* hero number */
+.hero { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin: 1.2rem 0 1.6rem; font-family: 'Helvetica Neue', Arial, sans-serif; }
+.hero-num { font-size: 3.6rem; font-weight: 800; line-height: 1; color: var(--navy); letter-spacing: -0.02em; }
+.hero-cap { font-size: 1.05rem; color: var(--text-light); max-width: 30ch; line-height: 1.35; }
+/* figures */
+.figure { margin: 2rem 0 2.4rem; }
+.figure img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; }
+.figure figcaption { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.92rem; color: var(--text-light); margin-top: 0.7rem; line-height: 1.45; }
+.figure figcaption strong { color: var(--navy); }
+/* citations and references */
+a.cite { text-decoration: none; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8em; vertical-align: super; line-height: 0; color: var(--accent); }
+ol.refs { padding-left: 1.6rem; font-size: 0.95rem; }
+ol.refs li { margin-bottom: 0.7rem; }
+ol.refs li:target { background: rgba(59,130,246,0.1); }
+ol.refs a { word-break: break-all; }
+.model-table td:first-child { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; }
+hr { border: none; border-top: 2px solid var(--border); margin: 4rem 0; }
+@media (max-width: 900px) {
+    #sidebar { transform: translateX(-100%); }
+    #sidebar.open { transform: translateX(0); box-shadow: 4px 0 20px rgba(0,0,0,0.15); }
+    #menu-toggle { display: block; }
+    #content-wrapper { margin-left: 0; padding: 0 1rem; }
+    #content { padding: 2rem 0.5rem 4rem; }
+    h1 { font-size: 1.7rem; } h2 { font-size: 1.3rem; }
+    table { font-size: 0.82rem; } th, td { padding: 0.5rem 0.6rem; }
+    .hero-num { font-size: 2.6rem; }
+}
+@media (max-width: 600px) { #content { padding: 1.5rem 1rem 3rem; } body { font-size: 16px; } }
+@media print { #sidebar, #menu-toggle, #progress-bar { display: none !important; } #content-wrapper { margin-left: 0; padding: 0; } #content { max-width: 100%; } .chapter { page-break-before: always; } .chapter:first-child { page-break-before: auto; } }
+</style>
+</head>
+<body>
+    <div id="progress-bar"></div>
+    <button id="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+
+    <aside id="sidebar">
+        <div id="sidebar-header">
+            <a class="all-pubs-link" href="/">&larr; All Publications</a>
+            <h2>GeoBias</h2>
+            <p>Open-weight models from the US, China and the EU answer the same politically sensitive prompts, judged by a three-origin evaluator panel. Two runs, March and October 2026.</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#geobias">GeoBias</a></li>
+<li><a href="#related-work">Related work</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div id="content-wrapper">
+        <main id="content">
+            
+        <section class="chapter" id="geobias">
+            
+            <h1>GeoBias</h1>
+<h2>Placeholder cover, replaced by the October 2026 report build.</h2>
+        </section>
+        <section class="chapter" id="related-work">
+            
+            <h1>Related work</h1><p>A short reading list, not a survey. Every title below was checked against its arXiv abstract page on 2026-10-17.</p>
+<ol class="refs">
+<li id="ref-1">Santurkar, S. et al. (2023). <em>Whose Opinions Do Language Models Reflect?</em> arXiv:2303.17548. <a href="https://arxiv.org/abs/2303.17548">https://arxiv.org/abs/2303.17548</a>. Introduces OpinionQA and the method of asking whose demographic opinions a model&rsquo;s answers resemble.</li>
+<li id="ref-2">Durmus, E. et al. (2023). <em>Towards Measuring the Representation of Subjective Global Opinions in Language Models.</em> arXiv:2306.16388. <a href="https://arxiv.org/abs/2306.16388">https://arxiv.org/abs/2306.16388</a>. Anthropic&rsquo;s country-level version of the same question; the closest ancestor of GeoBias&rsquo;s origin-by-topic matrix.</li>
+<li id="ref-3">Naseh, A. et al. (2025). <em>R1dacted: Investigating Local Censorship in DeepSeek&rsquo;s R1 Language Model.</em> arXiv:2505.12625. <a href="https://arxiv.org/abs/2505.12625">https://arxiv.org/abs/2505.12625</a>. Measures censorship in locally run weights, the &ldquo;is it in the weights or in the API?&rdquo; question GeoBias asks of smaller models.</li>
+<li id="ref-4">Qiu, P. et al. (2025). <em>Information Suppression in Large Language Models: Auditing, Quantifying, and Characterizing Censorship in DeepSeek.</em> arXiv:2506.12349. <a href="https://arxiv.org/abs/2506.12349">https://arxiv.org/abs/2506.12349</a>. A larger audit of politically sensitive topics on one Chinese-origin model.</li>
+<li id="ref-5">Deng, Y. et al. (2024). <em>Multilingual Jailbreak Challenges in Large Language Models.</em> ICLR 2024, arXiv:2310.06474. <a href="https://arxiv.org/abs/2310.06474">https://arxiv.org/abs/2310.06474</a>. Safety behaviour changes with the prompt language; the reason GeoBias includes a language-quality category.</li>
+<li id="ref-6">Verga, P. et al. (2024). <em>Replacing Judges with Juries: Evaluating LLM Generations with a Panel of Diverse Models.</em> arXiv:2404.18796. <a href="https://arxiv.org/abs/2404.18796">https://arxiv.org/abs/2404.18796</a>. The case for a panel of judges from different families; GeoBias&rsquo;s three-origin evaluator panel follows it.</li>
+<li id="ref-7">Zheng, L. et al. (2023). <em>Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.</em> arXiv:2306.05685. <a href="https://arxiv.org/abs/2306.05685">https://arxiv.org/abs/2306.05685</a>. The founding LLM-as-a-judge paper and its catalogue of judge biases, which the evaluator-leniency check is designed to catch.</li>
+</ol>
+        </section>
+        
+<!-- AI transparency notice (Art 50 EU AI Act, voluntary) -->
+<aside class="ai-transparency" id="ai-transparency" lang="en" aria-label="AI transparency"><svg class="ait-icon" viewBox="85 96 374 374" aria-hidden="true" focusable="false"><defs><mask id="ait-m-c"><rect width="566.93" height="566.93" fill="#000"/><circle cx="272.03" cy="283.47" r="182.75" fill="#fff"/><path fill="#000" d="M170.79,353.74c-1.08,0-2.05-.43-2.92-1.31-.88-.87-1.31-1.84-1.31-2.92,0-.67.07-1.27.2-1.81l47.34-129.32c.4-1.48,1.24-2.79,2.52-3.93,1.27-1.14,3.05-1.71,5.34-1.71h29.81c2.28,0,4.06.57,5.34,1.71,1.27,1.14,2.11,2.45,2.52,3.93l47.14,129.32c.27.54.4,1.14.4,1.81,0,1.08-.44,2.05-1.31,2.92s-1.91,1.31-3.12,1.31h-24.78c-2.01,0-3.52-.5-4.53-1.51-1.01-1.01-1.65-1.91-1.91-2.72l-7.86-20.55h-53.78l-7.65,20.55c-.27.81-.88,1.71-1.81,2.72-.94,1.01-2.55,1.51-4.83,1.51h-24.78ZM218.13,299.96h37.47l-18.93-53.18-18.53,53.18Z"/><path fill="#000" d="M328.11,353.74c-1.48,0-2.69-.47-3.63-1.41-.94-.94-1.41-2.15-1.41-3.63v-130.93c0-1.48.47-2.68,1.41-3.63s2.15-1.41,3.63-1.41h26.99c1.48,0,2.68.47,3.63,1.41.94.94,1.41,2.15,1.41,3.63v130.93c0,1.48-.47,2.69-1.41,3.63-.94.94-2.15,1.41-3.63,1.41h-26.99Z"/></mask></defs><rect width="566.93" height="566.93" fill="currentColor" opacity=".5" mask="url(#ait-m-c)"/></svg><div><span class="ait-label">AI transparency</span><p>This publication was written with generative AI (Anthropic&rsquo;s Claude) working alongside Robert Barcik. The text went through his review, and he holds editorial responsibility for what is published here (LearningDoe s.r.o.). Where the AI writes in its own voice, the piece says so. Disclosed in the spirit of Article&nbsp;50 of the EU AI Act.</p></div></aside>
+<style>
+.ai-transparency{display:flex;gap:.9rem;align-items:flex-start;margin:3.5rem 0 1.5rem;padding:1.1rem 0 0;border-top:1px solid;border-color:color-mix(in srgb,currentColor 22%,transparent);opacity:.78;font-size:.82rem;line-height:1.55;font-family:inherit;text-align:left}
+.ai-transparency .ait-icon{flex:0 0 auto;width:2.1rem;height:2.1rem;margin-top:.1rem}
+.ai-transparency .ait-label{display:block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:.3rem}
+.ai-transparency p{margin:0;max-width:62ch}
+</style>
+
+        </main>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+    });
+    const chapters = document.querySelectorAll('.chapter');
+    const navLinks = document.querySelectorAll('#sidebar nav a');
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + id) link.classList.add('active');
+                });
+            }
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    chapters.forEach(function(ch) { observer.observe(ch); });
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); document.getElementById('sidebar').classList.remove('open'); }
+        });
+    });
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    menuToggle.addEventListener('click', function() { sidebar.classList.toggle('open'); });
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 900 && !sidebar.contains(e.target) && e.target !== menuToggle) sidebar.classList.remove('open');
+    });
+    if (navLinks.length > 0) navLinks[0].classList.add('active');
+});
+</script>
+</body>
+</html>

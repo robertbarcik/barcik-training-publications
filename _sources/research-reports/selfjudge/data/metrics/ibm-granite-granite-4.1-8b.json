@@ -1,0 +1,442 @@
+{
+ "model_id": "ibm-granite/granite-4.1-8b",
+ "display_name": "Granite 4.1 8B",
+ "params_b": 8.0,
+ "total_params_b": null,
+ "moe": false,
+ "orchestrator_model": "deepseek/deepseek-chat-v3.1",
+ "meta_judge_model": "anthropic/claude-sonnet-4.5",
+ "cases_per_category": 12,
+ "judge_samples": 3,
+ "total_usage": {
+  "prompt_tokens": 1612355,
+  "completion_tokens": 1422864
+ },
+ "categories": {
+  "factual_grounding": {
+   "name": "Factual Grounding (Hallucination Detection)",
+   "accuracy": 1.0,
+   "accuracy_ci": [
+    0.7575,
+    1.0
+   ],
+   "balanced_accuracy": null,
+   "mcc": 0.0,
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "confusion_matrix": {
+    "tp": 0,
+    "fp": 0,
+    "tn": 12,
+    "fn": 0
+   },
+   "total_judged": 12,
+   "total_correct": 12,
+   "n_unknown": 0,
+   "n_gt_fail": 0,
+   "n_gt_pass": 12,
+   "baseline_majority_class": 1.0,
+   "baseline_always_pass": 1.0,
+   "baseline_always_fail": 0.0,
+   "difficulty": {
+    "easy": {
+     "n": 4,
+     "accuracy": 1.0
+    },
+    "medium": {
+     "n": 4,
+     "accuracy": 1.0
+    },
+    "hard": {
+     "n": 4,
+     "accuracy": 1.0
+    }
+   },
+   "anchors": {
+    "accuracy": 1.0,
+    "accuracy_ci": [
+     0.862,
+     1.0
+    ],
+    "balanced_accuracy": 1.0,
+    "mcc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "confusion_matrix": {
+     "tp": 12,
+     "fp": 0,
+     "tn": 12,
+     "fn": 0
+    },
+    "total_judged": 24,
+    "total_correct": 24,
+    "n_unknown": 0,
+    "n_gt_fail": 12,
+    "n_gt_pass": 12,
+    "baseline_majority_class": 0.5,
+    "baseline_always_pass": 0.5,
+    "baseline_always_fail": 0.5
+   }
+  },
+  "instruction_following": {
+   "name": "Instruction Following",
+   "accuracy": 0.6667,
+   "accuracy_ci": [
+    0.3,
+    0.9032
+   ],
+   "balanced_accuracy": 0.625,
+   "mcc": 0.25,
+   "precision": 0.5,
+   "recall": 0.5,
+   "f1": 0.5,
+   "confusion_matrix": {
+    "tp": 1,
+    "fp": 1,
+    "tn": 3,
+    "fn": 1
+   },
+   "total_judged": 6,
+   "total_correct": 4,
+   "n_unknown": 0,
+   "n_gt_fail": 2,
+   "n_gt_pass": 4,
+   "baseline_majority_class": 0.6667,
+   "baseline_always_pass": 0.6667,
+   "baseline_always_fail": 0.3333,
+   "difficulty": {
+    "easy": {
+     "n": 2,
+     "accuracy": 1.0
+    },
+    "medium": {
+     "n": 2,
+     "accuracy": 0.5
+    },
+    "hard": {
+     "n": 2,
+     "accuracy": 0.5
+    }
+   },
+   "anchors": {
+    "accuracy": 1.0,
+    "accuracy_ci": [
+     0.7575,
+     1.0
+    ],
+    "balanced_accuracy": 1.0,
+    "mcc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "confusion_matrix": {
+     "tp": 6,
+     "fp": 0,
+     "tn": 6,
+     "fn": 0
+    },
+    "total_judged": 12,
+    "total_correct": 12,
+    "n_unknown": 0,
+    "n_gt_fail": 6,
+    "n_gt_pass": 6,
+    "baseline_majority_class": 0.5,
+    "baseline_always_pass": 0.5,
+    "baseline_always_fail": 0.5
+   }
+  },
+  "safety_boundary": {
+   "name": "Safety Boundary Testing",
+   "accuracy": 0.75,
+   "accuracy_ci": [
+    0.4677,
+    0.9111
+   ],
+   "balanced_accuracy": 0.625,
+   "mcc": 0.4264,
+   "precision": 1.0,
+   "recall": 0.25,
+   "f1": 0.4,
+   "confusion_matrix": {
+    "tp": 1,
+    "fp": 0,
+    "tn": 8,
+    "fn": 3
+   },
+   "total_judged": 12,
+   "total_correct": 9,
+   "n_unknown": 0,
+   "n_gt_fail": 4,
+   "n_gt_pass": 8,
+   "baseline_majority_class": 0.6667,
+   "baseline_always_pass": 0.6667,
+   "baseline_always_fail": 0.3333,
+   "difficulty": {
+    "easy": {
+     "n": 2,
+     "accuracy": 1.0
+    },
+    "medium": {
+     "n": 5,
+     "accuracy": 0.8
+    },
+    "hard": {
+     "n": 5,
+     "accuracy": 0.6
+    }
+   },
+   "anchors": {
+    "accuracy": 1.0,
+    "accuracy_ci": [
+     0.862,
+     1.0
+    ],
+    "balanced_accuracy": 1.0,
+    "mcc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "confusion_matrix": {
+     "tp": 12,
+     "fp": 0,
+     "tn": 12,
+     "fn": 0
+    },
+    "total_judged": 24,
+    "total_correct": 24,
+    "n_unknown": 0,
+    "n_gt_fail": 12,
+    "n_gt_pass": 12,
+    "baseline_majority_class": 0.5,
+    "baseline_always_pass": 0.5,
+    "baseline_always_fail": 0.5
+   }
+  },
+  "consistency": {
+   "name": "Consistency / Contradiction Detection",
+   "accuracy": 0.8333,
+   "accuracy_ci": [
+    0.552,
+    0.953
+   ],
+   "balanced_accuracy": 0.5,
+   "mcc": 0.0,
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "confusion_matrix": {
+    "tp": 0,
+    "fp": 0,
+    "tn": 10,
+    "fn": 2
+   },
+   "total_judged": 12,
+   "total_correct": 10,
+   "n_unknown": 0,
+   "n_gt_fail": 2,
+   "n_gt_pass": 10,
+   "baseline_majority_class": 0.8333,
+   "baseline_always_pass": 0.8333,
+   "baseline_always_fail": 0.1667,
+   "difficulty": {
+    "easy": {
+     "n": 3,
+     "accuracy": 1.0
+    },
+    "medium": {
+     "n": 4,
+     "accuracy": 0.5
+    },
+    "hard": {
+     "n": 5,
+     "accuracy": 1.0
+    }
+   },
+   "anchors": {
+    "accuracy": 0.9167,
+    "accuracy_ci": [
+     0.7415,
+     0.9768
+    ],
+    "balanced_accuracy": 0.9167,
+    "mcc": 0.8452,
+    "precision": 1.0,
+    "recall": 0.8333,
+    "f1": 0.9091,
+    "confusion_matrix": {
+     "tp": 10,
+     "fp": 0,
+     "tn": 12,
+     "fn": 2
+    },
+    "total_judged": 24,
+    "total_correct": 22,
+    "n_unknown": 0,
+    "n_gt_fail": 12,
+    "n_gt_pass": 12,
+    "baseline_majority_class": 0.5,
+    "baseline_always_pass": 0.5,
+    "baseline_always_fail": 0.5
+   }
+  },
+  "tone_appropriateness": {
+   "name": "Tone and Appropriateness",
+   "accuracy": 0.75,
+   "accuracy_ci": [
+    0.4677,
+    0.9111
+   ],
+   "balanced_accuracy": 0.5,
+   "mcc": 0.0,
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "confusion_matrix": {
+    "tp": 0,
+    "fp": 0,
+    "tn": 9,
+    "fn": 3
+   },
+   "total_judged": 12,
+   "total_correct": 9,
+   "n_unknown": 0,
+   "n_gt_fail": 3,
+   "n_gt_pass": 9,
+   "baseline_majority_class": 0.75,
+   "baseline_always_pass": 0.75,
+   "baseline_always_fail": 0.25,
+   "difficulty": {
+    "easy": {
+     "n": 2,
+     "accuracy": 0.5
+    },
+    "medium": {
+     "n": 5,
+     "accuracy": 0.8
+    },
+    "hard": {
+     "n": 5,
+     "accuracy": 0.8
+    }
+   },
+   "anchors": {
+    "accuracy": 0.875,
+    "accuracy_ci": [
+     0.69,
+     0.9566
+    ],
+    "balanced_accuracy": 0.875,
+    "mcc": 0.7746,
+    "precision": 1.0,
+    "recall": 0.75,
+    "f1": 0.8571,
+    "confusion_matrix": {
+     "tp": 9,
+     "fp": 0,
+     "tn": 12,
+     "fn": 3
+    },
+    "total_judged": 24,
+    "total_correct": 21,
+    "n_unknown": 0,
+    "n_gt_fail": 12,
+    "n_gt_pass": 12,
+    "baseline_majority_class": 0.5,
+    "baseline_always_pass": 0.5,
+    "baseline_always_fail": 0.5
+   }
+  }
+ },
+ "overall": {
+  "accuracy": 0.8148,
+  "accuracy_ci": [
+   0.6916,
+   0.8962
+  ],
+  "balanced_accuracy": 0.5793,
+  "mcc": 0.2788,
+  "precision": 0.6667,
+  "recall": 0.1818,
+  "f1": 0.2857,
+  "confusion_matrix": {
+   "tp": 2,
+   "fp": 1,
+   "tn": 42,
+   "fn": 9
+  },
+  "total_judged": 54,
+  "total_correct": 44,
+  "n_unknown": 0,
+  "n_gt_fail": 11,
+  "n_gt_pass": 43,
+  "baseline_majority_class": 0.7963,
+  "baseline_always_pass": 0.7963,
+  "baseline_always_fail": 0.2037,
+  "total_overturned": 1,
+  "anchors": {
+   "accuracy": 0.9537,
+   "accuracy_ci": [
+    0.8962,
+    0.9801
+   ],
+   "balanced_accuracy": 0.9537,
+   "mcc": 0.9113,
+   "precision": 1.0,
+   "recall": 0.9074,
+   "f1": 0.9515,
+   "confusion_matrix": {
+    "tp": 49,
+    "fp": 0,
+    "tn": 54,
+    "fn": 5
+   },
+   "total_judged": 108,
+   "total_correct": 103,
+   "n_unknown": 0,
+   "n_gt_fail": 54,
+   "n_gt_pass": 54,
+   "baseline_majority_class": 0.5,
+   "baseline_always_pass": 0.5,
+   "baseline_always_fail": 0.5
+  },
+  "own_failure_miss_rate": 0.8182,
+  "anchor_failure_miss_rate": 0.0926,
+  "self_leniency": 0.7256
+ },
+ "cross": {
+  "peer_model": "mistralai/ministral-8b-2512",
+  "peer_display_name": "Ministral 3 8B",
+  "accuracy": 0.7778,
+  "accuracy_ci": [
+   0.6506,
+   0.868
+  ],
+  "balanced_accuracy": 0.6205,
+  "mcc": 0.3724,
+  "precision": 0.8,
+  "recall": 0.2667,
+  "f1": 0.4,
+  "confusion_matrix": {
+   "tp": 4,
+   "fp": 1,
+   "tn": 38,
+   "fn": 11
+  },
+  "total_judged": 54,
+  "total_correct": 42,
+  "n_unknown": 0,
+  "n_gt_fail": 15,
+  "n_gt_pass": 39,
+  "baseline_majority_class": 0.7222,
+  "baseline_always_pass": 0.7222,
+  "baseline_always_fail": 0.2778,
+  "peer_failure_miss_rate": 0.7333,
+  "self_preference": 0.0849
+ },
+ "release": "2026-04",
+ "closed": false,
+ "note": null,
+ "run": "2026-07"
+}

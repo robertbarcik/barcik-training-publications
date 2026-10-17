@@ -1,0 +1,10 @@
+{
+  "title": "Bloom — Automated Behavioural Safety Evaluation, One Generation Later",
+  "short_title": "Bloom",
+  "blurb": "Eleven risky behaviours, two open-weight target models two years apart, one AI judge. What an automated behavioural audit finds, and what it cannot.",
+  "description": "A research report using Anthropic's open-source Bloom framework to probe eleven risky behaviours (emotional bonding, social-engineering assistance, self-preservation, sycophancy and more) in Llama 3.3 70B (2024) and Meta Muse Glimmer 30B (2026), with a re-judged baseline and a judge-drift check.",
+  "canonical": "https://publications.barcik.training/reports/bloom/",
+  "output": "reports/bloom",
+  "lang": "en",
+  "data_provenance": "bloom-session/bloom-results (March 2026) and bloom-session/runs-2026-10 (October 2026), exported by export_data.py"
+}
